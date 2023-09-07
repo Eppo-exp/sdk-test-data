@@ -271,6 +271,7 @@
     "experiment_with_boolean_variations": {
       "subjectShards": 10000,
       "enabled": true,
+      "typedOverrides": {},
       "rules": [
         {
           "allocationKey": "allocation-experiment-6",
@@ -306,6 +307,7 @@
     "experiment_with_json_variations": {
       "subjectShards": 10000,
       "enabled": true,
+      "typedOverrides": {},
       "rules": [
         {
           "allocationKey": "allocation-experiment-7",
