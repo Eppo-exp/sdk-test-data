@@ -319,9 +319,7 @@
             {
               "name": "control",
               "value": "true",
-              "typedValue": {
-                "test": true
-              },
+              "typedValue": "{\"test\":true}",
               "shardRange": {
                 "start": 0,
                 "end": 5000
@@ -330,9 +328,7 @@
             {
               "name": "treatment",
               "value": "false",
-              "typedValue": {
-                "test": false
-              },
+              "typedValue": "{\"test\":false}",
               "shardRange": {
                 "start": 5000,
                 "end": 10000
