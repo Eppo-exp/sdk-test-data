@@ -1,5 +1,6 @@
 {
   "experiment": "randomization_algo",
+  "valueType": "string",
   "subjects": [
     "6255e1a70560594e38edcb55",
     "6255e1a7030fc2700972be99",
