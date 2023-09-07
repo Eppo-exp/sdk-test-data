@@ -1,5 +1,6 @@
 {
   "experiment": "new_user_onboarding",
+  "valueType": "string",
   "subjects": [
     "6255e1a7e56d44937e8aa3c9",
     "6255e1a7ac8f59b030f43889",

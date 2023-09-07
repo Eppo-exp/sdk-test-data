@@ -1,5 +1,6 @@
 {
   "experiment": "targeting_rules_experiment",
+  "valueType": "string",
   "subjectsWithAttributes": [
     {
       "subjectKey": "subject-1",
