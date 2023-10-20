@@ -39,12 +39,13 @@ jobs:
           distribution: 'adopt'
       - name: 'Set up GCP SDK'
         uses: 'google-github-actions/setup-gcloud@v0'
-      - name: Run tests
-        run: make test
+      - name: Spin up emulator
         uses: ReactiveCircus/android-emulator-runner@v2
         with:
           api-level: 29
           script: ./gradlew connectedCheck
+      - name: Run tests
+        run: make test
   test-node-server-sdk:
     runs-on: ubuntu-latest
     steps:
