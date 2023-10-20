@@ -214,9 +214,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Dot.net SDK
-        uses: actions/checkout@v3
-        with:
-          repository: 'Eppo-exp/gdot-net-server-sdk'
+      uses: actions/checkout@v3
+      with:
+        repository: 'Eppo-exp/gdot-net-server-sdk'
     - name: Setup .NET 7
       uses: actions/setup-dotnet@v3
       with:
