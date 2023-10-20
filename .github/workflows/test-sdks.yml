@@ -52,7 +52,7 @@ jobs:
       - name: Spin up emulator
         uses: ReactiveCircus/android-emulator-runner@v2
         with:
-          api-level: 21
+          api-level: 33
           script: ./gradlew connectedCheck
       - name: Run tests
         run: make test
@@ -79,7 +79,7 @@ jobs:
       - name: Install sdk dependencies
         run: yarn --frozen-lockfile
         working-directory: ./
-      - name: Run unit tests
+      - name: Run tests
         run: yarn test:unit
         working-directory: ./
   test-node-client-sdk:
@@ -116,7 +116,7 @@ jobs:
         uses: ./.github/actions/setup
       - name: Install dependencies
         run: yarn install
-      - name: Run unit tests
+      - name: Run tests
         run: yarn test --maxWorkers=2 --coverage
   test-python-sdk:
     runs-on: ubuntu-latest
@@ -137,7 +137,7 @@ jobs:
           python -m pip install -r requirements-test.txt
       - name: 'Set up GCP SDK to download test data'
         uses: 'google-github-actions/setup-gcloud@v0'
-      - name: "Run tests"
+      - name: Run tests
         run: make test
   test-php-sdk:
     runs-on: ubuntu-latest
@@ -208,7 +208,7 @@ jobs:
         run: go build -v ./...
       - name: 'Set up GCP SDK for downloading test data'
         uses: 'google-github-actions/setup-gcloud@v0'
-      - name: Test
+      - name: Run tests
         run: make test
   test-dotnet-sdk:
     runs-on: ubuntu-latest
@@ -227,5 +227,5 @@ jobs:
       run: make build
     - name: Pull test data
       run: make test-data
-    - name: Test
+    - name: Run tests
       run: make test
