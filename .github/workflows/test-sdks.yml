@@ -145,3 +145,35 @@ jobs:
       run: composer install --prefer-dist --no-progress
     - name: Run tests
       run: make test
+  test-ruby-sdk:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out Ruby SDK
+      uses: actions/checkout@v3
+      with:
+          repository: 'Eppo-exp/ruby-sdk'
+    - name: Set up Ruby 3
+      uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
+      with:
+        ruby-version: 3.0.6
+    - name: Install dependencies
+      run: bundle install
+    - name: Run tests
+      run: bundle exec rake spec
+  test-ios-sdk:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout iOS SDK
+        uses: actions/checkout@v3
+        with:
+          repository: 'Eppo-exp/eppo-ios-sdk'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v1'
+      - name: 'Use gcloud CLI'
+        run: 'gcloud info'
+      - name: Build
+        run: make build
+      - name: Pull test data
+        run: make test-data
+      - name: Run tests
+        run: make test
