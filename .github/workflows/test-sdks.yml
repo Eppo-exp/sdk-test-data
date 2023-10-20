@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  pull_request:
+  pull_request: #TODO: remove this before merge
     paths:
       - '**/*'
 
@@ -39,6 +39,16 @@ jobs:
           distribution: 'adopt'
       - name: 'Set up GCP SDK'
         uses: 'google-github-actions/setup-gcloud@v0'
+      - name: Restore gradle.properties
+        env:
+          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }} #TODO: populate
+          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }} #TODO: populate
+        shell: bash
+        run: |
+          mkdir -p ~/.gradle/
+          echo "GRADLE_USER_HOME=${HOME}/.gradle" >> $GITHUB_ENV
+          echo "MAVEN_USERNAME=${MAVEN_USERNAME}" > ~/.gradle/gradle.properties
+          echo "MAVEN_PASSWORD=${MAVEN_PASSWORD}" >> ~/.gradle/gradle.properties
       - name: Spin up emulator
         uses: ReactiveCircus/android-emulator-runner@v2
         with:
