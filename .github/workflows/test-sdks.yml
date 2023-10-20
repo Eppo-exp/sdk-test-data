@@ -1,11 +1,10 @@
 name: Test SDKs
+
 on:
   bush:
     branches:
       - main
-  pull_request: #todo: remove since the SDKs won't pull the branch
-    paths:
-      - '**/*'
+  pull_request:
 
 jobs:
   test-java-sdk:
