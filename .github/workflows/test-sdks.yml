@@ -52,7 +52,7 @@ jobs:
       - name: Spin up emulator
         uses: ReactiveCircus/android-emulator-runner@v2
         with:
-          api-level: 29
+          api-level: 21
           script: ./gradlew connectedCheck
       - name: Run tests
         run: make test
