@@ -53,27 +53,27 @@ jobs:
         working-directory: ./
   test-node-client-sdk:
     runs-on: ubuntu-latest
-      steps:
-        - name: Check out node client SDK
-          uses: actions/checkout@v3
-          with:
-            repository: 'Eppo-exp/js-client-sdk'
-        - name: Use Node.js 18
-          uses: actions/setup-node@v1
-          with:
-            node-version: '18.x'
-        - uses: actions/cache@v2
-          with:
-            path: './node_modules'
-            key: ${{ runner.os }}-root-node-modules-${{ hashFiles('./yarn.lock') }}
-        - name: 'Set up GCP SDK for downloading test data'
-          uses: 'google-github-actions/setup-gcloud@v0'
-        - name: Install SDK dependencies
-          run: yarn --frozen-lockfile
-          working-directory: ./
-        - name: Run tests
-          run: yarn test
-          working-directory: ./
+    steps:
+      - name: Check out node client SDK
+        uses: actions/checkout@v3
+        with:
+          repository: 'Eppo-exp/js-client-sdk'
+      - name: Use Node.js 18
+        uses: actions/setup-node@v1
+        with:
+          node-version: '18.x'
+      - uses: actions/cache@v2
+        with:
+          path: './node_modules'
+          key: ${{ runner.os }}-root-node-modules-${{ hashFiles('./yarn.lock') }}
+      - name: 'Set up GCP SDK for downloading test data'
+        uses: 'google-github-actions/setup-gcloud@v0'
+      - name: Install SDK dependencies
+        run: yarn --frozen-lockfile
+        working-directory: ./
+      - name: Run tests
+        run: yarn test
+        working-directory: ./
   test-python-sdk:
     runs-on: ubuntu-latest
     steps:
@@ -95,3 +95,24 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v0'
       - name: "Run tests"
         run: make test
+  test-php-sdk:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out PHP SDK
+      uses: actions/checkout@v3
+      with:
+          repository: 'Eppo-exp/php-sdk'
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+    - name: Run tests
+      run: make test
