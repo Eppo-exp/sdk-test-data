@@ -41,6 +41,10 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v0'
       - name: Run tests
         run: make test
+        uses: ReactiveCircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew connectedCheck
   test-node-server-sdk:
     runs-on: ubuntu-latest
     steps:
@@ -158,8 +162,10 @@ jobs:
         ruby-version: 3.0.6
     - name: Install dependencies
       run: bundle install
+    - name: Refresh test data
+      run: bundle exec rake test_refreshed_data
     - name: Run tests
-      run: bundle exec rake spec
+      run: bundle exec rake test
   test-ios-sdk:
     runs-on: macos-latest
     steps:
