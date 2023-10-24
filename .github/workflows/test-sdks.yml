@@ -26,6 +26,7 @@ jobs:
       - name: Run tests
         run: make test
   test-android-sdk:
+    if: false # We need to get android CI working
     runs-on: macos-latest
     env:
       ANDROID_API_LEVEL: 33
