@@ -363,7 +363,6 @@
       "allocations": {
         "bandit": {
           "percentExposure": 0.4533,
-				  "logActions": true,
           "variations": [
             {
               "name": "control",
