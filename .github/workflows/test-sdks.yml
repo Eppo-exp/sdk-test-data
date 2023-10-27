@@ -4,8 +4,12 @@ on:
   push:
     branches:
       - main
+  pull_request: # Remove before merge
+    paths:
+      - '**/*'
 
 jobs:
+  
   test-java-sdk:
     runs-on: macos-latest
     steps:
@@ -22,11 +26,9 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v0'
       - name: Run tests
         run: make test
+  
   test-android-sdk:
-    if: false # We need to get android CI working
     runs-on: macos-latest
-    env:
-      ANDROID_API_LEVEL: 33
     steps:
       - name: Check out Java SDK
         uses: actions/checkout@v3
@@ -41,18 +43,45 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v0'
       - name: Restore gradle.properties
         env:
-          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }} #TODO: populate
-          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }} #TODO: populate
+          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
         shell: bash
         run: |
           mkdir -p ~/.gradle/
           echo "GRADLE_USER_HOME=${HOME}/.gradle" >> $GITHUB_ENV
           echo "MAVEN_USERNAME=${MAVEN_USERNAME}" > ~/.gradle/gradle.properties
           echo "MAVEN_PASSWORD=${MAVEN_PASSWORD}" >> ~/.gradle/gradle.properties
-      - name: Create test data
+      - name: Set up test data
         run: make test-data
-      - name: Run tests
-        run: ./gradlew test
+      - name: Spin up emulator and run tests
+        id: testing
+        uses: ReactiveCircus/android-emulator-runner@v2
+        with:
+          api-level: 33
+          target: google_apis
+          arch: x86_64
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -dns-server 8.8.8.8
+          script: |
+            echo "Emulator started" 
+            adb logcat -c                                     # clear logs
+            mkdir -p app/                                     # create directory
+            touch app/emulator.log                            # create log file
+            chmod 777 app/emulator.log                        # allow writing to log file
+            adb logcat | grep EppoSDK >> app/emulator.log &   # pipe all logcat messages into log file as a background process
+            ./gradlew connectedCheck                          # run tests
+      - name: Upload Emulator Logs
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: emulator logs
+          path: app/emulator.log
+      - name: Upload Test Report
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: report
+          path: /Users/runner/work/android-sdk/android-sdk/eppo/build/reports/androidTests/connected/index.html
+
   test-node-server-sdk:
     runs-on: ubuntu-latest
     steps:
@@ -79,6 +108,7 @@ jobs:
       - name: Run tests
         run: yarn test:unit
         working-directory: ./
+  
   test-node-client-sdk:
     runs-on: ubuntu-latest
     steps:
@@ -102,6 +132,7 @@ jobs:
       - name: Run tests
         run: yarn test
         working-directory: ./
+  
   test-react-native-sdk:
     runs-on: ubuntu-latest
     steps:
@@ -115,6 +146,7 @@ jobs:
         run: yarn install
       - name: Run tests
         run: yarn test --maxWorkers=2 --coverage
+  
   test-python-sdk:
     runs-on: ubuntu-latest
     steps:
@@ -136,6 +168,7 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v0'
       - name: Run tests
         run: make test
+  
   test-php-sdk:
     runs-on: ubuntu-latest
     steps:
@@ -157,6 +190,7 @@ jobs:
       run: composer install --prefer-dist --no-progress
     - name: Run tests
       run: make test
+  
   test-ruby-sdk:
     runs-on: ubuntu-latest
     steps:
@@ -174,6 +208,7 @@ jobs:
       run: bundle exec rake test_refreshed_data
     - name: Run tests
       run: bundle exec rake test
+  
   test-ios-sdk:
     runs-on: macos-latest
     steps:
@@ -191,6 +226,7 @@ jobs:
         run: make test-data
       - name: Run tests
         run: make test
+  
   test-golang-sdk:
     runs-on: ubuntu-latest
     steps:
@@ -207,6 +243,7 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v0'
       - name: Run tests
         run: make test
+  
   test-dotnet-sdk:
     runs-on: ubuntu-latest
     steps:
