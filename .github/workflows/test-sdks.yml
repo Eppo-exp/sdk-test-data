@@ -80,7 +80,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: report
-          path: /Users/runner/work/android-sdk/android-sdk/eppo/build/reports/androidTests/connected/index.html
+          path: /Users/runner/work/sdk-test-data/sdk-test-data/eppo/build/reports/androidTests/connected/index.html
 
   test-node-server-sdk:
     runs-on: ubuntu-latest
