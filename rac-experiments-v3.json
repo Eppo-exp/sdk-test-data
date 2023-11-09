@@ -419,22 +419,22 @@
                 "holdoutKey": "holdout-2",
                 "statusQuoShardRange": {
                   "start": 0,
-                  "end": 25
+                  "end": 2500
                 },
                 "shippedShardRange": {
-                  "start": 26,
-                  "end": 50
+                  "start": 2501,
+                  "end": 5000
                 }
               },
               {
                 "holdoutKey": "holdout-3",
                 "statusQuoShardRange": {
-                  "start": 51,
-                  "end": 75
+                  "start": 5001,
+                  "end": 7500
                 },
                 "shippedShardRange": {
-                  "start": 76,
-                  "end": 100
+                  "start": 7501,
+                  "end": 10000
                 }
               }
             ]
@@ -447,7 +447,8 @@
               "shardRange": {
                 "start": 0,
                 "end": 3333
-              }
+              },
+              "variationKey": "variation-7"
             },
             {
               "name": "red",
@@ -456,7 +457,8 @@
               "shardRange": {
                 "start": 3333,
                 "end": 6666
-              }
+              },
+              "variationKey": "variation-8"
             },
             {
               "name": "green",
@@ -465,7 +467,8 @@
               "shardRange": {
                 "start": 6666,
                 "end": 10000
-              }
+              },
+              "variationKey": "variation-9"
             }
           ]
         }
