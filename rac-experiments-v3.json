@@ -409,7 +409,7 @@
       ],
       "allocations": {
         "allocation-experiment-1": {
-          "percentExposure": 1,
+          "percentExposure": 0.4533,
           "holdout": {
             "statusQuo": "variation-7",
             "shipped": "variation-8",
