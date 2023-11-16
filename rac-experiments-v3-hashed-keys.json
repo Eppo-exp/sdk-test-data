@@ -14,6 +14,9 @@
       "allocations": {
         "allocation-experiment-1": {
           "percentExposure": 0.4533,
+          "statusQuoVariationKey": null,
+          "shippedVariationKey": null,
+          "holdouts": [],
           "variations": [
             {
               "name": "control",
@@ -60,6 +63,9 @@
       "allocations": {
         "allocation-experiment-2": {
           "percentExposure": 0.9500,
+          "statusQuoVariationKey": null,
+          "shippedVariationKey": null,
+          "holdouts": [],
           "variations": [
             {
               "name": "control",
@@ -125,6 +131,9 @@
       "allocations": {
         "allocation-experiment-3": {
           "percentExposure": 1,
+          "statusQuoVariationKey": null,
+          "shippedVariationKey": null,
+          "holdouts": [],
           "variations": [
             {
               "name": "control",
@@ -198,6 +207,9 @@
       "allocations": {
         "allocation-experiment-4": {
           "percentExposure": 1,
+          "statusQuoVariationKey": null,
+          "shippedVariationKey": null,
+          "holdouts": [],
           "variations": [
             {
               "name": "control",
@@ -245,6 +257,9 @@
       "allocations": {
         "allocation-experiment-5": {
           "percentExposure": 1,
+          "statusQuoVariationKey": null,
+          "shippedVariationKey": null,
+          "holdouts": [],
           "variations": [
             {
               "name": "control",
@@ -280,6 +295,9 @@
       "allocations": {
         "allocation-experiment-6": {
           "percentExposure": 1,
+          "statusQuoVariationKey": null,
+          "shippedVariationKey": null,
+          "holdouts": [],
           "variations": [
             {
               "name": "control",
@@ -315,6 +333,9 @@
       "allocations": {
         "allocation-experiment-7": {
           "percentExposure": 1,
+          "statusQuoVariationKey": null,
+          "shippedVariationKey": null,
+          "holdouts": [],
           "variations": [
             {
               "name": "control",
@@ -356,35 +377,32 @@
       "allocations": {
         "allocation-experiment-1": {
           "percentExposure": 0.4533,
-          "holdout": {
-            "statusQuo": "variation-7",
-            "shipped": "variation-8",
-            "percentExposure": 0.2,
-            "keys": [
-              {
-                "holdoutKey": "holdout-2",
-                "statusQuoShardRange": {
-                  "start": 0,
-                  "end": 2500
-                },
-                "shippedShardRange": {
-                  "start": 2501,
-                  "end": 5000
-                }
+          "statusQuoVariationKey": "variation-7",
+          "shippedVariationKey": "variation-8",
+          "holdouts": [
+            {
+              "holdoutKey": "holdout-2",
+              "statusQuoShardRange": {
+                "start": 0,
+                "end": 100
               },
-              {
-                "holdoutKey": "holdout-3",
-                "statusQuoShardRange": {
-                  "start": 5001,
-                  "end": 7500
-                },
-                "shippedShardRange": {
-                  "start": 7501,
-                  "end": 10000
-                }
+              "shippedShardRange": {
+                "start": 100,
+                "end": 200
               }
-            ]
-          },
+            },
+            {
+              "holdoutKey": "holdout-3",
+              "statusQuoShardRange": {
+                "start": 200,
+                "end": 300
+              },
+              "shippedShardRange": {
+                "start": 300,
+                "end": 400
+              }
+            }
+          ],
           "variations": [
             {
               "name": "control",
