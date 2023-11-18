@@ -378,7 +378,7 @@
         "allocation-experiment-1": {
           "percentExposure": 0.4533,
           "statusQuoVariationKey": "variation-7",
-          "shippedVariationKey": "variation-8",
+          "shippedVariationKey": null,
           "holdouts": [
             {
               "holdoutKey": "holdout-2",
