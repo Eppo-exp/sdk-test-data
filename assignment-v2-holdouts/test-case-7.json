@@ -1,0 +1,26 @@
+{
+  "experiment": "experiment_with_holdout",
+  "valueType": "string",
+  "subjects": [
+    "subject-101",
+    "subject-415",
+    "subject-20",
+    "subject-177",
+    "subject-30",
+    "subject-1",
+    "subject-8",
+    "subject-9",
+    "subject-222"
+  ],
+  "expectedAssignments": [
+    "control",
+    "control",
+    "control",
+    "control",
+    "control",
+    "red",
+    "green",
+    null,
+    null
+  ]
+}

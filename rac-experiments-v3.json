@@ -14,6 +14,9 @@
       "allocations": {
         "allocation-experiment-1": {
           "percentExposure": 0.4533,
+          "statusQuoVariationKey": null,
+          "shippedVariationKey": null,
+          "holdouts": [],
           "variations": [
             {
               "name": "control",
@@ -63,6 +66,9 @@
       "allocations": {
         "allocation-experiment-2": {
           "percentExposure": 0.9500,
+          "statusQuoVariationKey": null,
+          "shippedVariationKey": null,
+          "holdouts": [],
           "variations": [
             {
               "name": "control",
@@ -128,6 +134,9 @@
       "allocations": {
         "allocation-experiment-3": {
           "percentExposure": 1,
+          "statusQuoVariationKey": null,
+          "shippedVariationKey": null,
+          "holdouts": [],
           "variations": [
             {
               "name": "control",
@@ -201,6 +210,9 @@
       "allocations": {
         "allocation-experiment-4": {
           "percentExposure": 1,
+          "statusQuoVariationKey": null,
+          "shippedVariationKey": null,
+          "holdouts": [],
           "variations": [
             {
               "name": "control",
@@ -248,6 +260,9 @@
       "allocations": {
         "allocation-experiment-5": {
           "percentExposure": 1,
+          "statusQuoVariationKey": null,
+          "shippedVariationKey": null,
+          "holdouts": [],
           "variations": [
             {
               "name": "control",
@@ -285,6 +300,9 @@
       "allocations": {
         "allocation-experiment-6": {
           "percentExposure": 1,
+          "statusQuoVariationKey": null,
+          "shippedVariationKey": null,
+          "holdouts": [],
           "variations": [
             {
               "name": "control",
@@ -322,6 +340,9 @@
       "allocations": {
         "allocation-experiment-7": {
           "percentExposure": 1,
+          "statusQuoVariationKey": null,
+          "shippedVariationKey": null,
+          "holdouts": [],
           "variations": [
             {
               "name": "control",
@@ -363,6 +384,9 @@
       "allocations": {
         "bandit": {
           "percentExposure": 0.4533,
+          "statusQuoVariationKey": null,
+          "shippedVariationKey": null,
+          "holdouts": [],
           "variations": [
             {
               "name": "control",
@@ -383,6 +407,150 @@
                 "end": 10000
               },
               "algorithmType": "CONTEXTUAL_BANDIT"
+            }
+          ]
+        }
+      }
+    },
+    "experiment_with_holdout": {
+      "subjectShards": 10000,
+      "overrides": {},
+      "typedOverrides": {},
+      "enabled": true,
+      "rules": [
+        {
+          "allocationKey": "allocation-experiment-1",
+          "conditions": []
+        }
+      ],
+      "allocations": {
+        "allocation-experiment-1": {
+          "percentExposure": 0.4533,
+          "statusQuoVariationKey": "variation-7",
+          "shippedVariationKey": "variation-8",
+          "holdouts": [
+            {
+              "holdoutKey": "holdout-2",
+              "statusQuoShardRange": {
+                "start": 4321,
+                "end": 4521
+              },
+              "shippedShardRange": null
+            },
+            {
+              "holdoutKey": "holdout-3",
+              "statusQuoShardRange": {
+                "start": 8765,
+                "end": 8965
+              },
+              "shippedShardRange": null
+            }
+          ],
+          "variations": [
+            {
+              "name": "control",
+              "value": "control",
+              "typedValue": "control",
+              "shardRange": {
+                "start": 0,
+                "end": 3333
+              },
+              "variationKey": "variation-7"
+            },
+            {
+              "name": "red",
+              "value": "red",
+              "typedValue": "red",
+              "shardRange": {
+                "start": 3333,
+                "end": 6666
+              },
+              "variationKey": "variation-8"
+            },
+            {
+              "name": "green",
+              "value": "green",
+              "typedValue": "green",
+              "shardRange": {
+                "start": 6666,
+                "end": 10000
+              },
+              "variationKey": "variation-9"
+            }
+          ]
+        }
+      }
+    },
+    "rollout_with_holdout": {
+      "subjectShards": 10000,
+      "overrides": {},
+      "typedOverrides": {},
+      "enabled": true,
+      "rules": [
+        {
+          "allocationKey": "allocation-experiment-1",
+          "conditions": []
+        }
+      ],
+      "allocations": {
+        "allocation-experiment-1": {
+          "percentExposure": 0.4533,
+          "statusQuoVariationKey": "variation-7",
+          "shippedVariationKey": "variation-8",
+          "holdouts": [
+            {
+              "holdoutKey": "holdout-2",
+              "statusQuoShardRange": {
+                "start": 4321,
+                "end": 4421
+              },
+              "shippedShardRange": {
+                "start": 4421,
+                "end": 4521
+              }
+            },
+            {
+              "holdoutKey": "holdout-3",
+              "statusQuoShardRange": {
+                "start": 8765,
+                "end": 8865
+              },
+              "shippedShardRange": {
+                "start": 8865,
+                "end": 8965
+              }
+            }
+          ],
+          "variations": [
+            {
+              "name": "control",
+              "value": "control",
+              "typedValue": "control",
+              "shardRange": {
+                "start": 0,
+                "end": 0
+              },
+              "variationKey": "variation-7"
+            },
+            {
+              "name": "red",
+              "value": "red",
+              "typedValue": "red",
+              "shardRange": {
+                "start": 0,
+                "end": 10000
+              },
+              "variationKey": "variation-8"
+            },
+            {
+              "name": "green",
+              "value": "green",
+              "typedValue": "green",
+              "shardRange": {
+                "start": 0,
+                "end": 0
+              },
+              "variationKey": "variation-9"
             }
           ]
         }
