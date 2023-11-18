@@ -1,0 +1,26 @@
+{
+    "experiment": "rollout_with_holdout",
+    "valueType": "string",
+    "subjects": [
+      "subject-230",
+      "subject-222",
+      "subject-156",
+      "subject-825",
+      "subject-8",
+      "subject-3",
+      "subject-30",
+      "subject-1",
+      "subject-101"
+    ],
+    "expectedAssignments": [
+      "control",
+      "red",
+      "control",
+      "red",
+      "red",
+      "red",
+      "red",
+      null,
+      null
+    ]
+  }

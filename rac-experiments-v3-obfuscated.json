@@ -432,24 +432,18 @@
             {
               "holdoutKey": "holdout-2",
               "statusQuoShardRange": {
-                "start": 0,
-                "end": 100
+                "start": 4321,
+                "end": 4521
               },
-              "shippedShardRange": {
-                "start": 100,
-                "end": 200
-              }
+              "shippedShardRange": null
             },
             {
               "holdoutKey": "holdout-3",
               "statusQuoShardRange": {
-                "start": 200,
-                "end": 300
+                "start": 8765,
+                "end": 8965
               },
-              "shippedShardRange": {
-                "start": 300,
-                "end": 400
-              }
+              "shippedShardRange": null
             }
           ],
           "variations": [
@@ -480,6 +474,81 @@
               "shardRange": {
                 "start": 6666,
                 "end": 10000
+              },
+              "variationKey": "variation-9"
+            }
+          ]
+        }
+      }
+    },
+    "95f12b951606516e5da3c941aa1869dd": {
+      "subjectShards": 10000,
+      "overrides": {},
+      "typedOverrides": {},
+      "enabled": true,
+      "rules": [
+        {
+          "allocationKey": "allocation-experiment-1",
+          "conditions": []
+        }
+      ],
+      "allocations": {
+        "allocation-experiment-1": {
+          "percentExposure": 0.4533,
+          "statusQuoVariationKey": "variation-7",
+          "shippedVariationKey": "variation-8",
+          "holdouts": [
+            {
+              "holdoutKey": "holdout-2",
+              "statusQuoShardRange": {
+                "start": 4321,
+                "end": 4421
+              },
+              "shippedShardRange": {
+                "start": 4421,
+                "end": 4521
+              }
+            },
+            {
+              "holdoutKey": "holdout-3",
+              "statusQuoShardRange": {
+                "start": 8765,
+                "end": 8865
+              },
+              "shippedShardRange": {
+                "start": 8865,
+                "end": 8965
+              }
+            }
+          ],
+          "variations": [
+            {
+              "name": "control",
+              "value": "control",
+              "typedValue": "control",
+              "shardRange": {
+                "start": 0,
+                "end": 0
+              },
+              "variationKey": "variation-7"
+            },
+            {
+              "name": "red",
+              "value": "red",
+              "typedValue": "red",
+              "shardRange": {
+                "start": 0,
+                "end": 10000
+              },
+              "variationKey": "variation-8"
+            },
+            {
+              "name": "green",
+              "value": "green",
+              "typedValue": "green",
+              "shardRange": {
+                "start": 0,
+                "end": 0
               },
               "variationKey": "variation-9"
             }
