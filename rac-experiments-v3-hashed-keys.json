@@ -16,7 +16,6 @@
           "percentExposure": 0.4533,
           "statusQuoVariationKey": null,
           "shippedVariationKey": null,
-          "holdouts": [],
           "variations": [
             {
               "name": "control",
