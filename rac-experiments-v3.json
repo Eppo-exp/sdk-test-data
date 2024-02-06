@@ -177,7 +177,7 @@
               "attribute": "device"
             },
             {
-              "value": 1,
+              "value": "1.2.3",
               "operator": "GT",
               "attribute": "version"
             }
