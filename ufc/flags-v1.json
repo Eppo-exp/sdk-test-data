@@ -1,0 +1,208 @@
+{
+  "flags": {
+    "empty_flag": {
+      "key": "empty_flag",
+      "enabled": true,
+      "variations": {
+        "default": {
+          "key": "default",
+          "value": "control",
+          "value_type": "string"
+        }
+      },
+      "allocations": [],
+      "totalShards": 10000
+    },
+    "disabled_flag": {
+      "key": "disabled_flag",
+      "enabled": false,
+      "variations": {},
+      "allocations": [],
+      "totalShards": 10000
+    },
+    "no_allocations_flag": {
+      "key": "no_allocations",
+      "enabled": true,
+      "variations": {
+        "control": {
+          "key": "control",
+          "value": "control",
+          "value_type": "string"
+        },
+        "treatment": {
+          "key": "treatment",
+          "value": "treatment",
+          "value_type": "string"
+        }
+      },
+      "allocations": [],
+      "totalShards": 10000
+    },
+    "new-user-onboarding": {
+      "key": "new-user-onboarding",
+      "enabled": true,
+      "variations": {
+        "control": {
+          "key": "control",
+          "value": "control",
+          "value_type": "string"
+        },
+        "red": { "key": "red", "value": "red", "value_type": "string" },
+        "blue": { "key": "blue", "value": "blue", "value_type": "string" },
+        "green": { "key": "green", "value": "green", "value_type": "string" }
+      },
+      "allocations": [
+        {
+          "key": "internal users",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "email",
+                  "operator": "MATCHES",
+                  "value": ".*@mycompany.com"
+                }
+              ]
+            }
+          ],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "green",
+              "shards": []
+            }
+          ],
+          "doLog": false
+        },
+        {
+          "key": "experiment",
+          "rules": [],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "control",
+              "shards": [
+                {
+                  "salt": "traffic-new-user-onboarding-experiment",
+                  "ranges": [{ "start": 0, "end": 2000 }]
+                },
+                {
+                  "salt": "split-new-user-onboarding-experiment",
+                  "ranges": [{ "start": 0, "end": 5000 }]
+                }
+              ]
+            },
+            {
+              "variationKey": "red",
+              "shards": [
+                {
+                  "salt": "traffic-new-user-onboarding-experiment",
+                  "ranges": [{ "start": 0, "end": 2000 }]
+                },
+                {
+                  "salt": "split-new-user-onboarding-experiment",
+                  "ranges": [{ "start": 5000, "end": 8000 }]
+                }
+              ]
+            },
+            {
+              "variationKey": "green",
+              "shards": [
+                {
+                  "salt": "traffic-new-user-onboarding-experiment",
+                  "ranges": [{ "start": 0, "end": 2000 }]
+                },
+                {
+                  "salt": "split-new-user-onboarding-experiment",
+                  "ranges": [{ "start": 8000, "end": 10000 }]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "rollout",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "country",
+                  "operator": "ONE_OF",
+                  "value": ["US", "Canada", "Mexico"]
+                }
+              ]
+            }
+          ],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "blue",
+              "shards": [
+                {
+                  "salt": "split-new-user-onboarding-rollout",
+                  "ranges": [{ "start": 0, "end": 8000 }]
+                }
+              ],
+              "extraLogging": {
+                "allocationvalue_type": "rollout",
+                "owner": "Alice"
+              }
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
+    "numeric-flag": {
+      "key": "numeric-flag",
+      "enabled": true,
+      "variations": {
+        "one": {
+          "key": "one",
+          "value": 1,
+          "value_type": "integer"
+        },
+        "two": {
+          "key": "two",
+          "value": 2,
+          "value_type": "integer"
+        }
+      },
+      "allocations": [
+        {
+          "key": "some allocation",
+          "rules": [],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "one",
+              "shards": [
+                {
+                  "salt": "split-numeric-flag-some-allocation",
+                  "ranges": [{ "start": 0, "end": 5000 }]
+                }
+              ]
+            },
+            {
+              "variationKey": "two",
+              "shards": [
+                {
+                  "salt": "split-numeric-flag-some-allocation",
+                  "ranges": [{ "start": 5000, "end": 10000 }]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    }
+  }
+}

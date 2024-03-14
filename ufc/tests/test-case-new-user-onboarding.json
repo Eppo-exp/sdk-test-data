@@ -1,0 +1,21 @@
+{
+  "flag": "new-user-onboarding",
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {"email": "alice@mycompany.com", "country": "US"},
+      "assignment": "green"
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {"email": "bob@example.com", "country": "US"},
+      "assignment": null
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {"country": "Germany"},
+      "assignment": null
+    }
+  ],
+  "valueType": "string"
+}
