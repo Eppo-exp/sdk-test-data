@@ -1,0 +1,122 @@
+{
+    "flag": "integer-flag",
+    "valueType": "integer",
+    "subjects": [
+      {
+        "subjectKey": "alice",
+        "subjectAttributes": {"email": "alice@mycompany.com", "country": "US"},
+        "assignment": 3
+      },
+      {
+        "subjectKey": "bob",
+        "subjectAttributes": {"email": "bob@example.com", "country": "Canada"},
+        "assignment": 3
+      },
+      {
+        "subjectKey": "charlie",
+        "subjectAttributes": {"age": 50},
+        "assignment": 2
+      },
+      {
+        "subjectKey": "debra",
+        "subjectAttributes": {"email": "test@test.com", "country": "Mexico", "age": 25},
+        "assignment": 3
+      },
+      {
+        "subjectKey": "1",
+        "subjectAttributes": {},
+        "assignment": 2
+      },
+      {
+        "subjectKey": "2",
+        "subjectAttributes": {},
+        "assignment": 2
+      },
+      {
+        "subjectKey": "3",
+        "subjectAttributes": {},
+        "assignment": 2
+      },
+      {
+        "subjectKey": "4",
+        "subjectAttributes": {},
+        "assignment": 2
+      },
+      {
+        "subjectKey": "5",
+        "subjectAttributes": {},
+        "assignment": 1
+      },
+      {
+        "subjectKey": "6",
+        "subjectAttributes": {},
+        "assignment": 2
+      },
+      {
+        "subjectKey": "7",
+        "subjectAttributes": {},
+        "assignment": 1
+      },
+      {
+        "subjectKey": "8",
+        "subjectAttributes": {},
+        "assignment": 1
+      },
+      {
+        "subjectKey": "9",
+        "subjectAttributes": {},
+        "assignment": 2
+      },
+      {
+        "subjectKey": "10",
+        "subjectAttributes": {},
+        "assignment": 2
+      },
+      {
+        "subjectKey": "11",
+        "subjectAttributes": {},
+        "assignment": 1
+      },
+      {
+        "subjectKey": "12",
+        "subjectAttributes": {},
+        "assignment": 1
+      },
+      {
+        "subjectKey": "13",
+        "subjectAttributes": {},
+        "assignment": 2
+      },
+      {
+        "subjectKey": "14",
+        "subjectAttributes": {},
+        "assignment": 1
+      },
+      {
+        "subjectKey": "15",
+        "subjectAttributes": {},
+        "assignment": 2
+      },
+      {
+        "subjectKey": "16",
+        "subjectAttributes": {},
+        "assignment": 2
+      },
+      {
+        "subjectKey": "17",
+        "subjectAttributes": {},
+        "assignment": 1
+      },
+      {
+        "subjectKey": "18",
+        "subjectAttributes": {},
+        "assignment": 1
+      },
+      {
+        "subjectKey": "19",
+        "subjectAttributes": {},
+        "assignment": 1
+      }
+    ]
+  }
+  

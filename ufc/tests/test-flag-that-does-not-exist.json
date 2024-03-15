@@ -1,21 +1,21 @@
 {
-  "flag": "new-user-onboarding",
+  "flag": "flag-that-does-not-exist",
+  "valueType": "float",
   "subjects": [
     {
       "subjectKey": "alice",
       "subjectAttributes": {"email": "alice@mycompany.com", "country": "US"},
-      "assignment": "green"
+      "assignment": null
     },
     {
       "subjectKey": "bob",
-      "subjectAttributes": {"email": "bob@example.com", "country": "US"},
+      "subjectAttributes": {"email": "bob@example.com", "country": "Canada"},
       "assignment": null
     },
     {
       "subjectKey": "charlie",
-      "subjectAttributes": {"country": "Germany"},
+      "subjectAttributes": {"age": 50},
       "assignment": null
     }
-  ],
-  "valueType": "string"
+  ]
 }

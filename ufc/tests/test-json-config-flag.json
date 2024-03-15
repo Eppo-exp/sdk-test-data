@@ -1,0 +1,21 @@
+{
+    "flag": "json-config-flag",
+    "valueType": "json",
+    "subjects": [
+      {
+        "subjectKey": "alice",
+        "subjectAttributes": {"email": "alice@mycompany.com", "country": "US"},
+        "assignment": { "integer": 2, "string": "two", "float": 2.0 }
+      },
+      {
+        "subjectKey": "bob",
+        "subjectAttributes": {"email": "bob@example.com", "country": "Canada"},
+        "assignment": { "integer": 2, "string": "two", "float": 2.0 }
+      },
+      {
+        "subjectKey": "charlie",
+        "subjectAttributes": {"age": 50},
+        "assignment": { "integer": 2, "string": "two", "float": 2.0 }
+      }
+    ]
+  }

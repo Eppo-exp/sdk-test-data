@@ -1,0 +1,121 @@
+{
+  "flag": "new-user-onboarding",
+  "valueType": "string",
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {"email": "alice@mycompany.com", "country": "US"},
+      "assignment": "green"
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {"email": "bob@example.com", "country": "Canada"},
+      "assignment": null
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {"age": 50},
+      "assignment": null
+    },
+    {
+      "subjectKey": "debra",
+      "subjectAttributes": {"email": "test@test.com", "country": "Mexico", "age": 25},
+      "assignment": "blue"
+    },
+    {
+      "subjectKey": "1",
+      "subjectAttributes": {},
+      "assignment": null
+    },
+    {
+      "subjectKey": "2",
+      "subjectAttributes": {"country": "Mexico"},
+      "assignment": "blue"
+    },
+    {
+      "subjectKey": "3",
+      "subjectAttributes": {"country": "UK", "age": 33},
+      "assignment": "control"
+    },
+    {
+      "subjectKey": "4",
+      "subjectAttributes": {"country": "Germany"},
+      "assignment": "red"
+    },
+    {
+      "subjectKey": "5",
+      "subjectAttributes": {"country": "Germany"},
+      "assignment": "yellow"
+    },
+    {
+      "subjectKey": "6",
+      "subjectAttributes": {"country": "Germany"},
+      "assignment": "yellow"
+    },
+    {
+      "subjectKey": "7",
+      "subjectAttributes": {"country": "US"},
+      "assignment": "blue"
+    },
+    {
+      "subjectKey": "8",
+      "subjectAttributes": {"country": "Italy"},
+      "assignment": "red"
+    },
+    {
+      "subjectKey": "9",
+      "subjectAttributes": {"email": "email@email.com"},
+      "assignment": null
+    },
+    {
+      "subjectKey": "10",
+      "subjectAttributes": {},
+      "assignment": null
+    },
+    {
+      "subjectKey": "11",
+      "subjectAttributes": {},
+      "assignment": null
+    },
+    {
+      "subjectKey": "12",
+      "subjectAttributes": {"country": "US"},
+      "assignment": "blue"
+    },
+    {
+      "subjectKey": "13",
+      "subjectAttributes": {"country": "Canada"},
+      "assignment": "blue"
+    },
+    {
+      "subjectKey": "14",
+      "subjectAttributes": {},
+      "assignment": null
+    },
+    {
+      "subjectKey": "15",
+      "subjectAttributes": {"country": "Denmark"},
+      "assignment": "yellow"
+    },
+    {
+      "subjectKey": "16",
+      "subjectAttributes": {"country": "Norway"},
+      "assignment": "control"
+    },
+    {
+      "subjectKey": "17",
+      "subjectAttributes": {"country": "UK"},
+      "assignment": "control"
+    },
+    {
+      "subjectKey": "18",
+      "subjectAttributes": {"country": "UK"},
+      "assignment": null
+    },
+    {
+      "subjectKey": "19",
+      "subjectAttributes": {"country": "UK"},
+      "assignment": "red"
+    }
+  ]
+}

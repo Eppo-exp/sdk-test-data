@@ -1,0 +1,21 @@
+{
+  "flag": "empty_flag",
+  "valueType": "string",
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {"email": "alice@mycompany.com", "country": "US"},
+      "assignment": null
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {"email": "bob@example.com", "country": "Canada"},
+      "assignment": null
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {"age": 50},
+      "assignment": null
+    }
+  ]
+}
