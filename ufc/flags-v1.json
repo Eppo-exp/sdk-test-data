@@ -342,12 +342,12 @@
       "key": "json-config-flag",
       "enabled": true,
       "variations": {
-        "on": {
+        "one": {
           "key": "one",
           "value": "{ \"integer\": 1, \"string\": \"one\", \"float\": 1.0 }",
           "value_type": "json"
         },
-        "off": {
+        "two": {
           "key": "two",
           "value": "{ \"integer\": 2, \"string\": \"two\", \"float\": 2.0 }",
           "value_type": "json"

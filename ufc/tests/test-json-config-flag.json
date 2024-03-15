@@ -5,7 +5,7 @@
       {
         "subjectKey": "alice",
         "subjectAttributes": {"email": "alice@mycompany.com", "country": "US"},
-        "assignment": { "integer": 2, "string": "two", "float": 2.0 }
+        "assignment": { "integer": 1, "string": "one", "float": 1.0 }
       },
       {
         "subjectKey": "bob",
