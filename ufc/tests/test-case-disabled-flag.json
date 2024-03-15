@@ -1,6 +1,6 @@
 {
   "flag": "disabled_flag",
-  "valueType": "integer",
+  "variationType": "integer",
   "subjects": [
     {
       "subjectKey": "alice",

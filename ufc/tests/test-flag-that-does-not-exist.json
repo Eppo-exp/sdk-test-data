@@ -1,6 +1,6 @@
 {
   "flag": "flag-that-does-not-exist",
-  "valueType": "float",
+  "variationType": "float",
   "subjects": [
     {
       "subjectKey": "alice",

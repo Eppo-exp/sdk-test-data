@@ -3,6 +3,7 @@
     "empty_flag": {
       "key": "empty_flag",
       "enabled": true,
+      "variationType": "string",
       "variations": {},
       "allocations": [],
       "totalShards": 10000
@@ -10,6 +11,7 @@
     "disabled_flag": {
       "key": "disabled_flag",
       "enabled": false,
+      "variationType": "boolean",
       "variations": {},
       "allocations": [],
       "totalShards": 10000
@@ -17,16 +19,15 @@
     "no_allocations_flag": {
       "key": "no_allocations_flag",
       "enabled": true,
+      "variationType": "string",
       "variations": {
         "control": {
           "key": "control",
-          "value": "control",
-          "value_type": "string"
+          "value": "control"
         },
         "treatment": {
           "key": "treatment",
-          "value": "treatment",
-          "value_type": "string"
+          "value": "treatment"
         }
       },
       "allocations": [],
@@ -35,16 +36,15 @@
     "kill-switch": {
       "key": "kill-switch",
       "enabled": true,
+      "variationType": "boolean",
       "variations": {
         "on": {
           "key": "on",
-          "value": true,
-          "value_type": "boolean"
+          "value": true
         },
         "off": {
           "key": "off",
-          "value": false,
-          "value_type": "boolean"
+          "value": false
         }
       },
       "allocations": [
@@ -124,16 +124,16 @@
     "new-user-onboarding": {
       "key": "new-user-onboarding",
       "enabled": true,
+      "variationType": "string",
       "variations": {
         "control": {
           "key": "control",
-          "value": "control",
-          "value_type": "string"
+          "value": "control"
         },
-        "red": { "key": "red", "value": "red", "value_type": "string" },
-        "blue": { "key": "blue", "value": "blue", "value_type": "string" },
-        "green": { "key": "green", "value": "green", "value_type": "string" },
-        "yellow": { "key": "yellow", "value": "yellow", "value_type": "string" }
+        "red": { "key": "red", "value": "red"},
+        "blue": { "key": "blue", "value": "blue"},
+        "green": { "key": "green", "value": "green"},
+        "yellow": { "key": "yellow", "value": "yellow"}
       },
       "allocations": [
         {
@@ -253,21 +253,19 @@
     "integer-flag": {
       "key": "integer-flag",
       "enabled": true,
+      "variationType": "integer",
       "variations": {
         "one": {
           "key": "one",
-          "value": 1,
-          "value_type": "integer"
+          "value": 1
         },
         "two": {
           "key": "two",
-          "value": 2,
-          "value_type": "integer"
+          "value": 2
         },
         "three": {
           "key": "three",
-          "value": 3,
-          "value_type": "integer"
+          "value": 3
         }
       },
       "allocations": [
@@ -341,16 +339,15 @@
     "json-config-flag": {
       "key": "json-config-flag",
       "enabled": true,
+      "variationType": "json",
       "variations": {
         "one": {
           "key": "one",
-          "value": "{ \"integer\": 1, \"string\": \"one\", \"float\": 1.0 }",
-          "value_type": "json"
+          "value": "{ \"integer\": 1, \"string\": \"one\", \"float\": 1.0 }"
         },
         "two": {
           "key": "two",
-          "value": "{ \"integer\": 2, \"string\": \"two\", \"float\": 2.0 }",
-          "value_type": "json"
+          "value": "{ \"integer\": 2, \"string\": \"two\", \"float\": 2.0 }"
         }
       },
       "allocations": [

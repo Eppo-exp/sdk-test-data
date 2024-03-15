@@ -1,6 +1,6 @@
 {
   "flag": "empty_flag",
-  "valueType": "string",
+  "variationType": "string",
   "subjects": [
     {
       "subjectKey": "alice",

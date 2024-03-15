@@ -1,6 +1,6 @@
 {
     "flag": "no_allocations_flag",
-    "valueType": "json",
+    "variationType": "json",
     "subjects": [
       {
         "subjectKey": "alice",

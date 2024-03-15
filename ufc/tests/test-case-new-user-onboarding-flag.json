@@ -1,6 +1,6 @@
 {
   "flag": "new-user-onboarding",
-  "valueType": "string",
+  "variationType": "string",
   "subjects": [
     {
       "subjectKey": "alice",

@@ -1,6 +1,6 @@
 {
     "flag": "integer-flag",
-    "valueType": "integer",
+    "variationType": "integer",
     "subjects": [
       {
         "subjectKey": "alice",
