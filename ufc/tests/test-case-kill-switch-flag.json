@@ -1,0 +1,125 @@
+{
+  "flag": "kill-switch",
+  "variationType": "boolean",
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": { "email": "alice@mycompany.com", "country": "US" },
+      "assignment": true
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": { "email": "bob@example.com", "country": "Canada" },
+      "assignment": true
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": { "age": 40 },
+      "assignment": false
+    },
+    {
+      "subjectKey": "debra",
+      "subjectAttributes": {
+        "email": "test@test.com",
+        "country": "Mexico",
+        "age": 25
+      },
+      "assignment": true
+    },
+    {
+      "subjectKey": "1",
+      "subjectAttributes": {},
+      "assignment": false
+    },
+    {
+      "subjectKey": "2",
+      "subjectAttributes": { "country": "Mexico" },
+      "assignment": true
+    },
+    {
+      "subjectKey": "3",
+      "subjectAttributes": { "country": "UK", "age": 50 },
+      "assignment": true
+    },
+    {
+      "subjectKey": "4",
+      "subjectAttributes": { "country": "Germany" },
+      "assignment": false
+    },
+    {
+      "subjectKey": "5",
+      "subjectAttributes": { "country": "Germany" },
+      "assignment": false
+    },
+    {
+      "subjectKey": "6",
+      "subjectAttributes": { "country": "Germany" },
+      "assignment": false
+    },
+    {
+      "subjectKey": "7",
+      "subjectAttributes": { "country": "US", "age": 12 },
+      "assignment": true
+    },
+    {
+      "subjectKey": "8",
+      "subjectAttributes": { "country": "Italy", "age": 60 },
+      "assignment": true
+    },
+    {
+      "subjectKey": "9",
+      "subjectAttributes": { "email": "email@email.com" },
+      "assignment": false
+    },
+    {
+      "subjectKey": "10",
+      "subjectAttributes": {},
+      "assignment": false
+    },
+    {
+      "subjectKey": "11",
+      "subjectAttributes": {},
+      "assignment": false
+    },
+    {
+      "subjectKey": "12",
+      "subjectAttributes": { "country": "US" },
+      "assignment": true
+    },
+    {
+      "subjectKey": "13",
+      "subjectAttributes": { "country": "Canada" },
+      "assignment": true
+    },
+    {
+      "subjectKey": "14",
+      "subjectAttributes": {},
+      "assignment": false
+    },
+    {
+      "subjectKey": "15",
+      "subjectAttributes": { "country": "Denmark" },
+      "assignment": false
+    },
+    {
+      "subjectKey": "16",
+      "subjectAttributes": { "country": "Norway" },
+      "assignment": false
+    },
+    {
+      "subjectKey": "17",
+      "subjectAttributes": { "country": "UK" },
+      "assignment": false
+    },
+    {
+      "subjectKey": "18",
+      "subjectAttributes": { "country": "UK" },
+      "assignment": false
+    },
+    {
+      "subjectKey": "19",
+      "subjectAttributes": { "country": "UK" },
+      "assignment": false
+    }
+  ]
+}

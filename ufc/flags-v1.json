@@ -1,0 +1,394 @@
+{
+  "flags": {
+    "empty_flag": {
+      "key": "empty_flag",
+      "enabled": true,
+      "variationType": "string",
+      "variations": {},
+      "allocations": [],
+      "totalShards": 10000
+    },
+    "disabled_flag": {
+      "key": "disabled_flag",
+      "enabled": false,
+      "variationType": "boolean",
+      "variations": {},
+      "allocations": [],
+      "totalShards": 10000
+    },
+    "no_allocations_flag": {
+      "key": "no_allocations_flag",
+      "enabled": true,
+      "variationType": "string",
+      "variations": {
+        "control": {
+          "key": "control",
+          "value": "control"
+        },
+        "treatment": {
+          "key": "treatment",
+          "value": "treatment"
+        }
+      },
+      "allocations": [],
+      "totalShards": 10000
+    },
+    "kill-switch": {
+      "key": "kill-switch",
+      "enabled": true,
+      "variationType": "boolean",
+      "variations": {
+        "on": {
+          "key": "on",
+          "value": true
+        },
+        "off": {
+          "key": "off",
+          "value": false
+        }
+      },
+      "allocations": [
+        {
+          "key": "on-for-NA",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "country",
+                  "operator": "ONE_OF",
+                  "value": ["US", "Canada", "Mexico"]
+                }
+              ]
+            }
+          ],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "on",
+              "shards": [
+                {
+                  "salt": "some-salt",
+                  "ranges": [{ "start": 0, "end": 10000 }]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "on-for-age-50+",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "age",
+                  "operator": "GTE",
+                  "value": 50
+                }
+              ]
+            }
+          ],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "on",
+              "shards": [
+                {
+                  "salt": "some-salt",
+                  "ranges": [{ "start": 0, "end": 10000 }]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "off-for-all",
+          "rules": [],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "off",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
+
+    "new-user-onboarding": {
+      "key": "new-user-onboarding",
+      "enabled": true,
+      "variationType": "string",
+      "variations": {
+        "control": {
+          "key": "control",
+          "value": "control"
+        },
+        "red": { "key": "red", "value": "red"},
+        "blue": { "key": "blue", "value": "blue"},
+        "green": { "key": "green", "value": "green"},
+        "yellow": { "key": "yellow", "value": "yellow"}
+      },
+      "allocations": [
+        {
+          "key": "internal users",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "email",
+                  "operator": "MATCHES",
+                  "value": ".*@mycompany.com"
+                }
+              ]
+            }
+          ],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "green",
+              "shards": []
+            }
+          ],
+          "doLog": false
+        },
+        {
+          "key": "experiment",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "country",
+                  "operator": "NOT_ONE_OF",
+                  "value": ["US", "Canada", "Mexico"]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "control",
+              "shards": [
+                {
+                  "salt": "traffic-new-user-onboarding-experiment",
+                  "ranges": [{ "start": 0, "end": 6000 }]
+                },
+                {
+                  "salt": "split-new-user-onboarding-experiment",
+                  "ranges": [{ "start": 0, "end": 5000 }]
+                }
+              ]
+            },
+            {
+              "variationKey": "red",
+              "shards": [
+                {
+                  "salt": "traffic-new-user-onboarding-experiment",
+                  "ranges": [{ "start": 0, "end": 6000 }]
+                },
+                {
+                  "salt": "split-new-user-onboarding-experiment",
+                  "ranges": [{ "start": 5000, "end": 8000 }]
+                }
+              ]
+            },
+            {
+              "variationKey": "yellow",
+              "shards": [
+                {
+                  "salt": "traffic-new-user-onboarding-experiment",
+                  "ranges": [{ "start": 0, "end": 6000 }]
+                },
+                {
+                  "salt": "split-new-user-onboarding-experiment",
+                  "ranges": [{ "start": 8000, "end": 10000 }]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "rollout",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "country",
+                  "operator": "ONE_OF",
+                  "value": ["US", "Canada", "Mexico"]
+                }
+              ]
+            }
+          ],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "blue",
+              "shards": [
+                {
+                  "salt": "split-new-user-onboarding-rollout",
+                  "ranges": [{ "start": 0, "end": 8000 }]
+                }
+              ],
+              "extraLogging": {
+                "allocationvalue_type": "rollout",
+                "owner": "hippo"
+              }
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
+    "integer-flag": {
+      "key": "integer-flag",
+      "enabled": true,
+      "variationType": "integer",
+      "variations": {
+        "one": {
+          "key": "one",
+          "value": 1
+        },
+        "two": {
+          "key": "two",
+          "value": 2
+        },
+        "three": {
+          "key": "three",
+          "value": 3
+        }
+      },
+      "allocations": [
+        {
+          "key": "targeted allocation",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "country",
+                  "operator": "ONE_OF",
+                  "value": ["US", "Canada", "Mexico"]
+                }
+              ]
+            },
+            {
+              "conditions": [
+                {
+                  "attribute": "email",
+                  "operator": "MATCHES",
+                  "value": ".*@example.com"
+                }
+              ]
+            }
+          ],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "three",
+              "shards": [
+                {
+                  "salt": "full-range-salt",
+                  "ranges": [{ "start": 0, "end": 10000 }]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "50/50 split",
+          "rules": [],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "one",
+              "shards": [
+                {
+                  "salt": "split-numeric-flag-some-allocation",
+                  "ranges": [{ "start": 0, "end": 5000 }]
+                }
+              ]
+            },
+            {
+              "variationKey": "two",
+              "shards": [
+                {
+                  "salt": "split-numeric-flag-some-allocation",
+                  "ranges": [{ "start": 5000, "end": 10000 }]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
+    "json-config-flag": {
+      "key": "json-config-flag",
+      "enabled": true,
+      "variationType": "json",
+      "variations": {
+        "one": {
+          "key": "one",
+          "value": "{ \"integer\": 1, \"string\": \"one\", \"float\": 1.0 }"
+        },
+        "two": {
+          "key": "two",
+          "value": "{ \"integer\": 2, \"string\": \"two\", \"float\": 2.0 }"
+        }
+      },
+      "allocations": [
+        {
+          "key": "50/50 split",
+          "rules": [],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "one",
+              "shards": [
+                {
+                  "salt": "traffic-json-flag",
+                  "ranges": [{ "start": 0, "end": 10000 }]
+                },
+                {
+                  "salt": "split-json-flag",
+                  "ranges": [{ "start": 0, "end": 5000 }]
+                }
+              ]
+            },
+            {
+              "variationKey": "two",
+              "shards": [
+                {
+                  "salt": "traffic-json-flag",
+                  "ranges": [{ "start": 0, "end": 10000 }]
+                },
+                {
+                  "salt": "split-json-flag",
+                  "ranges": [{ "start": 5000, "end": 10000 }]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        }
+
+      ],
+      "totalShards": 10000
+    }
+  }
+}
