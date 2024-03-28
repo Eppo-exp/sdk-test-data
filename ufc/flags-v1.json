@@ -33,6 +33,37 @@
       "allocations": [],
       "totalShards": 10000
     },
+    "numeric_flag": {
+      "key": "numeric_flag",
+      "enabled": true,
+      "variationType": "numeric",
+      "variations": {
+        "e": {
+          "key": "e",
+          "value": 2.7182818
+        },
+        "pi": {
+          "key": "pi",
+          "value": 3.1415926
+        }
+      },
+      "allocations": [
+        {
+          "key": "rollout",
+          "rules": [],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "pi",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
     "kill-switch": {
       "key": "kill-switch",
       "enabled": true,
@@ -120,7 +151,6 @@
       ],
       "totalShards": 10000
     },
-
     "new-user-onboarding": {
       "key": "new-user-onboarding",
       "enabled": true,
