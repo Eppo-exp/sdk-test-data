@@ -1,0 +1,531 @@
+{
+  "flags": {
+    "73fcc84c69e49e31fe16a29b2b1f803b": {
+      "key": "73fcc84c69e49e31fe16a29b2b1f803b",
+      "enabled": true,
+      "variationType": "string",
+      "variations": {},
+      "allocations": [],
+      "totalShards": 10000
+    },
+    "68fb87eefbe8ecb850dbe9b46477d037": {
+      "key": "68fb87eefbe8ecb850dbe9b46477d037",
+      "enabled": false,
+      "variationType": "boolean",
+      "variations": {},
+      "allocations": [],
+      "totalShards": 10000
+    },
+    "29537bb57e98d938b8eb8cff92c73419": {
+      "key": "29537bb57e98d938b8eb8cff92c73419",
+      "enabled": true,
+      "variationType": "string",
+      "variations": {
+        "control": {
+          "key": "control",
+          "value": "control"
+        },
+        "treatment": {
+          "key": "treatment",
+          "value": "treatment"
+        }
+      },
+      "allocations": [],
+      "totalShards": 10000
+    },
+    "2c27190d8645fe3bc3c1d63b31f0e4ee": {
+      "key": "2c27190d8645fe3bc3c1d63b31f0e4ee",
+      "enabled": true,
+      "variationType": "numeric",
+      "variations": {
+        "e": {
+          "key": "e",
+          "value": 2.7182818
+        },
+        "pi": {
+          "key": "pi",
+          "value": 3.1415926
+        }
+      },
+      "allocations": [
+        {
+          "key": "rollout",
+          "rules": [],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "pi",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
+    "ea55330f6cbbaf8f57556df645c037e2": {
+      "key": "ea55330f6cbbaf8f57556df645c037e2",
+      "enabled": true,
+      "variationType": "boolean",
+      "variations": {
+        "on": {
+          "key": "on",
+          "value": true
+        },
+        "off": {
+          "key": "off",
+          "value": false
+        }
+      },
+      "allocations": [
+        {
+          "key": "on-for-NA",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "value": [
+                    "0b3b97fa66886c5688ee4ae80ec0c3c2",
+                    "c2aadac2ca30ca8aadfbe331ae180d28",
+                    "4edfc924721abb774d5447bade86ea5d"
+                  ]
+                }
+              ]
+            }
+          ],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "on",
+              "shards": [
+                {
+                  "salt": "some-salt",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "on-for-age-50+",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "7d637d275668ed6d41a9b97e6ad3a556",
+                  "operator": "32d35312e8f24bc1669bd2b45c00d47c",
+                  "value": "NTA="
+                }
+              ]
+            }
+          ],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "on",
+              "shards": [
+                {
+                  "salt": "some-salt",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "off-for-all",
+          "rules": [],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "off",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
+    "85dd0ed218e7acf20f9007c0f9efa89f": {
+      "key": "85dd0ed218e7acf20f9007c0f9efa89f",
+      "enabled": true,
+      "variationType": "string",
+      "variations": {
+        "control": {
+          "key": "control",
+          "value": "control"
+        },
+        "red": {
+          "key": "red",
+          "value": "red"
+        },
+        "blue": {
+          "key": "blue",
+          "value": "blue"
+        },
+        "green": {
+          "key": "green",
+          "value": "green"
+        },
+        "yellow": {
+          "key": "yellow",
+          "value": "yellow"
+        }
+      },
+      "allocations": [
+        {
+          "key": "internal users",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "0c83f57c786a0b4a39efab23731c7ebc",
+                  "operator": "05015086bdd8402218f6aad6528bef08",
+                  "value": "LipAbXljb21wYW55LmNvbQ=="
+                }
+              ]
+            }
+          ],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "green",
+              "shards": []
+            }
+          ],
+          "doLog": false
+        },
+        {
+          "key": "experiment",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
+                  "operator": "602f5ee0b6e84fe29f43ab48b9e1addf",
+                  "value": [
+                    "0b3b97fa66886c5688ee4ae80ec0c3c2",
+                    "c2aadac2ca30ca8aadfbe331ae180d28",
+                    "4edfc924721abb774d5447bade86ea5d"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "control",
+              "shards": [
+                {
+                  "salt": "traffic-new-user-onboarding-experiment",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 6000
+                    }
+                  ]
+                },
+                {
+                  "salt": "split-new-user-onboarding-experiment",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 5000
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "variationKey": "red",
+              "shards": [
+                {
+                  "salt": "traffic-new-user-onboarding-experiment",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 6000
+                    }
+                  ]
+                },
+                {
+                  "salt": "split-new-user-onboarding-experiment",
+                  "ranges": [
+                    {
+                      "start": 5000,
+                      "end": 8000
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "variationKey": "yellow",
+              "shards": [
+                {
+                  "salt": "traffic-new-user-onboarding-experiment",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 6000
+                    }
+                  ]
+                },
+                {
+                  "salt": "split-new-user-onboarding-experiment",
+                  "ranges": [
+                    {
+                      "start": 8000,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "rollout",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "value": [
+                    "0b3b97fa66886c5688ee4ae80ec0c3c2",
+                    "c2aadac2ca30ca8aadfbe331ae180d28",
+                    "4edfc924721abb774d5447bade86ea5d"
+                  ]
+                }
+              ]
+            }
+          ],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "blue",
+              "shards": [
+                {
+                  "salt": "split-new-user-onboarding-rollout",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 8000
+                    }
+                  ]
+                }
+              ],
+              "extraLogging": {
+                "allocationvalue_type": "rollout",
+                "owner": "hippo"
+              }
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
+    "eb4caea3db4e58836bda9830ee098291": {
+      "key": "eb4caea3db4e58836bda9830ee098291",
+      "enabled": true,
+      "variationType": "integer",
+      "variations": {
+        "one": {
+          "key": "one",
+          "value": 1
+        },
+        "two": {
+          "key": "two",
+          "value": 2
+        },
+        "three": {
+          "key": "three",
+          "value": 3
+        }
+      },
+      "allocations": [
+        {
+          "key": "targeted allocation",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "value": [
+                    "0b3b97fa66886c5688ee4ae80ec0c3c2",
+                    "c2aadac2ca30ca8aadfbe331ae180d28",
+                    "4edfc924721abb774d5447bade86ea5d"
+                  ]
+                }
+              ]
+            },
+            {
+              "conditions": [
+                {
+                  "attribute": "0c83f57c786a0b4a39efab23731c7ebc",
+                  "operator": "05015086bdd8402218f6aad6528bef08",
+                  "value": "LipAZXhhbXBsZS5jb20="
+                }
+              ]
+            }
+          ],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "three",
+              "shards": [
+                {
+                  "salt": "full-range-salt",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "50/50 split",
+          "rules": [],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "one",
+              "shards": [
+                {
+                  "salt": "split-numeric-flag-some-allocation",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 5000
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "variationKey": "two",
+              "shards": [
+                {
+                  "salt": "split-numeric-flag-some-allocation",
+                  "ranges": [
+                    {
+                      "start": 5000,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
+    "4eb1b70d72a7e1aa12918f4bee195ae5": {
+      "key": "4eb1b70d72a7e1aa12918f4bee195ae5",
+      "enabled": true,
+      "variationType": "json",
+      "variations": {
+        "one": {
+          "key": "one",
+          "value": "{ \"integer\": 1, \"string\": \"one\", \"float\": 1.0 }"
+        },
+        "two": {
+          "key": "two",
+          "value": "{ \"integer\": 2, \"string\": \"two\", \"float\": 2.0 }"
+        }
+      },
+      "allocations": [
+        {
+          "key": "50/50 split",
+          "rules": [],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "one",
+              "shards": [
+                {
+                  "salt": "traffic-json-flag",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                },
+                {
+                  "salt": "split-json-flag",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 5000
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "variationKey": "two",
+              "shards": [
+                {
+                  "salt": "traffic-json-flag",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                },
+                {
+                  "salt": "split-json-flag",
+                  "ranges": [
+                    {
+                      "start": 5000,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    }
+  }
+}
