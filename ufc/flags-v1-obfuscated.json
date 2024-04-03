@@ -3,7 +3,7 @@
     "73fcc84c69e49e31fe16a29b2b1f803b": {
       "key": "73fcc84c69e49e31fe16a29b2b1f803b",
       "enabled": true,
-      "variationType": "string",
+      "variationType": "STRING",
       "variations": {},
       "allocations": [],
       "totalShards": 10000
@@ -11,7 +11,7 @@
     "68fb87eefbe8ecb850dbe9b46477d037": {
       "key": "68fb87eefbe8ecb850dbe9b46477d037",
       "enabled": false,
-      "variationType": "boolean",
+      "variationType": "BOOLEAN",
       "variations": {},
       "allocations": [],
       "totalShards": 10000
@@ -19,7 +19,7 @@
     "29537bb57e98d938b8eb8cff92c73419": {
       "key": "29537bb57e98d938b8eb8cff92c73419",
       "enabled": true,
-      "variationType": "string",
+      "variationType": "STRING",
       "variations": {
         "control": {
           "key": "control",
@@ -36,7 +36,7 @@
     "2c27190d8645fe3bc3c1d63b31f0e4ee": {
       "key": "2c27190d8645fe3bc3c1d63b31f0e4ee",
       "enabled": true,
-      "variationType": "numeric",
+      "variationType": "NUMERIC",
       "variations": {
         "e": {
           "key": "e",
@@ -67,7 +67,7 @@
     "ea55330f6cbbaf8f57556df645c037e2": {
       "key": "ea55330f6cbbaf8f57556df645c037e2",
       "enabled": true,
-      "variationType": "boolean",
+      "variationType": "BOOLEAN",
       "variations": {
         "on": {
           "key": "on",
@@ -168,7 +168,7 @@
     "85dd0ed218e7acf20f9007c0f9efa89f": {
       "key": "85dd0ed218e7acf20f9007c0f9efa89f",
       "enabled": true,
-      "variationType": "string",
+      "variationType": "STRING",
       "variations": {
         "control": {
           "key": "control",
@@ -352,7 +352,7 @@
     "eb4caea3db4e58836bda9830ee098291": {
       "key": "eb4caea3db4e58836bda9830ee098291",
       "enabled": true,
-      "variationType": "integer",
+      "variationType": "INTEGER",
       "variations": {
         "one": {
           "key": "one",
@@ -457,7 +457,7 @@
     "4eb1b70d72a7e1aa12918f4bee195ae5": {
       "key": "4eb1b70d72a7e1aa12918f4bee195ae5",
       "enabled": true,
-      "variationType": "json",
+      "variationType": "JSON",
       "variations": {
         "one": {
           "key": "one",

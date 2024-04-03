@@ -1,21 +1,22 @@
 {
   "flag": "flag-that-does-not-exist",
-  "variationType": "numeric",
+  "variationType": "NUMERIC",
+  "defaultValue": 0.0,
   "subjects": [
     {
       "subjectKey": "alice",
       "subjectAttributes": {"email": "alice@mycompany.com", "country": "US"},
-      "assignment": null
+      "assignment": 0.0
     },
     {
       "subjectKey": "bob",
       "subjectAttributes": {"email": "bob@example.com", "country": "Canada"},
-      "assignment": null
+      "assignment": 0.0
     },
     {
       "subjectKey": "charlie",
       "subjectAttributes": {"age": 50},
-      "assignment": null
+      "assignment": 0.0
     }
   ]
 }

@@ -1,6 +1,7 @@
 {
   "flag": "new-user-onboarding",
-  "variationType": "string",
+  "variationType": "STRING",
+  "defaultValue": "default",
   "subjects": [
     {
       "subjectKey": "alice",
@@ -10,12 +11,12 @@
     {
       "subjectKey": "bob",
       "subjectAttributes": {"email": "bob@example.com", "country": "Canada"},
-      "assignment": null
+      "assignment": "default"
     },
     {
       "subjectKey": "charlie",
       "subjectAttributes": {"age": 50},
-      "assignment": null
+      "assignment": "default"
     },
     {
       "subjectKey": "debra",
@@ -25,7 +26,7 @@
     {
       "subjectKey": "1",
       "subjectAttributes": {},
-      "assignment": null
+      "assignment": "default"
     },
     {
       "subjectKey": "2",
@@ -65,17 +66,17 @@
     {
       "subjectKey": "9",
       "subjectAttributes": {"email": "email@email.com"},
-      "assignment": null
+      "assignment": "default"
     },
     {
       "subjectKey": "10",
       "subjectAttributes": {},
-      "assignment": null
+      "assignment": "default"
     },
     {
       "subjectKey": "11",
       "subjectAttributes": {},
-      "assignment": null
+      "assignment": "default"
     },
     {
       "subjectKey": "12",
@@ -90,7 +91,7 @@
     {
       "subjectKey": "14",
       "subjectAttributes": {},
-      "assignment": null
+      "assignment": "default"
     },
     {
       "subjectKey": "15",
@@ -110,7 +111,7 @@
     {
       "subjectKey": "18",
       "subjectAttributes": {"country": "UK"},
-      "assignment": null
+      "assignment": "default"
     },
     {
       "subjectKey": "19",

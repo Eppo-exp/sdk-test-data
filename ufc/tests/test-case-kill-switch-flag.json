@@ -1,6 +1,7 @@
 {
   "flag": "kill-switch",
-  "variationType": "boolean",
+  "variationType": "BOOLEAN",
+  "defaultValue": false,
   "subjects": [
     {
       "subjectKey": "alice",

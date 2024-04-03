@@ -3,7 +3,7 @@
     "empty_flag": {
       "key": "empty_flag",
       "enabled": true,
-      "variationType": "string",
+      "variationType": "STRING",
       "variations": {},
       "allocations": [],
       "totalShards": 10000
@@ -11,7 +11,7 @@
     "disabled_flag": {
       "key": "disabled_flag",
       "enabled": false,
-      "variationType": "boolean",
+      "variationType": "BOOLEAN",
       "variations": {},
       "allocations": [],
       "totalShards": 10000
@@ -19,7 +19,7 @@
     "no_allocations_flag": {
       "key": "no_allocations_flag",
       "enabled": true,
-      "variationType": "string",
+      "variationType": "STRING",
       "variations": {
         "control": {
           "key": "control",
@@ -36,7 +36,7 @@
     "numeric_flag": {
       "key": "numeric_flag",
       "enabled": true,
-      "variationType": "numeric",
+      "variationType": "NUMERIC",
       "variations": {
         "e": {
           "key": "e",
@@ -67,7 +67,7 @@
     "kill-switch": {
       "key": "kill-switch",
       "enabled": true,
-      "variationType": "boolean",
+      "variationType": "BOOLEAN",
       "variations": {
         "on": {
           "key": "on",
@@ -154,7 +154,7 @@
     "new-user-onboarding": {
       "key": "new-user-onboarding",
       "enabled": true,
-      "variationType": "string",
+      "variationType": "STRING",
       "variations": {
         "control": {
           "key": "control",
@@ -283,7 +283,7 @@
     "integer-flag": {
       "key": "integer-flag",
       "enabled": true,
-      "variationType": "integer",
+      "variationType": "INTEGER",
       "variations": {
         "one": {
           "key": "one",
@@ -369,7 +369,7 @@
     "json-config-flag": {
       "key": "json-config-flag",
       "enabled": true,
-      "variationType": "json",
+      "variationType": "JSON",
       "variations": {
         "one": {
           "key": "one",

@@ -1,6 +1,7 @@
 {
     "flag": "json-config-flag",
-    "variationType": "json",
+    "variationType": "JSON",
+    "defaultValue": {},
     "subjects": [
       {
         "subjectKey": "alice",

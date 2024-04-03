@@ -1,21 +1,22 @@
 {
   "flag": "no_allocations_flag",
-  "variationType": "json",
+  "variationType": "JSON",
+  "defaultValue": {"hello": "world"},
   "subjects": [
     {
       "subjectKey": "alice",
       "subjectAttributes": {"email": "alice@mycompany.com", "country": "US"},
-      "assignment": null
+      "assignment": {"hello": "world"}
     },
     {
       "subjectKey": "bob",
       "subjectAttributes": {"email": "bob@example.com", "country": "Canada"},
-      "assignment": null
+      "assignment": {"hello": "world"}
     },
     {
       "subjectKey": "charlie",
       "subjectAttributes": {"age": 50},
-      "assignment": null
+      "assignment": {"hello": "world"}
     }
   ]
 }

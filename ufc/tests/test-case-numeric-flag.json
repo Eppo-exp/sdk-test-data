@@ -1,6 +1,7 @@
 {
   "flag": "numeric_flag",
-  "variationType": "numeric",
+  "variationType": "NUMERIC",
+  "defaultValue": 0.0,
   "subjects": [
     {
       "subjectKey": "alice",
