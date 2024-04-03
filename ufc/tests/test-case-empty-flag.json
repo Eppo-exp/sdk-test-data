@@ -1,21 +1,22 @@
 {
   "flag": "empty_flag",
-  "variationType": "string",
+  "variationType": "STRING",
+  "defaultValue": "default_value",
   "subjects": [
     {
       "subjectKey": "alice",
       "subjectAttributes": {"email": "alice@mycompany.com", "country": "US"},
-      "assignment": null
+      "assignment": "default_value"
     },
     {
       "subjectKey": "bob",
       "subjectAttributes": {"email": "bob@example.com", "country": "Canada"},
-      "assignment": null
+      "assignment": "default_value"
     },
     {
       "subjectKey": "charlie",
       "subjectAttributes": {"age": 50},
-      "assignment": null
+      "assignment": "default_value"
     }
   ]
 }
