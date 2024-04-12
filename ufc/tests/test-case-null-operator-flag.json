@@ -1,0 +1,32 @@
+{
+    "flag": "null-operator-flag",
+    "variationType": "STRING",
+    "defaultValue": "unknown",
+    "subjects": [
+      {
+        "subjectKey": "alice",
+        "subjectAttributes": {"size": 5, "country": "US"},
+        "assignment": "old"
+      },
+      {
+        "subjectKey": "bob",
+        "subjectAttributes": {"size": 10, "country": "Canada"},
+        "assignment": "new"
+      },
+      {
+        "subjectKey": "charlie",
+        "subjectAttributes": {"size": null},
+        "assignment": "old"
+      },
+      {
+        "subjectKey": "david",
+        "subjectAttributes": {"size": 26},
+        "assignment": "new"
+      },
+      {
+        "subjectKey": "elize",
+        "subjectAttributes": {"country": "UK"},
+        "assignment": "old"
+      }
+    ]
+  }

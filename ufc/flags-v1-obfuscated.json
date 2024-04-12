@@ -64,6 +64,62 @@
       ],
       "totalShards": 10000
     },
+    "3d88068611498391d5c8307467e6fa2c": {
+      "key": "3d88068611498391d5c8307467e6fa2c",
+      "enabled": true,
+      "variationType": "INTEGER",
+      "variations": {
+        "one": {
+          "key": "one",
+          "value": 1
+        },
+        "pi": {
+          "key": "pi",
+          "value": 3.1415926
+        }
+      },
+      "allocations": [
+        {
+          "key": "valid",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "value": [
+                    "c2aadac2ca30ca8aadfbe331ae180d28"
+                  ]
+                }
+              ]
+            }
+          ],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "one",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "invalid",
+          "rules": [],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "pi",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
     "ea55330f6cbbaf8f57556df645c037e2": {
       "key": "ea55330f6cbbaf8f57556df645c037e2",
       "enabled": true,
@@ -161,6 +217,303 @@
             }
           ],
           "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
+    "dd2880e486d8a74a7daf902f93a19952": {
+      "key": "dd2880e486d8a74a7daf902f93a19952",
+      "enabled": true,
+      "variationType": "STRING",
+      "variations": {
+        "old": {
+          "key": "old",
+          "value": "old"
+        },
+        "current": {
+          "key": "current",
+          "value": "current"
+        },
+        "new": {
+          "key": "new",
+          "value": "new"
+        }
+      },
+      "allocations": [
+        {
+          "key": "old-versions",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "2af72f100c356273d46284f6fd1dfc08",
+                  "operator": "c562607189d77eb9dfb707464c1e7b0b",
+                  "value": "MS41LjA="
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "old",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "current-versions",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "2af72f100c356273d46284f6fd1dfc08",
+                  "operator": "32d35312e8f24bc1669bd2b45c00d47c",
+                  "value": "MS41LjA="
+                },
+                {
+                  "attribute": "2af72f100c356273d46284f6fd1dfc08",
+                  "operator": "cc981ecc65ecf63ad1673cbec9c64198",
+                  "value": "Mi4yLjEz"
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "current",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "new-versions",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "2af72f100c356273d46284f6fd1dfc08",
+                  "operator": "cd6a9bd2a175104eed40f0d33a8b4020",
+                  "value": "My4xLjA="
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "new",
+              "shards": []
+            }
+          ]
+        }
+      ],
+      "totalShards": 10000
+    },
+    "0e4820f073429772c0fa3e831c8d13c7": {
+      "key": "0e4820f073429772c0fa3e831c8d13c7",
+      "enabled": true,
+      "variationType": "STRING",
+      "variations": {
+        "small": {
+          "key": "small",
+          "value": "small"
+        },
+        "medium": {
+          "key": "medium",
+          "value": "medium"
+        },
+        "large": {
+          "key": "large",
+          "value": "large"
+        }
+      },
+      "allocations": [
+        {
+          "key": "small-size",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
+                  "operator": "c562607189d77eb9dfb707464c1e7b0b",
+                  "value": "MTA="
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "small",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "medum-size",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
+                  "operator": "32d35312e8f24bc1669bd2b45c00d47c",
+                  "value": "MTA="
+                },
+                {
+                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
+                  "operator": "cc981ecc65ecf63ad1673cbec9c64198",
+                  "value": "MjA="
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "medium",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "large-size",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
+                  "operator": "cd6a9bd2a175104eed40f0d33a8b4020",
+                  "value": "MjU="
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "large",
+              "shards": []
+            }
+          ]
+        }
+      ],
+      "totalShards": 10000
+    },
+    "3f8ba2f25085acef84472ead80f39739": {
+      "key": "3f8ba2f25085acef84472ead80f39739",
+      "enabled": true,
+      "variationType": "STRING",
+      "variations": {
+        "old": {
+          "key": "old",
+          "value": "old"
+        },
+        "current": {
+          "key": "current",
+          "value": "current"
+        },
+        "new": {
+          "key": "new",
+          "value": "new"
+        }
+      },
+      "allocations": [
+        {
+          "key": "old-versions",
+          "rules": [],
+          "splits": [
+            {
+              "variationKey": "old",
+              "shards": []
+            }
+          ],
+          "endAt": "2002-10-31T09:00:00.594Z"
+        },
+        {
+          "key": "future-versions",
+          "rules": [],
+          "splits": [
+            {
+              "variationKey": "future",
+              "shards": []
+            }
+          ],
+          "startAt": "2052-10-31T09:00:00.594Z"
+        },
+        {
+          "key": "current-versions",
+          "rules": [],
+          "splits": [
+            {
+              "variationKey": "current",
+              "shards": []
+            }
+          ],
+          "startAt": "2022-10-31T09:00:00.594Z",
+          "endAt": "2050-10-31T09:00:00.594Z"
+        }
+      ],
+      "totalShards": 10000
+    },
+    "44bf29f34bdd73ff93a6e2579c973596": {
+      "key": "44bf29f34bdd73ff93a6e2579c973596",
+      "enabled": true,
+      "variationType": "STRING",
+      "variations": {
+        "old": {
+          "key": "old",
+          "value": "old"
+        },
+        "new": {
+          "key": "new",
+          "value": "new"
+        }
+      },
+      "allocations": [
+        {
+          "key": "null-operator",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
+                  "operator": "dbd9c38e0339e6c34bd48cafc59be388",
+                  "value": "dHJ1ZQ=="
+                }
+              ]
+            },
+            {
+              "conditions": [
+                {
+                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
+                  "operator": "c562607189d77eb9dfb707464c1e7b0b",
+                  "value": "MTA="
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "old",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "not-null-operator",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
+                  "operator": "dbd9c38e0339e6c34bd48cafc59be388",
+                  "value": "ZmFsc2U="
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "new",
+              "shards": []
+            }
+          ]
         }
       ],
       "totalShards": 10000
