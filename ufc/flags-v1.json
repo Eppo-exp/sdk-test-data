@@ -373,37 +373,34 @@
       "allocations": [
         {
           "key": "old-versions",
-          "rules": [],
           "splits": [
             {
               "variationKey": "old",
               "shards": []
             }
           ],
-          "endAt": "2002-10-31T09:00:00.594Z"
+          "endAt": "2002-10-31T09:00:00.594"
         },
         {
           "key": "future-versions",
-          "rules": [],
           "splits": [
             {
               "variationKey": "future",
               "shards": []
             }
           ],
-          "startAt": "2052-10-31T09:00:00.594Z"
+          "startAt": "2052-10-31T09:00:00.594"
         },
         {
           "key": "current-versions",
-          "rules": [],
           "splits": [
             {
               "variationKey": "current",
               "shards": []
             }
           ],
-          "startAt": "2022-10-31T09:00:00.594Z",
-          "endAt": "2050-10-31T09:00:00.594Z"
+          "startAt": "2022-10-31T09:00:00.594",
+          "endAt": "2050-10-31T09:00:00.594"
         }
       ],
       "totalShards": 10000
