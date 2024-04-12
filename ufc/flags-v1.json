@@ -433,7 +433,7 @@
               "conditions": [
                 {
                   "attribute": "size",
-                  "operator": "LTE",
+                  "operator": "LT",
                   "value": 10
                 }
               ]

@@ -1,7 +1,7 @@
 {
-    "flag": "null-operator-flag",
+    "flag": "null-operator-test",
     "variationType": "STRING",
-    "defaultValue": "unknown",
+    "defaultValue": "default-null",
     "subjects": [
       {
         "subjectKey": "alice",
