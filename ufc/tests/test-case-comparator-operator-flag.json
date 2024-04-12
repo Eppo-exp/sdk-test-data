@@ -1,0 +1,32 @@
+{
+    "flag": "comparator-operator-test",
+    "variationType": "STRING",
+    "defaultValue": "unknown",
+    "subjects": [
+      {
+        "subjectKey": "alice",
+        "subjectAttributes": {"size": 5, "country": "US"},
+        "assignment": "small"
+      },
+      {
+        "subjectKey": "bob",
+        "subjectAttributes": {"size": 10, "country": "Canada"},
+        "assignment": "medium"
+      },
+      {
+        "subjectKey": "charlie",
+        "subjectAttributes": {"size": 25},
+        "assignment": "unknown"
+      },
+      {
+        "subjectKey": "david",
+        "subjectAttributes": {"size": 26},
+        "assignment": "large"
+      },
+      {
+        "subjectKey": "elize",
+        "subjectAttributes": {"country": "UK"},
+        "assignment": "unknown"
+      }
+    ]
+  }

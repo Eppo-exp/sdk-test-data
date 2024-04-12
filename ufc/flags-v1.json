@@ -64,6 +64,60 @@
       ],
       "totalShards": 10000
     },
+    "invalid-value-flag": {
+      "key": "invalid-value-flag",
+      "enabled": true,
+      "variationType": "INTEGER",
+      "variations": {
+        "one": {
+          "key": "one",
+          "value": 1
+        },
+        "pi": {
+          "key": "pi",
+          "value": 3.1415926
+        }
+      },
+      "allocations": [
+        {
+          "key": "valid",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "country",
+                  "operator": "ONE_OF",
+                  "value": ["Canada"]
+                }
+              ]
+            }
+          ],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "one",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "invalid",
+          "rules": [],
+          "startAt": null,
+          "endAt": null,
+          "splits": [
+            {
+              "variationKey": "pi",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
     "kill-switch": {
       "key": "kill-switch",
       "enabled": true,
@@ -147,6 +201,267 @@
             }
           ],
           "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
+    "semver-test": {
+      "key": "semver-test",
+      "enabled": true,
+      "variationType": "STRING",
+      "variations": {
+        "old": { "key": "old", "value": "old"},
+        "current": { "key": "current", "value": "current"},
+        "new": { "key": "new", "value": "new"}
+      },
+      "allocations": [
+        {
+          "key": "old-versions",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "version",
+                  "operator": "LT",
+                  "value": "1.5.0"
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "old",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "current-versions",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "version",
+                  "operator": "GTE",
+                  "value": "1.5.0"
+                },
+                {
+                  "attribute": "version",
+                  "operator": "LTE",
+                  "value": "2.2.13"
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "current",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "new-versions",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "version",
+                  "operator": "GT",
+                  "value": "3.1.0"
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "new",
+              "shards": []
+            }
+          ]
+        }
+      ],
+      "totalShards": 10000
+    },
+    "comparator-operator-test": {
+      "key": "comparator-operator-test",
+      "enabled": true,
+      "variationType": "STRING",
+      "variations": {
+        "small": { "key": "small", "value": "small"},
+        "medium": { "key": "medium", "value": "medium"},
+        "large": { "key": "large", "value": "large"}
+      },
+      "allocations": [
+        {
+          "key": "small-size",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "size",
+                  "operator": "LT",
+                  "value": 10
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "small",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "medum-size",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "size",
+                  "operator": "GTE",
+                  "value": 10
+                },
+                {
+                  "attribute": "size",
+                  "operator": "LTE",
+                  "value": 20
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "medium",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "large-size",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "size",
+                  "operator": "GT",
+                  "value": 25
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "large",
+              "shards": []
+            }
+          ]
+        }
+      ],
+      "totalShards": 10000
+    },
+    "start-and-end-date-test": {
+      "key": "start-and-end-date-test",
+      "enabled": true,
+      "variationType": "STRING",
+      "variations": {
+        "old": { "key": "old", "value": "old"},
+        "current": { "key": "current", "value": "current"},
+        "new": { "key": "new", "value": "new"}
+      },
+      "allocations": [
+        {
+          "key": "old-versions",
+          "splits": [
+            {
+              "variationKey": "old",
+              "shards": []
+            }
+          ],
+          "endAt": "2002-10-31T09:00:00.594"
+        },
+        {
+          "key": "future-versions",
+          "splits": [
+            {
+              "variationKey": "future",
+              "shards": []
+            }
+          ],
+          "startAt": "2052-10-31T09:00:00.594"
+        },
+        {
+          "key": "current-versions",
+          "splits": [
+            {
+              "variationKey": "current",
+              "shards": []
+            }
+          ],
+          "startAt": "2022-10-31T09:00:00.594",
+          "endAt": "2050-10-31T09:00:00.594"
+        }
+      ],
+      "totalShards": 10000
+    },
+    "null-operator-test": {
+      "key": "null-operator-test",
+      "enabled": true,
+      "variationType": "STRING",
+      "variations": {
+        "old": { "key": "old", "value": "old"},
+        "new": { "key": "new", "value": "new"}
+      },
+      "allocations": [
+        {
+          "key": "null-operator",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "size",
+                  "operator": "IS_NULL",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "conditions": [
+                {
+                  "attribute": "size",
+                  "operator": "LT",
+                  "value": 10
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "old",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "not-null-operator",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "size",
+                  "operator": "IS_NULL",
+                  "value": false
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "new",
+              "shards": []
+            }
+          ]
         }
       ],
       "totalShards": 10000

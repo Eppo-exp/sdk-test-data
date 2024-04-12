@@ -1,0 +1,22 @@
+{
+    "flag": "start-and-end-date-test",
+    "variationType": "STRING",
+    "defaultValue": "unknown",
+    "subjects": [
+      {
+        "subjectKey": "alice",
+        "subjectAttributes": {"version": "1.15.0", "country": "US"},
+        "assignment": "current"
+      },
+      {
+        "subjectKey": "bob",
+        "subjectAttributes": {"version": "0.20.1", "country": "Canada"},
+        "assignment": "current"
+      },
+      {
+        "subjectKey": "charlie",
+        "subjectAttributes": {"version": "2.1.13"},
+        "assignment": "current"
+      }
+    ]
+}
