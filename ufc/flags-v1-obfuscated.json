@@ -50,7 +50,6 @@
       "allocations": [
         {
           "key": "rollout",
-          "rules": [],
           "startAt": null,
           "endAt": null,
           "splits": [
@@ -94,8 +93,6 @@
               ]
             }
           ],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
               "variationKey": "one",
@@ -471,7 +468,7 @@
                 {
                   "attribute": "f7bd60b75b29d79b660a2859395c1a24",
                   "operator": "dbd9c38e0339e6c34bd48cafc59be388",
-                  "value": "dHJ1ZQ=="
+                  "value": "b326b5062b2f0e69046810717534cb09"
                 }
               ]
             },
@@ -500,7 +497,7 @@
                 {
                   "attribute": "f7bd60b75b29d79b660a2859395c1a24",
                   "operator": "dbd9c38e0339e6c34bd48cafc59be388",
-                  "value": "ZmFsc2U="
+                  "value": "68934a3e9455fa72420237eb05902327"
                 }
               ]
             }

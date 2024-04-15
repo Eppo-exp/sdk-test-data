@@ -50,7 +50,6 @@
       "allocations": [
         {
           "key": "rollout",
-          "rules": [],
           "startAt": null,
           "endAt": null,
           "splits": [
@@ -92,8 +91,6 @@
               ]
             }
           ],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
               "variationKey": "one",
