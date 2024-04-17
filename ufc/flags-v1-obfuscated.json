@@ -1,4 +1,5 @@
 {
+  "createdAt": "2024-04-17T19:40:53.716Z",
   "flags": {
     "73fcc84c69e49e31fe16a29b2b1f803b": {
       "key": "73fcc84c69e49e31fe16a29b2b1f803b",
@@ -50,8 +51,6 @@
       "allocations": [
         {
           "key": "cm9sbG91dA==",
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
               "variationKey": "cGk=",
@@ -104,8 +103,6 @@
         {
           "key": "aW52YWxpZA==",
           "rules": [],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
               "variationKey": "cGk=",
@@ -149,8 +146,6 @@
               ]
             }
           ],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
               "variationKey": "b24=",
@@ -182,8 +177,6 @@
               ]
             }
           ],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
               "variationKey": "b24=",
@@ -205,8 +198,6 @@
         {
           "key": "YjJabUxXWnZjaTFoYkd3PQ==",
           "rules": [],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
               "variationKey": "YjJabQ==",
@@ -425,7 +416,7 @@
               "shards": []
             }
           ],
-          "endAt": "2002-10-31T09:00:00.594Z",
+          "endAt": "MjAwMi0xMC0zMVQwOTowMDowMC41OTRa",
           "doLog": true
         },
         {
@@ -436,7 +427,7 @@
               "shards": []
             }
           ],
-          "startAt": "2052-10-31T09:00:00.594Z",
+          "startAt": "MjA1Mi0xMC0zMVQwOTowMDowMC41OTRa",
           "doLog": true
         },
         {
@@ -447,8 +438,9 @@
               "shards": []
             }
           ],
-          "startAt": "2022-10-31T09:00:00.594Z",
-          "endAt": "2050-10-31T09:00:00.594Z"
+          "startAt": "MjAyMi0xMC0zMVQwOTowMDowMC41OTRa",
+          "endAt": "MjA1MC0xMC0zMVQwOTowMDowMC41OTRa",
+          "doLog": true
         }
       ],
       "totalShards": 10000
@@ -495,7 +487,8 @@
               "variationKey": "b2xk",
               "shards": []
             }
-          ]
+          ],
+          "doLog": true
         },
         {
           "key": "bm90LW51bGwtb3BlcmF0b3I=",
@@ -515,7 +508,8 @@
               "variationKey": "bmV3",
               "shards": []
             }
-          ]
+          ],
+          "doLog": true
         }
       ],
       "totalShards": 10000
@@ -560,8 +554,6 @@
               ]
             }
           ],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
               "variationKey": "Z3JlZW4=",
@@ -677,8 +669,6 @@
               ]
             }
           ],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
               "variationKey": "Ymx1ZQ==",
@@ -749,8 +739,6 @@
               ]
             }
           ],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
               "variationKey": "dGhyZWU=",
@@ -772,8 +760,6 @@
         {
           "key": "NTAvNTAgc3BsaXQ=",
           "rules": [],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
               "variationKey": "b25l",
@@ -827,8 +813,6 @@
         {
           "key": "NTAvNTAgc3BsaXQ=",
           "rules": [],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
               "variationKey": "b25l",
