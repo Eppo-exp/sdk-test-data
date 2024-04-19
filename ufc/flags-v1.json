@@ -11,7 +11,7 @@
     "disabled_flag": {
       "key": "disabled_flag",
       "enabled": false,
-      "variationType": "BOOLEAN",
+      "variationType": "INTEGER",
       "variations": {},
       "allocations": [],
       "totalShards": 10000
@@ -19,15 +19,15 @@
     "no_allocations_flag": {
       "key": "no_allocations_flag",
       "enabled": true,
-      "variationType": "STRING",
+      "variationType": "JSON",
       "variations": {
         "control": {
           "key": "control",
-          "value": "control"
+          "value": "{\"variant\": \"control\"}"
         },
         "treatment": {
           "key": "treatment",
-          "value": "treatment"
+          "value": "{\"variant\": \"treatment\"}"
         }
       },
       "allocations": [],
