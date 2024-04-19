@@ -1,4 +1,5 @@
 {
+  "createdAt": "2024-04-17T19:40:53.716Z",
   "flags": {
     "73fcc84c69e49e31fe16a29b2b1f803b": {
       "key": "73fcc84c69e49e31fe16a29b2b1f803b",
@@ -21,13 +22,13 @@
       "enabled": true,
       "variationType": "STRING",
       "variations": {
-        "control": {
-          "key": "control",
-          "value": "control"
+        "Y29udHJvbA==": {
+          "key": "Y29udHJvbA==",
+          "value": "Y29udHJvbA=="
         },
-        "treatment": {
-          "key": "treatment",
-          "value": "treatment"
+        "dHJlYXRtZW50": {
+          "key": "dHJlYXRtZW50",
+          "value": "dHJlYXRtZW50"
         }
       },
       "allocations": [],
@@ -38,23 +39,21 @@
       "enabled": true,
       "variationType": "NUMERIC",
       "variations": {
-        "e": {
-          "key": "e",
-          "value": 2.7182818
+        "ZQ==": {
+          "key": "ZQ==",
+          "value": "Mi43MTgyODE4"
         },
-        "pi": {
-          "key": "pi",
-          "value": 3.1415926
+        "cGk=": {
+          "key": "cGk=",
+          "value": "My4xNDE1OTI2"
         }
       },
       "allocations": [
         {
-          "key": "rollout",
-          "startAt": null,
-          "endAt": null,
+          "key": "cm9sbG91dA==",
           "splits": [
             {
-              "variationKey": "pi",
+              "variationKey": "cGk=",
               "shards": []
             }
           ],
@@ -68,18 +67,18 @@
       "enabled": true,
       "variationType": "INTEGER",
       "variations": {
-        "one": {
-          "key": "one",
-          "value": 1
+        "b25l": {
+          "key": "b25l",
+          "value": "MQ=="
         },
-        "pi": {
-          "key": "pi",
-          "value": 3.1415926
+        "cGk=": {
+          "key": "cGk=",
+          "value": "My4xNDE1OTI2"
         }
       },
       "allocations": [
         {
-          "key": "valid",
+          "key": "dmFsaWQ=",
           "rules": [
             {
               "conditions": [
@@ -87,7 +86,7 @@
                   "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
                   "operator": "27457ce369f2a74203396a35ef537c0b",
                   "value": [
-                    "c2aadac2ca30ca8aadfbe331ae180d28"
+                    "445d337b5cd5de476f99333df6b0c2a7"
                   ]
                 }
               ]
@@ -95,20 +94,18 @@
           ],
           "splits": [
             {
-              "variationKey": "one",
+              "variationKey": "b25l",
               "shards": []
             }
           ],
           "doLog": true
         },
         {
-          "key": "invalid",
+          "key": "aW52YWxpZA==",
           "rules": [],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
-              "variationKey": "pi",
+              "variationKey": "cGk=",
               "shards": []
             }
           ],
@@ -122,18 +119,18 @@
       "enabled": true,
       "variationType": "BOOLEAN",
       "variations": {
-        "on": {
-          "key": "on",
-          "value": true
+        "MjQ9": {
+          "key": "MjQ9",
+          "value": "dHJ1ZQ=="
         },
-        "off": {
-          "key": "off",
-          "value": false
+        "YjJabQ==": {
+          "key": "YjJabQ==",
+          "value": "ZmFsc2U="
         }
       },
       "allocations": [
         {
-          "key": "on-for-NA",
+          "key": "b24tZm9yLU5B",
           "rules": [
             {
               "conditions": [
@@ -141,22 +138,20 @@
                   "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
                   "operator": "27457ce369f2a74203396a35ef537c0b",
                   "value": [
-                    "0b3b97fa66886c5688ee4ae80ec0c3c2",
-                    "c2aadac2ca30ca8aadfbe331ae180d28",
-                    "4edfc924721abb774d5447bade86ea5d"
+                    "7516fd43adaa5e0b8a65a672c39845d2",
+                    "445d337b5cd5de476f99333df6b0c2a7",
+                    "8dbb07a18d46f63d8b3c8994d5ccc351"
                   ]
                 }
               ]
             }
           ],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
-              "variationKey": "on",
+              "variationKey": "b24=",
               "shards": [
                 {
-                  "salt": "some-salt",
+                  "salt": "c29tZS1zYWx0",
                   "ranges": [
                     {
                       "start": 0,
@@ -170,7 +165,7 @@
           "doLog": true
         },
         {
-          "key": "on-for-age-50+",
+          "key": "b24tZm9yLWFnZS01MCs=",
           "rules": [
             {
               "conditions": [
@@ -182,14 +177,12 @@
               ]
             }
           ],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
-              "variationKey": "on",
+              "variationKey": "b24=",
               "shards": [
                 {
-                  "salt": "some-salt",
+                  "salt": "c29tZS1zYWx0",
                   "ranges": [
                     {
                       "start": 0,
@@ -203,13 +196,11 @@
           "doLog": true
         },
         {
-          "key": "off-for-all",
+          "key": "YjJabUxXWnZjaTFoYkd3PQ==",
           "rules": [],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
-              "variationKey": "off",
+              "variationKey": "YjJabQ==",
               "shards": []
             }
           ],
@@ -223,22 +214,22 @@
       "enabled": true,
       "variationType": "STRING",
       "variations": {
-        "old": {
-          "key": "old",
-          "value": "old"
+        "bmV3": {
+          "key": "bmV3",
+          "value": "bmV3"
         },
-        "current": {
-          "key": "current",
-          "value": "current"
+        "Y3VycmVudA==": {
+          "key": "Y3VycmVudA==",
+          "value": "Y3VycmVudA=="
         },
-        "new": {
-          "key": "new",
-          "value": "new"
+        "b2xk": {
+          "key": "b2xk",
+          "value": "b2xk"
         }
       },
       "allocations": [
         {
-          "key": "old-versions",
+          "key": "b2xkLXZlcnNpb25z",
           "rules": [
             {
               "conditions": [
@@ -252,13 +243,14 @@
           ],
           "splits": [
             {
-              "variationKey": "old",
+              "variationKey": "b2xk",
               "shards": []
             }
-          ]
+          ],
+          "doLog": true
         },
         {
-          "key": "current-versions",
+          "key": "Y3VycmVudC12ZXJzaW9ucw==",
           "rules": [
             {
               "conditions": [
@@ -277,13 +269,14 @@
           ],
           "splits": [
             {
-              "variationKey": "current",
+              "variationKey": "Y3VycmVudA==",
               "shards": []
             }
-          ]
+          ],
+          "doLog": true
         },
         {
-          "key": "new-versions",
+          "key": "bmV3LXZlcnNpb25z",
           "rules": [
             {
               "conditions": [
@@ -297,10 +290,11 @@
           ],
           "splits": [
             {
-              "variationKey": "new",
+              "variationKey": "bmV3",
               "shards": []
             }
-          ]
+          ],
+          "doLog": true
         }
       ],
       "totalShards": 10000
@@ -310,22 +304,22 @@
       "enabled": true,
       "variationType": "STRING",
       "variations": {
-        "small": {
-          "key": "small",
-          "value": "small"
+        "c21hbGw=": {
+          "key": "c21hbGw=",
+          "value": "c21hbGw="
         },
-        "medium": {
-          "key": "medium",
-          "value": "medium"
+        "bWVkaXVt": {
+          "key": "bWVkaXVt",
+          "value": "bWVkaXVt"
         },
-        "large": {
-          "key": "large",
-          "value": "large"
+        "bGFyZ2U=": {
+          "key": "bGFyZ2U=",
+          "value": "bGFyZ2U="
         }
       },
       "allocations": [
         {
-          "key": "small-size",
+          "key": "c21hbGwtc2l6ZQ==",
           "rules": [
             {
               "conditions": [
@@ -339,13 +333,14 @@
           ],
           "splits": [
             {
-              "variationKey": "small",
+              "variationKey": "c21hbGw=",
               "shards": []
             }
-          ]
+          ],
+          "doLog": true
         },
         {
-          "key": "medum-size",
+          "key": "bWVkdW0tc2l6ZQ==",
           "rules": [
             {
               "conditions": [
@@ -364,13 +359,14 @@
           ],
           "splits": [
             {
-              "variationKey": "medium",
+              "variationKey": "bWVkaXVt",
               "shards": []
             }
-          ]
+          ],
+          "doLog": true
         },
         {
-          "key": "large-size",
+          "key": "bGFyZ2Utc2l6ZQ==",
           "rules": [
             {
               "conditions": [
@@ -384,10 +380,11 @@
           ],
           "splits": [
             {
-              "variationKey": "large",
+              "variationKey": "bGFyZ2U=",
               "shards": []
             }
-          ]
+          ],
+          "doLog": true
         }
       ],
       "totalShards": 10000
@@ -397,50 +394,53 @@
       "enabled": true,
       "variationType": "STRING",
       "variations": {
-        "old": {
-          "key": "old",
-          "value": "old"
+        "bmV3": {
+          "key": "bmV3",
+          "value": "bmV3"
         },
-        "current": {
-          "key": "current",
-          "value": "current"
+        "Y3VycmVudA==": {
+          "key": "Y3VycmVudA==",
+          "value": "Y3VycmVudA=="
         },
-        "new": {
-          "key": "new",
-          "value": "new"
+        "b2xk": {
+          "key": "b2xk",
+          "value": "b2xk"
         }
       },
       "allocations": [
         {
-          "key": "old-versions",
+          "key": "b2xkLXZlcnNpb25z",
           "splits": [
             {
-              "variationKey": "old",
+              "variationKey": "b2xk",
               "shards": []
             }
           ],
-          "endAt": "2002-10-31T09:00:00.594Z"
+          "endAt": "MjAwMi0xMC0zMVQwOTowMDowMC41OTRa",
+          "doLog": true
         },
         {
-          "key": "future-versions",
+          "key": "ZnV0dXJlLXZlcnNpb25z",
           "splits": [
             {
-              "variationKey": "future",
+              "variationKey": "ZnV0dXJl",
               "shards": []
             }
           ],
-          "startAt": "2052-10-31T09:00:00.594Z"
+          "startAt": "MjA1Mi0xMC0zMVQwOTowMDowMC41OTRa",
+          "doLog": true
         },
         {
-          "key": "current-versions",
+          "key": "Y3VycmVudC12ZXJzaW9ucw==",
           "splits": [
             {
-              "variationKey": "current",
+              "variationKey": "Y3VycmVudA==",
               "shards": []
             }
           ],
-          "startAt": "2022-10-31T09:00:00.594Z",
-          "endAt": "2050-10-31T09:00:00.594Z"
+          "startAt": "MjAyMi0xMC0zMVQwOTowMDowMC41OTRa",
+          "endAt": "MjA1MC0xMC0zMVQwOTowMDowMC41OTRa",
+          "doLog": true
         }
       ],
       "totalShards": 10000
@@ -450,18 +450,18 @@
       "enabled": true,
       "variationType": "STRING",
       "variations": {
-        "old": {
-          "key": "old",
-          "value": "old"
+        "bmV3": {
+          "key": "bmV3",
+          "value": "bmV3"
         },
-        "new": {
-          "key": "new",
-          "value": "new"
+        "b2xk": {
+          "key": "b2xk",
+          "value": "b2xk"
         }
       },
       "allocations": [
         {
-          "key": "null-operator",
+          "key": "bnVsbC1vcGVyYXRvcg==",
           "rules": [
             {
               "conditions": [
@@ -484,13 +484,14 @@
           ],
           "splits": [
             {
-              "variationKey": "old",
+              "variationKey": "b2xk",
               "shards": []
             }
-          ]
+          ],
+          "doLog": true
         },
         {
-          "key": "not-null-operator",
+          "key": "bm90LW51bGwtb3BlcmF0b3I=",
           "rules": [
             {
               "conditions": [
@@ -504,10 +505,11 @@
           ],
           "splits": [
             {
-              "variationKey": "new",
+              "variationKey": "bmV3",
               "shards": []
             }
-          ]
+          ],
+          "doLog": true
         }
       ],
       "totalShards": 10000
@@ -517,30 +519,30 @@
       "enabled": true,
       "variationType": "STRING",
       "variations": {
-        "control": {
-          "key": "control",
-          "value": "control"
+        "Ymx1ZQ==": {
+          "key": "Ymx1ZQ==",
+          "value": "Ymx1ZQ=="
         },
-        "red": {
-          "key": "red",
-          "value": "red"
+        "cmVk": {
+          "key": "cmVk",
+          "value": "cmVk"
         },
-        "blue": {
-          "key": "blue",
-          "value": "blue"
+        "Y29udHJvbA==": {
+          "key": "Y29udHJvbA==",
+          "value": "Y29udHJvbA=="
         },
-        "green": {
-          "key": "green",
-          "value": "green"
+        "Z3JlZW4=": {
+          "key": "Z3JlZW4=",
+          "value": "Z3JlZW4="
         },
-        "yellow": {
-          "key": "yellow",
-          "value": "yellow"
+        "eWVsbG93": {
+          "key": "eWVsbG93",
+          "value": "eWVsbG93"
         }
       },
       "allocations": [
         {
-          "key": "internal users",
+          "key": "aW50ZXJuYWwgdXNlcnM=",
           "rules": [
             {
               "conditions": [
@@ -552,18 +554,16 @@
               ]
             }
           ],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
-              "variationKey": "green",
+              "variationKey": "Z3JlZW4=",
               "shards": []
             }
           ],
           "doLog": false
         },
         {
-          "key": "experiment",
+          "key": "ZXhwZXJpbWVudA==",
           "rules": [
             {
               "conditions": [
@@ -571,9 +571,9 @@
                   "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
                   "operator": "602f5ee0b6e84fe29f43ab48b9e1addf",
                   "value": [
-                    "0b3b97fa66886c5688ee4ae80ec0c3c2",
-                    "c2aadac2ca30ca8aadfbe331ae180d28",
-                    "4edfc924721abb774d5447bade86ea5d"
+                    "7516fd43adaa5e0b8a65a672c39845d2",
+                    "445d337b5cd5de476f99333df6b0c2a7",
+                    "8dbb07a18d46f63d8b3c8994d5ccc351"
                   ]
                 }
               ]
@@ -581,10 +581,10 @@
           ],
           "splits": [
             {
-              "variationKey": "control",
+              "variationKey": "Y29udHJvbA==",
               "shards": [
                 {
-                  "salt": "traffic-new-user-onboarding-experiment",
+                  "salt": "dHJhZmZpYy1uZXctdXNlci1vbmJvYXJkaW5nLWV4cGVyaW1lbnQ=",
                   "ranges": [
                     {
                       "start": 0,
@@ -593,7 +593,7 @@
                   ]
                 },
                 {
-                  "salt": "split-new-user-onboarding-experiment",
+                  "salt": "c3BsaXQtbmV3LXVzZXItb25ib2FyZGluZy1leHBlcmltZW50",
                   "ranges": [
                     {
                       "start": 0,
@@ -604,10 +604,10 @@
               ]
             },
             {
-              "variationKey": "red",
+              "variationKey": "cmVk",
               "shards": [
                 {
-                  "salt": "traffic-new-user-onboarding-experiment",
+                  "salt": "dHJhZmZpYy1uZXctdXNlci1vbmJvYXJkaW5nLWV4cGVyaW1lbnQ=",
                   "ranges": [
                     {
                       "start": 0,
@@ -616,7 +616,7 @@
                   ]
                 },
                 {
-                  "salt": "split-new-user-onboarding-experiment",
+                  "salt": "c3BsaXQtbmV3LXVzZXItb25ib2FyZGluZy1leHBlcmltZW50",
                   "ranges": [
                     {
                       "start": 5000,
@@ -627,10 +627,10 @@
               ]
             },
             {
-              "variationKey": "yellow",
+              "variationKey": "eWVsbG93",
               "shards": [
                 {
-                  "salt": "traffic-new-user-onboarding-experiment",
+                  "salt": "dHJhZmZpYy1uZXctdXNlci1vbmJvYXJkaW5nLWV4cGVyaW1lbnQ=",
                   "ranges": [
                     {
                       "start": 0,
@@ -639,7 +639,7 @@
                   ]
                 },
                 {
-                  "salt": "split-new-user-onboarding-experiment",
+                  "salt": "c3BsaXQtbmV3LXVzZXItb25ib2FyZGluZy1leHBlcmltZW50",
                   "ranges": [
                     {
                       "start": 8000,
@@ -653,7 +653,7 @@
           "doLog": true
         },
         {
-          "key": "rollout",
+          "key": "cm9sbG91dA==",
           "rules": [
             {
               "conditions": [
@@ -661,22 +661,20 @@
                   "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
                   "operator": "27457ce369f2a74203396a35ef537c0b",
                   "value": [
-                    "0b3b97fa66886c5688ee4ae80ec0c3c2",
-                    "c2aadac2ca30ca8aadfbe331ae180d28",
-                    "4edfc924721abb774d5447bade86ea5d"
+                    "7516fd43adaa5e0b8a65a672c39845d2",
+                    "445d337b5cd5de476f99333df6b0c2a7",
+                    "8dbb07a18d46f63d8b3c8994d5ccc351"
                   ]
                 }
               ]
             }
           ],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
-              "variationKey": "blue",
+              "variationKey": "Ymx1ZQ==",
               "shards": [
                 {
-                  "salt": "split-new-user-onboarding-rollout",
+                  "salt": "c3BsaXQtbmV3LXVzZXItb25ib2FyZGluZy1yb2xsb3V0",
                   "ranges": [
                     {
                       "start": 0,
@@ -686,8 +684,8 @@
                 }
               ],
               "extraLogging": {
-                "allocationvalue_type": "rollout",
-                "owner": "hippo"
+                "YWxsb2NhdGlvbnZhbHVlX3R5cGU=": "cm9sbG91dA==",
+                "b3duZXI=": "aGlwcG8="
               }
             }
           ],
@@ -701,22 +699,22 @@
       "enabled": true,
       "variationType": "INTEGER",
       "variations": {
-        "one": {
-          "key": "one",
-          "value": 1
+        "b25l": {
+          "key": "b25l",
+          "value": "MQ=="
         },
-        "two": {
-          "key": "two",
-          "value": 2
+        "dHdv": {
+          "key": "dHdv",
+          "value": "Mg=="
         },
-        "three": {
-          "key": "three",
-          "value": 3
+        "dGhyZWU=": {
+          "key": "dGhyZWU=",
+          "value": "Mw=="
         }
       },
       "allocations": [
         {
-          "key": "targeted allocation",
+          "key": "dGFyZ2V0ZWQgYWxsb2NhdGlvbg==",
           "rules": [
             {
               "conditions": [
@@ -724,9 +722,9 @@
                   "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
                   "operator": "27457ce369f2a74203396a35ef537c0b",
                   "value": [
-                    "0b3b97fa66886c5688ee4ae80ec0c3c2",
-                    "c2aadac2ca30ca8aadfbe331ae180d28",
-                    "4edfc924721abb774d5447bade86ea5d"
+                    "7516fd43adaa5e0b8a65a672c39845d2",
+                    "445d337b5cd5de476f99333df6b0c2a7",
+                    "8dbb07a18d46f63d8b3c8994d5ccc351"
                   ]
                 }
               ]
@@ -741,14 +739,12 @@
               ]
             }
           ],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
-              "variationKey": "three",
+              "variationKey": "dGhyZWU=",
               "shards": [
                 {
-                  "salt": "full-range-salt",
+                  "salt": "Wm5Wc2JDMXlZVzVuWlMxellXeDA=",
                   "ranges": [
                     {
                       "start": 0,
@@ -762,16 +758,14 @@
           "doLog": true
         },
         {
-          "key": "50/50 split",
+          "key": "NTAvNTAgc3BsaXQ=",
           "rules": [],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
-              "variationKey": "one",
+              "variationKey": "b25l",
               "shards": [
                 {
-                  "salt": "split-numeric-flag-some-allocation",
+                  "salt": "c3BsaXQtbnVtZXJpYy1mbGFnLXNvbWUtYWxsb2NhdGlvbg==",
                   "ranges": [
                     {
                       "start": 0,
@@ -782,10 +776,10 @@
               ]
             },
             {
-              "variationKey": "two",
+              "variationKey": "dHdv",
               "shards": [
                 {
-                  "salt": "split-numeric-flag-some-allocation",
+                  "salt": "c3BsaXQtbnVtZXJpYy1mbGFnLXNvbWUtYWxsb2NhdGlvbg==",
                   "ranges": [
                     {
                       "start": 5000,
@@ -806,27 +800,25 @@
       "enabled": true,
       "variationType": "JSON",
       "variations": {
-        "one": {
-          "key": "one",
-          "value": "{ \"integer\": 1, \"string\": \"one\", \"float\": 1.0 }"
+        "b25l": {
+          "key": "b25l",
+          "value": "eyAiaW50ZWdlciI6IDEsICJzdHJpbmciOiAib25lIiwgImZsb2F0IjogMS4wIH0="
         },
-        "two": {
-          "key": "two",
-          "value": "{ \"integer\": 2, \"string\": \"two\", \"float\": 2.0 }"
+        "dHdv": {
+          "key": "dHdv",
+          "value": "eyAiaW50ZWdlciI6IDIsICJzdHJpbmciOiAidHdvIiwgImZsb2F0IjogMi4wIH0="
         }
       },
       "allocations": [
         {
-          "key": "50/50 split",
+          "key": "NTAvNTAgc3BsaXQ=",
           "rules": [],
-          "startAt": null,
-          "endAt": null,
           "splits": [
             {
-              "variationKey": "one",
+              "variationKey": "b25l",
               "shards": [
                 {
-                  "salt": "traffic-json-flag",
+                  "salt": "dHJhZmZpYy1qc29uLWZsYWc=",
                   "ranges": [
                     {
                       "start": 0,
@@ -835,7 +827,7 @@
                   ]
                 },
                 {
-                  "salt": "split-json-flag",
+                  "salt": "c3BsaXQtanNvbi1mbGFn",
                   "ranges": [
                     {
                       "start": 0,
@@ -846,10 +838,10 @@
               ]
             },
             {
-              "variationKey": "two",
+              "variationKey": "dHdv",
               "shards": [
                 {
-                  "salt": "traffic-json-flag",
+                  "salt": "dHJhZmZpYy1qc29uLWZsYWc=",
                   "ranges": [
                     {
                       "start": 0,
@@ -858,7 +850,7 @@
                   ]
                 },
                 {
-                  "salt": "split-json-flag",
+                  "salt": "c3BsaXQtanNvbi1mbGFn",
                   "ranges": [
                     {
                       "start": 5000,
