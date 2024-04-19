@@ -5,39 +5,40 @@
       "key": "73fcc84c69e49e31fe16a29b2b1f803b",
       "enabled": true,
       "variationType": "STRING",
+      "totalShards": 10000,
       "variations": {},
-      "allocations": [],
-      "totalShards": 10000
+      "allocations": []
     },
     "68fb87eefbe8ecb850dbe9b46477d037": {
       "key": "68fb87eefbe8ecb850dbe9b46477d037",
       "enabled": false,
-      "variationType": "BOOLEAN",
+      "variationType": "INTEGER",
+      "totalShards": 10000,
       "variations": {},
-      "allocations": [],
-      "totalShards": 10000
+      "allocations": []
     },
     "29537bb57e98d938b8eb8cff92c73419": {
       "key": "29537bb57e98d938b8eb8cff92c73419",
       "enabled": true,
-      "variationType": "STRING",
+      "variationType": "JSON",
+      "totalShards": 10000,
       "variations": {
         "Y29udHJvbA==": {
           "key": "Y29udHJvbA==",
-          "value": "Y29udHJvbA=="
+          "value": "eyJ2YXJpYW50IjogImNvbnRyb2wifQ=="
         },
         "dHJlYXRtZW50": {
           "key": "dHJlYXRtZW50",
-          "value": "dHJlYXRtZW50"
+          "value": "eyJ2YXJpYW50IjogInRyZWF0bWVudCJ9"
         }
       },
-      "allocations": [],
-      "totalShards": 10000
+      "allocations": []
     },
     "2c27190d8645fe3bc3c1d63b31f0e4ee": {
       "key": "2c27190d8645fe3bc3c1d63b31f0e4ee",
       "enabled": true,
       "variationType": "NUMERIC",
+      "totalShards": 10000,
       "variations": {
         "ZQ==": {
           "key": "ZQ==",
@@ -51,21 +52,21 @@
       "allocations": [
         {
           "key": "cm9sbG91dA==",
+          "doLog": true,
           "splits": [
             {
               "variationKey": "cGk=",
               "shards": []
             }
-          ],
-          "doLog": true
+          ]
         }
-      ],
-      "totalShards": 10000
+      ]
     },
     "3d88068611498391d5c8307467e6fa2c": {
       "key": "3d88068611498391d5c8307467e6fa2c",
       "enabled": true,
       "variationType": "INTEGER",
+      "totalShards": 10000,
       "variations": {
         "b25l": {
           "key": "b25l",
@@ -79,12 +80,13 @@
       "allocations": [
         {
           "key": "dmFsaWQ=",
+          "doLog": true,
           "rules": [
             {
               "conditions": [
                 {
-                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
                   "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
                   "value": [
                     "445d337b5cd5de476f99333df6b0c2a7"
                   ]
@@ -97,46 +99,46 @@
               "variationKey": "b25l",
               "shards": []
             }
-          ],
-          "doLog": true
+          ]
         },
         {
           "key": "aW52YWxpZA==",
+          "doLog": true,
           "rules": [],
           "splits": [
             {
               "variationKey": "cGk=",
               "shards": []
             }
-          ],
-          "doLog": true
+          ]
         }
-      ],
-      "totalShards": 10000
+      ]
     },
     "ea55330f6cbbaf8f57556df645c037e2": {
       "key": "ea55330f6cbbaf8f57556df645c037e2",
       "enabled": true,
       "variationType": "BOOLEAN",
+      "totalShards": 10000,
       "variations": {
-        "MjQ9": {
-          "key": "MjQ9",
+        "b24=": {
+          "key": "b24=",
           "value": "dHJ1ZQ=="
         },
-        "YjJabQ==": {
-          "key": "YjJabQ==",
+        "b2Zm": {
+          "key": "b2Zm",
           "value": "ZmFsc2U="
         }
       },
       "allocations": [
         {
           "key": "b24tZm9yLU5B",
+          "doLog": true,
           "rules": [
             {
               "conditions": [
                 {
-                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
                   "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
                   "value": [
                     "7516fd43adaa5e0b8a65a672c39845d2",
                     "445d337b5cd5de476f99333df6b0c2a7",
@@ -151,27 +153,27 @@
               "variationKey": "b24=",
               "shards": [
                 {
-                  "salt": "c29tZS1zYWx0",
                   "ranges": [
                     {
                       "start": 0,
                       "end": 10000
                     }
-                  ]
+                  ],
+                  "salt": "c29tZS1zYWx0"
                 }
               ]
             }
-          ],
-          "doLog": true
+          ]
         },
         {
           "key": "b24tZm9yLWFnZS01MCs=",
+          "doLog": true,
           "rules": [
             {
               "conditions": [
                 {
-                  "attribute": "7d637d275668ed6d41a9b97e6ad3a556",
                   "operator": "32d35312e8f24bc1669bd2b45c00d47c",
+                  "attribute": "7d637d275668ed6d41a9b97e6ad3a556",
                   "value": "NTA="
                 }
               ]
@@ -182,60 +184,60 @@
               "variationKey": "b24=",
               "shards": [
                 {
-                  "salt": "c29tZS1zYWx0",
                   "ranges": [
                     {
                       "start": 0,
                       "end": 10000
                     }
-                  ]
+                  ],
+                  "salt": "c29tZS1zYWx0"
                 }
               ]
             }
-          ],
-          "doLog": true
+          ]
         },
         {
-          "key": "YjJabUxXWnZjaTFoYkd3PQ==",
+          "key": "b2ZmLWZvci1hbGw=",
+          "doLog": true,
           "rules": [],
           "splits": [
             {
-              "variationKey": "YjJabQ==",
+              "variationKey": "b2Zm",
               "shards": []
             }
-          ],
-          "doLog": true
+          ]
         }
-      ],
-      "totalShards": 10000
+      ]
     },
     "dd2880e486d8a74a7daf902f93a19952": {
       "key": "dd2880e486d8a74a7daf902f93a19952",
       "enabled": true,
       "variationType": "STRING",
+      "totalShards": 10000,
       "variations": {
-        "bmV3": {
-          "key": "bmV3",
-          "value": "bmV3"
+        "b2xk": {
+          "key": "b2xk",
+          "value": "b2xk"
         },
         "Y3VycmVudA==": {
           "key": "Y3VycmVudA==",
           "value": "Y3VycmVudA=="
         },
-        "b2xk": {
-          "key": "b2xk",
-          "value": "b2xk"
+        "bmV3": {
+          "key": "bmV3",
+          "value": "bmV3"
         }
       },
       "allocations": [
         {
           "key": "b2xkLXZlcnNpb25z",
+          "doLog": true,
           "rules": [
             {
               "conditions": [
                 {
-                  "attribute": "2af72f100c356273d46284f6fd1dfc08",
                   "operator": "c562607189d77eb9dfb707464c1e7b0b",
+                  "attribute": "2af72f100c356273d46284f6fd1dfc08",
                   "value": "MS41LjA="
                 }
               ]
@@ -246,22 +248,22 @@
               "variationKey": "b2xk",
               "shards": []
             }
-          ],
-          "doLog": true
+          ]
         },
         {
           "key": "Y3VycmVudC12ZXJzaW9ucw==",
+          "doLog": true,
           "rules": [
             {
               "conditions": [
                 {
-                  "attribute": "2af72f100c356273d46284f6fd1dfc08",
                   "operator": "32d35312e8f24bc1669bd2b45c00d47c",
+                  "attribute": "2af72f100c356273d46284f6fd1dfc08",
                   "value": "MS41LjA="
                 },
                 {
-                  "attribute": "2af72f100c356273d46284f6fd1dfc08",
                   "operator": "cc981ecc65ecf63ad1673cbec9c64198",
+                  "attribute": "2af72f100c356273d46284f6fd1dfc08",
                   "value": "Mi4yLjEz"
                 }
               ]
@@ -272,17 +274,17 @@
               "variationKey": "Y3VycmVudA==",
               "shards": []
             }
-          ],
-          "doLog": true
+          ]
         },
         {
           "key": "bmV3LXZlcnNpb25z",
+          "doLog": true,
           "rules": [
             {
               "conditions": [
                 {
-                  "attribute": "2af72f100c356273d46284f6fd1dfc08",
                   "operator": "cd6a9bd2a175104eed40f0d33a8b4020",
+                  "attribute": "2af72f100c356273d46284f6fd1dfc08",
                   "value": "My4xLjA="
                 }
               ]
@@ -293,16 +295,15 @@
               "variationKey": "bmV3",
               "shards": []
             }
-          ],
-          "doLog": true
+          ]
         }
-      ],
-      "totalShards": 10000
+      ]
     },
     "0e4820f073429772c0fa3e831c8d13c7": {
       "key": "0e4820f073429772c0fa3e831c8d13c7",
       "enabled": true,
       "variationType": "STRING",
+      "totalShards": 10000,
       "variations": {
         "c21hbGw=": {
           "key": "c21hbGw=",
@@ -320,12 +321,13 @@
       "allocations": [
         {
           "key": "c21hbGwtc2l6ZQ==",
+          "doLog": true,
           "rules": [
             {
               "conditions": [
                 {
-                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
                   "operator": "c562607189d77eb9dfb707464c1e7b0b",
+                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
                   "value": "MTA="
                 }
               ]
@@ -336,22 +338,22 @@
               "variationKey": "c21hbGw=",
               "shards": []
             }
-          ],
-          "doLog": true
+          ]
         },
         {
           "key": "bWVkdW0tc2l6ZQ==",
+          "doLog": true,
           "rules": [
             {
               "conditions": [
                 {
-                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
                   "operator": "32d35312e8f24bc1669bd2b45c00d47c",
+                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
                   "value": "MTA="
                 },
                 {
-                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
                   "operator": "cc981ecc65ecf63ad1673cbec9c64198",
+                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
                   "value": "MjA="
                 }
               ]
@@ -362,17 +364,17 @@
               "variationKey": "bWVkaXVt",
               "shards": []
             }
-          ],
-          "doLog": true
+          ]
         },
         {
           "key": "bGFyZ2Utc2l6ZQ==",
+          "doLog": true,
           "rules": [
             {
               "conditions": [
                 {
-                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
                   "operator": "cd6a9bd2a175104eed40f0d33a8b4020",
+                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
                   "value": "MjU="
                 }
               ]
@@ -383,91 +385,91 @@
               "variationKey": "bGFyZ2U=",
               "shards": []
             }
-          ],
-          "doLog": true
+          ]
         }
-      ],
-      "totalShards": 10000
+      ]
     },
     "3f8ba2f25085acef84472ead80f39739": {
       "key": "3f8ba2f25085acef84472ead80f39739",
       "enabled": true,
       "variationType": "STRING",
+      "totalShards": 10000,
       "variations": {
-        "bmV3": {
-          "key": "bmV3",
-          "value": "bmV3"
+        "b2xk": {
+          "key": "b2xk",
+          "value": "b2xk"
         },
         "Y3VycmVudA==": {
           "key": "Y3VycmVudA==",
           "value": "Y3VycmVudA=="
         },
-        "b2xk": {
-          "key": "b2xk",
-          "value": "b2xk"
+        "bmV3": {
+          "key": "bmV3",
+          "value": "bmV3"
         }
       },
       "allocations": [
         {
           "key": "b2xkLXZlcnNpb25z",
+          "doLog": true,
+          "endAt": "MjAwMi0xMC0zMVQwOTowMDowMC41OTRa",
           "splits": [
             {
               "variationKey": "b2xk",
               "shards": []
             }
-          ],
-          "endAt": "MjAwMi0xMC0zMVQwOTowMDowMC41OTRa",
-          "doLog": true
+          ]
         },
         {
           "key": "ZnV0dXJlLXZlcnNpb25z",
+          "doLog": true,
+          "startAt": "MjA1Mi0xMC0zMVQwOTowMDowMC41OTRa",
           "splits": [
             {
               "variationKey": "ZnV0dXJl",
               "shards": []
             }
-          ],
-          "startAt": "MjA1Mi0xMC0zMVQwOTowMDowMC41OTRa",
-          "doLog": true
+          ]
         },
         {
           "key": "Y3VycmVudC12ZXJzaW9ucw==",
+          "doLog": true,
+          "startAt": "MjAyMi0xMC0zMVQwOTowMDowMC41OTRa",
+          "endAt": "MjA1MC0xMC0zMVQwOTowMDowMC41OTRa",
           "splits": [
             {
               "variationKey": "Y3VycmVudA==",
               "shards": []
             }
-          ],
-          "startAt": "MjAyMi0xMC0zMVQwOTowMDowMC41OTRa",
-          "endAt": "MjA1MC0xMC0zMVQwOTowMDowMC41OTRa",
-          "doLog": true
+          ]
         }
-      ],
-      "totalShards": 10000
+      ]
     },
     "44bf29f34bdd73ff93a6e2579c973596": {
       "key": "44bf29f34bdd73ff93a6e2579c973596",
       "enabled": true,
       "variationType": "STRING",
+      "totalShards": 10000,
       "variations": {
-        "bmV3": {
-          "key": "bmV3",
-          "value": "bmV3"
-        },
         "b2xk": {
           "key": "b2xk",
           "value": "b2xk"
+        },
+        "bmV3": {
+          "key": "bmV3",
+          "value": "bmV3"
         }
       },
       "allocations": [
         {
           "key": "bnVsbC1vcGVyYXRvcg==",
+          "doLog": true,
           "rules": [
             {
               "conditions": [
                 {
-                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
                   "operator": "dbd9c38e0339e6c34bd48cafc59be388",
+                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
                   "value": "b326b5062b2f0e69046810717534cb09"
                 }
               ]
@@ -475,8 +477,8 @@
             {
               "conditions": [
                 {
-                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
                   "operator": "c562607189d77eb9dfb707464c1e7b0b",
+                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
                   "value": "MTA="
                 }
               ]
@@ -487,17 +489,17 @@
               "variationKey": "b2xk",
               "shards": []
             }
-          ],
-          "doLog": true
+          ]
         },
         {
           "key": "bm90LW51bGwtb3BlcmF0b3I=",
+          "doLog": true,
           "rules": [
             {
               "conditions": [
                 {
-                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
                   "operator": "dbd9c38e0339e6c34bd48cafc59be388",
+                  "attribute": "f7bd60b75b29d79b660a2859395c1a24",
                   "value": "68934a3e9455fa72420237eb05902327"
                 }
               ]
@@ -508,28 +510,27 @@
               "variationKey": "bmV3",
               "shards": []
             }
-          ],
-          "doLog": true
+          ]
         }
-      ],
-      "totalShards": 10000
+      ]
     },
     "85dd0ed218e7acf20f9007c0f9efa89f": {
       "key": "85dd0ed218e7acf20f9007c0f9efa89f",
       "enabled": true,
       "variationType": "STRING",
+      "totalShards": 10000,
       "variations": {
-        "Ymx1ZQ==": {
-          "key": "Ymx1ZQ==",
-          "value": "Ymx1ZQ=="
+        "Y29udHJvbA==": {
+          "key": "Y29udHJvbA==",
+          "value": "Y29udHJvbA=="
         },
         "cmVk": {
           "key": "cmVk",
           "value": "cmVk"
         },
-        "Y29udHJvbA==": {
-          "key": "Y29udHJvbA==",
-          "value": "Y29udHJvbA=="
+        "Ymx1ZQ==": {
+          "key": "Ymx1ZQ==",
+          "value": "Ymx1ZQ=="
         },
         "Z3JlZW4=": {
           "key": "Z3JlZW4=",
@@ -543,12 +544,13 @@
       "allocations": [
         {
           "key": "aW50ZXJuYWwgdXNlcnM=",
+          "doLog": false,
           "rules": [
             {
               "conditions": [
                 {
-                  "attribute": "0c83f57c786a0b4a39efab23731c7ebc",
                   "operator": "05015086bdd8402218f6aad6528bef08",
+                  "attribute": "0c83f57c786a0b4a39efab23731c7ebc",
                   "value": "LipAbXljb21wYW55LmNvbQ=="
                 }
               ]
@@ -559,17 +561,17 @@
               "variationKey": "Z3JlZW4=",
               "shards": []
             }
-          ],
-          "doLog": false
+          ]
         },
         {
           "key": "ZXhwZXJpbWVudA==",
+          "doLog": true,
           "rules": [
             {
               "conditions": [
                 {
-                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
                   "operator": "602f5ee0b6e84fe29f43ab48b9e1addf",
+                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
                   "value": [
                     "7516fd43adaa5e0b8a65a672c39845d2",
                     "445d337b5cd5de476f99333df6b0c2a7",
@@ -584,22 +586,22 @@
               "variationKey": "Y29udHJvbA==",
               "shards": [
                 {
-                  "salt": "dHJhZmZpYy1uZXctdXNlci1vbmJvYXJkaW5nLWV4cGVyaW1lbnQ=",
                   "ranges": [
                     {
                       "start": 0,
                       "end": 6000
                     }
-                  ]
+                  ],
+                  "salt": "dHJhZmZpYy1uZXctdXNlci1vbmJvYXJkaW5nLWV4cGVyaW1lbnQ="
                 },
                 {
-                  "salt": "c3BsaXQtbmV3LXVzZXItb25ib2FyZGluZy1leHBlcmltZW50",
                   "ranges": [
                     {
                       "start": 0,
                       "end": 5000
                     }
-                  ]
+                  ],
+                  "salt": "c3BsaXQtbmV3LXVzZXItb25ib2FyZGluZy1leHBlcmltZW50"
                 }
               ]
             },
@@ -607,22 +609,22 @@
               "variationKey": "cmVk",
               "shards": [
                 {
-                  "salt": "dHJhZmZpYy1uZXctdXNlci1vbmJvYXJkaW5nLWV4cGVyaW1lbnQ=",
                   "ranges": [
                     {
                       "start": 0,
                       "end": 6000
                     }
-                  ]
+                  ],
+                  "salt": "dHJhZmZpYy1uZXctdXNlci1vbmJvYXJkaW5nLWV4cGVyaW1lbnQ="
                 },
                 {
-                  "salt": "c3BsaXQtbmV3LXVzZXItb25ib2FyZGluZy1leHBlcmltZW50",
                   "ranges": [
                     {
                       "start": 5000,
                       "end": 8000
                     }
-                  ]
+                  ],
+                  "salt": "c3BsaXQtbmV3LXVzZXItb25ib2FyZGluZy1leHBlcmltZW50"
                 }
               ]
             },
@@ -630,36 +632,36 @@
               "variationKey": "eWVsbG93",
               "shards": [
                 {
-                  "salt": "dHJhZmZpYy1uZXctdXNlci1vbmJvYXJkaW5nLWV4cGVyaW1lbnQ=",
                   "ranges": [
                     {
                       "start": 0,
                       "end": 6000
                     }
-                  ]
+                  ],
+                  "salt": "dHJhZmZpYy1uZXctdXNlci1vbmJvYXJkaW5nLWV4cGVyaW1lbnQ="
                 },
                 {
-                  "salt": "c3BsaXQtbmV3LXVzZXItb25ib2FyZGluZy1leHBlcmltZW50",
                   "ranges": [
                     {
                       "start": 8000,
                       "end": 10000
                     }
-                  ]
+                  ],
+                  "salt": "c3BsaXQtbmV3LXVzZXItb25ib2FyZGluZy1leHBlcmltZW50"
                 }
               ]
             }
-          ],
-          "doLog": true
+          ]
         },
         {
           "key": "cm9sbG91dA==",
+          "doLog": true,
           "rules": [
             {
               "conditions": [
                 {
-                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
                   "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
                   "value": [
                     "7516fd43adaa5e0b8a65a672c39845d2",
                     "445d337b5cd5de476f99333df6b0c2a7",
@@ -674,13 +676,13 @@
               "variationKey": "Ymx1ZQ==",
               "shards": [
                 {
-                  "salt": "c3BsaXQtbmV3LXVzZXItb25ib2FyZGluZy1yb2xsb3V0",
                   "ranges": [
                     {
                       "start": 0,
                       "end": 8000
                     }
-                  ]
+                  ],
+                  "salt": "c3BsaXQtbmV3LXVzZXItb25ib2FyZGluZy1yb2xsb3V0"
                 }
               ],
               "extraLogging": {
@@ -688,16 +690,15 @@
                 "b3duZXI=": "aGlwcG8="
               }
             }
-          ],
-          "doLog": true
+          ]
         }
-      ],
-      "totalShards": 10000
+      ]
     },
     "eb4caea3db4e58836bda9830ee098291": {
       "key": "eb4caea3db4e58836bda9830ee098291",
       "enabled": true,
       "variationType": "INTEGER",
+      "totalShards": 10000,
       "variations": {
         "b25l": {
           "key": "b25l",
@@ -715,12 +716,13 @@
       "allocations": [
         {
           "key": "dGFyZ2V0ZWQgYWxsb2NhdGlvbg==",
+          "doLog": true,
           "rules": [
             {
               "conditions": [
                 {
-                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
                   "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
                   "value": [
                     "7516fd43adaa5e0b8a65a672c39845d2",
                     "445d337b5cd5de476f99333df6b0c2a7",
@@ -732,8 +734,8 @@
             {
               "conditions": [
                 {
-                  "attribute": "0c83f57c786a0b4a39efab23731c7ebc",
                   "operator": "05015086bdd8402218f6aad6528bef08",
+                  "attribute": "0c83f57c786a0b4a39efab23731c7ebc",
                   "value": "LipAZXhhbXBsZS5jb20="
                 }
               ]
@@ -744,34 +746,34 @@
               "variationKey": "dGhyZWU=",
               "shards": [
                 {
-                  "salt": "Wm5Wc2JDMXlZVzVuWlMxellXeDA=",
                   "ranges": [
                     {
                       "start": 0,
                       "end": 10000
                     }
-                  ]
+                  ],
+                  "salt": "ZnVsbC1yYW5nZS1zYWx0"
                 }
               ]
             }
-          ],
-          "doLog": true
+          ]
         },
         {
           "key": "NTAvNTAgc3BsaXQ=",
+          "doLog": true,
           "rules": [],
           "splits": [
             {
               "variationKey": "b25l",
               "shards": [
                 {
-                  "salt": "c3BsaXQtbnVtZXJpYy1mbGFnLXNvbWUtYWxsb2NhdGlvbg==",
                   "ranges": [
                     {
                       "start": 0,
                       "end": 5000
                     }
-                  ]
+                  ],
+                  "salt": "c3BsaXQtbnVtZXJpYy1mbGFnLXNvbWUtYWxsb2NhdGlvbg=="
                 }
               ]
             },
@@ -779,26 +781,25 @@
               "variationKey": "dHdv",
               "shards": [
                 {
-                  "salt": "c3BsaXQtbnVtZXJpYy1mbGFnLXNvbWUtYWxsb2NhdGlvbg==",
                   "ranges": [
                     {
                       "start": 5000,
                       "end": 10000
                     }
-                  ]
+                  ],
+                  "salt": "c3BsaXQtbnVtZXJpYy1mbGFnLXNvbWUtYWxsb2NhdGlvbg=="
                 }
               ]
             }
-          ],
-          "doLog": true
+          ]
         }
-      ],
-      "totalShards": 10000
+      ]
     },
     "4eb1b70d72a7e1aa12918f4bee195ae5": {
       "key": "4eb1b70d72a7e1aa12918f4bee195ae5",
       "enabled": true,
       "variationType": "JSON",
+      "totalShards": 10000,
       "variations": {
         "b25l": {
           "key": "b25l",
@@ -812,28 +813,29 @@
       "allocations": [
         {
           "key": "NTAvNTAgc3BsaXQ=",
+          "doLog": true,
           "rules": [],
           "splits": [
             {
               "variationKey": "b25l",
               "shards": [
                 {
-                  "salt": "dHJhZmZpYy1qc29uLWZsYWc=",
                   "ranges": [
                     {
                       "start": 0,
                       "end": 10000
                     }
-                  ]
+                  ],
+                  "salt": "dHJhZmZpYy1qc29uLWZsYWc="
                 },
                 {
-                  "salt": "c3BsaXQtanNvbi1mbGFn",
                   "ranges": [
                     {
                       "start": 0,
                       "end": 5000
                     }
-                  ]
+                  ],
+                  "salt": "c3BsaXQtanNvbi1mbGFn"
                 }
               ]
             },
@@ -841,30 +843,28 @@
               "variationKey": "dHdv",
               "shards": [
                 {
-                  "salt": "dHJhZmZpYy1qc29uLWZsYWc=",
                   "ranges": [
                     {
                       "start": 0,
                       "end": 10000
                     }
-                  ]
+                  ],
+                  "salt": "dHJhZmZpYy1qc29uLWZsYWc="
                 },
                 {
-                  "salt": "c3BsaXQtanNvbi1mbGFn",
                   "ranges": [
                     {
                       "start": 5000,
                       "end": 10000
                     }
-                  ]
+                  ],
+                  "salt": "c3BsaXQtanNvbi1mbGFn"
                 }
               ]
             }
-          ],
-          "doLog": true
+          ]
         }
-      ],
-      "totalShards": 10000
+      ]
     }
   }
 }
