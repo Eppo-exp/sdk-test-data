@@ -114,6 +114,91 @@
       ],
       "totalShards": 10000
     },
+    "regex-flag": {
+      "key": "regex-flag",
+      "enabled": true,
+      "variationType": "STRING",
+      "variations": {
+        "example": {
+          "key": "example",
+          "value": "example"
+        },
+        "bad-example": {
+          "key": "bad-example",
+          "value": "bad-example"
+        },
+        "test": {
+          "key": "test",
+          "value": "test"
+        }
+      },
+      "allocations": [
+        {
+          "key": "bad-example",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "email",
+                  "operator": "MATCHES",
+                  "value": "@example\\.com"
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "bad-example",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "example",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "email",
+                  "operator": "MATCHES",
+                  "value": ".*@example\\.com"
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "example",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "test",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "email",
+                  "operator": "MATCHES",
+                  "value": ".*@test\\.com"
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "test",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
     "kill-switch": {
       "key": "kill-switch",
       "enabled": true,

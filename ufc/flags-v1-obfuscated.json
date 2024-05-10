@@ -114,6 +114,91 @@
         }
       ]
     },
+    "69d2ea567a75b7b2da9648bf312dc3a5": {
+      "key": "69d2ea567a75b7b2da9648bf312dc3a5",
+      "enabled": true,
+      "variationType": "STRING",
+      "totalShards": 10000,
+      "variations": {
+        "ZXhhbXBsZQ==": {
+          "key": "ZXhhbXBsZQ==",
+          "value": "ZXhhbXBsZQ=="
+        },
+        "YmFkLWV4YW1wbGU=": {
+          "key": "YmFkLWV4YW1wbGU=",
+          "value": "YmFkLWV4YW1wbGU="
+        },
+        "dGVzdA==": {
+          "key": "dGVzdA==",
+          "value": "dGVzdA=="
+        }
+      },
+      "allocations": [
+        {
+          "key": "YmFkLWV4YW1wbGU=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "05015086bdd8402218f6aad6528bef08",
+                  "attribute": "0c83f57c786a0b4a39efab23731c7ebc",
+                  "value": "QGV4YW1wbGVcLmNvbQ=="
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "YmFkLWV4YW1wbGU=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "ZXhhbXBsZQ==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "05015086bdd8402218f6aad6528bef08",
+                  "attribute": "0c83f57c786a0b4a39efab23731c7ebc",
+                  "value": "LipAZXhhbXBsZVwuY29t"
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "ZXhhbXBsZQ==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "dGVzdA==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "05015086bdd8402218f6aad6528bef08",
+                  "attribute": "0c83f57c786a0b4a39efab23731c7ebc",
+                  "value": "LipAdGVzdFwuY29t"
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "dGVzdA==",
+              "shards": []
+            }
+          ]
+        }
+      ]
+    },
     "ea55330f6cbbaf8f57556df645c037e2": {
       "key": "ea55330f6cbbaf8f57556df645c037e2",
       "enabled": true,

@@ -1,0 +1,27 @@
+{
+    "flag": "regex-flag",
+    "variationType": "STRING",
+    "defaultValue": "none",
+    "subjects": [
+      {
+        "subjectKey": "alice",
+        "subjectAttributes": {"version": "1.15.0", "email": "alice@example.com"},
+        "assignment": "example"
+      },
+      {
+        "subjectKey": "bob",
+        "subjectAttributes": {"version": "0.20.1", "email": "bob@test.com"},
+        "assignment": "test"
+      },
+      {
+        "subjectKey": "charlie",
+        "subjectAttributes": {"version": "2.1.13"},
+        "assignment": "none"
+      },
+      {
+        "subjectKey": "derek",
+        "subjectAttributes": {"version": "2.1.13", "email": "derek@gmail.com"},
+        "assignment": "none"
+      }
+    ]
+  }
