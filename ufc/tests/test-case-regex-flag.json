@@ -6,7 +6,7 @@
       {
         "subjectKey": "alice",
         "subjectAttributes": {"version": "1.15.0", "email": "alice@example.com"},
-        "assignment": "example"
+        "assignment": "partial-example"
       },
       {
         "subjectKey": "bob",

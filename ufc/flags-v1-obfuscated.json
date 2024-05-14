@@ -120,9 +120,9 @@
       "variationType": "STRING",
       "totalShards": 10000,
       "variations": {
-        "ZXhhbXBsZQ==": {
-          "key": "ZXhhbXBsZQ==",
-          "value": "ZXhhbXBsZQ=="
+        "cGFydGlhbC1lbmNvZGU=": {
+          "key": "cGFydGlhbC1lbmNvZGU=",
+          "value": "cGFydGlhbC1lbmNvZGU="
         },
         "YmFkLWV4YW1wbGU=": {
           "key": "YmFkLWV4YW1wbGU=",
@@ -135,7 +135,7 @@
       },
       "allocations": [
         {
-          "key": "YmFkLWV4YW1wbGU=",
+          "key": "cGFydGlhbC1lbmNvZGU=",
           "doLog": true,
           "rules": [
             {
@@ -150,28 +150,7 @@
           ],
           "splits": [
             {
-              "variationKey": "YmFkLWV4YW1wbGU=",
-              "shards": []
-            }
-          ]
-        },
-        {
-          "key": "ZXhhbXBsZQ==",
-          "doLog": true,
-          "rules": [
-            {
-              "conditions": [
-                {
-                  "operator": "05015086bdd8402218f6aad6528bef08",
-                  "attribute": "0c83f57c786a0b4a39efab23731c7ebc",
-                  "value": "LipAZXhhbXBsZVwuY29t"
-                }
-              ]
-            }
-          ],
-          "splits": [
-            {
-              "variationKey": "ZXhhbXBsZQ==",
+              "variationKey": "cGFydGlhbC1lbmNvZGU=",
               "shards": []
             }
           ]

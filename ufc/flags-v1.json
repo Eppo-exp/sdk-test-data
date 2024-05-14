@@ -119,13 +119,9 @@
       "enabled": true,
       "variationType": "STRING",
       "variations": {
-        "example": {
-          "key": "example",
-          "value": "example"
-        },
-        "bad-example": {
-          "key": "bad-example",
-          "value": "bad-example"
+        "partial-example": {
+          "key": "partial-example",
+          "value": "partial-example"
         },
         "test": {
           "key": "test",
@@ -134,7 +130,7 @@
       },
       "allocations": [
         {
-          "key": "bad-example",
+          "key": "partial-example",
           "rules": [
             {
               "conditions": [
@@ -148,28 +144,7 @@
           ],
           "splits": [
             {
-              "variationKey": "bad-example",
-              "shards": []
-            }
-          ],
-          "doLog": true
-        },
-        {
-          "key": "example",
-          "rules": [
-            {
-              "conditions": [
-                {
-                  "attribute": "email",
-                  "operator": "MATCHES",
-                  "value": ".*@example\\.com"
-                }
-              ]
-            }
-          ],
-          "splits": [
-            {
-              "variationKey": "example",
+              "variationKey": "partial-example",
               "shards": []
             }
           ],
