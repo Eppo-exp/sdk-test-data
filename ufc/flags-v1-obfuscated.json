@@ -120,9 +120,9 @@
       "variationType": "STRING",
       "totalShards": 10000,
       "variations": {
-        "cGFydGlhbC1lbmNvZGU=": {
-          "key": "cGFydGlhbC1lbmNvZGU=",
-          "value": "cGFydGlhbC1lbmNvZGU="
+        "cGFydGlhbC1leGFtcGxl": {
+          "key": "cGFydGlhbC1leGFtcGxl",
+          "value": "cGFydGlhbC1leGFtcGxl"
         },
         "YmFkLWV4YW1wbGU=": {
           "key": "YmFkLWV4YW1wbGU=",
@@ -135,7 +135,7 @@
       },
       "allocations": [
         {
-          "key": "cGFydGlhbC1lbmNvZGU=",
+          "key": "cGFydGlhbC1leGFtcGxl",
           "doLog": true,
           "rules": [
             {
@@ -150,7 +150,7 @@
           ],
           "splits": [
             {
-              "variationKey": "cGFydGlhbC1lbmNvZGU=",
+              "variationKey": "cGFydGlhbC1leGFtcGxl",
               "shards": []
             }
           ]
