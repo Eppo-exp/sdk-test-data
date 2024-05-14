@@ -114,6 +114,66 @@
       ],
       "totalShards": 10000
     },
+    "regex-flag": {
+      "key": "regex-flag",
+      "enabled": true,
+      "variationType": "STRING",
+      "variations": {
+        "partial-example": {
+          "key": "partial-example",
+          "value": "partial-example"
+        },
+        "test": {
+          "key": "test",
+          "value": "test"
+        }
+      },
+      "allocations": [
+        {
+          "key": "partial-example",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "email",
+                  "operator": "MATCHES",
+                  "value": "@example\\.com"
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "partial-example",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "test",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "email",
+                  "operator": "MATCHES",
+                  "value": ".*@test\\.com"
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "test",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
     "kill-switch": {
       "key": "kill-switch",
       "enabled": true,
