@@ -1,0 +1,12 @@
+{
+    "flag": "non_bandit_flag",
+    "defaultValue": "default",
+    "subjects": [
+      {
+        "subjectKey": "alice",
+        "subjectAttributes": {"numeric_attributes": {"age": 25}, "categorical_attributes": {"country": "USA"}},
+        "actions": [],
+        "assignment": {"variation": "control", "action": null}
+      }
+    ]
+  }

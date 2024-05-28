@@ -1,0 +1,216 @@
+{
+    "flag": "banner_bandit_flag",
+    "defaultValue": "default",
+    "subjects": [
+      {
+        "subjectKey": "alice",
+        "subjectAttributes": {
+            "numeric_attributes": {"age": 25}, 
+            "categorical_attributes": {"country": "USA", "gender_identity": "female"}
+        },
+        "actions": [
+            {
+                "actionKey": "nike",
+                "numericAttributes": {"brand_affinity": 1.5},
+                "categoricalAttributes": {"loyalty_tier": "silver"}
+            },
+            {
+                "actionKey": "adidas",
+                "numericAttributes": {"brand_affinity": -1.0},
+                "categoricalAttributes": {"loyalty_tier": "bronze"}
+            },
+            {
+                "actionKey": "reebok",
+                "numericAttributes": {"brand_affinity": 0.5},
+                "categoricalAttributes": {"loyalty_tier": "gold"}
+            }
+        ],
+        "assignment": {"variation": "banner_bandit", "action": "nike"}
+      },
+
+      {
+        "subjectKey": "bob",
+        "subjectAttributes": {
+            "numeric_attributes": {"age": 30, "account_age": 10}, 
+            "categorical_attributes": {"country": "UK", "gender_identity": "male"}
+        },
+        "actions": [
+            {
+                "actionKey": "nike",
+                "numericAttributes": {"brand_affinity": -2.5},
+                "categoricalAttributes": {"loyalty_tier": "bronze"}
+            },
+            {
+                "actionKey": "adidas",
+                "numericAttributes": {"brand_affinity": 1.0},
+                "categoricalAttributes": {"loyalty_tier": "silver"}
+            },
+            {
+                "actionKey": "reebok",
+                "numericAttributes": {},
+                "categoricalAttributes": {}
+            }
+        ],
+        "assignment": {"variation": "banner_bandit", "action": "adidas"}
+      },
+
+      {
+        "subjectKey": "charlie",
+        "subjectAttributes": {
+            "numeric_attributes": {"age": 50, "account_age": 2}, 
+            "categorical_attributes": {"country": "UK", "gender_identity": "unknown"}
+        },
+        "actions": [
+            {
+                "actionKey": "nike",
+                "numericAttributes": {"brand_affinity": 1.0},
+                "categoricalAttributes": {"loyalty_tier": "gold"}
+            },
+            {
+                "actionKey": "adidas",
+                "numericAttributes": {"brand_affinity": 1.0},
+                "categoricalAttributes": {"loyalty_tier": "silver"}
+            },
+            {
+                "actionKey": "puma",
+                "numericAttributes": {},
+                "categoricalAttributes": {}
+            }
+        ],
+        "assignment": {"variation": "banner_bandit", "action": "nike"}
+      },
+
+      {
+        "subjectKey": "debra",
+        "subjectAttributes": {
+            "numeric_attributes": {"age": 28, "account_age": 30}, 
+            "categorical_attributes": {"country": "Canada", "gender_identity": "unknown"}
+        },
+        "actions": [
+            {
+                "actionKey": "reebok",
+                "numericAttributes": {},
+                "categoricalAttributes": {}
+            },
+            {
+                "actionKey": "puma",
+                "numericAttributes": {
+                    "brand_affinity": 1.0,
+                    "discount": 0.1
+                },
+                "categoricalAttributes": {
+                    "color": "red"
+                }
+            }
+        ],
+        "assignment": {"variation": "banner_bandit", "action": "reebok"}
+      },
+
+      {
+        "subjectKey": "erica",
+        "subjectAttributes": {
+            "numeric_attributes": {"age": 28, "account_age": 30}, 
+            "categorical_attributes": {"country": "USA", "gender_identity": "female"}
+        },
+        "actions": [
+            {
+                "actionKey": "nike",
+                "numericAttributes": {"brand_affinity": 1.2},
+                "categoricalAttributes": {"loyalty_tier": "platinum"}
+            },
+            {
+                "actionKey": "adidas",
+                "numericAttributes": {"brand_affinity": 1.0},
+                "categoricalAttributes": {"loyalty_tier": null}
+            },
+            {
+                "actionKey": "reebok",
+                "numericAttributes": {},
+                "categoricalAttributes": {}
+            },
+            {
+                "actionKey": "puma",
+                "numericAttributes": {
+                    "brand_affinity": 1.0,
+                    "discount": 0.1
+                },
+                "categoricalAttributes": {
+                    "color": "red"
+                }
+            }
+        ],
+        "assignment": {"variation": "default", "action": null}
+      },
+
+      {
+        "subjectKey": "frenkie",
+        "subjectAttributes": {
+            "numeric_attributes": {"age": 31, "account_age": 4}, 
+            "categorical_attributes": {"country": "Netherlands", "gender_identity": "male"}
+        },
+        "actions": [
+            {
+                "actionKey": "nike",
+                "numericAttributes": {"brand_affinity": 0.5},
+                "categoricalAttributes": {"loyalty_tier": "gold"}
+            },
+            {
+                "actionKey": "adidas",
+                "numericAttributes": {"brand_affinity": 0.0},
+                "categoricalAttributes": {"loyalty_tier": null}
+            },
+            {
+                "actionKey": "reebok",
+                "numericAttributes": {},
+                "categoricalAttributes": {}
+            },
+            {
+                "actionKey": "puma",
+                "numericAttributes": {
+                    "brand_affinity": 1.0,
+                    "discount": 0.1
+                },
+                "categoricalAttributes": {
+                    "color": "red"
+                }
+            }
+        ],
+        "assignment": {"variation": "banner_bandit", "action": "puma"}
+      },
+      {
+        "subjectKey": "gerard",
+        "subjectAttributes": {
+            "numeric_attributes": {"age": null}, 
+            "categorical_attributes": {"country": null, "gender_identity": null}
+        },
+        "actions": [
+            {
+                "actionKey": "nike",
+                "numericAttributes": {"brand_affinity": null},
+                "categoricalAttributes": {"loyalty_tier": null}
+            },
+            {
+                "actionKey": "adidas",
+                "numericAttributes": {"brand_affinity": 0.1},
+                "categoricalAttributes": {"loyalty_tier": null}
+            },
+            {
+                "actionKey": "reebok",
+                "numericAttributes": {},
+                "categoricalAttributes": {}
+            },
+            {
+                "actionKey": "puma",
+                "numericAttributes": {
+                    "brand_affinity": 1.0,
+                    "discount": 0.1
+                },
+                "categoricalAttributes": {
+                    "color": "red"
+                }
+            }
+        ],
+        "assignment": {"variation": "banner_bandit", "action": "nike"}
+      }
+    ]
+  }
