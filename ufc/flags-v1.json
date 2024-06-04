@@ -598,9 +598,34 @@
         "yellow": {
           "key": "yellow",
           "value": "yellow"
+        },
+        "purple": {
+          "key": "purple",
+          "value": "purple"
         }
       },
       "allocations": [
+        {
+          "key": "id rule",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "id",
+                  "operator": "MATCHES",
+                  "value": "zach"
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "purple",
+              "shards": []
+            }
+          ],
+          "doLog": false
+        },
         {
           "key": "internal users",
           "rules": [
@@ -609,7 +634,7 @@
                 {
                   "attribute": "email",
                   "operator": "MATCHES",
-                  "value": ".*@mycompany.com"
+                  "value": "@mycompany.com"
                 }
               ]
             }
