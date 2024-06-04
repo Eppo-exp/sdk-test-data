@@ -124,10 +124,6 @@
           "key": "cGFydGlhbC1leGFtcGxl",
           "value": "cGFydGlhbC1leGFtcGxl"
         },
-        "YmFkLWV4YW1wbGU=": {
-          "key": "YmFkLWV4YW1wbGU=",
-          "value": "YmFkLWV4YW1wbGU="
-        },
         "dGVzdA==": {
           "key": "dGVzdA==",
           "value": "dGVzdA=="
@@ -603,9 +599,34 @@
         "eWVsbG93": {
           "key": "eWVsbG93",
           "value": "eWVsbG93"
+        },
+        "cHVycGxl": {
+          "key": "cHVycGxl",
+          "value": "cHVycGxl"
         }
       },
       "allocations": [
+        {
+          "key": "aWQgcnVsZQ==",
+          "doLog": false,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "05015086bdd8402218f6aad6528bef08",
+                  "attribute": "b80bb7740288fda1f201890375a60c8f",
+                  "value": "emFjaA=="
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "cHVycGxl",
+              "shards": []
+            }
+          ]
+        },
         {
           "key": "aW50ZXJuYWwgdXNlcnM=",
           "doLog": false,
@@ -615,7 +636,7 @@
                 {
                   "operator": "05015086bdd8402218f6aad6528bef08",
                   "attribute": "0c83f57c786a0b4a39efab23731c7ebc",
-                  "value": "LipAbXljb21wYW55LmNvbQ=="
+                  "value": "QG15Y29tcGFueS5jb20="
                 }
               ]
             }

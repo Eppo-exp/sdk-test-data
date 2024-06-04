@@ -24,6 +24,16 @@
       "assignment": "blue"
     },
     {
+      "subjectKey": "zach",
+      "subjectAttributes": {"email": "test@test.com", "country": "Mexico", "age": 25},
+      "assignment": "purple"
+    },
+    {
+      "subjectKey": "Zach",
+      "subjectAttributes": {"email": "test@test.com", "country": "Mexico", "age": 25},
+      "assignment": "default"
+    },
+    {
       "subjectKey": "1",
       "subjectAttributes": {},
       "assignment": "default"
