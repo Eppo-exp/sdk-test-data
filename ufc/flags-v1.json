@@ -174,6 +174,74 @@
       ],
       "totalShards": 10000
     },
+    "numeric-one-of": {
+      "key": "numeric-one-of",
+      "enabled": true,
+      "variationType": "INTEGER",
+      "variations": {
+        "1": {
+          "key": "1",
+          "value": 1
+        },
+        "2": {
+          "key": "2",
+          "value": 2
+        },
+        "3": {
+          "key": "3",
+          "value": 3
+        }
+      },
+      "allocations": [
+        {
+          "key": "1-for-1",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "number",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "1",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "3-for-not-2",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "number",
+                  "operator": "NOT_ONE_OF",
+                  "value": [
+                    "2"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "3",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
     "kill-switch": {
       "key": "kill-switch",
       "enabled": true,

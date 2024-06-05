@@ -174,6 +174,74 @@
         }
       ]
     },
+    "afa85073f39821d6a7da4be2700c9742": {
+      "key": "afa85073f39821d6a7da4be2700c9742",
+      "enabled": true,
+      "variationType": "INTEGER",
+      "totalShards": 10000,
+      "variations": {
+        "MQ==": {
+          "key": "MQ==",
+          "value": "MQ=="
+        },
+        "Mg==": {
+          "key": "Mg==",
+          "value": "Mg=="
+        },
+        "Mw==": {
+          "key": "Mw==",
+          "value": "Mw=="
+        }
+      },
+      "allocations": [
+        {
+          "key": "MS1mb3ItMQ==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "b1bc248a7ff2b2e95569f56de68615df",
+                  "value": [
+                    "c4ca4238a0b923820dcc509a6f75849b"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "MQ==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "My1mb3Itbm90LTI=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "602f5ee0b6e84fe29f43ab48b9e1addf",
+                  "attribute": "b1bc248a7ff2b2e95569f56de68615df",
+                  "value": [
+                    "c81e728d9d4c2f636f067f89cc14862c"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "Mw==",
+              "shards": []
+            }
+          ]
+        }
+      ]
+    },
     "ea55330f6cbbaf8f57556df645c037e2": {
       "key": "ea55330f6cbbaf8f57556df645c037e2",
       "enabled": true,
