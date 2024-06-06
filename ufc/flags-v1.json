@@ -265,6 +265,120 @@
       ],
       "totalShards": 10000
     },
+    "boolean-one-of-matches": {
+      "key": "boolean-one-of-matches",
+      "enabled": true,
+      "variationType": "INTEGER",
+      "variations": {
+        "1": {
+          "key": "1",
+          "value": 1
+        },
+        "2": {
+          "key": "2",
+          "value": 2
+        },
+        "3": {
+          "key": "3",
+          "value": 3
+        },
+        "4": {
+          "key": "4",
+          "value": 4
+        }
+      },
+      "allocations": [
+        {
+          "key": "1-for-one-of",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "one_of_flag",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "true"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "1",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "2-for-matches",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "matches_flag",
+                  "operator": "MATCHES",
+                  "value": "true"
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "2",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "3-for-not-one-of",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "not_one_of_flag",
+                  "operator": "NOT_ONE_OF",
+                  "value": [
+                    "false"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "3",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "4-for-not-matches",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "not_matches_flag",
+                  "operator": "NOT_MATCHES",
+                  "value": "false"
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "4",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
     "kill-switch": {
       "key": "kill-switch",
       "enabled": true,
