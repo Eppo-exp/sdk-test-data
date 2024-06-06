@@ -37,7 +37,7 @@
         "subjectKey": "george",
         "subjectAttributes": {"number": 123456789.0},
         "assignment": 2
-      },
+      }
     ]
   }
 
