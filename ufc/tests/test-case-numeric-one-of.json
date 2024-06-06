@@ -31,8 +31,13 @@
       {
         "subjectKey": "frank",
         "subjectAttributes": {"number": 1.0},
-        "assignment": 3
-      }
+        "assignment": 1
+      },
+      {
+        "subjectKey": "george",
+        "subjectAttributes": {"number": 123456789.0},
+        "assignment": 2
+      },
     ]
   }
-  
+

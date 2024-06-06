@@ -218,6 +218,29 @@
           ]
         },
         {
+          "key": "Mi1mb3ItMTIzNDU2Nzg5",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "b1bc248a7ff2b2e95569f56de68615df",
+                  "value": [
+                    "25f9e794323b453885f5181f1b624d0b"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "Mg==",
+              "shards": []
+            }
+          ]
+        },
+        {
           "key": "My1mb3Itbm90LTI=",
           "doLog": true,
           "rules": [
