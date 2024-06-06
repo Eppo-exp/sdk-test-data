@@ -217,6 +217,29 @@
           "doLog": true
         },
         {
+          "key": "2-for-123456789",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "number",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "123456789"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "2",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
           "key": "3-for-not-2",
           "rules": [
             {
