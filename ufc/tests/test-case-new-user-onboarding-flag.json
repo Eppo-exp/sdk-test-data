@@ -29,6 +29,11 @@
       "assignment": "purple"
     },
     {
+      "subjectKey": "zach",
+      "subjectAttributes": {"id": "override-id", "email": "test@test.com", "country": "Mexico", "age": 25},
+      "assignment": "blue"
+    },
+    {
       "subjectKey": "Zach",
       "subjectAttributes": {"email": "test@test.com", "country": "Mexico", "age": 25},
       "assignment": "default"
