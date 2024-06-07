@@ -265,6 +265,120 @@
         }
       ]
     },
+    "f291547a8d98050349d2797bdc892cbd": {
+      "key": "f291547a8d98050349d2797bdc892cbd",
+      "enabled": true,
+      "variationType": "INTEGER",
+      "totalShards": 10000,
+      "variations": {
+        "MQ==": {
+          "key": "MQ==",
+          "value": "MQ=="
+        },
+        "Mg==": {
+          "key": "Mg==",
+          "value": "Mg=="
+        },
+        "Mw==": {
+          "key": "Mw==",
+          "value": "Mw=="
+        },
+        "NA==": {
+          "key": "NA==",
+          "value": "NA=="
+        }
+      },
+      "allocations": [
+        {
+          "key": "MS1mb3Itb25lLW9m",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "d19223cfb8afe3b1b814484c0cb9e2eb",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "MQ==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "Mi1mb3ItbWF0Y2hlcw==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "05015086bdd8402218f6aad6528bef08",
+                  "attribute": "b8383ef51a1150135a0e7a37ea3a191e",
+                  "value": "dHJ1ZQ=="
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "Mg==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "My1mb3Itbm90LW9uZS1vZg==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "602f5ee0b6e84fe29f43ab48b9e1addf",
+                  "attribute": "c341926a344e0a54aa7da4015f42e9b8",
+                  "value": [
+                    "68934a3e9455fa72420237eb05902327"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "Mw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "NC1mb3Itbm90LW1hdGNoZXM=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "8323761667755378c3a78e0a6ed37a78",
+                  "attribute": "aa5e7ff65af43ebb0cd5b48dd6b13f82",
+                  "value": "ZmFsc2U="
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "NA==",
+              "shards": []
+            }
+          ]
+        }
+      ]
+    },
     "ea55330f6cbbaf8f57556df645c037e2": {
       "key": "ea55330f6cbbaf8f57556df645c037e2",
       "enabled": true,

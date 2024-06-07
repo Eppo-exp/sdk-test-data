@@ -1,0 +1,73 @@
+{
+    "flag": "boolean-one-of-matches",
+    "variationType": "INTEGER",
+    "defaultValue": 0,
+    "subjects": [
+      {
+        "subjectKey": "alice",
+        "subjectAttributes": {"one_of_flag": true},
+        "assignment": 1
+      },
+      {
+        "subjectKey": "bob",
+        "subjectAttributes": {"one_of_flag": false },
+        "assignment": 0
+      },
+      {
+        "subjectKey": "charlie",
+        "subjectAttributes": {"one_of_flag": "True"},
+        "assignment": 0
+      },
+      {
+        "subjectKey": "derek",
+        "subjectAttributes": {"matches_flag": true},
+        "assignment": 2
+      },
+      {
+        "subjectKey": "erica",
+        "subjectAttributes": {"matches_flag": false},
+        "assignment": 0
+      },
+      {
+        "subjectKey": "frank",
+        "subjectAttributes": {"not_matches_flag": false},
+        "assignment": 0
+      },
+      {
+        "subjectKey": "george",
+        "subjectAttributes": {"not_matches_flag": true},
+        "assignment": 4
+      },
+      {
+        "subjectKey": "haley",
+        "subjectAttributes": {"not_matches_flag": "False"},
+        "assignment": 4
+      },
+      {
+        "subjectKey": "ivy",
+        "subjectAttributes": {"not_one_of_flag": true},
+        "assignment": 3
+      },
+      {
+        "subjectKey": "julia",
+        "subjectAttributes": {"not_one_of_flag": false},
+        "assignment": 0
+      },
+      {
+        "subjectKey": "kim",
+        "subjectAttributes": {"not_one_of_flag": "False"},
+        "assignment": 3
+      },
+      {
+        "subjectKey": "lucas",
+        "subjectAttributes": {"not_one_of_flag": "true"},
+        "assignment": 3
+      },
+      {
+        "subjectKey": "mike",
+        "subjectAttributes": {"not_one_of_flag": "false"},
+        "assignment": 0
+      }
+    ]
+  }
+
