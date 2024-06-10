@@ -67,6 +67,21 @@
         "subjectKey": "mike",
         "subjectAttributes": {"not_one_of_flag": "false"},
         "assignment": 0
+      },
+      {
+        "subjectKey": "nicole",
+        "subjectAttributes": {"null_flag": "null"},
+        "assignment": 5
+      },
+      {
+        "subjectKey": "owen",
+        "subjectAttributes": {"null_flag": null},
+        "assignment": 0
+      },
+      {
+        "subjectKey": "pete",
+        "subjectAttributes": {},
+        "assignment": 0
       }
     ]
   }
