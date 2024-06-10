@@ -77,6 +77,11 @@
         "subjectKey": "owen",
         "subjectAttributes": {"null_flag": null},
         "assignment": 0
+      },
+      {
+        "subjectKey": "pete",
+        "subjectAttributes": {},
+        "assignment": 0
       }
     ]
   }
