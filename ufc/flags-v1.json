@@ -285,6 +285,10 @@
         "4": {
           "key": "4",
           "value": 4
+        },
+        "5": {
+          "key": "5",
+          "value": 5
         }
       },
       "allocations": [
@@ -371,6 +375,29 @@
           "splits": [
             {
               "variationKey": "4",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "5-for-matches-null",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "null_flag",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "null"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "5",
               "shards": []
             }
           ],
