@@ -1,22 +1,38 @@
 {
   "flag": "no_allocations_flag",
   "variationType": "JSON",
-  "defaultValue": {"hello": "world"},
+  "defaultValue": {
+    "hello": "world"
+  },
   "subjects": [
     {
       "subjectKey": "alice",
-      "subjectAttributes": {"email": "alice@mycompany.com", "country": "US"},
-      "assignment": {"hello": "world"}
+      "subjectAttributes": {
+        "email": "alice@mycompany.com",
+        "country": "US"
+      },
+      "assignment": {
+        "hello": "world"
+      }
     },
     {
       "subjectKey": "bob",
-      "subjectAttributes": {"email": "bob@example.com", "country": "Canada"},
-      "assignment": {"hello": "world"}
+      "subjectAttributes": {
+        "email": "bob@example.com",
+        "country": "Canada"
+      },
+      "assignment": {
+        "hello": "world"
+      }
     },
     {
       "subjectKey": "charlie",
-      "subjectAttributes": {"age": 50},
-      "assignment": {"hello": "world"}
+      "subjectAttributes": {
+        "age": 50
+      },
+      "assignment": {
+        "hello": "world"
+      }
     }
   ]
 }

@@ -5,17 +5,25 @@
   "subjects": [
     {
       "subjectKey": "alice",
-      "subjectAttributes": {"email": "alice@mycompany.com", "country": "US"},
+      "subjectAttributes": {
+        "email": "alice@mycompany.com",
+        "country": "US"
+      },
       "assignment": "default_value"
     },
     {
       "subjectKey": "bob",
-      "subjectAttributes": {"email": "bob@example.com", "country": "Canada"},
+      "subjectAttributes": {
+        "email": "bob@example.com",
+        "country": "Canada"
+      },
       "assignment": "default_value"
     },
     {
       "subjectKey": "charlie",
-      "subjectAttributes": {"age": 50},
+      "subjectAttributes": {
+        "age": 50
+      },
       "assignment": "default_value"
     }
   ]

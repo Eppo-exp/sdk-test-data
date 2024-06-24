@@ -1,43 +1,56 @@
 {
-    "flag": "numeric-one-of",
-    "variationType": "INTEGER",
-    "defaultValue": 0,
-    "subjects": [
-      {
-        "subjectKey": "alice",
-        "subjectAttributes": {"number": 1},
-        "assignment": 1
+  "flag": "numeric-one-of",
+  "variationType": "INTEGER",
+  "defaultValue": 0,
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {
+        "number": 1
       },
-      {
-        "subjectKey": "bob",
-        "subjectAttributes": {"number": 2 },
-        "assignment": 0
+      "assignment": 1
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {
+        "number": 2
       },
-      {
-        "subjectKey": "charlie",
-        "subjectAttributes": {"number": 3},
-        "assignment": 3
+      "assignment": 0
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {
+        "number": 3
       },
-      {
-        "subjectKey": "derek",
-        "subjectAttributes": {"number": 4},
-        "assignment": 3
+      "assignment": 3
+    },
+    {
+      "subjectKey": "derek",
+      "subjectAttributes": {
+        "number": 4
       },
-      {
-        "subjectKey": "erica",
-        "subjectAttributes": {"number": "1"},
-        "assignment": 1
+      "assignment": 3
+    },
+    {
+      "subjectKey": "erica",
+      "subjectAttributes": {
+        "number": "1"
       },
-      {
-        "subjectKey": "frank",
-        "subjectAttributes": {"number": 1.0},
-        "assignment": 1
+      "assignment": 1
+    },
+    {
+      "subjectKey": "frank",
+      "subjectAttributes": {
+        "number": 1
       },
-      {
-        "subjectKey": "george",
-        "subjectAttributes": {"number": 123456789.0},
-        "assignment": 2
-      }
-    ]
-  }
-
+      "assignment": 1
+    },
+    {
+      "subjectKey": "george",
+      "subjectAttributes": {
+        "number": 123456789
+      },
+      "assignment": 2
+    }
+  ]
+}

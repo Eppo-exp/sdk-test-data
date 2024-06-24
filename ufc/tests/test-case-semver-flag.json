@@ -1,37 +1,51 @@
 {
-    "flag": "semver-test",
-    "variationType": "STRING",
-    "defaultValue": "unknown",
-    "subjects": [
-      {
-        "subjectKey": "alice",
-        "subjectAttributes": {"version": "1.15.0", "country": "US"},
-        "assignment": "current"
+  "flag": "semver-test",
+  "variationType": "STRING",
+  "defaultValue": "unknown",
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {
+        "version": "1.15.0",
+        "country": "US"
       },
-      {
-        "subjectKey": "bob",
-        "subjectAttributes": {"version": "0.20.1", "country": "Canada"},
-        "assignment": "old"
+      "assignment": "current"
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {
+        "version": "0.20.1",
+        "country": "Canada"
       },
-      {
-        "subjectKey": "charlie",
-        "subjectAttributes": {"version": "2.1.13"},
-        "assignment": "current"
+      "assignment": "old"
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {
+        "version": "2.1.13"
       },
-      {
-        "subjectKey": "david",
-        "subjectAttributes": {"version": "3.1.0"},
-        "assignment": "unknown"
+      "assignment": "current"
+    },
+    {
+      "subjectKey": "david",
+      "subjectAttributes": {
+        "version": "3.1.0"
       },
-      {
-        "subjectKey": "elize",
-        "subjectAttributes": {"version": "3.1.1"},
-        "assignment": "new"
+      "assignment": "unknown"
+    },
+    {
+      "subjectKey": "elize",
+      "subjectAttributes": {
+        "version": "3.1.1"
       },
-      {
-        "subjectKey": "frank",
-        "subjectAttributes": {"version": "1.5.0"},
-        "assignment": "current"
-      }
-    ]
-  }
+      "assignment": "new"
+    },
+    {
+      "subjectKey": "frank",
+      "subjectAttributes": {
+        "version": "1.5.0"
+      },
+      "assignment": "current"
+    }
+  ]
+}

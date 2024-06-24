@@ -1,27 +1,38 @@
 {
-    "flag": "regex-flag",
-    "variationType": "STRING",
-    "defaultValue": "none",
-    "subjects": [
-      {
-        "subjectKey": "alice",
-        "subjectAttributes": {"version": "1.15.0", "email": "alice@example.com"},
-        "assignment": "partial-example"
+  "flag": "regex-flag",
+  "variationType": "STRING",
+  "defaultValue": "none",
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {
+        "version": "1.15.0",
+        "email": "alice@example.com"
       },
-      {
-        "subjectKey": "bob",
-        "subjectAttributes": {"version": "0.20.1", "email": "bob@test.com"},
-        "assignment": "test"
+      "assignment": "partial-example"
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {
+        "version": "0.20.1",
+        "email": "bob@test.com"
       },
-      {
-        "subjectKey": "charlie",
-        "subjectAttributes": {"version": "2.1.13"},
-        "assignment": "none"
+      "assignment": "test"
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {
+        "version": "2.1.13"
       },
-      {
-        "subjectKey": "derek",
-        "subjectAttributes": {"version": "2.1.13", "email": "derek@gmail.com"},
-        "assignment": "none"
-      }
-    ]
-  }
+      "assignment": "none"
+    },
+    {
+      "subjectKey": "derek",
+      "subjectAttributes": {
+        "version": "2.1.13",
+        "email": "derek@gmail.com"
+      },
+      "assignment": "none"
+    }
+  ]
+}

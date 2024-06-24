@@ -1,32 +1,44 @@
 {
-    "flag": "null-operator-test",
-    "variationType": "STRING",
-    "defaultValue": "default-null",
-    "subjects": [
-      {
-        "subjectKey": "alice",
-        "subjectAttributes": {"size": 5, "country": "US"},
-        "assignment": "old"
+  "flag": "null-operator-test",
+  "variationType": "STRING",
+  "defaultValue": "default-null",
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {
+        "size": 5,
+        "country": "US"
       },
-      {
-        "subjectKey": "bob",
-        "subjectAttributes": {"size": 10, "country": "Canada"},
-        "assignment": "new"
+      "assignment": "old"
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {
+        "size": 10,
+        "country": "Canada"
       },
-      {
-        "subjectKey": "charlie",
-        "subjectAttributes": {"size": null},
-        "assignment": "old"
+      "assignment": "new"
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {
+        "size": null
       },
-      {
-        "subjectKey": "david",
-        "subjectAttributes": {"size": 26},
-        "assignment": "new"
+      "assignment": "old"
+    },
+    {
+      "subjectKey": "david",
+      "subjectAttributes": {
+        "size": 26
       },
-      {
-        "subjectKey": "elize",
-        "subjectAttributes": {"country": "UK"},
-        "assignment": "old"
-      }
-    ]
-  }
+      "assignment": "new"
+    },
+    {
+      "subjectKey": "elize",
+      "subjectAttributes": {
+        "country": "UK"
+      },
+      "assignment": "old"
+    }
+  ]
+}

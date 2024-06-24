@@ -1,23 +1,30 @@
 {
-    "flag": "invalid-value-flag",
-    "variationType": "INTEGER",
-    "defaultValue": 42,
-    "subjects": [
-      {
-        "subjectKey": "alice",
-        "subjectAttributes": {"email": "alice@mycompany.com", "country": "US"},
-        "assignment": 42
+  "flag": "invalid-value-flag",
+  "variationType": "INTEGER",
+  "defaultValue": 42,
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {
+        "email": "alice@mycompany.com",
+        "country": "US"
       },
-      {
-        "subjectKey": "bob",
-        "subjectAttributes": {"email": "bob@example.com", "country": "Canada"},
-        "assignment": 1
+      "assignment": 42
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {
+        "email": "bob@example.com",
+        "country": "Canada"
       },
-      {
-        "subjectKey": "charlie",
-        "subjectAttributes": {"age": 50},
-        "assignment": 42
-      }
-    ]
-  }
-  
+      "assignment": 1
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {
+        "age": 50
+      },
+      "assignment": 42
+    }
+  ]
+}

@@ -1,32 +1,44 @@
 {
-    "flag": "comparator-operator-test",
-    "variationType": "STRING",
-    "defaultValue": "unknown",
-    "subjects": [
-      {
-        "subjectKey": "alice",
-        "subjectAttributes": {"size": 5, "country": "US"},
-        "assignment": "small"
+  "flag": "comparator-operator-test",
+  "variationType": "STRING",
+  "defaultValue": "unknown",
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {
+        "size": 5,
+        "country": "US"
       },
-      {
-        "subjectKey": "bob",
-        "subjectAttributes": {"size": 10, "country": "Canada"},
-        "assignment": "medium"
+      "assignment": "small"
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {
+        "size": 10,
+        "country": "Canada"
       },
-      {
-        "subjectKey": "charlie",
-        "subjectAttributes": {"size": 25},
-        "assignment": "unknown"
+      "assignment": "medium"
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {
+        "size": 25
       },
-      {
-        "subjectKey": "david",
-        "subjectAttributes": {"size": 26},
-        "assignment": "large"
+      "assignment": "unknown"
+    },
+    {
+      "subjectKey": "david",
+      "subjectAttributes": {
+        "size": 26
       },
-      {
-        "subjectKey": "elize",
-        "subjectAttributes": {"country": "UK"},
-        "assignment": "unknown"
-      }
-    ]
-  }
+      "assignment": "large"
+    },
+    {
+      "subjectKey": "elize",
+      "subjectAttributes": {
+        "country": "UK"
+      },
+      "assignment": "unknown"
+    }
+  ]
+}

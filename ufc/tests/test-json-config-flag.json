@@ -1,22 +1,42 @@
 {
-    "flag": "json-config-flag",
-    "variationType": "JSON",
-    "defaultValue": {},
-    "subjects": [
-      {
-        "subjectKey": "alice",
-        "subjectAttributes": {"email": "alice@mycompany.com", "country": "US"},
-        "assignment": { "integer": 1, "string": "one", "float": 1.0 }
+  "flag": "json-config-flag",
+  "variationType": "JSON",
+  "defaultValue": {},
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {
+        "email": "alice@mycompany.com",
+        "country": "US"
       },
-      {
-        "subjectKey": "bob",
-        "subjectAttributes": {"email": "bob@example.com", "country": "Canada"},
-        "assignment": { "integer": 2, "string": "two", "float": 2.0 }
-      },
-      {
-        "subjectKey": "charlie",
-        "subjectAttributes": {"age": 50},
-        "assignment": { "integer": 2, "string": "two", "float": 2.0 }
+      "assignment": {
+        "integer": 1,
+        "string": "one",
+        "float": 1
       }
-    ]
-  }
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {
+        "email": "bob@example.com",
+        "country": "Canada"
+      },
+      "assignment": {
+        "integer": 2,
+        "string": "two",
+        "float": 2
+      }
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {
+        "age": 50
+      },
+      "assignment": {
+        "integer": 2,
+        "string": "two",
+        "float": 2
+      }
+    }
+  ]
+}
