@@ -8,49 +8,293 @@
       "subjectAttributes": {
         "number": 1
       },
-      "assignment": 1
+      "assignment": 1,
+      "assignmentDetails": {
+        "value": 1,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"1-for-1\".",
+        "variationKey": "1",
+        "variationValue": 1,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "number",
+              "operator": "ONE_OF",
+              "value": [
+                "1"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "1-for-1",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "2-for-123456789",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 1
+          },
+          {
+            "key": "3-for-not-2",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     },
     {
       "subjectKey": "bob",
       "subjectAttributes": {
         "number": 2
       },
-      "assignment": 0
+      "assignment": 0,
+      "assignmentDetails": {
+        "value": 0,
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-1",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "2-for-123456789",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "3-for-not-2",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "charlie",
       "subjectAttributes": {
         "number": 3
       },
-      "assignment": 3
+      "assignment": 3,
+      "assignmentDetails": {
+        "value": 3,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-2\".",
+        "variationKey": "3",
+        "variationValue": 3,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "number",
+              "operator": "NOT_ONE_OF",
+              "value": [
+                "2"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "3-for-not-2",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-1",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "2-for-123456789",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "derek",
       "subjectAttributes": {
         "number": 4
       },
-      "assignment": 3
+      "assignment": 3,
+      "assignmentDetails": {
+        "value": 3,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-2\".",
+        "variationKey": "3",
+        "variationValue": 3,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "number",
+              "operator": "NOT_ONE_OF",
+              "value": [
+                "2"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "3-for-not-2",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-1",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "2-for-123456789",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "erica",
       "subjectAttributes": {
         "number": "1"
       },
-      "assignment": 1
+      "assignment": 1,
+      "assignmentDetails": {
+        "value": 1,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"1-for-1\".",
+        "variationKey": "1",
+        "variationValue": 1,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "number",
+              "operator": "ONE_OF",
+              "value": [
+                "1"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "1-for-1",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "2-for-123456789",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 1
+          },
+          {
+            "key": "3-for-not-2",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     },
     {
       "subjectKey": "frank",
       "subjectAttributes": {
         "number": 1
       },
-      "assignment": 1
+      "assignment": 1,
+      "assignmentDetails": {
+        "value": 1,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"1-for-1\".",
+        "variationKey": "1",
+        "variationValue": 1,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "number",
+              "operator": "ONE_OF",
+              "value": [
+                "1"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "1-for-1",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "2-for-123456789",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 1
+          },
+          {
+            "key": "3-for-not-2",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     },
     {
       "subjectKey": "george",
       "subjectAttributes": {
         "number": 123456789
       },
-      "assignment": 2
+      "assignment": 2,
+      "assignmentDetails": {
+        "value": 2,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"2-for-123456789\".",
+        "variationKey": "2",
+        "variationValue": 2,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "number",
+              "operator": "ONE_OF",
+              "value": [
+                "123456789"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "2-for-123456789",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-1",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          }
+        ],
+        "unevaluatedAllocations": [
+          {
+            "key": "3-for-not-2",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     }
   ]
 }

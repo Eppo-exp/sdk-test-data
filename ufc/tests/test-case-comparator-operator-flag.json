@@ -9,7 +9,41 @@
         "size": 5,
         "country": "US"
       },
-      "assignment": "small"
+      "assignment": "small",
+      "assignmentDetails": {
+        "value": "small",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"small-size\".",
+        "variationKey": "small",
+        "variationValue": "small",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "size",
+              "operator": "LT",
+              "value": 10
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "small-size",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "medum-size",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 1
+          },
+          {
+            "key": "large-size",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     },
     {
       "subjectKey": "bob",
@@ -17,28 +51,156 @@
         "size": 10,
         "country": "Canada"
       },
-      "assignment": "medium"
+      "assignment": "medium",
+      "assignmentDetails": {
+        "value": "medium",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"medum-size\".",
+        "variationKey": "medium",
+        "variationValue": "medium",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "size",
+              "operator": "GTE",
+              "value": 10
+            },
+            {
+              "attribute": "size",
+              "operator": "LTE",
+              "value": 20
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "medum-size",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "small-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          }
+        ],
+        "unevaluatedAllocations": [
+          {
+            "key": "large-size",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     },
     {
       "subjectKey": "charlie",
       "subjectAttributes": {
         "size": 25
       },
-      "assignment": "unknown"
+      "assignment": "unknown",
+      "assignmentDetails": {
+        "value": "unknown",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "small-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "medum-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "large-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "david",
       "subjectAttributes": {
         "size": 26
       },
-      "assignment": "large"
+      "assignment": "large",
+      "assignmentDetails": {
+        "value": "large",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"large-size\".",
+        "variationKey": "large",
+        "variationValue": "large",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "size",
+              "operator": "GT",
+              "value": 25
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "large-size",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "small-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "medum-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "elize",
       "subjectAttributes": {
         "country": "UK"
       },
-      "assignment": "unknown"
+      "assignment": "unknown",
+      "assignmentDetails": {
+        "value": "unknown",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "small-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "medum-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "large-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     }
   ]
 }

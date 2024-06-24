@@ -13,6 +13,25 @@
         "integer": 1,
         "string": "one",
         "float": 1
+      },
+      "assignmentDetails": {
+        "value": {
+          "integer": 1,
+          "string": "one",
+          "float": 1
+        },
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "alice belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
+        "variationKey": "one",
+        "variationValue": "{ \"integer\": 1, \"string\": \"one\", \"float\": 1.0 }",
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "50/50 split",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
       }
     },
     {
@@ -25,6 +44,25 @@
         "integer": 2,
         "string": "two",
         "float": 2
+      },
+      "assignmentDetails": {
+        "value": {
+          "integer": 2,
+          "string": "two",
+          "float": 2
+        },
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "bob belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
+        "variationKey": "two",
+        "variationValue": "{ \"integer\": 2, \"string\": \"two\", \"float\": 2.0 }",
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "50/50 split",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
       }
     },
     {
@@ -36,6 +74,25 @@
         "integer": 2,
         "string": "two",
         "float": 2
+      },
+      "assignmentDetails": {
+        "value": {
+          "integer": 2,
+          "string": "two",
+          "float": 2
+        },
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
+        "variationKey": "two",
+        "variationValue": "{ \"integer\": 2, \"string\": \"two\", \"float\": 2.0 }",
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "50/50 split",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
       }
     }
   ]

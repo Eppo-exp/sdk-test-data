@@ -9,7 +9,33 @@
         "version": "1.15.0",
         "country": "US"
       },
-      "assignment": "current"
+      "assignment": "current",
+      "assignmentDetails": {
+        "value": "current",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "alice belongs to the range of traffic assigned to \"current\" defined in allocation \"current-versions\".",
+        "variationKey": "current",
+        "variationValue": "current",
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "current-versions",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "old-versions",
+            "allocationEvaluationCode": "AFTER_END_TIME",
+            "orderPosition": 0
+          },
+          {
+            "key": "future-versions",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "bob",
@@ -17,14 +43,66 @@
         "version": "0.20.1",
         "country": "Canada"
       },
-      "assignment": "current"
+      "assignment": "current",
+      "assignmentDetails": {
+        "value": "current",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "bob belongs to the range of traffic assigned to \"current\" defined in allocation \"current-versions\".",
+        "variationKey": "current",
+        "variationValue": "current",
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "current-versions",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "old-versions",
+            "allocationEvaluationCode": "AFTER_END_TIME",
+            "orderPosition": 0
+          },
+          {
+            "key": "future-versions",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "charlie",
       "subjectAttributes": {
         "version": "2.1.13"
       },
-      "assignment": "current"
+      "assignment": "current",
+      "assignmentDetails": {
+        "value": "current",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"current\" defined in allocation \"current-versions\".",
+        "variationKey": "current",
+        "variationValue": "current",
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "current-versions",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "old-versions",
+            "allocationEvaluationCode": "AFTER_END_TIME",
+            "orderPosition": 0
+          },
+          {
+            "key": "future-versions",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     }
   ]
 }

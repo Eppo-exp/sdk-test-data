@@ -9,7 +9,22 @@
         "email": "alice@mycompany.com",
         "country": "US"
       },
-      "assignment": 3.1415926
+      "assignment": 3.1415926,
+      "assignmentDetails": {
+        "value": 3.1415926,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "alice belongs to the range of traffic assigned to \"pi\" defined in allocation \"rollout\".",
+        "variationKey": "pi",
+        "variationValue": 3.1415926,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "rollout",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "bob",
@@ -17,14 +32,44 @@
         "email": "bob@example.com",
         "country": "Canada"
       },
-      "assignment": 3.1415926
+      "assignment": 3.1415926,
+      "assignmentDetails": {
+        "value": 3.1415926,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "bob belongs to the range of traffic assigned to \"pi\" defined in allocation \"rollout\".",
+        "variationKey": "pi",
+        "variationValue": 3.1415926,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "rollout",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "charlie",
       "subjectAttributes": {
         "age": 50
       },
-      "assignment": 3.1415926
+      "assignment": 3.1415926,
+      "assignmentDetails": {
+        "value": 3.1415926,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"pi\" defined in allocation \"rollout\".",
+        "variationKey": "pi",
+        "variationValue": 3.1415926,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "rollout",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
+      }
     }
   ]
 }

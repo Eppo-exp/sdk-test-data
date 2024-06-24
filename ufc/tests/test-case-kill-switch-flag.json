@@ -9,7 +9,45 @@
         "email": "alice@mycompany.com",
         "country": "US"
       },
-      "assignment": true
+      "assignment": true,
+      "assignmentDetails": {
+        "value": true,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
+        "variationKey": "on",
+        "variationValue": true,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "country",
+              "operator": "ONE_OF",
+              "value": [
+                "US",
+                "Canada",
+                "Mexico"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "on-for-NA",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 1
+          },
+          {
+            "key": "off-for-all",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     },
     {
       "subjectKey": "bob",
@@ -17,7 +55,45 @@
         "email": "bob@example.com",
         "country": "Canada"
       },
-      "assignment": true
+      "assignment": true,
+      "assignmentDetails": {
+        "value": true,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
+        "variationKey": "on",
+        "variationValue": true,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "country",
+              "operator": "ONE_OF",
+              "value": [
+                "US",
+                "Canada",
+                "Mexico"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "on-for-NA",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 1
+          },
+          {
+            "key": "off-for-all",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     },
     {
       "subjectKey": "barbara",
@@ -25,14 +101,66 @@
         "email": "barbara@example.com",
         "country": "canada"
       },
-      "assignment": false
+      "assignment": false,
+      "assignmentDetails": {
+        "value": false,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "barbara belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
+        "variationKey": "off",
+        "variationValue": false,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "off-for-all",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "on-for-NA",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "charlie",
       "subjectAttributes": {
         "age": 40
       },
-      "assignment": false
+      "assignment": false,
+      "assignmentDetails": {
+        "value": false,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
+        "variationKey": "off",
+        "variationValue": false,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "off-for-all",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "on-for-NA",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "debra",
@@ -41,19 +169,121 @@
         "country": "Mexico",
         "age": 25
       },
-      "assignment": true
+      "assignment": true,
+      "assignmentDetails": {
+        "value": true,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
+        "variationKey": "on",
+        "variationValue": true,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "country",
+              "operator": "ONE_OF",
+              "value": [
+                "US",
+                "Canada",
+                "Mexico"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "on-for-NA",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 1
+          },
+          {
+            "key": "off-for-all",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     },
     {
       "subjectKey": "1",
       "subjectAttributes": {},
-      "assignment": false
+      "assignment": false,
+      "assignmentDetails": {
+        "value": false,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "1 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
+        "variationKey": "off",
+        "variationValue": false,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "off-for-all",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "on-for-NA",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "2",
       "subjectAttributes": {
         "country": "Mexico"
       },
-      "assignment": true
+      "assignment": true,
+      "assignmentDetails": {
+        "value": true,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
+        "variationKey": "on",
+        "variationValue": true,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "country",
+              "operator": "ONE_OF",
+              "value": [
+                "US",
+                "Canada",
+                "Mexico"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "on-for-NA",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 1
+          },
+          {
+            "key": "off-for-all",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     },
     {
       "subjectKey": "3",
@@ -61,28 +291,141 @@
         "country": "UK",
         "age": 50
       },
-      "assignment": true
+      "assignment": true,
+      "assignmentDetails": {
+        "value": true,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-age-50+\".",
+        "variationKey": "on",
+        "variationValue": true,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "age",
+              "operator": "GTE",
+              "value": 50
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "on-for-age-50+",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "on-for-NA",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          }
+        ],
+        "unevaluatedAllocations": [
+          {
+            "key": "off-for-all",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     },
     {
       "subjectKey": "4",
       "subjectAttributes": {
         "country": "Germany"
       },
-      "assignment": false
+      "assignment": false,
+      "assignmentDetails": {
+        "value": false,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "4 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
+        "variationKey": "off",
+        "variationValue": false,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "off-for-all",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "on-for-NA",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "5",
       "subjectAttributes": {
         "country": "Germany"
       },
-      "assignment": false
+      "assignment": false,
+      "assignmentDetails": {
+        "value": false,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "5 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
+        "variationKey": "off",
+        "variationValue": false,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "off-for-all",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "on-for-NA",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "6",
       "subjectAttributes": {
         "country": "Germany"
       },
-      "assignment": false
+      "assignment": false,
+      "assignmentDetails": {
+        "value": false,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "6 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
+        "variationKey": "off",
+        "variationValue": false,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "off-for-all",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "on-for-NA",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "7",
@@ -90,7 +433,45 @@
         "country": "US",
         "age": 12
       },
-      "assignment": true
+      "assignment": true,
+      "assignmentDetails": {
+        "value": true,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
+        "variationKey": "on",
+        "variationValue": true,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "country",
+              "operator": "ONE_OF",
+              "value": [
+                "US",
+                "Canada",
+                "Mexico"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "on-for-NA",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 1
+          },
+          {
+            "key": "off-for-all",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     },
     {
       "subjectKey": "8",
@@ -98,78 +479,423 @@
         "country": "Italy",
         "age": 60
       },
-      "assignment": true
+      "assignment": true,
+      "assignmentDetails": {
+        "value": true,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-age-50+\".",
+        "variationKey": "on",
+        "variationValue": true,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "age",
+              "operator": "GTE",
+              "value": 50
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "on-for-age-50+",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "on-for-NA",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          }
+        ],
+        "unevaluatedAllocations": [
+          {
+            "key": "off-for-all",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     },
     {
       "subjectKey": "9",
       "subjectAttributes": {
         "email": "email@email.com"
       },
-      "assignment": false
+      "assignment": false,
+      "assignmentDetails": {
+        "value": false,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "9 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
+        "variationKey": "off",
+        "variationValue": false,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "off-for-all",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "on-for-NA",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "10",
       "subjectAttributes": {},
-      "assignment": false
+      "assignment": false,
+      "assignmentDetails": {
+        "value": false,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "10 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
+        "variationKey": "off",
+        "variationValue": false,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "off-for-all",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "on-for-NA",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "11",
       "subjectAttributes": {},
-      "assignment": false
+      "assignment": false,
+      "assignmentDetails": {
+        "value": false,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "11 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
+        "variationKey": "off",
+        "variationValue": false,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "off-for-all",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "on-for-NA",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "12",
       "subjectAttributes": {
         "country": "US"
       },
-      "assignment": true
+      "assignment": true,
+      "assignmentDetails": {
+        "value": true,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
+        "variationKey": "on",
+        "variationValue": true,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "country",
+              "operator": "ONE_OF",
+              "value": [
+                "US",
+                "Canada",
+                "Mexico"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "on-for-NA",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 1
+          },
+          {
+            "key": "off-for-all",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     },
     {
       "subjectKey": "13",
       "subjectAttributes": {
         "country": "Canada"
       },
-      "assignment": true
+      "assignment": true,
+      "assignmentDetails": {
+        "value": true,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
+        "variationKey": "on",
+        "variationValue": true,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "country",
+              "operator": "ONE_OF",
+              "value": [
+                "US",
+                "Canada",
+                "Mexico"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "on-for-NA",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 1
+          },
+          {
+            "key": "off-for-all",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     },
     {
       "subjectKey": "14",
       "subjectAttributes": {},
-      "assignment": false
+      "assignment": false,
+      "assignmentDetails": {
+        "value": false,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "14 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
+        "variationKey": "off",
+        "variationValue": false,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "off-for-all",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "on-for-NA",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "15",
       "subjectAttributes": {
         "country": "Denmark"
       },
-      "assignment": false
+      "assignment": false,
+      "assignmentDetails": {
+        "value": false,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "15 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
+        "variationKey": "off",
+        "variationValue": false,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "off-for-all",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "on-for-NA",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "16",
       "subjectAttributes": {
         "country": "Norway"
       },
-      "assignment": false
+      "assignment": false,
+      "assignmentDetails": {
+        "value": false,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "16 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
+        "variationKey": "off",
+        "variationValue": false,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "off-for-all",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "on-for-NA",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "17",
       "subjectAttributes": {
         "country": "UK"
       },
-      "assignment": false
+      "assignment": false,
+      "assignmentDetails": {
+        "value": false,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "17 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
+        "variationKey": "off",
+        "variationValue": false,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "off-for-all",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "on-for-NA",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "18",
       "subjectAttributes": {
         "country": "UK"
       },
-      "assignment": false
+      "assignment": false,
+      "assignmentDetails": {
+        "value": false,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "18 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
+        "variationKey": "off",
+        "variationValue": false,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "off-for-all",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "on-for-NA",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "19",
       "subjectAttributes": {
         "country": "UK"
       },
-      "assignment": false
+      "assignment": false,
+      "assignmentDetails": {
+        "value": false,
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "19 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
+        "variationKey": "off",
+        "variationValue": false,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "off-for-all",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "on-for-NA",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "on-for-age-50+",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     }
   ]
 }

@@ -9,7 +9,47 @@
         "version": "1.15.0",
         "country": "US"
       },
-      "assignment": "current"
+      "assignment": "current",
+      "assignmentDetails": {
+        "value": "current",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"current-versions\".",
+        "variationKey": "current",
+        "variationValue": "current",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "version",
+              "operator": "GTE",
+              "value": "1.5.0"
+            },
+            {
+              "attribute": "version",
+              "operator": "LTE",
+              "value": "2.2.13"
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "current-versions",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "old-versions",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          }
+        ],
+        "unevaluatedAllocations": [
+          {
+            "key": "new-versions",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     },
     {
       "subjectKey": "bob",
@@ -17,35 +57,210 @@
         "version": "0.20.1",
         "country": "Canada"
       },
-      "assignment": "old"
+      "assignment": "old",
+      "assignmentDetails": {
+        "value": "old",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"old-versions\".",
+        "variationKey": "old",
+        "variationValue": "old",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "version",
+              "operator": "LT",
+              "value": "1.5.0"
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "old-versions",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "current-versions",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 1
+          },
+          {
+            "key": "new-versions",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     },
     {
       "subjectKey": "charlie",
       "subjectAttributes": {
         "version": "2.1.13"
       },
-      "assignment": "current"
+      "assignment": "current",
+      "assignmentDetails": {
+        "value": "current",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"current-versions\".",
+        "variationKey": "current",
+        "variationValue": "current",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "version",
+              "operator": "GTE",
+              "value": "1.5.0"
+            },
+            {
+              "attribute": "version",
+              "operator": "LTE",
+              "value": "2.2.13"
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "current-versions",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "old-versions",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          }
+        ],
+        "unevaluatedAllocations": [
+          {
+            "key": "new-versions",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     },
     {
       "subjectKey": "david",
       "subjectAttributes": {
         "version": "3.1.0"
       },
-      "assignment": "unknown"
+      "assignment": "unknown",
+      "assignmentDetails": {
+        "value": "unknown",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "old-versions",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "current-versions",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "new-versions",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "elize",
       "subjectAttributes": {
         "version": "3.1.1"
       },
-      "assignment": "new"
+      "assignment": "new",
+      "assignmentDetails": {
+        "value": "new",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"new-versions\".",
+        "variationKey": "new",
+        "variationValue": "new",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "version",
+              "operator": "GT",
+              "value": "3.1.0"
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "new-versions",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "old-versions",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "current-versions",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "frank",
       "subjectAttributes": {
         "version": "1.5.0"
       },
-      "assignment": "current"
+      "assignment": "current",
+      "assignmentDetails": {
+        "value": "current",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"current-versions\".",
+        "variationKey": "current",
+        "variationValue": "current",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "version",
+              "operator": "GTE",
+              "value": "1.5.0"
+            },
+            {
+              "attribute": "version",
+              "operator": "LTE",
+              "value": "2.2.13"
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "current-versions",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "old-versions",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          }
+        ],
+        "unevaluatedAllocations": [
+          {
+            "key": "new-versions",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
     }
   ]
 }

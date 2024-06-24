@@ -13,6 +13,19 @@
       },
       "assignment": {
         "message": "Hello, world!"
+      },
+      "assignmentDetails": {
+        "value": {
+          "message": "Hello, world!"
+        },
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
       }
     },
     {
@@ -23,6 +36,19 @@
       },
       "assignment": {
         "message": "Hello, world!"
+      },
+      "assignmentDetails": {
+        "value": {
+          "message": "Hello, world!"
+        },
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
       }
     },
     {
@@ -32,6 +58,19 @@
       },
       "assignment": {
         "message": "Hello, world!"
+      },
+      "assignmentDetails": {
+        "value": {
+          "message": "Hello, world!"
+        },
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
       }
     }
   ]

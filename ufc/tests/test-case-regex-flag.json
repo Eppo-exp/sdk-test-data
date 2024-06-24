@@ -9,7 +9,36 @@
         "version": "1.15.0",
         "email": "alice@example.com"
       },
-      "assignment": "partial-example"
+      "assignment": "partial-example",
+      "assignmentDetails": {
+        "value": "partial-example",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"partial-example\".",
+        "variationKey": "partial-example",
+        "variationValue": "partial-example",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "email",
+              "operator": "MATCHES",
+              "value": "@example\\.com"
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "partial-example",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "test",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 1
+          }
+        ]
+      }
     },
     {
       "subjectKey": "bob",
@@ -17,14 +46,65 @@
         "version": "0.20.1",
         "email": "bob@test.com"
       },
-      "assignment": "test"
+      "assignment": "test",
+      "assignmentDetails": {
+        "value": "test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"test\".",
+        "variationKey": "test",
+        "variationValue": "test",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "email",
+              "operator": "MATCHES",
+              "value": ".*@test\\.com"
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "test",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "partial-example",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "charlie",
       "subjectAttributes": {
         "version": "2.1.13"
       },
-      "assignment": "none"
+      "assignment": "none",
+      "assignmentDetails": {
+        "value": "none",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "partial-example",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "test",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     },
     {
       "subjectKey": "derek",
@@ -32,7 +112,29 @@
         "version": "2.1.13",
         "email": "derek@gmail.com"
       },
-      "assignment": "none"
+      "assignment": "none",
+      "assignmentDetails": {
+        "value": "none",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "partial-example",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "test",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
     }
   ]
 }
