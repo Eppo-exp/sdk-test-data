@@ -1,22 +1,77 @@
 {
-    "flag": "no_allocations_flag",
-    "variationType": "JSON",
-    "defaultValue": {"message": "Hello, world!"},
-    "subjects": [
-      {
-        "subjectKey": "alice",
-        "subjectAttributes": {"email": "alice@mycompany.com", "country": "US"},
-        "assignment": {"message": "Hello, world!"}
+  "flag": "no_allocations_flag",
+  "variationType": "JSON",
+  "defaultValue": {
+    "message": "Hello, world!"
+  },
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {
+        "email": "alice@mycompany.com",
+        "country": "US"
       },
-      {
-        "subjectKey": "bob",
-        "subjectAttributes": {"email": "bob@example.com", "country": "Canada"},
-        "assignment": {"message": "Hello, world!"}
+      "assignment": {
+        "message": "Hello, world!"
       },
-      {
-        "subjectKey": "charlie",
-        "subjectAttributes": {"age": 50},
-        "assignment": {"message": "Hello, world!"}
+      "assignmentDetails": {
+        "value": {
+          "message": "Hello, world!"
+        },
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
       }
-    ]
-  }
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {
+        "email": "bob@example.com",
+        "country": "Canada"
+      },
+      "assignment": {
+        "message": "Hello, world!"
+      },
+      "assignmentDetails": {
+        "value": {
+          "message": "Hello, world!"
+        },
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {
+        "age": 50
+      },
+      "assignment": {
+        "message": "Hello, world!"
+      },
+      "assignmentDetails": {
+        "value": {
+          "message": "Hello, world!"
+        },
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
+      }
+    }
+  ]
+}
