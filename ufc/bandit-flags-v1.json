@@ -2,7 +2,7 @@
     "createdAt": "2024-04-17T19:40:53.716Z",
     "flags": {
       "non_bandit_flag": {
-        "key": "a_flag",
+        "key": "non_bandit_flag",
         "enabled": true,
         "variationType": "STRING",
         "variations": {
@@ -22,7 +22,7 @@
         ]
       },
       "non_bandit_integer_flag": {
-        "key": "an_integer_flag",
+        "key": "non_bandit_integer_flag",
         "enabled": true,
         "variationType": "INTEGER",
         "variations": {
