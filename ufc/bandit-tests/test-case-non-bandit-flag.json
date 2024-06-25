@@ -4,7 +4,7 @@
     "subjects": [
       {
         "subjectKey": "alice",
-        "subjectAttributes": {"numeric_attributes": {"age": 25}, "categorical_attributes": {"country": "USA"}},
+        "subjectAttributes": {"numericAttributes": {"age": 25}, "categoricalAttributes": {"country": "USA"}},
         "actions": [],
         "assignment": {"variation": "control", "action": null}
       }

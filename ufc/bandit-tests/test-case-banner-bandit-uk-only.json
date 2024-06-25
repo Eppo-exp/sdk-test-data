@@ -5,8 +5,8 @@
       {
         "subjectKey": "alice",
         "subjectAttributes": {
-            "numeric_attributes": {"age": 25}, 
-            "categorical_attributes": {"country": "USA", "gender_identity": "female"}
+            "numericAttributes": {"age": 25},
+            "categoricalAttributes": {"country": "USA", "gender_identity": "female"}
         },
         "actions": [
             {
@@ -31,8 +31,8 @@
       {
         "subjectKey": "bob",
         "subjectAttributes": {
-            "numeric_attributes": {"age": 30, "account_age": 10}, 
-            "categorical_attributes": {"country": "UK", "gender_identity": "male"}
+            "numericAttributes": {"age": 30, "account_age": 10},
+            "categoricalAttributes": {"country": "UK", "gender_identity": "male"}
         },
         "actions": [
             {
@@ -57,8 +57,8 @@
       {
         "subjectKey": "charlie",
         "subjectAttributes": {
-            "numeric_attributes": {"age": 50, "account_age": 2}, 
-            "categorical_attributes": {"country": "Canada", "gender_identity": "unknown"}
+            "numericAttributes": {"age": 50, "account_age": 2},
+            "categoricalAttributes": {"country": "Canada", "gender_identity": "unknown"}
         },
         "actions": [
             {
@@ -83,8 +83,8 @@
       {
         "subjectKey": "debra",
         "subjectAttributes": {
-            "numeric_attributes": {"age": 28, "account_age": 30}, 
-            "categorical_attributes": {"country": "UK", "gender_identity": "unknown"}
+            "numericAttributes": {"age": 28, "account_age": 30},
+            "categoricalAttributes": {"country": "UK", "gender_identity": "unknown"}
         },
         "actions": [
             {
@@ -109,8 +109,8 @@
       {
         "subjectKey": "erica",
         "subjectAttributes": {
-            "numeric_attributes": {"age": 28, "account_age": 30}, 
-            "categorical_attributes": {"country": "USA", "gender_identity": "female"}
+            "numericAttributes": {"age": 28, "account_age": 30},
+            "categoricalAttributes": {"country": "USA", "gender_identity": "female"}
         },
         "actions": [
             {
@@ -145,8 +145,8 @@
       {
         "subjectKey": "frenkie",
         "subjectAttributes": {
-            "numeric_attributes": {"age": 31, "account_age": 4}, 
-            "categorical_attributes": {"country": "Netherlands", "gender_identity": "male"}
+            "numericAttributes": {"age": 31, "account_age": 4},
+            "categoricalAttributes": {"country": "Netherlands", "gender_identity": "male"}
         },
         "actions": [
             {
@@ -180,8 +180,8 @@
       {
         "subjectKey": "gerard",
         "subjectAttributes": {
-            "numeric_attributes": {"age": null}, 
-            "categorical_attributes": {"country": null, "gender_identity": null}
+            "numericAttributes": {"age": null},
+            "categoricalAttributes": {"country": null, "gender_identity": null}
         },
         "actions": [
             {
