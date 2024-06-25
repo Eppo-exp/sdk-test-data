@@ -1,0 +1,33 @@
+name: Validate Test Data
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/**'
+      - 'ufc/tests/**'
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - uses: actions/cache@v2
+        with:
+          path: './node_modules'
+          key: ${{ runner.os }}-root-node-modules-${{ hashFiles('./yarn.lock') }}
+      - name: Install SDK dependencies
+        run: yarn --frozen-lockfile
+      - name: Validate tests
+        run: yarn validate:tests
