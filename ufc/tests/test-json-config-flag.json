@@ -12,7 +12,7 @@
       "assignment": {
         "integer": 1,
         "string": "one",
-        "float": 1
+        "float": 1.0
       },
       "assignmentDetails": {
         "value": {
@@ -43,7 +43,7 @@
       "assignment": {
         "integer": 2,
         "string": "two",
-        "float": 2
+        "float": 2.0
       },
       "assignmentDetails": {
         "value": {
@@ -73,7 +73,7 @@
       "assignment": {
         "integer": 2,
         "string": "two",
-        "float": 2
+        "float": 2.0
       },
       "assignmentDetails": {
         "value": {
