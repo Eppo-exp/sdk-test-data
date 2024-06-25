@@ -29,7 +29,5 @@ jobs:
           key: ${{ runner.os }}-root-node-modules-${{ hashFiles('./yarn.lock') }}
       - name: Install SDK dependencies
         run: yarn --frozen-lockfile
-        working-directory: ./
       - name: Validate tests
         run: yarn validate:tests
-        working-directory: ./

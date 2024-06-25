@@ -1,12 +1,12 @@
-export type VariationValue = string | number | boolean | object;
+type VariationValue = string | number | boolean | object;
 
-export interface AllocationEvaluation {
+interface AllocationEvaluation {
   key: string;
   allocationEvaluationCode: string;
   orderPosition: number;
 }
 
-export interface FlagEvaluationDetails {
+interface FlagEvaluationDetails {
   value: VariationValue
   variationKey: string | null;
   variationValue: VariationValue | null;
@@ -18,7 +18,7 @@ export interface FlagEvaluationDetails {
   unevaluatedAllocations: Array<AllocationEvaluation>;
 }
 
-export interface SubjectTestCase {
+interface SubjectTestCase {
   subjectKey: string;
   subjectAttributes: Record<string, string | number | boolean>;
   assignment: VariationValue;
