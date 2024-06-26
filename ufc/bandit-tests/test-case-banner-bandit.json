@@ -211,6 +211,56 @@
             }
         ],
         "assignment": {"variation": "banner_bandit", "action": "nike"}
+      },
+      {
+        "subjectKey": "henry",
+        "subjectAttributes": {
+          "numericAttributes": { "age": 25, "mistake": "oops" },
+          "categoricalAttributes": {"country": "USA", "gender_identity": "female", "area_code": 303}
+        },
+        "actions": [
+          {
+            "actionKey": "nike",
+            "numericAttributes": {"brand_affinity": -5},
+            "categoricalAttributes": {"loyalty_tier": "silver"}
+          },
+          {
+            "actionKey": "adidas",
+            "numericAttributes": {"brand_affinity": 1.0},
+            "categoricalAttributes": {"loyalty_tier": "bronze"}
+          },
+          {
+            "actionKey": "reebok",
+            "numericAttributes": {"brand_affinity": 20},
+            "categoricalAttributes": {"loyalty_tier": "gold"}
+          }
+        ],
+        "assignment": {"variation": "banner_bandit", "action": "adidas"}
+      },
+      {
+        "subjectKey": "imogene",
+        "subjectAttributes": {
+          "numericAttributes": { "age": 25},
+          "categoricalAttributes": {"country": "USA", "gender_identity": "female"}
+        },
+        "actions": [
+          {
+            "actionKey": "nike",
+            "numericAttributes": {"brand_affinity": -1.7, "mistake": true},
+            "categoricalAttributes": {"loyalty_tier": "silver", "zip":  81427}
+          },
+          {
+            "actionKey": "adidas",
+            "numericAttributes": {"brand_affinity": 1.0},
+            "categoricalAttributes": {"loyalty_tier": "bronze"}
+          },
+          {
+            "actionKey": "reebok",
+            "numericAttributes": {"brand_affinity": 15},
+            "categoricalAttributes": {"loyalty_tier": "gold"}
+          }
+        ],
+        "assignment": {"variation": "banner_bandit", "action": "nike"}
       }
     ]
   }
