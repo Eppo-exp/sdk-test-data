@@ -20,18 +20,18 @@
         "matchedAllocation": {
           "key": "current-versions",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 2
+          "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "old-versions",
             "allocationEvaluationCode": "AFTER_END_TIME",
-            "orderPosition": 0
+            "orderPosition": 1
           },
           {
             "key": "future-versions",
             "allocationEvaluationCode": "BEFORE_START_TIME",
-            "orderPosition": 1
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -54,18 +54,18 @@
         "matchedAllocation": {
           "key": "current-versions",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 2
+          "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "old-versions",
             "allocationEvaluationCode": "AFTER_END_TIME",
-            "orderPosition": 0
+            "orderPosition": 1
           },
           {
             "key": "future-versions",
             "allocationEvaluationCode": "BEFORE_START_TIME",
-            "orderPosition": 1
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -87,18 +87,18 @@
         "matchedAllocation": {
           "key": "current-versions",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 2
+          "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "old-versions",
             "allocationEvaluationCode": "AFTER_END_TIME",
-            "orderPosition": 0
+            "orderPosition": 1
           },
           {
             "key": "future-versions",
             "allocationEvaluationCode": "BEFORE_START_TIME",
-            "orderPosition": 1
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []

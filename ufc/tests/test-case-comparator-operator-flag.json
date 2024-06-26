@@ -28,19 +28,19 @@
         "matchedAllocation": {
           "key": "small-size",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 0
+          "orderPosition": 1
         },
         "unmatchedAllocations": [],
         "unevaluatedAllocations": [
           {
             "key": "medum-size",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 1
+            "orderPosition": 2
           },
           {
             "key": "large-size",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 2
+            "orderPosition": 3
           }
         ]
       }
@@ -75,20 +75,20 @@
         "matchedAllocation": {
           "key": "medum-size",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 1
+          "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "small-size",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           }
         ],
         "unevaluatedAllocations": [
           {
             "key": "large-size",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 2
+            "orderPosition": 3
           }
         ]
       }
@@ -111,17 +111,17 @@
           {
             "key": "small-size",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           },
           {
             "key": "medum-size",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 1
+            "orderPosition": 2
           },
           {
             "key": "large-size",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 2
+            "orderPosition": 3
           }
         ],
         "unevaluatedAllocations": []
@@ -151,18 +151,18 @@
         "matchedAllocation": {
           "key": "large-size",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 2
+          "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "small-size",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           },
           {
             "key": "medum-size",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 1
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -186,17 +186,17 @@
           {
             "key": "small-size",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           },
           {
             "key": "medum-size",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 1
+            "orderPosition": 2
           },
           {
             "key": "large-size",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 2
+            "orderPosition": 3
           }
         ],
         "unevaluatedAllocations": []

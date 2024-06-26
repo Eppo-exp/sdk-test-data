@@ -28,14 +28,14 @@
         "matchedAllocation": {
           "key": "null-operator",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 0
+          "orderPosition": 1
         },
         "unmatchedAllocations": [],
         "unevaluatedAllocations": [
           {
             "key": "not-null-operator",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 1
+            "orderPosition": 2
           }
         ]
       }
@@ -65,13 +65,13 @@
         "matchedAllocation": {
           "key": "not-null-operator",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 1
+          "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "null-operator",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           }
         ],
         "unevaluatedAllocations": []
@@ -101,14 +101,14 @@
         "matchedAllocation": {
           "key": "null-operator",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 0
+          "orderPosition": 1
         },
         "unmatchedAllocations": [],
         "unevaluatedAllocations": [
           {
             "key": "not-null-operator",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 1
+            "orderPosition": 2
           }
         ]
       }
@@ -137,13 +137,13 @@
         "matchedAllocation": {
           "key": "not-null-operator",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 1
+          "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "null-operator",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           }
         ],
         "unevaluatedAllocations": []
@@ -173,14 +173,14 @@
         "matchedAllocation": {
           "key": "null-operator",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 0
+          "orderPosition": 1
         },
         "unmatchedAllocations": [],
         "unevaluatedAllocations": [
           {
             "key": "not-null-operator",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 1
+            "orderPosition": 2
           }
         ]
       }

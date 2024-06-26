@@ -29,19 +29,19 @@
         "matchedAllocation": {
           "key": "1-for-1",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 0
+          "orderPosition": 1
         },
         "unmatchedAllocations": [],
         "unevaluatedAllocations": [
           {
             "key": "2-for-123456789",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 1
+            "orderPosition": 2
           },
           {
             "key": "3-for-not-2",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 2
+            "orderPosition": 3
           }
         ]
       }
@@ -64,17 +64,17 @@
           {
             "key": "1-for-1",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           },
           {
             "key": "2-for-123456789",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 1
+            "orderPosition": 2
           },
           {
             "key": "3-for-not-2",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 2
+            "orderPosition": 3
           }
         ],
         "unevaluatedAllocations": []
@@ -106,18 +106,18 @@
         "matchedAllocation": {
           "key": "3-for-not-2",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 2
+          "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "1-for-1",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           },
           {
             "key": "2-for-123456789",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 1
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -149,18 +149,18 @@
         "matchedAllocation": {
           "key": "3-for-not-2",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 2
+          "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "1-for-1",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           },
           {
             "key": "2-for-123456789",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 1
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -192,19 +192,19 @@
         "matchedAllocation": {
           "key": "1-for-1",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 0
+          "orderPosition": 1
         },
         "unmatchedAllocations": [],
         "unevaluatedAllocations": [
           {
             "key": "2-for-123456789",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 1
+            "orderPosition": 2
           },
           {
             "key": "3-for-not-2",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 2
+            "orderPosition": 3
           }
         ]
       }
@@ -235,19 +235,19 @@
         "matchedAllocation": {
           "key": "1-for-1",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 0
+          "orderPosition": 1
         },
         "unmatchedAllocations": [],
         "unevaluatedAllocations": [
           {
             "key": "2-for-123456789",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 1
+            "orderPosition": 2
           },
           {
             "key": "3-for-not-2",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 2
+            "orderPosition": 3
           }
         ]
       }
@@ -278,20 +278,20 @@
         "matchedAllocation": {
           "key": "2-for-123456789",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 1
+          "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "1-for-1",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           }
         ],
         "unevaluatedAllocations": [
           {
             "key": "3-for-not-2",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 2
+            "orderPosition": 3
           }
         ]
       }

@@ -32,7 +32,7 @@
         "matchedAllocation": {
           "key": "50/50 split",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 0
+          "orderPosition": 1
         },
         "unmatchedAllocations": [],
         "unevaluatedAllocations": []
@@ -67,7 +67,7 @@
         "matchedAllocation": {
           "key": "50/50 split",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 0
+          "orderPosition": 1
         },
         "unmatchedAllocations": [],
         "unevaluatedAllocations": []
@@ -101,7 +101,7 @@
         "matchedAllocation": {
           "key": "50/50 split",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 0
+          "orderPosition": 1
         },
         "unmatchedAllocations": [],
         "unevaluatedAllocations": []

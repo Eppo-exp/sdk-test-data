@@ -23,12 +23,12 @@
           {
             "key": "valid",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 0
+            "orderPosition": 1
           },
           {
             "key": "invalid",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 1
+            "orderPosition": 2
           }
         ]
       }
@@ -60,14 +60,14 @@
         "matchedAllocation": {
           "key": "valid",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 0
+          "orderPosition": 1
         },
         "unmatchedAllocations": [],
         "unevaluatedAllocations": [
           {
             "key": "invalid",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 1
+            "orderPosition": 2
           }
         ]
       }
@@ -91,12 +91,12 @@
           {
             "key": "valid",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 0
+            "orderPosition": 1
           },
           {
             "key": "invalid",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 1
+            "orderPosition": 2
           }
         ]
       }
