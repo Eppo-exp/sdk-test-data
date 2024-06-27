@@ -17,7 +17,8 @@
                         "variationKey": "control",
                         "shards": []
                     }
-                ]
+                ],
+                "doLog": true
             }
         ]
       },
@@ -37,7 +38,8 @@
                         "variationKey": "control",
                         "shards": []
                     }
-                ]
+                ],
+                "doLog": true
             }
         ]
       },
@@ -79,7 +81,8 @@
                             }
                         ]
                     }
-                ]
+                ],
+                "doLog": false
             },
             {
                 "key": "training",
@@ -93,7 +96,8 @@
                             }
                         ]
                     }
-                ]
+                ],
+                "doLog": true
             }
         ],
         "totalShards": 10000
@@ -127,7 +131,8 @@
                         "variationKey": "banner_bandit",
                         "shards": []
                     }
-                ]
+                ],
+                "doLog": true
             },
             {
                 "key": "default",
@@ -137,7 +142,8 @@
                         "variationKey": "control",
                         "shards": []
                     }
-                ]
+                ],
+                "doLog": true
             }
         ],
         "totalShards": 10000

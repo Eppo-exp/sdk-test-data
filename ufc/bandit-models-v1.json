@@ -1,6 +1,6 @@
 {
   "updatedAt": "2023-09-13T04:52:06.462Z",
-  "bandits": { 
+  "bandits": {
     "banner_bandit": {
       "banditKey": "banner_bandit",
       "modelName": "falcon",
@@ -28,6 +28,15 @@
                    "gold": 4.5,
                    "silver":  3.2,
                    "bronze":  1.9
+                },
+                "missingValueCoefficient": 0.0
+              },
+              {
+                "attributeKey": "zip",
+                "valueCoefficients": {
+                  "22203": 5.0,
+                  "94111": -10.0,
+                  "81427": 8.0
                 },
                 "missingValueCoefficient": 0.0
               }
@@ -79,6 +88,15 @@
                   "male": 0.3
                 },
                 "missingValueCoefficient": 0.45
+              },
+              {
+                "attributeKey": "area_code",
+                "valueCoefficients": {
+                  "303": 10.0,
+                  "301": 7.0,
+                  "415": -2.0
+                },
+                "missingValueCoefficient": 0.0
               }
             ]
           }
