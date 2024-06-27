@@ -33,20 +33,20 @@
         "matchedAllocation": {
           "key": "current-versions",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 1
+          "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "old-versions",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           }
         ],
         "unevaluatedAllocations": [
           {
             "key": "new-versions",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 2
+            "orderPosition": 3
           }
         ]
       }
@@ -76,19 +76,19 @@
         "matchedAllocation": {
           "key": "old-versions",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 0
+          "orderPosition": 1
         },
         "unmatchedAllocations": [],
         "unevaluatedAllocations": [
           {
             "key": "current-versions",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 1
+            "orderPosition": 2
           },
           {
             "key": "new-versions",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 2
+            "orderPosition": 3
           }
         ]
       }
@@ -122,20 +122,20 @@
         "matchedAllocation": {
           "key": "current-versions",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 1
+          "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "old-versions",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           }
         ],
         "unevaluatedAllocations": [
           {
             "key": "new-versions",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 2
+            "orderPosition": 3
           }
         ]
       }
@@ -158,17 +158,17 @@
           {
             "key": "old-versions",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           },
           {
             "key": "current-versions",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 1
+            "orderPosition": 2
           },
           {
             "key": "new-versions",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 2
+            "orderPosition": 3
           }
         ],
         "unevaluatedAllocations": []
@@ -198,18 +198,18 @@
         "matchedAllocation": {
           "key": "new-versions",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 2
+          "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "old-versions",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           },
           {
             "key": "current-versions",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 1
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -244,20 +244,20 @@
         "matchedAllocation": {
           "key": "current-versions",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 1
+          "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "old-versions",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           }
         ],
         "unevaluatedAllocations": [
           {
             "key": "new-versions",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 2
+            "orderPosition": 3
           }
         ]
       }

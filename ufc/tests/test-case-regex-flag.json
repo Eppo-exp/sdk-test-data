@@ -28,14 +28,14 @@
         "matchedAllocation": {
           "key": "partial-example",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 0
+          "orderPosition": 1
         },
         "unmatchedAllocations": [],
         "unevaluatedAllocations": [
           {
             "key": "test",
             "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 1
+            "orderPosition": 2
           }
         ]
       }
@@ -65,13 +65,13 @@
         "matchedAllocation": {
           "key": "test",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 1
+          "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "partial-example",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           }
         ],
         "unevaluatedAllocations": []
@@ -95,12 +95,12 @@
           {
             "key": "partial-example",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           },
           {
             "key": "test",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 1
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -125,12 +125,12 @@
           {
             "key": "partial-example",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
+            "orderPosition": 1
           },
           {
             "key": "test",
             "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 1
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []

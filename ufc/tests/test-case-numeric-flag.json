@@ -20,7 +20,7 @@
         "matchedAllocation": {
           "key": "rollout",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 0
+          "orderPosition": 1
         },
         "unmatchedAllocations": [],
         "unevaluatedAllocations": []
@@ -43,7 +43,7 @@
         "matchedAllocation": {
           "key": "rollout",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 0
+          "orderPosition": 1
         },
         "unmatchedAllocations": [],
         "unevaluatedAllocations": []
@@ -65,7 +65,7 @@
         "matchedAllocation": {
           "key": "rollout",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 0
+          "orderPosition": 1
         },
         "unmatchedAllocations": [],
         "unevaluatedAllocations": []
