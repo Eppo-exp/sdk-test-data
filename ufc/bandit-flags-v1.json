@@ -1,5 +1,6 @@
 {
     "createdAt": "2024-04-17T19:40:53.716Z",
+    "environment": "Test",
     "flags": {
       "non_bandit_flag": {
         "key": "non_bandit_flag",
