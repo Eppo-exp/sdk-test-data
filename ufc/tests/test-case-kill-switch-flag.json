@@ -12,6 +12,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
         "variationKey": "on",
@@ -31,6 +32,7 @@
         },
         "matchedAllocation": {
           "key": "on-for-NA",
+          "name": "Allocation for on-for-NA",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -38,11 +40,13 @@
         "unevaluatedAllocations": [
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           },
           {
             "key": "off-for-all",
+            "name": "Allocation for off-for-all",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
@@ -58,6 +62,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
         "variationKey": "on",
@@ -77,6 +82,7 @@
         },
         "matchedAllocation": {
           "key": "on-for-NA",
+          "name": "Allocation for on-for-NA",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -84,11 +90,13 @@
         "unevaluatedAllocations": [
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           },
           {
             "key": "off-for-all",
+            "name": "Allocation for off-for-all",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
@@ -104,6 +112,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "barbara belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -111,17 +120,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "off-for-all",
+          "name": "Allocation for off-for-all",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "on-for-NA",
+            "name": "Allocation for on-for-NA",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -137,6 +149,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -144,17 +157,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "off-for-all",
+          "name": "Allocation for off-for-all",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "on-for-NA",
+            "name": "Allocation for on-for-NA",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -172,6 +188,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
         "variationKey": "on",
@@ -191,6 +208,7 @@
         },
         "matchedAllocation": {
           "key": "on-for-NA",
+          "name": "Allocation for on-for-NA",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -198,11 +216,13 @@
         "unevaluatedAllocations": [
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           },
           {
             "key": "off-for-all",
+            "name": "Allocation for off-for-all",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
@@ -215,6 +235,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "1 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -222,17 +243,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "off-for-all",
+          "name": "Allocation for off-for-all",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "on-for-NA",
+            "name": "Allocation for on-for-NA",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -248,6 +272,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
         "variationKey": "on",
@@ -267,6 +292,7 @@
         },
         "matchedAllocation": {
           "key": "on-for-NA",
+          "name": "Allocation for on-for-NA",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -274,11 +300,13 @@
         "unevaluatedAllocations": [
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           },
           {
             "key": "off-for-all",
+            "name": "Allocation for off-for-all",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
@@ -294,6 +322,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-age-50+\".",
         "variationKey": "on",
@@ -309,12 +338,14 @@
         },
         "matchedAllocation": {
           "key": "on-for-age-50+",
+          "name": "Allocation for on-for-age-50+",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "on-for-NA",
+            "name": "Allocation for on-for-NA",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -322,6 +353,7 @@
         "unevaluatedAllocations": [
           {
             "key": "off-for-all",
+            "name": "Allocation for off-for-all",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
@@ -336,6 +368,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "4 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -343,17 +376,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "off-for-all",
+          "name": "Allocation for off-for-all",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "on-for-NA",
+            "name": "Allocation for on-for-NA",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -369,6 +405,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "5 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -376,17 +413,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "off-for-all",
+          "name": "Allocation for off-for-all",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "on-for-NA",
+            "name": "Allocation for on-for-NA",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -402,6 +442,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "6 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -409,17 +450,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "off-for-all",
+          "name": "Allocation for off-for-all",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "on-for-NA",
+            "name": "Allocation for on-for-NA",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -436,6 +480,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
         "variationKey": "on",
@@ -455,6 +500,7 @@
         },
         "matchedAllocation": {
           "key": "on-for-NA",
+          "name": "Allocation for on-for-NA",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -462,11 +508,13 @@
         "unevaluatedAllocations": [
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           },
           {
             "key": "off-for-all",
+            "name": "Allocation for off-for-all",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
@@ -482,6 +530,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-age-50+\".",
         "variationKey": "on",
@@ -497,12 +546,14 @@
         },
         "matchedAllocation": {
           "key": "on-for-age-50+",
+          "name": "Allocation for on-for-age-50+",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "on-for-NA",
+            "name": "Allocation for on-for-NA",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -510,6 +561,7 @@
         "unevaluatedAllocations": [
           {
             "key": "off-for-all",
+            "name": "Allocation for off-for-all",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
@@ -524,6 +576,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "9 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -531,17 +584,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "off-for-all",
+          "name": "Allocation for off-for-all",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "on-for-NA",
+            "name": "Allocation for on-for-NA",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -555,6 +611,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "10 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -562,17 +619,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "off-for-all",
+          "name": "Allocation for off-for-all",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "on-for-NA",
+            "name": "Allocation for on-for-NA",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -586,6 +646,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "11 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -593,17 +654,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "off-for-all",
+          "name": "Allocation for off-for-all",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "on-for-NA",
+            "name": "Allocation for on-for-NA",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -619,6 +683,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
         "variationKey": "on",
@@ -638,6 +703,7 @@
         },
         "matchedAllocation": {
           "key": "on-for-NA",
+          "name": "Allocation for on-for-NA",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -645,11 +711,13 @@
         "unevaluatedAllocations": [
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           },
           {
             "key": "off-for-all",
+            "name": "Allocation for off-for-all",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
@@ -664,6 +732,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
         "variationKey": "on",
@@ -683,6 +752,7 @@
         },
         "matchedAllocation": {
           "key": "on-for-NA",
+          "name": "Allocation for on-for-NA",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -690,11 +760,13 @@
         "unevaluatedAllocations": [
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           },
           {
             "key": "off-for-all",
+            "name": "Allocation for off-for-all",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
@@ -707,6 +779,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "14 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -714,17 +787,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "off-for-all",
+          "name": "Allocation for off-for-all",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "on-for-NA",
+            "name": "Allocation for on-for-NA",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -740,6 +816,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "15 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -747,17 +824,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "off-for-all",
+          "name": "Allocation for off-for-all",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "on-for-NA",
+            "name": "Allocation for on-for-NA",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -773,6 +853,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "16 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -780,17 +861,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "off-for-all",
+          "name": "Allocation for off-for-all",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "on-for-NA",
+            "name": "Allocation for on-for-NA",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -806,6 +890,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "17 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -813,17 +898,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "off-for-all",
+          "name": "Allocation for off-for-all",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "on-for-NA",
+            "name": "Allocation for on-for-NA",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -839,6 +927,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "18 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -846,17 +935,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "off-for-all",
+          "name": "Allocation for off-for-all",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "on-for-NA",
+            "name": "Allocation for on-for-NA",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -872,6 +964,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "19 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -879,17 +972,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "off-for-all",
+          "name": "Allocation for off-for-all",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "on-for-NA",
+            "name": "Allocation for on-for-NA",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "on-for-age-50+",
+            "name": "Allocation for on-for-age-50+",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }

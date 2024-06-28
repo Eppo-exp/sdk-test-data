@@ -12,6 +12,7 @@
       "assignment": 3,
       "assignmentDetails": {
         "value": 3,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"targeted allocation\".",
         "variationKey": "three",
@@ -31,6 +32,7 @@
         },
         "matchedAllocation": {
           "key": "targeted allocation",
+          "name": "Allocation for targeted allocation",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -38,6 +40,7 @@
         "unevaluatedAllocations": [
           {
             "key": "50/50 split",
+            "name": "Allocation for 50/50 split",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           }
@@ -53,6 +56,7 @@
       "assignment": 3,
       "assignmentDetails": {
         "value": 3,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"targeted allocation\".",
         "variationKey": "three",
@@ -72,6 +76,7 @@
         },
         "matchedAllocation": {
           "key": "targeted allocation",
+          "name": "Allocation for targeted allocation",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -79,6 +84,7 @@
         "unevaluatedAllocations": [
           {
             "key": "50/50 split",
+            "name": "Allocation for 50/50 split",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           }
@@ -93,6 +99,7 @@
       "assignment": 2,
       "assignmentDetails": {
         "value": 2,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
         "variationKey": "two",
@@ -100,12 +107,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -123,6 +132,7 @@
       "assignment": 3,
       "assignmentDetails": {
         "value": 3,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"targeted allocation\".",
         "variationKey": "three",
@@ -142,6 +152,7 @@
         },
         "matchedAllocation": {
           "key": "targeted allocation",
+          "name": "Allocation for targeted allocation",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -149,6 +160,7 @@
         "unevaluatedAllocations": [
           {
             "key": "50/50 split",
+            "name": "Allocation for 50/50 split",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           }
@@ -161,6 +173,7 @@
       "assignment": 2,
       "assignmentDetails": {
         "value": 2,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "1 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
         "variationKey": "two",
@@ -168,12 +181,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -187,6 +202,7 @@
       "assignment": 2,
       "assignmentDetails": {
         "value": 2,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "2 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
         "variationKey": "two",
@@ -194,12 +210,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -213,6 +231,7 @@
       "assignment": 2,
       "assignmentDetails": {
         "value": 2,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "3 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
         "variationKey": "two",
@@ -220,12 +239,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -239,6 +260,7 @@
       "assignment": 2,
       "assignmentDetails": {
         "value": 2,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "4 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
         "variationKey": "two",
@@ -246,12 +268,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -265,6 +289,7 @@
       "assignment": 1,
       "assignmentDetails": {
         "value": 1,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "5 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
         "variationKey": "one",
@@ -272,12 +297,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -291,6 +318,7 @@
       "assignment": 2,
       "assignmentDetails": {
         "value": 2,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "6 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
         "variationKey": "two",
@@ -298,12 +326,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -317,6 +347,7 @@
       "assignment": 1,
       "assignmentDetails": {
         "value": 1,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "7 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
         "variationKey": "one",
@@ -324,12 +355,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -343,6 +376,7 @@
       "assignment": 1,
       "assignmentDetails": {
         "value": 1,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "8 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
         "variationKey": "one",
@@ -350,12 +384,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -369,6 +405,7 @@
       "assignment": 2,
       "assignmentDetails": {
         "value": 2,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "9 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
         "variationKey": "two",
@@ -376,12 +413,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -395,6 +434,7 @@
       "assignment": 2,
       "assignmentDetails": {
         "value": 2,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "10 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
         "variationKey": "two",
@@ -402,12 +442,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -421,6 +463,7 @@
       "assignment": 1,
       "assignmentDetails": {
         "value": 1,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "11 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
         "variationKey": "one",
@@ -428,12 +471,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -447,6 +492,7 @@
       "assignment": 1,
       "assignmentDetails": {
         "value": 1,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "12 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
         "variationKey": "one",
@@ -454,12 +500,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -473,6 +521,7 @@
       "assignment": 2,
       "assignmentDetails": {
         "value": 2,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "13 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
         "variationKey": "two",
@@ -480,12 +529,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -499,6 +550,7 @@
       "assignment": 1,
       "assignmentDetails": {
         "value": 1,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "14 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
         "variationKey": "one",
@@ -506,12 +558,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -525,6 +579,7 @@
       "assignment": 2,
       "assignmentDetails": {
         "value": 2,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "15 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
         "variationKey": "two",
@@ -532,12 +587,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -551,6 +608,7 @@
       "assignment": 2,
       "assignmentDetails": {
         "value": 2,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "16 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
         "variationKey": "two",
@@ -558,12 +616,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -577,6 +637,7 @@
       "assignment": 1,
       "assignmentDetails": {
         "value": 1,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "17 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
         "variationKey": "one",
@@ -584,12 +645,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -603,6 +666,7 @@
       "assignment": 1,
       "assignmentDetails": {
         "value": 1,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "18 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
         "variationKey": "one",
@@ -610,12 +674,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -629,6 +695,7 @@
       "assignment": 1,
       "assignmentDetails": {
         "value": 1,
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "19 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
         "variationKey": "one",
@@ -636,12 +703,14 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "targeted allocation",
+            "name": "Allocation for targeted allocation",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }

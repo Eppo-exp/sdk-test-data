@@ -12,6 +12,7 @@
       "assignment": "old",
       "assignmentDetails": {
         "value": "old",
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"null-operator\".",
         "variationKey": "old",
@@ -27,6 +28,7 @@
         },
         "matchedAllocation": {
           "key": "null-operator",
+          "name": "Allocation for null-operator",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -34,6 +36,7 @@
         "unevaluatedAllocations": [
           {
             "key": "not-null-operator",
+            "name": "Allocation for not-null-operator",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           }
@@ -49,6 +52,7 @@
       "assignment": "new",
       "assignmentDetails": {
         "value": "new",
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"not-null-operator\".",
         "variationKey": "new",
@@ -64,12 +68,14 @@
         },
         "matchedAllocation": {
           "key": "not-null-operator",
+          "name": "Allocation for not-null-operator",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "null-operator",
+            "name": "Allocation for null-operator",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -85,6 +91,7 @@
       "assignment": "old",
       "assignmentDetails": {
         "value": "old",
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"null-operator\".",
         "variationKey": "old",
@@ -100,6 +107,7 @@
         },
         "matchedAllocation": {
           "key": "null-operator",
+          "name": "Allocation for null-operator",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -107,6 +115,7 @@
         "unevaluatedAllocations": [
           {
             "key": "not-null-operator",
+            "name": "Allocation for not-null-operator",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           }
@@ -121,6 +130,7 @@
       "assignment": "new",
       "assignmentDetails": {
         "value": "new",
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"not-null-operator\".",
         "variationKey": "new",
@@ -136,12 +146,14 @@
         },
         "matchedAllocation": {
           "key": "not-null-operator",
+          "name": "Allocation for not-null-operator",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "null-operator",
+            "name": "Allocation for null-operator",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -157,6 +169,7 @@
       "assignment": "old",
       "assignmentDetails": {
         "value": "old",
+        "environment": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"null-operator\".",
         "variationKey": "old",
@@ -172,6 +185,7 @@
         },
         "matchedAllocation": {
           "key": "null-operator",
+          "name": "Allocation for null-operator",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -179,6 +193,7 @@
         "unevaluatedAllocations": [
           {
             "key": "not-null-operator",
+            "name": "Allocation for not-null-operator",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           }
