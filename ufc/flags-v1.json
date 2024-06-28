@@ -52,6 +52,7 @@
       "allocations": [
         {
           "key": "rollout",
+          "name": "Allocation for rollout",
           "splits": [
             {
               "variationKey": "pi",
@@ -80,6 +81,7 @@
       "allocations": [
         {
           "key": "valid",
+          "name": "Allocation for valid",
           "rules": [
             {
               "conditions": [
@@ -103,6 +105,7 @@
         },
         {
           "key": "invalid",
+          "name": "Allocation for invalid",
           "rules": [],
           "splits": [
             {
@@ -132,6 +135,7 @@
       "allocations": [
         {
           "key": "partial-example",
+          "name": "Allocation for partial-example",
           "rules": [
             {
               "conditions": [
@@ -153,6 +157,7 @@
         },
         {
           "key": "test",
+          "name": "Allocation for test",
           "rules": [
             {
               "conditions": [
@@ -196,6 +201,7 @@
       "allocations": [
         {
           "key": "1-for-1",
+          "name": "Allocation for 1-for-1",
           "rules": [
             {
               "conditions": [
@@ -219,6 +225,7 @@
         },
         {
           "key": "2-for-123456789",
+          "name": "Allocation for 2-for-123456789",
           "rules": [
             {
               "conditions": [
@@ -242,6 +249,7 @@
         },
         {
           "key": "3-for-not-2",
+          "name": "Allocation for 3-for-not-2",
           "rules": [
             {
               "conditions": [
@@ -295,6 +303,7 @@
       "allocations": [
         {
           "key": "1-for-one-of",
+          "name": "Allocation for 1-for-one-of",
           "rules": [
             {
               "conditions": [
@@ -318,6 +327,7 @@
         },
         {
           "key": "2-for-matches",
+          "name": "Allocation for 2-for-matches",
           "rules": [
             {
               "conditions": [
@@ -339,6 +349,7 @@
         },
         {
           "key": "3-for-not-one-of",
+          "name": "Allocation for 3-for-not-one-of",
           "rules": [
             {
               "conditions": [
@@ -362,6 +373,7 @@
         },
         {
           "key": "4-for-not-matches",
+          "name": "Allocation for 4-for-not-matches",
           "rules": [
             {
               "conditions": [
@@ -383,6 +395,7 @@
         },
         {
           "key": "5-for-matches-null",
+          "name": "Allocation for 5-for-matches-null",
           "rules": [
             {
               "conditions": [
@@ -424,6 +437,7 @@
       "allocations": [
         {
           "key": "on-for-NA",
+          "name": "Allocation for on-for-NA",
           "rules": [
             {
               "conditions": [
@@ -459,6 +473,7 @@
         },
         {
           "key": "on-for-age-50+",
+          "name": "Allocation for on-for-age-50+",
           "rules": [
             {
               "conditions": [
@@ -490,6 +505,7 @@
         },
         {
           "key": "off-for-all",
+          "name": "Allocation for off-for-all",
           "rules": [],
           "splits": [
             {
@@ -523,6 +539,7 @@
       "allocations": [
         {
           "key": "old-versions",
+          "name": "Allocation for old-versions",
           "rules": [
             {
               "conditions": [
@@ -544,6 +561,7 @@
         },
         {
           "key": "current-versions",
+          "name": "Allocation for current-versions",
           "rules": [
             {
               "conditions": [
@@ -570,6 +588,7 @@
         },
         {
           "key": "new-versions",
+          "name": "Allocation for new-versions",
           "rules": [
             {
               "conditions": [
@@ -613,6 +632,7 @@
       "allocations": [
         {
           "key": "small-size",
+          "name": "Allocation for small-size",
           "rules": [
             {
               "conditions": [
@@ -634,6 +654,7 @@
         },
         {
           "key": "medum-size",
+          "name": "Allocation for medum-size",
           "rules": [
             {
               "conditions": [
@@ -660,6 +681,7 @@
         },
         {
           "key": "large-size",
+          "name": "Allocation for large-size",
           "rules": [
             {
               "conditions": [
@@ -703,6 +725,7 @@
       "allocations": [
         {
           "key": "old-versions",
+          "name": "Allocation for old-versions",
           "splits": [
             {
               "variationKey": "old",
@@ -714,6 +737,7 @@
         },
         {
           "key": "future-versions",
+          "name": "Allocation for future-versions",
           "splits": [
             {
               "variationKey": "future",
@@ -725,6 +749,7 @@
         },
         {
           "key": "current-versions",
+          "name": "Allocation for current-versions",
           "splits": [
             {
               "variationKey": "current",
@@ -755,6 +780,7 @@
       "allocations": [
         {
           "key": "null-operator",
+          "name": "Allocation for null-operator",
           "rules": [
             {
               "conditions": [
@@ -785,6 +811,7 @@
         },
         {
           "key": "not-null-operator",
+          "name": "Allocation for not-null-operator",
           "rules": [
             {
               "conditions": [
@@ -840,6 +867,7 @@
       "allocations": [
         {
           "key": "id rule",
+          "name": "Allocation for id rule",
           "rules": [
             {
               "conditions": [
@@ -861,6 +889,7 @@
         },
         {
           "key": "internal users",
+          "name": "Allocation for internal users",
           "rules": [
             {
               "conditions": [
@@ -882,6 +911,7 @@
         },
         {
           "key": "experiment",
+          "name": "Allocation for experiment",
           "rules": [
             {
               "conditions": [
@@ -972,6 +1002,7 @@
         },
         {
           "key": "rollout",
+          "name": "Allocation for rollout",
           "rules": [
             {
               "conditions": [
@@ -1033,6 +1064,7 @@
       "allocations": [
         {
           "key": "targeted allocation",
+          "name": "Allocation for targeted allocation",
           "rules": [
             {
               "conditions": [
@@ -1077,6 +1109,7 @@
         },
         {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "rules": [],
           "splits": [
             {
@@ -1130,6 +1163,7 @@
       "allocations": [
         {
           "key": "50/50 split",
+          "name": "Allocation for 50/50 split",
           "rules": [],
           "splits": [
             {
