@@ -12,9 +12,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
         "variationKey": "on",
@@ -64,9 +62,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
         "variationKey": "on",
@@ -116,9 +112,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "barbara belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -155,9 +149,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -196,9 +188,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
         "variationKey": "on",
@@ -245,9 +235,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "1 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -284,9 +272,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
         "variationKey": "on",
@@ -336,9 +322,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-age-50+\".",
         "variationKey": "on",
@@ -384,9 +368,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "4 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -423,9 +405,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "5 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -462,9 +442,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "6 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -502,9 +480,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
         "variationKey": "on",
@@ -554,9 +530,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-age-50+\".",
         "variationKey": "on",
@@ -602,9 +576,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "9 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -639,9 +611,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "10 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -676,9 +646,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "11 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -715,9 +683,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
         "variationKey": "on",
@@ -766,9 +732,7 @@
       "assignment": true,
       "assignmentDetails": {
         "value": true,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
         "variationKey": "on",
@@ -815,9 +779,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "14 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -854,9 +816,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "15 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -893,9 +853,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "16 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -932,9 +890,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "17 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -971,9 +927,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "18 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
@@ -1010,9 +964,7 @@
       "assignment": false,
       "assignmentDetails": {
         "value": false,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "19 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
         "variationKey": "off",
