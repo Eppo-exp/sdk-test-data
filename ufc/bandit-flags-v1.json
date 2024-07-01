@@ -1,5 +1,8 @@
 {
     "createdAt": "2024-04-17T19:40:53.716Z",
+    "environment": {
+      "name": "Test"
+    },
     "flags": {
       "non_bandit_flag": {
         "key": "non_bandit_flag",
@@ -12,6 +15,7 @@
         "allocations": [
             {
                 "key": "control-allocation",
+                "name": "Allocation for control-allocation",
                 "splits": [
                     {
                         "variationKey": "control",
@@ -33,6 +37,7 @@
         "allocations": [
             {
                 "key": "control-allocation",
+                "name": "Allocation for control-allocation",
                 "splits": [
                     {
                         "variationKey": "control",
@@ -54,6 +59,7 @@
         "allocations": [
             {
                 "key": "analysis",
+                "name": "Allocation for analysis",
                 "splits": [
                     {
                         "variationKey": "control",
@@ -86,6 +92,7 @@
             },
             {
                 "key": "training",
+                "name": "Allocation for training",
                 "splits": [
                     {
                         "variationKey": "banner_bandit",
@@ -113,6 +120,7 @@
         "allocations": [
             {
                 "key": "training",
+                "name": "Allocation for training",
                 "rules": [
                     {
                       "conditions": [
@@ -136,6 +144,7 @@
             },
             {
                 "key": "default",
+                "name": "Allocation for default",
                 "rules": [],
                 "splits": [
                     {

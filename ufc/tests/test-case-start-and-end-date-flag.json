@@ -12,6 +12,9 @@
       "assignment": "current",
       "assignmentDetails": {
         "value": "current",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "alice belongs to the range of traffic assigned to \"current\" defined in allocation \"current-versions\".",
         "variationKey": "current",
@@ -19,17 +22,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "current-versions",
+          "name": "Allocation for current-versions",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "old-versions",
+            "name": "Allocation for old-versions",
             "allocationEvaluationCode": "AFTER_END_TIME",
             "orderPosition": 1
           },
           {
             "key": "future-versions",
+            "name": "Allocation for future-versions",
             "allocationEvaluationCode": "BEFORE_START_TIME",
             "orderPosition": 2
           }
@@ -46,6 +52,9 @@
       "assignment": "current",
       "assignmentDetails": {
         "value": "current",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "bob belongs to the range of traffic assigned to \"current\" defined in allocation \"current-versions\".",
         "variationKey": "current",
@@ -53,17 +62,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "current-versions",
+          "name": "Allocation for current-versions",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "old-versions",
+            "name": "Allocation for old-versions",
             "allocationEvaluationCode": "AFTER_END_TIME",
             "orderPosition": 1
           },
           {
             "key": "future-versions",
+            "name": "Allocation for future-versions",
             "allocationEvaluationCode": "BEFORE_START_TIME",
             "orderPosition": 2
           }
@@ -79,6 +91,9 @@
       "assignment": "current",
       "assignmentDetails": {
         "value": "current",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"current\" defined in allocation \"current-versions\".",
         "variationKey": "current",
@@ -86,17 +101,20 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "current-versions",
+          "name": "Allocation for current-versions",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "old-versions",
+            "name": "Allocation for old-versions",
             "allocationEvaluationCode": "AFTER_END_TIME",
             "orderPosition": 1
           },
           {
             "key": "future-versions",
+            "name": "Allocation for future-versions",
             "allocationEvaluationCode": "BEFORE_START_TIME",
             "orderPosition": 2
           }

@@ -12,6 +12,9 @@
       "assignment": "current",
       "assignmentDetails": {
         "value": "current",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"current-versions\".",
         "variationKey": "current",
@@ -32,12 +35,14 @@
         },
         "matchedAllocation": {
           "key": "current-versions",
+          "name": "Allocation for current-versions",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "old-versions",
+            "name": "Allocation for old-versions",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -45,6 +50,7 @@
         "unevaluatedAllocations": [
           {
             "key": "new-versions",
+            "name": "Allocation for new-versions",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
@@ -60,6 +66,9 @@
       "assignment": "old",
       "assignmentDetails": {
         "value": "old",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"old-versions\".",
         "variationKey": "old",
@@ -75,6 +84,7 @@
         },
         "matchedAllocation": {
           "key": "old-versions",
+          "name": "Allocation for old-versions",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -82,11 +92,13 @@
         "unevaluatedAllocations": [
           {
             "key": "current-versions",
+            "name": "Allocation for current-versions",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           },
           {
             "key": "new-versions",
+            "name": "Allocation for new-versions",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
@@ -101,6 +113,9 @@
       "assignment": "current",
       "assignmentDetails": {
         "value": "current",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"current-versions\".",
         "variationKey": "current",
@@ -121,12 +136,14 @@
         },
         "matchedAllocation": {
           "key": "current-versions",
+          "name": "Allocation for current-versions",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "old-versions",
+            "name": "Allocation for old-versions",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -134,6 +151,7 @@
         "unevaluatedAllocations": [
           {
             "key": "new-versions",
+            "name": "Allocation for new-versions",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
@@ -148,6 +166,9 @@
       "assignment": "unknown",
       "assignmentDetails": {
         "value": "unknown",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -157,16 +178,19 @@
         "unmatchedAllocations": [
           {
             "key": "old-versions",
+            "name": "Allocation for old-versions",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "current-versions",
+            "name": "Allocation for current-versions",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "new-versions",
+            "name": "Allocation for new-versions",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           }
@@ -182,6 +206,9 @@
       "assignment": "new",
       "assignmentDetails": {
         "value": "new",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"new-versions\".",
         "variationKey": "new",
@@ -197,17 +224,20 @@
         },
         "matchedAllocation": {
           "key": "new-versions",
+          "name": "Allocation for new-versions",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "old-versions",
+            "name": "Allocation for old-versions",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "current-versions",
+            "name": "Allocation for current-versions",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -223,6 +253,9 @@
       "assignment": "current",
       "assignmentDetails": {
         "value": "current",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"current-versions\".",
         "variationKey": "current",
@@ -243,12 +276,14 @@
         },
         "matchedAllocation": {
           "key": "current-versions",
+          "name": "Allocation for current-versions",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "old-versions",
+            "name": "Allocation for old-versions",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -256,6 +291,7 @@
         "unevaluatedAllocations": [
           {
             "key": "new-versions",
+            "name": "Allocation for new-versions",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
