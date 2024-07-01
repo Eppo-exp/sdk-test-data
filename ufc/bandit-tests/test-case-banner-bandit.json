@@ -121,7 +121,7 @@
             {
                 "actionKey": "adidas",
                 "numericAttributes": {"brand_affinity": 1.0},
-                "categoricalAttributes": {"loyalty_tier": null}
+                "categoricalAttributes": {}
             },
             {
                 "actionKey": "reebok",
@@ -157,7 +157,7 @@
             {
                 "actionKey": "adidas",
                 "numericAttributes": {"brand_affinity": 0.0},
-                "categoricalAttributes": {"loyalty_tier": null}
+                "categoricalAttributes": {}
             },
             {
                 "actionKey": "reebok",
@@ -180,19 +180,19 @@
       {
         "subjectKey": "gerard",
         "subjectAttributes": {
-            "numericAttributes": {"age": null},
-            "categoricalAttributes": {"country": null, "gender_identity": null}
+            "numericAttributes": {},
+            "categoricalAttributes": {}
         },
         "actions": [
             {
                 "actionKey": "nike",
-                "numericAttributes": {"brand_affinity": null},
-                "categoricalAttributes": {"loyalty_tier": null}
+                "numericAttributes": {},
+                "categoricalAttributes": {}
             },
             {
                 "actionKey": "adidas",
                 "numericAttributes": {"brand_affinity": 0.1},
-                "categoricalAttributes": {"loyalty_tier": null}
+                "categoricalAttributes": {}
             },
             {
                 "actionKey": "reebok",
@@ -215,8 +215,8 @@
       {
         "subjectKey": "henry",
         "subjectAttributes": {
-          "numericAttributes": { "age": 25, "mistake": "oops" },
-          "categoricalAttributes": {"country": "USA", "gender_identity": "female", "area_code": 303}
+          "numericAttributes": { "age": 25 },
+          "categoricalAttributes": {"country": "USA", "gender_identity": "female", "area_code": "303"}
         },
         "actions": [
           {
@@ -246,8 +246,8 @@
         "actions": [
           {
             "actionKey": "nike",
-            "numericAttributes": {"brand_affinity": -1.7, "mistake": true},
-            "categoricalAttributes": {"loyalty_tier": "silver", "zip":  81427}
+            "numericAttributes": {"brand_affinity": -1.7},
+            "categoricalAttributes": {"loyalty_tier": "silver", "zip": "81427"}
           },
           {
             "actionKey": "adidas",
