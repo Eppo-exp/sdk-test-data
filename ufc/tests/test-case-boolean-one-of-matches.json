@@ -11,9 +11,7 @@
       "assignment": 1,
       "assignmentDetails": {
         "value": 1,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"1-for-one-of\".",
         "variationKey": "1",
@@ -72,9 +70,7 @@
       "assignment": 0,
       "assignmentDetails": {
         "value": 0,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -124,9 +120,7 @@
       "assignment": 0,
       "assignmentDetails": {
         "value": 0,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -176,9 +170,7 @@
       "assignment": 2,
       "assignmentDetails": {
         "value": 2,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"2-for-matches\".",
         "variationKey": "2",
@@ -236,9 +228,7 @@
       "assignment": 0,
       "assignmentDetails": {
         "value": 0,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -288,9 +278,7 @@
       "assignment": 0,
       "assignmentDetails": {
         "value": 0,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -340,9 +328,7 @@
       "assignment": 4,
       "assignmentDetails": {
         "value": 4,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"4-for-not-matches\".",
         "variationKey": "4",
@@ -400,9 +386,7 @@
       "assignment": 4,
       "assignmentDetails": {
         "value": 4,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"4-for-not-matches\".",
         "variationKey": "4",
@@ -460,9 +444,7 @@
       "assignment": 3,
       "assignmentDetails": {
         "value": 3,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-one-of\".",
         "variationKey": "3",
@@ -522,9 +504,7 @@
       "assignment": 0,
       "assignmentDetails": {
         "value": 0,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -574,9 +554,7 @@
       "assignment": 3,
       "assignmentDetails": {
         "value": 3,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-one-of\".",
         "variationKey": "3",
@@ -636,9 +614,7 @@
       "assignment": 3,
       "assignmentDetails": {
         "value": 3,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-one-of\".",
         "variationKey": "3",
@@ -698,9 +674,7 @@
       "assignment": 0,
       "assignmentDetails": {
         "value": 0,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -750,9 +724,7 @@
       "assignment": 5,
       "assignmentDetails": {
         "value": 5,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"5-for-matches-null\".",
         "variationKey": "5",
@@ -811,9 +783,7 @@
       "assignment": 0,
       "assignmentDetails": {
         "value": 0,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -861,9 +831,7 @@
       "assignment": 0,
       "assignmentDetails": {
         "value": 0,
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,

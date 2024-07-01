@@ -12,9 +12,7 @@
       "assignment": "partial-example",
       "assignmentDetails": {
         "value": "partial-example",
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"partial-example\".",
         "variationKey": "partial-example",
@@ -54,9 +52,7 @@
       "assignment": "test",
       "assignmentDetails": {
         "value": "test",
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"test\".",
         "variationKey": "test",
@@ -95,9 +91,7 @@
       "assignment": "none",
       "assignmentDetails": {
         "value": "none",
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -130,9 +124,7 @@
       "assignment": "none",
       "assignmentDetails": {
         "value": "none",
-        "environment": {
-          "name": "Test"
-        },
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
