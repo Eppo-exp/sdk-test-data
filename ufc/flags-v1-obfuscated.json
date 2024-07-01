@@ -1,8 +1,5 @@
 {
   "createdAt": "2024-04-17T19:40:53.716Z",
-  "environment": {
-    "name": "Test"
-  },
   "flags": {
     "73fcc84c69e49e31fe16a29b2b1f803b": {
       "key": "73fcc84c69e49e31fe16a29b2b1f803b",
@@ -55,7 +52,6 @@
       "allocations": [
         {
           "key": "cm9sbG91dA==",
-          "name": "QWxsb2NhdGlvbiBmb3Igcm9sbG91dA==",
           "doLog": true,
           "splits": [
             {
@@ -84,7 +80,6 @@
       "allocations": [
         {
           "key": "dmFsaWQ=",
-          "name": "QWxsb2NhdGlvbiBmb3IgdmFsaWQ=",
           "doLog": true,
           "rules": [
             {
@@ -108,7 +103,6 @@
         },
         {
           "key": "aW52YWxpZA==",
-          "name": "QWxsb2NhdGlvbiBmb3IgaW52YWxpZA==",
           "doLog": true,
           "rules": [],
           "splits": [
@@ -138,7 +132,6 @@
       "allocations": [
         {
           "key": "cGFydGlhbC1leGFtcGxl",
-          "name": "QWxsb2NhdGlvbiBmb3IgcGFydGlhbC1leGFtcGxl",
           "doLog": true,
           "rules": [
             {
@@ -160,7 +153,6 @@
         },
         {
           "key": "dGVzdA==",
-          "name": "QWxsb2NhdGlvbiBmb3IgdGVzdA==",
           "doLog": true,
           "rules": [
             {
@@ -204,7 +196,6 @@
       "allocations": [
         {
           "key": "MS1mb3ItMQ==",
-          "name": "QWxsb2NhdGlvbiBmb3IgMS1mb3ItMQ==",
           "doLog": true,
           "rules": [
             {
@@ -228,7 +219,6 @@
         },
         {
           "key": "Mi1mb3ItMTIzNDU2Nzg5",
-          "name": "QWxsb2NhdGlvbiBmb3IgMi1mb3ItMTIzNDU2Nzg5",
           "doLog": true,
           "rules": [
             {
@@ -252,7 +242,6 @@
         },
         {
           "key": "My1mb3Itbm90LTI=",
-          "name": "QWxsb2NhdGlvbiBmb3IgMy1mb3Itbm90LTI=",
           "doLog": true,
           "rules": [
             {
@@ -306,7 +295,6 @@
       "allocations": [
         {
           "key": "MS1mb3Itb25lLW9m",
-          "name": "QWxsb2NhdGlvbiBmb3IgMS1mb3Itb25lLW9m",
           "doLog": true,
           "rules": [
             {
@@ -330,7 +318,6 @@
         },
         {
           "key": "Mi1mb3ItbWF0Y2hlcw==",
-          "name": "QWxsb2NhdGlvbiBmb3IgMi1mb3ItbWF0Y2hlcw==",
           "doLog": true,
           "rules": [
             {
@@ -352,7 +339,6 @@
         },
         {
           "key": "My1mb3Itbm90LW9uZS1vZg==",
-          "name": "QWxsb2NhdGlvbiBmb3IgMy1mb3Itbm90LW9uZS1vZg==",
           "doLog": true,
           "rules": [
             {
@@ -376,7 +362,6 @@
         },
         {
           "key": "NC1mb3Itbm90LW1hdGNoZXM=",
-          "name": "QWxsb2NhdGlvbiBmb3IgNC1mb3Itbm90LW1hdGNoZXM=",
           "doLog": true,
           "rules": [
             {
@@ -398,7 +383,6 @@
         },
         {
           "key": "NS1mb3ItbWF0Y2hlcy1udWxs",
-          "name": "QWxsb2NhdGlvbiBmb3IgNS1mb3ItbWF0Y2hlcy1udWxs",
           "doLog": true,
           "rules": [
             {
@@ -440,7 +424,6 @@
       "allocations": [
         {
           "key": "b24tZm9yLU5B",
-          "name": "QWxsb2NhdGlvbiBmb3Igb24tZm9yLU5B",
           "doLog": true,
           "rules": [
             {
@@ -476,7 +459,6 @@
         },
         {
           "key": "b24tZm9yLWFnZS01MCs=",
-          "name": "QWxsb2NhdGlvbiBmb3Igb24tZm9yLWFnZS01MCs=",
           "doLog": true,
           "rules": [
             {
@@ -508,7 +490,6 @@
         },
         {
           "key": "b2ZmLWZvci1hbGw=",
-          "name": "QWxsb2NhdGlvbiBmb3Igb2ZmLWZvci1hbGw=",
           "doLog": true,
           "rules": [],
           "splits": [
@@ -542,7 +523,6 @@
       "allocations": [
         {
           "key": "b2xkLXZlcnNpb25z",
-          "name": "QWxsb2NhdGlvbiBmb3Igb2xkLXZlcnNpb25z",
           "doLog": true,
           "rules": [
             {
@@ -564,7 +544,6 @@
         },
         {
           "key": "Y3VycmVudC12ZXJzaW9ucw==",
-          "name": "QWxsb2NhdGlvbiBmb3IgY3VycmVudC12ZXJzaW9ucw==",
           "doLog": true,
           "rules": [
             {
@@ -591,7 +570,6 @@
         },
         {
           "key": "bmV3LXZlcnNpb25z",
-          "name": "QWxsb2NhdGlvbiBmb3IgbmV3LXZlcnNpb25z",
           "doLog": true,
           "rules": [
             {
@@ -635,7 +613,6 @@
       "allocations": [
         {
           "key": "c21hbGwtc2l6ZQ==",
-          "name": "QWxsb2NhdGlvbiBmb3Igc21hbGwtc2l6ZQ==",
           "doLog": true,
           "rules": [
             {
@@ -657,7 +634,6 @@
         },
         {
           "key": "bWVkdW0tc2l6ZQ==",
-          "name": "QWxsb2NhdGlvbiBmb3IgbWVkdW0tc2l6ZQ==",
           "doLog": true,
           "rules": [
             {
@@ -684,7 +660,6 @@
         },
         {
           "key": "bGFyZ2Utc2l6ZQ==",
-          "name": "QWxsb2NhdGlvbiBmb3IgbGFyZ2Utc2l6ZQ==",
           "doLog": true,
           "rules": [
             {
@@ -728,7 +703,6 @@
       "allocations": [
         {
           "key": "b2xkLXZlcnNpb25z",
-          "name": "QWxsb2NhdGlvbiBmb3Igb2xkLXZlcnNpb25z",
           "doLog": true,
           "endAt": "MjAwMi0xMC0zMVQwOTowMDowMC41OTRa",
           "splits": [
@@ -740,7 +714,6 @@
         },
         {
           "key": "ZnV0dXJlLXZlcnNpb25z",
-          "name": "QWxsb2NhdGlvbiBmb3IgZnV0dXJlLXZlcnNpb25z",
           "doLog": true,
           "startAt": "MjA1Mi0xMC0zMVQwOTowMDowMC41OTRa",
           "splits": [
@@ -752,7 +725,6 @@
         },
         {
           "key": "Y3VycmVudC12ZXJzaW9ucw==",
-          "name": "QWxsb2NhdGlvbiBmb3IgY3VycmVudC12ZXJzaW9ucw==",
           "doLog": true,
           "startAt": "MjAyMi0xMC0zMVQwOTowMDowMC41OTRa",
           "endAt": "MjA1MC0xMC0zMVQwOTowMDowMC41OTRa",
@@ -783,7 +755,6 @@
       "allocations": [
         {
           "key": "bnVsbC1vcGVyYXRvcg==",
-          "name": "QWxsb2NhdGlvbiBmb3IgbnVsbC1vcGVyYXRvcg==",
           "doLog": true,
           "rules": [
             {
@@ -814,7 +785,6 @@
         },
         {
           "key": "bm90LW51bGwtb3BlcmF0b3I=",
-          "name": "QWxsb2NhdGlvbiBmb3Igbm90LW51bGwtb3BlcmF0b3I=",
           "doLog": true,
           "rules": [
             {
@@ -870,7 +840,6 @@
       "allocations": [
         {
           "key": "aWQgcnVsZQ==",
-          "name": "QWxsb2NhdGlvbiBmb3IgaWQgcnVsZQ==",
           "doLog": false,
           "rules": [
             {
@@ -892,7 +861,6 @@
         },
         {
           "key": "aW50ZXJuYWwgdXNlcnM=",
-          "name": "QWxsb2NhdGlvbiBmb3IgaW50ZXJuYWwgdXNlcnM=",
           "doLog": false,
           "rules": [
             {
@@ -914,7 +882,6 @@
         },
         {
           "key": "ZXhwZXJpbWVudA==",
-          "name": "QWxsb2NhdGlvbiBmb3IgZXhwZXJpbWVudA==",
           "doLog": true,
           "rules": [
             {
@@ -1005,7 +972,6 @@
         },
         {
           "key": "cm9sbG91dA==",
-          "name": "QWxsb2NhdGlvbiBmb3Igcm9sbG91dA==",
           "doLog": true,
           "rules": [
             {
@@ -1067,7 +1033,6 @@
       "allocations": [
         {
           "key": "dGFyZ2V0ZWQgYWxsb2NhdGlvbg==",
-          "name": "QWxsb2NhdGlvbiBmb3IgdGFyZ2V0ZWQgYWxsb2NhdGlvbg==",
           "doLog": true,
           "rules": [
             {
@@ -1112,7 +1077,6 @@
         },
         {
           "key": "NTAvNTAgc3BsaXQ=",
-          "name": "QWxsb2NhdGlvbiBmb3IgNTAvNTAgc3BsaXQ=",
           "doLog": true,
           "rules": [],
           "splits": [
@@ -1166,7 +1130,6 @@
       "allocations": [
         {
           "key": "NTAvNTAgc3BsaXQ=",
-          "name": "QWxsb2NhdGlvbiBmb3IgNTAvNTAgc3BsaXQ=",
           "doLog": true,
           "rules": [],
           "splits": [

@@ -12,9 +12,6 @@
       "assignment": "small",
       "assignmentDetails": {
         "value": "small",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"small-size\".",
         "variationKey": "small",
@@ -30,7 +27,6 @@
         },
         "matchedAllocation": {
           "key": "small-size",
-          "name": "Allocation for small-size",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -38,13 +34,11 @@
         "unevaluatedAllocations": [
           {
             "key": "medum-size",
-            "name": "Allocation for medum-size",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           },
           {
             "key": "large-size",
-            "name": "Allocation for large-size",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
@@ -60,9 +54,6 @@
       "assignment": "medium",
       "assignmentDetails": {
         "value": "medium",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"medum-size\".",
         "variationKey": "medium",
@@ -83,14 +74,12 @@
         },
         "matchedAllocation": {
           "key": "medum-size",
-          "name": "Allocation for medum-size",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "small-size",
-            "name": "Allocation for small-size",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -98,7 +87,6 @@
         "unevaluatedAllocations": [
           {
             "key": "large-size",
-            "name": "Allocation for large-size",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
@@ -113,9 +101,6 @@
       "assignment": "unknown",
       "assignmentDetails": {
         "value": "unknown",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -125,19 +110,16 @@
         "unmatchedAllocations": [
           {
             "key": "small-size",
-            "name": "Allocation for small-size",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "medum-size",
-            "name": "Allocation for medum-size",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "large-size",
-            "name": "Allocation for large-size",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           }
@@ -153,9 +135,6 @@
       "assignment": "large",
       "assignmentDetails": {
         "value": "large",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"large-size\".",
         "variationKey": "large",
@@ -171,20 +150,17 @@
         },
         "matchedAllocation": {
           "key": "large-size",
-          "name": "Allocation for large-size",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "small-size",
-            "name": "Allocation for small-size",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "medum-size",
-            "name": "Allocation for medum-size",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -200,9 +176,6 @@
       "assignment": "unknown",
       "assignmentDetails": {
         "value": "unknown",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -212,19 +185,16 @@
         "unmatchedAllocations": [
           {
             "key": "small-size",
-            "name": "Allocation for small-size",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "medum-size",
-            "name": "Allocation for medum-size",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "large-size",
-            "name": "Allocation for large-size",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           }

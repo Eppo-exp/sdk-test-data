@@ -12,9 +12,6 @@
       "assignment": 42,
       "assignmentDetails": {
         "value": 42,
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "TYPE_MISMATCH",
         "flagEvaluationDescription": "Expected variation type INTEGER does not match for variation 'pi' with value 3.1415926",
         "variationKey": null,
@@ -25,13 +22,11 @@
         "unevaluatedAllocations": [
           {
             "key": "valid",
-            "name": "Allocation for valid",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 1
           },
           {
             "key": "invalid",
-            "name": "Allocation for invalid",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           }
@@ -47,9 +42,6 @@
       "assignment": 1,
       "assignmentDetails": {
         "value": 1,
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"valid\".",
         "variationKey": "one",
@@ -67,7 +59,6 @@
         },
         "matchedAllocation": {
           "key": "valid",
-          "name": "Allocation for valid",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -75,7 +66,6 @@
         "unevaluatedAllocations": [
           {
             "key": "invalid",
-            "name": "Allocation for invalid",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           }
@@ -90,9 +80,6 @@
       "assignment": 42,
       "assignmentDetails": {
         "value": 42,
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "TYPE_MISMATCH",
         "flagEvaluationDescription": "Expected variation type INTEGER does not match for variation 'pi' with value 3.1415926",
         "variationKey": null,
@@ -103,13 +90,11 @@
         "unevaluatedAllocations": [
           {
             "key": "valid",
-            "name": "Allocation for valid",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 1
           },
           {
             "key": "invalid",
-            "name": "Allocation for invalid",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           }

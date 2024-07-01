@@ -12,9 +12,6 @@
       "assignment": "green",
       "assignmentDetails": {
         "value": "green",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"internal users\".",
         "variationKey": "green",
@@ -30,14 +27,12 @@
         },
         "matchedAllocation": {
           "key": "internal users",
-          "name": "Allocation for internal users",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -45,13 +40,11 @@
         "unevaluatedAllocations": [
           {
             "key": "experiment",
-            "name": "Allocation for experiment",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           },
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 4
           }
@@ -67,9 +60,6 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -79,25 +69,21 @@
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "experiment",
-            "name": "Allocation for experiment",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           },
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "TRAFFIC_EXPOSURE_MISS",
             "orderPosition": 4
           }
@@ -113,9 +99,6 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -125,25 +108,21 @@
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "experiment",
-            "name": "Allocation for experiment",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           },
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 4
           }
@@ -161,9 +140,6 @@
       "assignment": "blue",
       "assignmentDetails": {
         "value": "blue",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
         "variationKey": "blue",
@@ -183,26 +159,22 @@
         },
         "matchedAllocation": {
           "key": "rollout",
-          "name": "Allocation for rollout",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 4
         },
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "experiment",
-            "name": "Allocation for experiment",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           }
@@ -220,9 +192,6 @@
       "assignment": "purple",
       "assignmentDetails": {
         "value": "purple",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"id rule\".",
         "variationKey": "purple",
@@ -238,7 +207,6 @@
         },
         "matchedAllocation": {
           "key": "id rule",
-          "name": "Allocation for id rule",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -246,19 +214,16 @@
         "unevaluatedAllocations": [
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           },
           {
             "key": "experiment",
-            "name": "Allocation for experiment",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           },
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 4
           }
@@ -276,9 +241,6 @@
       "assignment": "blue",
       "assignmentDetails": {
         "value": "blue",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
         "variationKey": "blue",
@@ -298,26 +260,22 @@
         },
         "matchedAllocation": {
           "key": "rollout",
-          "name": "Allocation for rollout",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 4
         },
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "experiment",
-            "name": "Allocation for experiment",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           }
@@ -335,9 +293,6 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -347,25 +302,21 @@
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "experiment",
-            "name": "Allocation for experiment",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           },
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "TRAFFIC_EXPOSURE_MISS",
             "orderPosition": 4
           }
@@ -379,9 +330,6 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -391,25 +339,21 @@
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "experiment",
-            "name": "Allocation for experiment",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           },
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 4
           }
@@ -425,9 +369,6 @@
       "assignment": "blue",
       "assignmentDetails": {
         "value": "blue",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
         "variationKey": "blue",
@@ -447,26 +388,22 @@
         },
         "matchedAllocation": {
           "key": "rollout",
-          "name": "Allocation for rollout",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 4
         },
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "experiment",
-            "name": "Allocation for experiment",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           }
@@ -483,9 +420,6 @@
       "assignment": "control",
       "assignmentDetails": {
         "value": "control",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 3 belongs to the range of traffic assigned to \"control\".",
         "variationKey": "control",
@@ -505,20 +439,17 @@
         },
         "matchedAllocation": {
           "key": "experiment",
-          "name": "Allocation for experiment",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -526,7 +457,6 @@
         "unevaluatedAllocations": [
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 4
           }
@@ -541,9 +471,6 @@
       "assignment": "red",
       "assignmentDetails": {
         "value": "red",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 4 belongs to the range of traffic assigned to \"red\".",
         "variationKey": "red",
@@ -563,20 +490,17 @@
         },
         "matchedAllocation": {
           "key": "experiment",
-          "name": "Allocation for experiment",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -584,7 +508,6 @@
         "unevaluatedAllocations": [
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 4
           }
@@ -599,9 +522,6 @@
       "assignment": "yellow",
       "assignmentDetails": {
         "value": "yellow",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 5 belongs to the range of traffic assigned to \"yellow\".",
         "variationKey": "yellow",
@@ -621,20 +541,17 @@
         },
         "matchedAllocation": {
           "key": "experiment",
-          "name": "Allocation for experiment",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -642,7 +559,6 @@
         "unevaluatedAllocations": [
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 4
           }
@@ -657,9 +573,6 @@
       "assignment": "yellow",
       "assignmentDetails": {
         "value": "yellow",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 6 belongs to the range of traffic assigned to \"yellow\".",
         "variationKey": "yellow",
@@ -679,20 +592,17 @@
         },
         "matchedAllocation": {
           "key": "experiment",
-          "name": "Allocation for experiment",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -700,7 +610,6 @@
         "unevaluatedAllocations": [
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 4
           }
@@ -715,9 +624,6 @@
       "assignment": "blue",
       "assignmentDetails": {
         "value": "blue",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
         "variationKey": "blue",
@@ -737,26 +643,22 @@
         },
         "matchedAllocation": {
           "key": "rollout",
-          "name": "Allocation for rollout",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 4
         },
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "experiment",
-            "name": "Allocation for experiment",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           }
@@ -772,9 +674,6 @@
       "assignment": "red",
       "assignmentDetails": {
         "value": "red",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 8 belongs to the range of traffic assigned to \"red\".",
         "variationKey": "red",
@@ -794,20 +693,17 @@
         },
         "matchedAllocation": {
           "key": "experiment",
-          "name": "Allocation for experiment",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -815,7 +711,6 @@
         "unevaluatedAllocations": [
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 4
           }
@@ -830,9 +725,6 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -842,25 +734,21 @@
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "experiment",
-            "name": "Allocation for experiment",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           },
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 4
           }
@@ -874,9 +762,6 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -886,25 +771,21 @@
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "experiment",
-            "name": "Allocation for experiment",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           },
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 4
           }
@@ -918,9 +799,6 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -930,25 +808,21 @@
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "experiment",
-            "name": "Allocation for experiment",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           },
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 4
           }
@@ -964,9 +838,6 @@
       "assignment": "blue",
       "assignmentDetails": {
         "value": "blue",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
         "variationKey": "blue",
@@ -986,26 +857,22 @@
         },
         "matchedAllocation": {
           "key": "rollout",
-          "name": "Allocation for rollout",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 4
         },
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "experiment",
-            "name": "Allocation for experiment",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           }
@@ -1021,9 +888,6 @@
       "assignment": "blue",
       "assignmentDetails": {
         "value": "blue",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
         "variationKey": "blue",
@@ -1043,26 +907,22 @@
         },
         "matchedAllocation": {
           "key": "rollout",
-          "name": "Allocation for rollout",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 4
         },
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "experiment",
-            "name": "Allocation for experiment",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           }
@@ -1076,9 +936,6 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -1088,25 +945,21 @@
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "experiment",
-            "name": "Allocation for experiment",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           },
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 4
           }
@@ -1122,9 +975,6 @@
       "assignment": "yellow",
       "assignmentDetails": {
         "value": "yellow",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 15 belongs to the range of traffic assigned to \"yellow\".",
         "variationKey": "yellow",
@@ -1144,20 +994,17 @@
         },
         "matchedAllocation": {
           "key": "experiment",
-          "name": "Allocation for experiment",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -1165,7 +1012,6 @@
         "unevaluatedAllocations": [
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 4
           }
@@ -1180,9 +1026,6 @@
       "assignment": "control",
       "assignmentDetails": {
         "value": "control",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 16 belongs to the range of traffic assigned to \"control\".",
         "variationKey": "control",
@@ -1202,20 +1045,17 @@
         },
         "matchedAllocation": {
           "key": "experiment",
-          "name": "Allocation for experiment",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -1223,7 +1063,6 @@
         "unevaluatedAllocations": [
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 4
           }
@@ -1238,9 +1077,6 @@
       "assignment": "control",
       "assignmentDetails": {
         "value": "control",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 17 belongs to the range of traffic assigned to \"control\".",
         "variationKey": "control",
@@ -1260,20 +1096,17 @@
         },
         "matchedAllocation": {
           "key": "experiment",
-          "name": "Allocation for experiment",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -1281,7 +1114,6 @@
         "unevaluatedAllocations": [
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 4
           }
@@ -1296,9 +1128,6 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -1308,25 +1137,21 @@
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "experiment",
-            "name": "Allocation for experiment",
             "allocationEvaluationCode": "TRAFFIC_EXPOSURE_MISS",
             "orderPosition": 3
           },
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 4
           }
@@ -1342,9 +1167,6 @@
       "assignment": "red",
       "assignmentDetails": {
         "value": "red",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 19 belongs to the range of traffic assigned to \"red\".",
         "variationKey": "red",
@@ -1364,20 +1186,17 @@
         },
         "matchedAllocation": {
           "key": "experiment",
-          "name": "Allocation for experiment",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "id rule",
-            "name": "Allocation for id rule",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "internal users",
-            "name": "Allocation for internal users",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -1385,7 +1204,6 @@
         "unevaluatedAllocations": [
           {
             "key": "rollout",
-            "name": "Allocation for rollout",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 4
           }

@@ -12,9 +12,6 @@
       "assignment": "default_value",
       "assignmentDetails": {
         "value": "default_value",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -34,9 +31,6 @@
       "assignment": "default_value",
       "assignmentDetails": {
         "value": "default_value",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -55,9 +49,6 @@
       "assignment": "default_value",
       "assignmentDetails": {
         "value": "default_value",
-        "environment": {
-          "name": "Test"
-        },
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
