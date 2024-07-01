@@ -1,8 +1,5 @@
 {
   "updatedAt": "2023-09-13T04:52:06.462Z",
-  "environment": {
-    "name": "Test"
-  },
   "bandits": {
     "banner_bandit": {
       "banditKey": "banner_bandit",

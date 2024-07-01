@@ -11,7 +11,6 @@
       "assignment": 1,
       "assignmentDetails": {
         "value": 1,
-        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"1-for-1\".",
         "variationKey": "1",
@@ -29,7 +28,6 @@
         },
         "matchedAllocation": {
           "key": "1-for-1",
-          "name": "Allocation for 1-for-1",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -37,13 +35,11 @@
         "unevaluatedAllocations": [
           {
             "key": "2-for-123456789",
-            "name": "Allocation for 2-for-123456789",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           },
           {
             "key": "3-for-not-2",
-            "name": "Allocation for 3-for-not-2",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
@@ -58,7 +54,6 @@
       "assignment": 0,
       "assignmentDetails": {
         "value": 0,
-        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -68,19 +63,16 @@
         "unmatchedAllocations": [
           {
             "key": "1-for-1",
-            "name": "Allocation for 1-for-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "2-for-123456789",
-            "name": "Allocation for 2-for-123456789",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           },
           {
             "key": "3-for-not-2",
-            "name": "Allocation for 3-for-not-2",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 3
           }
@@ -96,7 +88,6 @@
       "assignment": 3,
       "assignmentDetails": {
         "value": 3,
-        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-2\".",
         "variationKey": "3",
@@ -114,20 +105,17 @@
         },
         "matchedAllocation": {
           "key": "3-for-not-2",
-          "name": "Allocation for 3-for-not-2",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "1-for-1",
-            "name": "Allocation for 1-for-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "2-for-123456789",
-            "name": "Allocation for 2-for-123456789",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -143,7 +131,6 @@
       "assignment": 3,
       "assignmentDetails": {
         "value": 3,
-        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-2\".",
         "variationKey": "3",
@@ -161,20 +148,17 @@
         },
         "matchedAllocation": {
           "key": "3-for-not-2",
-          "name": "Allocation for 3-for-not-2",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 3
         },
         "unmatchedAllocations": [
           {
             "key": "1-for-1",
-            "name": "Allocation for 1-for-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           },
           {
             "key": "2-for-123456789",
-            "name": "Allocation for 2-for-123456789",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 2
           }
@@ -190,7 +174,6 @@
       "assignment": 1,
       "assignmentDetails": {
         "value": 1,
-        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"1-for-1\".",
         "variationKey": "1",
@@ -208,7 +191,6 @@
         },
         "matchedAllocation": {
           "key": "1-for-1",
-          "name": "Allocation for 1-for-1",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -216,13 +198,11 @@
         "unevaluatedAllocations": [
           {
             "key": "2-for-123456789",
-            "name": "Allocation for 2-for-123456789",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           },
           {
             "key": "3-for-not-2",
-            "name": "Allocation for 3-for-not-2",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
@@ -237,7 +217,6 @@
       "assignment": 1,
       "assignmentDetails": {
         "value": 1,
-        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"1-for-1\".",
         "variationKey": "1",
@@ -255,7 +234,6 @@
         },
         "matchedAllocation": {
           "key": "1-for-1",
-          "name": "Allocation for 1-for-1",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -263,13 +241,11 @@
         "unevaluatedAllocations": [
           {
             "key": "2-for-123456789",
-            "name": "Allocation for 2-for-123456789",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           },
           {
             "key": "3-for-not-2",
-            "name": "Allocation for 3-for-not-2",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }
@@ -284,7 +260,6 @@
       "assignment": 2,
       "assignmentDetails": {
         "value": 2,
-        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"2-for-123456789\".",
         "variationKey": "2",
@@ -302,14 +277,12 @@
         },
         "matchedAllocation": {
           "key": "2-for-123456789",
-          "name": "Allocation for 2-for-123456789",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
         "unmatchedAllocations": [
           {
             "key": "1-for-1",
-            "name": "Allocation for 1-for-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
           }
@@ -317,7 +290,6 @@
         "unevaluatedAllocations": [
           {
             "key": "3-for-not-2",
-            "name": "Allocation for 3-for-not-2",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 3
           }

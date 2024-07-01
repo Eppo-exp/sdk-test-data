@@ -31,7 +31,6 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
-          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -67,7 +66,6 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
-          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -102,7 +100,6 @@
         "matchedRule": null,
         "matchedAllocation": {
           "key": "50/50 split",
-          "name": "Allocation for 50/50 split",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
