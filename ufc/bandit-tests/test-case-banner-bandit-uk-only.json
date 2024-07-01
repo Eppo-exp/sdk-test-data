@@ -121,7 +121,7 @@
             {
                 "actionKey": "adidas",
                 "numericAttributes": {"brand_affinity": 1.0},
-                "categoricalAttributes": {"loyalty_tier": null}
+                "categoricalAttributes": {}
             },
             {
                 "actionKey": "reebok",
@@ -157,7 +157,7 @@
             {
                 "actionKey": "adidas",
                 "numericAttributes": {"brand_affinity": 0.0},
-                "categoricalAttributes": {"loyalty_tier": null}
+                "categoricalAttributes": {}
             },
             {
                 "actionKey": "reebok",
@@ -180,19 +180,19 @@
       {
         "subjectKey": "gerard",
         "subjectAttributes": {
-            "numericAttributes": {"age": null},
-            "categoricalAttributes": {"country": null, "gender_identity": null}
+            "numericAttributes": {},
+            "categoricalAttributes": {}
         },
         "actions": [
             {
                 "actionKey": "nike",
-                "numericAttributes": {"brand_affinity": null},
-                "categoricalAttributes": {"loyalty_tier": null}
+                "numericAttributes": {},
+                "categoricalAttributes": {}
             },
             {
                 "actionKey": "adidas",
                 "numericAttributes": {"brand_affinity": 0.1},
-                "categoricalAttributes": {"loyalty_tier": null}
+                "categoricalAttributes": {}
             },
             {
                 "actionKey": "reebok",
