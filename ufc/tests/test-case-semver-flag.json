@@ -12,7 +12,9 @@
       "assignment": "current",
       "assignmentDetails": {
         "value": "current",
-        "environmentName": "Test",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"current-versions\".",
         "variationKey": "current",
@@ -64,7 +66,9 @@
       "assignment": "old",
       "assignmentDetails": {
         "value": "old",
-        "environmentName": "Test",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"old-versions\".",
         "variationKey": "old",
@@ -109,7 +113,9 @@
       "assignment": "current",
       "assignmentDetails": {
         "value": "current",
-        "environmentName": "Test",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"current-versions\".",
         "variationKey": "current",
@@ -160,7 +166,9 @@
       "assignment": "unknown",
       "assignmentDetails": {
         "value": "unknown",
-        "environmentName": "Test",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -198,7 +206,9 @@
       "assignment": "new",
       "assignmentDetails": {
         "value": "new",
-        "environmentName": "Test",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"new-versions\".",
         "variationKey": "new",
@@ -243,7 +253,9 @@
       "assignment": "current",
       "assignmentDetails": {
         "value": "current",
-        "environmentName": "Test",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"current-versions\".",
         "variationKey": "current",

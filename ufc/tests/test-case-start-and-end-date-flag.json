@@ -12,7 +12,9 @@
       "assignment": "current",
       "assignmentDetails": {
         "value": "current",
-        "environmentName": "Test",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "alice belongs to the range of traffic assigned to \"current\" defined in allocation \"current-versions\".",
         "variationKey": "current",
@@ -50,7 +52,9 @@
       "assignment": "current",
       "assignmentDetails": {
         "value": "current",
-        "environmentName": "Test",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "bob belongs to the range of traffic assigned to \"current\" defined in allocation \"current-versions\".",
         "variationKey": "current",
@@ -87,7 +91,9 @@
       "assignment": "current",
       "assignmentDetails": {
         "value": "current",
-        "environmentName": "Test",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"current\" defined in allocation \"current-versions\".",
         "variationKey": "current",
