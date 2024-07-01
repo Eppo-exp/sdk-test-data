@@ -12,7 +12,9 @@
       "assignment": "old",
       "assignmentDetails": {
         "value": "old",
-        "environment": "Test",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"null-operator\".",
         "variationKey": "old",
@@ -52,7 +54,9 @@
       "assignment": "new",
       "assignmentDetails": {
         "value": "new",
-        "environment": "Test",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"not-null-operator\".",
         "variationKey": "new",
@@ -91,7 +95,9 @@
       "assignment": "old",
       "assignmentDetails": {
         "value": "old",
-        "environment": "Test",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"null-operator\".",
         "variationKey": "old",
@@ -130,7 +136,9 @@
       "assignment": "new",
       "assignmentDetails": {
         "value": "new",
-        "environment": "Test",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"not-null-operator\".",
         "variationKey": "new",
@@ -169,7 +177,9 @@
       "assignment": "old",
       "assignmentDetails": {
         "value": "old",
-        "environment": "Test",
+        "environment": {
+          "name": "Test"
+        },
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"null-operator\".",
         "variationKey": "old",

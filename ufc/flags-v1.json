@@ -1,6 +1,8 @@
 {
   "createdAt": "2024-04-17T19:40:53.716Z",
-  "environment": "Test",
+  "environment": {
+    "name": "Test"
+  },
   "flags": {
     "empty_flag": {
       "key": "empty_flag",
