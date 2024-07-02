@@ -37,12 +37,12 @@
             "actions": [
                 {
                     "actionKey": "nike",
-                    "numericAttributes": {"brand_affinity": -1.7, "mistake": true},
+                    "numericAttributes": {"brand_affinity": -15, "mistake": true},
                     "categoricalAttributes": {"loyalty_tier": "silver", "zip":  81427}
                 },
                 {
                     "actionKey": "adidas",
-                    "numericAttributes": {"brand_affinity": 1.0},
+                    "numericAttributes": {"brand_affinity": 0.0},
                     "categoricalAttributes": {"loyalty_tier": "bronze"}
                 },
                 {
