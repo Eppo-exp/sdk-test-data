@@ -1,5 +1,8 @@
 {
   "createdAt": "2024-04-17T19:40:53.716Z",
+  "environment": {
+    "name": "Test"
+  },
   "flags": {
     "73fcc84c69e49e31fe16a29b2b1f803b": {
       "key": "73fcc84c69e49e31fe16a29b2b1f803b",
