@@ -12,6 +12,7 @@
       "assignment": "small",
       "assignmentDetails": {
         "value": "small",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"small-size\".",
         "variationKey": "small",
@@ -54,6 +55,7 @@
       "assignment": "medium",
       "assignmentDetails": {
         "value": "medium",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"medum-size\".",
         "variationKey": "medium",
@@ -101,6 +103,7 @@
       "assignment": "unknown",
       "assignmentDetails": {
         "value": "unknown",
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -135,6 +138,7 @@
       "assignment": "large",
       "assignmentDetails": {
         "value": "large",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"large-size\".",
         "variationKey": "large",
@@ -176,6 +180,7 @@
       "assignment": "unknown",
       "assignmentDetails": {
         "value": "unknown",
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
