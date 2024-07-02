@@ -12,6 +12,7 @@
       "assignment": "green",
       "assignmentDetails": {
         "value": "green",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"internal users\".",
         "variationKey": "green",
@@ -60,6 +61,7 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -99,6 +101,7 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -140,6 +143,7 @@
       "assignment": "blue",
       "assignmentDetails": {
         "value": "blue",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
         "variationKey": "blue",
@@ -192,6 +196,7 @@
       "assignment": "purple",
       "assignmentDetails": {
         "value": "purple",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"id rule\".",
         "variationKey": "purple",
@@ -241,6 +246,7 @@
       "assignment": "blue",
       "assignmentDetails": {
         "value": "blue",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
         "variationKey": "blue",
@@ -293,6 +299,7 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -330,6 +337,7 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -369,6 +377,7 @@
       "assignment": "blue",
       "assignmentDetails": {
         "value": "blue",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
         "variationKey": "blue",
@@ -420,6 +429,7 @@
       "assignment": "control",
       "assignmentDetails": {
         "value": "control",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 3 belongs to the range of traffic assigned to \"control\".",
         "variationKey": "control",
@@ -471,6 +481,7 @@
       "assignment": "red",
       "assignmentDetails": {
         "value": "red",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 4 belongs to the range of traffic assigned to \"red\".",
         "variationKey": "red",
@@ -522,6 +533,7 @@
       "assignment": "yellow",
       "assignmentDetails": {
         "value": "yellow",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 5 belongs to the range of traffic assigned to \"yellow\".",
         "variationKey": "yellow",
@@ -573,6 +585,7 @@
       "assignment": "yellow",
       "assignmentDetails": {
         "value": "yellow",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 6 belongs to the range of traffic assigned to \"yellow\".",
         "variationKey": "yellow",
@@ -624,6 +637,7 @@
       "assignment": "blue",
       "assignmentDetails": {
         "value": "blue",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
         "variationKey": "blue",
@@ -674,6 +688,7 @@
       "assignment": "red",
       "assignmentDetails": {
         "value": "red",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 8 belongs to the range of traffic assigned to \"red\".",
         "variationKey": "red",
@@ -725,6 +740,7 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -762,6 +778,7 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -799,6 +816,7 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -838,6 +856,7 @@
       "assignment": "blue",
       "assignmentDetails": {
         "value": "blue",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
         "variationKey": "blue",
@@ -888,6 +907,7 @@
       "assignment": "blue",
       "assignmentDetails": {
         "value": "blue",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
         "variationKey": "blue",
@@ -936,6 +956,7 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -975,6 +996,7 @@
       "assignment": "yellow",
       "assignmentDetails": {
         "value": "yellow",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 15 belongs to the range of traffic assigned to \"yellow\".",
         "variationKey": "yellow",
@@ -1026,6 +1048,7 @@
       "assignment": "control",
       "assignmentDetails": {
         "value": "control",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 16 belongs to the range of traffic assigned to \"control\".",
         "variationKey": "control",
@@ -1077,6 +1100,7 @@
       "assignment": "control",
       "assignmentDetails": {
         "value": "control",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 17 belongs to the range of traffic assigned to \"control\".",
         "variationKey": "control",
@@ -1128,6 +1152,7 @@
       "assignment": "default",
       "assignmentDetails": {
         "value": "default",
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -1167,6 +1192,7 @@
       "assignment": "red",
       "assignmentDetails": {
         "value": "red",
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 19 belongs to the range of traffic assigned to \"red\".",
         "variationKey": "red",
