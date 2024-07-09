@@ -9,8 +9,7 @@
         "one_of_flag": true
       },
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"1-for-one-of\".",
@@ -63,8 +62,7 @@
         "one_of_flag": false
       },
       "assignment": 0,
-      "assignmentDetails": {
-        "value": 0,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -108,8 +106,7 @@
         "one_of_flag": "True"
       },
       "assignment": 0,
-      "assignmentDetails": {
-        "value": 0,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -153,8 +150,7 @@
         "matches_flag": true
       },
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"2-for-matches\".",
@@ -206,8 +202,7 @@
         "matches_flag": false
       },
       "assignment": 0,
-      "assignmentDetails": {
-        "value": 0,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -251,8 +246,7 @@
         "not_matches_flag": false
       },
       "assignment": 0,
-      "assignmentDetails": {
-        "value": 0,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -296,8 +290,7 @@
         "not_matches_flag": true
       },
       "assignment": 4,
-      "assignmentDetails": {
-        "value": 4,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"4-for-not-matches\".",
@@ -349,8 +342,7 @@
         "not_matches_flag": "False"
       },
       "assignment": 4,
-      "assignmentDetails": {
-        "value": 4,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"4-for-not-matches\".",
@@ -402,8 +394,7 @@
         "not_one_of_flag": true
       },
       "assignment": 3,
-      "assignmentDetails": {
-        "value": 3,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-one-of\".",
@@ -457,8 +448,7 @@
         "not_one_of_flag": false
       },
       "assignment": 0,
-      "assignmentDetails": {
-        "value": 0,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -502,8 +492,7 @@
         "not_one_of_flag": "False"
       },
       "assignment": 3,
-      "assignmentDetails": {
-        "value": 3,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-one-of\".",
@@ -557,8 +546,7 @@
         "not_one_of_flag": "true"
       },
       "assignment": 3,
-      "assignmentDetails": {
-        "value": 3,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-one-of\".",
@@ -612,8 +600,7 @@
         "not_one_of_flag": "false"
       },
       "assignment": 0,
-      "assignmentDetails": {
-        "value": 0,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -657,8 +644,7 @@
         "null_flag": "null"
       },
       "assignment": 5,
-      "assignmentDetails": {
-        "value": 5,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"5-for-matches-null\".",
@@ -711,8 +697,7 @@
         "null_flag": null
       },
       "assignment": 0,
-      "assignmentDetails": {
-        "value": 0,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -754,8 +739,7 @@
       "subjectKey": "pete",
       "subjectAttributes": {},
       "assignment": 0,
-      "assignmentDetails": {
-        "value": 0,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",

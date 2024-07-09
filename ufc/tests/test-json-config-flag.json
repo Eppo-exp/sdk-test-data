@@ -14,12 +14,7 @@
         "string": "one",
         "float": 1.0
       },
-      "assignmentDetails": {
-        "value": {
-          "integer": 1,
-          "string": "one",
-          "float": 1.0
-        },
+      "evaluationDetails": {
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "alice belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
         "variationKey": "one",
@@ -49,12 +44,7 @@
         "string": "two",
         "float": 2.0
       },
-      "assignmentDetails": {
-        "value": {
-          "integer": 2,
-          "string": "two",
-          "float": 2.0
-        },
+      "evaluationDetails": {
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "bob belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
         "variationKey": "two",
@@ -83,12 +73,7 @@
         "string": "two",
         "float": 2.0
       },
-      "assignmentDetails": {
-        "value": {
-          "integer": 2,
-          "string": "two",
-          "float": 2.0
-        },
+      "evaluationDetails": {
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
         "variationKey": "two",

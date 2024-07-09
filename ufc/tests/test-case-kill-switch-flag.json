@@ -10,8 +10,7 @@
         "country": "US"
       },
       "assignment": true,
-      "assignmentDetails": {
-        "value": true,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
@@ -57,8 +56,7 @@
         "country": "Canada"
       },
       "assignment": true,
-      "assignmentDetails": {
-        "value": true,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
@@ -104,8 +102,7 @@
         "country": "canada"
       },
       "assignment": false,
-      "assignmentDetails": {
-        "value": false,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "barbara belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
@@ -138,8 +135,7 @@
         "age": 40
       },
       "assignment": false,
-      "assignmentDetails": {
-        "value": false,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
@@ -174,8 +170,7 @@
         "age": 25
       },
       "assignment": true,
-      "assignmentDetails": {
-        "value": true,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
@@ -218,8 +213,7 @@
       "subjectKey": "1",
       "subjectAttributes": {},
       "assignment": false,
-      "assignmentDetails": {
-        "value": false,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "1 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
@@ -252,8 +246,7 @@
         "country": "Mexico"
       },
       "assignment": true,
-      "assignmentDetails": {
-        "value": true,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
@@ -299,8 +292,7 @@
         "age": 50
       },
       "assignment": true,
-      "assignmentDetails": {
-        "value": true,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-age-50+\".",
@@ -342,8 +334,7 @@
         "country": "Germany"
       },
       "assignment": false,
-      "assignmentDetails": {
-        "value": false,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "4 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
@@ -376,8 +367,7 @@
         "country": "Germany"
       },
       "assignment": false,
-      "assignmentDetails": {
-        "value": false,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "5 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
@@ -410,8 +400,7 @@
         "country": "Germany"
       },
       "assignment": false,
-      "assignmentDetails": {
-        "value": false,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "6 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
@@ -445,8 +434,7 @@
         "age": 12
       },
       "assignment": true,
-      "assignmentDetails": {
-        "value": true,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
@@ -492,8 +480,7 @@
         "age": 60
       },
       "assignment": true,
-      "assignmentDetails": {
-        "value": true,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-age-50+\".",
@@ -535,8 +522,7 @@
         "email": "email@email.com"
       },
       "assignment": false,
-      "assignmentDetails": {
-        "value": false,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "9 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
@@ -567,8 +553,7 @@
       "subjectKey": "10",
       "subjectAttributes": {},
       "assignment": false,
-      "assignmentDetails": {
-        "value": false,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "10 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
@@ -599,8 +584,7 @@
       "subjectKey": "11",
       "subjectAttributes": {},
       "assignment": false,
-      "assignmentDetails": {
-        "value": false,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "11 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
@@ -633,8 +617,7 @@
         "country": "US"
       },
       "assignment": true,
-      "assignmentDetails": {
-        "value": true,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
@@ -679,8 +662,7 @@
         "country": "Canada"
       },
       "assignment": true,
-      "assignmentDetails": {
-        "value": true,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"on-for-NA\".",
@@ -723,8 +705,7 @@
       "subjectKey": "14",
       "subjectAttributes": {},
       "assignment": false,
-      "assignmentDetails": {
-        "value": false,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "14 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
@@ -757,8 +738,7 @@
         "country": "Denmark"
       },
       "assignment": false,
-      "assignmentDetails": {
-        "value": false,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "15 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
@@ -791,8 +771,7 @@
         "country": "Norway"
       },
       "assignment": false,
-      "assignmentDetails": {
-        "value": false,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "16 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
@@ -825,8 +804,7 @@
         "country": "UK"
       },
       "assignment": false,
-      "assignmentDetails": {
-        "value": false,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "17 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
@@ -859,8 +837,7 @@
         "country": "UK"
       },
       "assignment": false,
-      "assignmentDetails": {
-        "value": false,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "18 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",
@@ -893,8 +870,7 @@
         "country": "UK"
       },
       "assignment": false,
-      "assignmentDetails": {
-        "value": false,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "19 belongs to the range of traffic assigned to \"off\" defined in allocation \"off-for-all\".",

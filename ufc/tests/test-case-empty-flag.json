@@ -10,8 +10,7 @@
         "country": "US"
       },
       "assignment": "default_value",
-      "assignmentDetails": {
-        "value": "default_value",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -30,8 +29,7 @@
         "country": "Canada"
       },
       "assignment": "default_value",
-      "assignmentDetails": {
-        "value": "default_value",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -49,8 +47,7 @@
         "age": 50
       },
       "assignment": "default_value",
-      "assignmentDetails": {
-        "value": "default_value",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",

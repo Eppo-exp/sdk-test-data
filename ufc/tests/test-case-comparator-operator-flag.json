@@ -10,8 +10,7 @@
         "country": "US"
       },
       "assignment": "small",
-      "assignmentDetails": {
-        "value": "small",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"small-size\".",
@@ -53,8 +52,7 @@
         "country": "Canada"
       },
       "assignment": "medium",
-      "assignmentDetails": {
-        "value": "medium",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"medum-size\".",
@@ -101,8 +99,7 @@
         "size": 25
       },
       "assignment": "unknown",
-      "assignmentDetails": {
-        "value": "unknown",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -136,8 +133,7 @@
         "size": 26
       },
       "assignment": "large",
-      "assignmentDetails": {
-        "value": "large",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"large-size\".",
@@ -178,8 +174,7 @@
         "country": "UK"
       },
       "assignment": "unknown",
-      "assignmentDetails": {
-        "value": "unknown",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",

@@ -10,8 +10,7 @@
         "country": "US"
       },
       "assignment": 3,
-      "assignmentDetails": {
-        "value": 3,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"targeted allocation\".",
@@ -52,8 +51,7 @@
         "country": "Canada"
       },
       "assignment": 3,
-      "assignmentDetails": {
-        "value": 3,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"targeted allocation\".",
@@ -93,8 +91,7 @@
         "age": 50
       },
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
@@ -124,8 +121,7 @@
         "age": 25
       },
       "assignment": 3,
-      "assignmentDetails": {
-        "value": 3,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"targeted allocation\".",
@@ -163,8 +159,7 @@
       "subjectKey": "1",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "1 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
@@ -190,8 +185,7 @@
       "subjectKey": "2",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "2 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
@@ -217,8 +211,7 @@
       "subjectKey": "3",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "3 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
@@ -244,8 +237,7 @@
       "subjectKey": "4",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "4 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
@@ -271,8 +263,7 @@
       "subjectKey": "5",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "5 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
@@ -298,8 +289,7 @@
       "subjectKey": "6",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "6 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
@@ -325,8 +315,7 @@
       "subjectKey": "7",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "7 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
@@ -352,8 +341,7 @@
       "subjectKey": "8",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "8 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
@@ -379,8 +367,7 @@
       "subjectKey": "9",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "9 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
@@ -406,8 +393,7 @@
       "subjectKey": "10",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "10 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
@@ -433,8 +419,7 @@
       "subjectKey": "11",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "11 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
@@ -460,8 +445,7 @@
       "subjectKey": "12",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "12 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
@@ -487,8 +471,7 @@
       "subjectKey": "13",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "13 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
@@ -514,8 +497,7 @@
       "subjectKey": "14",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "14 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
@@ -541,8 +523,7 @@
       "subjectKey": "15",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "15 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
@@ -568,8 +549,7 @@
       "subjectKey": "16",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "16 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
@@ -595,8 +575,7 @@
       "subjectKey": "17",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "17 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
@@ -622,8 +601,7 @@
       "subjectKey": "18",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "18 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
@@ -649,8 +627,7 @@
       "subjectKey": "19",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "19 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",

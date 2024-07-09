@@ -10,8 +10,7 @@
         "country": "US"
       },
       "assignment": 3.1415926,
-      "assignmentDetails": {
-        "value": 3.1415926,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "alice belongs to the range of traffic assigned to \"pi\" defined in allocation \"rollout\".",
@@ -34,8 +33,7 @@
         "country": "Canada"
       },
       "assignment": 3.1415926,
-      "assignmentDetails": {
-        "value": 3.1415926,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "bob belongs to the range of traffic assigned to \"pi\" defined in allocation \"rollout\".",
@@ -57,8 +55,7 @@
         "age": 50
       },
       "assignment": 3.1415926,
-      "assignmentDetails": {
-        "value": 3.1415926,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"pi\" defined in allocation \"rollout\".",

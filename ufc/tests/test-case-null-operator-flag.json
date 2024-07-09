@@ -10,8 +10,7 @@
         "country": "US"
       },
       "assignment": "old",
-      "assignmentDetails": {
-        "value": "old",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"null-operator\".",
@@ -48,8 +47,7 @@
         "country": "Canada"
       },
       "assignment": "new",
-      "assignmentDetails": {
-        "value": "new",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"not-null-operator\".",
@@ -85,8 +83,7 @@
         "size": null
       },
       "assignment": "old",
-      "assignmentDetails": {
-        "value": "old",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"null-operator\".",
@@ -122,8 +119,7 @@
         "size": 26
       },
       "assignment": "new",
-      "assignmentDetails": {
-        "value": "new",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"not-null-operator\".",
@@ -159,8 +155,7 @@
         "country": "UK"
       },
       "assignment": "old",
-      "assignmentDetails": {
-        "value": "old",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"null-operator\".",

@@ -10,8 +10,7 @@
         "country": "US"
       },
       "assignment": "green",
-      "assignmentDetails": {
-        "value": "green",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"internal users\".",
@@ -59,8 +58,7 @@
         "country": "Canada"
       },
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -99,8 +97,7 @@
         "age": 50
       },
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -141,8 +138,7 @@
         "age": 25
       },
       "assignment": "blue",
-      "assignmentDetails": {
-        "value": "blue",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
@@ -194,8 +190,7 @@
         "age": 25
       },
       "assignment": "purple",
-      "assignmentDetails": {
-        "value": "purple",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"id rule\".",
@@ -244,8 +239,7 @@
         "age": 25
       },
       "assignment": "blue",
-      "assignmentDetails": {
-        "value": "blue",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
@@ -297,8 +291,7 @@
         "age": 25
       },
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -335,8 +328,7 @@
       "subjectKey": "1",
       "subjectAttributes": {},
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -375,8 +367,7 @@
         "country": "Mexico"
       },
       "assignment": "blue",
-      "assignmentDetails": {
-        "value": "blue",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
@@ -427,8 +418,7 @@
         "age": 33
       },
       "assignment": "control",
-      "assignmentDetails": {
-        "value": "control",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 3 belongs to the range of traffic assigned to \"control\".",
@@ -479,8 +469,7 @@
         "country": "Germany"
       },
       "assignment": "red",
-      "assignmentDetails": {
-        "value": "red",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 4 belongs to the range of traffic assigned to \"red\".",
@@ -531,8 +520,7 @@
         "country": "Germany"
       },
       "assignment": "yellow",
-      "assignmentDetails": {
-        "value": "yellow",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 5 belongs to the range of traffic assigned to \"yellow\".",
@@ -583,8 +571,7 @@
         "country": "Germany"
       },
       "assignment": "yellow",
-      "assignmentDetails": {
-        "value": "yellow",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 6 belongs to the range of traffic assigned to \"yellow\".",
@@ -635,8 +622,7 @@
         "country": "US"
       },
       "assignment": "blue",
-      "assignmentDetails": {
-        "value": "blue",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
@@ -686,8 +672,7 @@
         "country": "Italy"
       },
       "assignment": "red",
-      "assignmentDetails": {
-        "value": "red",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 8 belongs to the range of traffic assigned to \"red\".",
@@ -738,8 +723,7 @@
         "email": "email@email.com"
       },
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -776,8 +760,7 @@
       "subjectKey": "10",
       "subjectAttributes": {},
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -814,8 +797,7 @@
       "subjectKey": "11",
       "subjectAttributes": {},
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -854,8 +836,7 @@
         "country": "US"
       },
       "assignment": "blue",
-      "assignmentDetails": {
-        "value": "blue",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
@@ -905,8 +886,7 @@
         "country": "Canada"
       },
       "assignment": "blue",
-      "assignmentDetails": {
-        "value": "blue",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
@@ -954,8 +934,7 @@
       "subjectKey": "14",
       "subjectAttributes": {},
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -994,8 +973,7 @@
         "country": "Denmark"
       },
       "assignment": "yellow",
-      "assignmentDetails": {
-        "value": "yellow",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 15 belongs to the range of traffic assigned to \"yellow\".",
@@ -1046,8 +1024,7 @@
         "country": "Norway"
       },
       "assignment": "control",
-      "assignmentDetails": {
-        "value": "control",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 16 belongs to the range of traffic assigned to \"control\".",
@@ -1098,8 +1075,7 @@
         "country": "UK"
       },
       "assignment": "control",
-      "assignmentDetails": {
-        "value": "control",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 17 belongs to the range of traffic assigned to \"control\".",
@@ -1150,8 +1126,7 @@
         "country": "UK"
       },
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
@@ -1190,8 +1165,7 @@
         "country": "UK"
       },
       "assignment": "red",
-      "assignmentDetails": {
-        "value": "red",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 19 belongs to the range of traffic assigned to \"red\".",

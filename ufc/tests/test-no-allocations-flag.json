@@ -14,10 +14,7 @@
       "assignment": {
         "message": "Hello, world!"
       },
-      "assignmentDetails": {
-        "value": {
-          "message": "Hello, world!"
-        },
+      "evaluationDetails": {
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -37,10 +34,7 @@
       "assignment": {
         "message": "Hello, world!"
       },
-      "assignmentDetails": {
-        "value": {
-          "message": "Hello, world!"
-        },
+      "evaluationDetails": {
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
@@ -59,10 +53,7 @@
       "assignment": {
         "message": "Hello, world!"
       },
-      "assignmentDetails": {
-        "value": {
-          "message": "Hello, world!"
-        },
+      "evaluationDetails": {
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "variationKey": null,
