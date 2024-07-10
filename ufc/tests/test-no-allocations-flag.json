@@ -15,6 +15,7 @@
         "message": "Hello, world!"
       },
       "evaluationDetails": {
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "banditKey": null,
@@ -37,6 +38,7 @@
         "message": "Hello, world!"
       },
       "evaluationDetails": {
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "banditKey": null,
@@ -58,6 +60,7 @@
         "message": "Hello, world!"
       },
       "evaluationDetails": {
+        "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
         "banditKey": null,

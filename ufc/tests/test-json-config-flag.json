@@ -15,6 +15,7 @@
         "float": 1.0
       },
       "evaluationDetails": {
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "alice belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
         "banditKey": null,
@@ -47,6 +48,7 @@
         "float": 2.0
       },
       "evaluationDetails": {
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "bob belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
         "banditKey": null,
@@ -78,6 +80,7 @@
         "float": 2.0
       },
       "evaluationDetails": {
+        "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
         "banditKey": null,
