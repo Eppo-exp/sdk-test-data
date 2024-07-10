@@ -24,19 +24,15 @@ describe('UFC Test Validation', () => {
     describe.each(testCase.subjects.map(({subjectKey}) => subjectKey))('with subjectKey %s', (subjectKey) => {
       const subject = testCase.subjects.find((subject) => subject.subjectKey === subjectKey)!;
 
-      it('should have matching `assignment` and `assignmentDetails.value` values', () => {
-        expect(subject.assignment).toEqual(subject.assignmentDetails.value);
-      });
-
-      if (subject.assignmentDetails.variationValue === null) {
-        it('should have `assignmentDetails.value` match `defaultValue` when `assignmentDetails.variationValue` is null', () => {
-          expect(subject.assignmentDetails.value).toEqual(testCase.defaultValue);
+      if (subject.evaluationDetails.variationValue === null) {
+        it('should have `assignment` match `defaultValue` when `evaluationDetails.variationValue` is null', () => {
+          expect(subject.assignment).toEqual(testCase.defaultValue);
         })
       }
 
-      if (subject.assignmentDetails.variationValue !== null) {
-        it('should have `assignmentDetails.value` match `assignmentDetails.variationValue` when `assignmentDetails.variationValue` is not null', () => {
-          expect(subject.assignmentDetails.value).toEqual(subject.assignmentDetails.variationValue);
+      if (subject.evaluationDetails.variationValue !== null) {
+        it('should have `assignment` match `evaluationDetails.variationValue` when `evaluationDetails.variationValue` is not null', () => {
+          expect(subject.assignment).toEqual(subject.evaluationDetails.variationValue);
         })
       }
     });

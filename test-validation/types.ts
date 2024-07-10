@@ -22,7 +22,7 @@ interface SubjectTestCase {
   subjectKey: string;
   subjectAttributes: Record<string, string | number | boolean>;
   assignment: VariationValue;
-  assignmentDetails: FlagEvaluationDetails;
+  evaluationDetails: FlagEvaluationDetails;
 }
 
 export interface IAssignmentTestCase {

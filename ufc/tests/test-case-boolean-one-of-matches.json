@@ -9,11 +9,12 @@
         "one_of_flag": true
       },
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"1-for-one-of\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "1",
         "variationValue": 1,
         "matchedRule": {
@@ -63,11 +64,12 @@
         "one_of_flag": false
       },
       "assignment": 0,
-      "assignmentDetails": {
-        "value": 0,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -108,11 +110,12 @@
         "one_of_flag": "True"
       },
       "assignment": 0,
-      "assignmentDetails": {
-        "value": 0,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -153,11 +156,12 @@
         "matches_flag": true
       },
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"2-for-matches\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "2",
         "variationValue": 2,
         "matchedRule": {
@@ -206,11 +210,12 @@
         "matches_flag": false
       },
       "assignment": 0,
-      "assignmentDetails": {
-        "value": 0,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -251,11 +256,12 @@
         "not_matches_flag": false
       },
       "assignment": 0,
-      "assignmentDetails": {
-        "value": 0,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -296,11 +302,12 @@
         "not_matches_flag": true
       },
       "assignment": 4,
-      "assignmentDetails": {
-        "value": 4,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"4-for-not-matches\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "4",
         "variationValue": 4,
         "matchedRule": {
@@ -349,11 +356,12 @@
         "not_matches_flag": "False"
       },
       "assignment": 4,
-      "assignmentDetails": {
-        "value": 4,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"4-for-not-matches\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "4",
         "variationValue": 4,
         "matchedRule": {
@@ -402,11 +410,12 @@
         "not_one_of_flag": true
       },
       "assignment": 3,
-      "assignmentDetails": {
-        "value": 3,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-one-of\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "3",
         "variationValue": 3,
         "matchedRule": {
@@ -457,11 +466,12 @@
         "not_one_of_flag": false
       },
       "assignment": 0,
-      "assignmentDetails": {
-        "value": 0,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -502,11 +512,12 @@
         "not_one_of_flag": "False"
       },
       "assignment": 3,
-      "assignmentDetails": {
-        "value": 3,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-one-of\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "3",
         "variationValue": 3,
         "matchedRule": {
@@ -557,11 +568,12 @@
         "not_one_of_flag": "true"
       },
       "assignment": 3,
-      "assignmentDetails": {
-        "value": 3,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-one-of\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "3",
         "variationValue": 3,
         "matchedRule": {
@@ -612,11 +624,12 @@
         "not_one_of_flag": "false"
       },
       "assignment": 0,
-      "assignmentDetails": {
-        "value": 0,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -657,11 +670,12 @@
         "null_flag": "null"
       },
       "assignment": 5,
-      "assignmentDetails": {
-        "value": 5,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"5-for-matches-null\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "5",
         "variationValue": 5,
         "matchedRule": {
@@ -711,11 +725,12 @@
         "null_flag": null
       },
       "assignment": 0,
-      "assignmentDetails": {
-        "value": 0,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -754,11 +769,12 @@
       "subjectKey": "pete",
       "subjectAttributes": {},
       "assignment": 0,
-      "assignmentDetails": {
-        "value": 0,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,

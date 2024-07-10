@@ -10,11 +10,12 @@
         "country": "US"
       },
       "assignment": "current",
-      "assignmentDetails": {
-        "value": "current",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "alice belongs to the range of traffic assigned to \"current\" defined in allocation \"current-versions\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "current",
         "variationValue": "current",
         "matchedRule": null,
@@ -45,11 +46,12 @@
         "country": "Canada"
       },
       "assignment": "current",
-      "assignmentDetails": {
-        "value": "current",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "bob belongs to the range of traffic assigned to \"current\" defined in allocation \"current-versions\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "current",
         "variationValue": "current",
         "matchedRule": null,
@@ -79,11 +81,12 @@
         "version": "2.1.13"
       },
       "assignment": "current",
-      "assignmentDetails": {
-        "value": "current",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"current\" defined in allocation \"current-versions\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "current",
         "variationValue": "current",
         "matchedRule": null,

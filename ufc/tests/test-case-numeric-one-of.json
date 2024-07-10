@@ -9,11 +9,12 @@
         "number": 1
       },
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"1-for-1\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "1",
         "variationValue": 1,
         "matchedRule": {
@@ -53,11 +54,12 @@
         "number": 2
       },
       "assignment": 0,
-      "assignmentDetails": {
-        "value": 0,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -88,11 +90,12 @@
         "number": 3
       },
       "assignment": 3,
-      "assignmentDetails": {
-        "value": 3,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-2\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "3",
         "variationValue": 3,
         "matchedRule": {
@@ -132,11 +135,12 @@
         "number": 4
       },
       "assignment": 3,
-      "assignmentDetails": {
-        "value": 3,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-2\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "3",
         "variationValue": 3,
         "matchedRule": {
@@ -176,11 +180,12 @@
         "number": "1"
       },
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"1-for-1\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "1",
         "variationValue": 1,
         "matchedRule": {
@@ -220,11 +225,12 @@
         "number": 1
       },
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"1-for-1\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "1",
         "variationValue": 1,
         "matchedRule": {
@@ -264,11 +270,12 @@
         "number": 123456789
       },
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"2-for-123456789\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "2",
         "variationValue": 2,
         "matchedRule": {

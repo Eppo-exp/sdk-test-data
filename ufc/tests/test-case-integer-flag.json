@@ -10,11 +10,12 @@
         "country": "US"
       },
       "assignment": 3,
-      "assignmentDetails": {
-        "value": 3,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"targeted allocation\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "three",
         "variationValue": 3,
         "matchedRule": {
@@ -52,11 +53,12 @@
         "country": "Canada"
       },
       "assignment": 3,
-      "assignmentDetails": {
-        "value": 3,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"targeted allocation\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "three",
         "variationValue": 3,
         "matchedRule": {
@@ -93,11 +95,12 @@
         "age": 50
       },
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "two",
         "variationValue": 2,
         "matchedRule": null,
@@ -124,11 +127,12 @@
         "age": 25
       },
       "assignment": 3,
-      "assignmentDetails": {
-        "value": 3,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"targeted allocation\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "three",
         "variationValue": 3,
         "matchedRule": {
@@ -163,11 +167,12 @@
       "subjectKey": "1",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "1 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "two",
         "variationValue": 2,
         "matchedRule": null,
@@ -190,11 +195,12 @@
       "subjectKey": "2",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "2 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "two",
         "variationValue": 2,
         "matchedRule": null,
@@ -217,11 +223,12 @@
       "subjectKey": "3",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "3 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "two",
         "variationValue": 2,
         "matchedRule": null,
@@ -244,11 +251,12 @@
       "subjectKey": "4",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "4 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "two",
         "variationValue": 2,
         "matchedRule": null,
@@ -271,11 +279,12 @@
       "subjectKey": "5",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "5 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "one",
         "variationValue": 1,
         "matchedRule": null,
@@ -298,11 +307,12 @@
       "subjectKey": "6",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "6 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "two",
         "variationValue": 2,
         "matchedRule": null,
@@ -325,11 +335,12 @@
       "subjectKey": "7",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "7 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "one",
         "variationValue": 1,
         "matchedRule": null,
@@ -352,11 +363,12 @@
       "subjectKey": "8",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "8 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "one",
         "variationValue": 1,
         "matchedRule": null,
@@ -379,11 +391,12 @@
       "subjectKey": "9",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "9 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "two",
         "variationValue": 2,
         "matchedRule": null,
@@ -406,11 +419,12 @@
       "subjectKey": "10",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "10 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "two",
         "variationValue": 2,
         "matchedRule": null,
@@ -433,11 +447,12 @@
       "subjectKey": "11",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "11 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "one",
         "variationValue": 1,
         "matchedRule": null,
@@ -460,11 +475,12 @@
       "subjectKey": "12",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "12 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "one",
         "variationValue": 1,
         "matchedRule": null,
@@ -487,11 +503,12 @@
       "subjectKey": "13",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "13 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "two",
         "variationValue": 2,
         "matchedRule": null,
@@ -514,11 +531,12 @@
       "subjectKey": "14",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "14 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "one",
         "variationValue": 1,
         "matchedRule": null,
@@ -541,11 +559,12 @@
       "subjectKey": "15",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "15 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "two",
         "variationValue": 2,
         "matchedRule": null,
@@ -568,11 +587,12 @@
       "subjectKey": "16",
       "subjectAttributes": {},
       "assignment": 2,
-      "assignmentDetails": {
-        "value": 2,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "16 belongs to the range of traffic assigned to \"two\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "two",
         "variationValue": 2,
         "matchedRule": null,
@@ -595,11 +615,12 @@
       "subjectKey": "17",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "17 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "one",
         "variationValue": 1,
         "matchedRule": null,
@@ -622,11 +643,12 @@
       "subjectKey": "18",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "18 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "one",
         "variationValue": 1,
         "matchedRule": null,
@@ -649,11 +671,12 @@
       "subjectKey": "19",
       "subjectAttributes": {},
       "assignment": 1,
-      "assignmentDetails": {
-        "value": 1,
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "19 belongs to the range of traffic assigned to \"one\" defined in allocation \"50/50 split\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "one",
         "variationValue": 1,
         "matchedRule": null,

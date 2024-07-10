@@ -10,11 +10,12 @@
         "country": "US"
       },
       "assignment": "green",
-      "assignmentDetails": {
-        "value": "green",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"internal users\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "green",
         "variationValue": "green",
         "matchedRule": {
@@ -59,11 +60,12 @@
         "country": "Canada"
       },
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -99,11 +101,12 @@
         "age": 50
       },
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -141,11 +144,12 @@
         "age": 25
       },
       "assignment": "blue",
-      "assignmentDetails": {
-        "value": "blue",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "blue",
         "variationValue": "blue",
         "matchedRule": {
@@ -194,11 +198,12 @@
         "age": 25
       },
       "assignment": "purple",
-      "assignmentDetails": {
-        "value": "purple",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"id rule\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "purple",
         "variationValue": "purple",
         "matchedRule": {
@@ -244,11 +249,12 @@
         "age": 25
       },
       "assignment": "blue",
-      "assignmentDetails": {
-        "value": "blue",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "blue",
         "variationValue": "blue",
         "matchedRule": {
@@ -297,11 +303,12 @@
         "age": 25
       },
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -335,11 +342,12 @@
       "subjectKey": "1",
       "subjectAttributes": {},
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -375,11 +383,12 @@
         "country": "Mexico"
       },
       "assignment": "blue",
-      "assignmentDetails": {
-        "value": "blue",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "blue",
         "variationValue": "blue",
         "matchedRule": {
@@ -427,11 +436,12 @@
         "age": 33
       },
       "assignment": "control",
-      "assignmentDetails": {
-        "value": "control",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 3 belongs to the range of traffic assigned to \"control\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "control",
         "variationValue": "control",
         "matchedRule": {
@@ -479,11 +489,12 @@
         "country": "Germany"
       },
       "assignment": "red",
-      "assignmentDetails": {
-        "value": "red",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 4 belongs to the range of traffic assigned to \"red\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "red",
         "variationValue": "red",
         "matchedRule": {
@@ -531,11 +542,12 @@
         "country": "Germany"
       },
       "assignment": "yellow",
-      "assignmentDetails": {
-        "value": "yellow",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 5 belongs to the range of traffic assigned to \"yellow\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "yellow",
         "variationValue": "yellow",
         "matchedRule": {
@@ -583,11 +595,12 @@
         "country": "Germany"
       },
       "assignment": "yellow",
-      "assignmentDetails": {
-        "value": "yellow",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 6 belongs to the range of traffic assigned to \"yellow\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "yellow",
         "variationValue": "yellow",
         "matchedRule": {
@@ -635,11 +648,12 @@
         "country": "US"
       },
       "assignment": "blue",
-      "assignmentDetails": {
-        "value": "blue",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "blue",
         "variationValue": "blue",
         "matchedRule": {
@@ -686,11 +700,12 @@
         "country": "Italy"
       },
       "assignment": "red",
-      "assignmentDetails": {
-        "value": "red",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 8 belongs to the range of traffic assigned to \"red\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "red",
         "variationValue": "red",
         "matchedRule": {
@@ -738,11 +753,12 @@
         "email": "email@email.com"
       },
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -776,11 +792,12 @@
       "subjectKey": "10",
       "subjectAttributes": {},
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -814,11 +831,12 @@
       "subjectKey": "11",
       "subjectAttributes": {},
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -854,11 +872,12 @@
         "country": "US"
       },
       "assignment": "blue",
-      "assignmentDetails": {
-        "value": "blue",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "blue",
         "variationValue": "blue",
         "matchedRule": {
@@ -905,11 +924,12 @@
         "country": "Canada"
       },
       "assignment": "blue",
-      "assignmentDetails": {
-        "value": "blue",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"rollout\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "blue",
         "variationValue": "blue",
         "matchedRule": {
@@ -954,11 +974,12 @@
       "subjectKey": "14",
       "subjectAttributes": {},
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -994,11 +1015,12 @@
         "country": "Denmark"
       },
       "assignment": "yellow",
-      "assignmentDetails": {
-        "value": "yellow",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 15 belongs to the range of traffic assigned to \"yellow\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "yellow",
         "variationValue": "yellow",
         "matchedRule": {
@@ -1046,11 +1068,12 @@
         "country": "Norway"
       },
       "assignment": "control",
-      "assignmentDetails": {
-        "value": "control",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 16 belongs to the range of traffic assigned to \"control\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "control",
         "variationValue": "control",
         "matchedRule": {
@@ -1098,11 +1121,12 @@
         "country": "UK"
       },
       "assignment": "control",
-      "assignmentDetails": {
-        "value": "control",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 17 belongs to the range of traffic assigned to \"control\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "control",
         "variationValue": "control",
         "matchedRule": {
@@ -1150,11 +1174,12 @@
         "country": "UK"
       },
       "assignment": "default",
-      "assignmentDetails": {
-        "value": "default",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -1190,11 +1215,12 @@
         "country": "UK"
       },
       "assignment": "red",
-      "assignmentDetails": {
-        "value": "red",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"experiment\" and 19 belongs to the range of traffic assigned to \"red\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "red",
         "variationValue": "red",
         "matchedRule": {

@@ -10,11 +10,12 @@
         "country": "US"
       },
       "assignment": "current",
-      "assignmentDetails": {
-        "value": "current",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"current-versions\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "current",
         "variationValue": "current",
         "matchedRule": {
@@ -59,11 +60,12 @@
         "country": "Canada"
       },
       "assignment": "old",
-      "assignmentDetails": {
-        "value": "old",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"old-versions\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "old",
         "variationValue": "old",
         "matchedRule": {
@@ -101,11 +103,12 @@
         "version": "2.1.13"
       },
       "assignment": "current",
-      "assignmentDetails": {
-        "value": "current",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"current-versions\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "current",
         "variationValue": "current",
         "matchedRule": {
@@ -149,11 +152,12 @@
         "version": "3.1.0"
       },
       "assignment": "unknown",
-      "assignmentDetails": {
-        "value": "unknown",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -184,11 +188,12 @@
         "version": "3.1.1"
       },
       "assignment": "new",
-      "assignmentDetails": {
-        "value": "new",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"new-versions\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "new",
         "variationValue": "new",
         "matchedRule": {
@@ -226,11 +231,12 @@
         "version": "1.5.0"
       },
       "assignment": "current",
-      "assignmentDetails": {
-        "value": "current",
+      "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"current-versions\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "current",
         "variationValue": "current",
         "matchedRule": {
