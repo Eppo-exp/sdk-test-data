@@ -13,6 +13,8 @@
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"1-for-1\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "1",
         "variationValue": 1,
         "matchedRule": {
@@ -56,6 +58,8 @@
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -90,6 +94,8 @@
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-2\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "3",
         "variationValue": 3,
         "matchedRule": {
@@ -133,6 +139,8 @@
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-2\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "3",
         "variationValue": 3,
         "matchedRule": {
@@ -176,6 +184,8 @@
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"1-for-1\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "1",
         "variationValue": 1,
         "matchedRule": {
@@ -219,6 +229,8 @@
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"1-for-1\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "1",
         "variationValue": 1,
         "matchedRule": {
@@ -262,6 +274,8 @@
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"2-for-123456789\".",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": "2",
         "variationValue": 2,
         "matchedRule": {

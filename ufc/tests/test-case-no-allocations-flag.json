@@ -17,6 +17,8 @@
       "evaluationDetails": {
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -37,6 +39,8 @@
       "evaluationDetails": {
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
@@ -56,6 +60,8 @@
       "evaluationDetails": {
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
         "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
         "variationKey": null,
         "variationValue": null,
         "matchedRule": null,
