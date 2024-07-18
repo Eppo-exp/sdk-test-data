@@ -1,13 +1,24 @@
 {
-    "flag": "banner_bandit_flag",
-    "defaultValue": "default",
-    "subjects": [
-      {
-        "subjectKey": "alice",
-        "subjectAttributes": {"numericAttributes": {"age": 25}, "categoricalAttributes": {"country": "USA"}},
-        "actions": [],
-        "assignment": {"variation": "default", "action": null}
-      }
-    ]
-  }
-
+  "flag": "banner_bandit_flag",
+  "defaultValue": "default",
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {"numericAttributes": {"age": 25}, "categoricalAttributes": {"country": "USA"}},
+      "actions": [],
+      "assignment": {"variation": "banner_bandit", "action": null}
+    },
+    {
+      "subjectKey": "ben",
+      "subjectAttributes": {"numericAttributes": {"age": 25}, "categoricalAttributes": {"country": "USA"}},
+      "actions": [],
+      "assignment": {"variation": "control", "action": null}
+    },
+    {
+      "subjectKey": "charles",
+      "subjectAttributes": {"numericAttributes": {"age": 25}, "categoricalAttributes": {"country": "USA"}},
+      "actions": [],
+      "assignment": {"variation": "default", "action": null}
+    }
+  ]
+}
