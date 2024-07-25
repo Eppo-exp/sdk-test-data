@@ -12,8 +12,8 @@
       "assignment": 42,
       "evaluationDetails": {
         "environmentName": "Test",
-        "flagEvaluationCode": "TYPE_MISMATCH",
-        "flagEvaluationDescription": "Expected variation type INTEGER does not match for variation 'pi' with value 3.1415926",
+        "flagEvaluationCode": "ASSIGNMENT_ERROR",
+        "flagEvaluationDescription": "Variation (pi) is configured for type INTEGER, but is set to incompatible value (3.1415926)",
         "banditKey": null,
         "banditAction": null,
         "variationKey": null,
@@ -84,8 +84,8 @@
       "assignment": 42,
       "evaluationDetails": {
         "environmentName": "Test",
-        "flagEvaluationCode": "TYPE_MISMATCH",
-        "flagEvaluationDescription": "Expected variation type INTEGER does not match for variation 'pi' with value 3.1415926",
+        "flagEvaluationCode": "ASSIGNMENT_ERROR",
+        "flagEvaluationDescription": "Variation (pi) is configured for type INTEGER, but is set to incompatible value (3.1415926)",
         "banditKey": null,
         "banditAction": null,
         "variationKey": null,
