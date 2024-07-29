@@ -257,7 +257,7 @@
                     "variationValue": "cold_start_bandit"
                 }
             ],
-            "modelVersion": null
+            "modelVersion": "cold start"
         }
     }
 }
