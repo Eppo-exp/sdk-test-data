@@ -1,158 +1,207 @@
 {
     "createdAt": "2024-04-17T19:40:53.716Z",
     "environment": {
-      "name": "Test"
+        "name": "Test"
     },
     "flags": {
-      "non_bandit_flag": {
-        "key": "non_bandit_flag",
-        "enabled": true,
-        "variationType": "STRING",
-        "variations": {
-            "control": {"key": "control", "value": "control"},
-            "variant": {"key": "variant", "value": "variant"}
-        },
-        "allocations": [
-            {
-                "key": "control-allocation",
-                "splits": [
-                    {
-                        "variationKey": "control",
-                        "shards": []
-                    }
-                ],
-                "doLog": true
-            }
-        ],
-        "totalShards": 10000
-      },
-      "non_bandit_integer_flag": {
-        "key": "non_bandit_integer_flag",
-        "enabled": true,
-        "variationType": "INTEGER",
-        "variations": {
-            "control": {"key": "control", "value": 0},
-            "variant": {"key": "variant", "value": 1}
-        },
-        "allocations": [
-            {
-                "key": "control-allocation",
-                "splits": [
-                    {
-                        "variationKey": "control",
-                        "shards": []
-                    }
-                ],
-                "doLog": true
-            }
-        ],
-        "totalShards": 10000
-      },
-      "banner_bandit_flag": {
-        "key": "banner_bandit_flag",
-        "enabled": true,
-        "variationType": "STRING",
-        "variations": {
-            "control": {"key": "control", "value": "control"},
-            "banner_bandit": {"key": "banner_bandit", "value": "banner_bandit"}
-        },
-        "allocations": [
-            {
-                "key": "analysis",
-                "splits": [
-                    {
-                        "variationKey": "control",
-                        "shards": [
-                            {
-                                "salt": "traffic-banner-bandit-flag-1",
-                                "ranges": [{"start": 0, "end": 2000}]
-                            },
-                            {
-                                "salt": "split-banner-bandit-flag-1",
-                                "ranges": [{"start": 0, "end": 5000}]
-                            }
-                        ]
-                    },
-                    {
-                        "variationKey": "banner_bandit",
-                        "shards": [
-                            {
-                                "salt": "traffic-banner-bandit-flag-1",
-                                "ranges": [{"start": 0, "end": 2000}]
-                            },
-                            {
-                                "salt": "split-banner-bandit-flag-1",
-                                "ranges": [{"start": 5000, "end": 10000}]
-                            }
-                        ]
-                    }
-                ],
-                "doLog": false
+        "non_bandit_flag": {
+            "key": "non_bandit_flag",
+            "enabled": true,
+            "variationType": "STRING",
+            "variations": {
+                "control": {
+                    "key": "control",
+                    "value": "control"
+                },
+                "variant": {
+                    "key": "variant",
+                    "value": "variant"
+                }
             },
-            {
-                "key": "training",
-                "splits": [
-                    {
-                        "variationKey": "banner_bandit",
-                        "shards": [
-                            {
-                                "salt": "traffic-banner-bandit-flag-2",
-                                "ranges": [{"start": 0, "end": 8000}]
-                            }
-                        ]
-                    }
-                ],
-                "doLog": true
-            }
-        ],
-        "totalShards": 10000
-      },
-      "banner_bandit_flag_uk_only": {
-        "key": "banner_bandit_flag_uk_only",
-        "enabled": true,
-        "variationType": "STRING",
-        "variations": {
-            "control": {"key": "control", "value": "control"},
-            "banner_bandit": {"key": "banner_bandit", "value": "banner_bandit"}
-        },
-        "allocations": [
-            {
-                "key": "training",
-                "rules": [
-                    {
-                      "conditions": [
+            "allocations": [
+                {
+                    "key": "control-allocation",
+                    "splits": [
                         {
-                          "attribute": "country",
-                          "operator": "ONE_OF",
-                          "value": [
-                            "UK"
-                          ]
+                            "variationKey": "control",
+                            "shards": []
                         }
-                      ]
-                    }
-                  ],
-                "splits": [
-                    {
-                        "variationKey": "banner_bandit",
-                        "shards": []
-                    }
-                ],
-                "doLog": true
+                    ],
+                    "doLog": true
+                }
+            ],
+            "totalShards": 10000
+        },
+        "non_bandit_integer_flag": {
+            "key": "non_bandit_integer_flag",
+            "enabled": true,
+            "variationType": "INTEGER",
+            "variations": {
+                "control": {
+                    "key": "control",
+                    "value": 0
+                },
+                "variant": {
+                    "key": "variant",
+                    "value": 1
+                }
             },
-            {
-                "key": "default",
-                "rules": [],
-                "splits": [
-                    {
-                        "variationKey": "control",
-                        "shards": []
-                    }
-                ],
-                "doLog": true
-            }
-        ],
-        "totalShards": 10000
-      }
+            "allocations": [
+                {
+                    "key": "control-allocation",
+                    "splits": [
+                        {
+                            "variationKey": "control",
+                            "shards": []
+                        }
+                    ],
+                    "doLog": true
+                }
+            ],
+            "totalShards": 10000
+        },
+        "banner_bandit_flag": {
+            "key": "banner_bandit_flag",
+            "enabled": true,
+            "variationType": "STRING",
+            "variations": {
+                "control": {
+                    "key": "control",
+                    "value": "control"
+                },
+                "banner_bandit": {
+                    "key": "banner_bandit",
+                    "value": "banner_bandit"
+                }
+            },
+            "allocations": [
+                {
+                    "key": "analysis",
+                    "splits": [
+                        {
+                            "variationKey": "control",
+                            "shards": [
+                                {
+                                    "salt": "traffic-banner-bandit-flag-1",
+                                    "ranges": [
+                                        {
+                                            "start": 0,
+                                            "end": 2000
+                                        }
+                                    ]
+                                },
+                                {
+                                    "salt": "split-banner-bandit-flag-1",
+                                    "ranges": [
+                                        {
+                                            "start": 0,
+                                            "end": 5000
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "variationKey": "banner_bandit",
+                            "shards": [
+                                {
+                                    "salt": "traffic-banner-bandit-flag-1",
+                                    "ranges": [
+                                        {
+                                            "start": 0,
+                                            "end": 2000
+                                        }
+                                    ]
+                                },
+                                {
+                                    "salt": "split-banner-bandit-flag-1",
+                                    "ranges": [
+                                        {
+                                            "start": 5000,
+                                            "end": 10000
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "doLog": false
+                },
+                {
+                    "key": "training",
+                    "splits": [
+                        {
+                            "variationKey": "banner_bandit",
+                            "shards": [
+                                {
+                                    "salt": "traffic-banner-bandit-flag-2",
+                                    "ranges": [
+                                        {
+                                            "start": 0,
+                                            "end": 8000
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "doLog": true
+                }
+            ],
+            "totalShards": 10000
+        },
+        "banner_bandit_flag_uk_only": {
+            "key": "banner_bandit_flag_uk_only",
+            "enabled": true,
+            "variationType": "STRING",
+            "variations": {
+                "control": {
+                    "key": "control",
+                    "value": "control"
+                },
+                "banner_bandit": {
+                    "key": "banner_bandit",
+                    "value": "banner_bandit"
+                }
+            },
+            "allocations": [
+                {
+                    "key": "training",
+                    "rules": [
+                        {
+                            "conditions": [
+                                {
+                                    "attribute": "country",
+                                    "operator": "ONE_OF",
+                                    "value": [
+                                        "UK"
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "splits": [
+                        {
+                            "variationKey": "banner_bandit",
+                            "shards": []
+                        }
+                    ],
+                    "doLog": true
+                },
+                {
+                    "key": "default",
+                    "rules": [],
+                    "splits": [
+                        {
+                            "variationKey": "control",
+                            "shards": []
+                        }
+                    ],
+                    "doLog": true
+                }
+            ],
+            "totalShards": 10000
+        }
     },
     "bandits": {
         "banner_bandit": [
@@ -177,5 +226,38 @@
                 "variationValue": "cold_start_bandit"
             }
         ]
+    },
+    "banditReferences": {
+        "banner_bandit": {
+            "flagVariations": [
+                {
+                    "key": "banner_bandit",
+                    "flagKey": "banner_bandit_flag",
+                    "allocationKey": "banner_bandit_allocation",
+                    "variationKey": "banner_bandit",
+                    "variationValue": "banner_bandit"
+                },
+                {
+                    "key": "banner_bandit",
+                    "flagKey": "banner_bandit_flag_uk_only",
+                    "allocationKey": "banner_bandit_uk_allocation",
+                    "variationKey": "banner_bandit",
+                    "variationValue": "banner_bandit"
+                }
+            ],
+            "modelVersion": "v123"
+        },
+        "cold_start_bandit": {
+            "flagVariations": [
+                {
+                    "key": "cold_start_bandit",
+                    "flagKey": "cold_start_bandit_flag",
+                    "allocationKey": "cold_start_bandit_allocation",
+                    "variationKey": "cold_start_bandit",
+                    "variationValue": "cold_start_bandit"
+                }
+            ],
+            "modelVersion": null
+        }
     }
 }
