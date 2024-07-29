@@ -24,16 +24,14 @@ describe('UFC Test Validation', () => {
     describe.each(testCase.subjects.map(({subjectKey}) => subjectKey))('with subjectKey %s', (subjectKey) => {
       const subject = testCase.subjects.find((subject) => subject.subjectKey === subjectKey)!;
 
-      if (subject.evaluationDetails.variationValue === null) {
-        it('should have `assignment` match `defaultValue` when `evaluationDetails.variationValue` is null', () => {
-          expect(subject.assignment).toEqual(testCase.defaultValue);
-        })
-      }
-
-      if (subject.evaluationDetails.variationValue !== null) {
-        it('should have `assignment` match `evaluationDetails.variationValue` when `evaluationDetails.variationValue` is not null', () => {
+      if (subject.evaluationDetails.flagEvaluationCode === "MATCH") {
+        it('should have `assignment` match `evaluationDetails.variationValue` when `evaluationDetails.flagEvaluationCode` is "MATCH"', () => {
           expect(subject.assignment).toEqual(subject.evaluationDetails.variationValue);
-        })
+        });
+      } else {
+        it('should have `assignment` match `defaultValue` when `evaluationDetails.flagEvaluationCode` is not "MATCH"', () => {
+          expect(subject.assignment).toEqual(testCase.defaultValue);
+        });
       }
     });
   })
