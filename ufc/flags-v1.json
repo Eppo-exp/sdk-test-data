@@ -1185,6 +1185,77 @@
         }
       ],
       "totalShards": 10000
+    },
+    "json-array-config-flag": {
+      "key": "json-array-config-flag",
+      "enabled": true,
+      "variationType": "JSON",
+      "variations": {
+        "one": {
+          "key": "one",
+          "value": "[{ \"integer\": 1, \"string\": \"one\", \"float\": 1.0 }, { \"integer\": 2, \"string\": \"two\", \"float\": 2.0 }]"
+        },
+        "two": {
+          "key": "two",
+          "value": "[{ \"integer\": 3, \"string\": \"three\", \"float\": 3.0 }, { \"integer\": 4, \"string\": \"four\", \"float\": 4.0 }]"
+        }
+      },
+      "allocations": [
+        {
+          "key": "50/50 split",
+          "rules": [],
+          "splits": [
+            {
+              "variationKey": "one",
+              "shards": [
+                {
+                  "salt": "traffic-json-flag",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                },
+                {
+                  "salt": "split-json-flag",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 5000
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "variationKey": "two",
+              "shards": [
+                {
+                  "salt": "traffic-json-flag",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                },
+                {
+                  "salt": "split-json-flag",
+                  "ranges": [
+                    {
+                      "start": 5000,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
     }
   }
 }
