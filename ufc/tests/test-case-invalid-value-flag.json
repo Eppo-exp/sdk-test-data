@@ -16,23 +16,22 @@
         "flagEvaluationDescription": "Variation (pi) is configured for type INTEGER, but is set to incompatible value (3.1415926)",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": null,
-        "variationValue": null,
+        "variationKey": "pi",
+        "variationValue": 3.1415926,
         "matchedRule": null,
-        "matchedAllocation": null,
-        "unmatchedAllocations": [],
-        "unevaluatedAllocations": [
+        "matchedAllocation": {
+          "key": "invalid",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
           {
             "key": "valid",
-            "allocationEvaluationCode": "UNEVALUATED",
+            "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
-          },
-          {
-            "key": "invalid",
-            "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 2
           }
-        ]
+        ],
+        "unevaluatedAllocations": []
       }
     },
     {
@@ -88,23 +87,22 @@
         "flagEvaluationDescription": "Variation (pi) is configured for type INTEGER, but is set to incompatible value (3.1415926)",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": null,
-        "variationValue": null,
+        "variationKey": "pi",
+        "variationValue": 3.1415926,
         "matchedRule": null,
-        "matchedAllocation": null,
-        "unmatchedAllocations": [],
-        "unevaluatedAllocations": [
+        "matchedAllocation": {
+          "key": "invalid",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
           {
             "key": "valid",
-            "allocationEvaluationCode": "UNEVALUATED",
+            "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 1
-          },
-          {
-            "key": "invalid",
-            "allocationEvaluationCode": "UNEVALUATED",
-            "orderPosition": 2
           }
-        ]
+        ],
+        "unevaluatedAllocations": []
       }
     }
   ]
