@@ -1,8 +1,8 @@
 {
-  "createdAt": "2024-04-17T19:40:53.716Z",
   "environment": {
     "name": "Test"
   },
+  "createdAt": "2024-04-17T19:40:53.716Z",
   "flags": {
     "73fcc84c69e49e31fe16a29b2b1f803b": {
       "key": "73fcc84c69e49e31fe16a29b2b1f803b",
@@ -1128,6 +1128,77 @@
         "dHdv": {
           "key": "dHdv",
           "value": "eyAiaW50ZWdlciI6IDIsICJzdHJpbmciOiAidHdvIiwgImZsb2F0IjogMi4wIH0="
+        }
+      },
+      "allocations": [
+        {
+          "key": "NTAvNTAgc3BsaXQ=",
+          "doLog": true,
+          "rules": [],
+          "splits": [
+            {
+              "variationKey": "b25l",
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ],
+                  "salt": "dHJhZmZpYy1qc29uLWZsYWc="
+                },
+                {
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 5000
+                    }
+                  ],
+                  "salt": "c3BsaXQtanNvbi1mbGFn"
+                }
+              ]
+            },
+            {
+              "variationKey": "dHdv",
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ],
+                  "salt": "dHJhZmZpYy1qc29uLWZsYWc="
+                },
+                {
+                  "ranges": [
+                    {
+                      "start": 5000,
+                      "end": 10000
+                    }
+                  ],
+                  "salt": "c3BsaXQtanNvbi1mbGFn"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "858b28fb6c4573445fbcf1568527e345": {
+      "key": "858b28fb6c4573445fbcf1568527e345",
+      "enabled": true,
+      "variationType": "JSON",
+      "totalShards": 10000,
+      "variations": {
+        "b25l": {
+          "key": "b25l",
+          "value": "W3sgImludGVnZXIiOiAxLCAic3RyaW5nIjogIm9uZSIsICJmbG9hdCI6IDEuMCB9LCB7ICJpbnRlZ2VyIjogMiwgInN0cmluZyI6ICJ0d28iLCAiZmxvYXQiOiAyLjAgfV0="
+        },
+        "dHdv": {
+          "key": "dHdv",
+          "value": "W3sgImludGVnZXIiOiAzLCAic3RyaW5nIjogInRocmVlIiwgImZsb2F0IjogMy4wIH0sIHsgImludGVnZXIiOiA0LCAic3RyaW5nIjogImZvdXIiLCAiZmxvYXQiOiA0LjAgfV0="
         }
       },
       "allocations": [
