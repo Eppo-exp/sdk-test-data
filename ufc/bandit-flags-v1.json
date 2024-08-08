@@ -201,6 +201,31 @@
                 }
             ],
             "totalShards": 10000
+        },
+        "car_bandit_flag": {
+            "key": "car_bandit",
+            "enabled": true,
+            "variationType": "STRING",
+            "variations": {
+                "car_bandit": {
+                    "key": "car_bandit",
+                    "value": "car_bandit"
+                }
+            },
+            "allocations": [
+                {
+                    "key": "all-traffic",
+                    "rules": [],
+                    "splits": [
+                        {
+                            "variationKey": "car_bandit",
+                            "shards": []
+                        }
+                    ],
+                    "doLog": true
+                }
+            ],
+            "totalShards": 10000
         }
     },
     "bandits": {
@@ -216,6 +241,14 @@
                 "flagKey": "banner_bandit_flag_uk_only",
                 "variationKey": "banner_bandit",
                 "variationValue": "banner_bandit"
+            }
+        ],
+        "car_bandit": [
+            {
+                "key": "car_bandit",
+                "flagKey": "car_bandit_flag",
+                "variationKey": "car_bandit",
+                "variationValue": "car_bandit"
             }
         ],
         "cold_start_bandit": [

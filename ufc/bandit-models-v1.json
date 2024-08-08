@@ -106,6 +106,31 @@
         }
       }
     },
+    "car_bandit": {
+      "banditKey": "car_bandit",
+      "modelName": "falcon",
+      "updatedAt": "2023-09-13T04:52:06.462Z",
+      "modelVersion": "v456",
+      "modelData": {
+        "gamma": 1.0,
+        "defaultActionScore": 5.0,
+        "actionProbabilityFloor": 0.2,
+        "coefficients": {
+          "toyota": {
+            "actionKey": "toyota",
+            "intercept": 1.0,
+            "actionNumericCoefficients": [{
+              "attributeKey": "speed",
+              "coefficient": 1,
+              "missingValueCoefficient": 0.0
+            }],
+            "actionCategoricalCoefficients": [],
+            "subjectNumericCoefficients": [],
+            "subjectCategoricalCoefficients": []
+          }
+        }
+      }
+    },
     "cold_start_bandit": {
       "banditKey": "cold_start_bandit",
       "modelName": "falcon",
