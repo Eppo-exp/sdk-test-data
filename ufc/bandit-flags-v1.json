@@ -203,7 +203,7 @@
             "totalShards": 10000
         },
         "car_bandit_flag": {
-            "key": "car_bandit",
+            "key": "car_bandit_flag",
             "enabled": true,
             "variationType": "STRING",
             "variations": {
