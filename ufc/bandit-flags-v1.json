@@ -266,19 +266,38 @@
                 {
                     "key": "banner_bandit",
                     "flagKey": "banner_bandit_flag",
-                    "allocationKey": "banner_bandit_allocation",
+                    "allocationKey": "analysis",
+                    "variationKey": "banner_bandit",
+                    "variationValue": "banner_bandit"
+                },
+                {
+                    "key": "banner_bandit",
+                    "flagKey": "banner_bandit_flag",
+                    "allocationKey": "training",
                     "variationKey": "banner_bandit",
                     "variationValue": "banner_bandit"
                 },
                 {
                     "key": "banner_bandit",
                     "flagKey": "banner_bandit_flag_uk_only",
-                    "allocationKey": "banner_bandit_uk_allocation",
+                    "allocationKey": "training",
                     "variationKey": "banner_bandit",
                     "variationValue": "banner_bandit"
                 }
             ],
             "modelVersion": "v123"
+        },
+        "car_bandit": {
+            "flagVariations": [
+                {
+                    "key": "car_bandit",
+                    "flagKey": "car_bandit_flag",
+                    "allocationKey": "all-traffic",
+                    "variationKey": "car_bandit",
+                    "variationValue": "car_bandit"
+                }
+            ],
+            "modelVersion": "v456"
         },
         "cold_start_bandit": {
             "flagVariations": [
