@@ -3,7 +3,7 @@
     "defaultValue": "default",
     "subjects": [
       {
-        "comment": "Tests probability floor is applied. These actions shuffle to: Mercedes, Dodge, Toyota. Without minimum probability floors, Toyota gets most of the weight, and that's what gets assigned. However, with a probability floor, the other actions each get a non-trivial shard range, so it is not assigned. If the probability floor is not normalized (divided by the number of actions), then the first action, Mercedes, will be assigned too many shards and get assigned. Only when it's non-zero and normalized does Anastasia get correctly assigned the middle action: Dodge.",
+        "comment": "Tests that probability floor is applied. These actions shuffle to: Mercedes, Dodge, Toyota. Without minimum probability floors, Toyota gets most of the weight, and that's what gets assigned. However, with a probability floor, the other actions each get a non-trivial shard range, so it is not assigned. If the probability floor is not normalized (divided by the number of actions), then the first action, Mercedes, will be assigned too many shards and get assigned. Only when it's non-zero and normalized does Anastasia get correctly assigned the middle action: Dodge.",
         "subjectKey": "anastasia",
         "subjectAttributes": {},
         "actions": [
