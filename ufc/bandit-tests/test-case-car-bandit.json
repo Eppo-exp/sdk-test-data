@@ -1,0 +1,50 @@
+{
+    "flag": "car_bandit_flag",
+    "defaultValue": "default",
+    "subjects": [
+      {
+        "subjectKey": "anastasia",
+        "subjectAttributes": {},
+        "actions": [
+            {
+                "actionKey": "dodge",
+                "numericAttributes": {},
+                "categoricalAttributes": {}
+            },
+            {
+                "actionKey": "mercedes",
+                "numericAttributes": {},
+                "categoricalAttributes": {}
+            },
+            {
+              "actionKey": "toyota",
+              "numericAttributes": {"speed":  1000},
+              "categoricalAttributes": {}
+            }
+        ],
+        "assignment": {"variation": "car_bandit", "action": "dodge"}
+      },
+      {
+        "subjectKey": "bob",
+        "subjectAttributes": {},
+        "actions": [
+            {
+              "actionKey": "toyota",
+              "numericAttributes": {"speed":  1},
+              "categoricalAttributes": {}
+            },
+            {
+              "actionKey": "honda",
+              "numericAttributes": {},
+              "categoricalAttributes": {}
+            },
+            {
+              "actionKey": "ford",
+              "numericAttributes": {},
+              "categoricalAttributes": {}
+            }
+        ],
+        "assignment": {"variation": "car_bandit", "action": "ford"}
+      }
+    ]
+  }
