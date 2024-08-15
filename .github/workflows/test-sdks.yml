@@ -18,8 +18,8 @@ jobs:
     - name: Run remote workflow
       uses: convictional/trigger-workflow-and-wait@v1.6.1
       with:
-        owner: eppo-exp
-        repo: phpp-sdk
+        owner: Eppo-exp
+        repo: php-sdk
         workflow_file_name: run-tests.yml
         ref: tp/actions
         github_token: ${{ secrets.GITHUB_TOKEN }}
