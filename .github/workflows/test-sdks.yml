@@ -9,4 +9,13 @@ on:
 jobs:
   
   test-php-sdk:
-    uses: Eppo-exp/php-sdk/.github/workflows/run-tests.yml@tp/actions
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out PHP SDK
+      uses: actions/checkout@v3
+      with:
+          repository: 'Eppo-exp/php-sdk'
+          path: php-sdk
+    - name: Run test workflow
+      uses: ./php-sdk/.github/workflows/run-tests.yml      
+  
