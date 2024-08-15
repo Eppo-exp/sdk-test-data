@@ -11,11 +11,20 @@ jobs:
   test-php-sdk:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out PHP SDK
-      uses: actions/checkout@v3
+    - name: Echo Workflow Name
+      shell: bash
+      run: |
+        echo "Testing eppo-exp/php-sdk"
+    - name: Run remote workflow
+      uses: convictional/trigger-workflow-and-wait@v1.6.1
       with:
-          repository: 'Eppo-exp/php-sdk'
-          path: php-sdk
-    - name: Run test workflow
-      uses: ./php-sdk/.github/workflows/run-tests.yml      
+        owner: eppo-exp
+        repo: phpp-sdk
+        workflow_file_name: run-tests.yml
+        ref: tp/actions
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        wait_interval: 10
+        propagate_failure: true
+        trigger_workflow: true
+        wait_workflow: true
   
