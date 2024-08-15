@@ -17,5 +17,5 @@ jobs:
           repository: 'Eppo-exp/php-sdk'
           path: php-sdk
     - name: Run test workflow
-      run: ./php-sdk/.github/workflows/run-tests.yml      
+      uses: ./php-sdk/.github/workflows/run-tests.yml      
   
