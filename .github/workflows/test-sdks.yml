@@ -9,11 +9,4 @@ on:
 jobs:
   
   test-php-sdk:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Echo Workflow Name
-      shell: bash
-      run: |
-        echo "Testing eppo-exp/php-sdk"
-    - name: Run remote workflow
-      uses: Eppo-exp/php-sdk/.github/workflows/run-tests.yml@tp/actions
+    uses: Eppo-exp/php-sdk/.github/workflows/run-tests.yml@tp/actions
