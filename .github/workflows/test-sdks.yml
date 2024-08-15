@@ -179,7 +179,7 @@ jobs:
       with:
         owner: eppo-exp
         repo: phpp-sdk
-        workflow_filename: run-tests.yml
+        workflow_file_name: run-tests.yml
         ref: main
         wait_interval: 10
         propagate_failure: true
