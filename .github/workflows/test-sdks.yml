@@ -21,7 +21,7 @@ jobs:
         owner: Eppo-exp
         repo: php-sdk
         workflow_file_name: run-tests.yml
-        ref: tp/actions
+        ref: main
         github_token: ${{ secrets.GITHUB_TOKEN }}
         wait_interval: 10
         propagate_failure: true
