@@ -16,6 +16,8 @@ jobs:
       with:
           repository: 'Eppo-exp/php-sdk'
           path: php-sdk
+    - name: Repack workflow as action
+      run: mv ./php-sdk/.github/workflows/run-tests.yml ./php-sdk/.github/workflows/action.yml
     - name: Run test workflow
-      uses: ./php-sdk/.github/workflows/run-tests.yml      
+      uses: ./php-sdk/.github/workflows
   
