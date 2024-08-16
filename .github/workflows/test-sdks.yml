@@ -1,5 +1,8 @@
 name: Test SDKs
 
+env:
+ BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
+ 
 on:
   push:
     branches:
@@ -11,10 +14,14 @@ jobs:
   test-php-sdk:
     runs-on: ubuntu-latest
     steps:
-    - name: Echo Workflow Name
+    - name: Echo Current Branch Name
       shell: bash
       run: |
         echo "Testing eppo-exp/php-sdk"
+    - name: Echo Workflow Name
+      shell: bash
+      run: |
+        echo "Testing data on branch ${BRANCH_NAME}"
     - name: Run remote workflow
       uses: convictional/trigger-workflow-and-wait@v1.6.1
       with:
