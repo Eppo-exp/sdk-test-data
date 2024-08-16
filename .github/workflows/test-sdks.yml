@@ -27,4 +27,4 @@ jobs:
         propagate_failure: true
         trigger_workflow: true
         wait_workflow: true
-        clint_payload: '{"test_data_branch": "tp/tests/actions"}'
+        client_payload: '{"test_data_branch": "tp/tests/actions"}'
