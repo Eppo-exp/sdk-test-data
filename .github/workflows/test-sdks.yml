@@ -12,9 +12,6 @@ on:
 jobs:
   
   test-php-sdk:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Run SDK tests locally
-      uses: Eppo-exp/php-sdk/blob/tp/workflows/remote/.github/workflows/run-tests.yml
-      with:
-        test_data_branch: ${BRANCH_NAME}
+    uses: Eppo-exp/php-sdk/blob/tp/workflows/remote/.github/workflows/run-tests.yml
+    with:
+      test_data_branch: ${BRANCH_NAME}
