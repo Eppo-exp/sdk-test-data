@@ -12,6 +12,6 @@ on:
 jobs:
   
   test-php-sdk:
-    uses: Eppo-exp/php-sdk/blob/tp/workflows/remote/.github/workflows/run-tests.yml
+    uses: Eppo-exp/php-sdk/.github/workflows/run-tests.yml@tp/workflows/remote
     with:
       test_data_branch: ${BRANCH_NAME}
