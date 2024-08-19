@@ -1,5 +1,5 @@
 name: Test SDKs Locally
-  
+
 on:
   push:
     branches:
