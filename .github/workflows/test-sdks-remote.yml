@@ -1,0 +1,37 @@
+name: Test SDKs
+
+env:
+ BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
+ 
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  
+  test-php-sdk:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Echo Current Branch Name
+      shell: bash
+      run: |
+        echo "Testing eppo-exp/php-sdk"
+    - name: Echo Workflow Name
+      shell: bash
+      run: |
+        echo "Testing data on branch ${BRANCH_NAME}"
+    - name: Run remote workflow
+      uses: convictional/trigger-workflow-and-wait@v1.6.1
+      with:
+        owner: Eppo-exp
+        repo: php-sdk
+        workflow_file_name: run-tests.yml
+        ref: tp/action/branch
+        github_token: ${{ secrets.AUTH_TOKEN }}
+        wait_interval: 10
+        propagate_failure: true
+        trigger_workflow: true
+        wait_workflow: true
+        client_payload: '{"test_data_branch": "tp/tests/actions"}'
