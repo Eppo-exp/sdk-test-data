@@ -2,7 +2,8 @@ name: Test SDKs Locally
 
 on:
   pull_request:
-
+    branches: [ "*" ]
+  
   workflow_dispatch:
 
 jobs:
