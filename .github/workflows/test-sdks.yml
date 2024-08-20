@@ -201,23 +201,8 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v0'
       - name: Run tests
         run: make test
-  
+    
   test-dotnet-sdk:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Dot.net SDK
-      uses: actions/checkout@v3
-      with:
-        repository: 'Eppo-exp/dot-net-server-sdk'
-    - name: Setup .NET 7
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 7.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: make build
-    - name: Pull test data
-      run: make test-data
-    - name: Run tests
-      run: make test
+    uses: Eppo-exp/dot-net-server-sdk/.github/workflows/run-tests.yml@tp/workflows/remote
+    with:
+      test_data_branch: ${{ github.head_ref || github.ref_name }} 
