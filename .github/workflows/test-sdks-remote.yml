@@ -21,7 +21,7 @@ jobs:
       with:
         owner: Eppo-exp
         repo: java-server-sdk
-        workflow_file_name: run-tests.yml
+        workflow_file_name: lint-test-sdk.yml
         ref: tp/workflows/remote
         github_token: ${{ secrets.AUTH_TOKEN }}
         wait_interval: 10
