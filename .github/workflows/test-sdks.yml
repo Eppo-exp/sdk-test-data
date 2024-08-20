@@ -82,7 +82,8 @@ jobs:
   test-node-server-sdk:
     uses: Eppo-exp/node-server-sdk/.github/workflows/lint-test-sdk.yml@tp/workflows/remote
     with:
-      test_data_branch: ${{ github.head_ref || github.ref_name }} 
+      test_data_branch: ${{ github.head_ref || github.ref_name }}
+      sdk_branch: main
   
   test-node-client-sdk:
     runs-on: ubuntu-latest
@@ -147,7 +148,8 @@ jobs:
   test-php-sdk:
     uses: Eppo-exp/php-sdk/.github/workflows/run-tests.yml@tp/workflows/remote
     with:
-      test_data_branch: ${{ github.head_ref || github.ref_name }} 
+      test_data_branch: ${{ github.head_ref || github.ref_name }}
+      sdk_branch: main
 
   test-ruby-sdk:
     runs-on: ubuntu-latest
@@ -205,4 +207,5 @@ jobs:
   test-dotnet-sdk:
     uses: Eppo-exp/dot-net-server-sdk/.github/workflows/run-tests.yml@tp/workflows/remote
     with:
-      test_data_branch: ${{ github.head_ref || github.ref_name }} 
+      test_data_branch: ${{ github.head_ref || github.ref_name }}
+      sdk_branch: main
