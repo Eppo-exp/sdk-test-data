@@ -7,6 +7,26 @@ on:
   workflow_dispatch:
 
 jobs:
+
+  test-java-sdk:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Display workflow details
+      shell: bash
+      run: |
+        echo "Testing Eppo-exp/java-server-sdk"
+    - name: Run remote workflow
+      uses: convictional/trigger-workflow-and-wait@v1.6.1
+      with:
+        owner: Eppo-exp
+        repo: java-server-sdk
+        workflow_file_name: run-tests.yml
+        ref: tp/workflows/remote
+        github_token: ${{ secrets.AUTH_TOKEN }}
+        wait_interval: 10
+        propagate_failure: true
+        trigger_workflow: true
+        wait_workflow: true
   
   test-php-sdk:
     runs-on: ubuntu-latest
