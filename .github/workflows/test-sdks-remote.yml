@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - tp/workflows/remote
   workflow_dispatch:
 
 jobs:
