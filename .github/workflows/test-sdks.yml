@@ -76,29 +76,11 @@ jobs:
       sdk_branch: main
   
   test-node-client-sdk:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out node client SDK
-        uses: actions/checkout@v3
-        with:
-          repository: 'Eppo-exp/js-client-sdk'
-      - name: Use Node.js 18
-        uses: actions/setup-node@v1
-        with:
-          node-version: '18.x'
-      - uses: actions/cache@v2
-        with:
-          path: './node_modules'
-          key: ${{ runner.os }}-root-node-modules-${{ hashFiles('./yarn.lock') }}
-      - name: 'Set up GCP SDK for downloading test data'
-        uses: 'google-github-actions/setup-gcloud@v0'
-      - name: Install SDK dependencies
-        run: yarn --frozen-lockfile
-        working-directory: ./
-      - name: Run tests
-        run: yarn test
-        working-directory: ./
-  
+    uses: Eppo-exp/js-client-sdk/.github/workflows/lint-test-sdk.yml@tp/workflows/remote
+    with:
+      test_data_branch: ${{ github.head_ref || github.ref_name }}
+      sdk_branch: main
+
   test-react-native-sdk:
     runs-on: ubuntu-latest
     steps:
