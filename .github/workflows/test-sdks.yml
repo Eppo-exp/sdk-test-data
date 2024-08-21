@@ -99,30 +99,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Run test action"
-        uses: Eppo-exp/python-sdk/.github/actions/action-test@tp/workflows/remote
+        uses: 'Eppo-exp/python-sdk/.github/actions/action-test@tp/workflows/remote'
+        with:
           test_data_branch: ${{ github.head_ref || github.ref_name }}
           sdk_branch: main
-
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Check out Python SDK'
-        uses: "actions/checkout@v3"
-        with:
-          repository: 'Eppo-exp/python-sdk'
-      - name: Install Python 3.9
-        uses: "actions/setup-python@v2"
-        with: 
-          python-version: '3.9.x'
-      - name: "Install dependencies"
-        run: |
-          python -VV
-          python -m pip install --upgrade pip setuptools wheel
-          python -m pip install -r requirements.txt
-          python -m pip install -r requirements-test.txt
-      - name: 'Set up GCP SDK to download test data'
-        uses: 'google-github-actions/setup-gcloud@v0'
-      - name: Run tests
-        run: make test
   
   test-php-sdk:
     uses: Eppo-exp/php-sdk/.github/workflows/run-tests.yml@tp/workflows/remote
