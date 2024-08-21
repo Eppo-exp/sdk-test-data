@@ -98,6 +98,13 @@ jobs:
   test-python-sdk:
     runs-on: ubuntu-latest
     steps:
+      - name: "Run test action"
+        uses: Eppo-exp/python-sdk/.github/actions/action-test@tp/workflows/remote
+          test_data_branch: ${{ github.head_ref || github.ref_name }}
+          sdk_branch: main
+
+    runs-on: ubuntu-latest
+    steps:
       - name: 'Check out Python SDK'
         uses: "actions/checkout@v3"
         with:

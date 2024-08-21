@@ -69,6 +69,26 @@ jobs:
         trigger_workflow: true
         wait_workflow: true
 
+  test-python-sdk:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Display workflow details
+      shell: bash
+      run: |
+        echo "Testing eppo-exp/python-sdk"
+    - name: Run remote workflow
+      uses: convictional/trigger-workflow-and-wait@v1.6.1
+      with:
+        owner: Eppo-exp
+        repo: python-sdk
+        workflow_file_name: lint-test-sdk.yml
+        ref: tp/workflows/remote
+        github_token: ${{ secrets.AUTH_TOKEN }}
+        wait_interval: 10
+        propagate_failure: true
+        trigger_workflow: true
+        wait_workflow: true
+
   test-node-server-sdk:
     runs-on: ubuntu-latest
     steps:
