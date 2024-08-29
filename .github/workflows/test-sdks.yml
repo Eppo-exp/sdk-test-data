@@ -15,7 +15,7 @@ jobs:
       sdk_branch: main
   
   test-android-sdk:
-    uses: Eppo-exp/android-sdk/.github/workflows/test.yaml@main
+    uses: Eppo-exp/android-sdk/.github/workflows/test.yaml@tp/workflows/remote
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
