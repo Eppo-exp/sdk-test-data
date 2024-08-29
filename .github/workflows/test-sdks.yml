@@ -103,7 +103,7 @@ jobs:
       sdk_branch: main
 
   test-ios-sdk:
-    uses: Eppo-exp/ios-sdk/.github/workflows/unit-tests.yml@tp/workflows/remote
+    uses: Eppo-exp/eppo-ios-sdk/.github/workflows/unit-tests.yml@tp/workflows/remote
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
 
