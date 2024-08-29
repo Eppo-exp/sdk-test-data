@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - tp/workflows/round2
+      - tp/*
   workflow_dispatch:
 
 jobs:
