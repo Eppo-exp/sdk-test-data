@@ -139,7 +139,7 @@ jobs:
         run: make test
   
   test-golang-sdk:
-    uses: Eppo-exp/golang-sdk/.github/workflows/test.yml@main
+    uses: Eppo-exp/golang-sdk/.github/workflows/test.yml@tp/workflows/remote
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
