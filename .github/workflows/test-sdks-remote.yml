@@ -121,7 +121,7 @@ jobs:
       with:
         owner: Eppo-exp
         repo: android-sdk
-        workflow_file_name: test.yml
+        workflow_file_name: test.yaml
         ref: tp/workflows/remote
         github_token: ${{ secrets.AUTH_TOKEN }}
         wait_interval: 10
