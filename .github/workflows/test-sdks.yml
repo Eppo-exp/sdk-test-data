@@ -81,7 +81,7 @@ jobs:
           path: /Users/runner/work/sdk-test-data/sdk-test-data/eppo/build/reports/androidTests/connected/index.html
 
   test-node-server-sdk:
-    uses: Eppo-exp/node-server-sdk/.github/workflows/lint-test-sdk.yml@tp/workflows/remote
+    uses: Eppo-exp/node-server-sdk/.github/workflows/lint-test-sdk.yml
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
@@ -147,7 +147,7 @@ jobs:
         run: make test
   
   test-php-sdk:
-    uses: Eppo-exp/php-sdk/.github/workflows/run-tests.yml@tp/workflows/remote
+    uses: Eppo-exp/php-sdk/.github/workflows/run-tests.yml
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
@@ -206,7 +206,7 @@ jobs:
         run: make test
 
   test-dotnet-sdk:
-    uses: Eppo-exp/dot-net-server-sdk/.github/workflows/run-tests.yml@tp/workflows/remote
+    uses: Eppo-exp/dot-net-server-sdk/.github/workflows/run-tests.yml
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
