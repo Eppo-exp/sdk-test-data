@@ -75,12 +75,12 @@ jobs:
     - name: Display workflow details
       shell: bash
       run: |
-        echo "Testing eppo-exp/react-native-client"
+        echo "Testing eppo-exp/react-native-sdk"
     - name: Run remote workflow
       uses: convictional/trigger-workflow-and-wait@v1.6.1
       with:
         owner: Eppo-exp
-        repo: react-native-client
+        repo: react-native-sdk
         workflow_file_name: ci.yml
         ref: tp/workflows/remote
         github_token: ${{ secrets.AUTH_TOKEN }}
