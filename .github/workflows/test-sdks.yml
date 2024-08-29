@@ -102,24 +102,6 @@ jobs:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
 
-  test-ruby-sdk:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Check out Ruby SDK
-      uses: actions/checkout@v3
-      with:
-          repository: 'Eppo-exp/ruby-sdk'
-    - name: Set up Ruby 3
-      uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
-      with:
-        ruby-version: 3.0.6
-    - name: Install dependencies
-      run: bundle install
-    - name: Refresh test data
-      run: bundle exec rake test_refreshed_data
-    - name: Run tests
-      run: bundle exec rake test
-  
   test-ios-sdk:
     runs-on: macos-latest
     steps:
