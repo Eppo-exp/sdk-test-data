@@ -1,5 +1,4 @@
 name: Test SDKs Locally
-name: Test SDKs Locally
 
 on:
   pull_request:
