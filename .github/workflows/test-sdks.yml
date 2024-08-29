@@ -103,23 +103,10 @@ jobs:
       sdk_branch: main
 
   test-ios-sdk:
-    runs-on: macos-latest
-    steps:
-      - name: Checkout iOS SDK
-        uses: actions/checkout@v3
-        with:
-          repository: 'Eppo-exp/eppo-ios-sdk'
-      - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v1'
-      - name: 'Use gcloud CLI'
-        run: 'gcloud info'
-      - name: Build
-        run: make build
-      - name: Pull test data
-        run: make test-data
-      - name: Run tests
-        run: make test
-  
+    uses: Eppo-exp/ios-sdk/.github/workflows/unit-tests.yml@tp/workflows/remote
+    with:
+      test_data_branch: ${{ github.head_ref || github.ref_name }}
+
   test-golang-sdk:
     uses: Eppo-exp/golang-sdk/.github/workflows/test.yml@tp/workflows/remote
     with:

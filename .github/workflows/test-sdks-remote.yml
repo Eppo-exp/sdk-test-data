@@ -129,6 +129,26 @@ jobs:
         trigger_workflow: true
         wait_workflow: true
 
+  test-ios-sdk:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Display workflow details
+      shell: bash
+      run: |
+        echo "Testing eppo-exp/ios-sdk"
+    - name: Run remote workflow
+      uses: convictional/trigger-workflow-and-wait@v1.6.1
+      with:
+        owner: Eppo-exp
+        repo: ios-sdk
+        workflow_file_name: unit-tests.yml
+        ref: tp/workflows/remote
+        github_token: ${{ secrets.AUTH_TOKEN }}
+        wait_interval: 10
+        propagate_failure: true
+        trigger_workflow: true
+        wait_workflow: true
+
   test-golang-sdk:
     runs-on: ubuntu-latest
     steps:
@@ -148,6 +168,7 @@ jobs:
         propagate_failure: true
         trigger_workflow: true
         wait_workflow: true
+
   test-dotnet-sdk:
     runs-on: ubuntu-latest
     steps:
