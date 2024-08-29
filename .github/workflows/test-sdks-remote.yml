@@ -69,6 +69,26 @@ jobs:
         trigger_workflow: true
         wait_workflow: true
 
+  test-react-native-client:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Display workflow details
+      shell: bash
+      run: |
+        echo "Testing eppo-exp/react-native-client"
+    - name: Run remote workflow
+      uses: convictional/trigger-workflow-and-wait@v1.6.1
+      with:
+        owner: Eppo-exp
+        repo: react-native-client
+        workflow_file_name: ci.yml
+        ref: tp/workflows/remote
+        github_token: ${{ secrets.AUTH_TOKEN }}
+        wait_interval: 10
+        propagate_failure: true
+        trigger_workflow: true
+        wait_workflow: true
+      
   test-python-sdk:
     runs-on: ubuntu-latest
     steps:

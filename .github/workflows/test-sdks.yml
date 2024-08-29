@@ -1,5 +1,4 @@
 name: Test SDKs Locally
-name: Test SDKs Locally
 
 on:
   pull_request:
@@ -83,18 +82,10 @@ jobs:
       sdk_branch: main
 
   test-react-native-sdk:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout React Native SDK
-        uses: actions/checkout@v3
-        with:
-          repository: 'Eppo-exp/react-native-sdk'
-      - name: Setup
-        uses: ./.github/actions/setup
-      - name: Install dependencies
-        run: yarn install
-      - name: Run tests
-        run: yarn test --maxWorkers=2 --coverage
+    uses: Eppo-exp/js-client-sdk/.github/workflows/lint-test-sdk.yml@tp/workflows/remote
+    with:
+      test_data_branch: ${{ github.head_ref || github.ref_name }}
+      sdk_branch: main
   
   test-python-sdk:
     runs-on: ubuntu-latest
