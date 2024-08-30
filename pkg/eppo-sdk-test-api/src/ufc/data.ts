@@ -1,5 +1,4 @@
- import * as crypto from "crypto";
-
+import * as crypto from "crypto";
 
 const dataFiles: Record<string, {ufc: string, ufcDataVersion: string, bandits: string}> = {};
 const clientDataMap: Record<string, string> = {};
