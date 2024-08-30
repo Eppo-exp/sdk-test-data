@@ -12,4 +12,8 @@ cp -Rf tmp/. ./vendor/eppo/php-sdk/
 rm -Rf tmp
 
 . .env
+
+# Run the poller
+php src/eppo_poller.php &
+
 php -S "${PHP_TEST_SERVER_HOST}:${PHP_TEST_SERVER_PORT}" src/index.php
