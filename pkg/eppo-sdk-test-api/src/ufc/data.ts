@@ -8,11 +8,8 @@ export const getDataForRequest = (sdkName: string) => {
     // Get the scenario label for this client.
     let label = clientDataMap[sdkName];
 
-    console.log({label, sdkName});
     // If there was no label, assign the first of the data files (or null).
     if (!label) label = Object.keys(dataFiles)[0] ?? null;
-
-    console.log({label, sdkName});
 
     // If still no label, return null.
     if (!label) return null;
