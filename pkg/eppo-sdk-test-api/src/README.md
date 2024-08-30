@@ -46,3 +46,9 @@ To change the scenario data for an SDK, send a **POST** request to the server at
 curl --location 'localhost:3333/sdk/php-sdk/scenario' \
 --header 'Content-Type: application/json' \
 --data '{"label" : "banditsDisabled"}'
+```
+
+
+## Running in Docker.
+
+TODO THIS
