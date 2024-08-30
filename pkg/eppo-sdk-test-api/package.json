@@ -1,0 +1,26 @@
+{
+  "name": "eppo-sdk-test-api",
+  "version": "0.0.1",
+  "description": "UFC server for SDK integration testing",
+  "main": "index.ts",
+  "repository": "github.com/Eppo-exp/sdk-test-data",
+  "author": "Tyler Potter",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "tsc --project ./",
+    "dev": "nodemon src/server.ts",
+    "start:prod": "node dist/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.1",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.5.4"
+  }
+}

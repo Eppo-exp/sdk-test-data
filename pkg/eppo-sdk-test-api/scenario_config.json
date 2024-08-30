@@ -1,0 +1,17 @@
+{
+    "scenarios":{
+        "baseUFC": {
+            "ufcPath": "ufc/flags-v1.json",
+            "banditModelPath": null,
+            "testCases": "ufc/tests/*.json"
+        },
+        "baseBandits": {
+            "ufcPath": "ufc/bandit-flags-v1.json",
+            "banditModelPath": "ufc/bandit-models-v1.json",
+            "testCases": "ufc/bandit-tests/*.json"
+        }
+    },
+
+    "initialClientMap": {
+    }
+}
