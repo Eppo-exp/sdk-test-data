@@ -27,5 +27,11 @@
         "allow-plugins": {
             "php-http/discovery": true
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": ""
+        }
+    ]
 }
