@@ -9,7 +9,7 @@ on:
 jobs:
   
   test-java-sdk:
-    uses: Eppo-exp/java-server-sdk/.github/workflows/lint-test-sdk.yml@tp/workflows/remote
+    uses: Eppo-exp/java-server-sdk/.github/workflows/lint-test-sdk.yml@main
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
@@ -76,7 +76,7 @@ jobs:
       sdk_branch: main
   
   test-node-client-sdk:
-    uses: Eppo-exp/js-client-sdk/.github/workflows/lint-test-sdk.yml@tp/workflows/remote
+    uses: Eppo-exp/js-client-sdk/.github/workflows/lint-test-sdk.yml@main
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
@@ -99,7 +99,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Run test action"
-        uses: 'Eppo-exp/python-sdk/.github/actions/action-test@tp/workflows/remote'
+        uses: 'Eppo-exp/python-sdk/.github/actions/action-test@main'
         with:
           test_data_branch: ${{ github.head_ref || github.ref_name }}
           sdk_branch: main

@@ -13,10 +13,10 @@ jobs:
     strategy:
       matrix:
         sdk:
-          - { repo: "java-server-sdk", workflow: "lint-test-sdk.yml", ref: "tp/workflows/remote" }
+          - { repo: "java-server-sdk", workflow: "lint-test-sdk.yml", ref: "main" }
           - { repo: "php-sdk", workflow: "run-tests.yml", ref: "main" }
-          - { repo: "js-client-sdk", workflow: "lint-test-sdk.yml", ref: "tp/workflows/remote" }
-          - { repo: "python-sdk", workflow: "lint-test-sdk.yml", ref: "tp/workflows/remote" }
+          - { repo: "js-client-sdk", workflow: "lint-test-sdk.yml", ref: "main" }
+          - { repo: "python-sdk", workflow: "lint-test-sdk.yml", ref: "main" }
           - { repo: "node-server-sdk", workflow: "lint-test-sdk.yml", ref: "main" }
           - { repo: "dot-net-server-sdk", workflow: "run-tests.yml", ref: "main" }
     steps:
