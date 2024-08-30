@@ -4,128 +4,37 @@ on:
   push:
     branches:
       - main
-      - tp/workflows/round2
   workflow_dispatch:
 
 jobs:
 
-  test-java-sdk:
+  test-sdks:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        sdk:
+          - { repo: "java-server-sdk", workflow: "lint-test-sdk.yml", ref: "tp/workflows/remote" }
+          - { repo: "php-sdk", workflow: "run-tests.yml", ref: "main" }
+          - { repo: "js-client-sdk", workflow: "lint-test-sdk.yml", ref: "tp/workflows/remote" }
+          - { repo: "python-sdk", workflow: "lint-test-sdk.yml", ref: "tp/workflows/remote" }
+          - { repo: "node-server-sdk", workflow: "lint-test-sdk.yml", ref: "main" }
+          - { repo: "dot-net-server-sdk", workflow: "run-tests.yml", ref: "main" }
     steps:
     - name: Display workflow details
       shell: bash
       run: |
-        echo "Testing Eppo-exp/java-server-sdk"
+        echo "Testing eppo-exp/${{ matrix.sdk.repo }}"
     - name: Run remote workflow
       uses: convictional/trigger-workflow-and-wait@v1.6.1
       with:
         owner: Eppo-exp
-        repo: java-server-sdk
-        workflow_file_name: lint-test-sdk.yml
-        ref: tp/workflows/remote
-        github_token: ${{ secrets.AUTH_TOKEN }}
-        wait_interval: 10
-        propagate_failure: true
-        trigger_workflow: true
-        wait_workflow: true
-  
-  test-php-sdk:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Display workflow details
-      shell: bash
-      run: |
-        echo "Testing eppo-exp/php-sdk"
-    - name: Run remote workflow
-      uses: convictional/trigger-workflow-and-wait@v1.6.1
-      with:
-        owner: Eppo-exp
-        repo: php-sdk
-        workflow_file_name: run-tests.yml
-        ref: main
+        repo: ${{ matrix.sdk.repo }}
+        workflow_file_name: ${{ matrix.sdk.workflow }}
+        ref: ${{ matrix.sdk.ref }}
         github_token: ${{ secrets.AUTH_TOKEN }}
         wait_interval: 10
         propagate_failure: true
         trigger_workflow: true
         wait_workflow: true
 
-  test-node-client-sdk:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Display workflow details
-      shell: bash
-      run: |
-        echo "Testing eppo-exp/js-client-sdk"
-    - name: Run remote workflow
-      uses: convictional/trigger-workflow-and-wait@v1.6.1
-      with:
-        owner: Eppo-exp
-        repo: js-client-sdk
-        workflow_file_name: lint-test-sdk.yml
-        ref: tp/workflows/remote
-        github_token: ${{ secrets.AUTH_TOKEN }}
-        wait_interval: 10
-        propagate_failure: true
-        trigger_workflow: true
-        wait_workflow: true
-
-  test-python-sdk:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Display workflow details
-      shell: bash
-      run: |
-        echo "Testing eppo-exp/python-sdk"
-    - name: Run remote workflow
-      uses: convictional/trigger-workflow-and-wait@v1.6.1
-      with:
-        owner: Eppo-exp
-        repo: python-sdk
-        workflow_file_name: lint-test-sdk.yml
-        ref: tp/workflows/remote
-        github_token: ${{ secrets.AUTH_TOKEN }}
-        wait_interval: 10
-        propagate_failure: true
-        trigger_workflow: true
-        wait_workflow: true
-
-  test-node-server-sdk:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Display workflow details
-      shell: bash
-      run: |
-        echo "Testing eppo-exp/node-server-sdk"
-    - name: Run remote workflow
-      uses: convictional/trigger-workflow-and-wait@v1.6.1
-      with:
-        owner: Eppo-exp
-        repo: node-server-sdk
-        workflow_file_name: lint-test-sdk.yml
-        ref: main
-        github_token: ${{ secrets.AUTH_TOKEN }}
-        wait_interval: 10
-        propagate_failure: true
-        trigger_workflow: true
-        wait_workflow: true
-
-  test-dotnet-sdk:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Display workflow details
-      shell: bash
-      run: |
-        echo "Testing Eppo-exp/dot-net-server-sdk"
-    - name: Run remote workflow
-      uses: convictional/trigger-workflow-and-wait@v1.6.1
-      with:
-        owner: Eppo-exp
-        repo: dot-net-server-sdk
-        workflow_file_name: run-tests.yml
-        ref: main
-        github_token: ${{ secrets.AUTH_TOKEN }}
-        wait_interval: 10
-        propagate_failure: true
-        trigger_workflow: true
-        wait_workflow: true
       
