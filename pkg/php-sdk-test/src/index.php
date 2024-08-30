@@ -9,7 +9,8 @@ use Eppo\EppoClient;
 use Eppo\Exception\EppoClientException;
 use Eppo\Logger\AssignmentEvent;
 use Eppo\Logger\IBanditLogger;
-use Eppo\Logger\LoggerInterface;
+use Eppo\Logger\BanditActionEvent;
+
 
 $apiKey = $_ENV["EPPO_API_KEY"];
 $port = $_ENV["EPPO_TEST_DATA_SERVER_PORT"];
@@ -17,16 +18,22 @@ $host = $_ENV["EPPO_TEST_DATA_SERVER_HOST"];
 
 class TestLogger implements IBanditLogger
 {
-    public $assignmentLogs = [];
+    /**
+     * @var AssignmentEvent[]
+     */
+    public array $assignmentLogs = [];
 
-    public $banditLogs = [];
+    /**
+     * @var BanditActionEvent[]
+     */
+    public array $banditLogs = [];
 
     public function logAssignment(AssignmentEvent $assignmentEvent): void
     {
         $this->assignmentLogs[] = $assignmentEvent;
     }
 
-    public function logBanditAction(\Eppo\Logger\BanditActionEvent $banditActionEvent): void
+    public function logBanditAction(BanditActionEvent $banditActionEvent): void
     {
         $this->banditLogs[] = $banditActionEvent;
     }
@@ -56,6 +63,7 @@ function testFlags($post)
 
     foreach ($subjects as $subject) {
         try {
+            $result = null;
             switch ($post['variationType']) {
                 case 'INTEGER':
                     $result = $eppoClient->getIntegerAssignment(
@@ -64,12 +72,45 @@ function testFlags($post)
                         $subject['subjectAttributes'],
                         $default
                     );
-                    $results[] = [
-                        "subjectKey" => $subject['subjectKey'],
-                        "result" => $result,
-                        "assignmentLog" => array_pop($assignmentLogger->assignmentLogs)
-                    ];
+                    break;
+                case 'STRING':
+                    $result = $eppoClient->getStringAssignment(
+                        $flagKey,
+                        $subject['subjectKey'],
+                        $subject['subjectAttributes'],
+                        $default
+                    );
+                    break;
+                case 'BOOLEAN':
+                    $result = $eppoClient->getBooleanAssignment(
+                        $flagKey,
+                        $subject['subjectKey'],
+                        $subject['subjectAttributes'],
+                        $default
+                    );
+                    break;
+                case 'NUMERIC':
+                    $result = $eppoClient->getNumericAssignment(
+                        $flagKey,
+                        $subject['subjectKey'],
+                        $subject['subjectAttributes'],
+                        $default
+                    );
+                    break;
+                case 'JSON':
+                    $result = $eppoClient->getJSONAssignment(
+                        $flagKey,
+                        $subject['subjectKey'],
+                        $subject['subjectAttributes'],
+                        $default
+                    );
+                    break;
             }
+            $results[] = [
+                "subjectKey" => $subject['subjectKey'],
+                "result" => $result,
+                "assignmentLog" => array_pop($assignmentLogger->assignmentLogs)
+            ];
         } catch (EppoClientException $e) {
             $results[] = [
                 "subjectKey" => $subject['subjectKey'],
