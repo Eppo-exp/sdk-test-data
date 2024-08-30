@@ -27,22 +27,22 @@ class App {
 
     public loadDatafiles(baseDir: string) {
         console.log("Loading test scenarios");
-        
+
         const scenarioMeta = JSON.parse(fs.readFileSync(App.SCENARIO_FILE, "utf-8"));
-        const scenarios = scenarioMeta["scenarios"];
-        const clientMaps = scenarioMeta["initialClientMap"];
+        const scenarios = scenarioMeta.scenarios;
+        const clientMaps = scenarioMeta.initialClientMap;
 
         Object.keys(scenarios).forEach(key => {
-            const ufc = fs.readFileSync(baseDir + scenarios[key]["ufcPath"], "utf-8");
+            const ufc = fs.readFileSync(baseDir + scenarios[key].ufcPath, "utf-8");
 
-            const banditModelFile = scenarios[key]["banditModelPath"];
-            
+            const banditModelFile = scenarios[key].banditModelPath;
+
             const bandits =  !!banditModelFile ? fs.readFileSync(baseDir + banditModelFile, "utf-8"): '';
 
             console.log("preloaded data for " + key);
 
             setDataFile(key,
-                ufc, 
+                ufc,
                 bandits);
         });
 

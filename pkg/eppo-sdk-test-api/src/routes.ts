@@ -57,7 +57,7 @@ routes.post('/sdk/:sdk/scenario', (req, res) => {
 
     console.log(`Setting scenario to "${scenarioLabel}" for ${sdkName}`);
     updateClientDataMap(sdkName, scenarioLabel);
-    
+
     return res.status(200).end();
 });
 
