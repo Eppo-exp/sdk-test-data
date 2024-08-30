@@ -5,12 +5,6 @@ import { STATUS_CODES } from 'http';
 
 const routes = Router();
 
-// TODO delete
-routes.get('/', (req, res) => {
-    return res.json({ message: 'Hello World' });
-});
-
-
 // Serve Unified Flag Config
 routes.get('/flag-config/v1/config', (req, res) => {
     const sdk: string = req.query.sdkName as string;
