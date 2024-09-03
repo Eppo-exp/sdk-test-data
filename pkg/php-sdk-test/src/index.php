@@ -2,179 +2,50 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use Eppo\SDKTest\AssignmentHandler;
+use Eppo\SDKTest\BanditHandler;
+use Eppo\SDKTest\TestLogger;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
+use Eppo\EppoClient;
+use Slim\Http\Response;
+
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
-use Eppo\EppoClient;
-use Eppo\Exception\EppoClientException;
-use Eppo\Logger\AssignmentEvent;
-use Eppo\Logger\IBanditLogger;
-use Eppo\Logger\BanditActionEvent;
+const API_KEY = 'EPPO_API_KEY';
+const SERVER = 'EPPO_TEST_DATA_SERVER_HOST';
+const SERVER_PORT = 'EPPO_TEST_DATA_SERVER_PORT';
 
+$config[API_KEY] = $_ENV[API_KEY] ?? '';
+$config[SERVER] = $_ENV[SERVER];
+$config[SERVER_PORT] = $_ENV[SERVER_PORT];
 
-$apiKey = $_ENV["EPPO_API_KEY"];
-$port = $_ENV["EPPO_TEST_DATA_SERVER_PORT"];
-$host = $_ENV["EPPO_TEST_DATA_SERVER_HOST"];
-
-class TestLogger implements IBanditLogger
-{
-    /**
-     * @var AssignmentEvent[]
-     */
-    public array $assignmentLogs = [];
-
-    /**
-     * @var BanditActionEvent[]
-     */
-    public array $banditLogs = [];
-
-    public function logAssignment(AssignmentEvent $assignmentEvent): void
-    {
-        $this->assignmentLogs[] = $assignmentEvent;
-    }
-
-    public function logBanditAction(BanditActionEvent $banditActionEvent): void
-    {
-        $this->banditLogs[] = $banditActionEvent;
-    }
-}
-
-$assignmentLogger = new TestLogger();
+$testLogger = new TestLogger();
 
 $eppoClient = EppoClient::init(
-    $apiKey,
-    "$host:${port}",
-    $assignmentLogger
+    $config[API_KEY],
+    "${config[SERVER]}:${config[SERVER_PORT]}",
+    $testLogger
 );
 
-// JSON posted data
-$post = json_decode(file_get_contents('php://input'), true);
+$app = AppFactory::create();
 
-function testFlags($post)
-{
-    global $eppoClient, $assignmentLogger;
+$app->post('/flags/v1/assignments', function (Request $request, Response $response, array $args) {
+    global $eppoClient, $testLogger;
+    $handler = new AssignmentHandler($eppoClient, $testLogger);
+    $results = $handler->getAssignments(json_decode($request->getBody(), true));
+    return $response->withJson($results);
+});
 
-    $flagKey = $post['flag'];
-    $default = $post['defaultValue'];
+$app->post('/bandits/v1/actions', function (Request $request, Response $response, array $args) {
+    global $eppoClient, $testLogger;
+    $handler = new BanditHandler($eppoClient, $testLogger);
+    $results = $handler->getBanditResults(json_decode($request->getBody(), true));
+    return $response->withJson($results);
+});
 
-    $subjects = $post['subjects'];
-
-    $results = [];
-
-    foreach ($subjects as $subject) {
-        try {
-            $result = null;
-            switch ($post['variationType']) {
-                case 'INTEGER':
-                    $result = $eppoClient->getIntegerAssignment(
-                        $flagKey,
-                        $subject['subjectKey'],
-                        $subject['subjectAttributes'],
-                        $default
-                    );
-                    break;
-                case 'STRING':
-                    $result = $eppoClient->getStringAssignment(
-                        $flagKey,
-                        $subject['subjectKey'],
-                        $subject['subjectAttributes'],
-                        $default
-                    );
-                    break;
-                case 'BOOLEAN':
-                    $result = $eppoClient->getBooleanAssignment(
-                        $flagKey,
-                        $subject['subjectKey'],
-                        $subject['subjectAttributes'],
-                        $default
-                    );
-                    break;
-                case 'NUMERIC':
-                    $result = $eppoClient->getNumericAssignment(
-                        $flagKey,
-                        $subject['subjectKey'],
-                        $subject['subjectAttributes'],
-                        $default
-                    );
-                    break;
-                case 'JSON':
-                    $result = $eppoClient->getJSONAssignment(
-                        $flagKey,
-                        $subject['subjectKey'],
-                        $subject['subjectAttributes'],
-                        $default
-                    );
-                    break;
-            }
-            $results[] = [
-                "subjectKey" => $subject['subjectKey'],
-                "result" => $result,
-                "assignmentLog" => array_pop($assignmentLogger->assignmentLogs)
-            ];
-        } catch (EppoClientException $e) {
-            $results[] = [
-                "subjectKey" => $subject['subjectKey'],
-                "result" => $e->getMessage(),
-                "assignmentLog" => array_pop($assignmentLogger->assignmentLogs)
-            ];
-        }
-    }
-    return $results;
-}
-
-function testBandits($banditTestCases)
-{
-    global $eppoClient, $assignmentLogger;
-
-    $flagKey = $banditTestCases['flag'];
-    $default = $banditTestCases['defaultValue'];
-
-    $subjects = $banditTestCases['subjects'];
-
-    $results = [];
-
-    foreach ($subjects as $subject) {
-        $actions = [];
-        foreach($subject['actions'] as $action) {
-            $actions[$action['actionKey']] = new \Eppo\DTO\Bandit\AttributeSet(
-                $action['numericAttributes'],
-                $action['categoricalAttributes']
-            );
-        }
-
-        try {
-            $result = $eppoClient->getBanditAction(
-                $flagKey,
-                $subject['subjectKey'],
-                $subject['subjectAttributes'],
-                $actions,
-                $default
-            );
-            $results[] = [
-                "subjectKey" => $subject['subjectKey'],
-                "result" => $result,
-                "assignmentLog" => array_pop($assignmentLogger->assignmentLogs),
-                "banditLog" => array_pop($assignmentLogger->banditLogs)
-            ];
-        } catch (EppoClientException $e) {
-            $results[] = [
-                "subjectKey" => $subject['subjectKey'],
-                "result" => $e->getMessage(),
-                "assignmentLog" => array_pop($assignmentLogger->assignmentLogs),
-                "banditLog" => array_pop($assignmentLogger->banditLogs)
-            ];
-        }
-    }
-    return $results;
-}
-
-if (isset($post['variationType'])) {
-    // This is a flag test
-    $results = testFlags($post);
-} else {
-    $results = testBandits($post);
-}
+$app->addErrorMiddleware(true, true, true);
 
 
-header("Content-Type: application/json");
-print json_encode($results);
+$app->run();

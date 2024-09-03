@@ -7,7 +7,7 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "Eppo\\": "src/"
+            "Eppo\\SDKTest\\": "src/"
         }
     },
     "authors": [
@@ -21,17 +21,15 @@
         "eppo/php-sdk": "^3.2",
         "vlucas/phpdotenv": "^5.6",
         "php-http/curl-client": "^2.3",
-        "nyholm/psr7": "^1.8"
+        "nyholm/psr7": "^1.8",
+        "slim/slim": "^4.14",
+        "slim/psr7": "^1.7",
+        "php-di/php-di": "^7.0",
+        "slim/http": "^1.4"
     },
     "config": {
         "allow-plugins": {
             "php-http/discovery": true
         }
-    },
-    "repositories": [
-        {
-            "type": "path",
-            "url": ""
-        }
-    ]
+    }
 }
