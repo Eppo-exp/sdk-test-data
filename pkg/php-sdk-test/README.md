@@ -23,3 +23,11 @@ docker build -t Eppo/php-sdk-test .
 ```shell
 docker run -p $PHP_TEST_SERVER_PORT:$PHP_TEST_SERVER_PORT -t Eppo/php-sdk-test --env-file ./.env -e SDK_REF=<your branch/tag/SHA>
 ```
+
+## Development
+
+### Running locally
+
+```shell
+php -S localhost:4000 src/index.php
+```
