@@ -20,4 +20,4 @@ php src/eppo_poller.php &
 
 echo "Listening on ${PHP_TEST_SERVER_HOST}:${PHP_TEST_SERVER_PORT}"
 
-php -S "${PHP_TEST_SERVER_HOST}:${PHP_TEST_SERVER_PORT}" src/index.php
+php -S "${PHP_TEST_SERVER_HOST}:${PHP_TEST_SERVER_PORT}" -t src
