@@ -2,7 +2,7 @@
   "name": "eppo-sdk-test-api",
   "version": "0.0.1",
   "description": "UFC server for SDK integration testing",
-  "main": "index.ts",
+  "main": "src/server.ts",
   "repository": "github.com/Eppo-exp/sdk-test-data",
   "author": "Tyler Potter",
   "license": "MIT",
