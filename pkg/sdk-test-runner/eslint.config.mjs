@@ -1,3 +1,6 @@
+// Copy & rename this file into typescript project roots and install the following dev deps
+// yarn add prettier eslint typescript-eslint eslint-plugin-prettier eslint-config-prettier --dev
+
 import globals from 'globals';
 import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
@@ -9,4 +12,5 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   eslintPluginPrettierRecommended,
+  { ignores: ['dist/**'] }, // Ignore built artifacts
 ];

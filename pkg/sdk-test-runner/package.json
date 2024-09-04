@@ -9,13 +9,20 @@
   "scripts": {
     "build": "tsc",
     "start": "node ./bin/app.js",
-    "dev": "ts-node ./src/app.ts"
-  },  
+    "dev": "ts-node ./src/app.ts",
+    "lint": "eslint --fix .",
+    "lint-fix": "eslint --fix ."
+  },
   "dependencies": {
     "@types/node": "^22.5.2",
     "typescript": "^5.5.4"
   },
   "devDependencies": {
-    "ts-node": "^10.9.2"
+    "eslint": "^9.9.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript-eslint": "^8.4.0"
   }
 }
