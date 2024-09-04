@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start": "node ./bin/app.js",
+    "start": "node ./dist/app.js",
     "dev": "ts-node ./src/app.ts",
     "lint": "eslint --fix .",
     "lint-fix": "eslint --fix ."
