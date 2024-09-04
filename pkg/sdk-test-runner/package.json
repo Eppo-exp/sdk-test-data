@@ -1,0 +1,21 @@
+{
+  "name": "sdk-test-runner",
+  "version": "1.0.0",
+  "description": "Test runner for SDK package testing",
+  "main": "src/app.ts",
+  "repository": "https://github.com/Eppo-exp/sdk-test-data",
+  "author": "Tyler Potter",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./bin/app.js",
+    "dev": "ts-node ./src/app.ts"
+  },  
+  "dependencies": {
+    "@types/node": "^22.5.2",
+    "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  }
+}
