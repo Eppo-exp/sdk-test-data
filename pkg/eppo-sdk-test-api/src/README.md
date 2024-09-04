@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Eppo SDK test data server is a bare bones Express server which serves UFC and Bandit model data for testing SDK integrations. The test data server can change the data it serves to each calling SDK by mapping sdkName to a _Scenario_. A _Secenario_ is a collection of UFC data, Bandit model data, test cases and expected results all grouped together under _label_. Using _Scenarios_ to test allows us to verify the caching and reloading behaviours of the SDKs. 
+The Eppo SDK test data server is a bare bones Express server which serves UFC and Bandit model data for testing SDK integrations. The test data server can change the data it serves to each calling SDK by mapping sdkName to a _Scenario_. A _Secenario_ is a collection of UFC data, Bandit model data, test cases and expected results all grouped together under _label_. Using _Scenarios_ to test allows us to verify the caching and reloading behaviours of the SDKs.
 
 ## Test Scenario Configuration
 
@@ -10,7 +10,8 @@ The scenario configuration files and test case files are specified in `scenario_
 
 ## Starting the server
 
-### Installation and setup 
+### Installation and setup
+
 1. Install NodeJS
 2. Install Dependencies
 
@@ -29,6 +30,7 @@ yarn dev
 ### Customizing Server
 
 You can specify the port for the test data server to listen on by setting the env variable `EPPO_SDK_TEST_SERVER_PORT`. You can do this by either setting the value in your `.env` file (see `.env.EXAMPLE` for instructions on setting this up), or by setting the env variable in your command, ex:
+
 ```sh
 EPPO_SDK_TEST_SERVER_PORT=5000 yarn dev
 ```
@@ -47,7 +49,6 @@ curl --location 'localhost:3333/sdk/php-sdk/scenario' \
 --header 'Content-Type: application/json' \
 --data '{"label" : "banditsDisabled"}'
 ```
-
 
 ## Running in Docker.
 

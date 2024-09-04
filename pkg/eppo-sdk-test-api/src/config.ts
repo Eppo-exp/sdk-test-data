@@ -1,6 +1,6 @@
-import { config as configDotenv } from 'dotenv'
-import { resolve } from 'path'
+import { config as configDotenv } from 'dotenv';
+import { resolve } from 'path';
 
 configDotenv({
-    path: resolve(__dirname, "../.env")
+  path: resolve(__dirname, '../.env'),
 });

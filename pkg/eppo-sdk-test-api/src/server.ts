@@ -3,9 +3,8 @@ import './config';
 import app from './app';
 import { isAnyArrayBuffer, isNumberObject } from 'util/types';
 
-
 // Default test data root is the root of the `sdk-test-data` repository.
-const testDataRoot = process.env.EPPO_TEST_DATA_ROOT || "../../";
+const testDataRoot = process.env.EPPO_TEST_DATA_ROOT || '../../';
 
 app.loadDatafiles('./test-data/');
 
