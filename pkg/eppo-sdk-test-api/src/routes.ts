@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getDataForRequest, setDataFile, updateClientDataMap } from './ufc/data';
+import { getDataForRequest, updateClientDataMap } from './ufc/data';
 
 const routes = Router();
 

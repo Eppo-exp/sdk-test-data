@@ -9,5 +9,5 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   eslintPluginPrettierRecommended,
- { ignores: ["dist/**"] }, // Ignore built artifacts
+  { ignores: ['dist/**'] }, // Ignore built artifacts
 ];
