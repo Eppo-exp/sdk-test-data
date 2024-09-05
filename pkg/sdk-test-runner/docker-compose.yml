@@ -1,0 +1,17 @@
+services:
+  api:
+    image: eppo-exp/test-api-server
+    ports:
+      - "5000:5000"
+    depends_on:
+      - sdk
+
+  sdk:
+    image: "${SDK_IMG}"
+    environment:
+      - EPPO_API_SERVER=http://api:5000
+      - SDK_RELAY_PORT=4000
+      - SDK_RELAY_SERVER=localhost
+      - SDK_REF=${SDK_REF}
+    ports:
+      - "4000:4000"
