@@ -10,7 +10,5 @@
       "banditModelPath": "ufc/bandit-models-v1.json",
       "testCases": "ufc/bandit-tests/*.json"
     }
-  },
-
-  "initialClientMap": {}
+  }
 }

@@ -8,7 +8,6 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "clone-test-data": "./clone_test_data.sh",
     "build": "tsc --project ./",
     "dev": "nodemon src/server.ts",
     "start:prod": "node dist/server.js",

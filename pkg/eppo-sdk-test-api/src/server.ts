@@ -1,12 +1,11 @@
-import './config';
+import config from './config';
 
 import app from './app';
 
-app.loadDatafiles('./test-data/');
+app.loadDatafiles(config.testDataPath);
 
-const port = process.env.EPPO_SDK_TEST_SERVER_PORT ?? '4000';
-const portNum = !isNaN(+port) ? +port : 4000;
+const port = config.serverPort;
 
-console.log(`Listening at localhost:${portNum}`);
+console.log(`Listening at localhost:${port}`);
 
-app.server.listen(portNum);
+app.server.listen(port);

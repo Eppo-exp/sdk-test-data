@@ -1,12 +1,13 @@
+import * as path from 'path';
+
 import express from 'express';
 import routes from './routes';
+import config from './config';
 
 import * as fs from 'fs';
 import { setDataFile, updateClientDataMap } from './ufc/data';
 
 class App {
-  private static SCENARIO_FILE = './scenario_config.json';
-
   public server;
 
   constructor() {
@@ -27,16 +28,16 @@ class App {
   public loadDatafiles(baseDir: string) {
     console.log('Loading test scenarios');
 
-    const scenarioMeta = JSON.parse(fs.readFileSync(App.SCENARIO_FILE, 'utf-8'));
+    const scenarioMeta = JSON.parse(fs.readFileSync(config.scenarioFile, 'utf-8'));
     const scenarios = scenarioMeta.scenarios;
-    const clientMaps = scenarioMeta.initialClientMap;
+    const clientMaps: Record<string, string> = {};
 
     Object.keys(scenarios).forEach((key) => {
-      const ufc = fs.readFileSync(baseDir + scenarios[key].ufcPath, 'utf-8');
+      const ufc = fs.readFileSync(path.join(baseDir, scenarios[key].ufcPath), 'utf-8');
 
       const banditModelFile = scenarios[key].banditModelPath;
 
-      const bandits = banditModelFile ? fs.readFileSync(baseDir + banditModelFile, 'utf-8') : '';
+      const bandits = banditModelFile ? fs.readFileSync(path.join(baseDir, banditModelFile), 'utf-8') : '';
 
       console.log('preloaded data for ' + key);
 

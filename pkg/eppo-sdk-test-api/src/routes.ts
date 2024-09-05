@@ -3,6 +3,12 @@ import { getDataForRequest, updateClientDataMap } from './ufc/data';
 
 const routes = Router();
 
+routes.get('/', (req, res) => {
+
+    res.write("hello world");
+    return res.status(200).end();
+});
+
 // Serve Unified Flag Config
 routes.get('/flag-config/v1/config', (req, res) => {
   const sdk: string = req.query.sdkName as string;
