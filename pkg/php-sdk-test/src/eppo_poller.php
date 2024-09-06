@@ -6,14 +6,13 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->safeLoad();
 
 use Eppo\EppoClient;
+use Eppo\SDKTest\Config;
 
-$apiKey = $_ENV["EPPO_API_KEY"];
-$port = $_ENV["EPPO_TEST_DATA_SERVER_PORT"];
-$host = $_ENV["EPPO_TEST_DATA_SERVER_HOST"];
+$config = new Config();
 
 $eppoClient = EppoClient::init(
-    $apiKey,
-    "$host:${port}"
+    $config->apiKey,
+    $config->host . ':' . $config->port,
 );
 
 $eppoClient->startPolling();
