@@ -11,7 +11,7 @@ use Eppo\EppoClient;
 use Slim\Http\Response;
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
+$dotenv->safeLoad();
 
 const API_KEY = 'EPPO_API_KEY';
 const SERVER = 'EPPO_TEST_DATA_SERVER_HOST';
