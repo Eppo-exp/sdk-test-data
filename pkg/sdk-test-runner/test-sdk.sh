@@ -76,13 +76,13 @@ case "$command" in
           echo "    ... Sleeping 5secs to verify servers are up"
           sleep 5
 
-          for container in "test-api-server" "${SDK_IMG}-relay"; do
+          for container in "Eppo-exp/test-api-server" "${SDK_IMG}"; do
             echo "checking $container"
             if docker ps | grep $container | grep "Up"; then
                 echo "    ... $container is running."
             else
                 echo_red "    ... $container is not running."
-                docker-compose down
+                #docker-compose down
                 exit 1;
             fi
           done
