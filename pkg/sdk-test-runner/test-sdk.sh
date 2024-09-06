@@ -76,8 +76,8 @@ case "$command" in
           echo "    ... Sleeping 5secs to verify servers are up"
           sleep 5
 
-          containers=("test-api-server" "${SDK_NAME}")
-          for container in $containers; do
+          for container in "test-api-server" "${SDK_IMG}-relay"; do
+            echo "checking $container"
             if docker ps | grep $container | grep "Up"; then
                 echo "    ... $container is running."
             else
