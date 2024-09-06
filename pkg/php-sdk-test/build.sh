@@ -2,8 +2,13 @@
 
 composer install
 
+# Set default values for vars
+
 : "${SDK_REF:=main}"
+: "${SDK_RELAY_HOST:=localhost}"
+: "${SDK_RELAY_PORT:=4000}"
 SDK="https://github.com/Eppo-exp/php-sdk.git"
+
 
 # checkout the specified ref of the SDK repo, build it, and then insert it into vendors here.
 mkdir -p tmp

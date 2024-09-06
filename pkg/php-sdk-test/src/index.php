@@ -26,7 +26,7 @@ $eppoClient = EppoClient::init(
 
 $app = AppFactory::create();
 
-$app->get('.', function (Request $request, Response $response, array $args) {
+$app->get('/', function (Request $request, Response $response, array $args) {
     return $response->write('hello, world');
 });
 
