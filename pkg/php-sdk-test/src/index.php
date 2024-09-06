@@ -20,7 +20,7 @@ $testLogger = new TestLogger();
 
 $eppoClient = EppoClient::init(
     $config->apiKey,
-    $config->host . ':' . $config->port,
+    $config->apiServer,
     $testLogger
 );
 

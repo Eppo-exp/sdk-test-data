@@ -12,7 +12,7 @@ $config = new Config();
 
 $eppoClient = EppoClient::init(
     $config->apiKey,
-    $config->host . ':' . $config->port,
+    $config->apiServer
 );
 
 $eppoClient->startPolling();
