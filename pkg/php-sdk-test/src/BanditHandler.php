@@ -13,48 +13,43 @@ class BanditHandler
     {
     }
 
-    public function getBanditResults(array $payload)
+    public function getBanditAction(array $payload): array
     {
         $flagKey = $payload['flag'];
         $default = $payload['defaultValue'];
+        $subjectKey = $payload['subjectKey'];
 
-        $subjects = $payload['subjects'];
+        $actions = [];
+        foreach ($payload['actions'] as $action) {
+            $actions[$action['actionKey']] = new AttributeSet(
+                $action['numericAttributes'],
+                $action['categoricalAttributes']
+            );
+        }
 
-        $results = [];
-
-        foreach ($subjects as $subject) {
-            $actions = [];
-            foreach ($subject['actions'] as $action) {
-                $actions[$action['actionKey']] = new AttributeSet(
-                    $action['numericAttributes'],
-                    $action['categoricalAttributes']
-                );
-            }
-
-            try {
-                $result = $this->eppoClient->getBanditAction(
-                    $flagKey,
-                    $subject['subjectKey'],
-                    $subject['subjectAttributes'],
-                    $actions,
-                    $default
-                );
-                $results[] = [
-                    "subjectKey" => $subject['subjectKey'],
-                    "result" => $result,
-                    "assignmentLog" => $this->logger->assignmentLogs,
-                    "banditLog" => $this->logger->banditLogs
-                ];
-            } catch (EppoClientException $e) {
-                $results[] = [
-                    "subjectKey" => $subject['subjectKey'],
-                    "result" => $e->getMessage(),
-                    "assignmentLog" => $this->logger->assignmentLogs,
-                    "banditLog" => $this->logger->banditLogs
-                ];
-            } finally {
-                $this->logger->resetLogs();
-            }
+        try {
+            $result = $this->eppoClient->getBanditAction(
+                $flagKey,
+                $subjectKey,
+                $payload['subjectAttributes'],
+                $actions,
+                $default
+            );
+            $results = [
+                "subjectKey" => $subjectKey,
+                "result" => $result,
+                "assignmentLog" => $this->logger->assignmentLogs,
+                "banditLog" => $this->logger->banditLogs
+            ];
+        } catch (EppoClientException $e) {
+            $results = [
+                "subjectKey" => $subjectKey,
+                "result" => $e->getMessage(),
+                "assignmentLog" => $this->logger->assignmentLogs,
+                "banditLog" => $this->logger->banditLogs
+            ];
+        } finally {
+            $this->logger->resetLogs();
         }
         return $results;
     }

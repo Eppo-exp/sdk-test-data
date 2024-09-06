@@ -4,83 +4,60 @@ namespace Eppo\SDKTest;
 
 use Eppo\EppoClient;
 use Eppo\Exception\EppoClientException;
+use Exception;
 
 class AssignmentHandler
 {
+
+    private static array $methods = [
+        'INTEGER' => 'getIntegerAssignment',
+        'STRING' => 'getStringAssignment',
+        'BOOLEAN' => 'getBooleanAssignment',
+        'NUMERIC' => 'getNumericAssignment',
+        'JSON' => 'getJSONAssignment',
+    ];
 
     public function __construct(private EppoClient $eppoClient, private TestLogger $assignmentLogger)
     {
     }
 
-    public function getAssignments(array $payload)
+    /**
+     * @throws Exception
+     */
+    public function getAssignment(array $payload): array
     {
+        $variationType = $payload['variationType'];
         $flagKey = $payload['flag'];
         $default = $payload['defaultValue'];
+        $subjectKey = $payload['subjectKey'];
+        $subjectAttributes = $payload['subjectAttributes'];
 
-        $subjects = $payload['subjects'];
-
-        $results = [];
-
-        foreach ($subjects as $subject) {
-            try {
-                $result = null;
-                switch ($payload['variationType']) {
-                    case 'INTEGER':
-                        $result = $this->eppoClient->getIntegerAssignment(
-                            $flagKey,
-                            $subject['subjectKey'],
-                            $subject['subjectAttributes'],
-                            $default
-                        );
-                        break;
-                    case 'STRING':
-                        $result = $this->eppoClient->getStringAssignment(
-                            $flagKey,
-                            $subject['subjectKey'],
-                            $subject['subjectAttributes'],
-                            $default
-                        );
-                        break;
-                    case 'BOOLEAN':
-                        $result = $this->eppoClient->getBooleanAssignment(
-                            $flagKey,
-                            $subject['subjectKey'],
-                            $subject['subjectAttributes'],
-                            $default
-                        );
-                        break;
-                    case 'NUMERIC':
-                        $result = $this->eppoClient->getNumericAssignment(
-                            $flagKey,
-                            $subject['subjectKey'],
-                            $subject['subjectAttributes'],
-                            $default
-                        );
-                        break;
-                    case 'JSON':
-                        $result = $this->eppoClient->getJSONAssignment(
-                            $flagKey,
-                            $subject['subjectKey'],
-                            $subject['subjectAttributes'],
-                            $default
-                        );
-                        break;
-                }
-                $results[] = [
-                    "subjectKey" => $subject['subjectKey'],
+        try {
+            if (isset(self::$methods[$variationType])) {
+                $result = $this->eppoClient->{self::$methods[$variationType]}(
+                    $flagKey,
+                    $subjectKey,
+                    $subjectAttributes,
+                    $default
+                );
+                $resultResp = [
+                    "subjectKey" => $subjectKey,
                     "result" => $result,
                     "assignmentLog" => $this->assignmentLogger->assignmentLogs
                 ];
-            } catch (EppoClientException $e) {
-                $results[] = [
-                    "subjectKey" => $subject['subjectKey'],
-                    "result" => $e->getMessage(),
-                    "assignmentLog" => $this->assignmentLogger->assignmentLogs
-                ];
-            } finally {
-                $this->assignmentLogger->resetLogs();
+            } else {
+                throw new Exception("Invalid variation type $variationType");
             }
+        } catch (EppoClientException $e) {
+            $resultResp = [
+                "subjectKey" => $subjectKey,
+                "result" => $e->getMessage(),
+                "assignmentLog" => $this->assignmentLogger->assignmentLogs
+            ];
+        } finally {
+            $this->assignmentLogger->resetLogs();
         }
-        return $results;
+
+        return $resultResp;
     }
 }

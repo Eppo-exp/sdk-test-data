@@ -30,21 +30,25 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     return $response->write('hello, world');
 });
 
-$app->post('/flags/v1/assignments', function (Request $request, Response $response, array $args) {
+$app->post('/flags/v1/assignment', function (Request $request, Response $response) {
     global $eppoClient, $testLogger;
-    $handler = new AssignmentHandler($eppoClient, $testLogger);
-    $results = $handler->getAssignments(json_decode($request->getBody(), true));
+    try {
+        $handler = new AssignmentHandler($eppoClient, $testLogger);
+    } catch (Exception $exception) {
+        return $response->withJson(["error"=> $exception->getMessage()]);
+    }
+
+    $results = $handler->getAssignment(json_decode($request->getBody(), true));
     return $response->withJson($results);
 });
 
-$app->post('/bandits/v1/actions', function (Request $request, Response $response, array $args) {
+$app->post('/bandits/v1/action', function (Request $request, Response $response) {
     global $eppoClient, $testLogger;
     $handler = new BanditHandler($eppoClient, $testLogger);
-    $results = $handler->getBanditResults(json_decode($request->getBody(), true));
+    $results = $handler->getBanditAction(json_decode($request->getBody(), true));
     return $response->withJson($results);
 });
 
 $app->addErrorMiddleware(true, true, true);
-
 
 $app->run();
