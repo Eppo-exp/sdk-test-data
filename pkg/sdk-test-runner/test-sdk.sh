@@ -28,6 +28,11 @@ export API_SERVER_PORT_PORT="${API_SERVER_PORT_PORT:-5000}"
 SDK_RELAY_SERVER="http://localhost:4000"
 EPPO_API_SERVER="http://localhost:5000"
 
+# Fun colours
+function echo_red() {
+  echo -e "\033[0;31m$1\033[0m"
+}
+
 # Validate SDK name
 if [[ -z "$SDK_NAME" ]]; then
     echo "Missing required argument: sdkName"
@@ -42,14 +47,15 @@ if [[ -n "$TEST_DATA_REF" ]]; then
     echo "Getting test data by ref is not yet supported"
 else
     # Copy the local test data into temp dir to be mounted to the test data server and the test runner
-    rm -Rf data
-    mkdir data
-    cp -R ../../ufc data/
-    cp ../scenarios.json data/
+    echo "... Getting test data from the local filesystem."
+    rm -Rf test-data
+    mkdir test-data
+    cp -R ../../ufc test-data/
+    cp ../scenarios.json test-data/
 fi
 
-# The data directory will be mounted for the docker containers
-export SCENARIOS_FILE="data/scenarios.json"
+# The data directory will be mounted for the docker containers in docer-compose
+
 
 # Set up server or client (TODO) test runs
 case "$command" in
@@ -58,15 +64,37 @@ case "$command" in
         if [ -d "../${SDK_NAME}" ]; then
           export SDK_IMG=Eppo-exp/${SDK_NAME}-relay
           echo "  ... Starting Docker cluster [Eppo-exp/test-api-server, ${SDK_IMG}]"
-          docker-compose -f docker-compose.yml up
-          
+          docker-compose -f docker-compose.yml up -d
+          if [ $? -eq 0 ]; then
+            echo "    ... Docker cluster up"
+          else
+            echo_red "    ... Docker cluster failed to start"
+            exit 1
+          fi
+
+          # Verify servers are running
+          echo "    ... Sleeping 5secs to verify servers are up"
+          sleep 5
+
+          containers=("test-api-server" "${SDK_NAME}")
+          for container in $containers; do
+            if docker ps | grep $container | grep "Up"; then
+                echo "    ... $container is running."
+            else
+                echo_red "    ... $container is not running."
+                docker-compose down
+                exit 1;
+            fi
+          done
+
           # starts the test runner using env vars set @ top.
           echo "  ... Starting the test runner app"
           LOG_PREFIX="    ... " yarn dev
 
-
+          echo "  ... Downing the docker containers"
+          docker-compose down
         else
-          echo "  ... Invalid SDK ${SDK_NAME} specified";
+          echo_red "  ... Invalid SDK ${SDK_NAME} specified";
         fi
         ;;
     client)
@@ -74,7 +102,7 @@ case "$command" in
         exit 1;
         ;;
     *)
-        echo "Invalid command: $command"
+        echo_red "Invalid command: $command"
         exit 1
         ;;
 esac

@@ -28,3 +28,17 @@ To test an SDK, implement the following
 - build.sh file to checkout the target sdk repo at a specific ref (branch, SHA, tag), build the production artifact and then bundle it into the Relay server
 - Dockerfile to set up environment to make build.sh portable
 - run `docker build -t Eppo-exp/<sdk-name>-relay` to build the docker image to be used by the test runner
+
+## Additional Configuration
+### Environment Variables
+The following variables can be set on the test runner program
+
+TEST_CASE_FILE
+LOG_PREFIX
+
+The following env variables can be set when running the `test-sdk.sh` script
+
+| Variable Name | Type | Default | Description |
+| SDK_REF | String | main | Branch/Tag/SHA for SDK to test |
+| TEST_DATA_REF | String | null | Branch/Tag/SHA for test data to use, local data is used when value is empty/unset |
+

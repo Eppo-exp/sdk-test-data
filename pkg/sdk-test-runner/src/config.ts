@@ -11,10 +11,13 @@ class Config {
   public readonly sdkName: string;
   public readonly logPrefix: string;
   public readonly apiServer: string;
+  public readonly testDataPath: string;
 
   public constructor() {
+    this.testDataPath = process.env.EPPO_TEST_DATA_PATH || './test-data';
+    this.scenarioFile = process.env.EPPO_SCENARIO_FILE || this.testDataPath + '/scenarios.json';
+
     this.logPrefix = process.env.LOG_PREFIX ?? '';
-    this.scenarioFile = process.env.TEST_CASE_FILE ?? './scenarios.json';
 
     const host = process.env.SDK_SERVER_HOST ?? 'localhost';
     const port = process.env.SDK_SERVER_PORT ?? '4000';
