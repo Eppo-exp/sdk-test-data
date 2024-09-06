@@ -11,8 +11,9 @@ const testConfig = JSON.parse(fs.readFileSync(config.scenarioFile, 'utf-8'));
 
 const scenarios = testConfig['scenarios'];
 
-const failutes = [];
+const failures: Record<string, object>[] = [];
 const testCases = 0;
+const resultSets: Record<string, object>[] = [];
 
 const testScenario = async (key: string) => {
     const safeSdkName = encodeURIComponent(config.sdkName);
@@ -45,15 +46,34 @@ const testScenario = async (key: string) => {
                 return testCaseObj['subjects'][subject]['assignment'];
             });
 
-            // Post the test case to the SDK relay server
+            // Post the test case to the SDK relay 
+            // Determine whether case is a flag assignment or bandit selection
+
+            const results = await axios.post(`${config.sdkServer}/flags/v1/assignments`, testCaseObj).then(
+                result => {
+                    console.log(result);
+                    return result.data;
+                }
+            ).catch(error => {
+                console.error('Error:', error);
+            });
+
+            console.log({ assignments, results });
+
 
             // Compare the results.
+            const failed = JSON.stringify(assignments) == JSON.stringify(results);
+            if (failed) {
+                failures.push(results);
+            }
+            resultSets.push(results);
 
             // console.log(testCaseObj);
             // console.log(assignments);
         }
         break;
     }
+    console.log({ failutes: failures, resultSets });
 };
 
 (async () => {
@@ -61,11 +81,11 @@ const testScenario = async (key: string) => {
         await testScenario(scenario);
     }
 })().then(() => {
-    
+
     // Print results summary
 
     // Exit 1 if there were test failures
-    if (failutes.length > 0) {
+    if (failures.length > 0) {
         process.exit(1);
     } else {
         process.exit(0);
