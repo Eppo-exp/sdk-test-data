@@ -26,6 +26,10 @@ $eppoClient = EppoClient::init(
 
 $app = AppFactory::create();
 
+$app->get('.', function (Request $request, Response $response, array $args) {
+    return $response->write('hello, world');
+});
+
 $app->post('/flags/v1/assignments', function (Request $request, Response $response, array $args) {
     global $eppoClient, $testLogger;
     $handler = new AssignmentHandler($eppoClient, $testLogger);
