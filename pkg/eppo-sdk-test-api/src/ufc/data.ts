@@ -10,6 +10,8 @@ export const getDataForRequest = (sdkName: string) => {
   // If there was no label, assign the first of the data files (or null).
   if (!label) label = Object.keys(dataFiles)[0] ?? null;
 
+  console.log(`Returning $label for $sdk`);
+
   // If still no label, return null.
   if (!label) return null;
 
@@ -23,6 +25,5 @@ export const setDataFile = (label: string, ufc: string, bandits: string) => {
 };
 
 export const updateClientDataMap = (sdkName: string, datafileLabel: string) => {
-  console.log(clientDataMap);
   clientDataMap[sdkName] = datafileLabel;
 };
