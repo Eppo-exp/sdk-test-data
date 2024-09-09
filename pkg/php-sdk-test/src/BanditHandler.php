@@ -15,6 +15,9 @@ class BanditHandler
 
     public function getBanditAction(array $payload): array
     {
+        print("Processing bandit request");
+        var_dump($payload);
+
         $flagKey = $payload['flag'];
         $default = $payload['defaultValue'];
         $subjectKey = $payload['subjectKey'];
