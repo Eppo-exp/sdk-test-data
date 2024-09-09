@@ -8,5 +8,5 @@ else
 fi
 
 
-docker build -t Eppo-exp/php-sdk-test:$VERSION .
-docker tag Eppo-exp/php-sdk-test:$VERSION Eppo-exp/php-sdk-test:latest
+docker build -t Eppo-exp/php-sdk-relay:$VERSION .
+docker tag Eppo-exp/php-sdk-relay:$VERSION Eppo-exp/php-sdk-relay:latest

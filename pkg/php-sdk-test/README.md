@@ -16,12 +16,12 @@ BASH_ENV=.env SDK_REF=<your branch/tag/SHA> ./build.sh
 ### With Docker
 #### Build Docker Image
 ```shell
-docker build -t Eppo-exp/php-sdk-test .
+docker build -t Eppo-exp/php-sdk-relay.
 ```
 
 #### Run the docker container
 ```shell
-docker run -p $PHP_TEST_SERVER_PORT:$PHP_TEST_SERVER_PORT -t Eppo-exp/php-sdk-test --env-file ./.env -e SDK_REF=<your branch/tag/SHA>
+docker run -p $PHP_TEST_SERVER_PORT:$PHP_TEST_SERVER_PORT -t Eppo-exp/php-sdk-relay --env-file ./.env -e SDK_REF=<your branch/tag/SHA>
 ```
 
 ## Development
