@@ -82,7 +82,7 @@ case "$command" in
                 echo "    ... $container is running."
             else
                 echo_red "    ... $container is not running."
-                #docker-compose down
+                docker-compose down
                 exit 1;
             fi
           done

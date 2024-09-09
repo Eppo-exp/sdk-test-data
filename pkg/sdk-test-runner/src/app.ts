@@ -2,12 +2,13 @@ import axios from 'axios';
 import config from './config';
 import * as fs from 'fs';
 import path from 'path';
-import { green, red, yellow } from './logging';
+import { green, log, red, yellow } from './logging';
+import { Assignment } from './dto/assignmnent';
 
 
-console.log(config.logPrefix + `Firing up test runner for ${config.sdkName}`);
-console.log(config.logPrefix + `Posting test cases to SDK server at ${config.sdkServer}`);
-console.log(config.logPrefix + `Controlling configuration server at ${config.apiServer}`);
+log(`Firing up test runner for ${config.sdkName}`);
+log(`Posting test cases to SDK server at ${config.sdkServer}`);
+log(`Controlling configuration server at ${config.apiServer}`);
 
 const testConfig = JSON.parse(fs.readFileSync(config.scenarioFile, 'utf-8'));
 
@@ -22,14 +23,15 @@ const testScenario = async (key: string) => {
 
     await axios.post(`${config.apiServer}/sdk/${safeSdkName}/scenario`, { label: key })
         .then(_ => {
-            console.log(config.logPrefix + `Set Testing Scenario to ${key}`);
+            log(`Set Testing Scenario to ${key}`);
         })
         .catch(error => {
             console.error('Error:', error);
+            // STOP
         });
 
 
-    console.log(config.logPrefix + `Loading test files for scenario, ${key}`);
+    log(`Loading test files for scenario, ${key}`);
 
     const testCaseDir = path.join(config.testDataPath, scenarios[key]['testCases']);
     const testCases = fs.readdirSync(testCaseDir);
@@ -39,7 +41,7 @@ const testScenario = async (key: string) => {
         // Check if the item is a file
         if (fs.statSync(filePath).isFile()) {
             // Process the file here
-            console.log(`${config.logPrefix}Processing file: ${filePath}`);
+            log(`Processing file: ${filePath}`);
             const testCase = fs.readFileSync(filePath, "utf-8");
 
             const testCaseObj = JSON.parse(testCase);
@@ -50,19 +52,12 @@ const testScenario = async (key: string) => {
             if (!!testCaseObj['variationType']) {
 
                 // Loop through the subjects and get their assignments.
+                const flagKey = testCaseObj['flag'];
+                const variationType = testCaseObj['variationType'];
+                const defaultValue = testCaseObj['defaultValue'];
 
                 for (let subject of testCaseObj['subjects']) {
-                    const flagKey = testCaseObj['flag'];
-                    const variationType = testCaseObj['variationType'];
-                    const defaultValue = testCaseObj['defaultValue'];
-                    const subjectKey = subject['subjectKey'];
-                    const payload = {
-                        flag: flagKey,
-                        variationType: variationType,
-                        defaultValue: defaultValue,
-                        subjectKey: subjectKey,
-                        subjectAttributes: subject['subjectAttributes']
-                    };
+                    const payload: Assignment = new Assignment(flagKey, subject['subjectKey'], variationType, defaultValue, subject['subjectAttributes']);
 
                     numTestCases++;
 
@@ -73,7 +68,7 @@ const testScenario = async (key: string) => {
                             return result.data;
                         }
                     ).catch(error => {
-                        console.error('Error:', error);
+                        log(red('Error:'), error);
                         failures.push({ error });
                     });
 
@@ -83,7 +78,7 @@ const testScenario = async (key: string) => {
                         failures.push(results);
                     }
 
-                    console.log(config.logPrefix + (passed ? green("pass") : red("fail")) + ` ${flagKey}[${subjectKey}] `);
+                    log((passed ? green("pass") : red("fail")) + ` ${flagKey}[${payload.subjectKey}] `);
                 }
             }
         }
@@ -97,14 +92,12 @@ const testScenario = async (key: string) => {
 })().then(() => {
 
     const passes = numTestCases - failures.length;
-    console.log(config.logPrefix + yellow("*** Test Results *** "));
-    console.log(config.logPrefix + green(`${passes}/${numTestCases} passed`));
-    console.log(config.logPrefix + red(`${failures.length} failures`));
+    log(yellow("*** Test Results *** "));
+    log(green(`${passes}/${numTestCases} passed`));
+    log(red(`${failures.length} failures`));
     if (failures.length) {
-        console.log(config.logPrefix + red("Failure Details"));
+        log(red("Failure Details"), failures);
     }
-    console.log(failures);
-
     // Print results summary
 
     // Exit 1 if there were test failures
