@@ -38,6 +38,7 @@ class BanditHandler
             $results = [
                 "subjectKey" => $subjectKey,
                 "result" => $result,
+                "request"=>$payload,
                 "assignmentLog" => $this->logger->assignmentLogs,
                 "banditLog" => $this->logger->banditLogs
             ];
