@@ -6,4 +6,6 @@ const yellow = chalk.yellow;
 const green = chalk.green;
 
 const log = (message: string, ...extra: any) => console.log(config.logPrefix + message, ...extra);
-export { log, red, yellow, green };
+const logIndent = (indent:number, message: string, ...extra: any) => console.log("  ".repeat(indent) + config.logPrefix + message, ...extra);
+
+export { log, logIndent, red, yellow, green };

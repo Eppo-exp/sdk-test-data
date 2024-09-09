@@ -61,41 +61,41 @@ fi
 case "$command" in
     server)
         echo "... Running test scenarios against $SDK_NAME@$SDK_REF in server mode"
-        if [ -d "../${SDK_NAME}" ]; then
-          export SDK_IMG=Eppo-exp/${SDK_NAME}-relay
-          echo "  ... Starting Docker cluster [Eppo-exp/test-api-server, ${SDK_IMG}]"
-          docker-compose -f docker-compose.yml up -d
-          if [ $? -eq 0 ]; then
-            echo "    ... Docker cluster up"
-          else
-            echo_red "    ... Docker cluster failed to start"
-            exit 1
-          fi
-
-          # Verify servers are running
-          echo "    ... Sleeping 5secs to verify servers are up"
-          sleep 5
-
-          for container in "Eppo-exp/test-api-server" "${SDK_IMG}"; do
-            echo "checking $container"
-            if docker ps | grep $container | grep "Up"; then
-                echo "    ... $container is running."
-            else
-                echo_red "    ... $container is not running."
-                docker-compose down
-                exit 1;
-            fi
-          done
-
-          # starts the test runner using env vars set @ top.
-          echo "  ... Starting the test runner app"
-          LOG_PREFIX="    ... " yarn dev
-
-          echo "  ... Downing the docker containers"
-          docker-compose down
-        else
-          echo_red "  ... Invalid SDK ${SDK_NAME} specified";
+        if [[ -z "$SDK_IMG" ]]; then
+          SDK_IMG=Eppo-exp/${SDK_NAME}-relay
         fi
+        exoport SDK_IMG
+
+        echo "  ... Starting Docker cluster [Eppo-exp/test-api-server, ${SDK_IMG}]"
+        docker-compose -f docker-compose.yml up -d
+        if [ $? -eq 0 ]; then
+          echo "    ... Docker cluster up"
+        else
+          echo_red "    ... Docker cluster failed to start"
+          exit 1
+        fi
+
+        # Verify servers are running
+        echo "    ... Sleeping 5secs to verify servers are up"
+        sleep 5
+
+        for container in "Eppo-exp/test-api-server" "${SDK_IMG}"; do
+          echo "checking $container"
+          if docker ps | grep $container | grep "Up"; then
+              echo "    ... $container is running."
+          else
+              echo_red "    ... $container is not running."
+              docker-compose down
+              exit 1;
+          fi
+        done
+
+        # starts the test runner using env vars set @ top.
+        echo "  ... Starting the test runner app"
+        LOG_PREFIX="    ... " yarn dev
+
+        echo "  ... Downing the docker containers"
+        docker-compose down
         ;;
     client)
         echo "Client mode not implemented"
