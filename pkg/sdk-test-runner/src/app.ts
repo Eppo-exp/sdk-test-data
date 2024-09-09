@@ -5,6 +5,7 @@ import path from 'path';
 import { green, log, red, yellow } from './logging';
 import { Assignment } from './dto/assignmnent';
 import { isEqual } from 'lodash';
+import { BanditActionRequest } from './dto/banditSelection';
 
 log(`Firing up test runner for ${config.sdkName}`);
 log(`Posting test cases to SDK server at ${config.sdkServer}`);
@@ -52,45 +53,55 @@ const testScenario = async (key: string) => {
 
             // Determine whether case is a flag assignment or bandit selection
 
-            // Flag testing!!
-            if (testCaseObj['variationType']) {
-                // Loop through the subjects and get their assignments.
-                const flagKey = testCaseObj['flag'];
-                const variationType = testCaseObj['variationType'];
-                const defaultValue = testCaseObj['defaultValue'];
+            const flagKey = testCaseObj['flag'];
+            const defaultValue = testCaseObj['defaultValue'];
 
-                for (const subject of testCaseObj['subjects']) {
-                    const payload: Assignment = new Assignment(
-                        flagKey,
-                        subject['subjectKey'],
-                        variationType,
+            // Flag testing!!
+            const isFlagTest = testCaseObj['variationType'];
+
+            const requestPath = isFlagTest ? '/flags/v1/assignment' : '/bandits/v1/action';
+
+            // Loop through the subjects and get their assignments.
+            for (const subject of testCaseObj['subjects']) {
+
+                const payload = isFlagTest ? new Assignment(
+                    flagKey,
+                    subject['subjectKey'],
+                    testCaseObj['variationType'],
+                    defaultValue,
+                    subject['subjectAttributes']
+                ) :
+                    new BanditActionRequest(flagKey, subject['subjectKey'],
                         defaultValue,
                         subject['subjectAttributes'],
-                    );
+                        subject['actions']);
 
-                    numTestCases++;
+                numTestCases++;
 
-                    // Post the test case to the SDK relay
-
-                    const results = await axios
-                        .post(`${config.sdkServer}/flags/v1/assignment`, payload)
-                        .then((result) => {
-                            return result.data;
-                        })
-                        .catch((error) => {
-                            log(red('Error:'), error);
-                            failures.push({ error });
-                        });
-
-                    const passed = isResultCorrect(results, subject);
-
-                    if (!passed) {
-                        failures.push(results);
-                    }
-
-                    log((passed ? green('pass') : red('fail')) + ` ${flagKey}[${payload.subjectKey}] `);
+                // Post the test case to the SDK relay
+                if (!isFlagTest) {
+                    console.log(payload);
                 }
+
+                const results = await axios
+                    .post(`${config.sdkServer}${requestPath}`, payload)
+                    .then((result) => {
+                        return result.data;
+                    })
+                    .catch((error) => {
+                        log(red('Error:'), error);
+                        failures.push({ error });
+                    });
+
+                const passed = isResultCorrect(results, subject);
+
+                if (!passed) {
+                    failures.push(results);
+                }
+
+                log((passed ? green('pass') : red('fail')) + ` ${flagKey}[${payload.subjectKey}] `);
             }
+
         }
     }
 };
