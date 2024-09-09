@@ -42,12 +42,12 @@ class BanditHandler
                 "banditLog" => $this->logger->banditLogs
             ];
         } catch (EppoClientException $e) {
-            $results = [
+            $results = array(
                 "subjectKey" => $subjectKey,
                 "result" => $e->getMessage(),
                 "assignmentLog" => $this->logger->assignmentLogs,
-                "banditLog" => $this->logger->banditLogs
-            ];
+                "banditLog" => array_map('json_encode', $this->logger->banditLogs)
+            );
         } finally {
             $this->logger->resetLogs();
         }

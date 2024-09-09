@@ -34,6 +34,8 @@ class AssignmentHandler
 
         try {
             if (isset(self::$methods[$variationType])) {
+
+                // Use `self::$methods` to map from variation type to the name of the function to call on `EppoClient`
                 $result = $this->eppoClient->{self::$methods[$variationType]}(
                     $flagKey,
                     $subjectKey,
@@ -43,6 +45,7 @@ class AssignmentHandler
                 $resultResp = [
                     "subjectKey" => $subjectKey,
                     "result" => $result,
+                    "request"=>$payload,
                     "assignmentLog" => $this->assignmentLogger->assignmentLogs
                 ];
             } else {
@@ -51,8 +54,9 @@ class AssignmentHandler
         } catch (EppoClientException $e) {
             $resultResp = [
                 "subjectKey" => $subjectKey,
-                "result" => $e->getMessage(),
-                "assignmentLog" => $this->assignmentLogger->assignmentLogs
+                "result" => null,
+                "error" => $e->getMessage(),
+                "assignmentLog" => array_map('json_encode', $this->assignmentLogger->assignmentLogs)
             ];
         } finally {
             $this->assignmentLogger->resetLogs();
