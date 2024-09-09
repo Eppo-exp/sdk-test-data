@@ -4,8 +4,9 @@ import * as fs from 'fs';
 import path from 'path';
 import { green, log, red, yellow } from './logging';
 import { Assignment } from './dto/assignmnent';
-import { isEqual } from 'lodash';
+import { first, isEqual } from 'lodash';
 import { BanditActionRequest } from './dto/banditSelection';
+import { sleep } from './util';
 
 log(`Firing up test runner for ${config.sdkName}`);
 log(`Posting test cases to SDK server at ${config.sdkServer}`);
@@ -19,7 +20,9 @@ const failures: Record<string, object>[] = [];
 let numTestCases = 0;
 // failures.push({error: "I'm a fake failure"});
 
+let firstTestCase = true;
 const testScenario = async (key: string) => {
+
     const safeSdkName = encodeURIComponent(config.sdkName);
 
     await axios
@@ -35,6 +38,13 @@ const testScenario = async (key: string) => {
             console.error('Error:', error);
             // STOP
         });
+
+    if (!firstTestCase) {
+        log('Sleeping between scenarios so SDK can reload cache');
+        await sleep(31000);
+    } else {
+        firstTestCase = false;
+    }
 
     log(`Loading test files for scenario, ${key}`);
 
