@@ -25,12 +25,11 @@ class Config {
 
     this.apiServer = `${process.env.API_SERVER_HOST ?? 'localhost'}:${process.env.API_SERVER_PORT ?? 5000}`;
 
-    if(!process.env.SDK_NAME) {
-      throw new Error("Must specify SDK under test");
+    if (!process.env.SDK_NAME) {
+      throw new Error('Must specify SDK under test');
     } else {
       this.sdkName = process.env.SDK_NAME;
     }
-
   }
 }
 
