@@ -7,14 +7,16 @@ use Eppo\EppoClient;
 use Eppo\Exception\EppoClientException;
 use Psr\Log\LogLevel;
 use Slim\App;
-use Slim\Factory\AppFactory;
 use Slim\Logger;
 
 
 class BanditHandler
 {
-    public function __construct(private readonly EppoClient $eppoClient, private readonly TestLogger $logger, private readonly App $app)
-    {
+    public function __construct(
+        private readonly EppoClient $eppoClient,
+        private readonly TestLogger $logger,
+        private readonly App $app
+    ) {
     }
 
     public function getBanditAction(array $payload): array
@@ -35,18 +37,36 @@ class BanditHandler
             );
         }
 
+        $subjectAttributes = new AttributeSet(
+            $payload['subjectAttributes']['numericAttributes'],
+            $payload['subjectAttributes']['categoricalAttributes']
+        );
+
+        $logger->log(
+            LogLevel::INFO,
+            var_export(
+                [
+                    $flagKey,
+                    $subjectKey,
+                    $subjectAttributes,
+                    $actions,
+                    $default
+                ], true
+            )
+        );
+
         try {
             $result = $this->eppoClient->getBanditAction(
                 $flagKey,
                 $subjectKey,
-                $payload['subjectAttributes'],
+                $subjectAttributes,
                 $actions,
                 $default
             );
             $results = [
                 "subjectKey" => $subjectKey,
                 "result" => $result,
-                "request"=>$payload,
+                "request" => $payload,
                 "assignmentLog" => $this->logger->assignmentLogs,
                 "banditLog" => $this->logger->banditLogs
             ];
