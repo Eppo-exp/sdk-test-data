@@ -17,9 +17,3 @@ services:
       - "4000:4000"
     depends_on:
       - api
-
-
-  app:
-    image: docker/welcome-to-docker
-    ports:
-      - 8080:80      
