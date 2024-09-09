@@ -43,8 +43,8 @@ $app->post('/flags/v1/assignment', function (Request $request, Response $respons
 });
 
 $app->post('/bandits/v1/action', function (Request $request, Response $response) {
-    global $eppoClient, $testLogger;
-    $handler = new BanditHandler($eppoClient, $testLogger);
+    global $eppoClient, $testLogger, $app;
+    $handler = new BanditHandler($eppoClient, $testLogger, $app);
     $results = $handler->getBanditAction(json_decode($request->getBody(), true));
     return $response->withJson($results);
 });

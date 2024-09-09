@@ -5,18 +5,23 @@ namespace Eppo\SDKTest;
 use Eppo\DTO\Bandit\AttributeSet;
 use Eppo\EppoClient;
 use Eppo\Exception\EppoClientException;
+use Psr\Log\LogLevel;
+use Slim\App;
+use Slim\Factory\AppFactory;
+use Slim\Logger;
 
 
 class BanditHandler
 {
-    public function __construct(private readonly EppoClient $eppoClient, private readonly TestLogger $logger)
+    public function __construct(private readonly EppoClient $eppoClient, private readonly TestLogger $logger, private readonly App $app)
     {
     }
 
     public function getBanditAction(array $payload): array
     {
-        print("Processing bandit request");
-        var_dump($payload);
+        $logger = new Logger();
+        $logger->log(LogLevel::INFO, "Processing Bandit");
+        $logger->log(LogLevel::INFO, json_encode($payload, true));
 
         $flagKey = $payload['flag'];
         $default = $payload['defaultValue'];
