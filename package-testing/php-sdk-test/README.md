@@ -16,7 +16,7 @@ BASH_ENV=.env SDK_REF=<your branch/tag/SHA> ./build.sh
 ### With Docker
 #### Build Docker Image
 ```shell
-docker build -t Eppo-exp/php-sdk-relay.
+docker build -t Eppo-exp/php-sdk-relay .
 ```
 
 #### Run the docker container
