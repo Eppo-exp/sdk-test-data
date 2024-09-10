@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Eppo SDK test data server is a bare bones Express server which serves UFC and Bandit model data for testing SDK integrations. The test data server can change the data it serves to each calling SDK by mapping sdkName to a _Scenario_. A _Secenario_ is a collection of UFC data, Bandit model data, test cases and expected results all grouped together under a _label_. Using _Scenarios_ to test allows us to verify the caching and reloading behaviours of the SDKs.
+The Eppo SDK test data server is a bare-bones Express server which serves UFC and Bandit model data for testing SDK integrations. The test data server can change the data it serves to each calling SDK by mapping `sdkName` to a _Scenario_. A _Secenario_ is a collection of UFC data, Bandit model data, test cases and expected results all grouped together under a _label_. Using _Scenarios_ to test allows us to verify the caching and reloading behaviours of the SDKs.
 
 ## Test Scenario Configuration
 
@@ -31,11 +31,11 @@ yarn dev
 ### Customizing Server
 The following options are exposed via environment variables
 
-| Variable Name | Type | Default | Description |
+| Variable Name         | Type      | Default           | Description |
 | -- | -- | -- | -- |
-| `EPPO_API_SERVER_PORT` | number | 5000 | The port for the server to listen on |
-| `EPPO_TEST_DATA_PATH` | string | "test-data/" | Path to scenario file and test data relative to project root |
-| `EPPO_SCENARIO_FILE` | string | "scenarios.json" | Path to the scenario definitions, must be located under `EPPO_TEST_DATA_PATH` |
+| `EPPO_API_PORT`       | number    | 5000              | The port for the server to listen on |
+| `EPPO_TEST_DATA_PATH` | string    | "test-data/"      | Path to scenario file and test data relative to project root |
+| `EPPO_SCENARIO_FILE`  | string    | "scenarios.json"  | Filepath to the scenario definitions, relative to `EPPO_TEST_DATA_PATH` |
 
 
 These variables can be set in the `.env` file to be automatically loaded, `export`ed into the current shell, or prepended to the command line ex:
@@ -79,7 +79,7 @@ curl --location 'localhost:5000/sdk/php-sdk/scenario' \
 ### Running
 To run in docker, we need to build the docker image, provide the test data, then run.
 
-1. Build for lolal use
+1. Build for local use
 ```shell
   docker build . -t Eppo-exp/test-api-server:local
 ```
@@ -104,11 +104,11 @@ docker run \
     -t Eppo-exp/test-api-server:local # runs the local image just built.
 ```
 
-The SDK testing cluser requires an image for the test 
 
 ### Updating the app image
+The SDK testing cluster requires a docker image be builts and pushed to the cloud.
 When the app is updated and a new version is required for testing in CI/CD pipelines, we need to make a new image available. This is done by building the image and then pushing it TODO:somewhere
 
 ```shell
-docker build . -t Eppo-exp/test-api-server
+./release.sh <version_tag>
 ```
