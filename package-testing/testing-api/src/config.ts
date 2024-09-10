@@ -11,7 +11,7 @@ class Config {
   public readonly serverPort: number;
 
   public constructor() {
-    const port = process.env.EPPO_API_SERVER_PORT;
+    const port = process.env.EPPO_API_PORT;
     this.serverPort = !!port && !isNaN(+port) ? +port : 5000;
 
     this.testDataPath = process.env.EPPO_TEST_DATA_PATH || './test-data';
