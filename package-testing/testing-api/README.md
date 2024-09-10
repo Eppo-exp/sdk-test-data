@@ -6,7 +6,7 @@ The Eppo SDK test data server is a bare-bones Express server which serves UFC an
 
 ## Test Scenario Configuration
 
-The scenario configuration file, `scenarios.json` is located in the `pkg` directory of this repository and is copied into place for each service which requires it. By default, the first scenario listed will be served to any _sdkName_ that has not been explicitly mapped to a scenario label.
+The scenario configuration file, `scenarios.json` is located in the `package-test` directory of this repository and is copied into place by the `copy-test-data.sh` helper script. By default, the first scenario listed will be served to any _sdkName_ that has not been explicitly mapped to a scenario label.
 
 ## Starting the server
 
@@ -23,6 +23,10 @@ yarn install
 1. Run the server
 
 ```shell
+
+yarn start:prod
+
+# Or, run in dev mode
 yarn dev
 ```
 
@@ -49,17 +53,21 @@ EPPO_API_SERVER_PORT=3333 yarn dev
 The server will respond with UFC and Bandit model config data at `/flag-config/v1/config` and `/flag-config/v1/bandits` just as the current Eppo API server does via CDN. The server will also populate the _ETAG_ header and check the _IF-NONE-MATCH_ header and respond appropriately.
 
 ```shell
-curl --location 'localhost:5000/flag-config/v1/config?sdkname=mySdkNAme' \
-    --header 'IF-NONE-MATCH: oldconfigversion'
+curl --location 'localhost:5000/flag-config/v1/config?sdkName=fortran-sdk'
+
+# Get Bandits
+curl --location 'localhost:5000/flag-config/v1/bandits?sdkName=fortran-sdk' 
 
 # See headers only
+curl --location 'localhost:5000/flag-config/v1/config?sdkName=fortran-sdk' -I
 
-curl --location 'localhost:5000/flag-config/v1/config?sdkname=mySdkNAme' \
-    --header 'IF-NONE-MATCH: oldconfigversion' -I
-
-# Populate with the current etag and response is empty
-curl --location 'localhost:5000/flag-config/v1/config?sdkname=mySdkNAme' \
+# Populate IF-NONE-MATCH with the current etag to verify empty response
+curl --location 'localhost:5000/flag-config/v1/config?sdkName=fortran-sdk' \
     --header 'IF-NONE-MATCH: 79689d5810a263a40fc179be057e743d'
+
+# Show just the headers to see response code 304:not modified
+curl --location 'localhost:5000/flag-config/v1/config?sdkName=fortran-sdk' \
+    --header 'IF-NONE-MATCH: 79689d5810a263a40fc179be057e743d' -I
 
 
 ```
@@ -68,8 +76,8 @@ curl --location 'localhost:5000/flag-config/v1/config?sdkname=mySdkNAme' \
 To change the scenario data for an SDK, send a **POST** request to the server at `/sdk/:sdkName/scenario` with the data `{"label": "scenarioLabel"}`. Example:
 
 ```shell
-# Sets the scenario to "banditsDisabled" for the PHP SDK
-curl --location 'localhost:5000/sdk/php-sdk/scenario' \
+# Sets the scenario to "banditsDisabled" for the fortran-sdk
+curl --location 'localhost:5000/sdk/fortran-sdk/scenario' \
 --header 'Content-Type: application/json' \
 --data '{"label" : "banditsDisabled"}'
 ```
@@ -89,9 +97,11 @@ To use the local copy of test data, run
 ./copy-test-data.sh
 ```
 
-To use the test data at main, run
+To use the test data from the repository with a specific ref, use
 ```shell
-./clone-test-data.sh
+# usage ./clone-test-data.sh <GIT_REF>
+./clone-test-data.sh track/tp/feat
+
 ```
 
 Either of these scripts will populate the `test-data` directory with the files required to run the test API server. The last step is to run the docker container with a mounted volume to provide the test data files
