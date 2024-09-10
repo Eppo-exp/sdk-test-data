@@ -4,7 +4,7 @@ import express from 'express';
 import routes from './routes';
 
 import * as fs from 'fs';
-import { setDataFile, updateClientDataMap } from './ufc/data';
+import { setDataFile } from './ufc/data';
 
 class App {
   public server;
