@@ -10,6 +10,8 @@ class Config
     public function __construct()
     {
         $this->apiKey = $_ENV["EPPO_API_KEY"] ?? "NOKEYSPECIFIED";
-        $this->apiServer = $_ENV["EPPO_API_SERVER"] ?? "http://localhost:5000";
+        $apiHost = $_ENV["EPPO_API_HOST"] ?? "localhost";
+        $apiPort = $_ENV["EPPO_API_PORT"] ?? "5000";
+        $this->apiServer = "http://${apiHost}:${apiPort}";
     }
 }
