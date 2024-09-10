@@ -46,7 +46,7 @@ EPPO_API_SERVER_PORT=3333 yarn dev
 
 ## Getting data from the server
 
-The server will respond with UFC and Bandit model config data at `/flag-config/v1/config` and `/flag-config/v1/bandits` just as the current Eppo API server does via CDN. The server will also populate the _E-TAG_ header and check the _IF-NONE-MATCH_ header and respond appropriately.
+The server will respond with UFC and Bandit model config data at `/flag-config/v1/config` and `/flag-config/v1/bandits` just as the current Eppo API server does via CDN. The server will also populate the _ETAG_ header and check the _IF-NONE-MATCH_ header and respond appropriately.
 
 ```shell
 curl --location 'localhost:5000/flag-config/v1/config?sdkname=mySdkNAme' \

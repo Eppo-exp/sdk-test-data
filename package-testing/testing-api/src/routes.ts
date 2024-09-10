@@ -3,10 +3,12 @@ import { getDataForRequest, updateClientDataMap } from './ufc/data';
 
 const routes = Router();
 
+/*
 routes.get('/', (req, res) => {
   res.write('hello world');
   return res.status(200).end();
 });
+*/
 
 // Serve Unified Flag Config
 routes.get('/flag-config/v1/config', (req, res) => {
@@ -18,14 +20,13 @@ routes.get('/flag-config/v1/config', (req, res) => {
     // Some SDKs use HTTP headers to optimize network bytes and sdk-side processing.
     const noneMatch = req.header('IF-NONE-MATCH');
     if (!!noneMatch && noneMatch == data.ufcDataVersion) {
-      res.setHeader('E_TAG', data.ufcDataVersion);
+      res.setHeader('ETAG', data.ufcDataVersion);
       return res.status(304).end();
     }
 
     res.setHeader('Content-Type', 'application/json');
-    res.status(200);
-    res.setHeader('E_TAG', data.ufcDataVersion);
-    return res.end(data.ufc);
+    res.setHeader('ETAG', data.ufcDataVersion);
+    return res.status(200).end(data.ufc);
   }
 
   return res.status(404).json({ message: 'No data for specified SDK' });
@@ -39,8 +40,7 @@ routes.get('/flag-config/v1/bandits', (req, res) => {
 
   if (data) {
     res.setHeader('Content-Type', 'application/json');
-    res.status(200);
-    return res.end(data.bandits);
+    return res.status(200).end(data.bandits);
   }
 
   return res.status(404).json({ message: 'No data for specified SDK' });

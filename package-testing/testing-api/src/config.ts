@@ -15,7 +15,7 @@ class Config {
     this.serverPort = !!port && !isNaN(+port) ? +port : 5000;
 
     this.testDataPath = process.env.EPPO_TEST_DATA_PATH || './test-data';
-    this.scenarioFile = process.env.EPPO_SCENARIO_FILE || this.testDataPath + '/scenarios.json';
+    this.scenarioFile = process.env.EPPO_SCENARIO_FILE || 'scenarios.json';
   }
 }
 

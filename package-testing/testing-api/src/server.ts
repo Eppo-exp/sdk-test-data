@@ -2,7 +2,7 @@ import config from './config';
 
 import app from './app';
 
-app.loadDatafiles(config.testDataPath);
+app.loadDatafiles(config.testDataPath, config.scenarioFile);
 
 const port = config.serverPort;
 
