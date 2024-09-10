@@ -13,7 +13,7 @@ log(`Firing up test runner for ${config.sdkName}`);
 log(`Posting test cases to SDK server at ${config.sdkServer}`);
 log(`Controlling configuration server at ${config.apiServer}`);
 
-const testConfig = JSON.parse(fs.readFileSync(config.scenarioFile, 'utf-8'));
+const testConfig = JSON.parse(fs.readFileSync(path.join(config.testDataPath, config.scenarioFile), 'utf-8'));
 
 const scenarios = testConfig['scenarios'];
 
@@ -43,6 +43,7 @@ const testScenario = async (key: string) => {
 
     if (!firstTestCase) {
         log('Sleeping between scenarios so SDK can reload cache');
+        // TODO: make this configurable for SDKs which can control the cache TTL
         await sleep(31000);
     } else {
         firstTestCase = false;
@@ -51,9 +52,11 @@ const testScenario = async (key: string) => {
     log(`Loading test files for scenario, ${key}`);
 
     const testCaseDir = path.join(config.testDataPath, scenarios[key]['testCases']);
+    console.log(`Scanning ${testCaseDir}`);
+    console.log()
     const testCases = fs.readdirSync(testCaseDir);
     for (const testCase of testCases) {
-        const filePath = `${testCaseDir}/${testCase}`;
+        const filePath = path.join(testCaseDir, testCase);
 
         // Check if the item is a file
         if (fs.statSync(filePath).isFile()) {

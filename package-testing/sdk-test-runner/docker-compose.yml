@@ -1,6 +1,11 @@
 services:
   api:
     image: Eppo-exp/test-api-server:latest
+    environment:
+      - EPPO_API_HOST
+      - EPPO_API_PORT
+      - EPPO_SCENARIO_FILE
+      - EPPO_TEST_DATA_PATH=./test-data # matches volume mapping below.
     ports:
       - "5000:5000"
     volumes:
@@ -9,10 +14,11 @@ services:
   sdk:
     image: Eppo-exp/php-sdk-relay
     environment:
-      - EPPO_API_SERVER=http://api:5000
-      - SDK_RELAY_PORT=4000
-      - SDK_RELAY_HOST=0.0.0.0
-      - SDK_REF=${SDK_REF}
+      - EPPO_API_HOST=api
+      - EPPO_API_PORT
+      - SDK_RELAY_HOST=0.0.0.0 # within the docker network, servers must listen to all addresses on their host; `localhost` is essentially a loopback address and some servers (ex: PHP) will only respond to requests matching its IP or hostname.
+      - SDK_RELAY_PORT
+      - SDK_REF
     ports:
       - "4000:4000"
     depends_on:

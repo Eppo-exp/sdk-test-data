@@ -14,36 +14,53 @@
 #   [sdkRef]        Optional. The reference of the SDK (default: main).
 #
 
-# Parse command-line arguments
-command="$1"
-export SDK_NAME="$2"
-export SDK_REF="${3:-main}"
-
-TEST_CASE_FILE="../testconfig.json"
-
-export SDK_RELAY_PORT="${SDK_RELAY_PORT:-4000}"
-export API_SERVER_PORT_PORT="${API_SERVER_PORT_PORT:-5000}"
-
-SDK_RELAY_SERVER="http://localhost:4000"
-EPPO_API_SERVER="http://localhost:5000"
-
 # Fun colours
 function echo_red() {
   echo -e "\033[0;31m$1\033[0m"
 }
 
+function echo_green() {
+  echo -e "\033[0;32m$1\033[0m"
+}
+
+function echo_yellow() {
+  echo -e "\033[0;33m$1\033[0m"
+}
+
+# Parse command-line arguments
+command="$1"
+export SDK_NAME="$2"
+export SDK_REF="${3:-main}"
+
+# Allow env variables to be overwritten, then export to this shell.
+export EPPO_API_HOST="${EPPO_API_HOST:-localhost}"
+export EPPO_API_PORT="${EPPO_API_PORT:-5000}"
+
+export SDK_RELAY_HOST="${SDK_RELAY_HOST:-localhost}"
+export SDK_RELAY_PORT="${SDK_RELAY_PORT:-4000}"
+
+export EPPO_SCENARIO_FILE="${EPPO_SCENARIO_FILE:-scenarios.json}"
+export EPPO_TEST_DATA_PATH="${EPPO_TEST_DATA_PATH:-./test-data}"
+
+
 # Validate SDK name
 if [[ -z "$SDK_NAME" ]]; then
-    echo "Missing required argument: sdkName"
+    echo_red "Missing required argument: sdkName"
     exit 1
 fi
 
-echo "Relay port $SDK_RELAY_PORT"
+# Extrapolate an SDK container image.
+if [[ -z "$SDK_IMG" ]]; then
+  SDK_IMG=Eppo-exp/${SDK_NAME}-relay
+fi
+export SDK_IMG
+# TODO: pull SDK relay server and api-server image from the Google Artifavt Registry
 
 # Get the test data and scenario file ready for the test servers
 if [[ -n "$TEST_DATA_REF" ]]; then
     # TODO this
-    echo "Getting test data by ref is not yet supported"
+    echo_red "Getting test data from repository by ref is not yet supported"
+    exit 1
 else
     # Copy the local test data into temp dir to be mounted to the test data server and the test runner
     echo "... Getting test data from the local filesystem."
@@ -53,35 +70,29 @@ else
     cp ../scenarios.json test-data/
 fi
 
-# TODO: pull docker image for test api server from Google Artifact Registry
 
 case "$command" in
     server)
         echo "... Running test scenarios against $SDK_NAME@$SDK_REF in server mode"
-        if [[ -z "$SDK_IMG" ]]; then
-          SDK_IMG=Eppo-exp/${SDK_NAME}-relay
-        fi
-        exoport SDK_IMG
-
-        # TODO: pull SDK relay server image from GAR
 
         echo "  ... Starting Docker cluster [Eppo-exp/test-api-server, ${SDK_IMG}]"
+
         docker-compose -f docker-compose.yml up -d
+
         if [ $? -eq 0 ]; then
-          echo "    ... Docker cluster up"
+          echo_green "    ... Docker cluster up"
         else
           echo_red "    ... Docker cluster failed to start"
           exit 1
         fi
 
         # Verify servers are running
-        echo "    ... Sleeping 5secs to verify servers are up"
+        echo_yellow "    ... Sleeping 5secs to verify servers are up"
         sleep 5
 
         for container in "Eppo-exp/test-api-server" "${SDK_IMG}"; do
-          echo "checking $container"
-          if docker ps | grep $container | grep "Up"; then
-              echo "    ... $container is running."
+          if [[ "$(docker ps | grep "$container" | grep "Up")" ]]; then
+              echo_green "    ... $container is running."
           else
               echo_red "    ... $container is not running."
               docker-compose down
@@ -93,11 +104,11 @@ case "$command" in
         echo "  ... Starting the test runner app"
         LOG_PREFIX="    ... " yarn dev
 
-        echo "  ... Downing the docker containers"
+        echo_yellow "  ... Downing the docker containers"
         docker-compose down
         ;;
     client)
-        echo "Client mode not implemented"
+        echo_red "Client mode not implemented"
         exit 1;
         ;;
     *)

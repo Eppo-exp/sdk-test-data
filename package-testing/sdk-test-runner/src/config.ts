@@ -14,16 +14,18 @@ class Config {
   public readonly testDataPath: string;
 
   public constructor() {
+    console.log("****"+ process.env.EPPO_TEST_DATA_PATH);
+
     this.testDataPath = process.env.EPPO_TEST_DATA_PATH || './test-data';
-    this.scenarioFile = process.env.EPPO_SCENARIO_FILE || this.testDataPath + '/scenarios.json';
+    this.scenarioFile = process.env.EPPO_SCENARIO_FILE || 'scenarios.json';
 
     this.logPrefix = process.env.LOG_PREFIX ?? '';
 
-    const host = process.env.SDK_RELAY_HOST ?? 'http://localhost';
+    const host = 'http://' + process.env.SDK_RELAY_HOST ?? 'localhost';
     const port = process.env.SDK_RELAY_PORT ?? '4000';
     this.sdkServer = `${host}:${port}`;
 
-    this.apiServer = `${process.env.EPPO_API_HOST ?? 'http://localhost'}:${process.env.EPPO_API_PORT ?? 5000}`;
+    this.apiServer = `http://${process.env.EPPO_API_HOST ?? 'localhost'}:${process.env.EPPO_API_PORT ?? 5000}`;
 
     if (!process.env.SDK_NAME) {
       throw new Error('Must specify SDK under test');
