@@ -8,6 +8,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "postinstall": "husky",
+
     "build": "tsc --project ./",
     "dev": "nodemon src/server.ts",
     "start:prod": "node dist/server.js",
