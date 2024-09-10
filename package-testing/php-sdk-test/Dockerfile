@@ -21,6 +21,9 @@ COPY --chmod=755 build.sh /
 
 RUN composer install
 
+ENV SDK_RELAY_HOST=0.0.0.0
+ENV EPPO_API_HOST=host.docker.internal
+
 EXPOSE 4000
 
 CMD ["/build.sh"]

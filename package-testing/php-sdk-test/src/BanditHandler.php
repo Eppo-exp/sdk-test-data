@@ -14,8 +14,7 @@ class BanditHandler
 {
     public function __construct(
         private readonly EppoClient $eppoClient,
-        private readonly TestLogger $logger,
-        private readonly App $app
+        private readonly TestLogger $logger
     ) {
     }
 
@@ -23,7 +22,7 @@ class BanditHandler
     {
         $logger = new Logger();
         $logger->log(LogLevel::INFO, "Processing Bandit");
-        $logger->log(LogLevel::INFO, json_encode($payload, true));
+        $logger->log(LogLevel::DEBUG, json_encode($payload, true));
 
         $flagKey = $payload['flag'];
         $default = $payload['defaultValue'];
