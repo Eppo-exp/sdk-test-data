@@ -13,7 +13,6 @@
 #   <sdkName>       Required. The name of the SDK; corresponds to subpackage name.
 #   [sdkRef]        Optional. The reference of the SDK (default: main).
 #
-# Environment Overrides:
 
 # Parse command-line arguments
 command="$1"
@@ -54,10 +53,8 @@ else
     cp ../scenarios.json test-data/
 fi
 
-# The data directory will be mounted for the docker containers in docer-compose
+# TODO: pull docker image for test api server from Google Artifact Registry
 
-
-# Set up server or client (TODO) test runs
 case "$command" in
     server)
         echo "... Running test scenarios against $SDK_NAME@$SDK_REF in server mode"
@@ -65,6 +62,8 @@ case "$command" in
           SDK_IMG=Eppo-exp/${SDK_NAME}-relay
         fi
         exoport SDK_IMG
+
+        # TODO: pull SDK relay server image from GAR
 
         echo "  ... Starting Docker cluster [Eppo-exp/test-api-server, ${SDK_IMG}]"
         docker-compose -f docker-compose.yml up -d

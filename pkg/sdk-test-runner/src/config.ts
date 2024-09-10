@@ -19,11 +19,11 @@ class Config {
 
     this.logPrefix = process.env.LOG_PREFIX ?? '';
 
-    const host = process.env.SDK_SERVER_HOST ?? 'localhost';
-    const port = process.env.SDK_SERVER_PORT ?? '4000';
+    const host = process.env.SDK_RELAY_HOST ?? 'http://localhost';
+    const port = process.env.SDK_RELAY_PORT ?? '4000';
     this.sdkServer = `${host}:${port}`;
 
-    this.apiServer = `${process.env.API_SERVER_HOST ?? 'localhost'}:${process.env.API_SERVER_PORT ?? 5000}`;
+    this.apiServer = `${process.env.EPPO_API_HOST ?? 'http://localhost'}:${process.env.EPPO_API_PORT ?? 5000}`;
 
     if (!process.env.SDK_NAME) {
       throw new Error('Must specify SDK under test');

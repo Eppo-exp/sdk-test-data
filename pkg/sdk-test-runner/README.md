@@ -2,6 +2,43 @@
 This app posts test cases to an SDK relay server and compares the results against the expected. It works in concert with a Scenario Api Server to test different groups of test cases against changing UFC and Bandit data.
 
 ## Running
+The easiest way to use the test runner is the wrapper script, `./test-sdk.sh`. It sets most configuration values and handles spinning up the test API server, the SDK relay server, and starting the test runner app. The script attempts to extrapolate the tag for the SDK Relay server docker image from the SDK name. Where the SDK name does not conform to Docker tag conventiones, the `SDK_IMG` environment variable can be set to specify the image name.
+
+```shell
+./test-sdk.sh server <server_sdk_name> <test_data_branch>
+
+# PHP Example
+SDK_IMG="Eppo-exp/php-sdk-relay" ./test-sdk.sh server eppo/php-sdk 
+
+```
+
+### via command line
+If you need to run the app in dev mode, first spin up a test cluster (API server and SDK Relay), then run dev mode:
+
+```shell
+docker-compose up -d
+SDK_NAME=php-sdk yarn dev
+```
+
+#### Test Runner Configuration
+Environment variables can be set in shell, or in a `.env` file.
+
+| Variable Name             | Type      | Default               | Description |
+| -- | -- | -- | -- |
+| `EPPO_TEST_DATA_PATH`     | string    | `./test-data`         | Base path for test case files |
+| `EPPO_SCENARIO_FILE`      | string    | `scenarios.json`      | Spec file for test scenarios and test cases |
+| `SDK_RELAY_HOST`          | string    | `http://localhost`    | Hostname for relay server  |
+| `SDK_RELAY_PORT`          | number    | 4000                  | Port for relay server  |
+| `EPPO_API_HOST`           | string    | `http://localhost`    | Hostname for relay server |
+| `EPPO_API_PORT`           | number    | 5000                  | Port for relay server |
+
+The following env variables can be set when running the `test-sdk.sh` script
+
+| Variable Name     | Type      | Default   | Description |
+| -- | -- | -- | -- |
+| `SDK_REF`         | string    | 'main'    | Branch/Tag/SHA for SDK to test |
+| `TEST_DATA_REF`   | string    | null      | Branch/Tag/SHA for test data to use, local data is used when value is empty/unset |
+
 
 ## Testing a new SDK
 
@@ -19,11 +56,23 @@ Finally, these are the advanced items to integrate the new package test into our
 1. Github Action to run test configured for SDK (TODO: Create example)
 2. Github workflows (in SDK repository and `sdk-test-data` repository) to run the test. (TODO: create example)
 
-### Relay Server API
-The testing cluster spins up an API server at the default address, `localhost:5000`. This address is set in the `EPPO_API_SERVER` environment variable . This server address must be used to initialize the `EppoClient` in the relay server. The Relay server is typically expected to run at `locahost:4000`, and this address is specified in the `SDK_RELAY_SERVER` environment variable.
+### SDK Relay Server
+The test runner sends assignment and bandit action requests to the SDK Relay Server which calls `EppoClient` and returns the results to the test runner. The paths and data packets are outlined below in [API](#api). Environment variables set the host and port for the Relay Server to listen on as well as the Eppo API server and port (for `EppoClient` initialization). For development of the SDK Relay server, start a local copy of the [Test API Server](../eppo-sdk-test-api/) to serve the flag/bandit configuration, then use this handy [Postman workspace](https://www.postman.com/material-meteorologist-42730907/typotter-eppo/collection/5bjhdzy/relay-server-testing?action=share&creator=38014089) to issue requests to the relay server without having to blast it with the test runner.
+
+#### Configuration 
+| Variable Name | Type | Description | Default |
+| -- | -- | -- | -- |
+| `SDK_RELAY_HOST` | string | Hostname for relay server | `localhost` |
+| `SDK_RELAY_PORT` | number | Port for relay server | 4000 |
+| `EPPO_API_HOST` | string | Hostname for relay server | `localhost` |
+| `EPPO_API_PORT` | number | Port for relay server | 5000 |
+
+#### API
 
 
-#### Flags / UFC Assignment
+
+
+**Flags / UFC Assignment**
 ```ts
 // POSTed to `/flags/v1/assignment`
 type Assignment = {
@@ -43,7 +92,7 @@ export type TestResponse {
 }
 ```
 
-#### Bandits
+**Bandits**
 ```ts
 // POSTed to `/bandits/v1/action`
 export type BanditActionRequest = {
@@ -118,7 +167,9 @@ php -S "${SDK_RELAY_HOST}:${SDK_RELAY_PORT}" -t src
 ```
 
 ### Dockerfile
-The `Dockerfile` configures the environment needed to build and run the SDK relay server.
+The `Dockerfile` configures the environment needed to build and run the SDK relay server. Docker images should be tagged, `Eppo-exp/<sdk-name>-relay` to be determined automatically by the test runner script, however the image tag can be manually set.
+
+
 Example
 ```dockerfile
 FROM php:8.1
@@ -148,49 +199,3 @@ EXPOSE 4000
 
 CMD ["/build.sh"]
 ```
-
-
-## Configuration
-
-### via `.env`
-
-```shell
-TEST_CASE_FILE="../testconfig.json"
-SDK_SERVER_HOST="http://localhost"
-SDK_SERVER_PORT=4000
-API_SERVER_HOST="http://localhost"
-API_SERVER_PORT=5000
-```
-
-### via command line
-```shell
-SDK_NAME=php-sdk yarn dev
-```
-
-```shell
-./test-sdk.sh server php-sdk main
-```
-
-
-## SDK Testing implementations
-
-To test an SDK, implement the following
-- create directory `pkg/<sdk-name>`
-- relay server to answer test cases (see schema)
-- build.sh file to checkout the target sdk repo at a specific ref (branch, SHA, tag), build the production artifact and then bundle it into the Relay server
-- Dockerfile to set up environment to make build.sh portable
-- run `docker build -t Eppo-exp/<sdk-name>-relay` to build the docker image to be used by the test runner
-
-## Additional Configuration
-### Environment Variables
-The following variables can be set on the test runner program
-
-TEST_CASE_FILE
-LOG_PREFIX
-
-The following env variables can be set when running the `test-sdk.sh` script
-
-| Variable Name | Type | Default | Description |
-| SDK_REF | String | main | Branch/Tag/SHA for SDK to test |
-| TEST_DATA_REF | String | null | Branch/Tag/SHA for test data to use, local data is used when value is empty/unset |
-
