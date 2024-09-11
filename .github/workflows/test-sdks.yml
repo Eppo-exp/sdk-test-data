@@ -1,8 +1,11 @@
 name: Test SDKs Locally
 
 on:
+  push:
+    branches: [ main ]
   pull_request:
-    branches: [ "*" ]
+    paths: 
+      ufc/**
   
   workflow_dispatch:
 
