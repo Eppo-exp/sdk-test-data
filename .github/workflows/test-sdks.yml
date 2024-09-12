@@ -4,24 +4,18 @@ on:
   pull_request:
     paths:
       - 'ufc/**'
-
-  
   workflow_dispatch:
 
 jobs:
   
   test-java-sdk:
-<<<<<<< HEAD
-    uses: Eppo-exp/java-server-sdk/.github/workflows/lint-test-sdk.yml@tp/workflows/remote
-=======
     uses: Eppo-exp/java-server-sdk/.github/workflows/lint-test-sdk.yml@main
->>>>>>> main
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
   
   test-android-sdk:
-    uses: Eppo-exp/android-sdk/.github/workflows/test.yaml@tp/workflows/remote
+    uses: Eppo-exp/android-sdk/.github/workflows/test.yaml@main
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
@@ -33,17 +27,13 @@ jobs:
       sdk_branch: main
   
   test-node-client-sdk:
-<<<<<<< HEAD
-    uses: Eppo-exp/js-client-sdk/.github/workflows/lint-test-sdk.yml@tp/workflows/remote
-=======
     uses: Eppo-exp/js-client-sdk/.github/workflows/lint-test-sdk.yml@main
->>>>>>> main
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
 
   test-react-native-sdk:
-    uses: Eppo-exp/react-native-sdk/.github/workflows/ci.yml@tp/workflows/remote
+    uses: Eppo-exp/react-native-sdk/.github/workflows/ci.yml@main
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
@@ -52,11 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Run test action"
-<<<<<<< HEAD
-        uses: 'Eppo-exp/python-sdk/.github/actions/action-test@tp/workflows/remote'
-=======
         uses: 'Eppo-exp/python-sdk/.github/actions/action-test@main'
->>>>>>> main
         with:
           test_data_branch: ${{ github.head_ref || github.ref_name }}
           sdk_branch: main
@@ -68,13 +54,13 @@ jobs:
       sdk_branch: main
 
   test-ios-sdk:
-    uses: Eppo-exp/eppo-ios-sdk/.github/workflows/unit-tests.yml@tp/workflows/remote
+    uses: Eppo-exp/eppo-ios-sdk/.github/workflows/unit-tests.yml@main
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
 
   test-golang-sdk:
-    uses: Eppo-exp/golang-sdk/.github/workflows/test.yml@tp/workflows/remote
+    uses: Eppo-exp/golang-sdk/.github/workflows/test.yml@main
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
