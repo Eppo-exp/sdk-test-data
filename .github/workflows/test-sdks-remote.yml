@@ -13,6 +13,7 @@ jobs:
   test-sdks:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         sdk:
           - { repo: "android-sdk", workflow: "test.yaml", ref: "main" }
