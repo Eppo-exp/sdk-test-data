@@ -30,6 +30,11 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     return $response->write('hello, world');
 });
 
+$app->post('/sdk/reset', function (Request $request, Response $response, array $args) {
+    \Eppo\Cache\DefaultCacheFactory::clearCache();
+    return $response->withStatus(200);
+});
+
 $app->post('/flags/v1/assignment', function (Request $request, Response $response) {
     global $eppoClient, $testLogger;
     try {
