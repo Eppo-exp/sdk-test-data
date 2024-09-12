@@ -2,7 +2,9 @@ name: Test SDKs Locally
 
 on:
   pull_request:
-    branches: [ "*" ]
+    paths:
+      - 'ufc/**'
+
   
   workflow_dispatch:
 
