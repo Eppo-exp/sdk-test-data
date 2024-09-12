@@ -19,13 +19,13 @@ routes.get('/flag-config/v1/config', (req, res) => {
   if (data) {
     // Some SDKs use HTTP headers to optimize network bytes and sdk-side processing.
     const noneMatch = req.header('IF-NONE-MATCH');
-    if (!!noneMatch && noneMatch == data.ufcDataVersion) {
-      res.setHeader('ETAG', data.ufcDataVersion);
+    if (noneMatch === data.eTag) {
+      res.setHeader('ETAG', data.eTag);
       return res.status(304).end();
     }
 
     res.setHeader('Content-Type', 'application/json');
-    res.setHeader('ETAG', data.ufcDataVersion);
+    res.setHeader('ETAG', data.eTag);
     return res.status(200).end(data.ufc);
   }
 
@@ -52,7 +52,12 @@ routes.post('/sdk/:sdk/scenario', (req, res) => {
   const sdkName = req.params.sdk;
 
   console.log(`Setting scenario to "${scenarioLabel}" for ${sdkName}`);
-  updateClientDataMap(sdkName, scenarioLabel);
+  const result = updateClientDataMap(sdkName, scenarioLabel);
+
+  if (!result) {
+    res.status(404).write(`Scenario "${scenarioLabel}" not found.`);
+    return res.end();
+  }
 
   return res.status(200).end();
 });
