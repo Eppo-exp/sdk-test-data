@@ -1,5 +1,4 @@
 <?php
-
 namespace Eppo\SDKTest;
 
 use Eppo\DTO\Bandit\AttributeSet;
@@ -8,7 +7,6 @@ use Eppo\Exception\EppoClientException;
 use Psr\Log\LogLevel;
 use Slim\App;
 use Slim\Logger;
-
 
 class BanditHandler
 {

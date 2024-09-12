@@ -34,4 +34,3 @@ class TestLogger implements IBanditLogger
         $this->banditLogs = [];
     }
 }
-
