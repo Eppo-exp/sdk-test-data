@@ -1,6 +1,6 @@
 {
   "name": "eppo-testing-api",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "UFC server for SDK integration testing",
   "main": "src/server.ts",
   "repository": "github.com/Eppo-exp/sdk-test-data",
