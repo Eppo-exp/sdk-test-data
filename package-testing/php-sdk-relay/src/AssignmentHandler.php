@@ -8,7 +8,6 @@ use Exception;
 
 class AssignmentHandler
 {
-
     private static array $methods = [
         'INTEGER' => 'getIntegerAssignment',
         'STRING' => 'getStringAssignment',
