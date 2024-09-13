@@ -14,7 +14,7 @@ class Config {
   public readonly testDataPath: string;
 
   public constructor() {
-    console.log("****"+ process.env.EPPO_TEST_DATA_PATH);
+    console.log('****' + process.env.EPPO_TEST_DATA_PATH);
 
     this.testDataPath = process.env.EPPO_TEST_DATA_PATH || './test-data';
     this.scenarioFile = process.env.EPPO_SCENARIO_FILE || 'scenarios.json';

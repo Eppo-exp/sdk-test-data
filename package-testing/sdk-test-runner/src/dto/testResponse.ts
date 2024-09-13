@@ -1,6 +1,6 @@
-export type TestResponse {
-    result?: Object,
-    assignmentLog?: Object[],
-    banditLog?: Object[],
-    error?: string
-}
+export type TestResponse = {
+  result?: object;
+  assignmentLog?: object[];
+  banditLog?: object[];
+  error?: string;
+};
