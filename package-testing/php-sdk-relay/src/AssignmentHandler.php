@@ -34,23 +34,22 @@ class AssignmentHandler
         $subjectAttributes = $payload['subjectAttributes'];
 
         try {
-            if (isset(self::$methods[$variationType])) {
-                // Use `self::$methods` to map from variation type to the name of the function to call on `EppoClient`
-                $result = $this->eppoClient->{self::$methods[$variationType]}(
-                    $flagKey,
-                    $subjectKey,
-                    $subjectAttributes,
-                    $default
-                );
-                $resultResp = [
-                    "subjectKey" => $subjectKey,
-                    "result" => $result,
-                    "request" => $payload,
-                    "assignmentLog" => $this->eppoEventLogger->assignmentLogs
-                ];
-            } else {
+            if (!isset(self::$methods[$variationType])) {
                 throw new Exception("Invalid variation type $variationType");
             }
+            // Use `self::$methods` to map from variation type to the name of the function to call on `EppoClient`
+            $result = $this->eppoClient->{self::$methods[$variationType]}(
+                $flagKey,
+                $subjectKey,
+                $subjectAttributes,
+                $default
+            );
+            $resultResp = [
+                "subjectKey" => $subjectKey,
+                "result" => $result,
+                "request" => $payload,
+                "assignmentLog" => $this->eppoEventLogger->assignmentLogs
+            ];
         } catch (EppoClientException $e) {
             $resultResp = [
                 "subjectKey" => $subjectKey,
