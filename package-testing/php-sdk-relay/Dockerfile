@@ -26,4 +26,7 @@ ENV EPPO_API_HOST=host.docker.internal
 
 EXPOSE 4000
 
+HEALTHCHECK CMD curl --fail http://localhost:4000 || exit 1
+
+
 CMD ["/build.sh"]
