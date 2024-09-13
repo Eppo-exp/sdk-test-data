@@ -16,8 +16,10 @@ class AssignmentHandler
         'JSON' => 'getJSONAssignment',
     ];
 
-    public function __construct(private EppoClient $eppoClient, private TestLogger $assignmentLogger)
-    {
+    public function __construct(
+        private readonly EppoClient $eppoClient,
+        private readonly RelayLogger $eppoEventLogger
+    ) {
     }
 
     /**
@@ -33,7 +35,6 @@ class AssignmentHandler
 
         try {
             if (isset(self::$methods[$variationType])) {
-
                 // Use `self::$methods` to map from variation type to the name of the function to call on `EppoClient`
                 $result = $this->eppoClient->{self::$methods[$variationType]}(
                     $flagKey,
@@ -44,8 +45,8 @@ class AssignmentHandler
                 $resultResp = [
                     "subjectKey" => $subjectKey,
                     "result" => $result,
-                    "request"=>$payload,
-                    "assignmentLog" => $this->assignmentLogger->assignmentLogs
+                    "request" => $payload,
+                    "assignmentLog" => $this->eppoEventLogger->assignmentLogs
                 ];
             } else {
                 throw new Exception("Invalid variation type $variationType");
@@ -55,10 +56,10 @@ class AssignmentHandler
                 "subjectKey" => $subjectKey,
                 "result" => null,
                 "error" => $e->getMessage(),
-                "assignmentLog" => array_map('json_encode', $this->assignmentLogger->assignmentLogs)
+                "assignmentLog" => array_map('json_encode', $this->eppoEventLogger->assignmentLogs)
             ];
         } finally {
-            $this->assignmentLogger->resetLogs();
+            $this->eppoEventLogger->resetLogs();
         }
 
         return $resultResp;

@@ -12,15 +12,15 @@ class BanditHandler
 {
     public function __construct(
         private readonly EppoClient $eppoClient,
-        private readonly TestLogger $logger
+        private readonly RelayLogger $eppoEventLogger
     ) {
     }
 
     public function getBanditAction(array $payload): array
     {
-        $logger = new Logger();
-        $logger->log(LogLevel::INFO, "Processing Bandit");
-        $logger->log(LogLevel::DEBUG, json_encode($payload, true));
+        $consoleLogger = new Logger();
+        $consoleLogger->log(LogLevel::INFO, "Processing Bandit");
+        $consoleLogger->log(LogLevel::DEBUG, json_encode($payload, true));
 
         $flagKey = $payload['flag'];
         $default = $payload['defaultValue'];
@@ -39,7 +39,7 @@ class BanditHandler
             $payload['subjectAttributes']['categoricalAttributes']
         );
 
-        $logger->log(
+        $consoleLogger->log(
             LogLevel::INFO,
             var_export(
                 [
@@ -64,18 +64,18 @@ class BanditHandler
                 "subjectKey" => $subjectKey,
                 "result" => $result,
                 "request" => $payload,
-                "assignmentLog" => $this->logger->assignmentLogs,
-                "banditLog" => $this->logger->banditLogs
+                "assignmentLog" => $this->eppoEventLogger->assignmentLogs,
+                "banditLog" => $this->eppoEventLogger->banditLogs
             ];
         } catch (EppoClientException $e) {
             $results = array(
                 "subjectKey" => $subjectKey,
                 "result" => $e->getMessage(),
-                "assignmentLog" => $this->logger->assignmentLogs,
-                "banditLog" => array_map('json_encode', $this->logger->banditLogs)
+                "assignmentLog" => $this->eppoEventLogger->assignmentLogs,
+                "banditLog" => array_map('json_encode', $this->eppoEventLogger->banditLogs)
             );
         } finally {
-            $this->logger->resetLogs();
+            $this->eppoEventLogger->resetLogs();
         }
         return $results;
     }

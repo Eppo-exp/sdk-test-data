@@ -6,7 +6,7 @@ use Eppo\Logger\AssignmentEvent;
 use Eppo\Logger\BanditActionEvent;
 use Eppo\Logger\IBanditLogger;
 
-class TestLogger implements IBanditLogger
+class RelayLogger implements IBanditLogger
 {
     /**
      * @var AssignmentEvent[]
@@ -28,7 +28,7 @@ class TestLogger implements IBanditLogger
         $this->banditLogs[] = $banditActionEvent;
     }
 
-    public function resetLogs()
+    public function resetLogs(): void
     {
         $this->assignmentLogs = [];
         $this->banditLogs = [];

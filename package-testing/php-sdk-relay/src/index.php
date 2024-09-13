@@ -5,7 +5,7 @@ require __DIR__ . '/../vendor/autoload.php';
 use Eppo\SDKTest\AssignmentHandler;
 use Eppo\SDKTest\BanditHandler;
 use Eppo\SDKTest\Config;
-use Eppo\SDKTest\TestLogger;
+use Eppo\SDKTest\RelayLogger;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Eppo\EppoClient;
@@ -16,12 +16,12 @@ $dotenv->safeLoad();
 
 $config = new Config();
 
-$testLogger = new TestLogger();
+$eppoEventLogger = new RelayLogger();
 
 $eppoClient = EppoClient::init(
     $config->apiKey,
     $config->apiServer,
-    $testLogger
+    $eppoEventLogger
 );
 
 $app = AppFactory::create();
@@ -36,9 +36,9 @@ $app->post('/sdk/reset', function (Request $request, Response $response, array $
 });
 
 $app->post('/flags/v1/assignment', function (Request $request, Response $response) {
-    global $eppoClient, $testLogger;
+    global $eppoClient, $eppoEventLogger;
     try {
-        $handler = new AssignmentHandler($eppoClient, $testLogger);
+        $handler = new AssignmentHandler($eppoClient, $eppoEventLogger);
     } catch (Exception $exception) {
         return $response->withJson(["error"=> $exception->getMessage()]);
     }
@@ -48,8 +48,8 @@ $app->post('/flags/v1/assignment', function (Request $request, Response $respons
 });
 
 $app->post('/bandits/v1/action', function (Request $request, Response $response) {
-    global $eppoClient, $testLogger, $app;
-    $handler = new BanditHandler($eppoClient, $testLogger, $app);
+    global $eppoClient, $eppoEventLogger, $app;
+    $handler = new BanditHandler($eppoClient, $eppoEventLogger, $app);
     $results = $handler->getBanditAction(json_decode($request->getBody(), true));
     return $response->withJson($results);
 });
