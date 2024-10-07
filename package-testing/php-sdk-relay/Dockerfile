@@ -1,0 +1,32 @@
+FROM php:8.1
+
+# dependencies needed for composer (and for build.sh).
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip
+
+
+COPY --from=composer /usr/bin/composer /usr/bin/composer
+
+WORKDIR /relayapp
+
+COPY . .
+
+COPY --chmod=755 build.sh /
+
+RUN composer install
+
+ENV SDK_RELAY_HOST=0.0.0.0
+ENV EPPO_API_HOST=host.docker.internal
+
+EXPOSE 4000
+
+HEALTHCHECK CMD curl --fail http://localhost:4000 || exit 1
+
+
+CMD ["/build.sh"]
