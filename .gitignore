@@ -4,3 +4,4 @@
 # Jetbrains IDE
 .idea
 node_modules
+dist
