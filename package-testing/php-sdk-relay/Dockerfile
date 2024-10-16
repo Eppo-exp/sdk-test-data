@@ -24,9 +24,9 @@ RUN composer install
 ENV SDK_RELAY_HOST=0.0.0.0
 ENV EPPO_API_HOST=host.docker.internal
 
-EXPOSE 4000
+EXPOSE $SDK_RELAY_PORT
 
-HEALTHCHECK CMD curl --fail http://localhost:4000 || exit 1
+HEALTHCHECK CMD curl --fail http://localhost:${SDK_RELAY_PORT} || exit 1
 
 
 CMD ["/build.sh"]

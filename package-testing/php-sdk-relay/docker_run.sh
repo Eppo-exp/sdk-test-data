@@ -1,10 +1,18 @@
 #!/usr/bin/env bash
-source .env;
+
+
+VERSION="${1:-latest}"
+
+if [ -e .env ]; then
+  source .env
+fi
+
 docker stop php-relay
 docker remove php-relay
-docker run --env-file ./.env \
-  -p $SDK_RELAY_PORT:$SDK_RELAY_PORT \
+docker run  -p $SDK_RELAY_PORT:$SDK_RELAY_PORT \
   -e SDK_REF \
+  -e SDK_RELAY_PORT \
   --name php-relay \
-  --network="host" \
-  -t Eppo-exp/php-sdk-relay
+  -d \
+  -t Eppo-exp/php-sdk-relay:$VERSION && \
+  echo "Container running"

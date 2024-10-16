@@ -23,6 +23,9 @@ rm -Rf tmp
 # Run the poller
 php src/eppo_poller.php &
 
+VERSION=$(cat .version)
+
+echo "PHP Relay server version $VERSION"
 echo "Listening on ${SDK_RELAY_HOST}:${SDK_RELAY_PORT}"
 
 php -S "${SDK_RELAY_HOST}:${SDK_RELAY_PORT}" -t src
