@@ -1,6 +1,6 @@
 FROM php:8.1
 
-# dependencies needed for composer (and for build.sh).
+# dependencies needed for composer (and for build-and-run.sh).
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -17,7 +17,7 @@ WORKDIR /relayapp
 
 COPY . .
 
-COPY --chmod=755 build.sh /
+COPY --chmod=755 build-and-run.sh /
 
 RUN composer install
 
@@ -29,4 +29,4 @@ EXPOSE $SDK_RELAY_PORT
 HEALTHCHECK CMD curl --fail http://localhost:${SDK_RELAY_PORT} || exit 1
 
 
-CMD ["/build.sh"]
+CMD ["/build-and-run.sh"]
