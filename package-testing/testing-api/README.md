@@ -4,6 +4,8 @@
 
 The Eppo SDK test data server is a bare-bones Express server which serves UFC and Bandit model data for testing SDK integrations. The test data server can change the data it serves to each calling SDK by mapping `sdkName` to a _Scenario_. A _Secenario_ is a collection of UFC data, Bandit model data, test cases and expected results all grouped together under a _label_. Using _Scenarios_ to test allows us to verify the caching and reloading behaviours of the SDKs.
 
+It does not currently support serving obfuscated configuration.
+
 ## Test Scenario Configuration
 
 The scenario configuration file, `scenarios.json` is located in the `package-test` directory of this repository and is copied into place by the `copy-test-data.sh` helper script. By default, the first scenario listed will be served to any _sdkName_ that has not been explicitly mapped to a scenario label.
@@ -117,7 +119,7 @@ docker run \
 
 ### Updating the app image
 The SDK testing cluster requires a docker image be builts and pushed to the cloud.
-When the app is updated and a new version is required for testing in CI/CD pipelines, we need to make a new image available. This is done by building the image and then pushing it TODO:somewhere
+When the app is updated and a new version is required for testing in CI/CD pipelines, we need to make a new image available. This is done by building the image and then pushing it TODO: to Github Artifact Registry
 
 ```shell
 ./release.sh <version_tag>
