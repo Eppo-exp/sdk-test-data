@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-
+# Default is to use the latest build
 VERSION="${1:-latest}"
 
 if [ -e .env ]; then

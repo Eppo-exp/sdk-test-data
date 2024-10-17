@@ -22,12 +22,12 @@ class AssignmentHandler
     ) {
     }
 
-    /**
+    /**q
      * @throws Exception
      */
     public function getAssignment(array $payload): array
     {
-        $variationType = $payload['variationType'];
+        $variationType = $payload['assignmentType'];
         $flagKey = $payload['flag'];
         $default = $payload['defaultValue'];
         $subjectKey = $payload['subjectKey'];

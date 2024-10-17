@@ -21,7 +21,7 @@ docker build -t Eppo-exp/php-sdk-relay .
 
 #### Run the docker container
 ```shell
-docker run -p $PHP_TEST_SERVER_PORT:$PHP_TEST_SERVER_PORT -t Eppo-exp/php-sdk-relay --env-file ./.env -e SDK_REF=<your branch/tag/SHA>
+docker run -p $SDK_RELAY_PORT:$SDK_RELAY_PORT -t Eppo-exp/php-sdk-relay --env-file ./.env -e SDK_REF=<your branch/tag/SHA>
 ```
 
 ## Development
