@@ -32,7 +32,11 @@ docker build -t Eppo-exp/php-sdk-relay .
 php -S localhost:4000 src/index.php
 ```
 
-### Build and Tag a new version
+### Testing the relay server
+
+Use this [Postman collection](https://www.postman.com/material-meteorologist-42730907/typotter-eppo/collection/5bjhdzy/relay-server-testing)
+
+### Build and Tag a new Docker image
 _nb: not really needed as this target will need to be built on every run of the test cluster against this SDK, but
 useful for development along the way nonetheless_
 
