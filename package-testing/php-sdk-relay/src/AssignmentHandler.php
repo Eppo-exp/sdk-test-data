@@ -27,7 +27,7 @@ class AssignmentHandler
      */
     public function getAssignment(array $payload): array
     {
-        $variationType = $payload['assignmentType'];
+        $variationType = $payload['variationType'];
         $flagKey = $payload['flag'];
         $default = $payload['defaultValue'];
         $subjectKey = $payload['subjectKey'];

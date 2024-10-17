@@ -1,6 +1,7 @@
 <?php
 
 namespace Eppo\SDKTest;
+
 class Config
 {
     public readonly string $apiKey;

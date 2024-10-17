@@ -2,13 +2,13 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use Eppo\EppoClient;
 use Eppo\SDKTest\AssignmentHandler;
 use Eppo\SDKTest\BanditHandler;
 use Eppo\SDKTest\Config;
 use Eppo\SDKTest\RelayLogger;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
-use Eppo\EppoClient;
 use Slim\Http\Response;
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
@@ -40,7 +40,7 @@ $app->post('/flags/v1/assignment', function (Request $request, Response $respons
     try {
         $handler = new AssignmentHandler($eppoClient, $eppoEventLogger);
     } catch (Exception $exception) {
-        return $response->withJson(["error"=> $exception->getMessage()]);
+        return $response->withJson(["error" => $exception->getMessage()]);
     }
 
     $results = $handler->getAssignment(json_decode($request->getBody(), true));
