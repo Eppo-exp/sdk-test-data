@@ -33,15 +33,14 @@ Environment variables can be set in shell, or in a `.env` file.
 | `EPPO_SCENARIO_FILE`  | string | `scenarios.json`   | Spec file for test scenarios and test cases |
 | `SDK_RELAY_HOST`      | string | `http://localhost` | Hostname for relay server                   |
 | `SDK_RELAY_PORT`      | number | 4000               | Port for relay server                       |
-| `EPPO_API_HOST`       | string | `http://localhost` | Hostname for relay server                   |
-| `EPPO_API_PORT`       | number | 5000               | Port for relay server                       |
+| `EPPO_API_HOST`       | string | `http://localhost` | Hostname for api server                     |
+| `EPPO_API_PORT`       | number | 5000               | Port for api server                         |
 
-The following env variables can be set when running the `test-sdk.sh` script
+The following env variable can be set when running the `test-sdk.sh` script
 
-| Variable Name   | Type   | Default | Description                                                                       |
-| --------------- | ------ | ------- | --------------------------------------------------------------------------------- |
-| `SDK_REF`       | string | 'main'  | Branch/Tag/SHA for SDK to test                                                    |
-| `TEST_DATA_REF` | string | null    | Branch/Tag/SHA for test data to use, local data is used when value is empty/unset |
+| Variable Name | Type   | Default | Description                                                                |
+| ------------- | ------ | ------- | -------------------------------------------------------------------------- |
+| `SDK_DIR`     | string | 'main'  | Directory of the SDK relay server, if not equal to <server_sdk_name>-relay |
 
 ## Testing a new SDK
 
