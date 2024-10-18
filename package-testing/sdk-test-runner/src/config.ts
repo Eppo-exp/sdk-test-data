@@ -21,7 +21,7 @@ class Config {
 
     this.logPrefix = process.env.LOG_PREFIX ?? '';
 
-    const host = 'http://' + process.env.SDK_RELAY_HOST ?? 'localhost';
+    const host = 'http://' + (process.env.SDK_RELAY_HOST ?? 'localhost');
     const port = process.env.SDK_RELAY_PORT ?? '4000';
     this.sdkServer = `${host}:${port}`;
 

@@ -1,7 +1,7 @@
 export type AssignmentRequest = {
   flag: string;
   subjectKey: string;
-  variationType: string;
+  assignmentType: string;
   defaultValue: object;
   subjectAttributes: Record<string, object>;
 };
