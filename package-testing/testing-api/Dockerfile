@@ -10,6 +10,8 @@ COPY . .
 
 RUN yarn build
 
-EXPOSE 5000
+EXPOSE $EPPO_API_PORT
+
+HEALTHCHECK CMD curl --fail http://localhost:${EPPO_API_PORT} || exit 1
 
 CMD ["yarn", "start:prod"]

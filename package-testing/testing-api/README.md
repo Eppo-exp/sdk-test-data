@@ -110,10 +110,10 @@ Either of these scripts will populate the `test-data` directory with the files r
 
 ```shell
 docker run \
-    --rm  \ # Removes volumes after shutdown
-    -v ./test-data:/app/test-data \ # Mounts a volume for the test data
-    -p 5000:5000 \ # forwards calls from locahost:5000 to port 5000 in the container
-    -t Eppo-exp/test-api-server:local # runs the local image just built.
+    --rm  \
+    -v ./test-data:/app/test-data \
+    -p 5000:5000 \
+    -t Eppo-exp/test-api-server:local
 ```
 
 
