@@ -1,0 +1,35 @@
+{
+  "name": "eppo/php-sdk-test",
+  "description": "Test server using the PHP SDK",
+  "type": "project",
+  "license": "MIT",
+  "homepage": "https://github.com/Eppo-exp/sdk-test-data",
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "Eppo\\SDKTest\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Ty Potter",
+      "email": "tyler@fluxon.com"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "eppo/php-sdk": "^3.2",
+    "vlucas/phpdotenv": "^5.6",
+    "php-http/curl-client": "^2.3",
+    "nyholm/psr7": "^1.8",
+    "slim/slim": "^4.14",
+    "slim/psr7": "^1.7",
+    "php-di/php-di": "^7.0",
+    "slim/http": "^1.4"
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  }
+}
