@@ -148,7 +148,7 @@ case "$command" in
           -t Eppo-exp/sdk-test-runner:latest "--junit=logs/results.xml"
 
 
-        echo_yellow "  ... Downing the docker containers"
+        echo "  ... Downing the docker containers"
         docker logs eppo-api >& logs/api.log
         docker stop eppo-api
         
@@ -156,7 +156,6 @@ case "$command" in
         docker logs eppo-sdk-test-runner >& logs/test_runner.log
         docker container remove eppo-sdk-test-runner #already stopped at this point
 
-        echo $SDK_RELAY_PID
         pkill -P $SDK_RELAY_PID
         
         ;;

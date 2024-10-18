@@ -38,9 +38,6 @@ export default class App {
 
     const testSuiteResults: TestSuite[] = await this.runTestScenarios(scenarios);
 
-    // const passes = testSuiteResults.some((testSuite) =>
-    //   testSuite.testCases.some((testCase) => testCase?.errors || testCase?.failures),
-    // );
     const numTestCases = testSuiteResults.reduce((prev, cur) => prev + cur.testCases.length, 0);
 
     const numFailures = testSuiteResults.reduce(
@@ -50,17 +47,15 @@ export default class App {
 
     const passes = numTestCases - numFailures;
 
-    log(yellow('*** Test Results *** '));
+    log('*** Test Results *** ');
     log(green(`${passes}/${numTestCases} passed`));
-    log(red(`${numFailures} failures`));
+    const failureFunc = numFailures > 0 ? red : green;
+    log(failureFunc(`${numFailures} failures`));
 
     // Junit support.
     if (this.junitFile) {
       this.writeJUnitReport(testSuiteResults, 'A report name', this.junitFile);
     }
-
-    // Return 1 if there are any failures or errors
-    // const hasFailed = testSuiteResults.suites
 
     // Exit 1 if there were test failures
     if (numFailures > 0) {
@@ -85,10 +80,9 @@ export default class App {
       suites: testSuites,
     };
     const junitXml = getJunitXml(testSuiteReport);
-    // console.log(junitXml);
     fs.writeFileSync(junitFile, junitXml);
 
-    log(green('JUnit file written successfully!'));
+    log(green(`Test results written to $junitFile`));
   }
 
   private testScenario = async (scenarioName: string, scenario: Scenario): Promise<TestSuite> => {
@@ -146,6 +140,10 @@ export default class App {
     const testCaseDir = path.join(this.testDataPath, scenario.testCases);
 
     const testCases = fs.readdirSync(testCaseDir);
+    if (testCases.length == 0) {
+      testCaseResults.push({ name: testCaseDir, errors: [{ message: 'No test case files found' }] });
+    }
+
     for (const child of testCases) {
       const filePath = path.join(testCaseDir, child);
 
@@ -167,6 +165,10 @@ export default class App {
       const isFlagTest = testCaseObj['variationType'];
 
       const requestPath = isFlagTest ? '/flags/v1/assignment' : '/bandits/v1/action';
+
+      if (testCaseObj['subjects'].length == 0) {
+        testCaseResults.push({ name: testCase, errors: [{ message: 'No test subjects found' }] });
+      }
 
       // Loop through the subjects and get their assignments.
       for (const subject of testCaseObj['subjects']) {
@@ -224,9 +226,6 @@ export default class App {
 
   private static isResultCorrect(results: TestResponse, subject: Record<string, object>): boolean {
     // Lodash's `isEqual` method is used here as a neat and tidy way to deep-compare arbitrary objects.
-    if (isEqual(subject['assignment'], results['result'])) {
-      return true;
-    }
-    return false;
+    return isEqual(subject['assignment'], results['result']);
   }
 }
