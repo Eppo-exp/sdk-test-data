@@ -1,0 +1,39 @@
+{
+  "name": "sdk-test-runner",
+  "version": "1.0.0",
+  "description": "Test runner for SDK package testing",
+  "main": "src/app.ts",
+  "repository": "https://github.com/Eppo-exp/sdk-test-data",
+  "author": "Tyler Potter",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./dist/program.js",
+    "dev": "ts-node ./src/program.ts",
+    "lint": "eslint --fix .",
+    "lint-fix": "eslint --fix ."
+  },
+  "dependencies": {
+    "@types/minimist": "^1.2.5",
+    "@types/node": "^22.5.2",
+    "args-parser": "^1.3.0",
+    "axios": "^1.7.7",
+    "chalk": "^4",
+    "dotenv": "^16.4.5",
+    "junit-xml": "^1.2.0",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.8",
+    "typescript": "^4.4.4"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.7",
+    "@typescript-eslint/parser": "^5.0.1",
+    "eslint": "^8.52.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.1.0",
+    "prettier-eslint": "^16.1.2",
+    "ts-node": "^10.9.2",
+    "typescript-eslint": "^8.4.0"
+  }
+}
