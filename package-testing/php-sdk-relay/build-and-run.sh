@@ -23,6 +23,6 @@ rm -Rf tmp
 # Run the poller
 php src/eppo_poller.php &
 
-echo "Listening on ${SDK_RELAY_HOST}:${SDK_RELAY_PORT}"
+echo "Listening on port ${SDK_RELAY_PORT}"
 
-php -S "${SDK_RELAY_HOST}:${SDK_RELAY_PORT}" -t src
+php -S "0.0.0.0:${SDK_RELAY_PORT}" -t src
