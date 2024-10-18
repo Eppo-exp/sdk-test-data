@@ -14,7 +14,7 @@ SDK="https://github.com/Eppo-exp/php-sdk.git"
 mkdir -p tmp
 
 echo "Cloning ${SDK}@${SDK_REF}"
-git clone -b ${SDK_REF} --depth 1 --single-branch ${SDK} tmp
+git clone -b ${SDK_REF} --depth 1 --single-branch ${SDK} tmp || ( echo "Cloning repo failed"; exit 1 )
 
 # overwrite vendor files
 cp -Rf tmp/. ./vendor/eppo/php-sdk/
