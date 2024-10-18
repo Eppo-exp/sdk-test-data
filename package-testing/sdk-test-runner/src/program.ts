@@ -14,7 +14,7 @@ const app = new App(
   config.apiServer,
   config.testDataPath,
   config.scenarioFile,
-  argv.jUnit,
+  argv.junit,
 );
 
 (async () => {

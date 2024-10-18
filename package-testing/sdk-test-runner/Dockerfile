@@ -13,4 +13,4 @@ RUN yarn build
 ENV EPPO_API_HOST=host.docker.internal
 ENV SDK_RELAY_HOST=host.docker.internal
 
-CMD ["yarn", "start"]
+ENTRYPOINT ["yarn", "start"]

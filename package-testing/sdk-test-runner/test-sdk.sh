@@ -117,14 +117,14 @@ case "$command" in
         if [[ $? -eq 0 ]]; then
           exit_with_message "    ... Test API Server failed to start"
         fi
-        echo_green "    ... Test API Server started "
+        echo_green "    ... Test API Server has started "
        
         echo "  ... Starting Test Cluster node [${SDK_DIR}]"
 
         # change directory to the SDK relay then build-and-run
         RUNNER_DIR=$(pwd)
         pushd ../$SDK_DIR
-        ./build-and-run.sh >> ${RUNNER_DIR}/logs/sdk_output.log 2>&1 &
+        ./build-and-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
         SDK_RELAY_PID=$!
         popd
 
@@ -143,16 +143,21 @@ case "$command" in
           -e EPPO_API_HOST=host.docker.internal \
           -e SDK_RELAY_HOST=host.docker.internal \
           -e EPPO_API_PORT \
-          --rm \
-          --name eppo-skd-test-runner \
-          -t Eppo-exp/sdk-test-runner:latest
-        
+          -v ./logs:/app/logs \
+          --name eppo-sdk-test-runner \
+          -t Eppo-exp/sdk-test-runner:latest "--junit=logs/results.xml"
+
 
         echo_yellow "  ... Downing the docker containers"
+        docker logs eppo-api >& logs/api.log
         docker stop eppo-api
-        docker stop eppo-sdk-test-runner
+        
 
-        kill -9 $SDK_RELAY_PID
+        docker logs eppo-sdk-test-runner >& logs/test_runner.log
+        docker container remove eppo-sdk-test-runner #already stopped at this point
+
+        echo $SDK_RELAY_PID
+        pkill -P $SDK_RELAY_PID
         
         ;;
     client)
