@@ -138,11 +138,11 @@ export type TestResponse {
 }
 ```
 
-### build.sh
+### build-and-run.sh
 
-The `build.sh` file is responsible for building a deployable/executable for the SDK relay server based on the specified version of the SDK. The version can be specified by tag, commit SHA, or branch. The version is specified through the `SDK_REF` environment variable.
+The `build-and-run.sh` file is responsible for building a deployable/executable for the SDK relay server based on the specified version of the SDK. The version can be specified by tag, commit SHA, or branch. The version is specified through the `SDK_REF` environment variable.
 
-Example `build.sh` script
+Example `build-and-run.sh` script
 
 ```shell
 
@@ -177,37 +177,16 @@ echo "Listening on ${SDK_RELAY_HOST}:${SDK_RELAY_PORT}"
 php -S "${SDK_RELAY_HOST}:${SDK_RELAY_PORT}" -t src
 ```
 
-### Dockerfile
+# Development
 
-The `Dockerfile` configures the environment needed to build and run the SDK relay server. Docker images should be tagged, `Eppo-exp/<sdk-name>-relay` to be determined automatically by the test runner script, however the image tag can be manually set.
+## Test Runner
 
-Example
+### Running locally
 
-```dockerfile
-FROM php:8.1
+- Requires a TEST API Server and an SDK Relay Server to be running
+- Then, launch the test runner
 
-# dependencies needed for composer (and for build.sh).
-RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    unzip
-
-
-COPY --from=composer /usr/bin/composer /usr/bin/composer
-
-WORKDIR /relayapp
-
-COPY . .
-
-COPY --chmod=755 build.sh /
-
-RUN composer install
-
-EXPOSE 4000
-
-CMD ["/build.sh"]
+```sh
+docker build . -t Eppo-exp/sdk-test-runner
+docker run --name test-runner -e SDK_NAME -t Eppo-exp/sdk-test-runner
 ```
