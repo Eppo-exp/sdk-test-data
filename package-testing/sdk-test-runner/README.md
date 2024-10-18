@@ -20,7 +20,7 @@ If you need to run the app in dev mode, first spin up a test cluster (API server
 
 ```shell
 docker-compose up -d
-SDK_NAME=php-sdk yarn dev
+SDK_NAME=eppo/php-sdk yarn dev
 ```
 
 #### Command line arguments

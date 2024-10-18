@@ -44,7 +44,7 @@ export default class App {
     const numTestCases = testSuiteResults.reduce((prev, cur) => prev + cur.testCases.length, 0);
 
     const numFailures = testSuiteResults.reduce(
-      (prev, cur) => cur.testCases.filter((testCase) => testCase?.errors || testCase?.failures).length,
+      (prev, cur) => cur.testCases.filter((testCase) => testCase?.errors || testCase?.failures).length + prev,
       0,
     );
 
