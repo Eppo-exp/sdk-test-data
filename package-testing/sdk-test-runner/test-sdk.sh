@@ -27,10 +27,35 @@ function echo_yellow() {
   echo -e "\033[0;33m$1\033[0m"
 }
 
+# Wait for a server to be ready
+# Returns 1 when the server is available; 0 if not available within max retries of 30.
+function wait_for_url() {
+  local url="$1"
+  local max_attempts=30
+  local attempt=1
+
+  while [[ $attempt -le $max_attempts ]]; do
+    curl --silent --output /dev/null --fail "$url" && { return 1; }
+    sleep 1
+    ((attempt++))
+  done
+
+  return 0
+}
+
+function exit_with_message() {
+  echo_red "$1"
+  exit 1
+}
+
 # Parse command-line arguments
 command="$1"
 export SDK_NAME="$2"
 export SDK_REF="${3:-main}"
+
+if [ -e .env ]; then
+  source .env
+fi
 
 # Allow env variables to be overwritten, then export to this shell.
 export EPPO_API_HOST="${EPPO_API_HOST:-localhost}"
@@ -45,22 +70,20 @@ export EPPO_TEST_DATA_PATH="${EPPO_TEST_DATA_PATH:-./test-data}"
 
 # Validate SDK name
 if [[ -z "$SDK_NAME" ]]; then
-    echo_red "Missing required argument: sdkName"
-    exit 1
+  exit_with_message "Missing required argument: sdkName"
 fi
 
-# Extrapolate an SDK container image.
-if [[ -z "$SDK_IMG" ]]; then
-  SDK_IMG=Eppo-exp/${SDK_NAME}-relay
+# Extrapolate the SDK directory name
+if [[ -z "$SDK_DIR" ]]; then
+  SDK_DIR=${SDK_NAME}-relay
 fi
-export SDK_IMG
-# TODO: pull SDK relay server and api-server image from the Google Artifavt Registry
+export SDK_DIR
+
 
 # Get the test data and scenario file ready for the test servers
 if [[ -n "$TEST_DATA_REF" ]]; then
     # TODO this
-    echo_red "Getting test data from repository by ref is not yet supported"
-    exit 1
+    exit_with_message "Getting test data from repository by ref is not yet supported"
 else
     # Copy the local test data into temp dir to be mounted to the test data server and the test runner
     echo "... Getting test data from the local filesystem."
@@ -75,40 +98,65 @@ case "$command" in
     server)
         echo "... Running test scenarios against $SDK_NAME@$SDK_REF in server mode"
 
-        echo "  ... Starting Docker cluster [Eppo-exp/test-api-server, ${SDK_IMG}]"
+        echo "  ... Starting Test Cluster node [Eppo-exp/test-api-server]"
 
-        docker-compose -f docker-compose.yml up -d
+        docker run \
+          -e EPPO_API_HOST \
+          -e EPPO_API_PORT \
+          -e EPPO_SCENARIO_FILE \
+          -e EPPO_TEST_DATA_PATH=./test-data \
+          -p ${EPPO_API_PORT}:${EPPO_API_PORT} \
+          -v ./test-data:/app/test-data:ro \
+          --rm -d \
+          --name eppo-api \
+          -t Eppo-exp/test-api-server:latest
 
-        if [ $? -eq 0 ]; then
-          echo_green "    ... Docker cluster up"
-        else
-          echo_red "    ... Docker cluster failed to start"
-          exit 1
+        echo_yellow "    ... Waiting to verify server is up"
+
+        wait_for_url http://${EPPO_API_HOST}:${EPPO_API_PORT} 
+        if [[ $? -eq 0 ]]; then
+          exit_with_message "    ... Test API Server failed to start"
         fi
+        echo_green "    ... Test API Server started "
+       
+        echo "  ... Starting Test Cluster node [${SDK_DIR}]"
 
-        # Verify servers are running
-        echo_yellow "    ... Sleeping 5secs to verify servers are up"
-        sleep 5
+        # change directory to the SDK relay then build-and-run
+        RUNNER_DIR=$(pwd)
+        pushd ../$SDK_DIR
+        ./build-and-run.sh >> ${RUNNER_DIR}/logs/sdk_output.log 2>&1 &
+        SDK_RELAY_PID=$!
+        popd
 
-        for container in "Eppo-exp/test-api-server" "${SDK_IMG}"; do
-          if [[ "$(docker ps | grep "$container" | grep "Up")" ]]; then
-              echo_green "    ... $container is running."
-          else
-              echo_red "    ... $container is not running."
-              docker-compose down
-              exit 1;
-          fi
-        done
 
-        # starts the test runner using env vars set @ top.
-        echo "  ... Starting the test runner app"
-        LOG_PREFIX="    ... " yarn dev
+        echo_yellow "    ... Waiting to verify server is up"
+        wait_for_url http://${SDK_RELAY_HOST}:${SDK_RELAY_PORT} 
+        if [[ $? -eq 0 ]]; then
+          exit_with_message "    ... SDK Relay server failed to start"
+        fi
+        echo_green "    ... SDK Relay server has started"
+
+        echo "  ... Starting Test Cluster node [Eppo-exp/sdk-test-runner]"
+        
+        docker run \
+          -e SDK_NAME \
+          -e EPPO_API_HOST=host.docker.internal \
+          -e SDK_RELAY_HOST=host.docker.internal \
+          -e EPPO_API_PORT \
+          --rm \
+          --name eppo-skd-test-runner \
+          -t Eppo-exp/sdk-test-runner:latest
+        
 
         echo_yellow "  ... Downing the docker containers"
-        docker-compose down
+        docker stop eppo-api
+        docker stop eppo-sdk-test-runner
+
+        kill -9 $SDK_RELAY_PID
+        
         ;;
     client)
-        echo_red "Client mode not implemented"
+        echo_red "Client mode not yet implemented"
         exit 1;
         ;;
     *)

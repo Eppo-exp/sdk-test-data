@@ -4,14 +4,10 @@ This app posts test cases to an SDK relay server and compares the results agains
 
 ## Running
 
-The easiest way to use the test runner is the wrapper script, `./test-sdk.sh`. It sets most configuration values and handles spinning up the test API server, the SDK relay server, and starting the test runner app. The script attempts to extrapolate the tag for the SDK Relay server docker image from the SDK name. Where the SDK name does not conform to Docker tag conventiones, the `SDK_IMG` environment variable can be set to specify the image name.
+The easiest way to use the test runner is the wrapper script, `./test-sdk.sh`. It sets most configuration values and handles spinning up the test API server, the SDK relay server, and starting the test runner app.
 
 ```shell
-./test-sdk.sh server <server_sdk_name> <test_data_branch>
-
-# PHP Example
-SDK_IMG="Eppo-exp/php-sdk-relay" ./test-sdk.sh server eppo/php-sdk
-
+./test-sdk.sh server <server_sdk_name> <sdk_ref> <test_data_branch>
 ```
 
 ### via command line
