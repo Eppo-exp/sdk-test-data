@@ -71,12 +71,32 @@ The test runner sends assignment and bandit action requests to the SDK Relay Ser
 | ---------------- | ------ | ------------------------- | ----------- |
 | `SDK_RELAY_HOST` | string | Hostname for relay server | `localhost` |
 | `SDK_RELAY_PORT` | number | Port for relay server     | 4000        |
-| `EPPO_API_HOST`  | string | Hostname for relay server | `localhost` |
-| `EPPO_API_PORT`  | number | Port for relay server     | 5000        |
+| `EPPO_API_HOST`  | string | Hostname for api server   | `localhost` |
+| `EPPO_API_PORT`  | number | Port for api server       | 5000        |
 
 #### API
 
-**Flags / UFC Assignment**
+##### Ready check
+
+`GET /`
+
+Any non-empty response
+
+##### Reset SDK
+
+`POST /sdk/reset`
+
+The SDK needs to be forced to reload its configuration from the server from time to time. Some SDKs allow for the caches to be expired externally, others allow for a forced refresh, and some offer neither. The preference for implentations of this method is to simulate the SDK naturally reloading configuration (whether through a timed out cache, poller etc) _as close as possibly_. The mechanism priority should be
+
+1. expire caches
+2. force refresh
+3. force reinitialization
+
+Any non-empty response is requred
+
+##### Flags / UFC Assignment
+
+`POST /flags/v1/assignment`
 
 ```ts
 // POSTed to `/flags/v1/assignment`
@@ -88,7 +108,7 @@ type Assignment = {
   subjectAttributes: Record<string, object>;
 };
 
-// Expects result:
+// Expect response data:
 export type TestResponse {
     result?: Object,          // Relayed `EppoClient` response
     assignmentLog?: Object[], // Assignment log events (not yet tested)
@@ -97,7 +117,9 @@ export type TestResponse {
 }
 ```
 
-**Bandits**
+##### Bandits
+
+`POST /bandits/v1/action`
 
 ```ts
 // POSTed to `/bandits/v1/action`
@@ -124,7 +146,7 @@ export type BanditActionRequest = {
     actions: Record<string, object>;
   };
 
-// Expects result:
+// Expects response data:
 export type TestResponse {
     result?: Object,          // Relayed `EppoClient` response, form of {variation: string, action: string}
     assignmentLog?: Object[], // Assignment log events (not yet tested)
