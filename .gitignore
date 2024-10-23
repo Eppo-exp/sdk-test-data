@@ -3,6 +3,10 @@
 
 # Jetbrains IDE
 .idea
+
+# Builds and imports
 node_modules
 dist
-.vscode
+vendor
+
+.env
