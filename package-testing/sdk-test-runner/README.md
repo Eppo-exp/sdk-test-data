@@ -47,7 +47,7 @@ The following env variable can be set when running the `test-sdk.sh` script
 The following components are required to use the the package test runner with a new SDK
 
 1. An **SDK relay server**. This is a REST server running at `localhost:4000` resonding to the [Asssignment and Bandit Request API](#relay-server-api)
-2. A `build.sh` file which, given a properly configured environment, [builds the SDK Relay Server application](#buildsh) **using the specified version of the SDK package**.
+2. A `build-and-run.sh` file which, given a properly configured environment, [builds the SDK Relay Server application](#buildsh) **using the specified version of the SDK package**.
 3. A `Dockerfile` to establish a portable environment in which to run the `build.sh` file. This image is pre-built and pulled just-in-time for running tests.
    1. If there are multiple environments in which to test the SDK, create `Dockerfile.<variant>` files as needed
 
@@ -103,7 +103,7 @@ Any non-empty response is requred
 type Assignment = {
   flag: string;
   subjectKey: string;
-  variationType: string;
+  assignmentType: string;
   defaultValue: object;
   subjectAttributes: Record<string, object>;
 };
