@@ -1,0 +1,5 @@
+logs/*
+dist
+test-data
+.env
+.vscode
