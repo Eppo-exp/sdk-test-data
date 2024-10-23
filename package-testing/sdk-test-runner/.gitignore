@@ -1,3 +1,4 @@
+logs/*
 dist
 test-data
 .env

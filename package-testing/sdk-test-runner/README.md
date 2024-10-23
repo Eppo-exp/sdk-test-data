@@ -12,10 +12,17 @@ The easiest way to use the test runner is the wrapper script, `./test-sdk.sh`. I
 
 ### via command line
 
-If you need to run the app in dev mode, first spin up a test cluster (API server and SDK Relay), then run dev mode:
+If you need to run the app in dev mode, first spin up a testing API and the desired SDK relay, then run dev mode:
 
 ```shell
-docker-compose up -d
+docker run \
+    --rm -d \
+    -v ./test-data:/app/test-data \
+    -p 5000:5000 \
+    -t Eppo-exp/test-api-server:local
+
+../<SDK_DIR>/build-and-run.sh
+
 SDK_NAME=eppo/php-sdk yarn dev
 ```
 
