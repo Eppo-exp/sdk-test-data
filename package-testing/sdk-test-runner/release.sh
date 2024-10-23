@@ -1,6 +1,5 @@
 # Please ensure the vesrion in package.json matches what is passed to this script.
-# TODO automate version setting/getting
-
+# usage: ./release.sh <version>
 VERSION=$1
 
 docker build . -t Eppo-exp/sdk-test-runner:$VERSION
