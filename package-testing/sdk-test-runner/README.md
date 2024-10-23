@@ -27,29 +27,27 @@ SDK_NAME=eppo/php-sdk yarn dev
 
 Environment variables can be set in shell, or in a `.env` file.
 
-| Variable Name         | Type   | Default            | Description                                 |
-| --------------------- | ------ | ------------------ | ------------------------------------------- |
-| `EPPO_TEST_DATA_PATH` | string | `./test-data`      | Base path for test case files               |
-| `EPPO_SCENARIO_FILE`  | string | `scenarios.json`   | Spec file for test scenarios and test cases |
-| `SDK_RELAY_HOST`      | string | `http://localhost` | Hostname for relay server                   |
-| `SDK_RELAY_PORT`      | number | 4000               | Port for relay server                       |
-| `EPPO_API_HOST`       | string | `http://localhost` | Hostname for api server                     |
-| `EPPO_API_PORT`       | number | 5000               | Port for api server                         |
+| Variable Name         | Type   | Default          | Description                                 |
+| --------------------- | ------ | ---------------- | ------------------------------------------- |
+| `EPPO_TEST_DATA_PATH` | string | `./test-data`    | Base path for test case files               |
+| `EPPO_SCENARIO_FILE`  | string | `scenarios.json` | Spec file for test scenarios and test cases |
+| `SDK_RELAY_HOST`      | string | `localhost`      | Hostname for relay server                   |
+| `SDK_RELAY_PORT`      | number | 4000             | Port for relay server                       |
+| `EPPO_API_HOST`       | string | `localhost`      | Hostname for api server                     |
+| `EPPO_API_PORT`       | number | 5000             | Port for api server                         |
 
 The following env variable can be set when running the `test-sdk.sh` script
 
-| Variable Name | Type   | Default | Description                                                                |
-| ------------- | ------ | ------- | -------------------------------------------------------------------------- |
-| `SDK_DIR`     | string | 'main'  | Directory of the SDK relay server, if not equal to <server_sdk_name>-relay |
+| Variable Name | Type   | Default | Description                                                                  |
+| ------------- | ------ | ------- | ---------------------------------------------------------------------------- |
+| `SDK_DIR`     | string | 'main'  | Directory of the SDK relay server, if not equal to "<server_sdk_name>-relay" |
 
 ## Testing a new SDK
 
 The following components are required to use the the package test runner with a new SDK
 
-1. An **SDK relay server**. This is a REST server running at `localhost:4000` resonding to the [Asssignment and Bandit Request API](#relay-server-api)
-2. A `build-and-run.sh` file which, given a properly configured environment, [builds the SDK Relay Server application](#buildsh) **using the specified version of the SDK package**.
-3. A `Dockerfile` to establish a portable environment in which to run the `build.sh` file. This image is pre-built and pulled just-in-time for running tests.
-   1. If there are multiple environments in which to test the SDK, create `Dockerfile.<variant>` files as needed
+1. An **SDK relay server**. This is a REST server running at `localhost:4000` resonding to the [Asssignment and Bandit Request API](#sdk-relay-server)
+2. A `build-and-run.sh` file which, given a properly configured environment, [builds the SDK Relay Server application](#build-and-runsh) **using the specified version of the SDK package**.
 
 The following are key components derived from above which allow for convenient and consistent dev-ops.
 
@@ -63,7 +61,7 @@ Finally, these are the advanced items to integrate the new package test into our
 
 ### SDK Relay Server
 
-The test runner sends assignment and bandit action requests to the SDK Relay Server which calls `EppoClient` and returns the results to the test runner. The paths and data packets are outlined below in [API](#api). Environment variables set the host and port for the Relay Server to listen on as well as the Eppo API server and port (for `EppoClient` initialization). For development of the SDK Relay server, start a local copy of the [Test API Server](../eppo-sdk-test-api/) to serve the flag/bandit configuration, then use this handy [Postman workspace](https://www.postman.com/material-meteorologist-42730907/typotter-eppo/collection/5bjhdzy/relay-server-testing?action=share&creator=38014089) to issue requests to the relay server without having to blast it with the test runner.
+The test runner sends assignment and bandit action requests to the SDK Relay Server which calls `EppoClient` and returns the results to the test runner. The paths and data packets are outlined below in [API](#api). Environment variables set the host and port for the Relay Server to listen on as well as the Eppo API server and port (for `EppoClient` initialization). For development of the SDK Relay server, start a local copy of the [Test API Server](../testing-api/) to serve the flag/bandit configuration, then use this handy [Postman workspace](https://www.postman.com/material-meteorologist-42730907/typotter-eppo/collection/5bjhdzy/relay-server-testing?action=share&creator=38014089) to issue requests to the relay server without having to blast it with the test runner.
 
 #### Configuration
 
