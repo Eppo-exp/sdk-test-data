@@ -1,0 +1,148 @@
+{
+  "flag": "regex-flag",
+  "variationType": "STRING",
+  "defaultValue": "none",
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {
+        "version": "1.15.0",
+        "email": "alice@example.com"
+      },
+      "assignment": "partial-example",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"partial-example\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "partial-example",
+        "variationValue": "partial-example",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "email",
+              "operator": "MATCHES",
+              "value": "@example\\.com"
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "partial-example",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "test",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {
+        "version": "0.20.1",
+        "email": "bob@test.com"
+      },
+      "assignment": "test",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"test\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "test",
+        "variationValue": "test",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "email",
+              "operator": "MATCHES",
+              "value": ".*@test\\.com"
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "test",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "partial-example",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {
+        "version": "2.1.13"
+      },
+      "assignment": "none",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "partial-example",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "test",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "derek",
+      "subjectAttributes": {
+        "version": "2.1.13",
+        "email": "derek@gmail.com"
+      },
+      "assignment": "none",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "partial-example",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "test",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,813 @@
+{
+  "flag": "boolean-one-of-matches",
+  "variationType": "INTEGER",
+  "defaultValue": 0,
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {
+        "one_of_flag": true
+      },
+      "assignment": 1,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"1-for-one-of\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "1",
+        "variationValue": 1,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "one_of_flag",
+              "operator": "ONE_OF",
+              "value": [
+                "true"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "1-for-one-of",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "2-for-matches",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          },
+          {
+            "key": "3-for-not-one-of",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 3
+          },
+          {
+            "key": "4-for-not-matches",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 4
+          },
+          {
+            "key": "5-for-matches-null",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 5
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {
+        "one_of_flag": false
+      },
+      "assignment": 0,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "2-for-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          },
+          {
+            "key": "3-for-not-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 3
+          },
+          {
+            "key": "4-for-not-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 4
+          },
+          {
+            "key": "5-for-matches-null",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 5
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {
+        "one_of_flag": "True"
+      },
+      "assignment": 0,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "2-for-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          },
+          {
+            "key": "3-for-not-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 3
+          },
+          {
+            "key": "4-for-not-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 4
+          },
+          {
+            "key": "5-for-matches-null",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 5
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "derek",
+      "subjectAttributes": {
+        "matches_flag": true
+      },
+      "assignment": 2,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"2-for-matches\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "2",
+        "variationValue": 2,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "matches_flag",
+              "operator": "MATCHES",
+              "value": "true"
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "2-for-matches",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": [
+          {
+            "key": "3-for-not-one-of",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 3
+          },
+          {
+            "key": "4-for-not-matches",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 4
+          },
+          {
+            "key": "5-for-matches-null",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 5
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "erica",
+      "subjectAttributes": {
+        "matches_flag": false
+      },
+      "assignment": 0,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "2-for-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          },
+          {
+            "key": "3-for-not-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 3
+          },
+          {
+            "key": "4-for-not-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 4
+          },
+          {
+            "key": "5-for-matches-null",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 5
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "frank",
+      "subjectAttributes": {
+        "not_matches_flag": false
+      },
+      "assignment": 0,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "2-for-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          },
+          {
+            "key": "3-for-not-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 3
+          },
+          {
+            "key": "4-for-not-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 4
+          },
+          {
+            "key": "5-for-matches-null",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 5
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "george",
+      "subjectAttributes": {
+        "not_matches_flag": true
+      },
+      "assignment": 4,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"4-for-not-matches\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "4",
+        "variationValue": 4,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "not_matches_flag",
+              "operator": "NOT_MATCHES",
+              "value": "false"
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "4-for-not-matches",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 4
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "2-for-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          },
+          {
+            "key": "3-for-not-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 3
+          }
+        ],
+        "unevaluatedAllocations": [
+          {
+            "key": "5-for-matches-null",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 5
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "haley",
+      "subjectAttributes": {
+        "not_matches_flag": "False"
+      },
+      "assignment": 4,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"4-for-not-matches\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "4",
+        "variationValue": 4,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "not_matches_flag",
+              "operator": "NOT_MATCHES",
+              "value": "false"
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "4-for-not-matches",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 4
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "2-for-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          },
+          {
+            "key": "3-for-not-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 3
+          }
+        ],
+        "unevaluatedAllocations": [
+          {
+            "key": "5-for-matches-null",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 5
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "ivy",
+      "subjectAttributes": {
+        "not_one_of_flag": true
+      },
+      "assignment": 3,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-one-of\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "3",
+        "variationValue": 3,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "not_one_of_flag",
+              "operator": "NOT_ONE_OF",
+              "value": [
+                "false"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "3-for-not-one-of",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 3
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "2-for-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          }
+        ],
+        "unevaluatedAllocations": [
+          {
+            "key": "4-for-not-matches",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 4
+          },
+          {
+            "key": "5-for-matches-null",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 5
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "julia",
+      "subjectAttributes": {
+        "not_one_of_flag": false
+      },
+      "assignment": 0,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "2-for-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          },
+          {
+            "key": "3-for-not-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 3
+          },
+          {
+            "key": "4-for-not-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 4
+          },
+          {
+            "key": "5-for-matches-null",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 5
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "kim",
+      "subjectAttributes": {
+        "not_one_of_flag": "False"
+      },
+      "assignment": 3,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-one-of\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "3",
+        "variationValue": 3,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "not_one_of_flag",
+              "operator": "NOT_ONE_OF",
+              "value": [
+                "false"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "3-for-not-one-of",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 3
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "2-for-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          }
+        ],
+        "unevaluatedAllocations": [
+          {
+            "key": "4-for-not-matches",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 4
+          },
+          {
+            "key": "5-for-matches-null",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 5
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "lucas",
+      "subjectAttributes": {
+        "not_one_of_flag": "true"
+      },
+      "assignment": 3,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"3-for-not-one-of\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "3",
+        "variationValue": 3,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "not_one_of_flag",
+              "operator": "NOT_ONE_OF",
+              "value": [
+                "false"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "3-for-not-one-of",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 3
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "2-for-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          }
+        ],
+        "unevaluatedAllocations": [
+          {
+            "key": "4-for-not-matches",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 4
+          },
+          {
+            "key": "5-for-matches-null",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 5
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "mike",
+      "subjectAttributes": {
+        "not_one_of_flag": "false"
+      },
+      "assignment": 0,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "2-for-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          },
+          {
+            "key": "3-for-not-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 3
+          },
+          {
+            "key": "4-for-not-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 4
+          },
+          {
+            "key": "5-for-matches-null",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 5
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "nicole",
+      "subjectAttributes": {
+        "null_flag": "null"
+      },
+      "assignment": 5,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"5-for-matches-null\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "5",
+        "variationValue": 5,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "null_flag",
+              "operator": "ONE_OF",
+              "value": [
+                "null"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "5-for-matches-null",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 5
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "2-for-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          },
+          {
+            "key": "3-for-not-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 3
+          },
+          {
+            "key": "4-for-not-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 4
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "owen",
+      "subjectAttributes": {
+        "null_flag": null
+      },
+      "assignment": 0,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "2-for-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          },
+          {
+            "key": "3-for-not-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 3
+          },
+          {
+            "key": "4-for-not-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 4
+          },
+          {
+            "key": "5-for-matches-null",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 5
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "pete",
+      "subjectAttributes": {},
+      "assignment": 0,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "1-for-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "2-for-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          },
+          {
+            "key": "3-for-not-one-of",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 3
+          },
+          {
+            "key": "4-for-not-matches",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 4
+          },
+          {
+            "key": "5-for-matches-null",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 5
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    }
+  ]
+}

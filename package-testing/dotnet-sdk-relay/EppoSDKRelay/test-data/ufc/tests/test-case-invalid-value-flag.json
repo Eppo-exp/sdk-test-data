@@ -1,0 +1,109 @@
+{
+  "flag": "invalid-value-flag",
+  "variationType": "INTEGER",
+  "defaultValue": 42,
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {
+        "email": "alice@mycompany.com",
+        "country": "US"
+      },
+      "assignment": 42,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "ASSIGNMENT_ERROR",
+        "flagEvaluationDescription": "Variation (pi) is configured for type INTEGER, but is set to incompatible value (3.1415926)",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "pi",
+        "variationValue": 3.1415926,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "invalid",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "valid",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {
+        "email": "bob@example.com",
+        "country": "Canada"
+      },
+      "assignment": 1,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"valid\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "one",
+        "variationValue": 1,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "country",
+              "operator": "ONE_OF",
+              "value": [
+                "Canada"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "valid",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "invalid",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {
+        "age": 50
+      },
+      "assignment": 42,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "ASSIGNMENT_ERROR",
+        "flagEvaluationDescription": "Variation (pi) is configured for type INTEGER, but is set to incompatible value (3.1415926)",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "pi",
+        "variationValue": 3.1415926,
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "invalid",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "valid",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    }
+  ]
+}

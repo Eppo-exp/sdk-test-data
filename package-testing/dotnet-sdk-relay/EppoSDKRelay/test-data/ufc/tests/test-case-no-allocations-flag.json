@@ -1,0 +1,77 @@
+{
+  "flag": "no_allocations_flag",
+  "variationType": "JSON",
+  "defaultValue": {
+    "hello": "world"
+  },
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {
+        "email": "alice@mycompany.com",
+        "country": "US"
+      },
+      "assignment": {
+        "hello": "world"
+      },
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {
+        "email": "bob@example.com",
+        "country": "Canada"
+      },
+      "assignment": {
+        "hello": "world"
+      },
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {
+        "age": 50
+      },
+      "assignment": {
+        "hello": "world"
+      },
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
+      }
+    }
+  ]
+}

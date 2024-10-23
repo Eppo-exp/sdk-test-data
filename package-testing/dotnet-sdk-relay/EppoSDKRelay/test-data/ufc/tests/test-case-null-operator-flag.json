@@ -1,0 +1,199 @@
+{
+  "flag": "null-operator-test",
+  "variationType": "STRING",
+  "defaultValue": "default-null",
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {
+        "size": 5,
+        "country": "US"
+      },
+      "assignment": "old",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"null-operator\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "old",
+        "variationValue": "old",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "size",
+              "operator": "LT",
+              "value": 10
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "null-operator",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "not-null-operator",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {
+        "size": 10,
+        "country": "Canada"
+      },
+      "assignment": "new",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"not-null-operator\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "new",
+        "variationValue": "new",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "size",
+              "operator": "IS_NULL",
+              "value": false
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "not-null-operator",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "null-operator",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {
+        "size": null
+      },
+      "assignment": "old",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"null-operator\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "old",
+        "variationValue": "old",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "size",
+              "operator": "IS_NULL",
+              "value": true
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "null-operator",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "not-null-operator",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "david",
+      "subjectAttributes": {
+        "size": 26
+      },
+      "assignment": "new",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"not-null-operator\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "new",
+        "variationValue": "new",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "size",
+              "operator": "IS_NULL",
+              "value": false
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "not-null-operator",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "null-operator",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "elize",
+      "subjectAttributes": {
+        "country": "UK"
+      },
+      "assignment": "old",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"null-operator\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "old",
+        "variationValue": "old",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "size",
+              "operator": "IS_NULL",
+              "value": true
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "null-operator",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "not-null-operator",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
+    }
+  ]
+}

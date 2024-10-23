@@ -1,0 +1,216 @@
+{
+  "flag": "comparator-operator-test",
+  "variationType": "STRING",
+  "defaultValue": "unknown",
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {
+        "size": 5,
+        "country": "US"
+      },
+      "assignment": "small",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"small-size\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "small",
+        "variationValue": "small",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "size",
+              "operator": "LT",
+              "value": 10
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "small-size",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "medum-size",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          },
+          {
+            "key": "large-size",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 3
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {
+        "size": 10,
+        "country": "Canada"
+      },
+      "assignment": "medium",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"medum-size\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "medium",
+        "variationValue": "medium",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "size",
+              "operator": "GTE",
+              "value": 10
+            },
+            {
+              "attribute": "size",
+              "operator": "LTE",
+              "value": 20
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "medum-size",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "small-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": [
+          {
+            "key": "large-size",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 3
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {
+        "size": 25
+      },
+      "assignment": "unknown",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "small-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "medum-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          },
+          {
+            "key": "large-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 3
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "david",
+      "subjectAttributes": {
+        "size": 26
+      },
+      "assignment": "large",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"large-size\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "large",
+        "variationValue": "large",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "size",
+              "operator": "GT",
+              "value": 25
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "large-size",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 3
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "small-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "medum-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "elize",
+      "subjectAttributes": {
+        "country": "UK"
+      },
+      "assignment": "unknown",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "small-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "medum-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          },
+          {
+            "key": "large-size",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 3
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+    "flag": "flag_does_not_exist",
+    "defaultValue": "default",
+    "subjects": [
+      {
+        "subjectKey": "alice",
+        "subjectAttributes": {"numericAttributes": {"age": 25}, "categoricalAttributes": {"country": "USA"}},
+        "actions": [],
+        "assignment": {"variation": "default", "action": null}
+      }
+    ]
+  }
