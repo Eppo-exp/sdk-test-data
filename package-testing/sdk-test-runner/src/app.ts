@@ -8,9 +8,7 @@ import { BanditActionRequest } from './dto/banditActionRequest';
 import { TestResponse } from './dto/testResponse';
 import { Scenario, Scenarios } from './dto/scenario';
 import { TestCase, TestSuite, TestSuiteReport, getJunitXml } from 'junit-xml';
-import { Server } from 'socket.io';
-import { createServer } from 'http';
-import { SDKRelay, ServerSDKRelay } from './protocol';
+import { ClientSDKRelay, SDKRelay, ServerSDKRelay } from './protocol';
 
 export default class App {
   public constructor(
@@ -31,41 +29,51 @@ export default class App {
     this.printHeader();
     log('Starting Client Mode');
 
-    const httpServer = createServer();
-    const io = new Server(httpServer, {
-      cors: {
-        origin: '*',
+    const sdkRelay = new ClientSDKRelay();
+    if (!(await sdkRelay.isReady())) {
+      log(red('Error: SDK Relay is not ready'));
+      return 1;
+    }
+
+    log('Ready to send assignments');
+
+    // Start sending tests to this socket and collect the results
+    const ar: AssignmentRequest = {
+      flag: 'integer-flag',
+      subjectKey: 'alice',
+      assignmentType: 'INTEGER',
+      defaultValue: new Object(0),
+      subjectAttributes: {
+        country: new Object('US'),
       },
+    };
+
+    log('Sending test assignment');
+
+    const results = sdkRelay.getAssignment(ar);
+    results.then((result: TestResponse) => {
+      log(result as string);
+      log(result.result?.toString() ?? '');
+      log((result.result ?? 'NO RESULT') as string);
     });
+    // log((await results).result);
+    await results;
 
-    io.on('connection', (socket) => {
-      console.log('a client connected');
-
-      socket.on('READY', (msg, ack) => {
-        console.log(msg);
-        const { sdkName } = msg;
-        log(green(`Client ${sdkName} is ready`));
-
-        ack({ status: 'OK' });
-
-        // Start sending tests to this socket and collect the results
-
-        socket.emit('flags/v1/assignment', JSON.stringify({ foo: 'bar', bar: 'baz' }), (result: string) => {
-          log(green('Client returned the following result'));
-          log(result);
-        });
-      });
-
-      socket.on('disconnect', () => {
-        console.log('client disconnected');
-      });
-    });
-
-    httpServer.listen(3000);
+    // socket.emit('flags/v1/assignment', JSON.stringify({ foo: 'bar', bar: 'baz' }), (result: string) => {
+    //   log(green('Client returned the following result'));
+    //   log(result);
+    // });
   }
 
   public async run() {
     this.printHeader();
+
+    const sdkRelay = new ServerSDKRelay(this.sdkServer);
+    if (!(await sdkRelay.isReady())) {
+      log(red('Error: SDK Relay is not ready'));
+      return 1;
+    }
+
     log(`Posting test cases to SDK server at ${this.sdkServer}`);
 
     const testConfig = JSON.parse(fs.readFileSync(path.join(this.testDataPath, this.scenarioFile), 'utf-8'));
@@ -73,12 +81,6 @@ export default class App {
 
     if (Object.keys(scenarios).length == 0) {
       log(red('Error: empty scenario list'));
-      return 1;
-    }
-
-    const sdkRelay = new ServerSDKRelay(this.sdkServer);
-    if (!(await sdkRelay.isReady())) {
-      log(red('Error: SDK Relay is not ready'));
       return 1;
     }
 
