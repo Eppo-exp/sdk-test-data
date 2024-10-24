@@ -8,6 +8,8 @@ import { BanditActionRequest } from './dto/banditActionRequest';
 import { TestResponse } from './dto/testResponse';
 import { Scenario, Scenarios } from './dto/scenario';
 import { TestCase, TestSuite, TestSuiteReport, getJunitXml } from 'junit-xml';
+import { Server } from 'socket.io';
+import { createServer } from 'http';
 import { SDKRelay, ServerSDKRelay } from './protocol';
 
 export default class App {
@@ -23,6 +25,43 @@ export default class App {
   private printHeader(): void {
     log(`Firing up test runner for ${this.sdkName}`);
     log(`Controlling configuration server at ${this.apiServer}`);
+  }
+
+  public async runSocket() {
+    this.printHeader();
+    log('Starting Client Mode');
+
+    const httpServer = createServer();
+    const io = new Server(httpServer, {
+      cors: {
+        origin: '*',
+      },
+    });
+
+    io.on('connection', (socket) => {
+      console.log('a client connected');
+
+      socket.on('READY', (msg, ack) => {
+        console.log(msg);
+        const { sdkName } = msg;
+        log(green(`Client ${sdkName} is ready`));
+
+        ack({ status: 'OK' });
+
+        // Start sending tests to this socket and collect the results
+
+        socket.emit('flags/v1/assignment', JSON.stringify({ foo: 'bar', bar: 'baz' }), (result: string) => {
+          log(green('Client returned the following result'));
+          log(result);
+        });
+      });
+
+      socket.on('disconnect', () => {
+        console.log('client disconnected');
+      });
+    });
+
+    httpServer.listen(3000);
   }
 
   public async run() {

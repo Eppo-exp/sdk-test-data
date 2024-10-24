@@ -13,8 +13,8 @@ const app = new App(
 );
 
 if (config.sdkType == SdkType.CLIENT) {
-  console.log('Error, Client type not supported yet.');
-  // app.runSocket();
+  // console.log('Error, Client type not supported yet.');
+  app.runSocket();
 } else {
   (async () => {
     await app.run();
