@@ -9,7 +9,7 @@ routes.get('/', (req, res) => {
 });
 
 // Serve Unified Flag Config
-routes.get('/flag-config/v1/config', (req, res) => {
+routes.get('/api/flag-config/v1/config', (req, res) => {
   const sdk: string = req.query.sdkName as string;
 
   const data = getDataForRequest(sdk);
@@ -31,7 +31,7 @@ routes.get('/flag-config/v1/config', (req, res) => {
 });
 
 // Serve bandit models
-routes.get('/flag-config/v1/bandits', (req, res) => {
+routes.get('/api/flag-config/v1/bandits', (req, res) => {
   const sdk: string = req.query.sdkName as string;
 
   const data = getDataForRequest(sdk);
