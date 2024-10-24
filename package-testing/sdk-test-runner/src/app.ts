@@ -8,6 +8,7 @@ import { BanditActionRequest } from './dto/banditActionRequest';
 import { TestResponse } from './dto/testResponse';
 import { Scenario, Scenarios } from './dto/scenario';
 import { TestCase, TestSuite, TestSuiteReport, getJunitXml } from 'junit-xml';
+import { SDKRelay, ServerSDKRelay } from './protocol';
 
 export default class App {
   public constructor(
@@ -21,12 +22,12 @@ export default class App {
 
   private printHeader(): void {
     log(`Firing up test runner for ${this.sdkName}`);
-    log(`Posting test cases to SDK server at ${this.sdkServer}`);
     log(`Controlling configuration server at ${this.apiServer}`);
   }
 
   public async run() {
     this.printHeader();
+    log(`Posting test cases to SDK server at ${this.sdkServer}`);
 
     const testConfig = JSON.parse(fs.readFileSync(path.join(this.testDataPath, this.scenarioFile), 'utf-8'));
     const scenarios = testConfig['scenarios'] as Scenarios;
@@ -36,7 +37,13 @@ export default class App {
       return 1;
     }
 
-    const testSuiteResults: TestSuite[] = await this.runTestScenarios(scenarios);
+    const sdkRelay = new ServerSDKRelay(this.sdkServer);
+    if (!(await sdkRelay.isReady())) {
+      log(red('Error: SDK Relay is not ready'));
+      return 1;
+    }
+
+    const testSuiteResults: TestSuite[] = await this.runTestScenarios(scenarios, sdkRelay);
 
     const numTestCases = testSuiteResults.reduce((prev, cur) => prev + cur.testCases.length, 0);
 
@@ -49,6 +56,7 @@ export default class App {
 
     log('*** Test Results *** ');
     log(green(`${passes}/${numTestCases} passed`));
+
     const failureFunc = numFailures > 0 ? red : green;
     log(failureFunc(`${numFailures} failures`));
 
@@ -59,17 +67,15 @@ export default class App {
 
     // Exit 1 if there were test failures
     if (numFailures > 0) {
-      return 1;
-    } else {
-      return 0;
+      process.exit(1);
     }
   }
 
-  async runTestScenarios(scenarios: Scenarios): Promise<TestSuite[]> {
+  async runTestScenarios(scenarios: Scenarios, sdkRelay: SDKRelay): Promise<TestSuite[]> {
     const suites: TestSuite[] = [];
 
     for (const scenarioName of Object.keys(scenarios)) {
-      suites.push(await this.testScenario(scenarioName, scenarios[scenarioName]));
+      suites.push(await this.testScenario(scenarioName, scenarios[scenarioName], sdkRelay));
     }
     return suites;
   }
@@ -82,10 +88,10 @@ export default class App {
     const junitXml = getJunitXml(testSuiteReport);
     fs.writeFileSync(junitFile, junitXml);
 
-    log(green(`Test results written to $junitFile`));
+    log(green(`Test results written to ${junitFile}`));
   }
 
-  private testScenario = async (scenarioName: string, scenario: Scenario): Promise<TestSuite> => {
+  private testScenario = async (scenarioName: string, scenario: Scenario, sdkRelay: SDKRelay): Promise<TestSuite> => {
     const safeSdkName = encodeURIComponent(this.sdkName);
     const testCaseResults: TestCase[] = [];
 
@@ -164,52 +170,52 @@ export default class App {
       // Flag testing!!
       const isFlagTest = testCaseObj['variationType'];
 
-      const requestPath = isFlagTest ? '/flags/v1/assignment' : '/bandits/v1/action';
-
       if (testCaseObj['subjects'].length == 0) {
         testCaseResults.push({ name: testCase, errors: [{ message: 'No test subjects found' }] });
       }
 
       // Loop through the subjects and get their assignments.
       for (const subject of testCaseObj['subjects']) {
-        const payload = isFlagTest
-          ? ({
+        const subjectKey = subject['subjectKey'];
+        // Prep a test case for the report
+        const testCaseResult: TestCase = { name: `${flag}[${subjectKey}]`, classname: child };
+
+        // Post the test case to the SDK relay and check the results.
+        const result = isFlagTest
+          ? sdkRelay.getAssignment({
               flag,
-              subjectKey: subject['subjectKey'],
+              subjectKey: subjectKey,
               assignmentType: testCaseObj['variationType'],
               defaultValue,
               subjectAttributes: subject['subjectAttributes'],
             } as AssignmentRequest)
-          : ({
+          : sdkRelay.getBanditAction({
               flag,
-              subjectKey: subject['subjectKey'],
+              subjectKey: subjectKey,
               defaultValue,
               subjectAttributes: subject['subjectAttributes'],
               actions: subject['actions'],
             } as BanditActionRequest);
 
-        // Post the test case to the SDK relay and check the results.
-        const testCaseResult: TestCase = { name: `${flag}[${payload.subjectKey}]`, classname: child };
-        await axios
-          .post(`${this.sdkServer}${requestPath}`, payload)
-          .then((result) => {
-            const results = result.data as TestResponse;
-
-            const passed = App.isResultCorrect(results, subject);
+        await result
+          .then((result: TestResponse) => {
+            const passed = App.isResultCorrect(result, subject);
 
             // Record the results as the "system out"
-            testCaseResult.systemOut = JSON.stringify(result.data as string).split('\n');
+            testCaseResult.systemOut = JSON.stringify(result).split('\n');
 
             if (!passed) {
               testCaseResult.failures ??= [];
               testCaseResult.failures.push({
-                message: `Value ${results.result} did not match expected ${subject.assignment}`,
+                message: `Value ${result.result} did not match expected ${subject.assignment}`,
               });
+
+              logIndent(1, red('fail') + ` ${flag}[${subjectKey}]: ${result.result} != ${subject.assignment}`);
             } else {
               testCaseResult.assertions = 1;
-            }
 
-            logIndent(1, (passed ? green('pass') : red('fail')) + ` ${flag}[${payload.subjectKey}] `);
+              logIndent(1, green('pass') + ` ${flag}[${subjectKey}]`);
+            }
           })
           .catch((error) => {
             log(red('Error:'), error);
@@ -218,6 +224,7 @@ export default class App {
               message: `Error encountered during test: ${error.message}`,
             });
           });
+
         testCaseResults.push(testCaseResult);
       }
     }

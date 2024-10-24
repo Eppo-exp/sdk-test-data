@@ -144,6 +144,7 @@ case "$command" in
           -e SDK_RELAY_HOST=host.docker.internal \
           -e EPPO_API_PORT \
           -v ./logs:/app/logs \
+          -v ./test-data:/app/test-data:ro \
           --name eppo-sdk-test-runner \
           -t Eppo-exp/sdk-test-runner:latest "--junit=logs/results.xml"
 

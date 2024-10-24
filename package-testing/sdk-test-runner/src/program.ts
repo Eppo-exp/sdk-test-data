@@ -1,10 +1,5 @@
 import App from './app';
-import config from './config';
-import minimist from 'minimist';
-
-const argv = minimist(process.argv.slice(2));
-console.log(argv);
-console.log(config);
+import config, { SdkType } from './config';
 
 // process.exit(0);
 
@@ -14,10 +9,14 @@ const app = new App(
   config.apiServer,
   config.testDataPath,
   config.scenarioFile,
-  argv.junit,
+  config.junitPath,
 );
 
-(async () => {
-  const result = await app.run();
-  process.exit(result);
-})();
+if (config.sdkType == SdkType.CLIENT) {
+  console.log('Error, Client type not supported yet.');
+  // app.runSocket();
+} else {
+  (async () => {
+    await app.run();
+  })();
+}
