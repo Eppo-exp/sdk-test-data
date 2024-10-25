@@ -34,7 +34,6 @@ class App {
       const ufc = fs.readFileSync(path.join(baseDir, scenarios[key].ufcPath), 'utf-8');
 
       const obfuscatedUfcFilepath = path.join(baseDir, scenarios[key].ufcPath.replace('.json', '-obfuscated.json'));
-      console.log(obfuscatedUfcFilepath);
 
       const obfuscatedUfc = fs.existsSync(obfuscatedUfcFilepath)
         ? fs.readFileSync(obfuscatedUfcFilepath, 'utf-8')
