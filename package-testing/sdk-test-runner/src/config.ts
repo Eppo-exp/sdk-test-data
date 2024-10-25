@@ -13,14 +13,25 @@ export enum SdkType {
   SERVER,
 }
 
-class Config {
+export type Config = {
+  scenarioFile: string;
+  sdkServer: string;
+  sdkName: string;
+  logPrefix: string;
+  apiServer: string;
+  testDataPath: string;
+  junitFilePath: string;
+  sdkType: SdkType;
+};
+
+class ConfigFromEnvAndArgs implements Config {
   public readonly scenarioFile: string;
   public readonly sdkServer: string;
   public readonly sdkName: string;
   public readonly logPrefix: string;
   public readonly apiServer: string;
   public readonly testDataPath: string;
-  public readonly junitPath: string;
+  public readonly junitFilePath: string;
   public readonly sdkType: SdkType;
 
   public constructor() {
@@ -35,7 +46,7 @@ class Config {
 
     this.apiServer = `http://${process.env.EPPO_API_HOST ?? 'localhost'}:${process.env.EPPO_API_PORT ?? 5000}`;
 
-    this.junitPath = argv.junit;
+    this.junitFilePath = argv.junit;
 
     this.sdkType = argv.type == 'client' ? SdkType.CLIENT : SdkType.SERVER;
 
@@ -47,4 +58,4 @@ class Config {
   }
 }
 
-export default new Config();
+export default new ConfigFromEnvAndArgs() as Config;

@@ -9,63 +9,58 @@ import { TestResponse } from './dto/testResponse';
 import { Scenario, Scenarios } from './dto/scenario';
 import { TestCase, TestSuite, TestSuiteReport, getJunitXml } from 'junit-xml';
 import { ClientSDKRelay, FeatureNotSupportedError, SDKRelay, ServerSDKRelay } from './protocol';
+import { Config, SdkType } from './config';
+
+class SDKTestRunner {
+  public constructor() {}
+}
 
 export default class App {
-  public constructor(
-    private readonly sdkName: string,
-    private readonly sdkServer: string,
-    private readonly apiServer: string,
-    private readonly testDataPath: string,
-    private readonly scenarioFile: string,
-    private readonly junitFile: string,
-  ) {}
+  private readonly config: Config;
+  private readonly sdkName: string;
+  private readonly sdkServer: string;
+  private readonly apiServer: string;
+  private readonly testDataPath: string;
+  private readonly scenarioFile: string;
+  private readonly junitFilePath: string;
+  private testRunner: SDKTestRunner;
 
-  private printHeader(): void {
-    log(`Firing up test runner for ${this.sdkName}`);
-    log(`Controlling configuration server at ${this.apiServer}`);
-  }
+  public constructor(config: Config) {
+    const { sdkName, sdkServer, apiServer, testDataPath, scenarioFile, junitFilePath: junitPath } = config;
+    this.sdkName = sdkName;
+    this.sdkServer = sdkServer;
+    this.apiServer = apiServer;
+    this.testDataPath = testDataPath;
+    this.scenarioFile = scenarioFile;
+    this.junitFilePath = junitPath;
 
-  public async runSocket() {
-    this.printHeader();
-    log('Starting Client Mode');
+    this.config = config;
 
-    const sdkRelay = new ClientSDKRelay();
-    if (!(await sdkRelay.isReady())) {
-      log(red('Error: SDK Relay is not ready'));
-      return 1;
-    }
-
-    log('Ready to send assignments');
-
-    // Start sending tests to this socket and collect the results
-    const ar: AssignmentRequest = {
-      flag: 'integer-flag',
-      subjectKey: 'alice',
-      assignmentType: 'INTEGER',
-      defaultValue: new Object(0),
-      subjectAttributes: {
-        country: new Object('US'),
-      },
-    };
-
-    log('Sending test assignment');
-
-    const results = sdkRelay.getAssignment(ar);
-    results.then((result: TestResponse) => {
-      log(result as string);
-      log(result.result?.toString() ?? '');
-      log((result.result ?? 'NO RESULT') as string);
-    });
-    // log((await results).result);
-    await results;
-
-    // socket.emit('flags/v1/assignment', JSON.stringify({ foo: 'bar', bar: 'baz' }), (result: string) => {
-    //   log(green('Client returned the following result'));
-    //   log(result);
-    // });
+    this.testRunner = new SDKTestRunner();
   }
 
   public async run() {
+    this.printHeader();
+    if (this.config.sdkType == SdkType.SERVER) {
+      return this.runServerTest();
+    } else {
+      return this.runClientTest();
+    }
+  }
+
+  public async runClientTest() {
+    log('Waiting for SDK Client to connect');
+
+    const sdkRelay = new ClientSDKRelay();
+    if (!(await sdkRelay.isReady())) {
+      log(red('Error: SDK Relay failed to load'));
+      return 1;
+    }
+
+    return this.innerRun(sdkRelay);
+  }
+
+  public async runServerTest() {
     this.printHeader();
 
     const sdkRelay = new ServerSDKRelay(this.sdkServer);
@@ -76,6 +71,20 @@ export default class App {
 
     log(`Posting test cases to SDK server at ${this.sdkServer}`);
 
+    return this.innerRun(sdkRelay);
+  }
+
+  private printHeader(): void {
+    log(`Running tests for ${this.config.sdkType} SDK: ${this.config.sdkName}`);
+    log(`Test Cluster Details`);
+    log(`API/Configuration server: ${this.config.apiServer}`);
+
+    if (this.config.sdkType == SdkType.SERVER) {
+      log(`SDK Relay server: ${this.config.sdkServer}`);
+    }
+  }
+
+  private async innerRun(sdkRelay: SDKRelay) {
     const testConfig = JSON.parse(fs.readFileSync(path.join(this.testDataPath, this.scenarioFile), 'utf-8'));
     const scenarios = testConfig['scenarios'] as Scenarios;
 
@@ -93,22 +102,30 @@ export default class App {
       0,
     );
 
-    const passes = numTestCases - numFailures;
+    const numSkipped = testSuiteResults.reduce(
+      (prev, cur) => cur.testCases.filter((testCase) => testCase.skipped).length + prev,
+      0,
+    );
 
-    log('*** Test Results *** ');
-    log(green(`${passes}/${numTestCases} passed`));
+    const passes = numTestCases - numFailures - numSkipped;
+
+    log(`*** Test Results for ${this.sdkName} *** `);
+    const skippedText = numSkipped > 0 ? ` (${numSkipped} skipped)` : '';
+    log(green(`${passes}/${numTestCases} passed${skippedText}`));
 
     const failureFunc = numFailures > 0 ? red : green;
     log(failureFunc(`${numFailures} failures`));
 
     // Junit support.
-    if (this.junitFile) {
-      this.writeJUnitReport(testSuiteResults, 'A report name', this.junitFile);
+    if (this.junitFilePath) {
+      this.writeJUnitReport(testSuiteResults, 'A report name', this.junitFilePath);
     }
 
     // Exit 1 if there were test failures
     if (numFailures > 0) {
       process.exit(1);
+    } else {
+      process.exit(0);
     }
   }
 
@@ -161,15 +178,11 @@ export default class App {
     }
 
     // Reset the SDK relay to force a reload of configuration.
-    const sdkReady = (await axios
-      .post(`${this.sdkServer}/sdk/reset`, {})
-      .then((result) => {
-        if (result.status != 200) {
-          throw new Error(`API Server returned unexpected status: ${result.status}`);
-        } else {
-          log(green(`SDK Relay Ready`));
-          return { name: `SDK Relay Ready`, assertions: 1 };
-        }
+    const sdkReady = (await sdkRelay
+      .reset()
+      .then(() => {
+        log(green(`SDK Relay Ready`));
+        return { name: `SDK Relay Ready`, assertions: 1 };
       })
       .catch((error) => {
         log(red('Error encountered when resetting SDK Relay:', error));
@@ -218,68 +231,68 @@ export default class App {
       // Loop through the subjects and get their assignments.
       for (const subject of testCaseObj['subjects']) {
         const subjectKey = subject['subjectKey'];
+
+        const testCaseLabel = `${flag}[${subjectKey}]`;
+
         // Prep a test case for the report
-        const testCaseResult: TestCase = { name: `${flag}[${subjectKey}]`, classname: child };
+        const testCaseResult: TestCase = { name: `${testCaseLabel}`, classname: child };
 
         // Post the test case to the SDK relay and check the results.
-        try {
-          const result = isFlagTest
-            ? sdkRelay.getAssignment({
-                flag,
-                subjectKey: subjectKey,
-                assignmentType: testCaseObj['variationType'],
-                defaultValue,
-                subjectAttributes: subject['subjectAttributes'],
-              } as AssignmentRequest)
-            : sdkRelay.getBanditAction({
-                flag,
-                subjectKey: subjectKey,
-                defaultValue,
-                subjectAttributes: subject['subjectAttributes'],
-                actions: subject['actions'],
-              } as BanditActionRequest);
 
-          await result
-            .then((result: TestResponse) => {
-              const passed = App.isResultCorrect(result, subject);
+        const result = isFlagTest
+          ? sdkRelay.getAssignment({
+              flag,
+              subjectKey: subjectKey,
+              assignmentType: testCaseObj['variationType'],
+              defaultValue,
+              subjectAttributes: subject['subjectAttributes'],
+            } as AssignmentRequest)
+          : sdkRelay.getBanditAction({
+              flag,
+              subjectKey: subjectKey,
+              defaultValue,
+              subjectAttributes: subject['subjectAttributes'],
+              actions: subject['actions'],
+            } as BanditActionRequest);
 
-              // Record the results as the "system out"
-              testCaseResult.systemOut = JSON.stringify(result).split('\n');
+        await result
+          .then((result: TestResponse) => {
+            // Record the results as the "system out"
+            testCaseResult.systemOut = JSON.stringify(result).split('\n');
 
-              if (!passed) {
-                testCaseResult.failures ??= [];
-                testCaseResult.failures.push({
-                  message: `Value ${result.result} did not match expected ${subject.assignment}`,
-                });
+            if (result.error) {
+              testCaseResult.errors ??= [];
+              testCaseResult.errors.push({
+                message: result.error,
+              });
 
-                logIndent(1, red('fail') + ` ${flag}[${subjectKey}]: ${result.result} != ${subject.assignment}`);
-              } else {
-                testCaseResult.assertions = 1;
+              logIndent(1, red('fail') + ` ${testCaseLabel}: ${result.result} != ${subject.assignment}`);
+            } else if (!App.isResultCorrect(result, subject)) {
+              testCaseResult.failures ??= [];
+              testCaseResult.failures.push({
+                message: `Value ${result.result} did not match expected ${subject.assignment}`,
+              });
 
-                logIndent(1, green('pass') + ` ${flag}[${subjectKey}]`);
-              }
-            })
-            .catch((error) => {
-              log(red('Error:'), error);
+              logIndent(1, red('fail') + ` ${testCaseLabel}: ${result.result} != ${subject.assignment}`);
+            } else {
+              testCaseResult.assertions = 1;
+
+              logIndent(1, green('pass') + ` ${testCaseLabel}`);
+            }
+          })
+          .catch((error) => {
+            if (error instanceof FeatureNotSupportedError) {
+              // Skip this test
+              logIndent(1, yellow('skipped') + ` ${testCaseLabel}: SDK does not support this feature`);
+              testCaseResult.skipped = true;
+            } else {
+              log(red('Error1:'), error);
               testCaseResult.errors ??= [];
               testCaseResult.errors.push({
                 message: `Error encountered during test: ${error.message}`,
               });
-            });
-        } catch (error) {
-          if (error instanceof FeatureNotSupportedError) {
-            // Skip this test
-            logIndent(1, yellow('skipped') + ` ${flag}[${subjectKey}]: SDK does not support this feature`);
-            testCaseResult.skipped = true;
-          } else {
-            const errMessage = (error as Error).message;
-            log(red('Error:'), errMessage);
-            testCaseResult.errors ??= [];
-            testCaseResult.errors.push({
-              message: `Error encountered during test: ${errMessage}`,
-            });
-          }
-        }
+            }
+          });
 
         testCaseResults.push(testCaseResult);
       }

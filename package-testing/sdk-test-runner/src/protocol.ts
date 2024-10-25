@@ -4,19 +4,22 @@ import { BanditActionRequest } from './dto/banditActionRequest';
 import { TestResponse } from './dto/testResponse';
 import { Server, Socket } from 'socket.io';
 import { createServer } from 'http';
-import { green, log } from './logging';
+import { green, log, red } from './logging';
 import { EventEmitter } from 'stream';
 
 const assignmentPath = '/flags/v1/assignment';
 const banditPath = '/bandits/v1/action';
+const resetPath = '/sdk/reset';
 
 /**
  * Wrapper for calls to an SDK relay
  */
 export type SDKRelay = {
-  isReady(): Promise<boolean>;
+  isReady(timeout: number): Promise<boolean>;
+  reset(): Promise<void>;
   getAssignment(request: AssignmentRequest): Promise<TestResponse>;
   getBanditAction(request: BanditActionRequest): Promise<TestResponse>;
+  close(): void;
 };
 
 /**
@@ -27,6 +30,17 @@ export class ServerSDKRelay implements SDKRelay {
 
   constructor(serverAddress: string) {
     this.sdkRelayAddress = serverAddress;
+  }
+
+  close(): void {
+    return; // nothing to do.
+  }
+
+  async reset(): Promise<void> {
+    const result = await axios.post(`${this.sdkRelayAddress}/sdk/reset`, {});
+    if (result.status != 200) {
+      throw new Error(`API Server returned unexpected status: ${result.status}`);
+    }
   }
 
   async getBanditAction(request: BanditActionRequest): Promise<TestResponse> {
@@ -93,6 +107,19 @@ export class ClientSDKRelay implements SDKRelay {
     });
   }
 
+  reset(): Promise<void> {
+    if (!this._isReady) {
+      throw new Error('SDk Client is not connected');
+    }
+    return new Promise((resolve) => {
+      this.socket?.emit(resetPath, '', resolve);
+    });
+  }
+
+  close(): void {
+    this.socket?.disconnect(true);
+  }
+
   async getBanditAction(request: BanditActionRequest): Promise<TestResponse> {
     if (!this._isReady) {
       throw new Error('SDk Client is not connected');
@@ -107,8 +134,21 @@ export class ClientSDKRelay implements SDKRelay {
     return JSON.parse(result as string) as TestResponse;
   }
 
-  isReady(): Promise<boolean> {
-    return this.isReadyPromise;
+  isReady(timeout: number = 10 * 60 * 1000): Promise<boolean> {
+    return new Promise((resolve) => {
+      const timeoutId = setTimeout(() => {
+        log(red('Promise timed out'));
+        resolve(false);
+      }, timeout);
+
+      this.isReadyPromise
+        .then(resolve)
+        .catch((error) => {
+          log(red(error));
+          resolve(false);
+        })
+        .finally(() => clearTimeout(timeoutId));
+    });
   }
 
   getAssignment(request: AssignmentRequest): Promise<TestResponse> {
@@ -124,6 +164,6 @@ export class ClientSDKRelay implements SDKRelay {
 export class FeatureNotSupportedError extends Error {
   constructor(message: string) {
     super(message);
-    this.name = 'MyCustomError';
+    this.name = 'FeatureNotSupportedError';
   }
 }
