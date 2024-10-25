@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getDataForRequest, updateClientDataMap } from './ufc/data';
+import { getDataForRequest, isObfuscatedSdk, updateClientDataMap } from './ufc/data';
 
 const routes = Router();
 
@@ -15,6 +15,12 @@ routes.get('/flag-config/v1/config', (req, res) => {
   const data = getDataForRequest(sdk);
 
   if (data) {
+    let filename = data.ufc;
+    // Check if it should be an obfuscated response
+    if (isObfuscatedSdk(sdk)) {
+      filename = filename.replace('.json', '-obfuscated.json');
+    }
+
     // Some SDKs use HTTP headers to optimize network bytes and sdk-side processing.
     const noneMatch = req.header('IF-NONE-MATCH');
     if (noneMatch === data.eTag) {
@@ -24,7 +30,7 @@ routes.get('/flag-config/v1/config', (req, res) => {
 
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('ETAG', data.eTag);
-    return res.status(200).end(data.ufc);
+    return res.status(200).end(filename);
   }
 
   return res.status(404).json({ message: 'No data for specified SDK' });

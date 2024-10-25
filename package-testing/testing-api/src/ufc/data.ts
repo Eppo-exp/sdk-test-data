@@ -3,6 +3,12 @@ import * as crypto from 'crypto';
 const dataFiles: Record<string, { ufc: string; eTag: string; bandits: string }> = {};
 const clientDataMap: Record<string, string> = {};
 
+const obfuscatedClients = ['android'];
+
+export const isObfuscatedSdk = (sdkName: string): boolean => {
+  return sdkName in obfuscatedClients;
+};
+
 export const getDataForRequest = (sdkName: string) => {
   // Get the scenario label for this client.
   let label = clientDataMap[sdkName];
@@ -12,7 +18,9 @@ export const getDataForRequest = (sdkName: string) => {
 
   console.log(`Returning ${label} for ${sdkName}`);
 
-  return dataFiles[label] ?? null;
+  const filename = dataFiles[label] ?? null;
+
+  return filename;
 };
 
 export const setDataFile = (label: string, ufc: string, bandits: string) => {
