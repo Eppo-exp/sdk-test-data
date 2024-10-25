@@ -23,15 +23,15 @@ export type SDKRelay = {
  * Uses `axios` to communicate with a Server SDK Relay via http
  */
 export class ServerSDKRelay implements SDKRelay {
-  sdkRelayAddress: string;
+  private sdkRelayAddress: string;
 
   constructor(serverAddress: string) {
     this.sdkRelayAddress = serverAddress;
   }
-  getBanditAction(request: BanditActionRequest): Promise<TestResponse> {
-    return axios.post(`${this.sdkRelayAddress}${banditPath}`, request).then((result) => {
-      return result.data as TestResponse;
-    });
+
+  async getBanditAction(request: BanditActionRequest): Promise<TestResponse> {
+    const result = await axios.post(`${this.sdkRelayAddress}${banditPath}`, request);
+    return result.data as TestResponse;
   }
 
   isReady(): Promise<boolean> {
@@ -54,10 +54,9 @@ export class ClientSDKRelay implements SDKRelay {
   private isReadyPromise: Promise<boolean>;
   private _isReady = false;
   private socket?: Socket;
-  private sdkName?: string;
+  private sdkInfo?: { sdkName: string; supportsBandits: boolean };
 
   constructor(testrunnerPort: number = 3000) {
-    const relay = this;
     // Run socketIO through a node http server.
     const httpServer = createServer();
     const io = new Server(httpServer, {
@@ -70,14 +69,14 @@ export class ClientSDKRelay implements SDKRelay {
       // Listen for a connection
       io.on('connection', (socket) => {
         console.log('a client has connected');
-        relay.socket = socket;
+        this.socket = socket;
 
         socket.on('READY', (msg, ack) => {
           const msgObj = JSON.parse(msg);
 
-          relay.sdkName = msgObj.sdkName;
+          this.sdkInfo = msgObj;
 
-          log(green(`Client ${relay.sdkName} reports ready`));
+          log(green(`Client ${this.sdkInfo?.sdkName} reports ready`));
 
           // Send ACK to the client and resolve the `isReady` promise.
           ack({ status: 'OK' });
@@ -85,8 +84,8 @@ export class ClientSDKRelay implements SDKRelay {
         });
 
         socket.on('disconnect', () => {
-          this.emitter.emit('disconnect', relay.sdkName);
-          console.log(`client ${relay.sdkName} disconnected`);
+          this.emitter.emit('disconnect', this.sdkInfo?.sdkName);
+          console.log(`client ${this.sdkInfo?.sdkName} disconnected`);
         });
       });
 
@@ -94,8 +93,18 @@ export class ClientSDKRelay implements SDKRelay {
     });
   }
 
-  getBanditAction(request: BanditActionRequest): Promise<TestResponse> {
-    throw new Error('Method not implemented.');
+  async getBanditAction(request: BanditActionRequest): Promise<TestResponse> {
+    if (!this._isReady) {
+      throw new Error('SDk Client is not connected');
+    }
+    if (!this.sdkInfo?.supportsBandits) {
+      throw new FeatureNotSupportedError('Bandits are not supported in this SDK');
+    }
+
+    const result = await new Promise((resolve) => {
+      this.socket?.emit(banditPath, request, resolve);
+    });
+    return JSON.parse(result as string) as TestResponse;
   }
 
   isReady(): Promise<boolean> {
@@ -109,5 +118,12 @@ export class ClientSDKRelay implements SDKRelay {
     return new Promise((resolve) => {
       this.socket?.emit(assignmentPath, request, resolve);
     }).then((result) => JSON.parse(result as string) as TestResponse);
+  }
+}
+
+export class FeatureNotSupportedError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'MyCustomError';
   }
 }

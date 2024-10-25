@@ -8,7 +8,7 @@ import { BanditActionRequest } from './dto/banditActionRequest';
 import { TestResponse } from './dto/testResponse';
 import { Scenario, Scenarios } from './dto/scenario';
 import { TestCase, TestSuite, TestSuiteReport, getJunitXml } from 'junit-xml';
-import { ClientSDKRelay, SDKRelay, ServerSDKRelay } from './protocol';
+import { ClientSDKRelay, FeatureNotSupportedError, SDKRelay, ServerSDKRelay } from './protocol';
 
 export default class App {
   public constructor(
@@ -222,49 +222,64 @@ export default class App {
         const testCaseResult: TestCase = { name: `${flag}[${subjectKey}]`, classname: child };
 
         // Post the test case to the SDK relay and check the results.
-        const result = isFlagTest
-          ? sdkRelay.getAssignment({
-              flag,
-              subjectKey: subjectKey,
-              assignmentType: testCaseObj['variationType'],
-              defaultValue,
-              subjectAttributes: subject['subjectAttributes'],
-            } as AssignmentRequest)
-          : sdkRelay.getBanditAction({
-              flag,
-              subjectKey: subjectKey,
-              defaultValue,
-              subjectAttributes: subject['subjectAttributes'],
-              actions: subject['actions'],
-            } as BanditActionRequest);
+        try {
+          const result = isFlagTest
+            ? sdkRelay.getAssignment({
+                flag,
+                subjectKey: subjectKey,
+                assignmentType: testCaseObj['variationType'],
+                defaultValue,
+                subjectAttributes: subject['subjectAttributes'],
+              } as AssignmentRequest)
+            : sdkRelay.getBanditAction({
+                flag,
+                subjectKey: subjectKey,
+                defaultValue,
+                subjectAttributes: subject['subjectAttributes'],
+                actions: subject['actions'],
+              } as BanditActionRequest);
 
-        await result
-          .then((result: TestResponse) => {
-            const passed = App.isResultCorrect(result, subject);
+          await result
+            .then((result: TestResponse) => {
+              const passed = App.isResultCorrect(result, subject);
 
-            // Record the results as the "system out"
-            testCaseResult.systemOut = JSON.stringify(result).split('\n');
+              // Record the results as the "system out"
+              testCaseResult.systemOut = JSON.stringify(result).split('\n');
 
-            if (!passed) {
-              testCaseResult.failures ??= [];
-              testCaseResult.failures.push({
-                message: `Value ${result.result} did not match expected ${subject.assignment}`,
+              if (!passed) {
+                testCaseResult.failures ??= [];
+                testCaseResult.failures.push({
+                  message: `Value ${result.result} did not match expected ${subject.assignment}`,
+                });
+
+                logIndent(1, red('fail') + ` ${flag}[${subjectKey}]: ${result.result} != ${subject.assignment}`);
+              } else {
+                testCaseResult.assertions = 1;
+
+                logIndent(1, green('pass') + ` ${flag}[${subjectKey}]`);
+              }
+            })
+            .catch((error) => {
+              log(red('Error:'), error);
+              testCaseResult.errors ??= [];
+              testCaseResult.errors.push({
+                message: `Error encountered during test: ${error.message}`,
               });
-
-              logIndent(1, red('fail') + ` ${flag}[${subjectKey}]: ${result.result} != ${subject.assignment}`);
-            } else {
-              testCaseResult.assertions = 1;
-
-              logIndent(1, green('pass') + ` ${flag}[${subjectKey}]`);
-            }
-          })
-          .catch((error) => {
-            log(red('Error:'), error);
+            });
+        } catch (error) {
+          if (error instanceof FeatureNotSupportedError) {
+            // Skip this test
+            logIndent(1, yellow('skipped') + ` ${flag}[${subjectKey}]: SDK does not support this feature`);
+            testCaseResult.skipped = true;
+          } else {
+            const errMessage = (error as Error).message;
+            log(red('Error:'), errMessage);
             testCaseResult.errors ??= [];
             testCaseResult.errors.push({
-              message: `Error encountered during test: ${error.message}`,
+              message: `Error encountered during test: ${errMessage}`,
             });
-          });
+          }
+        }
 
         testCaseResults.push(testCaseResult);
       }
