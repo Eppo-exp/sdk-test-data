@@ -33,13 +33,20 @@ class App {
     Object.keys(scenarios).forEach((key) => {
       const ufc = fs.readFileSync(path.join(baseDir, scenarios[key].ufcPath), 'utf-8');
 
+      const obfuscatedUfcFilepath = path.join(baseDir, scenarios[key].ufcPath.replace('.json', '-obfuscated.json'));
+      console.log(obfuscatedUfcFilepath);
+
+      const obfuscatedUfc = fs.existsSync(obfuscatedUfcFilepath)
+        ? fs.readFileSync(obfuscatedUfcFilepath, 'utf-8')
+        : '{}';
+
       const banditModelFile = scenarios[key].banditModelPath;
 
       const bandits = banditModelFile ? fs.readFileSync(path.join(baseDir, banditModelFile), 'utf-8') : '';
 
       console.log('preloaded data for ' + key);
 
-      setDataFile(key, ufc, bandits);
+      setDataFile(key, ufc, obfuscatedUfc, bandits);
     });
   }
 }

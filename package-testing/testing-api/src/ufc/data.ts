@@ -1,6 +1,6 @@
 import * as crypto from 'crypto';
 
-const dataFiles: Record<string, { ufc: string; eTag: string; bandits: string }> = {};
+const dataFiles: Record<string, { ufc: string; obfuscatedUfc: string; eTag: string; bandits: string }> = {};
 const clientDataMap: Record<string, string> = {};
 
 const obfuscatedClients = ['android'];
@@ -23,10 +23,10 @@ export const getDataForRequest = (sdkName: string) => {
   return filename;
 };
 
-export const setDataFile = (label: string, ufc: string, bandits: string) => {
+export const setDataFile = (label: string, ufc: string, obfuscatedUfc: string, bandits: string) => {
   const ufcVersionString = crypto.createHash('md5').update(ufc).digest('hex');
 
-  dataFiles[label] = { ufc, eTag: ufcVersionString, bandits };
+  dataFiles[label] = { ufc, obfuscatedUfc, eTag: ufcVersionString, bandits };
 };
 
 export const updateClientDataMap = (sdkName: string, datafileLabel: string): boolean => {

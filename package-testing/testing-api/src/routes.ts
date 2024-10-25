@@ -15,22 +15,23 @@ routes.get('/api/flag-config/v1/config', (req, res) => {
   const data = getDataForRequest(sdk);
 
   if (data) {
-    let filename = data.ufc;
-    // Check if it should be an obfuscated response
-    if (isObfuscatedSdk(sdk)) {
-      filename = filename.replace('.json', '-obfuscated.json');
-    }
-
     // Some SDKs use HTTP headers to optimize network bytes and sdk-side processing.
     const noneMatch = req.header('IF-NONE-MATCH');
     if (noneMatch === data.eTag) {
+      console.log(`Returning not modified`);
       res.setHeader('ETAG', data.eTag);
       return res.status(304).end();
     }
 
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('ETAG', data.eTag);
-    return res.status(200).end(filename);
+
+    // Check if it should be an obfuscated response
+    if (isObfuscatedSdk(sdk)) {
+      console.log(`Returning obfuscated config`);
+      return res.status(200).end(data.obfuscatedUfc);
+    }
+    return res.status(200).end(data.ufc);
   }
 
   return res.status(404).json({ message: 'No data for specified SDK' });
