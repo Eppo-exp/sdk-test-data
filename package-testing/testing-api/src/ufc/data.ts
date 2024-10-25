@@ -6,7 +6,7 @@ const clientDataMap: Record<string, string> = {};
 const obfuscatedClients = ['android'];
 
 export const isObfuscatedSdk = (sdkName: string): boolean => {
-  return sdkName in obfuscatedClients;
+  return obfuscatedClients.includes(sdkName);
 };
 
 export const getDataForRequest = (sdkName: string) => {
