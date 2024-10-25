@@ -18,6 +18,7 @@ routes.get('/api/flag-config/v1/config', (req, res) => {
     // Some SDKs use HTTP headers to optimize network bytes and sdk-side processing.
     const noneMatch = req.header('IF-NONE-MATCH');
     const eTagToMatch = isObfuscatedSdk(sdk) ? data.obfuscatedETag : data.eTag;
+
     if (noneMatch === eTagToMatch) {
       console.log(`Returning not modified`);
       res.setHeader('ETAG', data.eTag);

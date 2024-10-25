@@ -8,7 +8,7 @@ const clientDataMap: Record<string, string> = {};
 
 const obfuscatedClients = ['android'];
 
-export const isObfuscatedSdk = obfuscatedClients.includes;
+export const isObfuscatedSdk = (sdk: string) => obfuscatedClients.includes(sdk);
 
 export const getDataForRequest = (sdkName: string) => {
   // Get the scenario label for this client.
