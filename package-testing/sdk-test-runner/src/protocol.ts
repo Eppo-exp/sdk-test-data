@@ -4,7 +4,7 @@ import { BanditActionRequest } from './dto/banditActionRequest';
 import { TestResponse } from './dto/testResponse';
 import { Server, Socket } from 'socket.io';
 import { createServer } from 'http';
-import { green, log, red } from './logging';
+import { green, log } from './logging';
 import { EventEmitter } from 'stream';
 
 const assignmentPath = '/flags/v1/assignment';
@@ -15,11 +15,19 @@ const resetPath = '/sdk/reset';
  * Wrapper for calls to an SDK relay
  */
 export type SDKRelay = {
-  isReady(timeout: number): Promise<boolean>;
+  isReady(timeout: number): Promise<SDKInfo | SDKConnectionFailure>;
   reset(): Promise<void>;
   getAssignment(request: AssignmentRequest): Promise<TestResponse>;
   getBanditAction(request: BanditActionRequest): Promise<TestResponse>;
   close(): void;
+};
+
+export type SDKInfo = {
+  sdkName: string;
+  supportsBandits: boolean;
+};
+export type SDKConnectionFailure = {
+  errorMessage?: string;
 };
 
 /**
@@ -27,9 +35,15 @@ export type SDKRelay = {
  */
 export class ServerSDKRelay implements SDKRelay {
   private sdkRelayAddress: string;
+  private readonly sdkInfo: SDKInfo;
 
-  constructor(serverAddress: string) {
+  constructor(serverAddress: string, sdkName: string) {
     this.sdkRelayAddress = serverAddress;
+
+    // All servers support bandits.
+    // In the future, we can have an endpoint for the SDK relays that specifies
+    // more sdk info like version and future capabilities.
+    this.sdkInfo = { sdkName, supportsBandits: true };
   }
 
   close(): void {
@@ -48,8 +62,8 @@ export class ServerSDKRelay implements SDKRelay {
     return result.data as TestResponse;
   }
 
-  isReady(): Promise<boolean> {
-    return Promise.resolve(true);
+  isReady(): Promise<SDKInfo | SDKConnectionFailure> {
+    return Promise.resolve(this.sdkInfo);
   }
 
   async getAssignment(request: AssignmentRequest): Promise<TestResponse> {
@@ -65,10 +79,10 @@ export class ServerSDKRelay implements SDKRelay {
 export class ClientSDKRelay implements SDKRelay {
   emitter = new EventEmitter();
 
-  private isReadyPromise: Promise<boolean>;
+  private isReadyPromise: Promise<SDKInfo>;
   private _isReady = false;
   private socket?: Socket;
-  private sdkInfo?: { sdkName: string; supportsBandits: boolean };
+  private sdkInfo?: SDKInfo;
 
   constructor(testrunnerPort: number = 3000) {
     // Run socketIO through a node http server.
@@ -88,13 +102,14 @@ export class ClientSDKRelay implements SDKRelay {
         socket.on('READY', (msg, ack) => {
           const msgObj = JSON.parse(msg);
 
-          this.sdkInfo = msgObj;
+          this.sdkInfo = msgObj as SDKInfo;
 
           log(green(`Client ${this.sdkInfo?.sdkName} reports ready`));
 
           // Send ACK to the client and resolve the `isReady` promise.
           ack({ status: 'OK' });
-          resolve((this._isReady = true));
+          this._isReady = true;
+          resolve(this.sdkInfo);
         });
 
         socket.on('disconnect', () => {
@@ -134,18 +149,16 @@ export class ClientSDKRelay implements SDKRelay {
     return JSON.parse(result as string) as TestResponse;
   }
 
-  isReady(timeout: number = 10 * 60 * 1000): Promise<boolean> {
+  isReady(timeout: number = 10 * 60 * 1000): Promise<SDKInfo | SDKConnectionFailure> {
     return new Promise((resolve) => {
       const timeoutId = setTimeout(() => {
-        log(red('Promise timed out'));
-        resolve(false);
+        resolve({ errorMessage: 'Client did not connect within timeout' });
       }, timeout);
 
       this.isReadyPromise
         .then(resolve)
         .catch((error) => {
-          log(red(error));
-          resolve(false);
+          resolve({ errorMessage: error });
         })
         .finally(() => clearTimeout(timeoutId));
     });
