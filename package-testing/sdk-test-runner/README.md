@@ -46,6 +46,21 @@ SDK_NAME=android yarn dev --type=client
 # Start client application to auto-connect
 ```
 
+Or, use the latest docker image of the test runner
+
+```shell
+
+ docker run \
+    --rm \
+    --name test-runner \
+    -e SDK_NAME=android \
+    -p 3000:3000 \
+    -v ./test-data:/app/test-data:ro \
+    -t Eppo-exp/sdk-test-runner  \
+    --type=client
+
+```
+
 Once the Client application conencts to the test-runner, it will proceed to send test cases over the established `socket.io` connection.
 
 #### Command line arguments
