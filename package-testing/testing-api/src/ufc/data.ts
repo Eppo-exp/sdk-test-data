@@ -6,7 +6,7 @@ const dataFiles: Record<
 > = {};
 const clientDataMap: Record<string, string> = {};
 
-const obfuscatedClients = ['android'];
+const obfuscatedClients = ['android', 'ios', 'javascript', 'react-native'];
 
 export const isObfuscatedSdk = (sdk: string) => obfuscatedClients.includes(sdk);
 
