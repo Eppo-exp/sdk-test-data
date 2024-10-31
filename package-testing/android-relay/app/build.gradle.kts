@@ -6,7 +6,6 @@ plugins {
     jacoco
 
     id("com.ncorti.ktfmt.gradle") version "0.20.1"
-    id ("kotlinx-serialization")
 }
 
 apply {
@@ -98,9 +97,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime.livedata)
-
-    implementation(libs.kotlinx.serialization.json)
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

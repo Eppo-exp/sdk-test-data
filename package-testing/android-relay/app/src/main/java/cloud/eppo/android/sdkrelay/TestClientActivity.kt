@@ -2,6 +2,7 @@ package cloud.eppo.android.sdkrelay
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
@@ -26,65 +27,18 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import io.socket.client.Ack
 import io.socket.engineio.client.EngineIOException
 import java.util.concurrent.CompletableFuture
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonObject
 import org.json.JSONObject
 
 class TestClientActivity : ComponentActivity() {
-  val json = Json { ignoreUnknownKeys = true }
   var objectMapper: ObjectMapper = ObjectMapper()
-
-  sealed interface SubjectAttribute {
-    data class StringAttribute(val value: String) : SubjectAttribute
-
-    data class IntAttribute(val value: Long) : SubjectAttribute
-
-    data class BooleanAttribute(val value: Boolean) : SubjectAttribute
-
-    data class DoubleAttribute(val value: Double) : SubjectAttribute
-
-    data class ListOfStringsAttribute(val value: List<String>) : SubjectAttribute
-  }
 
   data class AssignmentRequest(
       val flag: String,
       val subjectKey: String,
       val assignmentType: String,
       val subjectAttributes: JSONObject,
-      //      @Serializable(with = DefaultValueSerializer::class)
       val defaultValue: Any
   )
-
-  //
-  //    object DefaultValueSerializer: KSerializer<Any> {
-  //        override val descriptor: SerialDescriptor =
-  // PrimitiveSerialDescriptor("subjectAttributes", PrimitiveKind.)
-  //        override fun deserialize(decoder: Decoder): Any {
-  //            TODO("Not yet implemented")
-  //        }
-  //
-  //        override fun serialize(encoder: Encoder, value: Any) {
-  //            when (value) {
-  //                is Int -> encoder.encodeInt(value)
-  //                is String-> encoder.encodeString(value)
-  //            }
-  //
-  //        }
-  //    }
-
-  sealed interface Result {
-    data class StringResult(val value: String) : Result
-
-    data class BooleanResult(val value: Boolean) : Result
-
-    data class IntResult(val value: Int) : Result
-
-    data class DoubleResult(val value: Double) : Result
-
-    data class JsonResult(val value: JsonObject) : Result
-  }
-
-  //  @Serializable private data class TestResponse(val result: Result)
 
   private val status = MutableLiveData<String>()
   private val socketLog = MutableLiveData<String>()
@@ -128,6 +82,10 @@ class TestClientActivity : ComponentActivity() {
       appendSocketLog("disconnect")
       Log.d(TAG, "Disconnected")
       status.postValue("Disconnected")
+      runOnUiThread {
+        Toast.makeText(this@TestClientActivity, "Test runner disconnected", Toast.LENGTH_LONG)
+            .show()
+      }
     }
 
     SocketHandler.mSocket.on("/sdk/reset") { args ->
@@ -156,9 +114,7 @@ class TestClientActivity : ComponentActivity() {
 
       // Ack function for responding to the server.
       val ack = args.last() as Ack
-      //      val assignmentRequest =
-      // json.decodeFromString<AssignmentRequest>(args.first().toString())
-      //
+
       val client = EppoClient.getInstance()
 
       val eppoValues: MutableMap<String, EppoValue> = mutableMapOf()
@@ -180,47 +136,12 @@ class TestClientActivity : ComponentActivity() {
       }
       val subjectAttributes = Attributes(eppoValues)
 
-      //            val subjectAttributes: Attributes =
-      //                Attributes(
-      //                    assignmentRequest.subjectAttributes?.mapValues { kvp ->
-      //                      when (kvp.value) {
-      //                        is SubjectAttribute.StringAttribute ->
-      //                            EppoValue.valueOf((kvp.value as
-      //       SubjectAttribute.StringAttribute).value)
-      //
-      //                        is SubjectAttribute.DoubleAttribute ->
-      //                            EppoValue.valueOf((kvp.value as
-      //       SubjectAttribute.DoubleAttribute).value)
-      //
-      //                        is SubjectAttribute.IntAttribute ->
-      //                            EppoValue.valueOf(
-      //                                (kvp.value as
-      // SubjectAttribute.IntAttribute).value.toDouble())
-      //
-      //                        is SubjectAttribute.BooleanAttribute ->
-      //                            EppoValue.valueOf((kvp.value as
-      //       SubjectAttribute.BooleanAttribute).value)
-      //
-      //                        is SubjectAttribute.ListOfStringsAttribute ->
-      //                            EppoValue.valueOf(
-      //                                (kvp.value as
-      // SubjectAttribute.ListOfStringsAttribute).value)
-      //
-      //                        else -> EppoValue.nullValue()
-      //                      }
-      //                    } ?: emptyMap())
       val result = getResult(assignmentRequest, client, subjectAttributes)
       val jsonResult = JSONObject()
       when (result) {
-        is JsonNode -> {
-          jsonResult.put("result", JSONObject(result.toString()))
-        }
-
-        else -> {
-          jsonResult.put("result", result)
-        }
+        is JsonNode -> jsonResult.put("result", JSONObject(result.toString()))
+        else -> jsonResult.put("result", result)
       }
-      //      jsonResult.put("result", result)
       ack.call(jsonResult.toString())
     }
 
@@ -231,13 +152,23 @@ class TestClientActivity : ComponentActivity() {
         }
       }
     }
+
     status.postValue("Connecting")
     reInitializeEppoClient().thenRun { SocketHandler.establishConnection() }
   }
 
+  override fun onDestroy() {
+    super.onDestroy()
+
+    SocketHandler.mSocket.disconnect()
+
+    // Clear all listeners
+    SocketHandler.mSocket.off()
+  }
+
   private fun sendReady() {
     SocketHandler.mSocket.emit("READY", arrayOf<String>(READY_PACKET)) {
-      Log.d(TAG, "Ready message ack'd")
+      Log.d(TAG, "Ready message acked")
     }
   }
 
@@ -297,7 +228,7 @@ class TestClientActivity : ComponentActivity() {
         return jsonNodeResult
       }
 
-      else -> Result.StringResult("NO RESULT")
+      else -> "NO RESULT"
     }
   }
 
@@ -343,65 +274,3 @@ fun LogView(name: String, log: String) {
     Text(log)
   }
 }
-
-//
-//        private val onRunnerDisconnect: Emitter.Listener = Emitter.Listener { args ->
-//            // close down the socket and pop a notification.
-//            mSocket.close()
-//            runOnUiThread {
-//                updateStatus("Complete")
-//                Toast.makeText(
-//                    this@TestClientActivity, "Test runner disconnected", Toast.LENGTH_SHORT
-//                )
-//                    .show()
-//            }
-//        }
-//
-//        private val onNewAssignment: Emitter.Listener = Emitter.Listener { args ->
-//            runOnUiThread {
-//
-//        }
-//
-//        @Throws(JsonProcessingException::class)
-//
-//
-//        private fun genericErrorResponse(): String {
-//            return "{\"error\": \"JSON processing error\"}"
-//        }
-//
-//        override fun onDestroy() {
-//            super.onDestroy()
-//
-//            mSocket.disconnect()
-//
-//            // Clear all listeners
-//            mSocket.off()
-//        }
-
-//        companion object {
-//            private val TAG: String =TestClientActivity::class.java.getSimpleName()
-
-//
-//            private fun convertAttributesMapToAttributes(assignmentRequest:
-// cloud.eppo.androidexample.TestClientActivity.AssignmentRequest): Attributes {
-//                val subject = Attributes()
-//                assignmentRequest.subjectAttributes.forEach { (key: String?, value: Any?) ->
-//                    if (value is String) {
-//                        subject.put(key, value as String)
-//                    } else if (value is Int) {
-//                        subject.put(key, value as Long)
-//                    } else if (value is Number) {
-//                        subject.put(key, value as Double)
-//                    } else if (value is Boolean) {
-//                        subject.put(key, value as Boolean)
-//                    } else {
-//                        // Handle other types (potentially throw an exception or log a warning)
-//                        Log.e(
-//                            TAG,
-//                            "Unsupported attribute value type for key: $key"
-//                        )
-//                    }
-//                }
-//                return subject
-//            }
-//        }
