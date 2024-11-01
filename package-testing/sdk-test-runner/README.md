@@ -107,7 +107,7 @@ Finally, these are the advanced items to integrate the new package test into our
 
 ### SDK Relay Client
 
-This is a client application which connects to the test runner via `socket.io` and waits for assignment requests (mobile does not currently support bandits). The interface for assignment request and responses is the same as the server API detailed below, with the exception that requests will be sent to a `socket.io` channel instead of via HTTP POST. The SDK Relay client sends a `READY` message to the test runner and then listens for requests under the same paths as the SDK Server API. See the example below from the Android relay.
+This is a client application which connects to the test runner via `socket.io` and waits for assignment requests ("client" SDKs do not yet support bandits). The interface for assignment request and responses is the same as the server API detailed below, with the exception that requests will be sent to a `socket.io` channel instead of via HTTP POST. The SDK Relay client sends a `READY` message to the test runner and then listens for requests under the same paths as the SDK Server API. See the example below from the Android relay.
 
 ```java
 

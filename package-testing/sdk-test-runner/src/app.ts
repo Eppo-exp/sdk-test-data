@@ -8,6 +8,7 @@ import { BanditActionRequest } from './dto/banditActionRequest';
 import { TestResponse } from './dto/testResponse';
 import { Scenario, Scenarios } from './dto/scenario';
 import { TestCase, TestSuite, TestSuiteReport, getJunitXml } from 'junit-xml';
+import { Config, SdkType } from './config';
 import {
   ClientSDKRelay,
   FeatureNotSupportedError,
@@ -16,7 +17,6 @@ import {
   SDKRelay,
   ServerSDKRelay,
 } from './protocol';
-import { Config, SdkType } from './config';
 
 export default class App {
   private readonly config: Config;
@@ -27,23 +27,24 @@ export default class App {
 
   public async run() {
     this.printHeader();
-    if (this.config.sdkType == SdkType.SERVER) {
-      return this.runServerTest();
-    } else {
-      return this.runClientTest();
-    }
+
+    const testingResult = await (this.config.sdkType === SdkType.SERVER ? this.runServerTest() : this.runClientTest());
+
+    // Exit 0 if the test run was successful.
+    const exitCode = testingResult ? 0 : 1;
+    process.exit(exitCode);
   }
 
-  public async runClientTest() {
+  public async runClientTest(): Promise<boolean> {
     log('Waiting for SDK Client to connect');
 
     const sdkRelay = new ClientSDKRelay();
     const sdkInfo = await sdkRelay.isReady();
-    if ('errorMessage' in sdkInfo && typeof sdkInfo.errorMessage === 'string') {
+    if ('errorMessage' in sdkInfo) {
       const error = sdkInfo as SDKConnectionFailure;
       log(red('SDK Relay Client failed to load: '));
       log(red(error.errorMessage));
-      return 1;
+      return false;
     }
 
     const sdk = sdkInfo as SDKInfo;
@@ -52,7 +53,7 @@ export default class App {
     return this.innerRun(sdkRelay);
   }
 
-  public async runServerTest() {
+  public async runServerTest(): Promise<boolean> {
     this.printHeader();
 
     const sdkRelay = new ServerSDKRelay(this.config.sdkServer, this.config.sdkName);
@@ -61,7 +62,7 @@ export default class App {
       const error = sdkInfo as SDKConnectionFailure;
       log(red('SDK Relay Server failed to load: '));
       log(red(error.errorMessage));
-      return 1;
+      return false;
     }
 
     log(`Posting test cases to ${this.config.sdkName} relay server at ${this.config.sdkServer}`);
@@ -74,20 +75,20 @@ export default class App {
     log(`Test Cluster Details`);
     log(`API/Configuration server: ${this.config.apiServer}`);
 
-    if (this.config.sdkType == SdkType.SERVER) {
+    if (this.config.sdkType === SdkType.SERVER) {
       log(`SDK Relay server: ${this.config.sdkServer}`);
     }
   }
 
-  private async innerRun(sdkRelay: SDKRelay) {
+  private async innerRun(sdkRelay: SDKRelay): Promise<boolean> {
     const testConfig = JSON.parse(
       fs.readFileSync(path.join(this.config.testDataPath, this.config.scenarioFile), 'utf-8'),
     );
     const scenarios = testConfig['scenarios'] as Scenarios;
 
-    if (Object.keys(scenarios).length == 0) {
+    if (Object.keys(scenarios).length === 0) {
       log(red('Error: empty scenario list'));
-      return 1;
+      return false;
     }
 
     const testSuiteResults: TestSuite[] = await this.runTestScenarios(scenarios, sdkRelay);
@@ -115,15 +116,11 @@ export default class App {
 
     // Junit support.
     if (this.config.junitFilePath) {
-      this.writeJUnitReport(testSuiteResults, 'A report name', this.config.junitFilePath);
+      const reportName = `Eppo SDK Test: ${this.config.sdkName}`;
+      this.writeJUnitReport(testSuiteResults, reportName, this.config.junitFilePath);
     }
 
-    // Exit 1 if there were test failures
-    if (numFailures > 0) {
-      process.exit(1);
-    } else {
-      process.exit(0);
-    }
+    return numFailures > 0;
   }
 
   async runTestScenarios(scenarios: Scenarios, sdkRelay: SDKRelay): Promise<TestSuite[]> {
@@ -155,7 +152,7 @@ export default class App {
     const scenarioSet = (await axios
       .post(`${this.config.apiServer}/sdk/${safeSdkName}/scenario`, { label: scenarioName })
       .then((result) => {
-        if (result.status != 200) {
+        if (result.status !== 200) {
           throw new Error(`API Server returned unexpected status: ${result.status}`);
         } else {
           log(`Set Testing Scenario to ${scenarioName}`);
@@ -197,7 +194,7 @@ export default class App {
     const testCaseDir = path.join(this.config.testDataPath, scenario.testCases);
 
     const testCases = fs.readdirSync(testCaseDir);
-    if (testCases.length == 0) {
+    if (testCases.length === 0) {
       testCaseResults.push({ name: testCaseDir, errors: [{ message: 'No test case files found' }] });
     }
 
@@ -221,7 +218,7 @@ export default class App {
       // Flag testing!!
       const isFlagTest = testCaseObj['variationType'];
 
-      if (testCaseObj['subjects'].length == 0) {
+      if (testCaseObj['subjects'].length === 0) {
         testCaseResults.push({ name: testCase, errors: [{ message: 'No test subjects found' }] });
       }
 
