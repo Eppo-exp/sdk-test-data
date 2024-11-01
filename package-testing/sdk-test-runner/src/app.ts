@@ -120,7 +120,7 @@ export default class App {
       this.writeJUnitReport(testSuiteResults, reportName, this.config.junitFilePath);
     }
 
-    return numFailures > 0;
+    return numFailures === 0;
   }
 
   async runTestScenarios(scenarios: Scenarios, sdkRelay: SDKRelay): Promise<TestSuite[]> {
