@@ -20,6 +20,7 @@ import androidx.lifecycle.MutableLiveData
 import cloud.eppo.android.EppoClient
 import cloud.eppo.android.sdkrelay.ui.theme.EppoApplicationTheme
 import cloud.eppo.api.Attributes
+import cloud.eppo.api.Configuration
 import cloud.eppo.api.EppoValue
 import cloud.eppo.logging.Assignment
 import com.fasterxml.jackson.databind.JsonNode
@@ -28,6 +29,7 @@ import io.socket.client.Ack
 import io.socket.engineio.client.EngineIOException
 import java.util.concurrent.CompletableFuture
 import org.json.JSONObject
+import java.util.function.Supplier
 
 class TestClientActivity : ComponentActivity() {
   var objectMapper: ObjectMapper = ObjectMapper()
@@ -172,11 +174,12 @@ class TestClientActivity : ComponentActivity() {
     }
   }
 
-  private fun reInitializeEppoClient(): CompletableFuture<EppoClient> {
+
+    private fun reInitializeEppoClient(): CompletableFuture<EppoClient> {
     // Most of the settings used here are intended for debugging only.
     return EppoClient.Builder(API_KEY, getApplication())
         .forceReinitialize(true) // Debug: create a new instance every time
-        //                .ignoreCache(true) // Debug: don't preload data from the device
+        .ignoreCachedConfiguration(true) // Debug: don't preload data from the device
         .host("http://10.0.2.2:5000") // Debug: for local API serving
         .isGracefulMode(false) // Debug: surface exceptions
         .assignmentLogger(::assignmentLogger)

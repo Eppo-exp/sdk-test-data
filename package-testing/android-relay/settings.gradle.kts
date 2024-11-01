@@ -24,3 +24,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Eppo SDK Relay"
 include(":app")
+
+include(":android-sdk")
+project(":android-sdk").projectDir = File("tmp/eppo")
