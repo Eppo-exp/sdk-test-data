@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -22,7 +23,6 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import cloud.eppo.android.EppoClient
-import cloud.eppo.android.sdkrelay.ui.theme.EppoApplicationTheme
 import cloud.eppo.api.Attributes
 import cloud.eppo.api.EppoValue
 import cloud.eppo.logging.Assignment
@@ -76,33 +76,31 @@ class TestClientActivity : ComponentActivity() {
 
     // Set the UI
     setContent {
-      EppoApplicationTheme {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-          TestClientScreen(status, assignmentLog, Modifier.padding(innerPadding))
-        }
+      Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        TestClientScreen(status, assignmentLog, Modifier.padding(innerPadding))
       }
     }
 
     // Connect to the test runner
-    status.postValue("Connecting")
+    status.postValue(getString(R.string.connecting))
     reInitializeEppoClient().thenRun({ SocketHandler.establishConnection() })
   }
 
   private fun handleConnect(args: Array<Any>?) {
     Log.d(TAG, "Connected")
-    status.postValue("Connected")
+    status.postValue(getString(R.string.connected))
     sendReady()
   }
 
   private fun handleConnectError(args: Array<Any>) {
     val exception: EngineIOException = args[0] as EngineIOException
-    status.postValue("Connection Error")
+    status.postValue(getString(R.string.status_connection_error))
     Log.e(TAG, "Connection error", exception)
   }
 
   private fun handleAssignment(args: Array<Any>) {
     Log.d(TAG, "Assignment Requested")
-    status.postValue("Assigning")
+    status.postValue(getString(R.string.status_assignment))
 
     val requestObj = (args[0] as JSONObject)
     val assignmentRequest =
@@ -148,7 +146,7 @@ class TestClientActivity : ComponentActivity() {
 
   private fun handleDisconnect(args: Array<Any>) {
     Log.d(TAG, "Disconnected")
-    status.postValue("Disconnected")
+    status.postValue(getString(R.string.status_disconnected))
 
     // Shut down the connection and remove listeners
     SocketHandler.mSocket.disconnect()
@@ -257,15 +255,15 @@ fun TestClientScreen(
   val assignmentLogText: String? by assignmentLog.observeAsState()
 
   Column(modifier = modifier.padding(5.dp)) {
-    Status(statusString ?: "Pending")
-    LogView("Assignment Log", assignmentLogText ?: "Assignment log")
+    Status(statusString ?: stringResource(R.string.status_pending))
+    LogView(stringResource(R.string.label_assignment_log), assignmentLogText ?: "")
   }
 }
 
 @Composable
 fun Status(status: String) {
   Row() {
-    Text("Socket Status:", fontWeight = FontWeight.Bold)
+    Text(stringResource(R.string.label_status_prefix), fontWeight = FontWeight.Bold)
     Text(status, fontStyle = FontStyle.Italic)
   }
 }
@@ -273,7 +271,7 @@ fun Status(status: String) {
 @Composable
 fun LogView(name: String, log: String) {
   Column {
-    Text(name, fontWeight = FontWeight.Bold, fontSize = 30.sp)
+    Text(name, fontWeight = FontWeight.Bold, fontSize = 24.sp)
     Text(log)
   }
 }

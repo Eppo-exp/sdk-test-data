@@ -3,20 +3,9 @@ import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    jacoco
 
     id("com.ncorti.ktfmt.gradle") version "0.20.1"
 }
-
-apply {
-    from("./jacoco.gradle")
-}
-
-jacoco {
-    toolVersion = "0.8.12"
-    reportsDirectory = layout.buildDirectory.dir("customJacocoReportDir")
-}
-
 
 val apiKey: String = gradleLocalProperties(
     project.rootDir,
