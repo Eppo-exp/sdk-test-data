@@ -4,7 +4,7 @@ import android.app.Application
 import android.util.Log
 import cloud.eppo.android.EppoClient
 
-class ExampleApplication : Application() {
+class EppoSdkRelay : Application() {
 
   val API_KEY: String = BuildConfig.API_KEY // Set in root-level local.properties
 
