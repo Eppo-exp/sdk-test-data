@@ -26,9 +26,47 @@ docker run \
 SDK_NAME=eppo/php-sdk yarn dev
 ```
 
+### Client SDK Mode
+
+TODO: Update this section when client testing is available at the test-sdk.sh level (requires build out of custom client build solution).
+
+Limited support is currently available for testing client SDKs. To test an SDK Client Relay, start an API server, start the test runner in client mode, then start up the SDK client.
+
+```shell
+docker run \
+    --rm -d \
+    -v ./test-data:/app/test-data \
+    -p 5000:5000 \
+    -t Eppo-exp/test-api-server:local
+
+../<SDK_DIR>/build-and-run.sh
+
+SDK_NAME=android yarn dev --type=client
+
+# Start client application to auto-connect
+```
+
+Or, use the latest docker image of the test runner
+
+```shell
+
+ docker run \
+    --rm \
+    --name test-runner \
+    -e SDK_NAME=android \
+    -p 3000:3000 \
+    -v ./test-data:/app/test-data:ro \
+    -t Eppo-exp/sdk-test-runner  \
+    --type=client
+
+```
+
+Once the Client application conencts to the test-runner, it will proceed to send test cases over the established `socket.io` connection.
+
 #### Command line arguments
 
 `--junit=<filepath>` records results in junit xml format to specified file
+`--type=<"client"|"server">` SDK relay testing mode. Default: `server`
 
 #### Test Runner Configuration
 
@@ -54,6 +92,7 @@ The following env variable can be set when running the `test-sdk.sh` script
 The following components are required to use the the package test runner with a new SDK
 
 1. An **SDK relay server**. This is a REST server running at `localhost:4000` resonding to the [Asssignment and Bandit Request API](#sdk-relay-server)
+   1. OR, an **SDK relay client**. This is a client application that connects to the SDK test runner via `socket.io` and responses to [Assignment requests](#sdk-relay-client)
 2. A `build-and-run.sh` file which, given a properly configured environment, [builds the SDK Relay Server application](#build-and-runsh) **using the specified version of the SDK package**.
 
 The following are key components derived from above which allow for convenient and consistent dev-ops.
@@ -65,6 +104,75 @@ Finally, these are the advanced items to integrate the new package test into our
 
 1. Github Action to run test configured for SDK (TODO: Create example)
 2. Github workflows (in SDK repository and `sdk-test-data` repository) to run the test. (TODO: create example)
+
+### SDK Relay Client
+
+This is a client application which connects to the test runner via `socket.io` and waits for assignment requests ("client" SDKs do not yet support bandits). The interface for assignment request and responses is the same as the server API detailed below, with the exception that requests will be sent to a `socket.io` channel instead of via HTTP POST. The SDK Relay client sends a `READY` message to the test runner and then listens for requests under the same paths as the SDK Server API. See the example below from the Android relay.
+
+```java
+
+  // Some code omitted; see repo for full implementation
+
+  mSocket.on("/sdk/reset", onSdkReset);
+  mSocket.on("/flags/v1/assignment", onNewAssignment); // Same path as server request.
+
+  private void sendReady() {
+    mSocket.emit(
+        "READY",
+        new String[] {READY_PACKET},
+        (ackArgs) -> {
+          Log.d(TAG, "Ready message ack'd");
+        });
+  }
+
+  private final Emitter.Listener onNewAssignment =
+      args ->
+          runOnUiThread(
+              () -> {
+                // Ack function for responding to the server.
+                Ack ack = (Ack) args[args.length - 1];
+
+                AssignmentRequest assignmentRequest;
+                try {
+                  assignmentRequest =
+                      objectMapper.readValue(args[0].toString(), AssignmentRequest.class);
+
+                  EppoClient client = EppoClient.getInstance();
+
+                  // Convert the subject attributes map to an `Attributes` instance.
+                  Attributes subject = convertAttributesMapToAttributes(assignmentRequest);
+
+                  // Wrapper to get call SDK function by `assignmentType`.
+                  Object result = getResult(assignmentRequest, client, subject);
+
+                  TestResponse testResponse = new TestResponse(result);
+
+                  // "return" the result.
+                  ack.call(objectMapper.writeValueAsString(testResponse));
+                } catch (JsonProcessingException e) {
+                  ack.call(genericErrorResponse());
+                  throw new RuntimeException(e);
+                }
+              });
+
+
+  @NonNull private Object getResult(
+      AssignmentRequest assignmentRequest, EppoClient client, Attributes subject)
+      throws JsonProcessingException {
+    switch (assignmentRequest.assignmentType) {
+      case "STRING":
+        return client.getStringAssignment(
+            assignmentRequest.flag,
+            assignmentRequest.subjectKey,
+            subject,
+            (String) assignmentRequest.defaultValue);
+
+      case "INTEGER":
+        // etc.
+    }
+  }
+
+```
 
 ### SDK Relay Server
 

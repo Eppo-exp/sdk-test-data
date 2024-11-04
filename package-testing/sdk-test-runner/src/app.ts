@@ -8,35 +8,90 @@ import { BanditActionRequest } from './dto/banditActionRequest';
 import { TestResponse } from './dto/testResponse';
 import { Scenario, Scenarios } from './dto/scenario';
 import { TestCase, TestSuite, TestSuiteReport, getJunitXml } from 'junit-xml';
+import { Config, SdkType } from './config';
+import {
+  ClientSDKRelay,
+  FeatureNotSupportedError,
+  SDKConnectionFailure,
+  SDKInfo,
+  SDKRelay,
+  ServerSDKRelay,
+} from './protocol';
 
 export default class App {
-  public constructor(
-    private readonly sdkName: string,
-    private readonly sdkServer: string,
-    private readonly apiServer: string,
-    private readonly testDataPath: string,
-    private readonly scenarioFile: string,
-    private readonly junitFile: string,
-  ) {}
+  private readonly config: Config;
 
-  private printHeader(): void {
-    log(`Firing up test runner for ${this.sdkName}`);
-    log(`Posting test cases to SDK server at ${this.sdkServer}`);
-    log(`Controlling configuration server at ${this.apiServer}`);
+  public constructor(config: Config) {
+    this.config = config;
   }
 
   public async run() {
     this.printHeader();
 
-    const testConfig = JSON.parse(fs.readFileSync(path.join(this.testDataPath, this.scenarioFile), 'utf-8'));
-    const scenarios = testConfig['scenarios'] as Scenarios;
+    const testingResult = await (this.config.sdkType === SdkType.SERVER ? this.runServerTest() : this.runClientTest());
 
-    if (Object.keys(scenarios).length == 0) {
-      log(red('Error: empty scenario list'));
-      return 1;
+    // Exit 0 if the test run was successful.
+    const exitCode = testingResult ? 0 : 1;
+    process.exit(exitCode);
+  }
+
+  public async runClientTest(): Promise<boolean> {
+    log('Waiting for SDK Client to connect');
+
+    const sdkRelay = new ClientSDKRelay();
+    const sdkInfo = await sdkRelay.isReady();
+    if ('errorMessage' in sdkInfo) {
+      const error = sdkInfo as SDKConnectionFailure;
+      log(red('SDK Relay Client failed to load: '));
+      log(red(error.errorMessage));
+      return false;
     }
 
-    const testSuiteResults: TestSuite[] = await this.runTestScenarios(scenarios);
+    const sdk = sdkInfo as SDKInfo;
+    log(`Sending test requests to ${sdk.sdkName}`);
+
+    return this.innerRun(sdkRelay);
+  }
+
+  public async runServerTest(): Promise<boolean> {
+    this.printHeader();
+
+    const sdkRelay = new ServerSDKRelay(this.config.sdkServer, this.config.sdkName);
+    const sdkInfo = await sdkRelay.isReady();
+    if ('errorMessage' in sdkInfo && typeof sdkInfo.errorMessage === 'string') {
+      const error = sdkInfo as SDKConnectionFailure;
+      log(red('SDK Relay Server failed to load: '));
+      log(red(error.errorMessage));
+      return false;
+    }
+
+    log(`Posting test cases to ${this.config.sdkName} relay server at ${this.config.sdkServer}`);
+
+    return this.innerRun(sdkRelay);
+  }
+
+  private printHeader(): void {
+    log(`Running tests for ${this.config.sdkType} SDK: ${this.config.sdkName}`);
+    log(`Test Cluster Details`);
+    log(`API/Configuration server: ${this.config.apiServer}`);
+
+    if (this.config.sdkType === SdkType.SERVER) {
+      log(`SDK Relay server: ${this.config.sdkServer}`);
+    }
+  }
+
+  private async innerRun(sdkRelay: SDKRelay): Promise<boolean> {
+    const testConfig = JSON.parse(
+      fs.readFileSync(path.join(this.config.testDataPath, this.config.scenarioFile), 'utf-8'),
+    );
+    const scenarios = testConfig['scenarios'] as Scenarios;
+
+    if (Object.keys(scenarios).length === 0) {
+      log(red('Error: empty scenario list'));
+      return false;
+    }
+
+    const testSuiteResults: TestSuite[] = await this.runTestScenarios(scenarios, sdkRelay);
 
     const numTestCases = testSuiteResults.reduce((prev, cur) => prev + cur.testCases.length, 0);
 
@@ -45,31 +100,34 @@ export default class App {
       0,
     );
 
-    const passes = numTestCases - numFailures;
+    const numSkipped = testSuiteResults.reduce(
+      (prev, cur) => cur.testCases.filter((testCase) => testCase.skipped).length + prev,
+      0,
+    );
 
-    log('*** Test Results *** ');
-    log(green(`${passes}/${numTestCases} passed`));
+    const passes = numTestCases - numFailures - numSkipped;
+
+    log(`*** Test Results for ${this.config.sdkName} *** `);
+    const skippedText = numSkipped > 0 ? ` (${numSkipped} skipped)` : '';
+    log(green(`${passes}/${numTestCases} passed${skippedText}`));
+
     const failureFunc = numFailures > 0 ? red : green;
     log(failureFunc(`${numFailures} failures`));
 
     // Junit support.
-    if (this.junitFile) {
-      this.writeJUnitReport(testSuiteResults, 'A report name', this.junitFile);
+    if (this.config.junitFilePath) {
+      const reportName = `Eppo SDK Test: ${this.config.sdkName}`;
+      this.writeJUnitReport(testSuiteResults, reportName, this.config.junitFilePath);
     }
 
-    // Exit 1 if there were test failures
-    if (numFailures > 0) {
-      return 1;
-    } else {
-      return 0;
-    }
+    return numFailures === 0;
   }
 
-  async runTestScenarios(scenarios: Scenarios): Promise<TestSuite[]> {
+  async runTestScenarios(scenarios: Scenarios, sdkRelay: SDKRelay): Promise<TestSuite[]> {
     const suites: TestSuite[] = [];
 
     for (const scenarioName of Object.keys(scenarios)) {
-      suites.push(await this.testScenario(scenarioName, scenarios[scenarioName]));
+      suites.push(await this.testScenario(scenarioName, scenarios[scenarioName], sdkRelay));
     }
     return suites;
   }
@@ -82,19 +140,19 @@ export default class App {
     const junitXml = getJunitXml(testSuiteReport);
     fs.writeFileSync(junitFile, junitXml);
 
-    log(green(`Test results written to $junitFile`));
+    log(green(`Test results written to ${junitFile}`));
   }
 
-  private testScenario = async (scenarioName: string, scenario: Scenario): Promise<TestSuite> => {
-    const safeSdkName = encodeURIComponent(this.sdkName);
+  private testScenario = async (scenarioName: string, scenario: Scenario, sdkRelay: SDKRelay): Promise<TestSuite> => {
+    const safeSdkName = encodeURIComponent(this.config.sdkName);
     const testCaseResults: TestCase[] = [];
 
     const suite: TestSuite = { name: scenarioName, timestamp: new Date(), testCases: testCaseResults };
 
     const scenarioSet = (await axios
-      .post(`${this.apiServer}/sdk/${safeSdkName}/scenario`, { label: scenarioName })
+      .post(`${this.config.apiServer}/sdk/${safeSdkName}/scenario`, { label: scenarioName })
       .then((result) => {
-        if (result.status != 200) {
+        if (result.status !== 200) {
           throw new Error(`API Server returned unexpected status: ${result.status}`);
         } else {
           log(`Set Testing Scenario to ${scenarioName}`);
@@ -114,15 +172,11 @@ export default class App {
     }
 
     // Reset the SDK relay to force a reload of configuration.
-    const sdkReady = (await axios
-      .post(`${this.sdkServer}/sdk/reset`, {})
-      .then((result) => {
-        if (result.status != 200) {
-          throw new Error(`API Server returned unexpected status: ${result.status}`);
-        } else {
-          log(green(`SDK Relay Ready`));
-          return { name: `SDK Relay Ready`, assertions: 1 };
-        }
+    const sdkReady = (await sdkRelay
+      .reset()
+      .then(() => {
+        log(green(`SDK Relay Ready`));
+        return { name: `SDK Relay Ready`, assertions: 1 };
       })
       .catch((error) => {
         log(red('Error encountered when resetting SDK Relay:', error));
@@ -137,10 +191,10 @@ export default class App {
     }
     log(`Loading test files for scenario, ${scenarioName}`);
 
-    const testCaseDir = path.join(this.testDataPath, scenario.testCases);
+    const testCaseDir = path.join(this.config.testDataPath, scenario.testCases);
 
     const testCases = fs.readdirSync(testCaseDir);
-    if (testCases.length == 0) {
+    if (testCases.length === 0) {
       testCaseResults.push({ name: testCaseDir, errors: [{ message: 'No test case files found' }] });
     }
 
@@ -164,60 +218,76 @@ export default class App {
       // Flag testing!!
       const isFlagTest = testCaseObj['variationType'];
 
-      const requestPath = isFlagTest ? '/flags/v1/assignment' : '/bandits/v1/action';
-
-      if (testCaseObj['subjects'].length == 0) {
+      if (testCaseObj['subjects'].length === 0) {
         testCaseResults.push({ name: testCase, errors: [{ message: 'No test subjects found' }] });
       }
 
       // Loop through the subjects and get their assignments.
       for (const subject of testCaseObj['subjects']) {
-        const payload = isFlagTest
-          ? ({
+        const subjectKey = subject['subjectKey'];
+
+        const testCaseLabel = `${flag}[${subjectKey}]`;
+
+        // Prep a test case for the report
+        const testCaseResult: TestCase = { name: `${testCaseLabel}`, classname: child };
+
+        // Post the test case to the SDK relay and check the results.
+
+        const result = isFlagTest
+          ? sdkRelay.getAssignment({
               flag,
-              subjectKey: subject['subjectKey'],
+              subjectKey: subjectKey,
               assignmentType: testCaseObj['variationType'],
               defaultValue,
               subjectAttributes: subject['subjectAttributes'],
             } as AssignmentRequest)
-          : ({
+          : sdkRelay.getBanditAction({
               flag,
-              subjectKey: subject['subjectKey'],
+              subjectKey: subjectKey,
               defaultValue,
               subjectAttributes: subject['subjectAttributes'],
               actions: subject['actions'],
             } as BanditActionRequest);
 
-        // Post the test case to the SDK relay and check the results.
-        const testCaseResult: TestCase = { name: `${flag}[${payload.subjectKey}]`, classname: child };
-        await axios
-          .post(`${this.sdkServer}${requestPath}`, payload)
-          .then((result) => {
-            const results = result.data as TestResponse;
-
-            const passed = App.isResultCorrect(results, subject);
-
+        await result
+          .then((result: TestResponse) => {
             // Record the results as the "system out"
-            testCaseResult.systemOut = JSON.stringify(result.data as string).split('\n');
+            testCaseResult.systemOut = JSON.stringify(result).split('\n');
 
-            if (!passed) {
+            if (result.error) {
+              testCaseResult.errors ??= [];
+              testCaseResult.errors.push({
+                message: result.error,
+              });
+
+              logIndent(1, red('fail') + ` ${testCaseLabel}: ${result.result} != ${subject.assignment}`);
+            } else if (!App.isResultCorrect(result, subject)) {
               testCaseResult.failures ??= [];
               testCaseResult.failures.push({
-                message: `Value ${results.result} did not match expected ${subject.assignment}`,
+                message: `Value ${result.result} did not match expected ${subject.assignment}`,
               });
+
+              logIndent(1, red('fail') + ` ${testCaseLabel}: ${result.result} != ${subject.assignment}`);
             } else {
               testCaseResult.assertions = 1;
-            }
 
-            logIndent(1, (passed ? green('pass') : red('fail')) + ` ${flag}[${payload.subjectKey}] `);
+              logIndent(1, green('pass') + ` ${testCaseLabel}`);
+            }
           })
           .catch((error) => {
-            log(red('Error:'), error);
-            testCaseResult.errors ??= [];
-            testCaseResult.errors.push({
-              message: `Error encountered during test: ${error.message}`,
-            });
+            if (error instanceof FeatureNotSupportedError) {
+              // Skip this test
+              logIndent(1, yellow('skipped') + ` ${testCaseLabel}: SDK does not support this feature`);
+              testCaseResult.skipped = true;
+            } else {
+              log(red('Error1:'), error);
+              testCaseResult.errors ??= [];
+              testCaseResult.errors.push({
+                message: `Error encountered during test: ${error.message}`,
+              });
+            }
           });
+
         testCaseResults.push(testCaseResult);
       }
     }

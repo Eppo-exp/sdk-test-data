@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getDataForRequest, updateClientDataMap } from './ufc/data';
+import { getDataForRequest, isObfuscatedSdk, updateClientDataMap } from './ufc/data';
 
 const routes = Router();
 
@@ -17,13 +17,22 @@ routes.get('/api/flag-config/v1/config', (req, res) => {
   if (data) {
     // Some SDKs use HTTP headers to optimize network bytes and sdk-side processing.
     const noneMatch = req.header('IF-NONE-MATCH');
-    if (noneMatch === data.eTag) {
+    const eTagToMatch = isObfuscatedSdk(sdk) ? data.obfuscatedETag : data.eTag;
+
+    if (noneMatch === eTagToMatch) {
+      console.log(`Returning not modified`);
       res.setHeader('ETAG', data.eTag);
       return res.status(304).end();
     }
 
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('ETAG', data.eTag);
+
+    // Check if it should be an obfuscated response
+    if (isObfuscatedSdk(sdk)) {
+      console.log(`Returning obfuscated config`);
+      return res.status(200).end(data.obfuscatedUfc);
+    }
     return res.status(200).end(data.ufc);
   }
 
