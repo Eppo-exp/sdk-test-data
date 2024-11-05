@@ -165,6 +165,8 @@ case "$command" in
           -v ./test-data:/app/test-data:ro \
           --name eppo-sdk-test-runner \
           -t Eppo-exp/sdk-test-runner:latest "--junit=logs/results.xml"
+        
+        EXIT_CODE=$?
 
         echo_yellow "Logs LS from Script"
         ls logs
@@ -180,8 +182,10 @@ case "$command" in
         docker container remove eppo-sdk-test-runner #already stopped at this point
 
         pkill -P $SDK_RELAY_PID
+
+        echo "Exiting with code ${EXIT_CODE}"
         
-        exit 0
+        exit $EXIT_CODE
         ;;
     client)
         echo_red "Client mode not yet implemented"
