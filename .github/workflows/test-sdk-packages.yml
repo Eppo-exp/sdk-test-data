@@ -32,12 +32,15 @@ jobs:
     
     - name: Test information header   
       shell: bash
-      run: echo "Running Test Cluster for ${{ matrix.sdk.sdkName }}"
+      run: echo "Running Test Cluster for ${SDK_NAME}"
 
 
     - name: Get current date
       id: date
-      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      run: |
+        echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        echo "SAFE_SDK_NAME=$(echo \"${SDK_NAME}\" | sed 's/\//_/g')" >> $GITHUB_ENV
+        
 
     - uses: actions/checkout@v3
 
@@ -58,7 +61,7 @@ jobs:
     - name: Run tests
       run: |
         pushd package-testing/sdk-test-runner
-        ./test-sdk.sh server ${{ matrix.sdk.sdkName }}
+        ./test-sdk.sh server ${SDK_NAME}
         ls -al ./logs
         popd
         
@@ -73,9 +76,10 @@ jobs:
 
     - name: Upload Logs
       if: success() || failure() # always run even if the previous steps fail
+
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ steps.date.outputs.date }}-${{ matrix.sdk.sdkName }}-sdk-test-logs
+        name: ${{ steps.date.outputs.date }}-${{ env.SAFE_SDK_NAME }}-test-logs
         path: package-testing/sdk-test-runner/logs/
 
     - name: Publish Test Report

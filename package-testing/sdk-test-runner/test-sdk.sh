@@ -158,9 +158,10 @@ case "$command" in
         echo $(pwd)"/logs"
         
         docker run \
+          --add-host host.docker.internal:host-gateway \
           -e SDK_NAME \
-          -e EPPO_API_HOST \
-          -e SDK_RELAY_HOST \
+          -e EPPO_API_HOST=host.docker.internal \
+          -e SDK_RELAY_HOST=host.docker.internal \
           -e EPPO_API_PORT \
           -v ./logs:/app/logs \
           -v ./test-data:/app/test-data:ro \
@@ -168,11 +169,6 @@ case "$command" in
           -t Eppo-exp/sdk-test-runner:latest "--junit=logs/results.xml"
         
         EXIT_CODE=$?
-
-        echo_yellow "Logs LS from Script"
-        ls logs
-
-
 
         echo "  ... Downing the docker containers"
         docker logs eppo-api >& logs/api.log

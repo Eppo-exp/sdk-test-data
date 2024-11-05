@@ -7,10 +7,9 @@ if [ -e .env ]; then
   source .env
 fi
 
-if [ "$( docker container inspect -f '{{.State.Status}}' php-relay )" = "running" ]; then
-  docker stop php-relay
-  docker remove php-relay
-fi
+
+docker stop php-relay
+docker remove php-relay
 
 docker build . -t Eppo-exp/php-sdk-relay:$VERSION
 docker run  -p $SDK_RELAY_PORT:$SDK_RELAY_PORT \
