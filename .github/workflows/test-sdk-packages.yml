@@ -22,6 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
         SDK_NAME: ${{matrix.sdk.sdkName}}
+        SDK_DIR: ${{ matrix.sdk.sdkDir }}
         EPPO_API_HOST: ${{matrix.sdk.hostAddressFromDocker}}
         SDK_RELAY_HOST: ${{matrix.sdk.hostAddressFromDocker}}
         TEST_RUNNER_HOST: ${{matrix.sdk.hostAddressFromDocker}}
@@ -55,15 +56,21 @@ jobs:
         popd
 
     - name: Run tests
-      env:
-        SDK_DIR: ${{ matrix.sdk.sdkDir }}
       run: |
         pushd package-testing/sdk-test-runner
         ./test-sdk.sh server ${{ matrix.sdk.sdkName }}
         ls -al ./logs
         popd
 
+    - name: Upload Logs
+      if: success() || failure() # always run even if the previous steps fail
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ steps.date.outputs.date }}-${{ matrix.sdk.sdkName }}-sdk-test-logs
+        path: logs/
+
     - name: Test Report
+      if: success() || failure() # always run even if the previous steps fail
       run: |
         echo "Link to the rendered test report"
         pushd package-testing/sdk-test-runner      
