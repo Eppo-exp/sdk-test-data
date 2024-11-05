@@ -16,7 +16,7 @@ jobs:
         sdk:
           - { sdkName: "eppo/php-sdk", 
               sdkDir: "php-sdk-relay",
-              hostAddressFromDocker: "172.18.0.1"
+              hostAddressFromDocker: "localhost"
             }
 
     runs-on: ubuntu-latest
