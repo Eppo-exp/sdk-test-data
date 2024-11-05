@@ -38,6 +38,7 @@ function wait_for_url() {
 
   while [[ $attempt -le $max_attempts ]]; do
     curl --silent --output /dev/null --fail "$url" && { return 1; }
+    echo "Waiting attempt numer ${attempt}"
     sleep 1
     ((attempt++))
   done
