@@ -7,18 +7,26 @@ on:
 jobs:
 
   test-packaged-server-sdks:
+
+
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
         sdk:
-          - { sdkName: "eppo/php-sdk", sdkDir: "php-sdk-relay" }
+          - { sdkName: "eppo/php-sdk", 
+              sdkDir: "php-sdk-relay",
+              hostAddressFromDocker: "172.18.0.1"
+            }
 
     runs-on: ubuntu-latest
     steps:
-    - name: Test information header
+    - name: Test information header   
       env:
         SDK_NAME: ${{matrix.sdk.sdkName}}
+        EPPO_API_HOST: ${{matrix.sdk.hostAddressFromDocker}}
+        SDK_RELAY_HOST: ${{matrix.sdk.hostAddressFromDocker}}
+        TEST_RUNNER_HOST: ${{matrix.sdk.hostAddressFromDocker}}
       shell: bash
       run: echo "Running Test Cluster for ${{ matrix.sdk.sdkName }}"
 
