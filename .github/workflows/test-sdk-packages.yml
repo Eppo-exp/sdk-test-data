@@ -20,13 +20,16 @@ jobs:
             }
 
     runs-on: ubuntu-latest
-    steps:
-    - name: Test information header   
-      env:
+    env:
         SDK_NAME: ${{matrix.sdk.sdkName}}
         EPPO_API_HOST: ${{matrix.sdk.hostAddressFromDocker}}
         SDK_RELAY_HOST: ${{matrix.sdk.hostAddressFromDocker}}
         TEST_RUNNER_HOST: ${{matrix.sdk.hostAddressFromDocker}}
+
+    steps:
+
+    
+    - name: Test information header   
       shell: bash
       run: echo "Running Test Cluster for ${{ matrix.sdk.sdkName }}"
 
