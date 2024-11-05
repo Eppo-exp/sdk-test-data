@@ -39,7 +39,7 @@ jobs:
       id: date
       run: |
         echo "::set-output name=date::$(date +'%Y-%m-%d')"
-        echo "SAFE_SDK_NAME=$(echo \"${SDK_NAME}\" | sed 's/\//_/g')" >> $GITHUB_ENV
+        echo "SAFE_SDK_NAME=$(echo ${SDK_NAME} | sed 's/\//_/g')" >> $GITHUB_ENV
         
 
     - uses: actions/checkout@v3
