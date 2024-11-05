@@ -129,8 +129,10 @@ case "$command" in
         pushd ../$SDK_DIR
 
         if [ -f container-run.sh ]; then
+           echo "    ... Starting SDK Relay Container"
           ./container-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
         elif [ -f build-and-run.sh ]; then
+           echo "    ... Starting SDK Relay Build Script"
           ./build-and-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
         else
           exit_with_message "SDK Relay does not have a launch script in $SDK_DIR"
@@ -143,6 +145,8 @@ case "$command" in
         echo_yellow "    ... Waiting to verify server is up"
         wait_for_url http://${SDK_RELAY_HOST}:${SDK_RELAY_PORT} 
         if [[ $? -eq 0 ]]; then
+          echo_yellow "Relay Server Logs"
+          cat ${RUNNER_DIR}/logs/sdk.log
           exit_with_message "    ... SDK Relay server failed to start"
         fi
         echo_green "    ... SDK Relay server has started"
