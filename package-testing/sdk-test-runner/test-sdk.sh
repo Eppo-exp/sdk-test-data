@@ -38,7 +38,7 @@ function wait_for_url() {
 
   while [[ $attempt -le $max_attempts ]]; do
     curl --silent --output /dev/null --fail "$url" && { return 1; }
-    echo "Waiting attempt numer ${attempt}"
+    echo "Waiting attempt number ${attempt}"
     sleep 1
     ((attempt++))
   done
@@ -159,8 +159,8 @@ case "$command" in
         
         docker run \
           -e SDK_NAME \
-          -e EPPO_API_HOST=host.docker.internal \
-          -e SDK_RELAY_HOST=host.docker.internal \
+          -e EPPO_API_HOST \
+          -e SDK_RELAY_HOST \
           -e EPPO_API_PORT \
           -v ./logs:/app/logs \
           -v ./test-data:/app/test-data:ro \

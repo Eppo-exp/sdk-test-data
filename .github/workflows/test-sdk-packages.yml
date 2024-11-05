@@ -61,27 +61,28 @@ jobs:
         ./test-sdk.sh server ${{ matrix.sdk.sdkName }}
         ls -al ./logs
         popd
+        
+    - name: Logs
+      if: success() || failure() # always run even if the previous steps fail
+      run: |
+        echo "List log files"
+        pushd package-testing/sdk-test-runner
+        ls logs
+        popd
+
 
     - name: Upload Logs
       if: success() || failure() # always run even if the previous steps fail
       uses: actions/upload-artifact@v4
       with:
         name: ${{ steps.date.outputs.date }}-${{ matrix.sdk.sdkName }}-sdk-test-logs
-        path: logs/
+        path: package-testing/sdk-test-runner/logs/
 
-    - name: Test Report
+    - name: Publish Test Report
+      uses: mikepenz/action-junit-report@v5
       if: success() || failure() # always run even if the previous steps fail
-      run: |
-        echo "Link to the rendered test report"
-        pushd package-testing/sdk-test-runner      
-        ls logs
-        popd
-
-    # - name: Publish Test Report
-    #   uses: mikepenz/action-junit-report@v5
-    #   if: success() || failure() # always run even if the previous steps fail
-    #   with:
-    #     report_paths: 'package-testing/sdk-test-runner/logs/TEST-*.xml'
+      with:
+        report_paths: 'package-testing/sdk-test-runner/logs/results.xml'
 
     # - name: Test Report
     # if: success() || failure() # always run even if the previous steps fail

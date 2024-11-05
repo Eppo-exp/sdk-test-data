@@ -141,7 +141,7 @@ export default class App {
     const junitXml = getJunitXml(testSuiteReport);
     fs.writeFileSync('./' + junitFile, junitXml);
 
-    log(green(`Test results written to ${process.cwd()} SLASH ${junitFile}`));
+    log(green(`Test results written to ${junitFile}`));
   }
 
   private testScenario = async (scenarioName: string, scenario: Scenario, sdkRelay: SDKRelay): Promise<TestSuite> => {
