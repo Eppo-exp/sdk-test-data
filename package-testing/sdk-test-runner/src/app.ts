@@ -116,6 +116,7 @@ export default class App {
 
     // Junit support.
     if (this.config.junitFilePath) {
+      log(`Writing test results to ${this.config.junitFilePath}`);
       const reportName = `Eppo SDK Test: ${this.config.sdkName}`;
       this.writeJUnitReport(testSuiteResults, reportName, this.config.junitFilePath);
     }
@@ -138,9 +139,9 @@ export default class App {
       suites: testSuites,
     };
     const junitXml = getJunitXml(testSuiteReport);
-    fs.writeFileSync(junitFile, junitXml);
+    fs.writeFileSync('./' + junitFile, junitXml);
 
-    log(green(`Test results written to ${junitFile}`));
+    log(green(`Test results written to ${process.cwd()} SLASH ${junitFile}`));
   }
 
   private testScenario = async (scenarioName: string, scenario: Scenario, sdkRelay: SDKRelay): Promise<TestSuite> => {

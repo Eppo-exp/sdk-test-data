@@ -1,0 +1,45 @@
+name: Test Packaged Server SDKs
+
+on:
+  workflow_dispatch:
+
+env:
+  VERSION: 1.0.0
+  TAR_NAME: sdk-test-runner-latest.tar
+
+jobs:
+
+  build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3    
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+   
+    - name: Build and export
+      uses: docker/build-push-action@v6
+      with:
+        tags: Eppo-exp/sdk-test-runner:latest,Eppo-exp/sdk-test-runner:${{ env.VERSION }}
+        outputs: type=docker,dest=/tmp/${{ env.TAR_NAME }}
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: sdk-test-runner
+        path: /tmp/${{ env.TAR_NAME}}
+
+# use:
+#     runs-on: ubuntu-latest
+#     needs: build
+#     steps:
+#       - name: Download artifact
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: sdk-test-runner
+#           path: /tmp
+        
+#       - name: Load image
+#         run: |
+#           docker load --input /tmp/${{ env.TAR_NAME}}
+#           docker image ls -a       

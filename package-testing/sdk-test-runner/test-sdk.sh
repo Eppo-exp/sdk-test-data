@@ -1,4 +1,6 @@
 #!/bin/bash
+trap "exit 1" TERM
+export TOP_PID=$$
 
 # Usage:
 #
@@ -45,7 +47,7 @@ function wait_for_url() {
 
 function exit_with_message() {
   echo_red "$1"
-  exit 1
+   kill -s TERM $TOP_PID
 }
 
 # Parse command-line arguments
@@ -121,10 +123,19 @@ case "$command" in
        
         echo "  ... Starting Test Cluster node [${SDK_DIR}]"
 
-        # change directory to the SDK relay then build-and-run
+        # change directory to the SDK relay then run the SDK relay server
         RUNNER_DIR=$(pwd)
+        mkdir -p ${RUNNER_DIR}/logs
         pushd ../$SDK_DIR
-        ./build-and-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+
+        if [ -f container-run.sh ]; then
+          ./container-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+        elif [ -f build-and-run.sh ]; then
+          ./build-and-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+        else
+          exit_with_message "SDK Relay does not have a launch script in $SDK_DIR"
+        fi
+
         SDK_RELAY_PID=$!
         popd
 
@@ -137,6 +148,9 @@ case "$command" in
         echo_green "    ... SDK Relay server has started"
 
         echo "  ... Starting Test Cluster node [Eppo-exp/sdk-test-runner]"
+
+        echo_yellow "Mounting directory for logs"
+        echo $(pwd)"/logs"
         
         docker run \
           -e SDK_NAME \
@@ -147,6 +161,10 @@ case "$command" in
           -v ./test-data:/app/test-data:ro \
           --name eppo-sdk-test-runner \
           -t Eppo-exp/sdk-test-runner:latest "--junit=logs/results.xml"
+
+        echo_yellow "Logs LS from Script"
+        ls logs
+
 
 
         echo "  ... Downing the docker containers"
@@ -159,6 +177,7 @@ case "$command" in
 
         pkill -P $SDK_RELAY_PID
         
+        exit 0
         ;;
     client)
         echo_red "Client mode not yet implemented"
