@@ -2,6 +2,7 @@ name: Test Packaged Server SDKs
 
 on:
   workflow_dispatch:
+  push:
 
 env:
   VERSION: 1.0.0
