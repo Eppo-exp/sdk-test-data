@@ -228,7 +228,7 @@
             ],
             "totalShards": 10000
         },
-        "cold_start_bandit": {
+        "cold_start_bandit_flag": {
             "key": "cold_start_bandit_flag",
             "enabled": true,
             "variationType": "STRING",
