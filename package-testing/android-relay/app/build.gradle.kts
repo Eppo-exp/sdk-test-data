@@ -16,7 +16,7 @@ val testRunnerHost: String = System.getenv("TEST_RUNNER_HOST") ?: "http://10.0.2
 val testRunnerPort: String = System.getenv("TEST_RUNNER_PORT")  ?: "3000"
 
 val eppoAPIHost: String = System.getenv("EPPO_API_HOST") ?: "http://10.0.2.2"
-val appoAPIPort: String = System.getenv("EPPO_API_PORT")  ?: "5000"
+val eppoAPIPort: String = System.getenv("EPPO_API_PORT")  ?: "5000"
 
 
 android {
@@ -41,7 +41,7 @@ android {
         buildConfigField( "String", "TEST_RUNNER_HOST", "\"" +testRunnerHost+ "\"")
         buildConfigField( "String", "TEST_RUNNER_PORT", "\"" +testRunnerPort+ "\"")
         buildConfigField( "String", "EPPO_API_HOST", "\"" +eppoAPIHost+ "\"")
-        buildConfigField( "String", "EPPO_API_PORT", "\"" +appoAPIPort+ "\"")
+        buildConfigField( "String", "EPPO_API_PORT", "\"" +eppoAPIPort+ "\"")
     }
 
     buildTypes {
@@ -104,7 +104,7 @@ dependencies {
     if (sdkVersion != "") {
         implementation("cloud.eppo:android-sdk:${sdkVersion}")
     } else if (sdkRef  != "") {
-        implementation( project(":android-sdk")) // Requires the repo be cloned prior to buildingg
+        implementation(project(":android-sdk")) // Requires the repo be cloned prior to building
     } else {
         // Default implementation
         implementation(libs.eppo.android.sdk)

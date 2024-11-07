@@ -35,6 +35,7 @@ import org.json.JSONObject
 
 class TestClientActivity : ComponentActivity() {
   private val objectMapper: ObjectMapper = ObjectMapper()
+  private lateinit var socketHandler: SocketHandler
 
   data class AssignmentRequest(
       val flag: String,
@@ -64,15 +65,16 @@ class TestClientActivity : ComponentActivity() {
     super.onCreate(savedInstanceState)
 
     // Initialize the socket connection
-    SocketHandler.setSocket(
+    socketHandler = SocketHandler()
+    socketHandler.setSocket(
         host = BuildConfig.TEST_RUNNER_HOST, port = BuildConfig.TEST_RUNNER_PORT)
 
     // Set listeners
-    SocketHandler.mSocket.on("connect_error") { args -> handleConnectError(args) }
-    SocketHandler.mSocket.on("connect") { args -> handleConnect(args) }
-    SocketHandler.mSocket.on("disconnect") { args -> handleDisconnect(args) }
-    SocketHandler.mSocket.on("/sdk/reset") { args -> handleReset(args) }
-    SocketHandler.mSocket.on("/flags/v1/assignment") { args -> handleAssignment(args) }
+    socketHandler.socket.on("connect_error") { args -> handleConnectError(args) }
+    socketHandler.socket.on("connect") { args -> handleConnect(args) }
+    socketHandler.socket.on("disconnect") { args -> handleDisconnect(args) }
+    socketHandler.socket.on("/sdk/reset") { args -> handleReset(args) }
+    socketHandler.socket.on("/flags/v1/assignment") { args -> handleAssignment(args) }
 
     // Set the UI
     setContent {
@@ -83,7 +85,7 @@ class TestClientActivity : ComponentActivity() {
 
     // Connect to the test runner
     status.postValue(getString(R.string.connecting))
-    reInitializeEppoClient().thenRun({ SocketHandler.establishConnection() })
+    reInitializeEppoClient().thenRun { socketHandler.establishConnection() }
   }
 
   private fun handleConnect(args: Array<Any>?) {
@@ -135,7 +137,7 @@ class TestClientActivity : ComponentActivity() {
     }
     val subjectAttributes = Attributes(eppoValues)
 
-    val result = getResult(assignmentRequest, client, subjectAttributes)
+    val result = getAssignmentFromClient(assignmentRequest, client, subjectAttributes)
     val jsonResult = JSONObject()
     when (result) {
       is JsonNode -> jsonResult.put("result", JSONObject(result.toString()))
@@ -149,8 +151,7 @@ class TestClientActivity : ComponentActivity() {
     status.postValue(getString(R.string.status_disconnected))
 
     // Shut down the connection and remove listeners
-    SocketHandler.mSocket.disconnect()
-    SocketHandler.mSocket.off()
+    socketHandler.closeConnection()
 
     runOnUiThread { Toast.makeText(this, "Test runner disconnected", Toast.LENGTH_LONG).show() }
   }
@@ -166,12 +167,11 @@ class TestClientActivity : ComponentActivity() {
   override fun onDestroy() {
     super.onDestroy()
 
-    SocketHandler.mSocket.disconnect()
-    SocketHandler.mSocket.off()
+    socketHandler.closeConnection()
   }
 
   private fun sendReady() {
-    SocketHandler.mSocket.emit("READY", arrayOf<String>(READY_PACKET)) {
+    socketHandler.socket.emit("READY", arrayOf<String>(READY_PACKET)) {
       Log.d(TAG, "Ready message acked")
     }
   }
@@ -187,7 +187,7 @@ class TestClientActivity : ComponentActivity() {
         .buildAndInitAsync()
   }
 
-  private fun getResult(
+  private fun getAssignmentFromClient(
       assignmentRequest: AssignmentRequest,
       client: EppoClient,
       subject: Attributes

@@ -4,29 +4,27 @@ import io.socket.client.IO
 import io.socket.client.Socket
 import java.net.URISyntaxException
 
-object SocketHandler {
+class SocketHandler {
 
-  lateinit var mSocket: Socket
+  private lateinit var _socket: Socket
+  val socket
+    get() = this._socket
 
   @Synchronized
   fun setSocket(host: String, port: String) {
     try {
-      mSocket = IO.socket("$host:$port")
-    } catch (e: URISyntaxException) {}
-  }
-
-  @Synchronized
-  fun getSocket(): Socket {
-    return mSocket
+      _socket = IO.socket("$host:$port")
+    } catch (_: URISyntaxException) {}
   }
 
   @Synchronized
   fun establishConnection() {
-    mSocket.connect()
+    _socket.connect()
   }
 
   @Synchronized
   fun closeConnection() {
-    mSocket.disconnect()
+    _socket.disconnect()
+    _socket.off()
   }
 }
