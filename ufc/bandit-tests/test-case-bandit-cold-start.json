@@ -53,7 +53,7 @@
       "assignment": {"variation": "cold_start_bandit", "action": "green"}
     },
     {
-      "subjectKey": "chelsea",
+      "subjectKey": "charles",
       "subjectAttributes": {
         "numericAttributes": {},
         "categoricalAttributes": {}
@@ -75,7 +75,7 @@
           "categoricalAttributes": {}
         }
       ],
-      "assignment": {"variation": "cold_start_bandit", "action": "green"}
+      "assignment": {"variation": "cold_start_bandit", "action": "blue"}
     }
   ]
 }
