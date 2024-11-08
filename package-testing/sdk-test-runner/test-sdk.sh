@@ -136,10 +136,7 @@ case "$command" in
           ./docker-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
         elif [ -f ${BUILD_AND_RUN_PLATFORM} ]; then
            echo "    ... Starting SDK Relay via platform build-and-run script"
-          ./build-and-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
-        elif [ -f build-and-run.sh ]; then
-           echo "    ... Starting SDK Relay via host build-and-run script"
-          ./build-and-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+          ./${BUILD_AND_RUN_PLATFORM} >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
         else
           exit_with_message "SDK Relay does not have a launch script in $SDK_DIR"
         fi
