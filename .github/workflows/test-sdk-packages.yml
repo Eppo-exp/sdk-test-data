@@ -3,7 +3,8 @@ name: Test Packaged Server SDKs
 on:
   workflow_dispatch:
   push:
-
+    paths:
+      .github/workflows/test-sdk-packages.yml
 jobs:
 
   test-packaged-server-sdks:
@@ -44,12 +45,16 @@ jobs:
 
     - uses: actions/checkout@v3
 
-    - name: Prepare test runner image
+    - name: Download Test Runner image
+      uses: actions/download-artifact@v4
+      with:
+        name: sdk-test-runner-image
+        path: /tmp/sdk-test-runner.tar
+        
+    - name: Load Test Runner image
       run: |
-        pushd package-testing/sdk-test-runner
-        docker build . -t Eppo-exp/sdk-test-runner:latest
-        echo "pull the latest instead"
-        popd
+        docker load --input /tmp/sdk-test-runner.tar
+        docker image ls -a       
 
     - name: Prepare testing API server image
       run: |
