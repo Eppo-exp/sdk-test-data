@@ -505,6 +505,101 @@
         }
       ]
     },
+    "00a7de33fe636eb6fb5dc73ac30f9974": {
+      "key": "00a7de33fe636eb6fb5dc73ac30f9974",
+      "enabled": true,
+      "variationType": "BOOLEAN",
+      "totalShards": 10000,
+      "variations": {
+        "b2Zm": {
+          "key": "b2Zm",
+          "value": "ZmFsc2U="
+        },
+        "b24=": {
+          "key": "b24=",
+          "value": "dHJ1ZQ=="
+        }
+      },
+      "allocations": [
+        {
+          "key": "b24tZm9yLU5BLTI=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
+                  "value": [
+                    "7516fd43adaa5e0b8a65a672c39845d2",
+                    "445d337b5cd5de476f99333df6b0c2a7",
+                    "8dbb07a18d46f63d8b3c8994d5ccc351"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "b24=",
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ],
+                  "salt": "c29tZS1zYWx0"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "b24tZm9yLWFnZS01MCstMg==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "32d35312e8f24bc1669bd2b45c00d47c",
+                  "attribute": "7d637d275668ed6d41a9b97e6ad3a556",
+                  "value": "NTA="
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "b24=",
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ],
+                  "salt": "c29tZS1zYWx0"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "b2ZmLWZvci1hbGwtMg==",
+          "doLog": true,
+          "rules": [],
+          "splits": [
+            {
+              "variationKey": "b2Zm",
+              "shards": []
+            }
+          ]
+        }
+      ]
+    },
     "dd2880e486d8a74a7daf902f93a19952": {
       "key": "dd2880e486d8a74a7daf902f93a19952",
       "enabled": true,
