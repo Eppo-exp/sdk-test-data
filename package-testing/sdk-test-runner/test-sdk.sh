@@ -1,4 +1,6 @@
 #!/bin/bash
+trap "exit 1" TERM
+export TOP_PID=$$
 
 # Usage:
 #
@@ -36,6 +38,7 @@ function wait_for_url() {
 
   while [[ $attempt -le $max_attempts ]]; do
     curl --silent --output /dev/null --fail "$url" && { return 1; }
+    echo "Waiting attempt number ${attempt}"
     sleep 1
     ((attempt++))
   done
@@ -45,7 +48,7 @@ function wait_for_url() {
 
 function exit_with_message() {
   echo_red "$1"
-  exit 1
+   kill -s TERM $TOP_PID
 }
 
 # Parse command-line arguments
@@ -67,6 +70,7 @@ export SDK_RELAY_PORT="${SDK_RELAY_PORT:-4000}"
 export EPPO_SCENARIO_FILE="${EPPO_SCENARIO_FILE:-scenarios.json}"
 export EPPO_TEST_DATA_PATH="${EPPO_TEST_DATA_PATH:-./test-data}"
 
+PLATFORM="${PLATFORM:-linux}"
 
 # Validate SDK name
 if [[ -z "$SDK_NAME" ]]; then
@@ -121,10 +125,25 @@ case "$command" in
        
         echo "  ... Starting Test Cluster node [${SDK_DIR}]"
 
-        # change directory to the SDK relay then build-and-run
+        # change directory to the SDK relay then run the SDK relay server
         RUNNER_DIR=$(pwd)
+        mkdir -p ${RUNNER_DIR}/logs
         pushd ../$SDK_DIR
-        ./build-and-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+
+        BUILD_AND_RUN_PLATFORM=build-and-run-${PLATFORM}.sh
+        if [ -f docker-run.sh ]; then
+           echo "    ... Starting SDK Relay via docker launch script"
+          ./docker-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+        elif [ -f ${BUILD_AND_RUN_PLATFORM} ]; then
+           echo "    ... Starting SDK Relay via platform build-and-run script"
+          ./build-and-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+        elif [ -f build-and-run.sh ]; then
+           echo "    ... Starting SDK Relay via host build-and-run script"
+          ./build-and-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+        else
+          exit_with_message "SDK Relay does not have a launch script in $SDK_DIR"
+        fi
+
         SDK_RELAY_PID=$!
         popd
 
@@ -139,6 +158,7 @@ case "$command" in
         echo "  ... Starting Test Cluster node [Eppo-exp/sdk-test-runner]"
         
         docker run \
+          --add-host host.docker.internal:host-gateway \
           -e SDK_NAME \
           -e EPPO_API_HOST=host.docker.internal \
           -e SDK_RELAY_HOST=host.docker.internal \
@@ -148,6 +168,7 @@ case "$command" in
           --name eppo-sdk-test-runner \
           -t Eppo-exp/sdk-test-runner:latest "--junit=logs/results.xml"
 
+        EXIT_CODE=$?
 
         echo "  ... Downing the docker containers"
         docker logs eppo-api >& logs/api.log
@@ -158,7 +179,8 @@ case "$command" in
         docker container remove eppo-sdk-test-runner #already stopped at this point
 
         pkill -P $SDK_RELAY_PID
-        
+
+        exit $EXIT_CODE
         ;;
     client)
         echo_red "Client mode not yet implemented"

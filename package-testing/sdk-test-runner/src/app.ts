@@ -138,7 +138,7 @@ export default class App {
       suites: testSuites,
     };
     const junitXml = getJunitXml(testSuiteReport);
-    fs.writeFileSync(junitFile, junitXml);
+    fs.writeFileSync('./' + junitFile, junitXml);
 
     log(green(`Test results written to ${junitFile}`));
   }

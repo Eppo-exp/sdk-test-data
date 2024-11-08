@@ -93,7 +93,9 @@ The following components are required to use the the package test runner with a 
 
 1. An **SDK relay server**. This is a REST server running at `localhost:4000` resonding to the [Asssignment and Bandit Request API](#sdk-relay-server)
    1. OR, an **SDK relay client**. This is a client application that connects to the SDK test runner via `socket.io` and responses to [Assignment requests](#sdk-relay-client)
-2. A `build-and-run.sh` file which, given a properly configured environment, [builds the SDK Relay Server application](#build-and-runsh) **using the specified version of the SDK package**.
+2. Launch Script:
+   1. A `build-and-run-<platform>.sh` file which fully configures the environment then initiates a [build and run of the relay server application](#build-and-runsh) **using the specified version of the SDK package**. <platform> is one of `linux`, `macos`, or `windows`.
+   2. OR, a `docker-run.sh` file which builds and runs a docker container running the SDK relay app
 
 The following are key components derived from above which allow for convenient and consistent dev-ops.
 
