@@ -11,20 +11,35 @@ jobs:
 
   build-and-upload:
     runs-on: ubuntu-latest
-
-
-
     defaults:
       run:
         working-directory: "package-testing/sdk-test-runner"
 
     steps:
-    - uses: actions/checkout@v3    
+      - uses: actions/checkout@v3
 
-    - name: Build
-      run: |
-        pwd
-        docker build . -t Eppo-exp/sdk-test-runner:${VERSION}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      
+      - name: Build and export
+        uses: docker/build-push-action@v6
+        with:
+          context: ./package-testing/sdk-test-runner
+          tags: Eppo-exp/sdk-test-runner:latest,Eppo-exp/sdk-test-runner:${{ env.VERSION }}
+          outputs: type=docker,dest=/tmp/sdk-test-runner.tar
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sdk-test-runner-image
+          path: /tmp/sdk-test-runner.tar
+
+
+
+    # - name: Build
+    #   run: |
+    #     pwd
+        # docker build . -t Eppo-exp/sdk-test-runner:${VERSION}
     #     docker build
     #   with:
     #     tags: Eppo-exp/sdk-test-runner:latest,Eppo-exp/sdk-test-runner:${{ env.VERSION }}
