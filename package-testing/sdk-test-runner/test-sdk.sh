@@ -76,10 +76,10 @@ if [[ -z "$SDK_NAME" ]]; then
 fi
 
 # Ensure platform is set
-if [[ -z "$PLATFORM" ]]; then
-  exit_with_message "PLATFORM environment variable must be set"
+if [[ -z "$EPPO_SDK_PLATFORM" ]]; then
+  exit_with_message "EPPO_SDK_PLATFORM environment variable must be set"
 fi
-export PLATFORM
+export EPPO_SDK_PLATFORM
 
 # Extrapolate the SDK directory name
 if [[ -z "$SDK_DIR" ]]; then
@@ -134,7 +134,7 @@ case "$command" in
         mkdir -p ${RUNNER_DIR}/logs
         pushd ../$SDK_DIR
 
-        BUILD_AND_RUN_PLATFORM=build-and-run-${PLATFORM}.sh
+        BUILD_AND_RUN_PLATFORM=build-and-run-${EPPO_SDK_PLATFORM}.sh
         if [ -f docker-run.sh ]; then
            echo "    ... Starting SDK Relay via docker launch script"
           ./docker-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
