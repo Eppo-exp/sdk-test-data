@@ -70,12 +70,16 @@ export SDK_RELAY_PORT="${SDK_RELAY_PORT:-4000}"
 export EPPO_SCENARIO_FILE="${EPPO_SCENARIO_FILE:-scenarios.json}"
 export EPPO_TEST_DATA_PATH="${EPPO_TEST_DATA_PATH:-./test-data}"
 
-PLATFORM="${PLATFORM:-linux}"
-
 # Validate SDK name
 if [[ -z "$SDK_NAME" ]]; then
   exit_with_message "Missing required argument: sdkName"
 fi
+
+# Ensure platform is set
+if [[ -z "$PLATFORM" ]]; then
+  exit_with_message "PLATFORM environment variable must be set"
+fi
+export PLATFORM
 
 # Extrapolate the SDK directory name
 if [[ -z "$SDK_DIR" ]]; then
