@@ -183,12 +183,13 @@ The test runner sends assignment and bandit action requests to the SDK Relay Ser
 
 #### Configuration
 
-| Variable Name    | Type   | Description               | Default     |
-| ---------------- | ------ | ------------------------- | ----------- |
-| `SDK_RELAY_HOST` | string | Hostname for relay server | `localhost` |
-| `SDK_RELAY_PORT` | number | Port for relay server     | 4000        |
-| `EPPO_API_HOST`  | string | Hostname for api server   | `localhost` |
-| `EPPO_API_PORT`  | number | Port for api server       | 5000        |
+| Variable Name    | Type   | Default          | Description                                                             |
+| ---------------- | ------ | ---------------- | ----------------------------------------------------------------------- |
+| `SDK_RELAY_HOST` | string | `localhost`      | Hostname for relay server                                               |
+| `SDK_RELAY_PORT` | number | 4000             | Port for relay server                                                   |
+| `EPPO_BASE_URL`  | string | `localhost:5000` | Base URL for api server, built from `EPPO_API_HOST` and `EPPO_API_PORT` |
+| `EPPO_API_HOST`  | string | `localhost`      | Hostname for api server                                                 |
+| `EPPO_API_PORT`  | number | 5000             | Port for api server                                                     |
 
 #### API
 

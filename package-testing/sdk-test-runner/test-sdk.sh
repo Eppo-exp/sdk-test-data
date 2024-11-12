@@ -63,6 +63,7 @@ fi
 # Allow env variables to be overwritten, then export to this shell.
 export EPPO_API_HOST="${EPPO_API_HOST:-localhost}"
 export EPPO_API_PORT="${EPPO_API_PORT:-5000}"
+export EPPO_BASE_URL="${EPPO_API_HOST}:${EPPO_API_PORT}"
 
 export SDK_RELAY_HOST="${SDK_RELAY_HOST:-localhost}"
 export SDK_RELAY_PORT="${SDK_RELAY_PORT:-4000}"
@@ -137,7 +138,9 @@ case "$command" in
         BUILD_AND_RUN_PLATFORM=build-and-run-${PLATFORM}.sh
         if [ -f docker-run.sh ]; then
            echo "    ... Starting SDK Relay via docker launch script"
-          ./docker-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+
+          # Docker containers need to point at host.docker.internal instead of localhost
+          EPPO_BASE_URL=host.docker.internal:${EPPO_API_PORT} EPPO_API_HOST=host.docker.internal ./docker-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
         elif [ -f ${BUILD_AND_RUN_PLATFORM} ]; then
            echo "    ... Starting SDK Relay via platform build-and-run script"
           ./${BUILD_AND_RUN_PLATFORM} >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
