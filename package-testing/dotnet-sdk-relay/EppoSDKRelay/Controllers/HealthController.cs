@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EppoSDKRelay.controllers;
 
 [Route("/")]
-public class SDKContHealthControllerroller : ControllerBase
+public class SDKHealthController : ControllerBase
 {
 
     [HttpGet]
