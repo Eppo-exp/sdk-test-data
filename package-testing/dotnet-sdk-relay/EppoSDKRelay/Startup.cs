@@ -12,9 +12,12 @@ public class Startup
 
     public static void InitEppoClient()
     {
+        var url =  "http://" + apiHost + ":" + apiPort;
+        Console.WriteLine("Initializating SDK pointed at" + url);
+
         var eppoClientConfig = new EppoClientConfig(apiToken, new AssignmentLogger())
         {
-            BaseUrl = "http://" + apiHost + ":" + apiPort
+            BaseUrl = url
         };
 
         EppoClient.Init(eppoClientConfig);
@@ -24,7 +27,7 @@ public class Startup
     {
 
         Startup.InitEppoClient();
-        
+
         services.AddControllers();
         services.AddSwaggerGen(c =>
         {
@@ -42,8 +45,7 @@ public class Startup
             app.UseDeveloperExceptionPage();
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json",
-     "My REST Server v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My REST Server v1"));
         }
 
         app.UseHttpsRedirection();
