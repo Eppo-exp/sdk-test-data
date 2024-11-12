@@ -95,7 +95,7 @@ The following components are required to use the the package test runner with a 
    1. OR, an **SDK relay client**. This is a client application that connects to the SDK test runner via `socket.io` and responses to [Assignment requests](#sdk-relay-client)
 2. Launch Script:
    1. A `build-and-run-<platform>.sh` file which fully configures the environment then initiates a [build and run of the relay server application](#build-and-runsh) **using the specified version of the SDK package**. <platform> is one of `linux`, `macos`, or `windows`.
-   2. OR, a `build-and-run.sh` file which can configure the environment based on the env variable, `PLATFORM` and then initiate a [build and run of the relay server application](#build-and-runsh) **using the specified version of the SDK package**.
+   2. OR, a `build-and-run.sh` file which can configure the environment based on the env variable, `EPPO_SDK_PLATFORM` and then initiate a [build and run of the relay server application](#build-and-runsh) **using the specified version of the SDK package**.
    3. OR, a `docker-run.sh` file which builds and runs a docker container running the SDK relay app
 
 The following are key components derived from above which allow for convenient and consistent dev-ops.
@@ -282,7 +282,7 @@ Example `build-and-run.sh` script
 #!/usr/bin/env bash
 
 # Configure environment per platform
-case "${PLATFORM}" in
+case "${EPPO_SDK_PLATFORM}" in
     "windows")
         choco install php -v ${PHP_VERSION}
         ;;
@@ -294,7 +294,7 @@ case "${PLATFORM}" in
         sudo apt install php-${PHP_VERSION}
         ;;
     *)
-        echo "Unsupported platform: ${PLATFORM}"
+        echo "Unsupported platform: ${EPPO_SDK_PLATFORM}"
         exit 1
         ;;
 esac
