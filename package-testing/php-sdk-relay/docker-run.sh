@@ -13,6 +13,6 @@ docker run  -p $SDK_RELAY_PORT:$SDK_RELAY_PORT \
   -e SDK_REF \
   -e SDK_RELAY_PORT \
   --name php-relay \
-  -d \
+  -d --rm \
   -t Eppo-exp/php-sdk-relay:$VERSION && \
   echo "Container running"
