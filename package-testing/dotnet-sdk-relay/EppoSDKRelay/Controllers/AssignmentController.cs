@@ -7,7 +7,6 @@ using Newtonsoft.Json.Linq;
 
 namespace EppoSDKRelay.controllers;
 
-
 [Route("flags/v1/assignment")]
 public class AssignmentController : JsonControllerBase
 {
@@ -21,19 +20,9 @@ public class AssignmentController : JsonControllerBase
             return JsonError(err.ErrorMessage);
         }
 
-
-
         var eppoClient = EppoClient.GetInstance();
 
         var defaultValue = data.DefaultValue ?? "";
-
-        Console.WriteLine(defaultValue);
-        // Console.WriteLine(data.SubjectAttributes["one_of_flag"]);
-        Console.WriteLine(string.Join(";", [.. data.SubjectAttributes.Keys]));
-        Console.WriteLine(string.Join(";", [.. data.SubjectAttributes.Values]));
-        Console.WriteLine(data.SubjectKey);
-        Console.WriteLine(data.Flag);
-        Console.WriteLine(data.AssignmentType);
 
         var covertedAttributes = data.SubjectAttributes.Select<KeyValuePair<string, object>, KeyValuePair<string, object>>(kvp => {
             if (kvp.Value is JsonElement elementValue)
@@ -76,7 +65,6 @@ public class AssignmentController : JsonControllerBase
                 var defaultJson = JObject.Parse(jString);
                 return JsonResult(eppoClient.GetJsonAssignment(data.Flag, data.SubjectKey, covertedAttributes, defaultJson));
         }
-
 
         return JsonError("Invalid Assignment Type " + data.AssignmentType);
     }
