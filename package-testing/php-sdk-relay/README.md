@@ -21,7 +21,7 @@ docker build -t Eppo-exp/php-sdk-relay .
 
 #### Run the docker container
 ```shell
-./container-run.sh
+./docker-run.sh
 ```
 
 ## Development
