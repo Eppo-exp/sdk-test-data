@@ -27,11 +27,12 @@ jobs:
         EPPO_API_HOST: ${{matrix.sdk.hostAddressFromDocker}}
         SDK_RELAY_HOST: ${{matrix.sdk.hostAddressFromDocker}}
         TEST_RUNNER_HOST: ${{matrix.sdk.hostAddressFromDocker}}
+        EPPO_SDK_PLATFORM: linux
 
     steps:
 
     
-    - name: Test information header   
+    - name: Test information heade
       shell: bash
       run: echo "Running Test Cluster for ${SDK_NAME}"
 
@@ -41,20 +42,17 @@ jobs:
       run: |
         echo "::set-output name=date::$(date +'%Y-%m-%d')"
         echo "SAFE_SDK_NAME=$(echo ${SDK_NAME} | sed 's/\//_/g')" >> $GITHUB_ENV
-        
 
-    - uses: actions/checkout@v3
 
-    - name: Download Test Runner image
-      uses: actions/download-artifact@v4
+    - name: "Checkout"
+      uses: actions/checkout@v3
+
+    # Pull from GAR instead
+    - name: Build and export
+      uses: docker/build-push-action@v6
       with:
-        name: sdk-test-runner-image
-        path: /tmp/sdk-test-runner.tar
-        
-    - name: Load Test Runner image
-      run: |
-        docker load --input /tmp/sdk-test-runner.tar
-        docker image ls -a       
+        context: ./package-testing/sdk-test-runner
+        tags: Eppo-exp/sdk-test-runner:latest,Eppo-exp/sdk-test-runner:local
 
     - name: Prepare testing API server image
       run: |
@@ -69,13 +67,14 @@ jobs:
         ./test-sdk.sh server ${SDK_NAME}
         ls -al ./logs
         popd
-        
+
     - name: Logs
       if: success() || failure() # always run even if the previous steps fail
       run: |
         echo "List log files"
         pushd package-testing/sdk-test-runner
         ls logs
+        cat logs/sdk.log
         popd
 
 
@@ -92,12 +91,3 @@ jobs:
       if: success() || failure() # always run even if the previous steps fail
       with:
         report_paths: 'package-testing/sdk-test-runner/logs/results.xml'
-
-    # - name: Test Report
-    # if: success() || failure() # always run even if the previous steps fail
-    # run: |
-    #   echo "Link to the rendered test report"
-    #   pushd package-testing/sdk-test-runner      
-    #   ls logs
-    #   cat logs/test_runner.log
-    #   popd

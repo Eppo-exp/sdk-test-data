@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO Configure env
+
 composer install
 
 # Set default values for vars

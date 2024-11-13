@@ -151,8 +151,6 @@ case "$command" in
           exit_with_message "SDK Relay does not have a launch script in $SDK_DIR"
         fi
 
-
-        ./build-and-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
         SDK_RELAY_PID=$!
         popd
 
