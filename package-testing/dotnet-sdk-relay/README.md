@@ -15,14 +15,10 @@ SDK_REF=<your branch/tag/SHA> ./build-and-run.sh
 
 ### On a Fresh Machine
 
-Instead of packaging in a docker container, the .NET relay uses a platform-dependent shell script to prepare the system to build and run.
+Instead of packaging in a docker container, the .NET relay uses a shell script to prepare the system to build and run. Set the `EPPO_SDK_PLATFORM` environment variable to one of `macos`,`linux`,`windows`.
 
 ```shell
-./<platform>-prepare.sh
-```
-
-```shell
-./build-and-run.sh
+EPPO_SDK_PLATFORM=macos ./build-and-run.sh
 ```
 
 ## Development
