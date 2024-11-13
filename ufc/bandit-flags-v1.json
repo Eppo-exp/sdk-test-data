@@ -227,6 +227,31 @@
                 }
             ],
             "totalShards": 10000
+        },
+        "cold_start_bandit_flag": {
+            "key": "cold_start_bandit_flag",
+            "enabled": true,
+            "variationType": "STRING",
+            "variations": {
+                "cold_start_bandit": {
+                    "key": "cold_start_bandit",
+                    "value": "cold_start_bandit"
+                }
+            },
+            "allocations": [
+                {
+                    "key": "all-traffic",
+                    "rules": [],
+                    "splits": [
+                        {
+                            "variationKey": "cold_start_bandit",
+                            "shards": []
+                        }
+                    ],
+                    "doLog": true
+                }
+            ],
+            "totalShards": 10000
         }
     },
     "bandits": {
@@ -286,7 +311,7 @@
                     "variationValue": "banner_bandit"
                 }
             ],
-            "modelVersion": "v123"
+            "modelVersion": "123"
         },
         "car_bandit": {
             "flagVariations": [
@@ -298,7 +323,7 @@
                     "variationValue": "car_bandit"
                 }
             ],
-            "modelVersion": "v456"
+            "modelVersion": "456"
         },
         "cold_start_bandit": {
             "flagVariations": [

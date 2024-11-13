@@ -63,6 +63,7 @@ fi
 # Allow env variables to be overwritten, then export to this shell.
 export EPPO_API_HOST="${EPPO_API_HOST:-localhost}"
 export EPPO_API_PORT="${EPPO_API_PORT:-5000}"
+export EPPO_BASE_URL="${EPPO_API_HOST}:${EPPO_API_PORT}"
 
 export SDK_RELAY_HOST="${SDK_RELAY_HOST:-localhost}"
 export SDK_RELAY_PORT="${SDK_RELAY_PORT:-4000}"
@@ -70,11 +71,16 @@ export SDK_RELAY_PORT="${SDK_RELAY_PORT:-4000}"
 export EPPO_SCENARIO_FILE="${EPPO_SCENARIO_FILE:-scenarios.json}"
 export EPPO_TEST_DATA_PATH="${EPPO_TEST_DATA_PATH:-./test-data}"
 
-
 # Validate SDK name
 if [[ -z "$SDK_NAME" ]]; then
   exit_with_message "Missing required argument: sdkName"
 fi
+
+# Ensure platform is set
+if [[ -z "$EPPO_SDK_PLATFORM" ]]; then
+  exit_with_message "EPPO_SDK_PLATFORM environment variable must be set"
+fi
+export EPPO_SDK_PLATFORM
 
 # Extrapolate the SDK directory name
 if [[ -z "$SDK_DIR" ]]; then
@@ -129,12 +135,18 @@ case "$command" in
         mkdir -p ${RUNNER_DIR}/logs
         pushd ../$SDK_DIR
 
-        if [ -f container-run.sh ]; then
-           echo "    ... Starting SDK Relay Container"
-          ./container-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+        BUILD_AND_RUN_PLATFORM=build-and-run-${EPPO_SDK_PLATFORM}.sh
+        if [ -f docker-run.sh ]; then
+           echo "    ... Starting SDK Relay via docker launch script"
+
+          # Docker containers need to point at host.docker.internal instead of localhost
+          EPPO_BASE_URL=host.docker.internal:${EPPO_API_PORT} EPPO_API_HOST=host.docker.internal ./docker-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
         elif [ -f build-and-run.sh ]; then
            echo "    ... Starting SDK Relay Build Script"
-          ./build-and-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+          ./build-and-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &          
+        elif [ -f ${BUILD_AND_RUN_PLATFORM} ]; then
+           echo "    ... Starting SDK Relay via platform build-and-run script"
+          ./${BUILD_AND_RUN_PLATFORM} >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
         else
           exit_with_message "SDK Relay does not have a launch script in $SDK_DIR"
         fi
@@ -181,7 +193,6 @@ case "$command" in
         pkill -P $SDK_RELAY_PID
 
         echo "Exiting with code ${EXIT_CODE}"
-        
         exit $EXIT_CODE
         ;;
     client)

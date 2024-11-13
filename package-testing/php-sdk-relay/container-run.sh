@@ -18,5 +18,6 @@ docker run  -p $SDK_RELAY_PORT:$SDK_RELAY_PORT \
   -e EPPO_API_HOST=host.docker.internal \
   -e SDK_RELAY_PORT \
   --name php-relay \
+  -d --rm \
   -t Eppo-exp/php-sdk-relay:$VERSION && \
   echo "Container running"
