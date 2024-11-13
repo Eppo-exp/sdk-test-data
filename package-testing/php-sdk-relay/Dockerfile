@@ -22,7 +22,6 @@ COPY --chmod=755 build-and-run.sh /
 RUN composer install
 
 ENV SDK_RELAY_HOST=0.0.0.0
-ENV EPPO_API_HOST=host.docker.internal
 
 EXPOSE $SDK_RELAY_PORT
 
