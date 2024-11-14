@@ -4,6 +4,7 @@ using EppoSDKRelay.DTO;
 using eppo_sdk;
 using System.Text.Json;
 using Newtonsoft.Json.Linq;
+using EppoSDKRelay.util;
 
 namespace EppoSDKRelay.controllers;
 
@@ -13,7 +14,7 @@ public class AssignmentController : JsonControllerBase
     [HttpPost]
     public ActionResult<string> Post([FromBody] AssignmentRequest data)
     {
-        // If there was a parsing error, this is how it is recorded. We want to fail this tast so return an error
+        // If there was a parsing error, this is how it is recorded. We want to fail this test so return an error
         var errors = ModelState.Values.SelectMany(x => x.Errors);
         foreach (var err in errors)
         {
@@ -23,49 +24,31 @@ public class AssignmentController : JsonControllerBase
         var eppoClient = EppoClient.GetInstance();
 
         var defaultValue = data.DefaultValue ?? "";
-
-        var covertedAttributes = data.SubjectAttributes.Select<KeyValuePair<string, object>, KeyValuePair<string, object>>(kvp => {
-            if (kvp.Value is JsonElement elementValue)
-            {
-                if (elementValue.ValueKind == JsonValueKind.String || elementValue.ValueKind == JsonValueKind.Null)
-                {
-                    return KeyValuePair.Create(kvp.Key, (object)elementValue.GetString()!);
-                }
-                else if (elementValue.ValueKind == JsonValueKind.True || elementValue.ValueKind == JsonValueKind.False)
-                {
-                    return KeyValuePair.Create(kvp.Key, (object)elementValue.GetBoolean());
-                }
-                else if (elementValue.ValueKind == JsonValueKind.Number)
-                {
-                    return KeyValuePair.Create(kvp.Key, (object)elementValue.GetDouble());
-                }
-            }
-            return kvp;
-        }).ToDictionary(kvp=> kvp.Key, kvp=> kvp.Value);
+        Dictionary<string, object> convertedAttributes = Values.ConvertJsonValuesToPrimitives(data.SubjectAttributes);
 
         switch (data.AssignmentType)
         {
             case "STRING":
-                return JsonResult(eppoClient.GetStringAssignment(data.Flag, data.SubjectKey, covertedAttributes, defaultValue.ToString()!));
+                return JsonResult(eppoClient.GetStringAssignment(data.Flag, data.SubjectKey, convertedAttributes, defaultValue.ToString()!));
 
             case "INTEGER":
-                var intResults = eppoClient.GetIntegerAssignment(data.Flag, data.SubjectKey, covertedAttributes, Convert.ToInt64(defaultValue.ToString()));
-                Console.WriteLine("Result");
-                Console.WriteLine(intResults);
+                var intResults = eppoClient.GetIntegerAssignment(data.Flag, data.SubjectKey, convertedAttributes, Convert.ToInt64(defaultValue.ToString()));
                 return JsonResult(intResults);
 
             case "BOOLEAN":
-                return JsonResult(eppoClient.GetBooleanAssignment(data.Flag, data.SubjectKey, covertedAttributes, Convert.ToBoolean(defaultValue.ToString())));
+                return JsonResult(eppoClient.GetBooleanAssignment(data.Flag, data.SubjectKey, convertedAttributes, Convert.ToBoolean(defaultValue.ToString())));
 
             case "NUMERIC":
-                return JsonResult(eppoClient.GetNumericAssignment(data.Flag, data.SubjectKey, covertedAttributes, Convert.ToDouble(defaultValue.ToString())));
+                return JsonResult(eppoClient.GetNumericAssignment(data.Flag, data.SubjectKey, convertedAttributes, Convert.ToDouble(defaultValue.ToString())));
 
             case "JSON":
-            var jString = defaultValue.ToString();
+                var jString = defaultValue.ToString();
                 var defaultJson = JObject.Parse(jString);
-                return JsonResult(eppoClient.GetJsonAssignment(data.Flag, data.SubjectKey, covertedAttributes, defaultJson));
+                return JsonResult(eppoClient.GetJsonAssignment(data.Flag, data.SubjectKey, convertedAttributes, defaultJson));
         }
 
         return JsonError("Invalid Assignment Type " + data.AssignmentType);
     }
+
+
 }

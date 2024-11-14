@@ -8,7 +8,7 @@ namespace EppoSDKRelay.controllers;
 
 public class JsonControllerBase : ControllerBase {
 
-    protected static readonly JsonSerializerOptions serializeOptions = new()
+    protected static readonly JsonSerializerOptions SerializeOptions = new()
     {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         WriteIndented = true
@@ -27,7 +27,7 @@ public class JsonControllerBase : ControllerBase {
         {
             Result = result
         };
-        return JsonSerializer.Serialize(response, serializeOptions);
+        return JsonSerializer.Serialize(response, SerializeOptions);
     }
     
     protected static ActionResult<string> JsonError(String error)
@@ -35,7 +35,7 @@ public class JsonControllerBase : ControllerBase {
         return JsonSerializer.Serialize(new TestResponse
         {
             Error = error
-        }, serializeOptions);
+        }, SerializeOptions);
     }
     
 }

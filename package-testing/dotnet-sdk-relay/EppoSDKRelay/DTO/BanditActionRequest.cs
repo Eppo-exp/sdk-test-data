@@ -1,5 +1,5 @@
-using System.Text.Json;
 using eppo_sdk.dto.bandit;
+using EppoSDKRelay.util;
 
 namespace EppoSDKRelay.DTO;
 
@@ -20,10 +20,7 @@ public class BanditActionRequest
 
     public IDictionary<string, ContextAttributes> GetActionContextDict()
     {
-        // The Eppo client API doesn't actually allow for non string-typed attributes to be explictly passed to the client.
-        // We get around these "dynamic" typing tests, not by skipping them like other languages, but by convering the data
-
         return Actions.ToDictionary(action => action.ActionKey,
-                                    action => ContextAttributes.FromNullableAttributes(action.ActionKey, action.CategoricalAttributesAsStrings, action.NumericAttributesAsNumbers));
+                                    action => ContextAttributes.FromDict(action.ActionKey, Values.ConvertJsonValuesToPrimitives(action.AttributeDictionary)));
     }
 }
