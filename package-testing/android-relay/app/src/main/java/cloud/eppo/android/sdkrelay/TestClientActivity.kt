@@ -54,9 +54,11 @@ class TestClientActivity : ComponentActivity() {
 
   private fun assignmentLogger(assignment: Assignment) {
     val msg: String =
-        ((assignment.experiment + "-> subject: " + assignment.subject) +
+        assignment.experiment +
+            "-> subject: " +
+            assignment.subject +
             " assigned to " +
-            assignment.experiment)
+            assignment.experiment
     Log.d(TAG, msg)
     appendAssignmentLog(msg)
   }
@@ -181,7 +183,7 @@ class TestClientActivity : ComponentActivity() {
     return EppoClient.Builder(API_KEY, application)
         .forceReinitialize(true)
         .ignoreCachedConfiguration(true)
-        .host(EPPO_API_ADDRESS)
+        .host(BuildConfig.EPPO_BASE_URL)
         .isGracefulMode(false) // Debug: surface exceptions
         .assignmentLogger(::assignmentLogger)
         .buildAndInitAsync()
@@ -241,7 +243,6 @@ class TestClientActivity : ComponentActivity() {
     private const val API_KEY = BuildConfig.API_KEY
     private const val READY_PACKET =
         "{\"sdkName\":\"example\", \"supportsBandits\" : false, \"sdkType\":\"client\"}"
-    private const val EPPO_API_ADDRESS = "${BuildConfig.EPPO_API_HOST}:${BuildConfig.EPPO_API_PORT}"
   }
 }
 

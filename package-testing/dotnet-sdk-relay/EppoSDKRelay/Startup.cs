@@ -5,19 +5,17 @@ namespace EppoSDKRelay;
 
 public class Startup
 {
-    static readonly String apiHost = Environment.GetEnvironmentVariable("EPPO_API_HOST") ?? "localhost";
-    static readonly String apiPort = Environment.GetEnvironmentVariable("EPPO_API_PORT") ?? "5000";
+    static readonly String apiBaseUrl = Environment.GetEnvironmentVariable("EPPO_BASE_URL") ?? "http://localhost:5000/api";
     static readonly String apiToken = Environment.GetEnvironmentVariable("EPPO_API_TOKEN") ?? "NO_TOKEN";
 
 
     public static void InitEppoClient()
     {
-        var url =  "http://" + apiHost + ":" + apiPort;
-        Console.WriteLine("Initializating SDK pointed at" + url);
+        Console.WriteLine("Initializating SDK pointed at" + apiBaseUrl);
 
         var eppoClientConfig = new EppoClientConfig(apiToken, new AssignmentLogger())
         {
-            BaseUrl = url
+            BaseUrl = apiBaseUrl
         };
 
         EppoClient.Init(eppoClientConfig);
