@@ -17,5 +17,5 @@ jobs:
     uses: ./.github/workflows/build-and-push.yml
     with:
       version: ${{ inputs.version }}
-      docker_contex: ./package-testing/testing-api
+      docker_context: ./package-testing/testing-api
       image_name: testing-api
