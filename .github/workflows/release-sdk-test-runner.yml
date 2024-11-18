@@ -14,13 +14,8 @@ on:
 
 jobs:
   build-and-upload:
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@v3
-
-      - uses: ./.github/workflows/build-and-push.yml
-        with:
-          version: ${{ inputs.version }}
-          docker_contex: ./package-testing/sdk-test-runner
-          image_name: sdk-test-runner
+      uses: ./.github/workflows/build-and-push.yml
+      with:
+        version: ${{ inputs.version }}
+        docker_contex: ./package-testing/sdk-test-runner
+        image_name: sdk-test-runner
