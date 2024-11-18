@@ -12,7 +12,7 @@ env:
 
   PROJECT_ID: ${{ vars.SDK_TESTING_PROJECT_ID  }}
   REGION: ${{ vars.SDK_TESTING_REGION }}
-  GAR_LOCATION: ${{ vars.SDK_TESTING_REGION }}-docker.pkg.dev/${{ vars.SDK_TESTING_PROJECT_ID  }}/sdk-testing/
+  GAR_LOCATION: ${{ vars.SDK_TESTING_REGION }}-docker.pkg.dev/${{ vars.SDK_TESTING_PROJECT_ID  }}/sdk-testing
 
 
 jobs:
@@ -51,4 +51,65 @@ jobs:
         with:
           push: true
           context: ./package-testing/sdk-test-runner
-          tags: ${{ env.GAR_LOCATION }}
+          tags: ${{ env.GAR_LOCATION }}/sdk-test-runner:latest
+
+
+          # outputs: type=docker,dest=/tmp/sdk-test-runner.tar
+
+      # - name: Build image
+      #   run: docker build . --file DOCKERFILE_LOCATION --tag ${{ env.GAR_LOCATION }}
+      #   working-directory: WORKING_DIRECTORY
+
+      # - name: Push image
+      #   run: docker push ${{ env.GAR_LOCATION }}
+
+
+
+
+      # - name: Set up Docker Buildx
+      #   uses: docker/setup-buildx-action@v3
+      
+      # - name: Build and export
+      #   uses: docker/build-push-action@v6
+      #   with:
+      #     context: ./package-testing/sdk-test-runner
+      #     tags: Eppo-exp/sdk-test-runner:latest,Eppo-exp/sdk-test-runner:${{ env.VERSION }}
+      #     outputs: type=docker,dest=/tmp/sdk-test-runner.tar
+
+      # - name: Upload artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: sdk-test-runner-image
+      #     path: /tmp/sdk-test-runner.tar
+
+
+
+    # - name: Build
+    #   run: |
+    #     pwd
+        # docker build . -t Eppo-exp/sdk-test-runner:${VERSION}
+    #     docker build
+    #   with:
+    #     tags: Eppo-exp/sdk-test-runner:latest,Eppo-exp/sdk-test-runner:${{ env.VERSION }}
+    #     outputs: type=docker,dest=/tmp/${{ env.TAR_NAME }}
+
+    # - name: Upload artifact
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: sdk-test-runner
+    #     path: /tmp/${{ env.TAR_NAME}}
+
+# use:
+#     runs-on: ubuntu-latest
+#     needs: build
+#     steps:
+#       - name: Download artifact
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: sdk-test-runner
+#           path: /tmp
+        
+#       - name: Load image
+#         run: |
+#           docker load --input /tmp/${{ env.TAR_NAME}}
+#           docker image ls -a       
