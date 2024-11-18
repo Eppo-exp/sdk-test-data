@@ -1,4 +1,4 @@
-name: Build and Push to Artifact Registry
+name: Build and push Testing API
 
 on:
   workflow_dispatch:
@@ -6,52 +6,18 @@ on:
       version:
         description: 'Version string for SDK Testing API release'
         required: true
-        default: '1'
+        default: '1.0.0'
 
   push:
     paths:
       .github/workflows/*
 
-env:
-  VERSION: 1.1.0
-
-  PROJECT_ID: ${{ vars.SDK_TESTING_PROJECT_ID  }}
-  REGION: ${{ vars.SDK_TESTING_REGION }}
-  GAR_LOCATION: ${{ vars.SDK_TESTING_REGION }}-docker.pkg.dev/${{ vars.SDK_TESTING_PROJECT_ID  }}/sdk-testing
-
-
 jobs:
   build-and-upload:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: "package-testing/testing-api"
-
     steps:
-      - name: "Checkout"
-        uses: actions/checkout@v3
-
-      # Set up gCloud
-      - id: "auth"
-        uses: "google-github-actions/auth@v1"
+      - uses: ./.github/workflows/build-and-push.yml
         with:
-          credentials_json: "${{ secrets.SERVICE_ACCOUNT_KEY }}"
-
-      - name: "Set up Cloud SDK"
-        uses: "google-github-actions/setup-gcloud@v1"
-
-      - name: "Use gcloud CLI"
-        run: "gcloud info"
-
-      # Allow docker access to the GAR
-      - name: "Docker auth"
-        run: |-
-          gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
-
-      # Build and push
-      - name: Build and export
-        uses: docker/build-push-action@v6
-        with:
-          push: true
-          context: ./package-testing/testing-api
-          tags: ${{ env.GAR_LOCATION }}/testing-api:latest,${{ env.GAR_LOCATION }}/testing-api:${{ env.VERSION }}
+          version: 1.0.0
+          docker_contex: ./package-testing/testing-api
+          image_name: testing-api

@@ -1,0 +1,55 @@
+name: Build and push SDK Test Runner
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version string for SDK Test Runner release'
+        required: true
+        default: '1.0.0'
+      docker_context:
+        description: 'Directory where dockerfile exists'
+        required: true
+      image_name:
+        description: 'Docker image name'
+        required: true
+
+env:
+  VERSION: 1.1.0
+
+  PROJECT_ID: ${{ vars.SDK_TESTING_PROJECT_ID  }}
+  REGION: ${{ vars.SDK_TESTING_REGION }}
+  GAR_LOCATION: ${{ vars.SDK_TESTING_REGION }}-docker.pkg.dev/${{ vars.SDK_TESTING_PROJECT_ID  }}/sdk-testing
+
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+
+      # Set up gCloud
+      - id: "auth"
+        uses: "google-github-actions/auth@v1"
+        with:
+          credentials_json: "${{ secrets.SERVICE_ACCOUNT_KEY }}"
+
+      - name: "Set up Cloud SDK"
+        uses: "google-github-actions/setup-gcloud@v1"
+
+      - name: "Use gcloud CLI"
+        run: "gcloud info"
+
+      # Allow docker access to the GAR
+      - name: "Docker auth"
+        run: |-
+          gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+
+      # Build and push
+      - name: Build and export
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          context: ${{ inputs.docker_context }}
+          tags: ${{ env.GAR_LOCATION }}/${{ inputs.image_name }}:latest,${{ env.GAR_LOCATION }}/${{ inputs.image_name }}:${{ env.VERSION }}
