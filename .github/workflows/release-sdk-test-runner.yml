@@ -19,3 +19,4 @@ jobs:
       version: ${{ inputs.version }}
       docker_context: ./package-testing/sdk-test-runner
       image_name: sdk-test-runner
+    secrets: inherit

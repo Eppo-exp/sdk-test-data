@@ -19,3 +19,4 @@ jobs:
       version: ${{ inputs.version }}
       docker_context: ./package-testing/testing-api
       image_name: testing-api
+    secrets: inherit
