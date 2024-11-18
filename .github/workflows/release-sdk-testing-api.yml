@@ -16,8 +16,11 @@ jobs:
   build-and-upload:
     runs-on: ubuntu-latest
     steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+
       - uses: ./.github/workflows/build-and-push.yml
         with:
-          version: 1.0.0
+          version: ${{ inputs.version }}
           docker_contex: ./package-testing/testing-api
           image_name: testing-api
