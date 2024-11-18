@@ -1,16 +1,19 @@
 name: Build and push SDK Test Runner
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       version:
         description: 'Version string for SDK Test Runner release'
+        type: string
         required: true
         default: '1.0.0'
       docker_context:
+        type: string
         description: 'Directory where dockerfile exists'
         required: true
       image_name:
+        type: string
         description: 'Docker image name'
         required: true
 
