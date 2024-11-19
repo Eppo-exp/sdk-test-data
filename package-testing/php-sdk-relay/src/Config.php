@@ -11,6 +11,6 @@ class Config
     {
         $this->apiKey = $_ENV["EPPO_API_KEY"] ?? "NOKEYSPECIFIED";
         $apiServer = $_ENV["EPPO_BASE_URL"] ?? "localhost:5000";
-        $this->apiServer = "http://${apiServer}";
+        $this->apiServer = "http://${apiServer}/api";
     }
 }
