@@ -107,7 +107,7 @@ case "$command" in
     server)
         echo "... Running test scenarios against $SDK_NAME@$SDK_REF in server mode"
 
-        echo "  ... Starting Test Cluster node [Eppo-exp/test-api-server]"
+        echo "  ... Starting Test Cluster node [Eppo-exp/testing-api]"
 
         docker run \
           -e EPPO_API_HOST \
@@ -118,7 +118,7 @@ case "$command" in
           -v ./test-data:/app/test-data:ro \
           --rm -d \
           --name eppo-api \
-          -t Eppo-exp/test-api-server:latest
+          -t Eppo-exp/testing-api:latest
 
         echo_yellow "    ... Waiting to verify server is up"
 
