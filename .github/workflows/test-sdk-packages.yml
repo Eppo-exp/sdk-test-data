@@ -14,10 +14,12 @@ jobs:
         platform:
           - { os: ubuntu-latest,
               platform: linux }
-    uses: ./.github/workflows/package-testing/test-server-sdk.yml
+          - { os: macos,
+              platform: macos }
+    uses: ./.github/workflows/test-server-sdk.yml
     with:
-      os: ${{ matrix.os }}
-      platform: ${{ matrix.platform }}
+      os: ${{ matrix.platform.os }}
+      platform: ${{ matrix.platform.platform }}
       sdkName: "eppo/php-sdk"
       sdkRelayDir: "php-sdk-relay"
     secrets: inherit
