@@ -1,93 +1,23 @@
-name: Test Packaged Server SDKs
+name: Test Packaged SDKs
 
 on:
   workflow_dispatch:
   push:
     paths:
       .github/workflows/test-sdk-packages.yml
+    
 jobs:
-
-  test-packaged-server-sdks:
-
-
+  test-php-sdk:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
-        sdk:
-          - { sdkName: "eppo/php-sdk", 
-              sdkDir: "php-sdk-relay",
-              hostAddressFromDocker: "localhost"
-            }
-
-    runs-on: ubuntu-latest
-    env:
-        SDK_NAME: ${{matrix.sdk.sdkName}}
-        SDK_DIR: ${{ matrix.sdk.sdkDir }}
-        EPPO_API_HOST: ${{matrix.sdk.hostAddressFromDocker}}
-        SDK_RELAY_HOST: ${{matrix.sdk.hostAddressFromDocker}}
-        TEST_RUNNER_HOST: ${{matrix.sdk.hostAddressFromDocker}}
-        EPPO_SDK_PLATFORM: linux
-
-    steps:
-
-    
-    - name: Test information heade
-      shell: bash
-      run: echo "Running Test Cluster for ${SDK_NAME}"
-
-
-    - name: Get current date
-      id: date
-      run: |
-        echo "::set-output name=date::$(date +'%Y-%m-%d')"
-        echo "SAFE_SDK_NAME=$(echo ${SDK_NAME} | sed 's/\//_/g')" >> $GITHUB_ENV
-
-
-    - name: "Checkout"
-      uses: actions/checkout@v3
-
-    # Pull from GAR instead
-    - name: Build and export
-      uses: docker/build-push-action@v6
-      with:
-        context: ./package-testing/sdk-test-runner
-        tags: Eppo-exp/sdk-test-runner:latest,Eppo-exp/sdk-test-runner:local
-
-    - name: Prepare testing API server image
-      run: |
-        pushd package-testing/testing-api
-        docker build . -t Eppo-exp/test-api-server:latest
-        echo "pull the latest instead"
-        popd
-
-    - name: Run tests
-      run: |
-        pushd package-testing/sdk-test-runner
-        ./test-sdk.sh server ${SDK_NAME}
-        ls -al ./logs
-        popd
-
-    - name: Logs
-      if: success() || failure() # always run even if the previous steps fail
-      run: |
-        echo "List log files"
-        pushd package-testing/sdk-test-runner
-        ls logs
-        cat logs/sdk.log
-        popd
-
-
-    - name: Upload Logs
-      if: success() || failure() # always run even if the previous steps fail
-
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{ steps.date.outputs.date }}-${{ env.SAFE_SDK_NAME }}-test-logs
-        path: package-testing/sdk-test-runner/logs/
-
-    - name: Publish Test Report
-      uses: mikepenz/action-junit-report@v5
-      if: success() || failure() # always run even if the previous steps fail
-      with:
-        report_paths: 'package-testing/sdk-test-runner/logs/results.xml'
+        platform:
+          - { os: ubuntu-latest,
+              platform: linux }
+    uses: ./.github/workflows/package-testing/test-server-sdk.yml
+    with:
+      os: ${{ matrix.os }}
+      platform: ${{ matrix.platform }}
+      sdkName: "eppo/php-sdk"
+      sdkRelayDir: "php-sdk-relay"
+    secrets: inherit
