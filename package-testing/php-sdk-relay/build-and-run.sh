@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# TODO Configure env
+# TODO Configure env and use this instead of docker
 
 composer install
 

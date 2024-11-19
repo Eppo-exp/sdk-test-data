@@ -21,10 +21,9 @@ on:
       os:
         description: 'Specific runner OS to use'
         type: string
-      
+
 
 jobs:
-
   test-packaged-server-sdks:
     if: ${{ !inputs.skipPlatforms || !contains(fromJson(inputs.skipPlatforms), inputs.platform) }}
     runs-on: ${{ inputs.os || inputs.platform == 'linux' && 'ubuntu-latest' || inputs.platform == 'macos' && 'macos-13' || inputs.platform == 'windows' && 'windows-latest' || 'NONE' }}
@@ -40,7 +39,7 @@ jobs:
         PROJECT_ID: ${{ vars.SDK_TESTING_PROJECT_ID  }}
         REGION: ${{ vars.SDK_TESTING_REGION }}
         GAR_LOCATION: ${{ vars.SDK_TESTING_REGION }}-docker.pkg.dev/${{ vars.SDK_TESTING_PROJECT_ID }}/sdk-testing
-      
+
     steps:
     - name: Test information header
       shell: bash
@@ -78,7 +77,7 @@ jobs:
     - name: "Docker auth"
       run: |-
         gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
-    
+
     # Pull test runner and testing api images for GCP Artifact Registry (GAR) and
     # retag them locally as expected by the runner script.
     - name: Pull Test Runner image

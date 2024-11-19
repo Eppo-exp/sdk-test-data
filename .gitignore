@@ -10,5 +10,3 @@ dist
 vendor
 
 .env
-
-.secret
