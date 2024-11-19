@@ -5,21 +5,26 @@ on:
   push:
     paths:
       .github/workflows/**
-    
+
+      
 jobs:
-  test-php-sdk:
+  test-server-sdks:
     strategy:
       fail-fast: false
       matrix:
-        platform:
-          - { os: ubuntu-latest,
-              platform: linux }
-          - { os: macos-latest,
-              platform: macos }
+        sdk:
+          - { sdkName: "eppo/php-sdk",
+              sdkRelayDir: "php-sdk-relay"}
+
+          - { sdkName: "dotnet-server",
+              sdkRelayDir: "dotnet-sdk-relay",
+              skipPlatforms: '["macos"]' }
+
+        platform: ['macos', 'linux']
     uses: ./.github/workflows/test-server-sdk.yml
     with:
-      os: ${{ matrix.platform.os }}
-      platform: ${{ matrix.platform.platform }}
-      sdkName: "eppo/php-sdk"
-      sdkRelayDir: "php-sdk-relay"
+      platform: ${{ matrix.platform }}
+      sdkName: ${{ matrix.sdk.sdkName }}
+      sdkRelayDir: ${{ matrix.sdk.sdkRelayDir }}
+      skipPlatforms: ${{ matrix.sdk.skipPlatforms }}
     secrets: inherit

@@ -7,25 +7,28 @@ on:
         description: 'Platforms to test the SDK Relay on; linux, macos, windows'
         type: string
         required: true
-      os:
-        description: 'Specific runner OS to use'
-        type: string
-        required: true
       sdkName:
         description: 'Name of the SDK'
         type: string
         required: true
+      skipPlatforms:
+        description: 'JSON encoded list of platforms to skip'
+        type: string
       sdkRelayDir:
         description: 'Directory of the SDK Relay server code'
         type: string
         required: false
+      os:
+        description: 'Specific runner OS to use'
+        type: string
+      
 
 jobs:
 
   test-packaged-server-sdks:
+    if: ${{ !inputs.skipPlatforms || !contains(fromJson(inputs.skipPlatforms), inputs.platform) }}
+    runs-on: ${{ inputs.os || inputs.platform == 'linux' && 'ubuntu-latest' || inputs.platform == 'macos' && 'macos-13' || inputs.platform == 'windows' && 'windows-latest' || 'NONE' }}
 
-
-    runs-on: ${{ inputs.os }}
     env:
         SDK_NAME: ${{ inputs.sdkName }}
         SDK_DIR: ${{ inputs.sdkRelayDir }}
