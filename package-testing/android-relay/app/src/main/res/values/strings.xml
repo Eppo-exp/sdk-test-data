@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Eppo SDK Relay</string>
+    <string name="label_automated_test">Automated Test Runner</string>
+    <string name="label_assignment_log">Assignment Log</string>
+    <string name="label_status_prefix">"Socket status: "</string>
+    <string name="status_pending">pending</string>
+    <string name="status_disconnected">Disconnected</string>
+    <string name="status_assignment">Assigning</string>
+    <string name="status_connection_error">Connection Error</string>
+    <string name="connected">Connected</string>
+    <string name="connecting">Connecting</string>
+</resources>
