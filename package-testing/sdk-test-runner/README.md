@@ -19,7 +19,7 @@ docker run \
     --rm -d \
     -v ./test-data:/app/test-data \
     -p 5000:5000 \
-    -t Eppo-exp/test-api-server:local
+    -t Eppo-exp/testing-api:local
 
 ../<SDK_DIR>/build-and-run.sh
 
@@ -37,7 +37,7 @@ docker run \
     --rm -d \
     -v ./test-data:/app/test-data \
     -p 5000:5000 \
-    -t Eppo-exp/test-api-server:local
+    -t Eppo-exp/testing-api:local
 
 ../<SDK_DIR>/build-and-run.sh
 
