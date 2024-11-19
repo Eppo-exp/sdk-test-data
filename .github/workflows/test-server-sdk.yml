@@ -76,15 +76,16 @@ jobs:
     - name: Pull Test Runner image
       run: |
         docker pull ${{ env.GAR_LOCATION }}/sdk-test-runner:latest
-        docker tag ${{ env.GAR_LOCATION }}/sdk-test-runner:latest Eppo-exp/sdk-test-runner
+        docker tag ${{ env.GAR_LOCATION }}/sdk-test-runner:latest Eppo-exp/sdk-test-runner:latest
         docker pull ${{ env.GAR_LOCATION }}/testing-api:latest
-        docker tag ${{ env.GAR_LOCATION }}/testing-api:latest Eppo-exp/testing-api
+        docker tag ${{ env.GAR_LOCATION }}/testing-api:latest Eppo-exp/testing-api:latest
+        docker images
 
     - name: Run tests
       run: |
         pushd package-testing/sdk-test-runner
         ./test-sdk.sh server ${SDK_NAME}
-        ls -al ./logs
+        mkdir logs
         popd
 
     - name: Logs

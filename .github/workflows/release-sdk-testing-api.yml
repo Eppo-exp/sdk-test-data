@@ -10,7 +10,7 @@ on:
 
   push:
     paths:
-      .github/workflows/*
+      .github/workflows/release-sdk-testing-api.yml
 
 jobs:
   build-and-upload:
