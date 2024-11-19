@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      .github/workflows/test-sdk-packages.yml
+      .github/workflows/**
     
 jobs:
   test-php-sdk:
