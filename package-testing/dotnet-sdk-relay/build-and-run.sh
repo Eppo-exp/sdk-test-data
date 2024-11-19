@@ -2,7 +2,6 @@
 
 : "${SDK_VERSION:=3.4.0}"
 
-DOTNET_VERSION="8.0.10"
 DOTNET_SDK_VERSION="8.0"
 
 SDK="https://github.com/Eppo-exp/dot-net-server-sdk.git"
@@ -24,7 +23,7 @@ case "${EPPO_SDK_PLATFORM}" in
         ;;
     "macos")
         brew tap isen-ng/dotnet-sdk-versions
-        sudo brew install --cask dotnet-sdk8
+        brew install --cask dotnet-sdk8
         ;;
     "linux")
         sudo apt update
@@ -81,28 +80,6 @@ dotnet build EppoSDKRelay
 
 echo "Publishing project"
 dotnet publish
-
-
-# Configure environment to **run** the app
-echo "Configuring for run"
-
-case "${EPPO_SDK_PLATFORM}" in
-    "windows")
-        choco install dotnet-runtime -v ${DOTNET_VERSION}
-        ;;
-    "macos")
-        brew install dotnet@${DOTNET_VERSION}
-        ;;
-    "linux")
-        sudo apt update
-        sudo apt install dotnet-${DOTNET_VERSION}
-        ;;
-    *)
-        echo "Unsupported platform: ${EPPO_SDK_PLATFORM}"
-        exit 1
-        ;;
-esac
-
 
 echo "Running Eppo SDK Relay"
 
