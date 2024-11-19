@@ -53,6 +53,11 @@ jobs:
     - name: "Checkout"
       uses: actions/checkout@v3
 
+    # Set up docker (macos runners)
+    - id: setup-docker
+      if: ${{ inputs.platform.platform == 'macos' }}
+      name: Setup Docker
+      uses: "douglascamata/setup-docker-macos-action"
 
     # Set up gCloud
     - id: "auth"
@@ -85,7 +90,6 @@ jobs:
       run: |
         pushd package-testing/sdk-test-runner
         ./test-sdk.sh server ${SDK_NAME}
-        mkdir logs
         popd
 
     - name: Logs
