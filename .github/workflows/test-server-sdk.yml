@@ -11,9 +11,6 @@ on:
         description: 'Name of the SDK'
         type: string
         required: true
-      skipPlatforms:
-        description: 'JSON encoded list of platforms to skip'
-        type: string
       sdkRelayDir:
         description: 'Directory of the SDK Relay server code'
         type: string
@@ -25,7 +22,6 @@ on:
 
 jobs:
   test-packaged-server-sdks:
-    if: ${{ !inputs.skipPlatforms || !contains(fromJson(inputs.skipPlatforms), inputs.platform) }}
     runs-on: ${{ inputs.os || inputs.platform == 'linux' && 'ubuntu-latest' || inputs.platform == 'macos' && 'macos-13' || inputs.platform == 'windows' && 'windows-latest' || 'NONE' }}
 
     env:
@@ -86,7 +82,6 @@ jobs:
         docker tag ${{ env.GAR_LOCATION }}/sdk-test-runner:latest Eppo-exp/sdk-test-runner:latest
         docker pull ${{ env.GAR_LOCATION }}/testing-api:latest
         docker tag ${{ env.GAR_LOCATION }}/testing-api:latest Eppo-exp/testing-api:latest
-        docker images
 
     - name: Run tests
       run: |
@@ -99,7 +94,7 @@ jobs:
 
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ steps.date.outputs.date }}-${{ env.SAFE_SDK_NAME }}-test-logs
+        name: ${{ steps.date.outputs.date }}-${{ env.SAFE_SDK_NAME }}-${{ inputs.platform }}-test-logs
         path: package-testing/sdk-test-runner/logs/
 
     - name: Publish Test Report

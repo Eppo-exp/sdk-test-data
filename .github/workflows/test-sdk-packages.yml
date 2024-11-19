@@ -8,23 +8,26 @@ on:
 
 
 jobs:
-  test-server-sdks:
+  test-php-sdk:
     strategy:
       fail-fast: false
       matrix:
-        sdk:
-          - { sdkName: "eppo/php-sdk",
-              sdkRelayDir: "php-sdk-relay"}
-
-          - { sdkName: "dotnet-server",
-              sdkRelayDir: "dotnet-sdk-relay",
-              skipPlatforms: '["macos"]' }
-
         platform: ['macos', 'linux']
     uses: ./.github/workflows/test-server-sdk.yml
     with:
       platform: ${{ matrix.platform }}
-      sdkName: ${{ matrix.sdk.sdkName }}
-      sdkRelayDir: ${{ matrix.sdk.sdkRelayDir }}
-      skipPlatforms: ${{ matrix.sdk.skipPlatforms }}
+      sdkName: 'eppo/php-sdk'
+      sdkRelayDir: 'php-sdk-relay'
+    secrets: inherit
+
+  test-dotnet-sdk:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: ['linux']
+    uses: ./.github/workflows/test-server-sdk.yml
+    with:
+      platform: ${{ matrix.platform }}
+      sdkName: dotnet-server-sdk
+      sdkRelayDir: dotnet-sdk-relay
     secrets: inherit

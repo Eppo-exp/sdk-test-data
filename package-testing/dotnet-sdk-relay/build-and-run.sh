@@ -23,7 +23,8 @@ case "${EPPO_SDK_PLATFORM}" in
         choco install dotnet-sdk -v ${DOTNET_SDK_VERSION}
         ;;
     "macos")
-        brew install dotnet-sdk@${DOTNET_SDK_VERSION}
+        brew tap isen-ng/dotnet-sdk-versions
+        sudo brew install --cask dotnet-sdk8
         ;;
     "linux")
         sudo apt update
