@@ -63,7 +63,7 @@ fi
 # Allow env variables to be overwritten, then export to this shell.
 export EPPO_API_HOST="${EPPO_API_HOST:-localhost}"
 export EPPO_API_PORT="${EPPO_API_PORT:-5000}"
-export EPPO_BASE_URL="${EPPO_API_HOST}:${EPPO_API_PORT}"
+export EPPO_BASE_URL="http://${EPPO_API_HOST}:${EPPO_API_PORT}/api"
 
 export SDK_RELAY_HOST="${SDK_RELAY_HOST:-localhost}"
 export SDK_RELAY_PORT="${SDK_RELAY_PORT:-4000}"
