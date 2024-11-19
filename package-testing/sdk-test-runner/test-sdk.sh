@@ -165,9 +165,6 @@ case "$command" in
         echo_green "    ... SDK Relay server has started"
 
         echo "  ... Starting Test Cluster node [Eppo-exp/sdk-test-runner]"
-
-        echo_yellow "Mounting directory for logs"
-        echo $(pwd)"/logs"
         
         docker run \
           --add-host host.docker.internal:host-gateway \

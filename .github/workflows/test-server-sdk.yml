@@ -92,16 +92,6 @@ jobs:
         ./test-sdk.sh server ${SDK_NAME}
         popd
 
-    - name: Logs
-      if: success() || failure() # always run even if the previous steps fail
-      run: |
-        echo "List log files"
-        pushd package-testing/sdk-test-runner
-        ls logs
-        cat logs/sdk.log
-        popd
-
-
     - name: Upload Logs
       if: success() || failure() # always run even if the previous steps fail
 
