@@ -57,7 +57,7 @@ jobs:
     - id: setup-docker
       if: ${{ inputs.platform.platform == 'macos' }}
       name: Setup Docker
-      uses: "douglascamata/setup-docker-macos-action"
+      uses: douglascamata/setup-docker-macos-action@v1-alpha
 
     # Set up gCloud
     - id: "auth"
