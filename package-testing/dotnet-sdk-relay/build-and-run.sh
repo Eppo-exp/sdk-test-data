@@ -42,6 +42,9 @@ dotnet --info
 
 # Inject desired SDK version
  
+dotnet nuget list source
+dotnet nuget add source "https://api.nuget.org/v3/index.json" --name "nuget.org"
+
 dotnet remove EppoSDKRelay package Eppo.Sdk
 
 if [[ -n "$SDK_REF" ]]; then
