@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-: "${SDK_VERSION:=3.4.0}"
+: "${SDK_VERSION:=3.5.0}"
 
 DOTNET_SDK_VERSION="8.0"
 
@@ -26,8 +26,9 @@ case "${EPPO_SDK_PLATFORM}" in
         brew install --cask dotnet-sdk8
         ;;
     "linux")
-        sudo apt update
-        sudo apt install dotnet-sdk-${DOTNET_SDK_VERSION}
+        # Dotnet is already install on gh linux runners
+        # sudo apt update
+        # sudo apt install dotnet-sdk-${DOTNET_SDK_VERSION}
         ;;
     *)
         echo "Unsupported platform: ${EPPO_SDK_PLATFORM}"
@@ -36,6 +37,7 @@ case "${EPPO_SDK_PLATFORM}" in
 esac
 
 
+dotnet --info
 
 # Inject desired SDK version
  
@@ -63,7 +65,9 @@ if [[ -n "$SDK_REF" ]]; then
   popd
 
   echo "Adding local dep"
-  dotnet add EppoSDKRelay package Eppo.Sdk --source tmp/
+  pushd EppoSDKRelay
+  dotnet add package Eppo.Sdk --source ../tmp
+  popd
 else
   # Use the provided SDK_VERSION (or the default)
   echo "Using Eppo.sdk@${SDK_VERSION}"
