@@ -42,10 +42,7 @@ dotnet --info
 
 # Inject desired SDK version
  
-dotnet nuget list source
-dotnet nuget add source "https://api.nuget.org/v3/index.json" --name "nuget.org"
-
-dotnet remove EppoSDKRelay package Eppo.Sdk
+ dotnet remove EppoSDKRelay package Eppo.Sdk
 
 if [[ -n "$SDK_REF" ]]; then
   # Use a local build with a specific github ref
@@ -71,6 +68,7 @@ if [[ -n "$SDK_REF" ]]; then
   echo "Adding local dep"
   pushd EppoSDKRelay
   dotnet add package Eppo.Sdk --source ../tmp
+  dotnet restore
   popd
 else
   # Use the provided SDK_VERSION (or the default)
@@ -83,11 +81,11 @@ else
 fi
 
 # Build project
-echo "Building project"
-dotnet build EppoSDKRelay
+# echo "Building project"
+# dotnet build EppoSDKRelay
 
-echo "Publishing project"
-dotnet publish
+# echo "Publishing project"
+# dotnet publish
 
 echo "Running Eppo SDK Relay"
 
