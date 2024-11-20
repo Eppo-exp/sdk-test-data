@@ -37,6 +37,7 @@ case "${EPPO_SDK_PLATFORM}" in
 esac
 
 
+echo "dotnet info"
 dotnet --info
 
 # Inject desired SDK version
