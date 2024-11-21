@@ -25,13 +25,16 @@ jobs:
           # - { repo: "js-client-sdk", workflow: "lint-test-sdk.yml", ref: "main" }
           # - { repo: "node-server-sdk", workflow: "lint-test-sdk.yml", ref: "main" }
           # - { repo: "php-sdk", workflow: "run-tests.yml", ref: "main" }
-          - { repo: "eppo-multiplatform", workflow: "python.yml", ref: "main" }
+          - { repo: "eppo-multiplatform", workflow: "python.yml", ref: "tp/testDataBranch" }
+          - { repo: "eppo-multiplatform", workflow: "ci.yml", ref: "tp/testDataBranch" }
+          - { repo: "eppo-multiplatform", workflow: "ruby.yml", ref: "tp/testDataBranch" }
+          - { repo: "eppo-multiplatform", workflow: "msrv.yml", ref: "tp/testDataBranch" }
           # - { repo: "react-native-sdk", workflow: "ci.yml", ref: "main" }
     steps:
     - name: Display workflow details
       shell: bash
       run: |
-        echo "Testing eppo-exp/${{ matrix.sdk.repo }}"
+        echo "Testing eppo-exp/${{ matrix.sdk.repo }}/${{ matrix.sdk.workflow }}"
     - name: Run remote workflow
       uses: convictional/trigger-workflow-and-wait@v1.6.1
       with:
