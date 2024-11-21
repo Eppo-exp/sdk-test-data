@@ -37,12 +37,9 @@ case "${EPPO_SDK_PLATFORM}" in
 esac
 
 
-echo "dotnet info"
-dotnet --info
-
 # Inject desired SDK version
  
- dotnet remove EppoSDKRelay package Eppo.Sdk
+dotnet remove EppoSDKRelay package Eppo.Sdk
 
 if [[ -n "$SDK_REF" ]]; then
   # Use a local build with a specific github ref
@@ -61,15 +58,14 @@ if [[ -n "$SDK_REF" ]]; then
   echo "Building SDK"
   dotnet pack
 
-  echo "Moving build artifact"
-  mv dot-net-sdk/bin/Release/*.nupkg ./
+  # echo "Moving build artifact"
+  # mv dot-net-sdk/bin/Release/*.nupkg ./
   popd
 
   echo "Adding local dep"
-  pushd EppoSDKRelay
-  dotnet add package Eppo.Sdk --source ../tmp
+  cd EppoSDKRelay
   dotnet restore
-  popd
+  dotnet add package Eppo.Sdk --source ../tmp/dot-net-sdk/bin/Release/
 else
   # Use the provided SDK_VERSION (or the default)
   echo "Using Eppo.sdk@${SDK_VERSION}"
@@ -81,13 +77,15 @@ else
 fi
 
 # Build project
-# echo "Building project"
-# dotnet build EppoSDKRelay
+echo "Building project"
 
-# echo "Publishing project"
-# dotnet publish
+cd EppoSDKRelay
+dotnet build 
+
+echo "Publishing project"
+dotnet publish
 
 echo "Running Eppo SDK Relay"
 
 # Pipe in parameters.
-dotnet run --project EppoSDKRelay
+dotnet run
