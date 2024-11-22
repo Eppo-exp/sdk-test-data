@@ -49,7 +49,7 @@ jobs:
         uses: 'Eppo-exp/eppo-multiplatform/.github/actions/action-test-python@tp/testDataBranch'
         with:
           test_data_branch: ${{ github.head_ref || github.ref_name }}
-          sdk_branch: main
+          sdk_branch: tp/testDataBranch
   
   # test-php-sdk:
   #   uses: Eppo-exp/php-sdk/.github/workflows/run-tests.yml@main
