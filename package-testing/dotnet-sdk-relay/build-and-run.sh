@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # default version of the SDK to use.
-: "${SDK_VERSION:=3.5.0}"
+: "${SDK_VERSION:=3.5.1}"
 
 SDK="https://github.com/Eppo-exp/dot-net-server-sdk.git"
 
