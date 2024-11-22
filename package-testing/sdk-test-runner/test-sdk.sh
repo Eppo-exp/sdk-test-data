@@ -137,16 +137,19 @@ case "$command" in
 
         BUILD_AND_RUN_PLATFORM=build-and-run-${EPPO_SDK_PLATFORM}.sh
         if [ -f docker-run.sh ]; then
-           echo "    ... Starting SDK Relay via docker launch script"
+          echo "    ... Starting SDK Relay via docker launch script"
 
           # Docker containers need to point at host.docker.internal instead of localhost
-          EPPO_BASE_URL=http://host.docker.internal:${EPPO_API_PORT}/api EPPO_API_HOST=host.docker.internal ./docker-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+          EPPO_BASE_URL=http://host.docker.internal:${EPPO_API_PORT}/api EPPO_API_HOST=host.docker.internal ./docker-run.sh > ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+
         elif [ -f ${BUILD_AND_RUN_PLATFORM} ]; then
-           echo "    ... Starting SDK Relay via platform build-and-run script"
-          ./${BUILD_AND_RUN_PLATFORM} >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+          echo "    ... Starting SDK Relay via platform build-and-run script"
+          ./${BUILD_AND_RUN_PLATFORM} > ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+
         elif [ -f build-and-run.sh ]; then
-           echo "    ... Starting SDK Relay via build-and-run script"
-          ./build-and-run.sh >> ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+          echo "    ... Starting SDK Relay via build-and-run script"
+          ./build-and-run.sh > ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+
         else
           exit_with_message "SDK Relay does not have a launch script in $SDK_DIR"
         fi
@@ -174,6 +177,7 @@ case "$command" in
           -v ./test-data:/app/test-data:ro \
           --name eppo-sdk-test-runner \
           -t Eppo-exp/sdk-test-runner:latest "--junit=logs/results.xml"
+
         EXIT_CODE=$?
 
         echo "  ... Downing the docker containers"
