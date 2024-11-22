@@ -147,8 +147,6 @@ case "$command" in
           # Docker containers need to point at host.docker.internal instead of localhost
           EPPO_BASE_URL=http://host.docker.internal:${EPPO_API_PORT}/api EPPO_API_HOST=host.docker.internal ./docker-run.sh > ${RUNNER_DIR}/logs/sdk.log 2>&1 &
 
-          EPPO_BASE_URL=http://host.docker.internal:${EPPO_API_PORT}/api EPPO_API_HOST=host.docker.internal ./docker-run.sh > ${RUNNER_DIR}/logs/sdk.log 2>&1 &
-
         elif [ -f ${BUILD_AND_RUN_PLATFORM} ]; then
           echo "    ... Starting SDK Relay via platform build-and-run script"
           ./${BUILD_AND_RUN_PLATFORM} > ${RUNNER_DIR}/logs/sdk.log 2>&1 &
