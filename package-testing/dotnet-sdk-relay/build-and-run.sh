@@ -39,13 +39,15 @@ if [[ -n "$SDK_REF" ]]; then
   dotnet add package Eppo.Sdk --source ../tmp/dot-net-sdk/bin/Release/
   popd
 else
+  pushd EppoSDKRelay
   # Use the provided SDK_VERSION (or the default)
   echo "Using Eppo.sdk@${SDK_VERSION}"
-  dotnet add EppoSDKRelay package Eppo.Sdk --version $SDK_VERSION 
+  dotnet add package Eppo.Sdk --version $SDK_VERSION 
   if [ $? -ne 0 ]; then
     echo "Adding versioned package failed";
     exit 1
   fi
+  popd
 fi
 
 # Build project
