@@ -1,0 +1,22 @@
+name: Build and push SDK Test Runner
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version string for SDK Test Runner release'
+        required: true
+        default: '1.0.0'
+
+  push:
+    paths:
+      .github/workflows/release-sdk-test-runner.yml
+
+jobs:
+  build-and-upload:
+    uses: ./.github/workflows/build-and-push.yml
+    with:
+      version: ${{ inputs.version }}
+      docker_context: ./package-testing/sdk-test-runner
+      image_name: sdk-test-runner
+    secrets: inherit

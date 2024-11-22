@@ -1,0 +1,22 @@
+name: Build and push Testing API
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version string for SDK Testing API release'
+        required: true
+        default: '1.0.0'
+
+  push:
+    paths:
+      .github/workflows/release-sdk-testing-api.yml
+
+jobs:
+  build-and-upload:
+    uses: ./.github/workflows/build-and-push.yml
+    with:
+      version: ${{ inputs.version }}
+      docker_context: ./package-testing/testing-api
+      image_name: testing-api
+    secrets: inherit

@@ -32,7 +32,7 @@ yarn start:prod
 yarn dev
 ```
 
-4. Navigate to [localhost:4000/flag-config/v1/config](localhost:4000/flag-config/v1/config) to verify UFC data is served.
+4. Navigate to [localhost:4000/api/flag-config/v1/config](http://localhost:4000/api/flag-config/v1/config) to verify UFC data is served.
 
 ### Customizing Server
 The following options are exposed via environment variables
@@ -52,23 +52,23 @@ EPPO_API_SERVER_PORT=3333 yarn dev
 
 ## Getting data from the server
 
-The server will respond with UFC and Bandit model config data at `/flag-config/v1/config` and `/flag-config/v1/bandits` just as the current Eppo API server does via CDN. The server will also populate the _ETAG_ header and check the _IF-NONE-MATCH_ header and respond appropriately.
+The server will respond with UFC and Bandit model config data at `/api/flag-config/v1/config` and `/api/flag-config/v1/bandits` just as the current Eppo API server does via CDN. The server will also populate the _ETAG_ header and check the _IF-NONE-MATCH_ header and respond appropriately.
 
 ```shell
-curl --location 'localhost:5000/flag-config/v1/config?sdkName=fortran-sdk'
+curl --location 'localhost:5000/api/flag-config/v1/config?sdkName=fortran-sdk'
 
 # Get Bandits
-curl --location 'localhost:5000/flag-config/v1/bandits?sdkName=fortran-sdk' 
+curl --location 'localhost:5000/api/flag-config/v1/bandits?sdkName=fortran-sdk' 
 
 # See headers only
-curl --location 'localhost:5000/flag-config/v1/config?sdkName=fortran-sdk' -I
+curl --location 'localhost:5000/api/flag-config/v1/config?sdkName=fortran-sdk' -I
 
 # Populate IF-NONE-MATCH with the current etag to verify empty response
-curl --location 'localhost:5000/flag-config/v1/config?sdkName=fortran-sdk' \
+curl --location 'localhost:5000/api/flag-config/v1/config?sdkName=fortran-sdk' \
     --header 'IF-NONE-MATCH: 79689d5810a263a40fc179be057e743d'
 
 # Show just the headers to see response code 304:not modified
-curl --location 'localhost:5000/flag-config/v1/config?sdkName=fortran-sdk' \
+curl --location 'localhost:5000/api/flag-config/v1/config?sdkName=fortran-sdk' \
     --header 'IF-NONE-MATCH: 79689d5810a263a40fc179be057e743d' -I
 
 
@@ -91,7 +91,7 @@ To run in docker, we need to build the docker image, provide the test data, then
 
 1. Build for local use
 ```shell
-  docker build . -t Eppo-exp/test-api-server:local
+  docker build . -t Eppo-exp/testing-api:local
 ```
 
 To use the local copy of test data, run
@@ -113,7 +113,7 @@ docker run \
     --rm  \
     -v ./test-data:/app/test-data \
     -p 5000:5000 \
-    -t Eppo-exp/test-api-server:local
+    -t Eppo-exp/testing-api:local
 ```
 
 
