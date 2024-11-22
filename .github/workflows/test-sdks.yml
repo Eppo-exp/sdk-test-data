@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Run test action"
-        uses: 'Eppo-exp/eppo-multiplatform/.github/actions/action-test-sdk@tp/testDataBranch'
+        uses: 'Eppo-exp/eppo-multiplatform/.github/actions/action-test-python@tp/testDataBranch'
         with:
           test_data_branch: ${{ github.head_ref || github.ref_name }}
           sdk_branch: main
