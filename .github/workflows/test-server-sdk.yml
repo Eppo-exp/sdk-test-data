@@ -25,24 +25,24 @@ jobs:
     runs-on: ${{ inputs.os || inputs.platform == 'linux' && 'ubuntu-latest' || inputs.platform == 'macos' && 'macos-13' || inputs.platform == 'windows' && 'windows-latest' || 'NONE' }}
 
     env:
-        SDK_NAME: ${{ inputs.sdkName }}
-        SDK_DIR: ${{ inputs.sdkRelayDir }}
-        EPPO_API_HOST: localhost
-        SDK_RELAY_HOST: localhost
-        TEST_RUNNER_HOST: localhost
-        EPPO_SDK_PLATFORM: ${{ inputs.platform }}
+      SDK_NAME: ${{ inputs.sdkName }}
+      SDK_DIR: ${{ inputs.sdkRelayDir }}
+      EPPO_API_HOST: localhost
+      SDK_RELAY_HOST: localhost
+      TEST_RUNNER_HOST: localhost
+      EPPO_SDK_PLATFORM: ${{ inputs.platform }}
 
-        PROJECT_ID: ${{ vars.SDK_TESTING_PROJECT_ID  }}
-        REGION: ${{ vars.SDK_TESTING_REGION }}
-        GAR_LOCATION: ${{ vars.SDK_TESTING_REGION }}-docker.pkg.dev/${{ vars.SDK_TESTING_PROJECT_ID }}/sdk-testing
+      PROJECT_ID: ${{ vars.SDK_TESTING_PROJECT_ID  }}
+      REGION: ${{ vars.SDK_TESTING_REGION }}
+      GAR_LOCATION: ${{ vars.SDK_TESTING_REGION }}-docker.pkg.dev/${{ vars.SDK_TESTING_PROJECT_ID }}/sdk-testing
 
     steps:
     - name: Test information header
       shell: bash
       run: echo "Running Test Cluster for ${SDK_NAME}"
 
-    - name: Get current date
-      id: date
+    - name: Set some variables
+      id: vars
       run: |
         echo "::set-output name=date::$(date +'%Y-%m-%d')"
         echo "SAFE_SDK_NAME=$(echo ${SDK_NAME} | sed 's/\//_/g')" >> $GITHUB_ENV
@@ -71,8 +71,7 @@ jobs:
 
     # Allow docker access to the GAR
     - name: "Docker auth"
-      run: |-
-        gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+      run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
 
     # Pull test runner and testing api images for GCP Artifact Registry (GAR) and
     # retag them locally as expected by the runner script.

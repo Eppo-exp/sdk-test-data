@@ -40,7 +40,6 @@ function wait_for_url() {
     curl --silent --output /dev/null --fail "$url" && { return 1; }
     echo "Waiting attempt number ${attempt}"
     sleep 5
-    sleep 5
     ((attempt++))
   done
 
@@ -183,7 +182,6 @@ case "$command" in
           -t Eppo-exp/sdk-test-runner:latest "--junit=logs/results.xml"
 
         EXIT_CODE=$?
-
 
         echo "  ... Downing the docker containers"
         docker logs eppo-api >& logs/api.log
