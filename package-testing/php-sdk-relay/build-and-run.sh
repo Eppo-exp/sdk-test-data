@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO Configure env and use this instead of docker
-
 composer install
 
 # Set default values for vars

@@ -34,9 +34,10 @@ if [[ -n "$SDK_REF" ]]; then
   popd
 
   echo "Adding local dependency"
-  cd EppoSDKRelay
+  pushd EppoSDKRelay
   dotnet restore
   dotnet add package Eppo.Sdk --source ../tmp/dot-net-sdk/bin/Release/
+  popd
 else
   # Use the provided SDK_VERSION (or the default)
   echo "Using Eppo.sdk@${SDK_VERSION}"
