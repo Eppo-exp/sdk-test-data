@@ -9,7 +9,7 @@
         "email": "alice@mycompany.com",
         "country": "US"
       },
-      "assignment": 3,
+      "assignment": 5,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -52,7 +52,7 @@
         "email": "bob@example.com",
         "country": "Canada"
       },
-      "assignment": 3,
+      "assignment": 15,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -94,7 +94,7 @@
       "subjectAttributes": {
         "age": 50
       },
-      "assignment": 2,
+      "assignment": 66,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -126,7 +126,7 @@
         "country": "Mexico",
         "age": 25
       },
-      "assignment": 3,
+      "assignment": 56,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -166,7 +166,7 @@
     {
       "subjectKey": "1",
       "subjectAttributes": {},
-      "assignment": 2,
+      "assignment": 99,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -194,7 +194,7 @@
     {
       "subjectKey": "2",
       "subjectAttributes": {},
-      "assignment": 2,
+      "assignment": 99,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
