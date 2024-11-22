@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
+# default version of the SDK to use.
 : "${SDK_VERSION:=3.5.0}"
-
-DOTNET_SDK_VERSION="8.0"
 
 SDK="https://github.com/Eppo-exp/dot-net-server-sdk.git"
 
@@ -11,34 +10,9 @@ if [ -e .env ]; then
   source .env
 fi
 
-
-# Configure environment to **build** the app
-echo "Configuring for build"
-
-# Github runners use the package managers below
-# https://github.com/actions/runner-images
-case "${EPPO_SDK_PLATFORM}" in
-    "windows")
-        choco install dotnet-sdk -v ${DOTNET_SDK_VERSION}
-        ;;
-    "macos")
-        brew tap isen-ng/dotnet-sdk-versions
-        brew install --cask dotnet-sdk8
-        ;;
-    "linux")
-        # Dotnet is already install on gh linux runners
-        # sudo apt update
-        # sudo apt install dotnet-sdk-${DOTNET_SDK_VERSION}
-        ;;
-    *)
-        echo "Unsupported platform: ${EPPO_SDK_PLATFORM}"
-        exit 1
-        ;;
-esac
-
+# No need to configure the environment; GH Runners all have .NET installed.
 
 # Inject desired SDK version
- 
 dotnet remove EppoSDKRelay package Eppo.Sdk
 
 if [[ -n "$SDK_REF" ]]; then
@@ -57,12 +31,9 @@ if [[ -n "$SDK_REF" ]]; then
   pushd tmp
   echo "Building SDK"
   dotnet pack
-
-  # echo "Moving build artifact"
-  # mv dot-net-sdk/bin/Release/*.nupkg ./
   popd
 
-  echo "Adding local dep"
+  echo "Adding local dependency"
   cd EppoSDKRelay
   dotnet restore
   dotnet add package Eppo.Sdk --source ../tmp/dot-net-sdk/bin/Release/
@@ -80,7 +51,7 @@ fi
 echo "Building project"
 
 cd EppoSDKRelay
-dotnet build 
+dotnet build
 
 echo "Publishing project"
 dotnet publish

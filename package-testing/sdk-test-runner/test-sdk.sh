@@ -158,8 +158,6 @@ case "$command" in
         echo_yellow "    ... Waiting to verify server is up"
         wait_for_url http://${SDK_RELAY_HOST}:${SDK_RELAY_PORT} 
         if [[ $? -eq 0 ]]; then
-          echo_yellow "Relay Server Logs"
-          cat ${RUNNER_DIR}/logs/sdk.log
           exit_with_message "    ... SDK Relay server failed to start"
         fi
         echo_green "    ... SDK Relay server has started"
@@ -189,10 +187,7 @@ case "$command" in
 
         pkill -P $SDK_RELAY_PID
 
-        echo "Exiting ${EXIT_CODE}"
-
         exit $EXIT_CODE
-
         ;;
     client)
         echo_red "Client mode not yet implemented"
