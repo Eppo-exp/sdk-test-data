@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { RequestHandler, Router } from 'express';
 import { getDataForRequest, isObfuscatedSdk, updateClientDataMap } from './ufc/data';
 
 const routes = Router();
@@ -9,7 +9,7 @@ routes.get('/', (req, res) => {
 });
 
 // Serve Unified Flag Config
-routes.get('/flag-config/v1/config', (req, res) => {
+const serveUFC: RequestHandler = (req, res) => {
   const sdk: string = req.query.sdkName as string;
 
   const data = getDataForRequest(sdk);
@@ -37,10 +37,10 @@ routes.get('/flag-config/v1/config', (req, res) => {
   }
 
   return res.status(404).json({ message: 'No data for specified SDK' });
-});
+};
 
-// Serve bandit models
-routes.get('/flag-config/v1/bandits', (req, res) => {
+// Serve bandit params
+const serveBanditParams: RequestHandler =(req, res) => {
   const sdk: string = req.query.sdkName as string;
 
   const data = getDataForRequest(sdk);
@@ -51,7 +51,15 @@ routes.get('/flag-config/v1/bandits', (req, res) => {
   }
 
   return res.status(404).json({ message: 'No data for specified SDK' });
-});
+};
+
+// Serve with and without the /api prefix to accomodate SDKs in transition.
+routes.get('/api/flag-config/v1/config', serveUFC);
+routes.get('/api/flag-config/v1/bandits', serveBanditParams);
+
+// For SDKs which in transition; they're passed a baseUrl including `/api` and are using endpoint constants which start with `api/`
+routes.get('/api/api/flag-config/v1/config', serveUFC);
+routes.get('/api/api/flag-config/v1/bandits', serveBanditParams);
 
 // Allow a test runner to change the scenario for an SDK
 routes.post('/sdk/:sdk/scenario', (req, res) => {
