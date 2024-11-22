@@ -15,31 +15,31 @@ jobs:
   # test-java-sdk:
   #   uses: Eppo-exp/java-server-sdk/.github/workflows/lint-test-sdk.yml@main
   #   with:
-  #     test_data_branch: ${{ github.head_ref || github.ref_name }}
+  #     test_data_branch: ${{ github.ref }}
   #     sdk_branch: main
   
   # test-android-sdk:
   #   uses: Eppo-exp/android-sdk/.github/workflows/test.yaml@main
   #   with:
-  #     test_data_branch: ${{ github.head_ref || github.ref_name }}
+  #     test_data_branch: ${{ github.ref }}
   #     sdk_branch: main
       
   # test-node-server-sdk:
   #   uses: Eppo-exp/node-server-sdk/.github/workflows/lint-test-sdk.yml@main
   #   with:
-  #     test_data_branch: ${{ github.head_ref || github.ref_name }}
+  #     test_data_branch: ${{ github.ref }}
   #     sdk_branch: main
   
   # test-node-client-sdk:
   #   uses: Eppo-exp/js-client-sdk/.github/workflows/lint-test-sdk.yml@main
   #   with:
-  #     test_data_branch: ${{ github.head_ref || github.ref_name }}
+  #     test_data_branch: ${{ github.ref }}
   #     sdk_branch: main
 
   # test-react-native-sdk:
   #   uses: Eppo-exp/react-native-sdk/.github/workflows/ci.yml@main
   #   with:
-  #     test_data_branch: ${{ github.head_ref || github.ref_name }}
+  #     test_data_branch: ${{ github.ref }}
   #     sdk_branch: main
   
   test-python-sdk:
@@ -48,29 +48,41 @@ jobs:
       - name: "Run test action"
         uses: 'Eppo-exp/eppo-multiplatform/.github/actions/action-test-python@tp/testDataBranch'
         with:
-          test_data_branch: ${{ github.head_ref || github.ref_name }}
+          test_data_branch: ${{ github.ref }}
           sdk_branch: tp/testDataBranch
-  
+
+  test-ruby-sdk:
+    uses: 'Eppo-exp/eppo-multiplatform/.github/workflows/ruby.yml@tp/testDataBranch'
+    with:
+      test_data_branch: ${{ github.ref }}
+      sdk_branch: tp/testDataBranch
+
+  test-rust-sdk:
+    uses: 'Eppo-exp/eppo-multiplatform/.github/workflows/ci.yml@tp/testDataBranch'
+    with:
+      test_data_branch: ${{ github.ref }}
+      sdk_branch: tp/testDataBranch
+
   # test-php-sdk:
   #   uses: Eppo-exp/php-sdk/.github/workflows/run-tests.yml@main
   #   with:
-  #     test_data_branch: ${{ github.head_ref || github.ref_name }}
+  #     test_data_branch: ${{ github.ref }}
   #     sdk_branch: main
 
   # test-ios-sdk:
   #   uses: Eppo-exp/eppo-ios-sdk/.github/workflows/unit-tests.yml@main
   #   with:
-  #     test_data_branch: ${{ github.head_ref || github.ref_name }}
+  #     test_data_branch: ${{ github.ref }}
   #     sdk_branch: main
 
   # test-golang-sdk:
   #   uses: Eppo-exp/golang-sdk/.github/workflows/test.yml@main
   #   with:
-  #     test_data_branch: ${{ github.head_ref || github.ref_name }}
+  #     test_data_branch: ${{ github.ref }}
   #     sdk_branch: main
 
   # test-dotnet-sdk:
   #   uses: Eppo-exp/dot-net-server-sdk/.github/workflows/run-tests.yml@main
   #   with:
-  #     test_data_branch: ${{ github.head_ref || github.ref_name }}
+  #     test_data_branch: ${{ github.ref }}
   #     sdk_branch: main
