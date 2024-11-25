@@ -9,7 +9,7 @@
         "email": "alice@mycompany.com",
         "country": "US"
       },
-      "assignment": 3,
+      "assignment": 5,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -52,7 +52,7 @@
         "email": "bob@example.com",
         "country": "Canada"
       },
-      "assignment": 3,
+      "assignment": 6,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -306,7 +306,7 @@
     {
       "subjectKey": "6",
       "subjectAttributes": {},
-      "assignment": 2,
+      "assignment": 7,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
