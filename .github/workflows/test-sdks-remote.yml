@@ -20,6 +20,7 @@ jobs:
           - { repo: "dot-net-server-sdk", workflow: "run-tests.yml", ref: "main" }
           - { repo: "eppo-ios-sdk", workflow: "unit-tests.yml", ref: "main" }
           - { repo: "golang-sdk", workflow: "test.yml", ref: "main" }
+          - { repo: "sdk-common-jvm", workflow: "lint-test-sdk.yml", ref: "tp/apibranch" }
           - { repo: "java-server-sdk", workflow: "lint-test-sdk.yml", ref: "main" }
           - { repo: "js-client-sdk", workflow: "lint-test-sdk.yml", ref: "main" }
           - { repo: "node-server-sdk", workflow: "lint-test-sdk.yml", ref: "main" }

@@ -13,7 +13,13 @@ jobs:
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
-  
+    
+  test-java-common-sdk:
+    uses: Eppo-exp/sdk-common-jdk/.github/workflows/lint-test-sdk.yml@tp/apibranch
+    with:
+      test_data_branch: tp/fail/test
+      sdk_branch: tp/apibranch
+    
   test-android-sdk:
     uses: Eppo-exp/android-sdk/.github/workflows/test.yaml@main
     with:
