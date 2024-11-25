@@ -9,7 +9,7 @@
         "email": "alice@mycompany.com",
         "country": "US"
       },
-      "assignment": 5,
+      "assignment": 1,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -52,7 +52,7 @@
         "email": "bob@example.com",
         "country": "Canada"
       },
-      "assignment": 6,
+      "assignment": 1,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -306,7 +306,7 @@
     {
       "subjectKey": "6",
       "subjectAttributes": {},
-      "assignment": 7,
+      "assignment": 2,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -334,7 +334,7 @@
     {
       "subjectKey": "7",
       "subjectAttributes": {},
-      "assignment": 1,
+      "assignment": 3,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -362,7 +362,7 @@
     {
       "subjectKey": "8",
       "subjectAttributes": {},
-      "assignment": 1,
+      "assignment": 3,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -446,7 +446,7 @@
     {
       "subjectKey": "11",
       "subjectAttributes": {},
-      "assignment": 1,
+      "assignment": 3,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -474,7 +474,7 @@
     {
       "subjectKey": "12",
       "subjectAttributes": {},
-      "assignment": 1,
+      "assignment": 3,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -530,7 +530,7 @@
     {
       "subjectKey": "14",
       "subjectAttributes": {},
-      "assignment": 1,
+      "assignment": 3,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -614,7 +614,7 @@
     {
       "subjectKey": "17",
       "subjectAttributes": {},
-      "assignment": 1,
+      "assignment": 3,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -642,7 +642,7 @@
     {
       "subjectKey": "18",
       "subjectAttributes": {},
-      "assignment": 1,
+      "assignment": 3,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -670,7 +670,7 @@
     {
       "subjectKey": "19",
       "subjectAttributes": {},
-      "assignment": 1,
+      "assignment": 3,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",

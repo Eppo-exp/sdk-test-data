@@ -5,38 +5,106 @@
     "name": "Test"
   },
   "flags": {
-    "empty_flag": {
-      "key": "empty_flag",
+    "integer-flag": {
+      "key": "integer-flag",
       "enabled": true,
-      "variationType": "STRING",
-      "variations": {},
-      "allocations": [],
-      "totalShards": 10000
-    },
-    "disabled_flag": {
-      "key": "disabled_flag",
-      "enabled": false,
       "variationType": "INTEGER",
-      "variations": {},
-      "allocations": [],
-      "totalShards": 10000
-    },
-    "no_allocations_flag": {
-      "key": "no_allocations_flag",
-      "enabled": true,
-      "variationType": "JSON",
       "variations": {
-        "control": {
-          "key": "control",
-          "value": "{\"variant\": \"control\"}"
+        "one": {
+          "key": "one",
+          "value": 1
         },
-        "treatment": {
-          "key": "treatment",
-          "value": "{\"variant\": \"treatment\"}"
+        "two": {
+          "key": "two",
+          "value": 2
+        },
+        "three": {
+          "key": "three",
+          "value": 3
         }
       },
-      "allocations": [],
+      "allocations": [
+        {
+          "key": "targeted allocation",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "country",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "US",
+                    "Canada",
+                    "Mexico"
+                  ]
+                }
+              ]
+            },
+            {
+              "conditions": [
+                {
+                  "attribute": "email",
+                  "operator": "MATCHES",
+                  "value": ".*@example.com"
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "three",
+              "shards": [
+                {
+                  "salt": "full-range-salt",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "50/50 split",
+          "rules": [],
+          "splits": [
+            {
+              "variationKey": "one",
+              "shards": [
+                {
+                  "salt": "split-numeric-flag-some-allocation",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 5000
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "variationKey": "two",
+              "shards": [
+                {
+                  "salt": "split-numeric-flag-some-allocation",
+                  "ranges": [
+                    {
+                      "start": 5000,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        }
+      ],
       "totalShards": 10000
     }
-  } 
+  }
 }
