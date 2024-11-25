@@ -278,7 +278,7 @@
     {
       "subjectKey": "5",
       "subjectAttributes": {},
-      "assignment": 1,
+      "assignment": 3,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
