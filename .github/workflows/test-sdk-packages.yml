@@ -7,7 +7,10 @@ on:
   push:
     branches:
       - main
+      - tp/sdktest/**
   workflow_dispatch:
+
+# Currently, docker (required by the testing cluster) takes 20minutes to download and install on the test runner.
 
 jobs:
   test-php-sdk:
@@ -20,4 +23,16 @@ jobs:
       platform: ${{ matrix.platform }}
       sdkName: 'eppo/php-sdk'
       sdkRelayDir: 'php-sdk-relay'
+    secrets: inherit
+
+  test-dotnet-sdk:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: ['linux', 'windows']
+    uses: ./.github/workflows/test-server-sdk.yml
+    with:
+      platform: ${{ matrix.platform }}
+      sdkName: dotnet-server-sdk
+      sdkRelayDir: dotnet-sdk-relay
     secrets: inherit
