@@ -166,6 +166,9 @@ case "$command" in
         fi
         echo_green "    ... SDK Relay server has started"
 
+        curl "http://localhost:5000/"
+        curl "http://localhost:5000/sdk/details"
+
         echo "  ... Starting Test Cluster node [Eppo-exp/sdk-test-runner]"
         
         docker run \
