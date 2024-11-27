@@ -199,6 +199,23 @@ The test runner sends assignment and bandit action requests to the SDK Relay Ser
 
 Any non-empty response
 
+##### SDK Details
+
+`POST /sdk/details`
+
+If possible, the SDK relay server should respond with the `sdkName` and `sdkVersion` in use. This may not be directly possible with all SDKs. Not all SDKs support bandits and some SDKs lack support for dynamically typing attribute inputs. This endpoint is where the relay server can indicate to the test runner whether these features are supported (the default assumed by the test runner is `true`).
+
+`GET /sdk/details`
+
+```ts
+// Expected response data:
+type SDKDetailsResponse = {
+  sdkName?: string;
+  sdkVersion?: string;
+  supports: Record<string, boolean>;
+};
+```
+
 ##### Reset SDK
 
 `POST /sdk/reset`
@@ -225,13 +242,13 @@ type Assignment = {
   subjectAttributes: Record<string, object>;
 };
 
-// Expect response data:
-export type TestResponse {
-    result?: Object,          // Relayed `EppoClient` response
-    assignmentLog?: Object[], // Assignment log events (not yet tested)
-    banditLog?: Object[],     // Bandit selection log events (not yet tested)
-    error?: string            // Error encountered (not yet tested; automatically fails test when present)
-}
+// Expected response data:
+type TestResponse = {
+    result?: Object;          // Relayed `EppoClient` response
+    assignmentLog?: Object[]; // Assignment log events (not yet tested)
+    banditLog?: Object[];     // Bandit selection log events (not yet tested)
+    error?: string;           // Error encountered (not yet tested; automatically fails test when present)
+};
 ```
 
 ##### Bandits
@@ -264,12 +281,12 @@ export type BanditActionRequest = {
   };
 
 // Expects response data:
-export type TestResponse {
-    result?: Object,          // Relayed `EppoClient` response, form of {variation: string, action: string}
-    assignmentLog?: Object[], // Assignment log events (not yet tested)
-    banditLog?: Object[],     // Bandit selection log events (not yet tested)
-    error?: string            // Error encountered (not yet tested; automatically fails test when present)
-}
+type TestResponse = {
+    result?: Object;          // Relayed `EppoClient` response, form of {variation: string, action: string}
+    assignmentLog?: Object[]; // Assignment log events (not yet tested)
+    banditLog?: Object[];     // Bandit selection log events (not yet tested)
+    error?: string;           // Error encountered (not yet tested; automatically fails test when present)
+};
 ```
 
 ### build-and-run.sh
