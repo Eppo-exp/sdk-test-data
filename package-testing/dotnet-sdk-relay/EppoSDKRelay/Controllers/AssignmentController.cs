@@ -29,22 +29,22 @@ public class AssignmentController : JsonControllerBase
         switch (data.AssignmentType)
         {
             case "STRING":
-                return JsonResult(eppoClient.GetStringAssignment(data.Flag, data.SubjectKey, convertedAttributes, defaultValue.ToString()!));
+                return JsonTestResponse(eppoClient.GetStringAssignment(data.Flag, data.SubjectKey, convertedAttributes, defaultValue.ToString()!));
 
             case "INTEGER":
                 var intResults = eppoClient.GetIntegerAssignment(data.Flag, data.SubjectKey, convertedAttributes, Convert.ToInt64(defaultValue.ToString()));
-                return JsonResult(intResults);
+                return JsonTestResponse(intResults);
 
             case "BOOLEAN":
-                return JsonResult(eppoClient.GetBooleanAssignment(data.Flag, data.SubjectKey, convertedAttributes, Convert.ToBoolean(defaultValue.ToString())));
+                return JsonTestResponse(eppoClient.GetBooleanAssignment(data.Flag, data.SubjectKey, convertedAttributes, Convert.ToBoolean(defaultValue.ToString())));
 
             case "NUMERIC":
-                return JsonResult(eppoClient.GetNumericAssignment(data.Flag, data.SubjectKey, convertedAttributes, Convert.ToDouble(defaultValue.ToString())));
+                return JsonTestResponse(eppoClient.GetNumericAssignment(data.Flag, data.SubjectKey, convertedAttributes, Convert.ToDouble(defaultValue.ToString())));
 
             case "JSON":
                 var jString = defaultValue.ToString();
                 var defaultJson = JObject.Parse(jString);
-                return JsonResult(eppoClient.GetJsonAssignment(data.Flag, data.SubjectKey, convertedAttributes, defaultJson));
+                return JsonTestResponse(eppoClient.GetJsonAssignment(data.Flag, data.SubjectKey, convertedAttributes, defaultJson));
         }
 
         return JsonError("Invalid Assignment Type " + data.AssignmentType);

@@ -33,6 +33,6 @@ public class BanditController : JsonControllerBase
                                                 subject,
                                                 actions,
                                                 defaultVal);
-        return JsonResult(result);
+        return JsonTestResponse(result);
     }
 }
