@@ -33,6 +33,6 @@ jobs:
     uses: ./.github/workflows/test-server-sdk.yml
     with:
       platform: ${{ matrix.platform }}
-      sdkName: dotnet-server-sdk
+      sdkName: dotnet-server
       sdkRelayDir: dotnet-sdk-relay
     secrets: inherit
