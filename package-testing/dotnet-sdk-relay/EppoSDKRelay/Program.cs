@@ -14,5 +14,8 @@ public static class Program
             {
                 builder.UseStartup<Startup>();
                 builder.UseUrls("http://" + host + ":" + port);
+
+                // Listen on the docker hostname as well
+                builder.UseUrls("http://host.docker.internal:" + port);
             });
 }
