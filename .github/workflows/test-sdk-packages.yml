@@ -1,0 +1,23 @@
+name: Test Packaged SDKs
+
+on:
+  pull_request:
+    paths:
+      - ufc/**
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test-php-sdk:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: ['linux']
+    uses: ./.github/workflows/test-server-sdk.yml
+    with:
+      platform: ${{ matrix.platform }}
+      sdkName: 'eppo/php-sdk'
+      sdkRelayDir: 'php-sdk-relay'
+    secrets: inherit
