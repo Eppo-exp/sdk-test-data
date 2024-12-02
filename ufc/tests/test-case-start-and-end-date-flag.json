@@ -1,0 +1,114 @@
+{
+  "flag": "start-and-end-date-test",
+  "variationType": "STRING",
+  "defaultValue": "unknown",
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {
+        "version": "1.15.0",
+        "country": "US"
+      },
+      "assignment": "current",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "alice belongs to the range of traffic assigned to \"current\" defined in allocation \"current-versions\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "current",
+        "variationValue": "current",
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "current-versions",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 3
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "old-versions",
+            "allocationEvaluationCode": "AFTER_END_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "future-versions",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 2
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {
+        "version": "0.20.1",
+        "country": "Canada"
+      },
+      "assignment": "current",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "bob belongs to the range of traffic assigned to \"current\" defined in allocation \"current-versions\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "current",
+        "variationValue": "current",
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "current-versions",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 3
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "old-versions",
+            "allocationEvaluationCode": "AFTER_END_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "future-versions",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 2
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {
+        "version": "2.1.13"
+      },
+      "assignment": "current",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"current\" defined in allocation \"current-versions\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "current",
+        "variationValue": "current",
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "current-versions",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 3
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "old-versions",
+            "allocationEvaluationCode": "AFTER_END_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "future-versions",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 2
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    }
+  ]
+}

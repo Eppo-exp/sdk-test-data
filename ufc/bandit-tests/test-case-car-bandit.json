@@ -1,0 +1,58 @@
+{
+    "flag": "car_bandit_flag",
+    "defaultValue": "default",
+    "subjects": [
+      {
+        "comment": "Tests that probability floor is applied. These actions shuffle to: Mercedes, Dodge, Toyota. Without minimum probability floors, Toyota gets most of the weight, and that's what gets assigned. However, with a probability floor, the other actions each get a non-trivial shard range, so it is not assigned. If the probability floor is not normalized (divided by the number of actions), then the first action, Mercedes, will be assigned too many shards and get assigned. Only when it's non-zero and normalized does Anastasia get correctly assigned the middle action: Dodge.",
+        "subjectKey": "anastasia",
+        "subjectAttributes": {
+          "numericAttributes": {},
+          "categoricalAttributes": {}
+        },
+        "actions": [
+            {
+                "actionKey": "dodge",
+                "numericAttributes": {},
+                "categoricalAttributes": {}
+            },
+            {
+                "actionKey": "mercedes",
+                "numericAttributes": {},
+                "categoricalAttributes": {}
+            },
+            {
+              "actionKey": "toyota",
+              "numericAttributes": {"speed":  1000},
+              "categoricalAttributes": {}
+            }
+        ],
+        "assignment": {"variation": "car_bandit", "action": "dodge"}
+      },
+      {
+        "comment": "Tests that default action scores are applied and top-scoring actions are tie-broken by name. These actions shuffle to: Toyota, Honda, Ford. If the default action score is ignored and the unknown (non-Toyota) actions get scored 0, Toyota takes up too many shards and that is what is assigned. With the default score at play, the two unknown actions are top-scoring and get most of the shards. However, because of the top scoring action weight of 1 - all other action weights, the top scoring action gets the most. When not tie-broken, implementations like JavaScript that iterate over them in order would declare Honda the top-scoring action, and it would end up getting assigned. However, when breaking ties by action name, Ford takes the prize and gets assigned. Thus, for this test to pass with Ford being assigned to Bob, the default action scores need to be respected, and top-scoring actions need to be tie-broken by name.",
+        "subjectKey": "bob",
+        "subjectAttributes": {
+          "numericAttributes": {},
+          "categoricalAttributes": {}
+        },
+        "actions": [
+            {
+              "actionKey": "toyota",
+              "numericAttributes": {"speed":  1},
+              "categoricalAttributes": {}
+            },
+            {
+              "actionKey": "honda",
+              "numericAttributes": {},
+              "categoricalAttributes": {}
+            },
+            {
+              "actionKey": "ford",
+              "numericAttributes": {},
+              "categoricalAttributes": {}
+            }
+        ],
+        "assignment": {"variation": "car_bandit", "action": "ford"}
+      }
+    ]
+  }
