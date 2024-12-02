@@ -12,7 +12,7 @@ public class Startup
 
     public static void InitEppoClient()
     {
-        var url =  "http://" + apiHost + ":" + apiPort;
+        var url = "http://" + apiHost + ":" + apiPort + "/api";
         Console.WriteLine("Initializating SDK pointed at" + url);
 
         var eppoClientConfig = new EppoClientConfig(apiToken, new AssignmentLogger())

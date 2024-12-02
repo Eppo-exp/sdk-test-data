@@ -22,19 +22,14 @@ public class SDKController : JsonControllerBase
     [HttpGet]
     public ActionResult<String> Details()
     {
-        // The SDK test runner can skip some tests depending on what the SDK supports.
-        var supportedFeatures = new Dictionary<string, bool> {
-            ["bandits"] = true,
-            ["dynamicTyping"] = true
-        };
-
         // Sneak the SDK version and name from the AppDetails object
         var apd = new AppDetails();
         var sdkDetails = new Dictionary<string, object>
         {
             ["sdkVersion"] = apd.Version,
             ["sdkName"] = apd.Name,
-            ["supports"] = supportedFeatures
+            ["supportsBandits"] = true,
+            ["supportsDynamicTyping"] = true
         };
 
         return JsonObjectResponse(
