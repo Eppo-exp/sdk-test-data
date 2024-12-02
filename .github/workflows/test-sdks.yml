@@ -40,7 +40,7 @@ jobs:
   test-multiplatform-sdk:
     uses: 'Eppo-exp/eppo-multiplatform/.github/workflows/ci.yml@main'
     with:
-      test_data_branch: ${{ github.head_ref || github.ref_name }}
+      test_data_branch: tp/fail/test
       sdk_branch: main
 
   test-php-sdk:
