@@ -5,6 +5,8 @@ on:
     paths:
       - 'ufc/**'
 
+  workflow_dispatch:
+
 jobs:
   
   test-java-sdk:
