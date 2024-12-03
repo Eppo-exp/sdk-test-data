@@ -1,14 +1,15 @@
 {
   "scenarios": {
-    "baseUFC": {
-      "ufcPath": "ufc/flags-v1.json",
-      "banditModelPath": null,
-      "testCases": "ufc/tests"
+
+    "jitBandits1": {
+      "ufcPath": "ufc/scenarios/jit-loading-1/bandit-flags-v1.json",
+      "banditModelPath": "ufc/scenarios/jit-loading-1/bandit-models-v1.json",
+      "testCases": "ufc/scenarios/jit-loading-1/tests"
     },
-    "baseBandits": {
-      "ufcPath": "ufc/bandit-flags-v1.json",
-      "banditModelPath": "ufc/bandit-models-v1.json",
-      "testCases": "ufc/bandit-tests"
+    "jitBandits2": {
+      "ufcPath": "ufc/scenarios/jit-loading-2/bandit-flags-v1.json",
+      "banditModelPath": "ufc/scenarios/jit-loading-2/bandit-models-v1.json",
+      "testCases": "ufc/scenarios/jit-loading-2/tests"
     }
   }
 }
