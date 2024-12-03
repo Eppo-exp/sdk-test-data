@@ -20,7 +20,7 @@
       "banditKey": "second_cold_start_bandit",
       "modelName": "falcon",
       "updatedAt": "2023-09-13T04:52:06.462Z",
-      "modelVersion": "NOT cold start",
+      "modelVersion": "cold start",
       "modelData": {
         "gamma": 1.0,
         "defaultActionScore": 0.0,

@@ -1,9 +1,9 @@
 {
-  "flag": "cold_start_bandit_flag",
+  "flag": "second_cold_start_bandit_flag",
   "defaultValue": "default",
   "subjects": [
     {
-      "subjectKey": "alice",
+      "subjectKey": "ephraim",
       "subjectAttributes": {
         "numericAttributes": {},
         "categoricalAttributes": {}
@@ -25,7 +25,7 @@
           "categoricalAttributes": {}
         }
       ],
-      "assignment": {"variation": "cold_start_bandit", "action": "red"}
+      "assignment": {"variation": "second_cold_start_bandit", "action": "blue"}
     },
     {
       "subjectKey": "bob",
@@ -50,10 +50,10 @@
           "categoricalAttributes": {}
         }
       ],
-      "assignment": {"variation": "cold_start_bandit", "action": "green"}
+      "assignment": {"variation": "second_cold_start_bandit", "action": "green"}
     },
     {
-      "subjectKey": "charles",
+      "subjectKey": "fiona",
       "subjectAttributes": {
         "numericAttributes": {},
         "categoricalAttributes": {}
@@ -75,7 +75,7 @@
           "categoricalAttributes": {}
         }
       ],
-      "assignment": {"variation": "cold_start_bandit", "action": "blue"}
+      "assignment": {"variation": "second_cold_start_bandit", "action": "red"}
     }
   ]
 }

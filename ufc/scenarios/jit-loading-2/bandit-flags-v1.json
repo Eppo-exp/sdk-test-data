@@ -1,5 +1,5 @@
 {
-    "createdAt": "2024-04-17T19:40:53.716Z",
+    "createdAt": "2024-04-18T19:40:53.716Z",
     "format": "SERVER",
     "environment": {
         "name": "Test"
@@ -31,7 +31,7 @@
             "totalShards": 10000
         },
         "second_cold_start_bandit_flag": {
-            "key": "cold_start_bandit_flag",
+            "key": "second_cold_start_bandit_flag",
             "enabled": true,
             "variationType": "STRING",
             "variations": {
@@ -54,7 +54,7 @@
                 }
             ],
             "totalShards": 10000
-        }        
+        }
     },
     "bandits": {
         "cold_start_bandit": [
@@ -72,7 +72,7 @@
                 "variationKey": "second_cold_start_bandit",
                 "variationValue": "second_cold_start_bandit"
             }
-        ]        
+        ]
     },
     "banditReferences": {
         "cold_start_bandit": {
@@ -97,7 +97,7 @@
                     "variationValue": "second_cold_start_bandit"
                 }
             ],
-            "modelVersion": "NOT cold start"
+            "modelVersion": "cold start"
         }
     }
 }
