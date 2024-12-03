@@ -76,6 +76,31 @@
         }
       ],
       "assignment": {"variation": "second_cold_start_bandit", "action": "red"}
+    },
+    {
+      "subjectKey": "gerard",
+      "subjectAttributes": {
+        "numericAttributes": {},
+        "categoricalAttributes": {}
+      },
+      "actions": [
+        {
+          "actionKey": "red",
+          "numericAttributes": {},
+          "categoricalAttributes": {}
+        },
+        {
+          "actionKey": "blue",
+          "numericAttributes": {},
+          "categoricalAttributes": {}
+        },
+        {
+          "actionKey": "green",
+          "numericAttributes": {},
+          "categoricalAttributes": {}
+        }
+      ],
+      "assignment": {"variation": "default", "action": null}
     }
   ]
 }
