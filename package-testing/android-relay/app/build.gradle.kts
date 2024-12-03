@@ -7,16 +7,14 @@ plugins {
     id("com.ncorti.ktfmt.gradle") version "0.20.1"
 }
 
-val apiKey: String = gradleLocalProperties(
-    project.rootDir,
-    providers
-).getProperty("cloud.eppo.apiKey")
+val apiKey: String = "TESTING_API_KEY"
 
 val testRunnerHost: String = System.getenv("TEST_RUNNER_HOST") ?: "http://10.0.2.2"
 val testRunnerPort: String = System.getenv("TEST_RUNNER_PORT")  ?: "3000"
 
 val eppoAPIHost: String = System.getenv("EPPO_API_HOST") ?: "http://10.0.2.2"
 val eppoAPIPort: String = System.getenv("EPPO_API_PORT")  ?: "5000"
+val eppoBaseUrl: String = System.getenv("EPPO_BASE_URL")  ?: "http://10.0.2.2:5000"
 
 
 android {
@@ -42,6 +40,7 @@ android {
         buildConfigField( "String", "TEST_RUNNER_PORT", "\"" +testRunnerPort+ "\"")
         buildConfigField( "String", "EPPO_API_HOST", "\"" +eppoAPIHost+ "\"")
         buildConfigField( "String", "EPPO_API_PORT", "\"" +eppoAPIPort+ "\"")
+        buildConfigField( "String", "EPPO_BASE_URL", "\"" +eppoBaseUrl+ "\"")
     }
 
     buildTypes {

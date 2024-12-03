@@ -19,8 +19,8 @@ fi
 
 # The `build.gradle.kts` uses local code unless the $SDK_VERSION variable is set.
 
-# Now, build and install
+export EPPO_BASE_URL="http://10.0.2.2:${EPPO_API_PORT:-5000}/api"
+
+# Now, build and install and launch activity
 ./gradlew assembleDebug installDebug && \
   adb shell am start -n cloud.eppo.android.sdkrelay/.TestClientActivity
-
-#  and launch activity

@@ -178,6 +178,7 @@ class TestClientActivity : ComponentActivity() {
 
   private fun reInitializeEppoClient(): CompletableFuture<EppoClient> {
     // Most of the settings used here are intended for debugging only.
+      Log.d(TAG, "Test host: $EPPO_API_ADDRESS")
     return EppoClient.Builder(API_KEY, application)
         .forceReinitialize(true)
         .ignoreCachedConfiguration(true)
@@ -241,7 +242,7 @@ class TestClientActivity : ComponentActivity() {
     private const val API_KEY = BuildConfig.API_KEY
     private const val READY_PACKET =
         "{\"sdkName\":\"example\", \"supportsBandits\" : false, \"sdkType\":\"client\"}"
-    private const val EPPO_API_ADDRESS = "${BuildConfig.EPPO_API_HOST}:${BuildConfig.EPPO_API_PORT}"
+    private const val EPPO_API_ADDRESS = BuildConfig.EPPO_BASE_URL;
   }
 }
 

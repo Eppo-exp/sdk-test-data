@@ -124,6 +124,8 @@ if [[ $? -eq 0 ]]; then
 fi
 echo_green "    ... Test API Server has started "
 
+RUNNER_DIR=$(pwd)
+mkdir -p ${RUNNER_DIR}/logs
 
 case "$command" in
     server)
@@ -132,8 +134,7 @@ case "$command" in
         echo "  ... Starting Test Cluster node [${SDK_DIR}]"
 
         # change directory to the SDK relay then run the SDK relay server
-        RUNNER_DIR=$(pwd)
-        mkdir -p ${RUNNER_DIR}/logs
+
         pushd ../$SDK_DIR
 
         BUILD_AND_RUN_PLATFORM=build-and-run-${EPPO_SDK_PLATFORM}.sh
@@ -168,18 +169,16 @@ case "$command" in
         echo_green "    ... SDK Relay server has started"
         ;;
     client)
-        echo "... Running test scenarios against $SDK_NAME@$SDK_REF in server mode"
+        echo "... Running test scenarios against $SDK_NAME@$SDK_REF in client mode"
        
         echo "  ... Starting Test Cluster node [${SDK_DIR}]"
 
         # change directory to the SDK relay then run the SDK relay app
-        RUNNER_DIR=$(pwd)
-        mkdir -p ${RUNNER_DIR}/logs
         pushd ../$SDK_DIR
 
         if [ -f build-and-run.sh ]; then
           echo "    ... Starting SDK Relay via build-and-run script"
-          ./build-and-run.sh > ${RUNNER_DIR}/logs/sdk.log 2>&1
+          ./build-and-run.sh
         else
           exit_with_message "SDK Relay does not have a launch script in $SDK_DIR"
         fi
@@ -202,6 +201,8 @@ if [[ "$command" == "client" ]]; then
   runnerArgs="--type=client "${runnerArgs}
 fi
 
+echo "running runner with args ${runnerArgs}"
+
 docker run \
   --add-host host.docker.internal:host-gateway \
   -e SDK_NAME \
@@ -211,6 +212,7 @@ docker run \
   -v ./logs:/app/logs \
   -v ./test-data:/app/test-data:ro \
   --name eppo-sdk-test-runner \
+  -p 3000:3000 \
   -t Eppo-exp/sdk-test-runner:latest $runnerArgs
 
 EXIT_CODE=$?
