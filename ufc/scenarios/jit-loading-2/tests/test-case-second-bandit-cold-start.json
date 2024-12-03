@@ -100,7 +100,7 @@
           "categoricalAttributes": {}
         }
       ],
-      "assignment": {"variation": "default", "action": null}
+      "assignment": {"variation": "second_cold_start_bandit", "action": null}
     }
   ]
 }
