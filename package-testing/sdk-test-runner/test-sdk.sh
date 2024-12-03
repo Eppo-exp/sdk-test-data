@@ -103,30 +103,31 @@ else
 fi
 
 
+echo "  ... Starting Test Cluster node [Eppo-exp/testing-api]"
+
+docker run \
+  -e EPPO_API_HOST \
+  -e EPPO_API_PORT \
+  -e EPPO_SCENARIO_FILE \
+  -e EPPO_TEST_DATA_PATH=./test-data \
+  -p ${EPPO_API_PORT}:${EPPO_API_PORT} \
+  -v ./test-data:/app/test-data:ro \
+  --rm -d \
+  --name eppo-api \
+  -t Eppo-exp/testing-api:latest
+
+echo_yellow "    ... Waiting to verify server is up"
+
+wait_for_url http://${EPPO_API_HOST}:${EPPO_API_PORT} 
+if [[ $? -eq 0 ]]; then
+  exit_with_message "    ... Test API Server failed to start"
+fi
+echo_green "    ... Test API Server has started "
+
+
 case "$command" in
     server)
         echo "... Running test scenarios against $SDK_NAME@$SDK_REF in server mode"
-
-        echo "  ... Starting Test Cluster node [Eppo-exp/testing-api]"
-
-        docker run \
-          -e EPPO_API_HOST \
-          -e EPPO_API_PORT \
-          -e EPPO_SCENARIO_FILE \
-          -e EPPO_TEST_DATA_PATH=./test-data \
-          -p ${EPPO_API_PORT}:${EPPO_API_PORT} \
-          -v ./test-data:/app/test-data:ro \
-          --rm -d \
-          --name eppo-api \
-          -t Eppo-exp/testing-api:latest
-
-        echo_yellow "    ... Waiting to verify server is up"
-
-        wait_for_url http://${EPPO_API_HOST}:${EPPO_API_PORT} 
-        if [[ $? -eq 0 ]]; then
-          exit_with_message "    ... Test API Server failed to start"
-        fi
-        echo_green "    ... Test API Server has started "
        
         echo "  ... Starting Test Cluster node [${SDK_DIR}]"
 
@@ -165,40 +166,63 @@ case "$command" in
           exit_with_message "    ... SDK Relay server failed to start"
         fi
         echo_green "    ... SDK Relay server has started"
-
-        echo "  ... Starting Test Cluster node [Eppo-exp/sdk-test-runner]"
-        
-        docker run \
-          --add-host host.docker.internal:host-gateway \
-          -e SDK_NAME \
-          -e EPPO_API_HOST=host.docker.internal \
-          -e SDK_RELAY_HOST=host.docker.internal \
-          -e EPPO_API_PORT \
-          -v ./logs:/app/logs \
-          -v ./test-data:/app/test-data:ro \
-          --name eppo-sdk-test-runner \
-          -t Eppo-exp/sdk-test-runner:latest "--junit=logs/results.xml"
-
-        EXIT_CODE=$?
-
-        echo "  ... Downing the docker containers"
-        docker logs eppo-api >& logs/api.log
-        docker stop eppo-api
-        
-
-        docker logs eppo-sdk-test-runner >& logs/test_runner.log
-        docker container remove eppo-sdk-test-runner #already stopped at this point
-
-        pkill -P $SDK_RELAY_PID
-
-        exit $EXIT_CODE
         ;;
     client)
-        echo_red "Client mode not yet implemented"
-        exit 1;
+        echo "... Running test scenarios against $SDK_NAME@$SDK_REF in server mode"
+       
+        echo "  ... Starting Test Cluster node [${SDK_DIR}]"
+
+        # change directory to the SDK relay then run the SDK relay app
+        RUNNER_DIR=$(pwd)
+        mkdir -p ${RUNNER_DIR}/logs
+        pushd ../$SDK_DIR
+
+        if [ -f build-and-run.sh ]; then
+          echo "    ... Starting SDK Relay via build-and-run script"
+          ./build-and-run.sh > ${RUNNER_DIR}/logs/sdk.log 2>&1
+        else
+          exit_with_message "SDK Relay does not have a launch script in $SDK_DIR"
+        fi
+
+        SDK_RELAY_PID=$!
+        popd
+        echo_green "    ... SDK Relay App has hopefully started"
         ;;
     *)
         echo_red "Invalid command: $command"
         exit 1
         ;;
 esac
+
+
+echo "  ... Starting Test Cluster node [Eppo-exp/sdk-test-runner]"
+
+runnerArgs=--junit=logs/results.xml
+if [[ "$command" == "client" ]]; then
+  runnerArgs="--type=client "${runnerArgs}
+fi
+
+docker run \
+  --add-host host.docker.internal:host-gateway \
+  -e SDK_NAME \
+  -e EPPO_API_HOST=host.docker.internal \
+  -e SDK_RELAY_HOST=host.docker.internal \
+  -e EPPO_API_PORT \
+  -v ./logs:/app/logs \
+  -v ./test-data:/app/test-data:ro \
+  --name eppo-sdk-test-runner \
+  -t Eppo-exp/sdk-test-runner:latest $runnerArgs
+
+EXIT_CODE=$?
+
+echo "  ... Downing the docker containers"
+docker logs eppo-api >& logs/api.log
+docker stop eppo-api
+
+
+docker logs eppo-sdk-test-runner >& logs/test_runner.log
+docker container remove eppo-sdk-test-runner #already stopped at this point
+
+pkill -P $SDK_RELAY_PID
+
+exit $EXIT_CODE
