@@ -1,0 +1,100 @@
+name: Test Packaged Server SDKs
+
+on:
+  workflow_call:
+    inputs:
+      platform:
+        description: 'Platforms to test the SDK Relay on; linux, macos, windows'
+        type: string
+        required: true
+      sdkName:
+        description: 'Name of the SDK'
+        type: string
+        required: true
+      sdkRelayDir:
+        description: 'Directory of the SDK Relay server code'
+        type: string
+        required: false
+      os:
+        description: 'Specific runner OS to use'
+        type: string
+
+
+jobs:
+  test-packaged-server-sdks:
+    runs-on: ${{ inputs.os || inputs.platform == 'linux' && 'ubuntu-latest' || inputs.platform == 'macos' && 'macos-13' || inputs.platform == 'windows' && 'windows-latest' || 'NONE' }}
+
+    env:
+      SDK_NAME: ${{ inputs.sdkName }}
+      SDK_DIR: ${{ inputs.sdkRelayDir }}
+      EPPO_API_HOST: localhost
+      SDK_RELAY_HOST: localhost
+      TEST_RUNNER_HOST: localhost
+      EPPO_SDK_PLATFORM: ${{ inputs.platform }}
+
+      PROJECT_ID: ${{ vars.SDK_TESTING_PROJECT_ID  }}
+      REGION: ${{ vars.SDK_TESTING_REGION }}
+      GAR_LOCATION: ${{ vars.SDK_TESTING_REGION }}-docker.pkg.dev/${{ vars.SDK_TESTING_PROJECT_ID }}/sdk-testing
+
+    steps:
+    - name: Test information header
+      shell: bash
+      run: echo "Running Test Cluster for ${SDK_NAME}"
+
+    - name: Set some variables
+      id: vars
+      run: |
+        echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        echo "SAFE_SDK_NAME=$(echo ${SDK_NAME} | sed 's/\//_/g')" >> $GITHUB_ENV
+
+
+    - name: "Checkout"
+      uses: actions/checkout@v3
+
+    # Set up docker (macos runners)
+    - id: setup-docker
+      if: ${{ inputs.platform == 'macos' }}
+      name: Setup Docker
+      uses: douglascamata/setup-docker-macos-action@v1-alpha
+
+    # Set up gCloud
+    - id: "auth"
+      uses: "google-github-actions/auth@v1"
+      with:
+        credentials_json: "${{ secrets.SERVICE_ACCOUNT_KEY }}"
+
+    - name: "Set up Cloud SDK"
+      uses: "google-github-actions/setup-gcloud@v1"
+
+    # Allow docker access to the GAR
+    - name: "Docker auth"
+      run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+
+    # Pull test runner and testing api images for GCP Artifact Registry (GAR) and
+    # retag them locally as expected by the runner script.
+    - name: Pull Test Runner image
+      run: |
+        docker pull ${{ env.GAR_LOCATION }}/sdk-test-runner:latest
+        docker tag ${{ env.GAR_LOCATION }}/sdk-test-runner:latest Eppo-exp/sdk-test-runner:latest
+        docker pull ${{ env.GAR_LOCATION }}/testing-api:latest
+        docker tag ${{ env.GAR_LOCATION }}/testing-api:latest Eppo-exp/testing-api:latest
+
+    - name: Run tests
+      run: |
+        pushd package-testing/sdk-test-runner
+        ./test-sdk.sh server ${SDK_NAME}
+        popd
+
+    - name: Upload Logs
+      if: success() || failure() # always run even if the previous steps fail
+
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ steps.date.outputs.date }}-${{ env.SAFE_SDK_NAME }}-${{ inputs.platform }}-test-logs
+        path: package-testing/sdk-test-runner/logs/
+
+    - name: Publish Test Report
+      uses: mikepenz/action-junit-report@v5
+      if: success() || failure() # always run even if the previous steps fail
+      with:
+        report_paths: 'package-testing/sdk-test-runner/logs/results.xml'
