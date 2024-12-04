@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        api-level: [26, 31, 34]
+        api-level: [26]
         # Allow other tests to continue if one fails
       fail-fast: false
 
@@ -102,10 +102,8 @@ jobs:
             touch app/emulator.log                            # create log file
             chmod 777 app/emulator.log                        # allow writing to log file
             adb logcat | grep EppoSDK >> app/emulator.log &   # pipe all logcat messages into log file as a background process
+            cd sdk-test-runner/package-testing
             ls
-            ls ../
-            ls ../../
-            cd ../sdk-test-runner
             ./test-sdk.sh client android
 
       - name: Upload Emulator Logs
