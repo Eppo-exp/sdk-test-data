@@ -103,9 +103,7 @@ jobs:
             chmod 777 app/emulator.log                        # allow writing to log file
             adb logcat | grep EppoSDK >> app/emulator.log &   # pipe all logcat messages into log file as a background process
             ls
-            cd package-testing/sdk-test-runner
-            ls
-            ./test-sdk.sh client android
+            cd package-testing/sdk-test-runner && ./test-sdk.sh client android
 
       # - name: Upload Emulator Logs
       #   if: always()
