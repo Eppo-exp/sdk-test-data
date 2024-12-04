@@ -1,0 +1,58 @@
+{
+    "createdAt": "2024-04-17T19:40:53.716Z",
+    "format": "SERVER",
+    "environment": {
+        "name": "Test"
+    },
+    "flags": {
+        "cold_start_bandit_flag": {
+            "key": "cold_start_bandit_flag",
+            "enabled": true,
+            "variationType": "STRING",
+            "variations": {
+                "cold_start_bandit": {
+                    "key": "cold_start_bandit",
+                    "value": "cold_start_bandit"
+                }
+            },
+            "allocations": [
+                {
+                    "key": "all-traffic",
+                    "rules": [],
+                    "splits": [
+                        {
+                            "variationKey": "cold_start_bandit",
+                            "shards": []
+                        }
+                    ],
+                    "doLog": true
+                }
+            ],
+            "totalShards": 10000
+        }
+    },
+    "bandits": {
+        "cold_start_bandit": [
+            {
+                "key": "cold_start_bandit",
+                "flagKey": "cold_start_bandit_flag",
+                "variationKey": "cold_start_bandit",
+                "variationValue": "cold_start_bandit"
+            }
+        ]
+    },
+    "banditReferences": {
+        "cold_start_bandit": {
+            "flagVariations": [
+                {
+                    "key": "cold_start_bandit",
+                    "flagKey": "cold_start_bandit_flag",
+                    "allocationKey": "cold_start_bandit_allocation",
+                    "variationKey": "cold_start_bandit",
+                    "variationValue": "cold_start_bandit"
+                }
+            ],
+            "modelVersion": "cold start"
+        }
+    }
+}
