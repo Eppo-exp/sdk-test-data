@@ -89,6 +89,8 @@ jobs:
       - name: Spin up emulator and run tests
         id: testing
         uses: ReactiveCircus/android-emulator-runner@v2
+        env:
+          EPPO_SDK_PLATFORM: linux
         with:
           api-level: ${{ matrix.api-level }}
           target: google_apis
