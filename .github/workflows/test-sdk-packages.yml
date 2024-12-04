@@ -32,6 +32,16 @@ jobs:
 
     name: Test API Level ${{ matrix.api-level }}
 
+    env:
+      EPPO_API_HOST: localhost
+      SDK_RELAY_HOST: localhost
+      TEST_RUNNER_HOST: localhost
+      EPPO_SDK_PLATFORM: linux
+
+      PROJECT_ID: ${{ vars.SDK_TESTING_PROJECT_ID  }}
+      REGION: ${{ vars.SDK_TESTING_REGION }}
+      GAR_LOCATION: ${{ vars.SDK_TESTING_REGION }}-docker.pkg.dev/${{ vars.SDK_TESTING_PROJECT_ID }}/sdk-testing
+
     steps:
       - name: Display Testing Details
         run: |
@@ -86,11 +96,31 @@ jobs:
           disable-animations: false
           script: echo "Generated AVD snapshot for caching."
 
+      # Set up gCloud
+      - id: "auth"
+        uses: "google-github-actions/auth@v1"
+        with:
+          credentials_json: "${{ secrets.SERVICE_ACCOUNT_KEY }}"
+
+      - name: "Set up Cloud SDK"
+        uses: "google-github-actions/setup-gcloud@v1"
+
+      # Allow docker access to the GAR
+      - name: "Docker auth"
+        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+
+      # Pull test runner and testing api images for GCP Artifact Registry (GAR) and
+      # retag them locally as expected by the runner script.
+      - name: Pull Test Runner image
+        run: |
+          docker pull ${{ env.GAR_LOCATION }}/sdk-test-runner:latest
+          docker tag ${{ env.GAR_LOCATION }}/sdk-test-runner:latest Eppo-exp/sdk-test-runner:latest
+          docker pull ${{ env.GAR_LOCATION }}/testing-api:latest
+          docker tag ${{ env.GAR_LOCATION }}/testing-api:latest Eppo-exp/testing-api:latest
+
       - name: Spin up emulator and run tests
         id: testing
         uses: ReactiveCircus/android-emulator-runner@v2
-        env:
-          EPPO_SDK_PLATFORM: linux
         with:
           api-level: ${{ matrix.api-level }}
           target: google_apis
