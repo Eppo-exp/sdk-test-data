@@ -136,7 +136,7 @@ jobs:
             # adb logcat | grep EppoSDK >> app/emulator.log &   # pipe all logcat messages into log file as a background process
             ls
             cd package-testing/sdk-test-runner && ./test-sdk.sh client android &
-            adb logcat | grep Eppo
+            adb logcat
 
       - name: Upload Emulator Logs
         if: always()
