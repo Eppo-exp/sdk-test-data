@@ -5,8 +5,8 @@ SDK="https://github.com/Eppo-exp/android-sdk.git"
 
 : "${EPPO_API_PORT:=5000}"
 # The magical IP for an Android emulator to access the machine hosting it is 10.0.2.2
-: "${EPPO_BASE_URL:=http://10.0.2.2:${EPPO_API_PORT}/api}"
-: "${TEST_RUNNER_HOST:=10.0.2.2}"
+EPPO_BASE_URL=http://10.0.2.2:${EPPO_API_PORT}/api
+TEST_RUNNER_HOST=10.0.2.2
 : "${TEST_RUNNER_PORT:=3000}"
 
 echo "EPPO_BASE_URL=${EPPO_BASE_URL}"
