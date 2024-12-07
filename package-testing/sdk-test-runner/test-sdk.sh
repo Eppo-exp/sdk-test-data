@@ -120,7 +120,7 @@ case "$command" in
           --name eppo-api \
           -t Eppo-exp/testing-api:latest
 
-        echo_yellow "    ... Waiting to verify server is up"
+        echo_yellow "    ... Waiting to verify Test API server is up"
 
         wait_for_url http://${EPPO_API_HOST}:${EPPO_API_PORT} 
         if [[ $? -eq 0 ]]; then
@@ -159,7 +159,7 @@ case "$command" in
         popd
 
 
-        echo_yellow "    ... Waiting to verify server is up"
+        echo_yellow "    ... Waiting to verify SDK Relay server is up"
         wait_for_url http://${SDK_RELAY_HOST}:${SDK_RELAY_PORT} 
         if [[ $? -eq 0 ]]; then
           exit_with_message "    ... SDK Relay server failed to start"
