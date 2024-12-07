@@ -5,4 +5,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-CMD ["python", "src/server.py"]
+# Copy the source code
+COPY src/ ./src/
+
+CMD ["python", "/app/src/server.py"]
