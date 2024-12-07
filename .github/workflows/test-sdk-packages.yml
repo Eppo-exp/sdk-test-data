@@ -18,3 +18,15 @@ jobs:
       sdkName: 'eppo/php-sdk'
       sdkRelayDir: 'php-sdk-relay'
     secrets: inherit
+
+  test-python-sdk:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: ['linux']
+    uses: ./.github/workflows/test-server-sdk.yml
+    with:
+      platform: ${{ matrix.platform }}
+      sdkName: 'eppo/python-sdk'
+      sdkRelayDir: 'python-sdk-relay'
+    secrets: inherit
