@@ -41,7 +41,11 @@ def handle_bandit():
     return jsonify(response)
 
 if __name__ == "__main__":
+    port = int(environ.get('SDK_RELAY_PORT', 7001))
+    host = environ.get('SDK_RELAY_HOST', '0.0.0.0')
+    print(f"Starting server on {host}:{port}")
     app.run(
-        host=environ.get('SDK_RELAY_HOST', 'localhost'),
-        port=int(environ.get('SDK_RELAY_PORT', 4000))
+        host=host,
+        port=port,
+        debug=True  # Add debug mode
     )
