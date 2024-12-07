@@ -12,7 +12,7 @@ docker remove python-relay
 
 docker build . -t Eppo-exp/python-sdk-relay:$VERSION
 
-docker run  -p $SDK_RELAY_PORT:$SDK_RELAY_PORT \
+docker run -p $SDK_RELAY_PORT:$SDK_RELAY_PORT \
   --add-host host.docker.internal:host-gateway \
   -e SDK_REF \
   -e EPPO_BASE_URL \
