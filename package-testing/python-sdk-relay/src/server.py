@@ -109,21 +109,25 @@ class BanditActionRequest:
     subject_key: str
     subject_attributes: dict
     default_value: any
+    actions: list
+
 
 @app.route('/bandits/v1/action', methods=['POST'])
 def handle_bandit():
     data = request.json
+    print(f"Request data: {data}")
     request_obj = BanditActionRequest(
         flag=data['flag'],
         subject_key=data['subjectKey'],
         subject_attributes=data['subjectAttributes'],
         default_value=data['defaultValue'],
+        actions=data['actions']
     )
     print(f"Request object: {request_obj}")
     
     # Transform actions into AttributeSet objects
     actions = {}
-    for action in data['actions']:
+    for action in request_obj.actions:
         actions[action['actionKey']] = eppo_client.bandit.ContextAttributes(
             numeric_attributes=action.get('numericAttributes', {}),
             categorical_attributes=action.get('categoricalAttributes', {})
@@ -131,8 +135,8 @@ def handle_bandit():
     
     # Transform subject attributes into AttributeSet object
     subject_attributes = eppo_client.bandit.ContextAttributes(
-        numeric_attributes=data['subjectAttributes'].get('numericAttributes', {}),
-        categorical_attributes=data['subjectAttributes'].get('categoricalAttributes', {})
+        numeric_attributes=request_obj.subject_attributes.get('numericAttributes', {}),
+        categorical_attributes=request_obj.subject_attributes.get('categoricalAttributes', {})
     )
     
     client = eppo_client.get_instance()
