@@ -127,12 +127,12 @@ def handle_bandit():
 
 def initialize_client_and_wait():
     logger.info("Initializing client")
-    api_key = environ.get('EPPO_API_KEY')
-    if not api_key:
-        raise ValueError("EPPO_API_KEY environment variable is required")
-        
+    api_key = environ.get('EPPO_API_KEY', 'NOKEYSPECIFIED')
+    base_url = environ.get('EPPO_BASE_URL', 'http://localhost:5000/api')
+    
     client_config = Config(
         api_key=api_key,
+        base_url=base_url,
         assignment_logger=LocalAssignmentLogger()
     )
     eppo_client.init(client_config)
