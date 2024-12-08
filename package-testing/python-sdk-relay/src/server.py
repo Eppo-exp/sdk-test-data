@@ -130,8 +130,15 @@ def handle_bandit():
         )
     
     # Transform subject attributes into AttributeSet object
+    numeric_attrs = {}
+    for key, value in data['subjectAttributes'].get('numericAttributes', {}).items():
+        if isinstance(value, (int, float)):  # Only include numeric values
+            numeric_attrs[key] = value
+        else:
+            print(f"Warning: Skipping non-numeric value for {key}: {value}")
+    
     subject_attributes = eppo_client.bandit.ContextAttributes(
-        numeric_attributes=data['subjectAttributes'].get('numericAttributes', {}),
+        numeric_attributes=numeric_attrs,
         categorical_attributes=data['subjectAttributes'].get('categoricalAttributes', {})
     )
     
