@@ -153,9 +153,19 @@ def handle_bandit():
         else:
             print(f"Warning: Skipping non-numeric value for {key}: {value}")
     
+    categorical_attrs = {}
+    for key, value in data['subjectAttributes'].get('categoricalAttributes', {}).items():
+        if isinstance(value, str):
+            categorical_attrs[key] = value
+        elif value is not None:
+            # Convert non-None values to strings
+            categorical_attrs[key] = str(value)
+        else:
+            print(f"Warning: Skipping non-string value for {key}: {value}")
+    
     subject_attributes = eppo_client.bandit.ContextAttributes(
         numeric_attributes=numeric_attrs,
-        categorical_attributes=data['subjectAttributes'].get('categoricalAttributes', {})
+        categorical_attributes=categorical_attrs
     )
     
     client = eppo_client.get_instance()
