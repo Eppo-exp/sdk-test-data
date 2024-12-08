@@ -1,27 +1,16 @@
+import eppo_client
+
 from flask import Flask, request, jsonify
 from os import environ
-import time
 from dataclasses import dataclass
-from datetime import datetime
-import logging
-
-import eppo_client
 from eppo_client.config import Config, AssignmentLogger
-
 
 app = Flask(__name__)
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s [%(levelname)s] %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S'
-)
-logger = logging.getLogger(__name__)
 
 class LocalAssignmentLogger(AssignmentLogger):
     def log_assignment(self, assignment):
-        logger.info(f"Assignment: {assignment}")
+        print(f"Assignment: {assignment}")
 
 
 @dataclass
@@ -31,6 +20,7 @@ class AssignmentRequest:
     subject_attributes: dict
     assignment_type: str
     default_value: any
+
 
 @app.route('/', methods=['GET'])
 def health_check():
@@ -45,7 +35,6 @@ def reset_sdk():
 @app.route('/flags/v1/assignment', methods=['POST'])
 def handle_assignment():
     data = request.json
-    logger.info(f"Request data: {data}")
     print(f"Request data: {data}")
     
     request_obj = AssignmentRequest(
@@ -57,24 +46,22 @@ def handle_assignment():
     )
     
     client = eppo_client.get_instance()
-    assignment_type = data['assignmentType']
-    logger.info(f"Processing {assignment_type} assignment for flag '{request_obj.flag}'")
     
     try:
-        match assignment_type:
+        match request_obj.assignment_type:
             case 'BOOLEAN':
                 result = client.get_boolean_assignment(
                     request_obj.flag, 
                     request_obj.subject_key, 
                     request_obj.subject_attributes, 
-                    request_obj.default_value
+                    bool(request_obj.default_value)
                 )
             case 'INTEGER':
                 result = client.get_integer_assignment(
                     request_obj.flag, 
                     request_obj.subject_key, 
                     request_obj.subject_attributes, 
-                    request_obj.default_value
+                    int(request_obj.default_value)
                 )
             case 'STRING':
                 result = client.get_string_assignment(
@@ -88,7 +75,7 @@ def handle_assignment():
                     request_obj.flag, 
                     request_obj.subject_key, 
                     request_obj.subject_attributes, 
-                    request_obj.default_value
+                    float(request_obj.default_value)
                 )
             case 'JSON':
                 result = client.get_json_assignment(
@@ -104,16 +91,29 @@ def handle_assignment():
             "banditLog": [],
             "error": None
         }
-        logger.info(f"Assignment completed. Result: {result}")
+        print(f"response: {response}")
         return jsonify(response)
     except Exception as e:
-        logger.error(f"Error processing assignment: {str(e)}", exc_info=True)
-        raise
+        print(f"Error processing assignment: {str(e)}", exc_info=True)
+        response = {
+            "result": None,
+            "assignmentLog": [],
+            "banditLog": [],
+            "error": str(e)
+        }
+        return jsonify(response)
 
 @app.route('/bandits/v1/action', methods=['POST'])
 def handle_bandit():
     data = request.json
-    # TODO: Implement actual bandit logic
+    
+    # client = eppo_client.get_instance()
+    # client.get_bandit_action(
+    #     data['flag'],
+    #     data['subjectKey'],
+    #     data['subjectAttributes']
+    # )
+    
     response = {
         "result": {
             "variation": "default_variation",
@@ -126,7 +126,7 @@ def handle_bandit():
     return jsonify(response)
 
 def initialize_client_and_wait():
-    logger.info("Initializing client")
+    print("Initializing client")
     api_key = environ.get('EPPO_API_KEY', 'NOKEYSPECIFIED')
     base_url = environ.get('EPPO_BASE_URL', 'http://localhost:5000/api')
     
@@ -138,15 +138,14 @@ def initialize_client_and_wait():
     eppo_client.init(client_config)
     client = eppo_client.get_instance()
     client.wait_for_initialization()
-    logger.info("Client initialized")
+    print("Client initialized")
 
 if __name__ == "__main__":
     initialize_client_and_wait()
     
     port = int(environ.get('SDK_RELAY_PORT', 7001))
     host = environ.get('SDK_RELAY_HOST', '0.0.0.0')
-    logger.info(f"Starting server %% on {host}:{port}")
-    print(f"Starting server!! on {host}:{port}")
+    print(f"Starting server on {host}:{port}")
     app.run(
         host=host,
         port=port,
