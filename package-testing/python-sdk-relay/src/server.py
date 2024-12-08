@@ -119,6 +119,7 @@ def handle_bandit():
         subject_attributes=data['subjectAttributes'],
         default_value=data['defaultValue'],
     )
+    print(f"Request object: {request_obj}")
     
     # Transform actions into AttributeSet objects
     actions = {}
