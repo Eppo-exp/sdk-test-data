@@ -125,11 +125,20 @@ def handle_bandit():
     )
     print(f"Request object: {request_obj}")
     
+    # Transform actions into AttributeSet objects
     actions = {}
     for action in request_obj.actions:
-        actions[action['actionKey']] = eppo_client.bandit.ContextAttributes.from_dict(action)
+        attributes = {
+            **action.get('numericAttributes', {}),
+            **action.get('categoricalAttributes', {})
+        }
+        actions[action['actionKey']] = eppo_client.bandit.ContextAttributes.from_dict(attributes)
     
-    subject_attributes = eppo_client.bandit.ContextAttributes.from_dict(request_obj.subject_attributes)
+    # Transform subject attributes into AttributeSet object
+    subject_attributes = eppo_client.bandit.ContextAttributes.from_dict({
+        **request_obj.subject_attributes.get('numericAttributes', {}),
+        **request_obj.subject_attributes.get('categoricalAttributes', {})
+    })
     
     client = eppo_client.get_instance()
     
