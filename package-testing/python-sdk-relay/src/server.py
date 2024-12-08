@@ -124,14 +124,14 @@ def handle_bandit():
     actions = {}
     for action in data['actions']:
         actions[action['actionKey']] = eppo_client.bandit.ContextAttributes(
-            numeric_attributes=action['numericAttributes'],
-            categorical_attributes=action['categoricalAttributes']
+            numeric_attributes=action.get('numericAttributes', {}),
+            categorical_attributes=action.get('categoricalAttributes', {})
         )
     
     # Transform subject attributes into AttributeSet object
     subject_attributes = eppo_client.bandit.ContextAttributes(
-        numeric_attributes=data['subjectAttributes']['numericAttributes'],
-        categorical_attributes=data['subjectAttributes']['categoricalAttributes']
+        numeric_attributes=data['subjectAttributes'].get('numericAttributes', {}),
+        categorical_attributes=data['subjectAttributes'].get('categoricalAttributes', {})
     )
     
     client = eppo_client.get_instance()
