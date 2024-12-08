@@ -44,10 +44,9 @@ def reset_sdk():
 
 @app.route('/flags/v1/assignment', methods=['POST'])
 def handle_assignment():
-    logger.info(f"Received assignment request from {request.remote_addr}")
-    
     data = request.json
     logger.info(f"Request data: {data}")
+    print(f"Request data: {data}")
     
     request_obj = AssignmentRequest(
         flag=data['flag'],
@@ -146,7 +145,8 @@ if __name__ == "__main__":
     
     port = int(environ.get('SDK_RELAY_PORT', 7001))
     host = environ.get('SDK_RELAY_HOST', '0.0.0.0')
-    logger.info(f"Starting server on {host}:{port}")
+    logger.info(f"Starting server %% on {host}:{port}")
+    print(f"Starting server!! on {host}:{port}")
     app.run(
         host=host,
         port=port,
