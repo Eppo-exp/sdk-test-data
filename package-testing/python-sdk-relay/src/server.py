@@ -35,8 +35,6 @@ def reset_sdk():
 @app.route('/flags/v1/assignment', methods=['POST'])
 def handle_assignment():
     data = request.json
-    print(f"Request data: {data}")
-    
     request_obj = AssignmentRequest(
         flag=data['flag'],
         subject_key=data['subjectKey'],
@@ -44,6 +42,7 @@ def handle_assignment():
         assignment_type=data['assignmentType'],
         default_value=data['defaultValue']
     )
+    print(f"Request object: {request_obj}")
     
     client = eppo_client.get_instance()
     
@@ -103,27 +102,66 @@ def handle_assignment():
         }
         return jsonify(response)
 
+@dataclass
+class BanditActionRequest:
+    flag: str
+    subject_key: str
+    subject_attributes: dict
+
 @app.route('/bandits/v1/action', methods=['POST'])
 def handle_bandit():
     data = request.json
+    request_obj = BanditActionRequest(
+        flag=data['flag'],
+        subject_key=data['subjectKey'],
+        subject_attributes=data['subjectAttributes']
+    )
     
-    # client = eppo_client.get_instance()
-    # client.get_bandit_action(
-    #     data['flag'],
-    #     data['subjectKey'],
-    #     data['subjectAttributes']
-    # )
+    # Transform actions into AttributeSet objects
+    actions = {}
+    for action in data['actions']:
+        actions[action['actionKey']] = eppo_client.bandit.Attributes(
+            numeric_attributes=action['numericAttributes'],
+            categorical_attributes=action['categoricalAttributes']
+        )
     
-    response = {
-        "result": {
-            "variation": "default_variation",
-            "action": "default_action"
-        },
-        "assignmentLog": [],
-        "banditLog": [],
-        "error": None
-    }
-    return jsonify(response)
+    # Transform subject attributes into AttributeSet object
+    subject_attributes = eppo_client.bandit.Attributes(
+        numeric_attributes=data['subjectAttributes']['numericAttributes'],
+        categorical_attributes=data['subjectAttributes']['categoricalAttributes']
+    )
+    
+    client = eppo_client.get_instance()
+    
+    try:
+        result = client.get_bandit_action(
+            request_obj.flag,
+            request_obj.subject_key,
+            subject_attributes,
+            actions,
+            request_obj.default_value
+        )
+    
+        response = {
+            "result": {
+                "variation": result.variation,
+                "action": result.action
+            },
+            "assignmentLog": [],
+            "banditLog": [],
+            "error": None
+        }
+        print(f"response: {response}")
+        return jsonify(response)
+    except Exception as e:
+        print(f"Error processing bandit: {str(e)}", exc_info=True)
+        response = {
+            "result": None,
+            "assignmentLog": [],
+            "banditLog": [],
+            "error": str(e)
+        }
+        return jsonify(response)
 
 def initialize_client_and_wait():
     print("Initializing client")
