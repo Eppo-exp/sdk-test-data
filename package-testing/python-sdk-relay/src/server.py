@@ -124,9 +124,25 @@ def handle_bandit():
     # Transform actions into AttributeSet objects
     actions = {}
     for action in data['actions']:
+        # Handle numeric attributes
+        numeric_attrs = {}
+        for key, value in action.get('numericAttributes', {}).items():
+            if isinstance(value, (int, float)):
+                numeric_attrs[key] = value
+            else:
+                print(f"Warning: Skipping non-numeric value for action {action['actionKey']}, key {key}: {value}")
+        
+        # Handle categorical attributes
+        categorical_attrs = {}
+        for key, value in action.get('categoricalAttributes', {}).items():
+            if isinstance(value, str):
+                categorical_attrs[key] = value
+            else:
+                print(f"Warning: Skipping non-string value for action {action['actionKey']}, key {key}: {value}")
+        
         actions[action['actionKey']] = eppo_client.bandit.ContextAttributes(
-            numeric_attributes=action.get('numericAttributes', {}),
-            categorical_attributes=action.get('categoricalAttributes', {})
+            numeric_attributes=numeric_attrs,
+            categorical_attributes=categorical_attrs
         )
     
     # Transform subject attributes into AttributeSet object
