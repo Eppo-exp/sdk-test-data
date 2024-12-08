@@ -1,4 +1,5 @@
 import eppo_client
+import eppo_client.bandit
 
 from flask import Flask, request, jsonify
 from os import environ
@@ -93,7 +94,7 @@ def handle_assignment():
         print(f"response: {response}")
         return jsonify(response)
     except Exception as e:
-        print(f"Error processing assignment: {str(e)}", exc_info=True)
+        print(f"Error processing assignment: {str(e)}")
         response = {
             "result": None,
             "assignmentLog": [],
@@ -107,6 +108,7 @@ class BanditActionRequest:
     flag: str
     subject_key: str
     subject_attributes: dict
+    default_value: any
 
 @app.route('/bandits/v1/action', methods=['POST'])
 def handle_bandit():
@@ -114,19 +116,20 @@ def handle_bandit():
     request_obj = BanditActionRequest(
         flag=data['flag'],
         subject_key=data['subjectKey'],
-        subject_attributes=data['subjectAttributes']
+        subject_attributes=data['subjectAttributes'],
+        default_value=data['defaultValue'],
     )
     
     # Transform actions into AttributeSet objects
     actions = {}
     for action in data['actions']:
-        actions[action['actionKey']] = eppo_client.bandit.Attributes(
+        actions[action['actionKey']] = eppo_client.bandit.ContextAttributes(
             numeric_attributes=action['numericAttributes'],
             categorical_attributes=action['categoricalAttributes']
         )
     
     # Transform subject attributes into AttributeSet object
-    subject_attributes = eppo_client.bandit.Attributes(
+    subject_attributes = eppo_client.bandit.ContextAttributes(
         numeric_attributes=data['subjectAttributes']['numericAttributes'],
         categorical_attributes=data['subjectAttributes']['categoricalAttributes']
     )
@@ -154,7 +157,7 @@ def handle_bandit():
         print(f"response: {response}")
         return jsonify(response)
     except Exception as e:
-        print(f"Error processing bandit: {str(e)}", exc_info=True)
+        print(f"Error processing bandit: {str(e)}")
         response = {
             "result": None,
             "assignmentLog": [],
