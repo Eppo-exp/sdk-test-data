@@ -124,48 +124,15 @@ def handle_bandit():
     # Transform actions into AttributeSet objects
     actions = {}
     for action in data['actions']:
-        # Handle numeric attributes
-        numeric_attrs = {}
-        for key, value in action.get('numericAttributes', {}).items():
-            if isinstance(value, (int, float)):
-                numeric_attrs[key] = value
-            else:
-                print(f"Warning: Skipping non-numeric value for action {action['actionKey']}, key {key}: {value}")
-        
-        # Handle categorical attributes
-        categorical_attrs = {}
-        for key, value in action.get('categoricalAttributes', {}).items():
-            if isinstance(value, str):
-                categorical_attrs[key] = value
-            else:
-                print(f"Warning: Skipping non-string value for action {action['actionKey']}, key {key}: {value}")
-        
         actions[action['actionKey']] = eppo_client.bandit.ContextAttributes(
-            numeric_attributes=numeric_attrs,
-            categorical_attributes=categorical_attrs
+            numeric_attributes=action.get('numericAttributes', {}),
+            categorical_attributes=action.get('categoricalAttributes', {})
         )
     
     # Transform subject attributes into AttributeSet object
-    numeric_attrs = {}
-    for key, value in data['subjectAttributes'].get('numericAttributes', {}).items():
-        if isinstance(value, (int, float)):  # Only include numeric values
-            numeric_attrs[key] = value
-        else:
-            print(f"Warning: Skipping non-numeric value for {key}: {value}")
-    
-    categorical_attrs = {}
-    for key, value in data['subjectAttributes'].get('categoricalAttributes', {}).items():
-        if isinstance(value, str):
-            categorical_attrs[key] = value
-        elif value is not None:
-            # Convert non-None values to strings
-            categorical_attrs[key] = str(value)
-        else:
-            print(f"Warning: Skipping non-string value for {key}: {value}")
-    
     subject_attributes = eppo_client.bandit.ContextAttributes(
-        numeric_attributes=numeric_attrs,
-        categorical_attributes=categorical_attrs
+        numeric_attributes=data['subjectAttributes'].get('numericAttributes', {}),
+        categorical_attributes=data['subjectAttributes'].get('categoricalAttributes', {})
     )
     
     client = eppo_client.get_instance()
