@@ -2,12 +2,27 @@ from flask import Flask, request, jsonify
 from os import environ
 import time
 from dataclasses import dataclass
+from datetime import datetime
+import logging
 
 import eppo_client
 from eppo_client.config import Config, AssignmentLogger
 
 
 app = Flask(__name__)
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+logger = logging.getLogger(__name__)
+
+class LocalAssignmentLogger(AssignmentLogger):
+    def log_assignment(self, assignment):
+        logger.info(f"Assignment: {assignment}")
+
 
 @dataclass
 class AssignmentRequest:
@@ -29,63 +44,72 @@ def reset_sdk():
 
 @app.route('/flags/v1/assignment', methods=['POST'])
 def handle_assignment():
+    logger.info(f"Received assignment request from {request.remote_addr}")
+    
     data = request.json
-    request = AssignmentRequest(
+    logger.info(f"Request data: {data}")
+    
+    request_obj = AssignmentRequest(
         flag=data['flag'],
         subject_key=data['subjectKey'],
         subject_attributes=data['subjectAttributes'],
         assignment_type=data['assignmentType'],
         default_value=data['defaultValue']
     )
-    print(data)
-    print(request)
     
     client = eppo_client.get_instance()
-    assignmentType = data['assignmentType']
-    match assignmentType:
-        case 'BOOLEAN':
-            result = client.get_boolean_assignment(
-                request.flag, 
-                request.subject_key, 
-                request.subject_attributes, 
-                request.default_value
-            )
-        case 'INTEGER':
-            result = client.get_integer_assignment(
-                request.flag, 
-                request.subject_key, 
-                request.subject_attributes, 
-                request.default_value
-            )
-        case 'STRING':
-            result = client.get_string_assignment(
-                request.flag, 
-                request.subject_key, 
-                request.subject_attributes, 
-                request.default_value
-            )
-        case 'NUMERIC':
-            result = client.get_numeric_assignment(
-                request.flag, 
-                request.subject_key, 
-                request.subject_attributes, 
-                request.default_value
-            )
-        case 'JSON':
-            result = client.get_json_assignment(
-                request.flag, 
-                request.subject_key, 
-                request.subject_attributes, 
-                request.default_value
-            )
+    assignment_type = data['assignmentType']
+    logger.info(f"Processing {assignment_type} assignment for flag '{request_obj.flag}'")
     
-    response = {
-        "result": result,
-        "assignmentLog": [],
-        "banditLog": [],
-        "error": None
-    }
-    return jsonify(response)
+    try:
+        match assignment_type:
+            case 'BOOLEAN':
+                result = client.get_boolean_assignment(
+                    request_obj.flag, 
+                    request_obj.subject_key, 
+                    request_obj.subject_attributes, 
+                    request_obj.default_value
+                )
+            case 'INTEGER':
+                result = client.get_integer_assignment(
+                    request_obj.flag, 
+                    request_obj.subject_key, 
+                    request_obj.subject_attributes, 
+                    request_obj.default_value
+                )
+            case 'STRING':
+                result = client.get_string_assignment(
+                    request_obj.flag, 
+                    request_obj.subject_key, 
+                    request_obj.subject_attributes, 
+                    request_obj.default_value
+                )
+            case 'NUMERIC':
+                result = client.get_numeric_assignment(
+                    request_obj.flag, 
+                    request_obj.subject_key, 
+                    request_obj.subject_attributes, 
+                    request_obj.default_value
+                )
+            case 'JSON':
+                result = client.get_json_assignment(
+                    request_obj.flag, 
+                    request_obj.subject_key, 
+                    request_obj.subject_attributes, 
+                    request_obj.default_value
+                )
+        
+        response = {
+            "result": result,
+            "assignmentLog": [],
+            "banditLog": [],
+            "error": None
+        }
+        logger.info(f"Assignment completed. Result: {result}")
+        return jsonify(response)
+    except Exception as e:
+        logger.error(f"Error processing assignment: {str(e)}", exc_info=True)
+        raise
 
 @app.route('/bandits/v1/action', methods=['POST'])
 def handle_bandit():
@@ -102,21 +126,27 @@ def handle_bandit():
     }
     return jsonify(response)
 
-def initialize_client_and_wait():    
+def initialize_client_and_wait():
+    logger.info("Initializing client")
     api_key = environ.get('EPPO_API_KEY')
     if not api_key:
         raise ValueError("EPPO_API_KEY environment variable is required")
         
-    client_config = Config(api_key=api_key)
+    client_config = Config(
+        api_key=api_key,
+        assignment_logger=LocalAssignmentLogger()
+    )
     eppo_client.init(client_config)
-    eppo_client.wait_for_initialization()
-    
+    client = eppo_client.get_instance()
+    client.wait_for_initialization()
+    logger.info("Client initialized")
+
 if __name__ == "__main__":
     initialize_client_and_wait()
     
     port = int(environ.get('SDK_RELAY_PORT', 7001))
     host = environ.get('SDK_RELAY_HOST', '0.0.0.0')
-    print(f"Starting server on {host}:{port}")
+    logger.info(f"Starting server on {host}:{port}")
     app.run(
         host=host,
         port=port,
