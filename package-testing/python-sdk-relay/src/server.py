@@ -128,17 +128,20 @@ def handle_bandit():
     # Transform actions into AttributeSet objects
     actions = {}
     for action in request_obj.actions:
-        attributes = {
-            **action.get('numericAttributes', {}),
-            **action.get('categoricalAttributes', {})
-        }
+        # Combine all attributes into a single dictionary
+        # Numeric attributes will be automatically converted to float
+        # Categorical attributes will remain as strings
+        attributes = {}
+        attributes.update(action.get('numericAttributes', {}))
+        attributes.update(action.get('categoricalAttributes', {}))
+        
         actions[action['actionKey']] = eppo_client.bandit.ContextAttributes.from_dict(attributes)
     
-    # Transform subject attributes into AttributeSet object
-    subject_attributes = eppo_client.bandit.ContextAttributes.from_dict({
-        **request_obj.subject_attributes.get('numericAttributes', {}),
-        **request_obj.subject_attributes.get('categoricalAttributes', {})
-    })
+    # Transform subject attributes the same way
+    all_subject_attributes = {}
+    all_subject_attributes.update(request_obj.subject_attributes.get('numericAttributes', {}))
+    all_subject_attributes.update(request_obj.subject_attributes.get('categoricalAttributes', {}))
+    subject_attributes = eppo_client.bandit.ContextAttributes.from_dict(all_subject_attributes)
     
     client = eppo_client.get_instance()
     
