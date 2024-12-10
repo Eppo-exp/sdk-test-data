@@ -1,0 +1,73 @@
+{
+    "version": 1,
+    "precomputed": {
+        "subjectKey": "test-subject-key",
+        "subjectAttributes": {
+            "device": "iPhone",
+            "country": "USA"
+        },
+        "fetchedAt": "2024-11-18T14:23:39.456Z",
+        "response": {
+            "createdAt": "2024-11-18T14: 23: 39.456Z",
+            "format": "PRECOMPUTED",
+            "salt": "NaCl",
+            "obfuscated": false,
+            "environment": {
+                "name": "Test"
+            },
+            "flags": {
+                "string-flag": {
+                    "allocationKey": "allocation-123",
+                    "variationKey": "variation-123",
+                    "variationType": "STRING",
+                    "variationValue": "red",
+                    "extraLogging": {},
+                    "doLog": true
+                },
+                "boolean-flag": {
+                    "allocationKey": "allocation-124",
+                    "variationKey": "variation-124",
+                    "variationType": "BOOLEAN",
+                    "variationValue": true,
+                    "extraLogging": {},
+                    "doLog": true
+                },
+                "integer-flag": {
+                    "allocationKey": "allocation-125",
+                    "variationKey": "variation-125",
+                    "variationType": "INTEGER",
+                    "variationValue": 42,
+                    "extraLogging": {},
+                    "doLog": true
+                },
+                "numeric-flag": {
+                    "allocationKey": "allocation-126",
+                    "variationKey": "variation-126",
+                    "variationType": "NUMERIC",
+                    "variationValue": 3.14,
+                    "extraLogging": {},
+                    "doLog": true
+                },
+                "json-flag": {
+                    "allocationKey": "allocation-127",
+                    "variationKey": "variation-127",
+                    "variationType": "JSON",
+                    "variationValue": "{\"key\":\"value\",\"number\":123}",
+                    "extraLogging": {},
+                    "doLog": true
+                },
+                "string-flag-with-extra-logging": {
+                    "allocationKey": "allocation-128",
+                    "variationKey": "variation-128",
+                    "variationType": "STRING",
+                    "variationValue": "red",
+                    "extraLogging": {
+                        "holdoutKey": "activeHoldout",
+                        "holdoutVariation": "all_shipped"
+                    },
+                    "doLog": true
+                }
+            }
+        }
+    }
+}
