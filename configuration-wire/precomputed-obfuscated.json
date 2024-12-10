@@ -7,15 +7,6 @@
       "country": "USA"
     },
     "fetchedAt": "2024-11-18T14:23:39.456Z",
-    "response": {
-      "createdAt": "2024-11-18T14:23:25.123Z",
-      "format": "PRECOMPUTED",
-      "salt": "TmFDbA==",
-      "obfuscated": true,
-      "environment": {
-        "name": "Test"
-      },
-      "flags": "{\"9cabe3f18f5b011aaece1e301f3ca3ab\":{\"allocationKey\":\"YWxsb2NhdGlvbi0xMjM=\",\"variationKey\":\"dmFyaWF0aW9uLTEyMw==\",\"variationType\":\"STRING\",\"variationValue\":\"cmVk\",\"extraLogging\":{},\"doLog\":true},\"fe819171f8c580f7a5ad44109baaf6f2\":{\"allocationKey\":\"YWxsb2NhdGlvbi0xMjQ=\",\"variationKey\":\"dmFyaWF0aW9uLTEyNA==\",\"variationType\":\"BOOLEAN\",\"variationValue\":\"dHJ1ZQ==\",\"extraLogging\":{},\"doLog\":true},\"cb1d287f2ae5627edfc3f195ca397d5a\":{\"allocationKey\":\"YWxsb2NhdGlvbi0xMjU=\",\"variationKey\":\"dmFyaWF0aW9uLTEyNQ==\",\"variationType\":\"INTEGER\",\"variationValue\":\"NDI=\",\"extraLogging\":{},\"doLog\":true},\"e10a51d44a3bbdb4f072266a0ec8a893\":{\"allocationKey\":\"YWxsb2NhdGlvbi0xMjY=\",\"variationKey\":\"dmFyaWF0aW9uLTEyNg==\",\"variationType\":\"NUMERIC\",\"variationValue\":\"My4xNA==\",\"extraLogging\":{},\"doLog\":true},\"528b87b29806e460e06523b03f3ff418\":{\"allocationKey\":\"YWxsb2NhdGlvbi0xMjc=\",\"variationKey\":\"dmFyaWF0aW9uLTEyNw==\",\"variationType\":\"JSON\",\"variationValue\":\"eyJrZXkiOiJ2YWx1ZSIsIm51bWJlciI6MTIzfQ==\",\"extraLogging\":{},\"doLog\":true},\"5d0329b99eef6a6bee7407494bbba27e\":{\"allocationKey\":\"YWxsb2NhdGlvbi0xMjg=\",\"variationKey\":\"dmFyaWF0aW9uLTEyOA==\",\"variationType\":\"STRING\",\"variationValue\":\"cmVk\",\"extraLogging\":{\"aG9sZG91dEtleQ==\":\"YWN0aXZlSG9sZG91dA==\",\"aG9sZG91dFZhcmlhdGlvbg==\":\"YWxsX3NoaXBwZWQ=\"},\"doLog\":true}}"
-    }
+    "response": "{\"createdAt\":\"2024-11-18T14:23:25.123Z\",\"format\":\"PRECOMPUTED\",\"salt\":\"TmFDbA==\",\"obfuscated\":true,\"environment\":{\"name\":\"Test\"},\"flags\":{\"9cabe3f18f5b011aaece1e301f3ca3ab\":{\"allocationKey\":\"YWxsb2NhdGlvbi0xMjM=\",\"variationKey\":\"dmFyaWF0aW9uLTEyMw==\",\"variationType\":\"STRING\",\"variationValue\":\"cmVk\",\"extraLogging\":{},\"doLog\":true},\"fe819171f8c580f7a5ad44109baaf6f2\":{\"allocationKey\":\"YWxsb2NhdGlvbi0xMjQ=\",\"variationKey\":\"dmFyaWF0aW9uLTEyNA==\",\"variationType\":\"BOOLEAN\",\"variationValue\":\"dHJ1ZQ==\",\"extraLogging\":{},\"doLog\":true},\"cb1d287f2ae5627edfc3f195ca397d5a\":{\"allocationKey\":\"YWxsb2NhdGlvbi0xMjU=\",\"variationKey\":\"dmFyaWF0aW9uLTEyNQ==\",\"variationType\":\"INTEGER\",\"variationValue\":\"NDI=\",\"extraLogging\":{},\"doLog\":true},\"e10a51d44a3bbdb4f072266a0ec8a893\":{\"allocationKey\":\"YWxsb2NhdGlvbi0xMjY=\",\"variationKey\":\"dmFyaWF0aW9uLTEyNg==\",\"variationType\":\"NUMERIC\",\"variationValue\":\"My4xNA==\",\"extraLogging\":{},\"doLog\":true},\"528b87b29806e460e06523b03f3ff418\":{\"allocationKey\":\"YWxsb2NhdGlvbi0xMjc=\",\"variationKey\":\"dmFyaWF0aW9uLTEyNw==\",\"variationType\":\"JSON\",\"variationValue\":\"eyJrZXkiOiJ2YWx1ZSIsIm51bWJlciI6MTIzfQ==\",\"extraLogging\":{},\"doLog\":true},\"5d0329b99eef6a6bee7407494bbba27e\":{\"allocationKey\":\"YWxsb2NhdGlvbi0xMjg=\",\"variationKey\":\"dmFyaWF0aW9uLTEyOA==\",\"variationType\":\"STRING\",\"variationValue\":\"cmVk\",\"extraLogging\":{\"aG9sZG91dEtleQ==\":\"YWN0aXZlSG9sZG91dA==\",\"aG9sZG91dFZhcmlhdGlvbg==\":\"YWxsX3NoaXBwZWQ=\"},\"doLog\":true}}}"
   }
 }
