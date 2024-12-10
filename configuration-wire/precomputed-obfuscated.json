@@ -10,7 +10,7 @@
     "response": {
       "createdAt": "2024-11-18T14:23:25.123Z",
       "format": "PRECOMPUTED",
-      "salt": "NaCl",
+      "salt": "TmFDbA==",
       "obfuscated": true,
       "environment": {
         "name": "Test"
