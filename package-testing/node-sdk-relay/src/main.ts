@@ -21,7 +21,7 @@ async function bootstrap() {
     },
   };
   await init({
-    apiKey: 'V29Io3djtYg4CNAovws8bnZGC.ZWg9N2hhZWpjLmUuZXBwby5jbG91ZA',
+    apiKey: '',
     assignmentLogger,
     pollAfterFailedInitialization: true,
     pollingIntervalMs: 5000,
