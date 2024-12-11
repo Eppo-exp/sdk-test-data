@@ -16,7 +16,7 @@
 
 "@eppo/js-client-sdk-common@https://github.com/Eppo-exp/js-sdk-common#tp/precomputed/common":
   version "4.7.0"
-  resolved "https://github.com/Eppo-exp/js-sdk-common#caf814e041793529ac6ed5051c1ca0ba8e61ed38"
+  resolved "https://github.com/Eppo-exp/js-sdk-common#c3ad14d2a58139875f985ad73216bf8927ddc587"
   dependencies:
     buffer "npm:@eppo/buffer@6.2.0"
     js-base64 "^3.7.7"
@@ -24,6 +24,12 @@
     semver "^7.5.4"
     spark-md5 "^3.0.2"
     uuid "^8.3.2"
+
+"@eppo/js-client-sdk@https://github.com/Eppo-exp/js-client-sdk#tp/precomputed/client-latest":
+  version "3.8.3"
+  resolved "https://github.com/Eppo-exp/js-client-sdk#f5981539c97e8d8da4b42dc6430877ab123e206a"
+  dependencies:
+    "@eppo/js-client-sdk-common" "https://github.com/Eppo-exp/js-sdk-common#tp/precomputed/common"
 
 "@eppo/node-server-sdk@https://github.com/Eppo-exp/node-server-sdk#tp/precomputed/latest-common":
   version "3.6.2"

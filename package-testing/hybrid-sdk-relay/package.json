@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@eppo/js-client-sdk": "https://github.com/Eppo-exp/js-client-sdk#tp/precomputed/client-latest",
+    "@eppo/js-client-sdk-common": "https://github.com/Eppo-exp/js-sdk-common#tp/precomputed/common",
     "@eppo/node-server-sdk": "https://github.com/Eppo-exp/node-server-sdk#tp/precomputed/latest-common",
     "next": "15.1.0",
     "react": "^19.0.0",
