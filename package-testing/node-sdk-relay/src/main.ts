@@ -1,11 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import {
-  IAssignmentLogger,
-  IBanditEvent,
-  IBanditLogger,
-  init,
-} from '@eppo/node-server-sdk';
+import { IAssignmentLogger, IBanditEvent, IBanditLogger, init } from '@eppo/node-server-sdk';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -24,11 +19,12 @@ async function bootstrap() {
     apiKey: '',
     assignmentLogger,
     pollAfterFailedInitialization: true,
-    pollingIntervalMs: 5000,
     banditLogger: banditLogger,
+    baseUrl: 'http://localhost:4000/api',
+    pollingIntervalMs: 5000,
   });
 
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.SDK_RELAY_PORT ?? 4000);
 }
 
 bootstrap();
