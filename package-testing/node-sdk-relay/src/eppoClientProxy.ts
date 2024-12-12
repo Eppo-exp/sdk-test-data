@@ -1,5 +1,5 @@
-import { getInstance } from '@eppo/node-server-sdk';
 import { AssignmentDto } from './types';
+import { EppoClient } from '@eppo/js-client-sdk-common';
 
 export class EppoClientProxy {
   private readonly assignmentTypeToMethod = new Map([
@@ -10,9 +10,8 @@ export class EppoClientProxy {
     ['JSON', 'getJSONAssignment'],
   ]);
 
-  getAssignment(assignmentRequestBody: AssignmentDto) {
+  getAssignment(eppoClientInstance: EppoClient, assignmentRequestBody: AssignmentDto) {
     const method = this.assignmentTypeToMethod.get(assignmentRequestBody.assignmentType);
-    const eppoClientInstance = getInstance();
 
     return eppoClientInstance[method](
       assignmentRequestBody.flag,
