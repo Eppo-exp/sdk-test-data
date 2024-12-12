@@ -3,14 +3,22 @@
     "precomputed": {
         "subjectKey": "test-subject-key",
         "subjectAttributes": {
-            "device": "iPhone",
-            "country": "USA"
+            "categorical": {
+                "platform": "ios",
+                "language": "en-US",
+                "hasPushEnabled": false,
+                "buildNumber": 42
+            },
+            "numeric": {
+                "lastLoginDays": 3,
+                "lifetimeValue": 543.21
+            }
         },
         "fetchedAt": "2024-11-18T14:23:39.456Z",
         "response": {
             "createdAt": "2024-11-18T14:23:25.123Z",
             "format": "PRECOMPUTED",
-            "salt": "NaCl",
+            "salt": "sodium-chloride",
             "obfuscated": false,
             "environment": {
                 "name": "Test"
