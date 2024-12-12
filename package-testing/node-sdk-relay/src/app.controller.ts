@@ -16,8 +16,6 @@ export class AppController {
 
   @Post('flags/v1/assignment')
   getAssignment(@Body() requestedAssignmentBody: AssignmentDto) {
-    const assignment = this.eppoClientProxy.getAssignment(getInstance(), requestedAssignmentBody);
-    console.log(assignment);
-    return 'ok';
+    return this.eppoClientProxy.getAssignment(getInstance(), requestedAssignmentBody);
   }
 }
