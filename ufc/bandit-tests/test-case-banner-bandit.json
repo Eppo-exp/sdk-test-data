@@ -261,6 +261,32 @@
           }
         ],
         "assignment": {"variation": "banner_bandit", "action": "nike"}
+      },
+      {
+        "subjectKey": "override",
+        "subjectAttributes": {
+            "numericAttributes": {},
+            "categoricalAttributes": {}
+          },
+
+        "actions": [
+            {
+              "actionKey": "nike",
+              "numericAttributes": {},
+              "categoricalAttributes": {}
+            },
+            {
+              "actionKey": "adidas",
+              "numericAttributes": {},
+              "categoricalAttributes": {}
+            },
+            {
+              "actionKey": "reebok",
+              "numericAttributes": {},
+              "categoricalAttributes": {}
+            }
+          ],
+          "assignment": {"variation": "car_bandit", "action": "adidas"}
       }
     ]
   }

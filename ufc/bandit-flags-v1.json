@@ -73,6 +73,10 @@
                 "banner_bandit": {
                     "key": "banner_bandit",
                     "value": "banner_bandit"
+                },
+                "car_bandit": {
+                    "key": "car_bandit",
+                    "value": "car_bandit"
                 }
             },
             "allocations": [
