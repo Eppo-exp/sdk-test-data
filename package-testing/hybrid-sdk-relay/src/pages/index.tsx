@@ -9,7 +9,7 @@ import {IPrecompute} from "@eppo/js-client-sdk/src/i-client-config";
 
 export const getServerSideProps = (async () => {
     const client = await getClient();
-    const precomputedPacket = JSON.stringify(client.getPrecomputedAssignments('mySubjectId', {country: 'US'}, true));
+    const precomputedPacket = JSON.stringify(client.getPrecomputedAssignments('mySubjectId', {country: 'US'}, false));
 
     return { props: { eppoConfig: precomputedPacket } };
 }) satisfies GetServerSideProps<{ eppoConfig: string }>
@@ -36,10 +36,9 @@ export default function Home({
             assignmentLogger:clientAssignmentLogger,
         });
 
-                setKillSwitch(client.getBooleanAssignment('kill-switch', false));
+        setKillSwitch(client.getBooleanAssignment('kill-switch', false));
 
     }, [eppoConfig]);
-
 
 
     return (
