@@ -1,9 +1,6 @@
 name: Test Packaged SDKs
 
 on:
-  pull_request:
-    paths:
-      - ufc/**
   push:
     branches:
       - main
