@@ -87,7 +87,7 @@
                             "conditions": [
                                 {
                                     "attribute": "id",
-                                    "operator": "EQUALS",
+                                    "operator": "MATCHES",
                                     "value": "override"
                                 }
                             ]
