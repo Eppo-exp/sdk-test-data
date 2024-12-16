@@ -21,6 +21,8 @@ GEM
       rack (>= 3.0.0, < 4)
     rack-session (2.0.0)
       rack (>= 3.0.0)
+    rackup (2.2.1)
+      rack (>= 3)
     ruby2_keywords (0.0.5)
     sinatra (4.1.1)
       logger (>= 1.6.0)
@@ -40,9 +42,10 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  eppo-server-sdk
-  puma
-  sinatra
+  eppo-server-sdk (~> 3.3)
+  puma (~> 6.5)
+  rackup (~> 2.2)
+  sinatra (~> 4.1)
 
 BUNDLED WITH
    2.5.9

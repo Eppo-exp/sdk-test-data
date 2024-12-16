@@ -2,10 +2,8 @@ FROM ruby:3.2
 
 WORKDIR /app
 
-COPY Gemfile Gemfile.lock ./
+COPY . .
 RUN bundle install
 
-# Copy the source code
-COPY src/ ./src/
+CMD ["bundle", "exec", "ruby", "/app/src/server.rb"] 
 
-CMD ["ruby", "/app/src/server.rb"] 

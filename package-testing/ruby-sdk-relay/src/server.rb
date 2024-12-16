@@ -1,8 +1,9 @@
+require 'bundler/setup'
 require 'sinatra'
 require 'json'
-require 'eppo-server-sdk'
+require 'eppo_client'
 
-class LocalAssignmentLogger
+class LocalAssignmentLogger < EppoClient::AssignmentLogger
   def log_assignment(assignment)
     puts "Assignment: #{assignment}"
   end
@@ -13,15 +14,14 @@ def initialize_client_and_wait
   api_key = ENV['EPPO_API_KEY'] || 'NOKEYSPECIFIED'
   base_url = ENV['EPPO_BASE_URL'] || 'http://localhost:5000/api'
   
-  client_config = Eppo::Config.new(
-    api_key: api_key,
-    base_url: base_url,
+  client_config = EppoClient::Config.new(
+    api_key,
     assignment_logger: LocalAssignmentLogger.new
   )
   
-  Eppo.init(client_config)
-  client = Eppo.instance
-  client.wait_for_initialization
+  EppoClient::init(client_config)
+  client = EppoClient::Client.instance
+  sleep(3)
   puts "Client initialized"
 end
 
@@ -52,7 +52,7 @@ post '/flags/v1/assignment' do
   content_type :json
   data = JSON.parse(request.body.read)
   
-  client = Eppo.instance
+  client = EppoClient::Client.instance
   
   begin
     result = case data['assignmentType']
