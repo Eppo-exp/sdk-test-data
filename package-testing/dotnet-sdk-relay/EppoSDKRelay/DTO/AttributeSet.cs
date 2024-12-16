@@ -4,14 +4,8 @@ using System.Text.Json;
 
 public class AttributeSet
 {
-    public Dictionary<string, object?> NumericAttributes { get; set; }
-    public Dictionary<string, object?> CategoricalAttributes { get; set; }
-
-    public Dictionary<string, object?> AttributeDictionary
-    {
-        get => new Dictionary<string, object?>[] { NumericAttributes, CategoricalAttributes }.SelectMany(dict => dict)
-                         .ToDictionary(pair => pair.Key, pair => pair.Value);
-    }
+    public required Dictionary<string, object?> NumericAttributes { get; set; }
+    public required Dictionary<string, object?> CategoricalAttributes { get; set; }
 
     public Dictionary<string, string?> CategoricalAttributesAsStrings
     {
@@ -23,6 +17,5 @@ public class AttributeSet
     public Dictionary<string, object?> NumericAttributesAsNumbers => NumericAttributes
                 .Where(kvp =>
                     (kvp.Value is JsonElement jsonElement) && jsonElement.ValueKind == JsonValueKind.Number)
-                .ToDictionary(kvp => kvp.Key, static kvp => (object?)((JsonElement)kvp.Value).GetDouble());
-
+                .ToDictionary(kvp => kvp.Key, static kvp => kvp.Value == null ? null : (object?)((JsonElement)kvp.Value).GetDouble());
 }

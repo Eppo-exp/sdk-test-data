@@ -21,6 +21,6 @@ public class BanditActionRequest
     public IDictionary<string, ContextAttributes> GetActionContextDict()
     {
         return Actions.ToDictionary(action => action.ActionKey,
-                                    action => ContextAttributes.FromDict(action.ActionKey, Values.ConvertJsonValuesToPrimitives(action.AttributeDictionary)));
+                                    action => ContextAttributes.FromNullableAttributes(action.ActionKey, Values.ConvertJsonValuesToPrimitives(action.CategoricalAttributes), Values.ConvertJsonValuesToPrimitives(action.NumericAttributes)));
     }
 }
