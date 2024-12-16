@@ -127,6 +127,9 @@ end
 
 initialize_client_and_wait
 
+# Disable host authorization check
+set :protection, :except => [:host_authorization]
+
 host = ENV['SDK_RELAY_HOST'] || '0.0.0.0'
 port = ENV['SDK_RELAY_PORT'] || 7001
 set :port, port
