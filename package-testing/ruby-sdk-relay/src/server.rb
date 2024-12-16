@@ -126,6 +126,7 @@ end
 
 initialize_client_and_wait
 
+host = ENV['SDK_RELAY_HOST'] || '0.0.0.0'
 port = ENV['SDK_RELAY_PORT'] || 7001
 set :port, port
-set :bind, '0.0.0.0'
+set :bind, host
