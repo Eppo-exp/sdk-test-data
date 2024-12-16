@@ -3,6 +3,9 @@ require 'sinatra'
 require 'json'
 require 'eppo_client'
 
+# Disable ALL Rack protection
+disable :protection
+
 class LocalAssignmentLogger < EppoClient::AssignmentLogger
   def log_assignment(assignment)
     puts "Assignment: #{assignment}"
@@ -126,9 +129,6 @@ post '/bandits/v1/action' do
 end
 
 initialize_client_and_wait
-
-# Disable host authorization check
-set :protection, :except => [:host_authorization]
 
 host = ENV['SDK_RELAY_HOST'] || '0.0.0.0'
 port = ENV['SDK_RELAY_PORT'] || 7001
