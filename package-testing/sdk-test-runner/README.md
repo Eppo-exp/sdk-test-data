@@ -212,7 +212,8 @@ If possible, the SDK relay server should respond with the `sdkName` and `sdkVers
 type SDKDetailsResponse = {
   sdkName?: string;
   sdkVersion?: string;
-  supports: Record<string, boolean>;
+  supportsBandits: boolean;
+  supportsDynamicTyping: boolean;
 };
 ```
 
