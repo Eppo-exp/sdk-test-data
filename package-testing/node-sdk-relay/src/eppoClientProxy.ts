@@ -4,7 +4,7 @@ import getLogger from './main';
 
 export class EppoClientProxy {
   private readonly assignmentTypeToMethod = new Map([
-    ['INTEGER', `getIntegerAssignment`],
+    ['INTEGER', 'getIntegerAssignment'],
     ['STRING', 'getStringAssignment'],
     ['BOOLEAN', 'getBooleanAssignment'],
     ['NUMERIC', 'getNumericAssignment'],

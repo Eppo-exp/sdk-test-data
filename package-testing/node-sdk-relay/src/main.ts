@@ -14,7 +14,7 @@ async function bootstrap() {
     assignmentLogger: logger,
     pollAfterFailedInitialization: true,
     banditLogger: logger,
-    baseUrl: 'http://localhost:4000/api',
+    baseUrl: 'http://localhost:5000/api',
     pollingIntervalMs: 5000,
   });
 
