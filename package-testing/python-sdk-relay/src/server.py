@@ -33,6 +33,15 @@ def reset_sdk():
     
     return "Reset complete"
 
+@app.route('/sdk/details', methods=['GET'])
+def get_sdk_details():
+    return jsonify({
+        "sdkName": "python-sdk", 
+        "sdkVersion": "4.1.0",
+        "supportsBandits": False,
+        "supportsDynamicTyping": False
+    })
+
 @app.route('/flags/v1/assignment', methods=['POST'])
 def handle_assignment():
     data = request.json
@@ -115,7 +124,6 @@ class BanditActionRequest:
 @app.route('/bandits/v1/action', methods=['POST'])
 def handle_bandit():
     data = request.json
-    print(f"Request data: {data}")
     request_obj = BanditActionRequest(
         flag=data['flag'],
         subject_key=data['subjectKey'],
@@ -125,52 +133,13 @@ def handle_bandit():
     )
     print(f"Request object: {request_obj}")
     
-    # Create subject context using ContextAttributes constructor
-    subject_context = eppo_client.bandit.ContextAttributes(
-        numeric_attributes=request_obj.subject_attributes['numericAttributes'],
-        categorical_attributes=request_obj.subject_attributes['categoricalAttributes']
-    )
-    
-    # Create actions dictionary using ContextAttributes constructor
-    actions = {
-        action['actionKey']: eppo_client.bandit.ContextAttributes(
-            action['numericAttributes'],
-            action['categoricalAttributes']
-        )
-        for action in request_obj.actions
-    }
-    
-    client = eppo_client.get_instance()
-    
-    try:
-        result = client.get_bandit_action(
-            request_obj.flag,
-            request_obj.subject_key,
-            subject_context,
-            actions,
-            request_obj.default_value
-        )
-    
-        response = {
-            "result": {
-                "variation": result.variation,
-                "action": result.action
-            },
-            "assignmentLog": [],
-            "banditLog": [],
-            "error": None
-        }
-        print(f"response: {response}")
-        return jsonify(response)
-    except Exception as e:
-        print(f"Error processing bandit: {str(e)}")
-        response = {
-            "result": None,
-            "assignmentLog": [],
-            "banditLog": [],
-            "error": str(e)
-        }
-        return jsonify(response)
+    # TODO: Implement bandit logic
+    return jsonify({
+        "result": "action",
+        "assignmentLog": [],
+        "banditLog": [],
+        "error": None
+    })
 
 def initialize_client_and_wait():
     print("Initializing client")

@@ -201,12 +201,10 @@ Any non-empty response
 
 ##### SDK Details
 
-`POST /sdk/details`
+`GET /sdk/details`
 
 If possible, the SDK relay server should respond with the `sdkName` and `sdkVersion` in use. This may not be directly possible with all SDKs.
 If the SDK does not support Bandits or dynamic typing, the test runner will skip the related test cases if the corresponding values are `false`.
-
-`GET /sdk/details`
 
 ```ts
 // Expected response data:
