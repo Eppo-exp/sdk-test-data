@@ -25,5 +25,5 @@ bundle install
 
 2. Run the server:
 ```shell
-ruby src/server.rb
+bundle exec ruby src/server.rb
 ``` 

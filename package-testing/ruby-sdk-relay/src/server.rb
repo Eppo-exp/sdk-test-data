@@ -16,7 +16,7 @@ def initialize_client_and_wait
   
   client_config = EppoClient::Config.new(
     api_key,
-    base_url,
+    base_url: base_url,
     assignment_logger: LocalAssignmentLogger.new
   )
   
