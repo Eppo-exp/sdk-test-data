@@ -5,7 +5,7 @@ import { TestResponse } from '../dto/testResponse';
 import { SDKRelay } from './SDKRelay';
 import { SDKInfo } from './SDKInfo';
 import { SDKConnectionFailure } from './SDKConnectionFailure';
-import { ASSIGNMENT_PATH, BANDIT_PATH, DETAILS__PATH, RESET_PATH } from './constants';
+import { ASSIGNMENT_PATH, BANDIT_PATH, DETAILS_PATH, RESET_PATH } from './constants';
 
 /**
  * Uses `axios` to communicate with a Server SDK Relay via http
@@ -67,7 +67,7 @@ export class ServerSDKRelay implements SDKRelay {
   }
 
   async getSdkDetails(): Promise<SDKInfo> {
-    const result = await axios.get(`${this.sdkRelayAddress}${DETAILS__PATH}`);
+    const result = await axios.get(`${this.sdkRelayAddress}${DETAILS_PATH}`);
     return result.data as SDKInfo;
   }
 }
