@@ -14,4 +14,5 @@ export type SDKRelay = {
   getAssignment(request: AssignmentRequest): Promise<TestResponse>;
   getBanditAction(request: BanditActionRequest): Promise<TestResponse>;
   close(): void;
+  getSDKDetails(): SDKInfo;
 };

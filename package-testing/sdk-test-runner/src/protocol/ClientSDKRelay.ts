@@ -21,7 +21,13 @@ export class ClientSDKRelay implements SDKRelay {
   private isReadyPromise: Promise<SDKInfo>;
   private ready = false;
   private socket?: Socket;
-  private sdkInfo?: SDKInfo;
+
+  // Defaults for client SDKs
+  private sdkInfo: SDKInfo = {
+    supportsBandits: false,
+    supportsDynamicTyping: true,
+    sdkName: 'UNKNOWN',
+  };
 
   constructor(testrunnerPort: number = 3000) {
     // Run socketIO through a node http server.
@@ -41,7 +47,7 @@ export class ClientSDKRelay implements SDKRelay {
         socket.on('READY', (msg, ack) => {
           const msgObj = JSON.parse(msg);
 
-          this.sdkInfo = msgObj as SDKInfo;
+          this.sdkInfo = { ...this.sdkInfo, ...(msgObj as SDKInfo) };
 
           log(green(`Client ${this.sdkInfo?.sdkName} reports ready`));
 
@@ -59,6 +65,12 @@ export class ClientSDKRelay implements SDKRelay {
 
       httpServer.listen(testrunnerPort);
     });
+  }
+  getSDKDetails(): SDKInfo {
+    if (this.sdkInfo == null) {
+      throw new Error('SDK Client is not connected');
+    }
+    return this.sdkInfo;
   }
 
   reset(): Promise<void> {
@@ -79,7 +91,7 @@ export class ClientSDKRelay implements SDKRelay {
       throw new Error('SDK Client is not connected');
     }
     if (!this.sdkInfo?.supportsBandits) {
-      throw new FeatureNotSupportedError('Bandits are not supported in this SDK');
+      throw new FeatureNotSupportedError('Bandits are not supported in this SDK', 'Bandits');
     }
 
     const result = await new Promise((resolve) => {
