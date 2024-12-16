@@ -60,6 +60,12 @@ export class ClientSDKRelay implements SDKRelay {
       httpServer.listen(testrunnerPort);
     });
   }
+  getSDKDetails(): SDKInfo {
+    if (this.sdkInfo == null) {
+      throw new Error('SDK Client is not connected');
+    }
+    return this.sdkInfo;
+  }
 
   reset(): Promise<void> {
     if (!this.ready) {
@@ -79,7 +85,7 @@ export class ClientSDKRelay implements SDKRelay {
       throw new Error('SDK Client is not connected');
     }
     if (!this.sdkInfo?.supportsBandits) {
-      throw new FeatureNotSupportedError('Bandits are not supported in this SDK');
+      throw new FeatureNotSupportedError('Bandits are not supported in this SDK', 'Bandits');
     }
 
     const result = await new Promise((resolve) => {

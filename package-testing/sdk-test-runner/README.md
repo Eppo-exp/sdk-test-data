@@ -203,7 +203,8 @@ Any non-empty response
 
 `POST /sdk/details`
 
-If possible, the SDK relay server should respond with the `sdkName` and `sdkVersion` in use. This may not be directly possible with all SDKs. Not all SDKs support bandits and some SDKs lack support for dynamically typing attribute inputs. This endpoint is where the relay server can indicate to the test runner whether these features are supported (the default assumed by the test runner is `true`).
+If possible, the SDK relay server should respond with the `sdkName` and `sdkVersion` in use. This may not be directly possible with all SDKs.
+If the SDK does not support Bandits or dynamic typing, the test runner will skip the related test cases if the corresponding values are `false`.
 
 `GET /sdk/details`
 
@@ -212,8 +213,8 @@ If possible, the SDK relay server should respond with the `sdkName` and `sdkVers
 type SDKDetailsResponse = {
   sdkName?: string;
   sdkVersion?: string;
-  supportsBandits: boolean;
-  supportsDynamicTyping: boolean;
+  supportsBandits?: boolean;
+  supportsDynamicTyping?: boolean;
 };
 ```
 
