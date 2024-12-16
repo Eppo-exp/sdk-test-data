@@ -3,13 +3,13 @@
     "precomputed": {
         "subjectKey": "test-subject-key",
         "subjectAttributes": {
-            "categorical": {
+            "categoricalAttributes": {
                 "platform": "ios",
                 "language": "en-US",
                 "hasPushEnabled": false,
                 "buildNumber": 42
             },
-            "numeric": {
+            "numericAttributes": {
                 "lastLoginDays": 3,
                 "lifetimeValue": 543.21
             }
