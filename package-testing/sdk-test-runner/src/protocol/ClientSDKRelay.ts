@@ -21,7 +21,13 @@ export class ClientSDKRelay implements SDKRelay {
   private isReadyPromise: Promise<SDKInfo>;
   private ready = false;
   private socket?: Socket;
-  private sdkInfo?: SDKInfo;
+
+  // Defaults for client SDKs
+  private sdkInfo: SDKInfo = {
+    supportsBandits: false,
+    supportsDynamicTyping: true,
+    sdkName: 'UNKNOWN',
+  };
 
   constructor(testrunnerPort: number = 3000) {
     // Run socketIO through a node http server.
@@ -41,7 +47,7 @@ export class ClientSDKRelay implements SDKRelay {
         socket.on('READY', (msg, ack) => {
           const msgObj = JSON.parse(msg);
 
-          this.sdkInfo = msgObj as SDKInfo;
+          this.sdkInfo = { ...this.sdkInfo, ...(msgObj as SDKInfo) };
 
           log(green(`Client ${this.sdkInfo?.sdkName} reports ready`));
 

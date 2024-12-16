@@ -19,19 +19,20 @@ export class ServerSDKRelay implements SDKRelay {
   constructor(serverAddress: string, sdkName: string) {
     this.sdkRelayAddress = serverAddress;
 
-    // All servers support bandits.
-    // In the future, we can have an endpoint for the SDK relays that specifies
-    // more sdk info like version and future capabilities.
+    // By default, assume all servers support bandits and dynamic typing.
     this.sdkInfo = { sdkName, supportsBandits: true, supportsDynamicTyping: true };
 
-    this.isReadyPromise = this.getSdkDetails()
+    this.isReadyPromise = this.fetchSDKDetails()
       .then((sdkDetails: SDKInfo) => {
         this.sdkInfo = { ...this.sdkInfo, ...sdkDetails };
         return this.sdkInfo;
       })
       .catch((error) => {
         // Can proceed even if the relay doesn't return a details block.
-        console.log('Error encountered getting SDK details', error);
+        console.log(
+          'Possible error encountered getting SDK details; not all SDK relays support the sdk/details endpoint',
+          error,
+        );
         return this.sdkInfo;
       });
   }
@@ -66,7 +67,7 @@ export class ServerSDKRelay implements SDKRelay {
     });
   }
 
-  async getSdkDetails(): Promise<SDKInfo> {
+  async fetchSDKDetails(): Promise<SDKInfo> {
     const result = await axios.get(`${this.sdkRelayAddress}${DETAILS_PATH}`);
     return result.data as SDKInfo;
   }
