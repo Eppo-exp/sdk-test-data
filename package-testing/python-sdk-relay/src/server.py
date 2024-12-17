@@ -38,7 +38,7 @@ def get_sdk_details():
     return jsonify({
         "sdkName": "python-sdk", 
         "sdkVersion": "4.1.0",
-        "supportsBandits": False,
+        "supportsBandits": True,
         "supportsDynamicTyping": False
     })
 
@@ -116,8 +116,8 @@ def handle_assignment():
 class BanditActionRequest:
     flag: str
     subject_key: str
-    subject_attributes: dict
-    actions: list
+    subject_attributes: dict  # Will contain numericAttributes and categoricalAttributes
+    actions: list            # List of dicts with actionKey, numericAttributes, categoricalAttributes
     default_value: any
 
 
@@ -133,13 +133,49 @@ def handle_bandit():
     )
     print(f"Request object: {request_obj}")
     
-    # TODO: Implement bandit logic
-    return jsonify({
-        "result": "action",
-        "assignmentLog": [],
-        "banditLog": [],
-        "error": None
-    })
+    client = eppo_client.get_instance()
+    
+    try:
+        # Convert actions to the format expected by the SDK
+        actions = {}
+        for action in request_obj.actions:
+            actions[action['actionKey']] = eppo_client.bandit.AttributeSet(
+                numeric_attributes=action.get('numericAttributes', {}),
+                categorical_attributes=action.get('categoricalAttributes', {})
+            )
+        
+        # Convert subject attributes
+        subject_attributes = eppo_client.bandit.AttributeSet(
+            numeric_attributes=request_obj.subject_attributes.get('numericAttributes', {}),
+            categorical_attributes=request_obj.subject_attributes.get('categoricalAttributes', {})
+        )
+        
+        result = client.get_bandit_action(
+            request_obj.flag,
+            request_obj.subject_key,
+            subject_attributes,
+            actions,
+            request_obj.default_value
+        )
+        
+        response = {
+            "result": result,
+            "assignmentLog": [],  # You might want to implement assignment logging
+            "banditLog": [],      # You might want to implement bandit logging
+            "error": None
+        }
+        print(f"response: {response}")
+        return jsonify(response)
+        
+    except Exception as e:
+        print(f"Error processing bandit action: {str(e)}")
+        response = {
+            "result": None,
+            "assignmentLog": [],
+            "banditLog": [],
+            "error": str(e)
+        }
+        return jsonify(response)
 
 def initialize_client_and_wait():
     print("Initializing client")
