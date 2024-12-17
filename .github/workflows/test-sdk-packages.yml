@@ -43,3 +43,15 @@ jobs:
       sdkName: 'eppo/ruby-sdk'
       sdkRelayDir: 'ruby-sdk-relay'
     secrets: inherit
+
+  test-go-sdk:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: ['linux']
+    uses: ./.github/workflows/test-server-sdk.yml
+    with:
+      platform: ${{ matrix.platform }}
+      sdkName: 'eppo/go-sdk'
+      sdkRelayDir: 'go-sdk-relay'
+    secrets: inherit
