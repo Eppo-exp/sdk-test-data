@@ -52,7 +52,6 @@ def handle_assignment():
         assignment_type=data['assignmentType'],
         default_value=data['defaultValue']
     )
-    print(f"Request object: {request_obj}")
     
     client = eppo_client.get_instance()
     
@@ -95,7 +94,10 @@ def handle_assignment():
                 )
         
         response = {
-            "result": result,
+            "result": {
+                "variation": result.variation,
+                "action": result.action
+            },
             "assignmentLog": [],
             "banditLog": [],
             "error": None
