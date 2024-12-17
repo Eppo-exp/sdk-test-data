@@ -189,6 +189,9 @@ def initialize_client_and_wait():
     api_key = environ.get('EPPO_API_KEY', 'NOKEYSPECIFIED')
     base_url = environ.get('EPPO_BASE_URL', 'http://localhost:5000/api')
     
+    # Add debug logging for initialization
+    print(f"Initializing with API key: {api_key}, base URL: {base_url}")
+    
     client_config = Config(
         api_key=api_key,
         base_url=base_url,
@@ -196,8 +199,18 @@ def initialize_client_and_wait():
     )
     eppo_client.init(client_config)
     client = eppo_client.get_instance()
+    
+    # Add debug logging for initialization status
+    print("Waiting for initialization...")
     client.wait_for_initialization()
-    print("Client initialized")
+    print("Client initialization complete")
+    
+    # Try to fetch a configuration to verify it's working
+    try:
+        config = client.get_configuration()
+        print(f"Test configuration: {config}")
+    except Exception as e:
+        print(f"Error fetching test configuration: {e}")
 
 if __name__ == "__main__":
     initialize_client_and_wait()
