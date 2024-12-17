@@ -24,6 +24,7 @@ docker run -p $SDK_RELAY_PORT:$SDK_RELAY_PORT \
   -e SDK_REF \
   -e EPPO_BASE_URL \
   -e SDK_RELAY_PORT \
+  -e RACK_ENV=production \
   --name ruby-relay \
   --rm \
   -t Eppo-exp/ruby-sdk-relay:$VERSION 

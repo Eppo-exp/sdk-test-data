@@ -6,4 +6,3 @@ COPY . .
 RUN bundle install
 
 CMD ["bundle", "exec", "ruby", "/app/src/server.rb"] 
-
