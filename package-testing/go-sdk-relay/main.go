@@ -34,7 +34,7 @@ type SDKDetails struct {
 	SupportsDynamicTyping bool   `json:"supportsDynamicTyping"`
 }
 
-var eppoClient = &eppoclient.EppoClient{}
+var eppoClient *eppoclient.EppoClient
 
 func initializeClient() error {
 	apiKey := os.Getenv("EPPO_API_KEY")
@@ -47,22 +47,33 @@ func initializeClient() error {
 		baseURL = "http://localhost:5000/api"
 	}
 
-	client, err := eppoclient.InitClient(eppoclient.Config{
+	// Create configuration
+	config := eppoclient.Config{
 		SdkKey:  apiKey,
 		BaseUrl: baseURL,
-	})
+	}
+
+	// Initialize client
+	client, err := eppoclient.InitClient(config)
 	if err != nil {
 		return fmt.Errorf("failed to create client: %v", err)
 	}
 
-	eppoClient = client
+	// Wait for initialization with timeout
+	initChan := make(chan struct{})
+	go func() {
+		<-client.Initialized()
+		close(initChan)
+	}()
 
 	select {
-	case <-client.Initialized():
-	case <-time.After(3 * time.Second):
-		log.Printf("Timed out waiting for Eppo SDK to initialize")
+	case <-initChan:
+		log.Printf("Eppo client initialized successfully")
+	case <-time.After(5 * time.Second):
+		log.Printf("Warning: Timed out waiting for Eppo SDK to initialize")
 	}
 
+	eppoClient = client
 	return nil
 }
 
@@ -73,7 +84,7 @@ func handleHealthCheck(w http.ResponseWriter, r *http.Request) {
 func handleSDKDetails(w http.ResponseWriter, r *http.Request) {
 	details := SDKDetails{
 		SDKName:               "go-sdk",
-		SDKVersion:            "1.0.0",
+		SDKVersion:            "6.1.0",
 		SupportsBandits:       false,
 		SupportsDynamicTyping: false,
 	}
@@ -96,45 +107,82 @@ func handleAssignment(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var result interface{}
+	// Always prepare a response with default values
+	response := AssignmentResponse{
+		Result:        req.DefaultValue,
+		AssignmentLog: []string{},
+		BanditLog:     []string{},
+	}
+
+	// Check if client is nil or not initialized
+	if eppoClient == nil {
+		errStr := "client not initialized"
+		response.Error = &errStr
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
 	var err error
+	defer func() {
+		if r := recover(); r != nil {
+			errStr := fmt.Sprintf("panic recovered: %v", r)
+			response.Error = &errStr
+			response.Result = req.DefaultValue
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(response)
+		}
+	}()
 
 	switch req.AssignmentType {
 	case "BOOLEAN":
 		defaultVal, _ := req.DefaultValue.(bool)
-		result, err = eppoClient.GetBoolAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, defaultVal)
+		response.Result, err = eppoClient.GetBoolAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, defaultVal)
 
 	case "STRING":
 		defaultVal, _ := req.DefaultValue.(string)
-		result, err = eppoClient.GetStringAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, defaultVal)
+		response.Result, err = eppoClient.GetStringAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, defaultVal)
 
 	case "NUMERIC":
-		defaultVal, _ := strconv.ParseFloat(fmt.Sprintf("%v", req.DefaultValue), 64)
-		result, err = eppoClient.GetNumericAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, defaultVal)
+		var defaultVal float64
+		switch v := req.DefaultValue.(type) {
+		case float64:
+			defaultVal = v
+		case int:
+			defaultVal = float64(v)
+		case string:
+			defaultVal, _ = strconv.ParseFloat(v, 64)
+		}
+		response.Result, err = eppoClient.GetNumericAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, defaultVal)
 
 	case "INTEGER":
-		defaultVal, _ := req.DefaultValue.(float64)
-		result, err = eppoClient.GetIntegerAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, int64(defaultVal))
+		var defaultVal int64
+		switch v := req.DefaultValue.(type) {
+		case float64:
+			defaultVal = int64(v)
+		case int:
+			defaultVal = int64(v)
+		case string:
+			val, _ := strconv.ParseInt(v, 10, 64)
+			defaultVal = val
+		}
+		response.Result, err = eppoClient.GetIntegerAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, defaultVal)
 
 	case "JSON":
-		result, err = eppoClient.GetJSONAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, req.DefaultValue)
+		response.Result, err = eppoClient.GetJSONAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, req.DefaultValue)
 
 	default:
-		errMsg := fmt.Sprintf("unsupported assignment type: %s", req.AssignmentType)
-		http.Error(w, errMsg, http.StatusBadRequest)
+		errStr := fmt.Sprintf("unsupported assignment type: %s", req.AssignmentType)
+		response.Error = &errStr
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(response)
 		return
-	}
-
-	response := AssignmentResponse{
-		Result:        result,
-		AssignmentLog: []string{},
-		BanditLog:     []string{},
 	}
 
 	if err != nil {
 		errStr := err.Error()
 		response.Error = &errStr
-		response.Result = nil
+		response.Result = req.DefaultValue
 	}
 
 	w.Header().Set("Content-Type", "application/json")
