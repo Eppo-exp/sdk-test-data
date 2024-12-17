@@ -140,6 +140,7 @@ def handle_bandit():
             numeric_attributes=request_obj.subject_attributes.get('numericAttributes', {}),
             categorical_attributes=request_obj.subject_attributes.get('categoricalAttributes', {})
         )
+        print(f"Subject context: {subject_context}")
         
         # Create actions dictionary using ContextAttributes constructor
         actions = {}
@@ -148,8 +149,10 @@ def handle_bandit():
                 numeric_attributes=action.get('numericAttributes', {}),
                 categorical_attributes=action.get('categoricalAttributes', {})
             )
+        print(f"Actions: {actions}")
         
         client = eppo_client.get_instance()
+        print(f"Calling get_bandit_action with flag={request_obj.flag}, subject_key={request_obj.subject_key}, default_value={request_obj.default_value}")
         result = client.get_bandit_action(
             request_obj.flag,
             request_obj.subject_key,
@@ -157,6 +160,7 @@ def handle_bandit():
             actions,
             request_obj.default_value
         )
+        print(f"Raw result from get_bandit_action: {result}")
         
         response = {
             "result": {
@@ -167,7 +171,7 @@ def handle_bandit():
             "banditLog": [],
             "error": None
         }
-        print(f"response: {response}")
+        print(f"Final response: {response}")
         return jsonify(response)
         
     except Exception as e:
