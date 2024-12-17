@@ -137,22 +137,28 @@ def handle_bandit():
     try:
         # Create subject context using ContextAttributes constructor
         subject_context = eppo_client.bandit.ContextAttributes(
-            numeric_attributes=request_obj.subject_attributes.get('numericAttributes', {}),
-            categorical_attributes=request_obj.subject_attributes.get('categoricalAttributes', {})
+            numeric_attributes=request_obj.subject_attributes['numericAttributes'],
+            categorical_attributes=request_obj.subject_attributes['categoricalAttributes']
         )
         print(f"Subject context: {subject_context}")
         
         # Create actions dictionary using ContextAttributes constructor
         actions = {}
         for action in request_obj.actions:
-            actions[action['actionKey']] = eppo_client.bandit.ContextAttributes(
-                numeric_attributes=action.get('numericAttributes', {}),
-                categorical_attributes=action.get('categoricalAttributes', {})
+            action_key = action['actionKey']
+            action_context = eppo_client.bandit.ContextAttributes(
+                numeric_attributes=action['numericAttributes'],
+                categorical_attributes=action['categoricalAttributes']
             )
-        print(f"Actions: {actions}")
+            actions[action_key] = action_context
+               
+        print(f"\nExecuting bandit action:")
+        print(f"Flag: {request_obj.flag}")
+        print(f"Subject: {request_obj.subject_key}")
+        print(f"Default: {request_obj.default_value}")
+        print(f"Available actions: {list(actions.keys())}")
         
         client = eppo_client.get_instance()
-        print(f"Calling get_bandit_action with flag={request_obj.flag}, subject_key={request_obj.subject_key}, default_value={request_obj.default_value}")
         result = client.get_bandit_action(
             request_obj.flag,
             request_obj.subject_key,
@@ -171,7 +177,6 @@ def handle_bandit():
             "banditLog": [],
             "error": None
         }
-        print(f"Final response: {response}")
         return jsonify(response)
         
     except Exception as e:
