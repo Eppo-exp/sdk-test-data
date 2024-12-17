@@ -40,6 +40,6 @@ fi
 
 pip install "${WHEEL_FILE}"
 
-echo "Listening on port ${SDK_RELAY_PORT}"
+echo "Listening on port ${SDK_RELAY_HOST}:${SDK_RELAY_PORT}"
 
 python3 src/server.py
