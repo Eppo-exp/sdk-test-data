@@ -38,7 +38,7 @@ def get_sdk_details():
     return jsonify({
         "sdkName": "python-sdk", 
         "sdkVersion": "4.1.0",
-        "supportsBandits": False,
+        "supportsBandits": True,
         "supportsDynamicTyping": False
     })
 
@@ -52,7 +52,6 @@ def handle_assignment():
         assignment_type=data['assignmentType'],
         default_value=data['defaultValue']
     )
-    print(f"Request object: {request_obj}")
     
     client = eppo_client.get_instance()
     
@@ -112,39 +111,79 @@ def handle_assignment():
         }
         return jsonify(response)
 
-@dataclass
-class BanditActionRequest:
-    flag: str
-    subject_key: str
-    subject_attributes: dict
-    actions: list
-    default_value: any
-
 
 @app.route('/bandits/v1/action', methods=['POST'])
 def handle_bandit():
     data = request.json
-    request_obj = BanditActionRequest(
-        flag=data['flag'],
-        subject_key=data['subjectKey'],
-        subject_attributes=data['subjectAttributes'],
-        default_value=data['defaultValue'],
-        actions=data['actions']
-    )
-    print(f"Request object: {request_obj}")
+    print(f"Request data: {data}")
     
-    # TODO: Implement bandit logic
-    return jsonify({
-        "result": "action",
-        "assignmentLog": [],
-        "banditLog": [],
-        "error": None
-    })
+    flag = data['flag']
+    subject_key = data['subjectKey']
+    subject_attributes = data['subjectAttributes']
+    default_value = data['defaultValue']
+    actions = data['actions']
+    
+    try:
+        # Create subject context using ContextAttributes constructor
+        subject_context = eppo_client.bandit.ContextAttributes(
+            numeric_attributes=subject_attributes['numericAttributes'],
+            categorical_attributes=subject_attributes['categoricalAttributes']
+        )
+        
+        # Create actions dictionary using ContextAttributes constructor
+        actions = {}
+        for action in actions:
+            action_key = action['actionKey']
+            action_context = eppo_client.bandit.ContextAttributes(
+                numeric_attributes=action['numericAttributes'],
+                categorical_attributes=action['categoricalAttributes']
+            )
+            actions[action_key] = action_context
+               
+        print(f"\nExecuting bandit action:")
+        print(f"Flag: {flag}")
+        print(f"Subject: {subject_key}")
+        print(f"Default: {default_value}")
+        print(f"Available actions: {list(actions.keys())}")
+        
+        client = eppo_client.get_instance()
+        result = client.get_bandit_action(
+            flag,
+            subject_key,
+            subject_context,
+            actions,
+            default_value
+        )
+        print(f"Raw result from get_bandit_action: {result}")
+        
+        response = {
+            "result": {
+                "variation": result.variation,
+                "action": result.action
+            },
+            "assignmentLog": [],
+            "banditLog": [],
+            "error": None
+        }
+        return jsonify(response)
+        
+    except Exception as e:
+        print(f"Error processing bandit: {str(e)}")
+        response = {
+            "result": None,
+            "assignmentLog": [],
+            "banditLog": [],
+            "error": str(e)
+        }
+        return jsonify(response)
 
 def initialize_client_and_wait():
     print("Initializing client")
     api_key = environ.get('EPPO_API_KEY', 'NOKEYSPECIFIED')
     base_url = environ.get('EPPO_BASE_URL', 'http://localhost:5000/api')
+    
+    # Add debug logging for initialization
+    print(f"Initializing with API key: {api_key}, base URL: {base_url}")
     
     client_config = Config(
         api_key=api_key,
@@ -153,8 +192,18 @@ def initialize_client_and_wait():
     )
     eppo_client.init(client_config)
     client = eppo_client.get_instance()
+    
+    # Add debug logging for initialization status
+    print("Waiting for initialization...")
     client.wait_for_initialization()
-    print("Client initialized")
+    print("Client initialization complete")
+    
+    # Try to fetch a configuration to verify it's working
+    try:
+        config = client.get_configuration()
+        print(f"Test configuration: {config}")
+    except Exception as e:
+        print(f"Error fetching test configuration: {e}")
 
 if __name__ == "__main__":
     initialize_client_and_wait()
