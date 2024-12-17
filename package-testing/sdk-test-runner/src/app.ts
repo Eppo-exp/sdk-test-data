@@ -276,14 +276,16 @@ export default class App {
                 message: result.error,
               });
 
-              logIndent(1, red('fail') + ` ${testCaseLabel}: ${result.result} != ${subject.assignment}`);
+              logIndent(1, red('fail') + ` ${testCaseLabel}: ${result.error}`);
             } else if (!App.isResultCorrect(result, subject)) {
               testCaseResult.failures ??= [];
               testCaseResult.failures.push({
-                message: `Value ${result.result} did not match expected ${subject.assignment}`,
+                message: `Value ${JSON.stringify(result.result)} did not match expected ${JSON.stringify(subject.assignment)}`,
               });
 
-              logIndent(1, red('fail') + ` ${testCaseLabel}: ${result.result} != ${subject.assignment}`);
+              logIndent(1, red('fail') + ` ${testCaseLabel}:\n` + 
+                `  Expected: ${JSON.stringify(subject.assignment, null, 2)}\n` +
+                `  Received: ${JSON.stringify(result.result, null, 2)}`);
             } else {
               testCaseResult.assertions = 1;
 
