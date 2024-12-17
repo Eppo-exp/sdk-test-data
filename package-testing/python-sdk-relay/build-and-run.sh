@@ -19,6 +19,8 @@ python3 -m venv tmp/.venv
 source tmp/.venv/bin/activate
 pip install maturin
 
+pip install -r requirements.txt
+
 # Build the wheel file in tmp directory
 maturin build --release --out tmp/dist --find-interpreter --manifest-path ./tmp/python-sdk/Cargo.toml
 
@@ -40,4 +42,4 @@ pip install "${WHEEL_FILE}"
 
 echo "Listening on port ${SDK_RELAY_PORT}"
 
-python3 -m http.server ${SDK_RELAY_PORT}
+python3 src/server.py

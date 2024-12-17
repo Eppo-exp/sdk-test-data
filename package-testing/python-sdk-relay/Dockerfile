@@ -18,4 +18,6 @@ ENV SDK_RELAY_HOST=0.0.0.0
 
 EXPOSE $SDK_RELAY_PORT
 
+HEALTHCHECK CMD curl --fail http://localhost:${SDK_RELAY_PORT} || exit 1
+
 CMD ["/build-and-run.sh"]
