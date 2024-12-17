@@ -18,6 +18,10 @@ docker remove ruby-relay
 echo "Building new image..."
 docker build . -t Eppo-exp/ruby-sdk-relay:$VERSION
 
+# We must run the server in production mode. In development mode
+# the server only accepts requests from localhost, and not from
+# other hosts, such as the host.docker.internal host.
+
 echo "Starting new container..."
 docker run -p $SDK_RELAY_PORT:$SDK_RELAY_PORT \
   --add-host host.docker.internal:host-gateway \
