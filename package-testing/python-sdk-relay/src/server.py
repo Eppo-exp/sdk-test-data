@@ -112,39 +112,28 @@ def handle_assignment():
         }
         return jsonify(response)
 
-@dataclass
-class BanditActionRequest:
-    flag: str
-    subject_key: str
-    subject_attributes: dict  # Will contain numericAttributes and categoricalAttributes
-    actions: list            # List of dicts with actionKey, numericAttributes, categoricalAttributes
-    default_value: any
-
 
 @app.route('/bandits/v1/action', methods=['POST'])
 def handle_bandit():
     data = request.json
     print(f"Request data: {data}")
-    request_obj = BanditActionRequest(
-        flag=data['flag'],
-        subject_key=data['subjectKey'],
-        subject_attributes=data['subjectAttributes'],
-        default_value=data['defaultValue'],
-        actions=data['actions']
-    )
-    print(f"Request object: {request_obj}")
+    
+    flag = data['flag']
+    subject_key = data['subjectKey']
+    subject_attributes = data['subjectAttributes']
+    default_value = data['defaultValue']
+    actions = data['actions']
     
     try:
         # Create subject context using ContextAttributes constructor
         subject_context = eppo_client.bandit.ContextAttributes(
-            numeric_attributes=request_obj.subject_attributes['numericAttributes'],
-            categorical_attributes=request_obj.subject_attributes['categoricalAttributes']
+            numeric_attributes=subject_attributes['numericAttributes'],
+            categorical_attributes=subject_attributes['categoricalAttributes']
         )
-        print(f"Subject context: {subject_context}")
         
         # Create actions dictionary using ContextAttributes constructor
         actions = {}
-        for action in request_obj.actions:
+        for action in actions:
             action_key = action['actionKey']
             action_context = eppo_client.bandit.ContextAttributes(
                 numeric_attributes=action['numericAttributes'],
@@ -153,26 +142,23 @@ def handle_bandit():
             actions[action_key] = action_context
                
         print(f"\nExecuting bandit action:")
-        print(f"Flag: {request_obj.flag}")
-        print(f"Subject: {request_obj.subject_key}")
-        print(f"Default: {request_obj.default_value}")
+        print(f"Flag: {flag}")
+        print(f"Subject: {subject_key}")
+        print(f"Default: {default_value}")
         print(f"Available actions: {list(actions.keys())}")
         
         client = eppo_client.get_instance()
         result = client.get_bandit_action(
-            request_obj.flag,
-            request_obj.subject_key,
+            flag,
+            subject_key,
             subject_context,
             actions,
-            request_obj.default_value
+            default_value
         )
         print(f"Raw result from get_bandit_action: {result}")
         
         response = {
-            "result": {
-                "variation": result.variation,
-                "action": result.action
-            },
+            "result": result,
             "assignmentLog": [],
             "banditLog": [],
             "error": None
