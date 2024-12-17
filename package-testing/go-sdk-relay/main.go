@@ -109,7 +109,7 @@ func handleAssignment(w http.ResponseWriter, r *http.Request) {
 
 	// Always prepare a response with default values
 	response := AssignmentResponse{
-		Result:        req.DefaultValue,
+		Result:        nil,
 		AssignmentLog: []string{},
 		BanditLog:     []string{},
 	}
@@ -141,24 +141,16 @@ func handleAssignment(w http.ResponseWriter, r *http.Request) {
 		} else if v, ok := req.DefaultValue.(float64); ok {
 			defaultVal = v != 0
 		}
-		result, err := eppoClient.GetBoolAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, defaultVal)
-		if err != nil {
-			response.Result = defaultVal
-		} else {
-			response.Result = result
-		}
+		result, _ := eppoClient.GetBoolAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, defaultVal)
+		response.Result = result
 
 	case "STRING":
 		defaultVal := ""
 		if v, ok := req.DefaultValue.(string); ok {
 			defaultVal = v
 		}
-		result, err := eppoClient.GetStringAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, defaultVal)
-		if err != nil {
-			response.Result = defaultVal
-		} else {
-			response.Result = result
-		}
+		result, _ := eppoClient.GetStringAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, defaultVal)
+		response.Result = result
 
 	case "NUMERIC":
 		defaultVal := 0.0
@@ -170,12 +162,8 @@ func handleAssignment(w http.ResponseWriter, r *http.Request) {
 		case string:
 			defaultVal, _ = strconv.ParseFloat(v, 64)
 		}
-		result, err := eppoClient.GetNumericAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, defaultVal)
-		if err != nil {
-			response.Result = defaultVal
-		} else {
-			response.Result = result
-		}
+		result, _ := eppoClient.GetNumericAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, defaultVal)
+		response.Result = result
 
 	case "INTEGER":
 		defaultVal := int64(0)
@@ -187,20 +175,12 @@ func handleAssignment(w http.ResponseWriter, r *http.Request) {
 		case int64:
 			defaultVal = v
 		}
-		result, err := eppoClient.GetIntegerAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, defaultVal)
-		if err != nil {
-			response.Result = float64(defaultVal) // Convert to float64 for JSON consistency
-		} else {
-			response.Result = float64(result) // Convert to float64 for JSON consistency
-		}
+		result, _ := eppoClient.GetIntegerAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, defaultVal)
+		response.Result = float64(result)
 
 	case "JSON":
-		result, err := eppoClient.GetJSONAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, req.DefaultValue)
-		if err != nil {
-			response.Result = req.DefaultValue
-		} else {
-			response.Result = result
-		}
+		result, _ := eppoClient.GetJSONAssignment(req.Flag, req.SubjectKey, req.SubjectAttributes, req.DefaultValue)
+		response.Result = result
 
 	default:
 		errStr := fmt.Sprintf("unsupported assignment type: %s", req.AssignmentType)
