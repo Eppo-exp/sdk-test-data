@@ -73,9 +73,45 @@
                 "banner_bandit": {
                     "key": "banner_bandit",
                     "value": "banner_bandit"
+                },
+                "car_bandit": {
+                    "key": "car_bandit",
+                    "value": "car_bandit"
                 }
             },
             "allocations": [
+                {
+                    "key": "testing",
+                    "rules": [
+                        {
+                            "conditions": [
+                                {
+                                    "attribute": "id",
+                                    "operator": "MATCHES",
+                                    "value": "override"
+                                }
+                            ]
+                        }
+                    ],
+                    "splits": [
+                      {
+                        "variationKey": "car_bandit",
+                        "shards": [
+                            {
+                                "salt": "traffic-car-bandit-flag-all",
+                                "ranges": [
+                                    {
+                                        "start": 0,
+                                        "end": 10000
+                                    }   
+                                ]
+                            }
+                        ]
+                      }
+          
+                    ],
+                    "doLog": false
+                },         
                 {
                     "key": "analysis",
                     "splits": [
@@ -275,6 +311,12 @@
                 "flagKey": "car_bandit_flag",
                 "variationKey": "car_bandit",
                 "variationValue": "car_bandit"
+            },
+            {
+                "key": "car_bandit",
+                "flagKey": "banner_bandit_flag",
+                "variationKey": "car_bandit",
+                "variationValue": "car_bandit"
             }
         ],
         "cold_start_bandit": [
@@ -321,10 +363,17 @@
                     "allocationKey": "all-traffic",
                     "variationKey": "car_bandit",
                     "variationValue": "car_bandit"
+                },
+                {
+                    "key": "car_bandit",
+                    "flagKey": "banner_bandit_flag",
+                    "allocationKey": "testing",
+                    "variationKey": "car_bandit",
+                    "variationValue": "car_bandit"
                 }
             ],
             "modelVersion": "456"
-        },
+          },
         "cold_start_bandit": {
             "flagVariations": [
                 {
