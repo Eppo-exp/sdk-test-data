@@ -94,10 +94,7 @@ def handle_assignment():
                 )
         
         response = {
-            "result": {
-                "variation": result.variation,
-                "action": result.action
-            },
+            "result": result,
             "assignmentLog": [],
             "banditLog": [],
             "error": None
@@ -160,7 +157,10 @@ def handle_bandit():
         print(f"Raw result from get_bandit_action: {result}")
         
         response = {
-            "result": result,
+            "result": {
+                "variation": result.variation,
+                "action": result.action
+            },
             "assignmentLog": [],
             "banditLog": [],
             "error": None
