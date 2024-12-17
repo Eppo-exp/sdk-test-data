@@ -124,6 +124,7 @@ class BanditActionRequest:
 @app.route('/bandits/v1/action', methods=['POST'])
 def handle_bandit():
     data = request.json
+    print(f"Request data: {data}")
     request_obj = BanditActionRequest(
         flag=data['flag'],
         subject_key=data['subjectKey'],
@@ -133,42 +134,44 @@ def handle_bandit():
     )
     print(f"Request object: {request_obj}")
     
-    client = eppo_client.get_instance()
-    
     try:
-        # Convert actions to the format expected by the SDK
-        actions = {}
-        for action in request_obj.actions:
-            actions[action['actionKey']] = eppo_client.bandit.AttributeSet(
-                numeric_attributes=action.get('numericAttributes', {}),
-                categorical_attributes=action.get('categoricalAttributes', {})
-            )
-        
-        # Convert subject attributes
-        subject_attributes = eppo_client.bandit.AttributeSet(
+        # Create subject context using ContextAttributes constructor
+        subject_context = eppo_client.bandit.ContextAttributes(
             numeric_attributes=request_obj.subject_attributes.get('numericAttributes', {}),
             categorical_attributes=request_obj.subject_attributes.get('categoricalAttributes', {})
         )
         
+        # Create actions dictionary using ContextAttributes constructor
+        actions = {}
+        for action in request_obj.actions:
+            actions[action['actionKey']] = eppo_client.bandit.ContextAttributes(
+                numeric_attributes=action.get('numericAttributes', {}),
+                categorical_attributes=action.get('categoricalAttributes', {})
+            )
+        
+        client = eppo_client.get_instance()
         result = client.get_bandit_action(
             request_obj.flag,
             request_obj.subject_key,
-            subject_attributes,
+            subject_context,
             actions,
             request_obj.default_value
         )
         
         response = {
-            "result": result,
-            "assignmentLog": [],  # You might want to implement assignment logging
-            "banditLog": [],      # You might want to implement bandit logging
+            "result": {
+                "variation": result.variation,
+                "action": result.action
+            },
+            "assignmentLog": [],
+            "banditLog": [],
             "error": None
         }
         print(f"response: {response}")
         return jsonify(response)
         
     except Exception as e:
-        print(f"Error processing bandit action: {str(e)}")
+        print(f"Error processing bandit: {str(e)}")
         response = {
             "result": None,
             "assignmentLog": [],
