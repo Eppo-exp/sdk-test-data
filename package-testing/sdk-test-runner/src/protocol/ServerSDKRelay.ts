@@ -5,7 +5,7 @@ import { TestResponse } from '../dto/testResponse';
 import { SDKRelay } from './SDKRelay';
 import { SDKInfo } from './SDKInfo';
 import { SDKConnectionFailure } from './SDKConnectionFailure';
-import { ASSIGNMENT_PATH, BANDIT_PATH, RESET_PATH } from './constants';
+import { ASSIGNMENT_PATH, BANDIT_PATH, DETAILS_PATH, RESET_PATH } from './constants';
 
 /**
  * Uses `axios` to communicate with a Server SDK Relay via http
@@ -13,15 +13,32 @@ import { ASSIGNMENT_PATH, BANDIT_PATH, RESET_PATH } from './constants';
 
 export class ServerSDKRelay implements SDKRelay {
   private sdkRelayAddress: string;
-  private readonly sdkInfo: SDKInfo;
+  private sdkInfo: SDKInfo;
+  private isReadyPromise: Promise<SDKInfo>;
 
   constructor(serverAddress: string, sdkName: string) {
     this.sdkRelayAddress = serverAddress;
 
-    // All servers support bandits.
-    // In the future, we can have an endpoint for the SDK relays that specifies
-    // more sdk info like version and future capabilities.
-    this.sdkInfo = { sdkName, supportsBandits: true };
+    // By default, assume all servers support bandits and dynamic typing.
+    this.sdkInfo = { sdkName, supportsBandits: true, supportsDynamicTyping: true };
+
+    this.isReadyPromise = this.fetchSDKDetails()
+      .then((sdkDetails: SDKInfo) => {
+        this.sdkInfo = { ...this.sdkInfo, ...sdkDetails };
+        return this.sdkInfo;
+      })
+      .catch((error) => {
+        // Can proceed even if the relay doesn't return a details block.
+        console.log(
+          'Possible error encountered getting SDK details; not all SDK relays support the sdk/details endpoint',
+          error,
+        );
+        return this.sdkInfo;
+      });
+  }
+
+  getSDKDetails(): SDKInfo {
+    return this.sdkInfo;
   }
 
   close(): void {
@@ -41,12 +58,17 @@ export class ServerSDKRelay implements SDKRelay {
   }
 
   isReady(): Promise<SDKInfo | SDKConnectionFailure> {
-    return Promise.resolve(this.sdkInfo);
+    return this.isReadyPromise;
   }
 
   async getAssignment(request: AssignmentRequest): Promise<TestResponse> {
     return axios.post(`${this.sdkRelayAddress}${ASSIGNMENT_PATH}`, request).then((result) => {
       return result.data as TestResponse;
     });
+  }
+
+  async fetchSDKDetails(): Promise<SDKInfo> {
+    const result = await axios.get(`${this.sdkRelayAddress}${DETAILS_PATH}`);
+    return result.data as SDKInfo;
   }
 }

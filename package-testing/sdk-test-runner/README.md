@@ -91,7 +91,7 @@ The following env variable can be set when running the `test-sdk.sh` script
 
 The following components are required to use the the package test runner with a new SDK
 
-1. An **SDK relay server**. This is a REST server running at `localhost:4000` resonding to the [Asssignment and Bandit Request API](#sdk-relay-server)
+1. An **SDK relay server**. This is a REST server running at `localhost:4000` responding to the [Asssignment and Bandit Request API](#sdk-relay-server)
    1. OR, an **SDK relay client**. This is a client application that connects to the SDK test runner via `socket.io` and responses to [Assignment requests](#sdk-relay-client)
 2. Launch Script:
    1. A `build-and-run-<platform>.sh` file which fully configures the environment then initiates a [build and run of the relay server application](#build-and-runsh) **using the specified version of the SDK package**. <platform> is one of `linux`, `macos`, or `windows`.
@@ -199,6 +199,23 @@ The test runner sends assignment and bandit action requests to the SDK Relay Ser
 
 Any non-empty response
 
+##### SDK Details
+
+`GET /sdk/details`
+
+If possible, the SDK relay server should respond with the `sdkName` and `sdkVersion` in use. This may not be directly possible with all SDKs.
+If the SDK does not support Bandits or dynamic typing, the test runner will skip the related test cases if the corresponding values are `false`.
+
+```ts
+// Expected response data:
+type SDKDetailsResponse = {
+  sdkName?: string;
+  sdkVersion?: string;
+  supportsBandits?: boolean;
+  supportsDynamicTyping?: boolean;
+};
+```
+
 ##### Reset SDK
 
 `POST /sdk/reset`
@@ -225,13 +242,13 @@ type Assignment = {
   subjectAttributes: Record<string, object>;
 };
 
-// Expect response data:
-export type TestResponse {
-    result?: Object,          // Relayed `EppoClient` response
-    assignmentLog?: Object[], // Assignment log events (not yet tested)
-    banditLog?: Object[],     // Bandit selection log events (not yet tested)
-    error?: string            // Error encountered (not yet tested; automatically fails test when present)
-}
+// Expected response data:
+type TestResponse = {
+    result?: Object;          // Relayed `EppoClient` response
+    assignmentLog?: Object[]; // Assignment log events (not yet tested)
+    banditLog?: Object[];     // Bandit selection log events (not yet tested)
+    error?: string;           // Error encountered (not yet tested; automatically fails test when present)
+};
 ```
 
 ##### Bandits
@@ -264,12 +281,12 @@ export type BanditActionRequest = {
   };
 
 // Expects response data:
-export type TestResponse {
-    result?: Object,          // Relayed `EppoClient` response, form of {variation: string, action: string}
-    assignmentLog?: Object[], // Assignment log events (not yet tested)
-    banditLog?: Object[],     // Bandit selection log events (not yet tested)
-    error?: string            // Error encountered (not yet tested; automatically fails test when present)
-}
+type TestResponse = {
+    result?: Object;          // Relayed `EppoClient` response, form of {variation: string, action: string}
+    assignmentLog?: Object[]; // Assignment log events (not yet tested)
+    banditLog?: Object[];     // Bandit selection log events (not yet tested)
+    error?: string;           // Error encountered (not yet tested; automatically fails test when present)
+};
 ```
 
 ### build-and-run.sh

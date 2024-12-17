@@ -49,6 +49,4 @@ public class AssignmentController : JsonControllerBase
 
         return JsonError("Invalid Assignment Type " + data.AssignmentType);
     }
-
-
 }

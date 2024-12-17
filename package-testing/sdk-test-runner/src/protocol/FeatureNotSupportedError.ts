@@ -1,5 +1,8 @@
 export class FeatureNotSupportedError extends Error {
-  constructor(message: string) {
+  constructor(
+    message: string,
+    public readonly featureName: string,
+  ) {
     super(message);
     this.name = 'FeatureNotSupportedError';
   }

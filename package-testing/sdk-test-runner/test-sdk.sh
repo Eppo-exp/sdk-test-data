@@ -38,7 +38,7 @@ function wait_for_url() {
 
   while [[ $attempt -le $max_attempts ]]; do
     curl --silent --output /dev/null --fail "$url" && { return 1; }
-    echo "Waiting attempt number ${attempt}"
+    echo "Attempt number ${attempt}; waiting for $url"
     sleep 5
     ((attempt++))
   done
@@ -102,6 +102,16 @@ else
     cp ../scenarios.json test-data/
 fi
 
+echo "EPPO_API_HOST $EPPO_API_HOST"
+echo "EPPO_API_PORT=$EPPO_API_PORT"
+echo "EPPO_BASE_URL=$EPPO_BASE_URL"
+
+echo "SDK_RELAY_HOST=$SDK_RELAY_HOST"
+echo "SDK_RELAY_PORT=$SDK_RELAY_PORT"
+
+echo "EPPO_SCENARIO_FILE=$EPPO_SCENARIO_FILE"
+echo "EPPO_TEST_DATA_PATH=$EPPO_TEST_DATA_PATH"
+
 
 case "$command" in
     server)
@@ -120,7 +130,7 @@ case "$command" in
           --name eppo-api \
           -t Eppo-exp/testing-api:latest
 
-        echo_yellow "    ... Waiting to verify server is up"
+        echo_yellow "    ... Waiting to verify Test API server is up"
 
         wait_for_url http://${EPPO_API_HOST}:${EPPO_API_PORT} 
         if [[ $? -eq 0 ]]; then
@@ -159,7 +169,7 @@ case "$command" in
         popd
 
 
-        echo_yellow "    ... Waiting to verify server is up"
+        echo_yellow "    ... Waiting to verify SDK Relay server is up"
         wait_for_url http://${SDK_RELAY_HOST}:${SDK_RELAY_PORT} 
         if [[ $? -eq 0 ]]; then
           exit_with_message "    ... SDK Relay server failed to start"
