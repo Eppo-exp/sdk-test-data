@@ -3,8 +3,22 @@ require 'sinatra'
 require 'json'
 require 'eppo_client'
 
-# Disable ALL Rack protection
-disable :protection
+# Configure Sinatra to disable specific protections
+set :protection, {
+  :except => [
+    :host_authorization,  # Allow requests from different hosts
+    :json_csrf,          # Disable CSRF checks for JSON
+    :remote_token,       # Disable remote token verification
+    :http_origin         # Disable HTTP origin checks
+  ]
+}
+
+# Add CORS headers
+before do
+  headers['Access-Control-Allow-Origin'] = '*'
+  headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+  headers['Access-Control-Allow-Headers'] = 'Content-Type'
+end
 
 class LocalAssignmentLogger < EppoClient::AssignmentLogger
   def log_assignment(assignment)
