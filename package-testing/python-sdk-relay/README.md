@@ -2,6 +2,12 @@
 
 Post test case files to this server and check the results against what's expected.
 
+## Build and run
+
+```shell
+./build-and-run.sh
+```
+
 ## Running locally with Docker
 
 Build the docker image:
