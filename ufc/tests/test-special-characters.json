@@ -1,0 +1,119 @@
+{
+  "flag": "special-characters",
+  "variationType": "JSON",
+  "defaultValue": {},
+  "subjects": [
+    {
+      "subjectKey": "ash",
+      "subjectAttributes": {},
+      "assignment": {
+        "a": "kümmert",
+        "b": "schön"
+      },
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "alice belongs to the range of traffic assigned to \"de\" defined in allocation \"allocation-test\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "de",
+        "variationValue": {
+          "a": "kümmert",
+          "b": "schön"
+        },
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "allocation-test",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "ben",
+      "subjectAttributes": {},
+      "assignment": {
+        "a": "заботится",
+        "b": "красивый"
+      },
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "bob belongs to the range of traffic assigned to \"ru\" defined in allocation \"allocation-test\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "ru",
+        "variationValue": {
+          "a": "заботится",
+          "b": "красивый"
+        },
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "allocation-test",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "cameron",
+      "subjectAttributes": {},
+      "assignment": {
+        "a": "照顾",
+        "b": "漂亮"
+      },
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"zh\" defined in allocation \"allocation-test\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "zh",
+        "variationValue": {
+          "a": "照顾",
+          "b": "漂亮"
+        },
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "allocation-test",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "darryl",
+      "subjectAttributes": {},
+      "assignment": {
+        "a": "🤗",
+        "b": "🌸"
+      },
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"emoji\" defined in allocation \"allocation-test\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "emoji",
+        "variationValue": {
+          "a": "🤗",
+          "b": "🌸"
+        },
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "allocation-test",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
+      }
+    }
+  ]
+}
