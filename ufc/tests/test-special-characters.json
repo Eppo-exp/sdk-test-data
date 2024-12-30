@@ -28,7 +28,13 @@
           "orderPosition": 1
         },
         "unmatchedAllocations": [],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-default",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -56,7 +62,13 @@
           "orderPosition": 1
         },
         "unmatchedAllocations": [],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-default",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -84,7 +96,13 @@
           "orderPosition": 1
         },
         "unmatchedAllocations": [],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-default",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -112,7 +130,13 @@
           "orderPosition": 1
         },
         "unmatchedAllocations": [],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-default",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     }
   ]
