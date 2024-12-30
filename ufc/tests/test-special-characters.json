@@ -13,7 +13,7 @@
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
-        "flagEvaluationDescription": "alice belongs to the range of traffic assigned to \"de\" defined in allocation \"allocation-test\".",
+        "flagEvaluationDescription": "ash belongs to the range of traffic assigned to \"de\" defined in allocation \"allocation-test\".",
         "banditKey": null,
         "banditAction": null,
         "variationKey": "de",
@@ -41,7 +41,7 @@
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
-        "flagEvaluationDescription": "bob belongs to the range of traffic assigned to \"ru\" defined in allocation \"allocation-test\".",
+        "flagEvaluationDescription": "ben belongs to the range of traffic assigned to \"ru\" defined in allocation \"allocation-test\".",
         "banditKey": null,
         "banditAction": null,
         "variationKey": "ru",
@@ -69,7 +69,7 @@
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
-        "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"zh\" defined in allocation \"allocation-test\".",
+        "flagEvaluationDescription": "cameron belongs to the range of traffic assigned to \"zh\" defined in allocation \"allocation-test\".",
         "banditKey": null,
         "banditAction": null,
         "variationKey": "zh",
@@ -97,7 +97,7 @@
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
-        "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"emoji\" defined in allocation \"allocation-test\".",
+        "flagEvaluationDescription": "darryl belongs to the range of traffic assigned to \"emoji\" defined in allocation \"allocation-test\".",
         "banditKey": null,
         "banditAction": null,
         "variationKey": "emoji",
