@@ -1186,6 +1186,104 @@
           ]
         }
       ]
+    },
+    "eab426e60c686e18da04981a4d53c837": {
+      "allocations": [
+        {
+          "doLog": true,
+          "key": "YWxsb2NhdGlvbi10ZXN0",
+          "splits": [
+            {
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "end": 2500,
+                      "start": 0
+                    }
+                  ],
+                  "salt": "c3BsaXQtanNvbi1mbGFn"
+                }
+              ],
+              "variationKey": "ZGU="
+            },
+            {
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "end": 5000,
+                      "start": 2500
+                    }
+                  ],
+                  "salt": "c3BsaXQtanNvbi1mbGFn"
+                }
+              ],
+              "variationKey": "cnU="
+            },
+            {
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "end": 7500,
+                      "start": 5000
+                    }
+                  ],
+                  "salt": "c3BsaXQtanNvbi1mbGFn"
+                }
+              ],
+              "variationKey": "emg="
+            },
+            {
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "end": 10000,
+                      "start": 7500
+                    }
+                  ],
+                  "salt": "c3BsaXQtanNvbi1mbGFn"
+                }
+              ],
+              "variationKey": "ZW1vamk="
+            }
+          ]
+        },
+        {
+          "doLog": false,
+          "key": "YWxsb2NhdGlvbi1kZWZhdWx0",
+          "splits": [
+            {
+              "shards": [],
+              "variationKey": "ZGU="
+            }
+          ]
+        }
+      ],
+      "enabled": true,
+      "key": "eab426e60c686e18da04981a4d53c837",
+      "totalShards": 10000,
+      "variationType": "JSON",
+      "variations": {
+        "ZGU=": {
+          "key": "ZGU=",
+          "value": "eyJhIjogImvDvG1tZXJ0IiwgImIiOiAic2Now7ZuIn0="
+        },
+        "ZW1vamk=": {
+          "key": "ZW1vamk=",
+          "value": "eyJhIjogIvCfpJciLCAiYiI6ICLwn4y4In0="
+        },
+        "cnU=": {
+          "key": "cnU=",
+          "value": "eyJhIjogItC30LDQsdC+0YLQuNGC0YHRjyIsICJiIjogItC60YDQsNGB0LjQstGL0LkifQ=="
+        },
+        "emg=": {
+          "key": "emg=",
+          "value": "eyJhIjogIueFp+mhviIsICJiIjogIua8guS6riJ9"
+        }
+      }
     }
   }
 }
