@@ -41,8 +41,8 @@
       "subjectKey": "ben",
       "subjectAttributes": {},
       "assignment": {
-        "a": "заботится",
-        "b": "красивый"
+        "a": "піклуватися",
+        "b": "любов"
       },
       "evaluationDetails": {
         "environmentName": "Test",
@@ -50,10 +50,10 @@
         "flagEvaluationDescription": "ben belongs to the range of traffic assigned to \"ru\" defined in allocation \"allocation-test\".",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "ru",
+        "variationKey": "ua",
         "variationValue": {
-          "a": "заботится",
-          "b": "красивый"
+          "a": "піклуватися",
+          "b": "любов"
         },
         "matchedRule": null,
         "matchedAllocation": {

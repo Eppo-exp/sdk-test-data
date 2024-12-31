@@ -1196,9 +1196,9 @@
           "key": "de",
           "value": "{\"a\": \"kümmert\", \"b\": \"schön\"}"
         },
-        "ru": {
-          "key": "ru",
-          "value": "{\"a\": \"заботится\", \"b\": \"красивый\"}"
+        "ua": {
+          "key": "ua",
+          "value": "{\"a\": \"піклуватися\", \"b\": \"любов\"}"
         },
         "zh": {
           "key": "zh",
@@ -1229,7 +1229,7 @@
               ]
             },
             {
-              "variationKey": "ru",
+              "variationKey": "ua",
               "shards": [
                 {
                   "salt": "split-json-flag",
