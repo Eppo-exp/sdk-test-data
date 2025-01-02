@@ -47,7 +47,7 @@
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
-        "flagEvaluationDescription": "ben belongs to the range of traffic assigned to \"ru\" defined in allocation \"allocation-test\".",
+        "flagEvaluationDescription": "ben belongs to the range of traffic assigned to \"ua\" defined in allocation \"allocation-test\".",
         "banditKey": null,
         "banditAction": null,
         "variationKey": "ua",
