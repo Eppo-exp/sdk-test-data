@@ -1186,6 +1186,104 @@
         }
       ],
       "totalShards": 10000
+    },
+    "special-characters": {
+      "key": "special-characters",
+      "enabled": true,
+      "variationType": "JSON",
+      "variations": {
+        "de": {
+          "key": "de",
+          "value": "{\"a\": \"kümmert\", \"b\": \"schön\"}"
+        },
+        "ua": {
+          "key": "ua",
+          "value": "{\"a\": \"піклуватися\", \"b\": \"любов\"}"
+        },
+        "zh": {
+          "key": "zh",
+          "value": "{\"a\": \"照顾\", \"b\": \"漂亮\"}"
+        },
+        "emoji": {
+          "key": "emoji",
+          "value": "{\"a\": \"🤗\", \"b\": \"🌸\"}"
+        }
+      },
+      "totalShards": 10000,
+      "allocations": [
+        {
+          "key": "allocation-test",
+          "splits": [
+            {
+              "variationKey": "de",
+              "shards": [
+                {
+                  "salt": "split-json-flag",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 2500
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "variationKey": "ua",
+              "shards": [
+                {
+                  "salt": "split-json-flag",
+                  "ranges": [
+                    {
+                      "start": 2500,
+                      "end": 5000
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "variationKey": "zh",
+              "shards": [
+                {
+                  "salt": "split-json-flag",
+                  "ranges": [
+                    {
+                      "start": 5000,
+                      "end": 7500
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "variationKey": "emoji",
+              "shards": [
+                {
+                  "salt": "split-json-flag",
+                  "ranges": [
+                    {
+                      "start": 7500,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "allocation-default",
+          "splits": [
+            {
+              "variationKey": "de",
+              "shards": []
+            }
+          ],
+          "doLog": false
+        }
+      ]
     }
   }
 }
