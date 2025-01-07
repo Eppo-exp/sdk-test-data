@@ -1,14 +1,14 @@
-import { EppoClientProxy } from './eppoClientProxy';
+import { AssignmentTypes, EppoClientProxy } from './eppoClientProxy';
 import { EppoClient } from '@eppo/js-client-sdk-common';
 import SpyInstance = jest.SpyInstance;
 
 describe('EppoClientProxy', () => {
   const validAssignmentMethods = new Map([
-    ['INTEGER', `getIntegerAssignment`],
-    ['STRING', 'getStringAssignment'],
-    ['BOOLEAN', 'getBooleanAssignment'],
-    ['NUMERIC', 'getNumericAssignment'],
-    ['JSON', 'getJSONAssignment'],
+    [AssignmentTypes.INTEGER_ASSIGNMENT_TYPE, 'getIntegerAssignment'],
+    [AssignmentTypes.STRING_ASSIGNMENT_TYPE, 'getStringAssignment'],
+    [AssignmentTypes.BOOLEAN_ASSIGNMENT_TYPE, 'getBooleanAssignment'],
+    [AssignmentTypes.NUMERIC_ASSIGNMENT_TYPE, 'getNumericAssignment'],
+    [AssignmentTypes.JSON_ASSIGNMENT_TYPE, 'getJSONAssignment'],
   ]);
   const proxyClient = new EppoClientProxy();
   const client = new EppoClient({
@@ -16,7 +16,7 @@ describe('EppoClientProxy', () => {
   });
   const mockAssignmentPayload = {
     flag: 'integer-flag',
-    assignmentType: 'INTEGER',
+    assignmentType: AssignmentTypes.INTEGER_ASSIGNMENT_TYPE,
     defaultValue: '0',
     subjectKey: 'alice',
     subjectAttributes: { email: 'alice@mycompany.com', country: 'US' },
@@ -25,9 +25,9 @@ describe('EppoClientProxy', () => {
   it('Correct assignment method are called based assignment type', () => {
     let assignmentMethodSpy: SpyInstance;
 
-    validAssignmentMethods.forEach((assignmentType: string, method: string) => {
-      mockAssignmentPayload.assignmentType = method;
-      assignmentMethodSpy = jest.spyOn(client, assignmentType as never);
+    validAssignmentMethods.forEach((method: string, assignmentType: AssignmentTypes) => {
+      mockAssignmentPayload.assignmentType = assignmentType;
+      assignmentMethodSpy = jest.spyOn(client, method as never);
 
       proxyClient.getAssignment(client, mockAssignmentPayload);
       expect(assignmentMethodSpy).toHaveBeenCalledTimes(1);

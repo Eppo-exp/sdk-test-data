@@ -10,7 +10,7 @@ async function bootstrap() {
   logger = new RelayLogger();
 
   await init({
-    apiKey: '',
+    apiKey: 'test',
     assignmentLogger: logger,
     pollAfterFailedInitialization: true,
     banditLogger: logger,
