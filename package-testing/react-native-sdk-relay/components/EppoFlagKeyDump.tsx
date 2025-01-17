@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { EppoClient, getInstance, EppoReactNativeClient } from '@eppo/react-native-sdk';
+import { getInstance } from '@eppo/react-native-sdk';
 import { ThemedText } from '@/components/ThemedText';
-import { ScrollView } from 'react-native';
+import { ThemedView } from '@/components/ThemedView';
 
 interface IEppoFlagKeyDumpProps {}
 export default function EppoFlagKeyDump(props: IEppoFlagKeyDumpProps) {
@@ -12,12 +12,12 @@ export default function EppoFlagKeyDump(props: IEppoFlagKeyDumpProps) {
   }, []);
 
   return (
-    <div className="eppo-flags">
+    <ThemedView>
       {flagKeys.map((flagKey) => (
-        <div className="eppo-flag" key={flagKey}>
-          <pre>{flagKey}</pre>
-        </div>
+        <ThemedText className="eppo-flag" key={flagKey}>
+          <ThemedText>{flagKey}</ThemedText>
+        </ThemedText>
       ))}
-    </div>
+    </ThemedView>
   );
 }

@@ -30,10 +30,10 @@ export default function EppoFlagsScreen() {
       <ThemedText>Get dynamic values for your app based on your Eppo Experiments and Feature Flags.</ThemedText>
       <Collapsible title="Assignment Methods">
         <ThemedText>
-          <pre>
+          <ThemedText>
             getBooleanAssignment(...) getNumericAssignment(...) getIntegerAssignment(...) getStringAssignment(...)
             getJSONAssignment(...)
-          </pre>
+          </ThemedText>
         </ThemedText>
         <ExternalLink href="https://docs.geteppo.com/sdks/client-sdks/react-native/" target="_blank">
           <ThemedText type="link">Learn more</ThemedText>
