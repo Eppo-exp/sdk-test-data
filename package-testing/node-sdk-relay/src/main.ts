@@ -14,8 +14,7 @@ async function bootstrap() {
     assignmentLogger: logger,
     pollAfterFailedInitialization: true,
     banditLogger: logger,
-    baseUrl: 'http://localhost:5000/api',
-    pollingIntervalMs: 5000,
+    baseUrl: process.env.EPPO_BASE_URL || 'http://localhost:5000/api'
   });
 
   await app.listen(process.env.SDK_RELAY_PORT ?? 4000);

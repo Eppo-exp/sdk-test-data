@@ -1,6 +1,5 @@
 import { AssignmentDto, BanditDto } from './types';
 import { EppoClient } from '@eppo/js-client-sdk-common';
-import getLogger from './main';
 
 export enum AssignmentTypes {
   INTEGER_ASSIGNMENT_TYPE = 'INTEGER',
@@ -21,37 +20,20 @@ export class EppoClientProxy {
     [AssignmentTypes.JSON_ASSIGNMENT_TYPE, 'getJSONAssignment'],
   ]);
 
-  private castAssignmentResult(result, assignmentType: AssignmentTypes) {
-    switch (assignmentType) {
-      case AssignmentTypes.INTEGER_ASSIGNMENT_TYPE:
-        return parseInt(result, 10);
-      case AssignmentTypes.STRING_ASSIGNMENT_TYPE:
-        return result;
-      case AssignmentTypes.BOOLEAN_ASSIGNMENT_TYPE:
-        return Boolean(result);
-      case AssignmentTypes.NUMERIC_ASSIGNMENT_TYPE:
-        return Number(result);
-      case AssignmentTypes.JSON_ASSIGNMENT_TYPE:
-        return Object(result);
-    }
-  }
-
   getAssignment(eppoClientInstance: EppoClient, assignmentRequestBody: AssignmentDto) {
     const method = this.assignmentTypeToMethod.get(assignmentRequestBody.assignmentType);
 
-    let result: AssignmentResult = eppoClientInstance[method](
+    const result: AssignmentResult = eppoClientInstance[method](
       assignmentRequestBody.flag,
       assignmentRequestBody.subjectKey,
       assignmentRequestBody.subjectAttributes,
       assignmentRequestBody.defaultValue,
     );
-    result = this.castAssignmentResult(result, assignmentRequestBody.assignmentType);
 
     return {
       subjectKey: assignmentRequestBody.subjectKey,
       result: result,
-      request: assignmentRequestBody,
-      assignmentLog: getLogger(),
+      request: assignmentRequestBody
     };
   }
 
@@ -68,7 +50,6 @@ export class EppoClientProxy {
       subjectKey: banditRequestBody.subjectKey,
       result: result,
       request: banditRequestBody,
-      banditLog: getLogger(),
     };
   }
 }
