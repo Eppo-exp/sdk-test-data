@@ -33,7 +33,7 @@ export class EppoClientProxy {
     return {
       subjectKey: assignmentRequestBody.subjectKey,
       result: result,
-      request: assignmentRequestBody
+      request: assignmentRequestBody,
     };
   }
 
