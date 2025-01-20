@@ -1,0 +1,143 @@
+{
+  "flag": "string-variations",
+  "variationType": "STRING",
+  "defaultValue": {},
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {},
+      "assignment": {
+        "a": "",
+        "b": "non-empty"
+      },
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "alice belongs to the range of traffic assigned to \"empty_a\" defined in allocation \"allocation-test\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "empty_a",
+        "variationValue": {
+          "a": "",
+          "b": "non-empty"
+        },
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "allocation-test",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-default",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {},
+      "assignment": {
+        "a": "non-empty",
+        "b": ""
+      },
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "bob belongs to the range of traffic assigned to \"empty_b\" defined in allocation \"allocation-test\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "empty_b",
+        "variationValue": {
+          "a": "non-empty",
+          "b": ""
+        },
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "allocation-test",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-default",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "charlie",
+      "subjectAttributes": {},
+      "assignment": {
+        "a": "",
+        "b": ""
+      },
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"empty_both\" defined in allocation \"allocation-test\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "empty_both",
+        "variationValue": {
+          "a": "",
+          "b": ""
+        },
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "allocation-test",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-default",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "david",
+      "subjectAttributes": {},
+      "assignment": {
+        "a": "value1",
+        "b": "value2"
+      },
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "david belongs to the range of traffic assigned to \"non_empty\" defined in allocation \"allocation-test\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "non_empty",
+        "variationValue": {
+          "a": "value1",
+          "b": "value2"
+        },
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "allocation-test",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-default",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
+    }
+  ]
+}

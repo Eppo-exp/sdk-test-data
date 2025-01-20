@@ -410,6 +410,34 @@
       ],
       "totalShards": 10000
     },
+    "empty_string_flag": {
+      "key": "empty_string_flag",
+      "enabled": true,
+      "variationType": "STRING",
+      "variations": {
+        "empty": {
+          "key": "empty_string",
+          "value": ""
+        },
+        "random": {
+          "key": "random_string",
+          "value": "dfdfd"
+        }
+      },
+      "allocations": [
+        {
+          "key": "rollout",
+          "splits": [
+            {
+              "variationKey": "empty",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
     "kill-switch": {
       "key": "kill-switch",
       "enabled": true,
