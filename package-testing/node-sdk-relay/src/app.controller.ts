@@ -44,8 +44,7 @@ export class AppController {
       assignmentLogger: getLogger(),
       pollAfterFailedInitialization: true,
       banditLogger: getLogger(),
-      baseUrl: 'http://localhost:5000/api',
-      pollingIntervalMs: 5000,
+      baseUrl: process.env.EPPO_BASE_URL || 'http://localhost:5000/api',
     });
 
     return {};
