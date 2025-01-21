@@ -1,66 +1,100 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
+import { Collapsible } from '@/components/Collapsible';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import { useEffect, useState } from 'react';
+import { getInstance } from '@eppo/react-native-sdk';
+import { useSubjectAttributes } from '@/hooks/useSubjectAttributes';
+import { useEppoPrecomputedClient } from '@/hooks/useEppoPrecomputedClient';
 
-export default function HomeScreen() {
+export default function BanditTabScreen() {
+  const [updateHighlightsBanditVariation, setUpdateHighlightsBanditVariation] = useState<string>('LOADING...');
+  const [updateHighlightsBanditAction, setUpdateHighlightsBanditAction] = useState<string>('');
+
+  const [updateHighlightsFlagValue, setUpdateHighlightsFlagValue] = useState<string>('LOADING...');
+  const [precomputedFlagValue, setPrecomputedFlagValue] = useState<string>('LOADING...');
+
+  const subjectAttributes = useSubjectAttributes();
+  const client = useEppoPrecomputedClient();
+
+  // const client = useEppoPrecomputedClient();
+
+  useEffect(() => {
+    try {
+      const result = client.getBanditAction('update-highlights-bandit', 'NONE');
+
+      setUpdateHighlightsBanditVariation(result?.variation ?? 'ERROR');
+      setUpdateHighlightsBanditAction(result?.action ?? 'ERROR');
+
+      const flagResult = getInstance().getStringAssignment(
+        'update-highlights-bandit',
+        'user123',
+        subjectAttributes,
+        'NONE',
+      );
+      setUpdateHighlightsFlagValue(flagResult);
+
+      const precomputedFlagResult = client.getStringAssignment('update-highlights-bandit', 'NONE');
+      setPrecomputedFlagValue(precomputedFlagResult);
+    } catch (error) {
+      console.error('Error in bandit effect:', error);
+      setUpdateHighlightsBanditVariation('ERROR');
+      setUpdateHighlightsBanditAction('ERROR');
+    }
+  }, [client, subjectAttributes]);
+
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={<Image source={require('@/assets/images/partial-react-logo.png')} style={styles.reactLogo} />}
+      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
+      headerImage={
+        <IconSymbol
+          size={310}
+          color="#808080"
+          name="chevron.left.forwardslash.chevron.right"
+          style={styles.headerImage}
+        />
+      }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
+        <ThemedText type="title">Bandits</ThemedText>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+      <ThemedText>Here we are seeing the first bandits on a mobile app!</ThemedText>
+      <Collapsible title="update-highlights-bandit">
         <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes. Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
+          <ThemedText type="defaultSemiBold">VariationValue</ThemedText>{' '}
+          <ThemedText>{updateHighlightsBanditVariation}</ThemedText>
         </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>Tap the Explore tab to learn more about what's included in this starter app.</ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
         <ThemedText>
-          When you're ready, run <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
+          <ThemedText type="defaultSemiBold">Bandit Value</ThemedText>{' '}
+          <ThemedText>{updateHighlightsBanditAction}</ThemedText>
         </ThemedText>
-      </ThemedView>
+      </Collapsible>
+      <Collapsible title="update-highlights-bandit Flag Value">
+        <ThemedText>
+          <ThemedText type="defaultSemiBold">Traditional Client</ThemedText>{' '}
+          <ThemedText>{updateHighlightsFlagValue}</ThemedText>
+        </ThemedText>
+        <ThemedText>
+          <ThemedText type="defaultSemiBold">Precomputed Client</ThemedText>{' '}
+          <ThemedText>{precomputedFlagValue}</ThemedText>
+        </ThemedText>
+      </Collapsible>
     </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  headerImage: {
+    color: '#808080',
+    bottom: -90,
+    left: -35,
+    position: 'absolute',
+  },
   titleContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
     gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
   },
 });
