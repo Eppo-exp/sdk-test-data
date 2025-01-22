@@ -33,7 +33,7 @@ jobs:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
   
-  test-node-client-sdk:
+  test-js-client-sdk:
     uses: Eppo-exp/js-client-sdk/.github/workflows/lint-test-sdk.yml@main
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
