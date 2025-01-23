@@ -415,21 +415,25 @@
       "enabled": true,
       "variationType": "STRING",
       "variations": {
-        "empty": {
-          "key": "empty_string",
-          "value": ""
+        "empty_a": {
+          "key": "empty_a",
+          "value": {"a": "", "b": "non-empty"}
         },
-        "random": {
-          "key": "random_string",
-          "value": "dfdfd"
+        "empty_b": {
+          "key": "empty_b",
+          "value": {"a": "non-empty", "b": ""}
+        },
+        "non_empty": {
+          "key": "non_empty",
+          "value": {"a": "value1", "b": "value2"}
         }
       },
       "allocations": [
         {
-          "key": "rollout",
+          "key": "allocation-test",
           "splits": [
             {
-              "variationKey": "empty",
+              "variationKey": "empty_a",
               "shards": []
             }
           ],

@@ -1,15 +1,12 @@
 {
   "flag": "string-variations",
   "variationType": "STRING",
-  "defaultValue": {},
+  "defaultValue": "default",
   "subjects": [
     {
       "subjectKey": "alice",
       "subjectAttributes": {},
-      "assignment": {
-        "a": "",
-        "b": "non-empty"
-      },
+      "assignment": {"a": "", "b": "non-empty"},
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
