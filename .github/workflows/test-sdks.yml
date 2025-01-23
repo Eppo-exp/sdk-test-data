@@ -34,7 +34,7 @@ jobs:
       sdk_branch: main
   
   test-js-client-sdk:
-    uses: Eppo-exp/js-client-sdk/.github/workflows/lint-test-sdk.yml@main
+    uses: Eppo-exp/js-client-sdk/.github/workflows/lint-test-sdk.yml@typo/ff-3866-js-client-tests-are-failing-when-run-in-sdk-test-data
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
