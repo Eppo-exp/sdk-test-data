@@ -1,7 +1,7 @@
 {
   "flag": "string-variations",
   "variationType": "STRING",
-  "defaultValue": "default",
+  "defaultValue": "non_empty",
   "subjects": [
     {
       "subjectKey": "alice",
