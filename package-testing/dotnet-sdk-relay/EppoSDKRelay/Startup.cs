@@ -41,7 +41,6 @@ public class Startup
             app.UseDeveloperExceptionPage();
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Eppo Testing API Server"));
         }
 
         app.UseHttpsRedirection();
