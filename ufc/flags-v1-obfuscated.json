@@ -1284,6 +1284,76 @@
           "value": "eyJhIjogIueFp+mhviIsICJiIjogIua8guS6riJ9"
         }
       }
+    },
+    "96e89a298e0c2716130c12b0056b3651": {
+      "key": "96e89a298e0c2716130c12b0056b3651",
+      "enabled": true,
+      "variationType": "STRING",
+      "variations": {
+        "ZW1wdHlfc3RyaW5n": {
+          "key": "ZW1wdHlfc3RyaW5n",
+          "value": ""
+        },
+        "bm9uX2VtcHR5": {
+          "key": "bm9uX2VtcHR5",
+          "value": "bm9uX2VtcHR5"
+        }
+      },
+      "allocations": [
+        {
+          "key": "YWxsb2NhdGlvbi1lbXB0eQ==",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "Y291bnRyeQ==",
+                  "operator": "MATCHES",
+                  "value": "VVM="
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "ZW1wdHlfc3RyaW5n",
+              "shards": [
+                {
+                  "salt": "YWxsb2NhdGlvbi1lbXB0eS1zaGFyZHM=",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0",
+          "rules": [],
+          "splits": [
+            {
+              "variationKey": "bm9uX2VtcHR5",
+              "shards": [
+                {
+                  "salt": "YWxsb2NhdGlvbi1lbXB0eS1zaGFyZHM=",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
     }
   }
 }

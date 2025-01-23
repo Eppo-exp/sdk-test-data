@@ -47,7 +47,7 @@
         "matchedAllocation": {
           "key": "allocation-test",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 1
+          "orderPosition": 2
         },
         "unmatchedAllocations": [],
         "unevaluatedAllocations": []
