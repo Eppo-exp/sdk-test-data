@@ -421,16 +421,58 @@
         },
         "non_empty": {
           "key": "non_empty",
-          "value":  "non_empty"
+          "value": "non_empty"
         }
       },
       "allocations": [
         {
           "key": "allocation-empty",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "country",
+                  "operator": "MATCHES",
+                  "value": "US"
+                }
+              ]
+            }
+          ],
           "splits": [
             {
               "variationKey": "empty_string",
-              "shards": []
+              "shards": [
+                {
+                  "salt": "allocation-empty-shards",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "allocation-test",
+          "rules": [],
+          "splits": [
+            {
+              "variationKey": "non_empty",
+              "shards": [
+                {
+                  "salt": "allocation-empty-shards",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
             }
           ],
           "doLog": true

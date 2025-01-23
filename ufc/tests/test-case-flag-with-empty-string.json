@@ -1,11 +1,13 @@
 {
-  "flag": "string-variations",
+  "flag": "empty_string_flag",
   "variationType": "STRING",
   "defaultValue": "default",
   "subjects": [
     {
       "subjectKey": "alice",
-      "subjectAttributes": {},
+      "subjectAttributes": {
+        "country": "US"
+      },
       "assignment": "",
       "evaluationDetails": {
         "environmentName": "Test",
@@ -15,7 +17,11 @@
         "banditAction": null,
         "variationKey": "empty_string",
         "variationValue": "",
-        "matchedRule": null,
+        "matchedRule": {
+          "attribute": "country",
+          "operator": "MATCHES",
+          "value": "US"
+        },
         "matchedAllocation": {
           "key": "allocation-empty",
           "allocationEvaluationCode": "MATCH",
@@ -37,62 +43,6 @@
         "banditAction": null,
         "variationKey": "non_empty",
         "variationValue": "non_empty",
-        "matchedRule": null,
-        "matchedAllocation": {
-          "key": "allocation-test",
-          "allocationEvaluationCode": "MATCH",
-          "orderPosition": 1
-        },
-        "unmatchedAllocations": [],
-        "unevaluatedAllocations": []
-      }
-    },
-    {
-      "subjectKey": "charlie",
-      "subjectAttributes": {},
-      "assignment": {
-        "a": "",
-        "b": ""
-      },
-      "evaluationDetails": {
-        "environmentName": "Test",
-        "flagEvaluationCode": "MATCH",
-        "flagEvaluationDescription": "charlie belongs to the range of traffic assigned to \"empty_both\" defined in allocation \"allocation-test\".",
-        "banditKey": null,
-        "banditAction": null,
-        "variationKey": "empty_both",
-        "variationValue": {
-          "a": "",
-          "b": ""
-        },
-        "matchedRule": null,
-        "matchedAllocation": {
-          "key": "allocation-test",
-          "allocationEvaluationCode": "MATCH",
-          "orderPosition": 1
-        },
-        "unmatchedAllocations": [],
-        "unevaluatedAllocations": []
-      }
-    },
-    {
-      "subjectKey": "david",
-      "subjectAttributes": {},
-      "assignment": {
-        "a": "value1",
-        "b": "value2"
-      },
-      "evaluationDetails": {
-        "environmentName": "Test",
-        "flagEvaluationCode": "MATCH",
-        "flagEvaluationDescription": "david belongs to the range of traffic assigned to \"non_empty\" defined in allocation \"allocation-test\".",
-        "banditKey": null,
-        "banditAction": null,
-        "variationKey": "non_empty",
-        "variationValue": {
-          "a": "value1",
-          "b": "value2"
-        },
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-test",
