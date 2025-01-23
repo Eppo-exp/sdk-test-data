@@ -416,16 +416,12 @@
       "variationType": "STRING",
       "variations": {
         "empty_string": {
-          "key": "empty_a",
-          "value": ""
-        },
-        "empty_b": {
-          "key": "empty_b",
+          "key": "empty_string",
           "value": ""
         },
         "non_empty": {
           "key": "non_empty",
-          "value":  "value2"
+          "value":  "non_empty"
         }
       },
       "allocations": [
@@ -433,7 +429,7 @@
           "key": "allocation-empty",
           "splits": [
             {
-              "variationKey": "empty_a",
+              "variationKey": "empty_string",
               "shards": []
             }
           ],

@@ -6,14 +6,14 @@
     {
       "subjectKey": "alice",
       "subjectAttributes": {},
-      "assignment": {"a": "", "b": "non-empty"},
+      "assignment": "",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
-        "flagEvaluationDescription": "alice belongs to the range of traffic assigned to \"empty_a\" defined in allocation \"allocation-test\".",
+        "flagEvaluationDescription": "alice belongs to the range of traffic assigned to \"empty_string\" defined in allocation \"allocation-empty\".",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "empty_a",
+        "variationKey": "empty_string",
         "variationValue": "",
         "matchedRule": null,
         "matchedAllocation": {
@@ -34,18 +34,15 @@
     {
       "subjectKey": "bob",
       "subjectAttributes": {},
-      "assignment": {
-        "a": "non-empty",
-        "b": ""
-      },
+      "assignment": "non_empty",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "bob belongs to the range of traffic assigned to \"empty_b\" defined in allocation \"allocation-test\".",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "non_empty_b",
-        "variationValue": "non_empty_b",
+        "variationKey": "non_empty",
+        "variationValue": "non_empty",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-test",
