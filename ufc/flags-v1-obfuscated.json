@@ -1285,8 +1285,9 @@
         }
       }
     },
-    "96e89a298e0c2716130c12b0056b3651": {
-      "key": "96e89a298e0c2716130c12b0056b3651",
+    "1d23cbd300895799fda462f81ec4e135": {
+      "key": "1d23cbd300895799fda462f81ec4e135",
+      "comment": "Testing the empty string as a variation values",
       "enabled": true,
       "variationType": "STRING",
       "variations": {
@@ -1306,8 +1307,8 @@
             {
               "conditions": [
                 {
-                  "attribute": "Y291bnRyeQ==",
-                  "operator": "MATCHES",
+                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
+                  "operator": "05015086bdd8402218f6aad6528bef08",
                   "value": "VVM="
                 }
               ]

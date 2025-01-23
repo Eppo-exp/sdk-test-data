@@ -413,6 +413,7 @@
     "empty_string_flag": {
       "key": "empty_string_flag",
       "enabled": true,
+      "comment": "Testing the empty string as a variation values",
       "variationType": "STRING",
       "variations": {
         "empty_string": {
@@ -464,7 +465,7 @@
               "variationKey": "non_empty",
               "shards": [
                 {
-                  "salt": "allocation-test-shards",
+                  "salt": "allocation-empty-shards",
                   "ranges": [
                     {
                       "start": 0,
