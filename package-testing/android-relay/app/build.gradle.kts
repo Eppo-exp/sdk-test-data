@@ -15,7 +15,7 @@ val apiKey: String = gradleLocalProperties(
 val testRunnerHost: String = System.getenv("TEST_RUNNER_HOST") ?: "http://10.0.2.2"
 val testRunnerPort: String = System.getenv("TEST_RUNNER_PORT")  ?: "3000"
 
-val eppoBaseUrl: String = System.getenv("EPPO_BASE_URL") ?: "http://10.0.2.2/api"
+val eppoBaseUrl: String = System.getenv("EPPO_BASE_URL") ?: "http://10.0.2.2:5000/api"
 
 
 android {

@@ -183,7 +183,7 @@ class TestClientActivity : ComponentActivity() {
     return EppoClient.Builder(API_KEY, application)
         .forceReinitialize(true)
         .ignoreCachedConfiguration(true)
-        .host(BuildConfig.EPPO_BASE_URL)
+        .apiUrl(BuildConfig.EPPO_BASE_URL)
         .isGracefulMode(false) // Debug: surface exceptions
         .assignmentLogger(::assignmentLogger)
         .buildAndInitAsync()
