@@ -1,7 +1,7 @@
 {
   "flag": "string-variations",
   "variationType": "STRING",
-  "defaultValue": "non_empty",
+  "defaultValue": "default",
   "subjects": [
     {
       "subjectKey": "alice",
@@ -14,13 +14,10 @@
         "banditKey": null,
         "banditAction": null,
         "variationKey": "empty_a",
-        "variationValue": {
-          "a": "",
-          "b": "non-empty"
-        },
+        "variationValue": "",
         "matchedRule": null,
         "matchedAllocation": {
-          "key": "allocation-test",
+          "key": "allocation-empty",
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
@@ -47,11 +44,8 @@
         "flagEvaluationDescription": "bob belongs to the range of traffic assigned to \"empty_b\" defined in allocation \"allocation-test\".",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "empty_b",
-        "variationValue": {
-          "a": "non-empty",
-          "b": ""
-        },
+        "variationKey": "non_empty_b",
+        "variationValue": "non_empty_b",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-test",

@@ -415,22 +415,22 @@
       "enabled": true,
       "variationType": "STRING",
       "variations": {
-        "empty_a": {
+        "empty_string": {
           "key": "empty_a",
-          "value": {"a": "", "b": "non-empty"}
+          "value": ""
         },
         "empty_b": {
           "key": "empty_b",
-          "value": {"a": "non-empty", "b": ""}
+          "value": ""
         },
         "non_empty": {
           "key": "non_empty",
-          "value": {"a": "value1", "b": "value2"}
+          "value":  "value2"
         }
       },
       "allocations": [
         {
-          "key": "allocation-test",
+          "key": "allocation-empty",
           "splits": [
             {
               "variationKey": "empty_a",
