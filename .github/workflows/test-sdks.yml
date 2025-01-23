@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'ufc/**'
+
   workflow_dispatch:
 
 jobs:
@@ -13,7 +14,13 @@ jobs:
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
-  
+
+  test-java-common-sdk:
+    uses: Eppo-exp/sdk-common-jdk/.github/workflows/lint-test-sdk.yml@main
+    with:
+      test_data_branch: ${{ github.head_ref || github.ref_name }}
+      sdk_branch: main
+
   test-android-sdk:
     uses: Eppo-exp/android-sdk/.github/workflows/test.yaml@main
     with:
@@ -26,7 +33,7 @@ jobs:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
   
-  test-node-client-sdk:
+  test-js-client-sdk:
     uses: Eppo-exp/js-client-sdk/.github/workflows/lint-test-sdk.yml@main
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
@@ -37,16 +44,13 @@ jobs:
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
-  
-  test-python-sdk:
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Run test action"
-        uses: 'Eppo-exp/python-sdk/.github/actions/action-test@main'
-        with:
-          test_data_branch: ${{ github.head_ref || github.ref_name }}
-          sdk_branch: main
-  
+
+  test-multiplatform-sdk:
+    uses: 'Eppo-exp/eppo-multiplatform/.github/workflows/ci.yml@main'
+    with:
+      test_data_branch: ${{ github.head_ref || github.ref_name }}
+      sdk_branch: main
+
   test-php-sdk:
     uses: Eppo-exp/php-sdk/.github/workflows/run-tests.yml@main
     with:

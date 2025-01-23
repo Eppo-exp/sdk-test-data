@@ -3,7 +3,5 @@
 
 VERSION=$1
 
-docker build . -t Eppo-exp/test-api-server:$VERSION
-docker tag Eppo-exp/test-api-server:$VERSION Eppo-exp/test-api-server:latest
-
-# TODO push to github artifact registry.
+docker build . -t Eppo-exp/testing-api:$VERSION
+docker tag Eppo-exp/testing-api:$VERSION Eppo-exp/testing-api:latest

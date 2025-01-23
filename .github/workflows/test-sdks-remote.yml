@@ -1,4 +1,6 @@
 name: Test SDKs Remotely
+# Triggers testing workflows in all SDK repositories except eppo-multiplatform
+# For eppo-multiplatform, Depndabot does the job of the remote-testing by opening a PR against the repo to update test data.
 
 on:
   push:
@@ -6,6 +8,7 @@ on:
       - main
     paths:
       - 'ufc/**'
+      - '.github/workflows/test-sdks-remote.yml'
   workflow_dispatch:
 
 jobs:
@@ -14,23 +17,23 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
+      matrix: 
         sdk:
           - { repo: "android-sdk", workflow: "test.yaml", ref: "main" }
           - { repo: "dot-net-server-sdk", workflow: "run-tests.yml", ref: "main" }
           - { repo: "eppo-ios-sdk", workflow: "unit-tests.yml", ref: "main" }
           - { repo: "golang-sdk", workflow: "test.yml", ref: "main" }
+          - { repo: "sdk-common-jdk", workflow: "lint-test-sdk.yml", ref: "main" }
           - { repo: "java-server-sdk", workflow: "lint-test-sdk.yml", ref: "main" }
           - { repo: "js-client-sdk", workflow: "lint-test-sdk.yml", ref: "main" }
           - { repo: "node-server-sdk", workflow: "lint-test-sdk.yml", ref: "main" }
           - { repo: "php-sdk", workflow: "run-tests.yml", ref: "main" }
-          - { repo: "python-sdk", workflow: "lint-test-sdk.yml", ref: "main" }
           - { repo: "react-native-sdk", workflow: "ci.yml", ref: "main" }
     steps:
     - name: Display workflow details
       shell: bash
       run: |
-        echo "Testing eppo-exp/${{ matrix.sdk.repo }}"
+        echo "Testing eppo-exp/${{ matrix.sdk.repo }}/${{ matrix.sdk.workflow }}"
     - name: Run remote workflow
       uses: convictional/trigger-workflow-and-wait@v1.6.1
       with:

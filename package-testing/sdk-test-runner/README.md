@@ -19,7 +19,7 @@ docker run \
     --rm -d \
     -v ./test-data:/app/test-data \
     -p 5000:5000 \
-    -t Eppo-exp/test-api-server:local
+    -t Eppo-exp/testing-api:local
 
 ../<SDK_DIR>/build-and-run.sh
 
@@ -37,7 +37,7 @@ docker run \
     --rm -d \
     -v ./test-data:/app/test-data \
     -p 5000:5000 \
-    -t Eppo-exp/test-api-server:local
+    -t Eppo-exp/testing-api:local
 
 ../<SDK_DIR>/build-and-run.sh
 
@@ -91,7 +91,7 @@ The following env variable can be set when running the `test-sdk.sh` script
 
 The following components are required to use the the package test runner with a new SDK
 
-1. An **SDK relay server**. This is a REST server running at `localhost:4000` resonding to the [Asssignment and Bandit Request API](#sdk-relay-server)
+1. An **SDK relay server**. This is a REST server running at `localhost:4000` responding to the [Asssignment and Bandit Request API](#sdk-relay-server)
    1. OR, an **SDK relay client**. This is a client application that connects to the SDK test runner via `socket.io` and responses to [Assignment requests](#sdk-relay-client)
 2. Launch Script:
    1. A `build-and-run-<platform>.sh` file which fully configures the environment then initiates a [build and run of the relay server application](#build-and-runsh) **using the specified version of the SDK package**. <platform> is one of `linux`, `macos`, or `windows`.
@@ -183,13 +183,13 @@ The test runner sends assignment and bandit action requests to the SDK Relay Ser
 
 #### Configuration
 
-| Variable Name    | Type   | Default          | Description                                                             |
-| ---------------- | ------ | ---------------- | ----------------------------------------------------------------------- |
-| `SDK_RELAY_HOST` | string | `localhost`      | Hostname for relay server                                               |
-| `SDK_RELAY_PORT` | number | 4000             | Port for relay server                                                   |
-| `EPPO_BASE_URL`  | string | `http://localhost:5000` | Base URL for api server, built from protocol, `EPPO_API_HOST`, and `EPPO_API_PORT` and the `/api` suffix|
-| `EPPO_API_HOST`  | string | `localhost`      | Hostname for api server                                                 |
-| `EPPO_API_PORT`  | number | 5000             | Port for api server                                                     |
+| Variable Name    | Type   | Default                     | Description                                                             |
+| ---------------- | ------ | --------------------------- | ----------------------------------------------------------------------- |
+| `SDK_RELAY_HOST` | string | `localhost`                 | Hostname for relay server                                               |
+| `SDK_RELAY_PORT` | number | 4000                        | Port for relay server                                                   |
+| `EPPO_BASE_URL`  | string | `http://localhost:5000/api` | Base URL for api server, built from `EPPO_API_HOST` and `EPPO_API_PORT` |
+| `EPPO_API_HOST`  | string | `localhost`                 | Hostname for api server                                                 |
+| `EPPO_API_PORT`  | number | 5000                        | Port for api server                                                     |
 
 #### API
 
@@ -198,6 +198,23 @@ The test runner sends assignment and bandit action requests to the SDK Relay Ser
 `GET /`
 
 Any non-empty response
+
+##### SDK Details
+
+`GET /sdk/details`
+
+If possible, the SDK relay server should respond with the `sdkName` and `sdkVersion` in use. This may not be directly possible with all SDKs.
+If the SDK does not support Bandits or dynamic typing, the test runner will skip the related test cases if the corresponding values are `false`.
+
+```ts
+// Expected response data:
+type SDKDetailsResponse = {
+  sdkName?: string;
+  sdkVersion?: string;
+  supportsBandits?: boolean;
+  supportsDynamicTyping?: boolean;
+};
+```
 
 ##### Reset SDK
 
@@ -225,13 +242,13 @@ type Assignment = {
   subjectAttributes: Record<string, object>;
 };
 
-// Expect response data:
-export type TestResponse {
-    result?: Object,          // Relayed `EppoClient` response
-    assignmentLog?: Object[], // Assignment log events (not yet tested)
-    banditLog?: Object[],     // Bandit selection log events (not yet tested)
-    error?: string            // Error encountered (not yet tested; automatically fails test when present)
-}
+// Expected response data:
+type TestResponse = {
+    result?: Object;          // Relayed `EppoClient` response
+    assignmentLog?: Object[]; // Assignment log events (not yet tested)
+    banditLog?: Object[];     // Bandit selection log events (not yet tested)
+    error?: string;           // Error encountered (not yet tested; automatically fails test when present)
+};
 ```
 
 ##### Bandits
@@ -264,12 +281,12 @@ export type BanditActionRequest = {
   };
 
 // Expects response data:
-export type TestResponse {
-    result?: Object,          // Relayed `EppoClient` response, form of {variation: string, action: string}
-    assignmentLog?: Object[], // Assignment log events (not yet tested)
-    banditLog?: Object[],     // Bandit selection log events (not yet tested)
-    error?: string            // Error encountered (not yet tested; automatically fails test when present)
-}
+type TestResponse = {
+    result?: Object;          // Relayed `EppoClient` response, form of {variation: string, action: string}
+    assignmentLog?: Object[]; // Assignment log events (not yet tested)
+    banditLog?: Object[];     // Bandit selection log events (not yet tested)
+    error?: string;           // Error encountered (not yet tested; automatically fails test when present)
+};
 ```
 
 ### build-and-run.sh
