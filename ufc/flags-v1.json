@@ -464,7 +464,7 @@
               "variationKey": "non_empty",
               "shards": [
                 {
-                  "salt": "allocation-empty-shards",
+                  "salt": "allocation-test-shards",
                   "ranges": [
                     {
                       "start": 0,
