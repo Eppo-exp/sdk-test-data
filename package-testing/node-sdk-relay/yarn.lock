@@ -320,24 +320,24 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@eppo/js-client-sdk-common@4.6.0":
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/@eppo/js-client-sdk-common/-/js-client-sdk-common-4.6.0.tgz#39e8eae318f6046f29b722b236faa49df8e214f9"
-  integrity sha512-XxKauJsNG72tDwOhrvFoueO2KWjjpNM3lLppBWy/TRkARgWlLeY11B+2iXTymi5/PXUxha3M76zhemvRuBiIFw==
+"@eppo/js-client-sdk-common@4.8.4":
+  version "4.8.4"
+  resolved "https://registry.yarnpkg.com/@eppo/js-client-sdk-common/-/js-client-sdk-common-4.8.4.tgz#a1919233fa52399b86ce75b9eebed1c6d2bac16e"
+  integrity sha512-cDxOOHjGU0kJLp2zXWGXaH2xcEd/oxsAT4e78jbbhktb+e5vkU3+SCFTvijFykr1h/hQ2a3O1PPP0M8HFfdrZA==
   dependencies:
     buffer "npm:@eppo/buffer@6.2.0"
     js-base64 "^3.7.7"
     pino "^9.5.0"
     semver "^7.5.4"
     spark-md5 "^3.0.2"
-    uuid "^8.3.2"
+    uuid "^11.0.5"
 
-"@eppo/node-server-sdk@^3.6.1":
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/@eppo/node-server-sdk/-/node-server-sdk-3.6.1.tgz#81703ebdd84baf33b6c562325700de55b53bffc2"
-  integrity sha512-G18Df79BFVU4IMdj9jb94MzNeEF2j3LX0gLzjqZXA02f5QcjxswKBVkRhjEl2Q9ayclZ5Vq/G34YOsdTtiWwKA==
+"@eppo/node-server-sdk@^3.7.2":
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/@eppo/node-server-sdk/-/node-server-sdk-3.7.2.tgz#086f5a211ab848792afb4a9292396e60bf5bfd62"
+  integrity sha512-rFXZx4312AbWTwB2astTCNZv1K9sMfRXvWRYJQuidfojqG8iDH0+l1nBCH9GPSNgNw4hdoh1pj4leX8tTkwRoQ==
   dependencies:
-    "@eppo/js-client-sdk-common" "4.6.0"
+    "@eppo/js-client-sdk-common" "4.8.4"
 
 "@eslint-community/eslint-utils@^4.2.0", "@eslint-community/eslint-utils@^4.4.0":
   version "4.4.1"
@@ -4863,10 +4863,10 @@ utils-merge@1.0.1:
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==
 
-uuid@^8.3.2:
-  version "8.3.2"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
-  integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+uuid@^11.0.5:
+  version "11.0.5"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-11.0.5.tgz#07b46bdfa6310c92c3fb3953a8720f170427fc62"
+  integrity sha512-508e6IcKLrhxKdBbcA2b4KQZlLVp2+J5UwQ6F7Drckkc5N9ZJwFa4TgWtsww9UG8fGHbm6gbV19TdM5pQ4GaIA==
 
 v8-compile-cache-lib@^3.0.1:
   version "3.0.1"
