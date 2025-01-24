@@ -1,8 +1,8 @@
 import { Body, Controller, Get, HttpCode, Post } from '@nestjs/common';
 import { AppService } from './app.service';
-import { AssignmentDto, BanditDto } from './types';
+import { AssignmentDto, BanditDto, BanditTestRunnerInput } from './types';
 import { EppoClientProxy } from './eppoClientProxy';
-import { getInstance, init } from '@eppo/node-server-sdk';
+import { BanditActions, getInstance, init } from '@eppo/node-server-sdk';
 import getLogger from './main';
 
 @Controller()
@@ -21,17 +21,20 @@ export class AppController {
   }
 
   @Post('/bandits/v1/action')
-  getBanditAction(@Body() requestedBanditBody: BanditDto) {
+  getBanditAction(@Body() requestedBanditBody: BanditTestRunnerInput) {
+    const parsedActions: BanditActions = {};
+    const parsedInput: BanditDto = JSON.parse(JSON.stringify(requestedBanditBody));
+
     if (requestedBanditBody.actions instanceof Array) {
-      const parsedActions = {};
       for (const action of requestedBanditBody.actions) {
         parsedActions[action.actionKey] = action;
+        delete action.actionKey;
       }
 
-      requestedBanditBody.actions = parsedActions;
+      parsedInput.actions = parsedActions;
     }
 
-    return this.eppoClientProxy.getBanditAction(getInstance(), requestedBanditBody);
+    return this.eppoClientProxy.getBanditAction(getInstance(), parsedInput);
   }
 
   @HttpCode(200)
