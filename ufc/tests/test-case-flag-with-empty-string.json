@@ -19,9 +19,11 @@
         "variationValue": "",
         "matchedRule": {
           "conditions": [
+            {
             "attribute": "country",
             "operator": "MATCHES",
             "value": "US"
+            }
           ]
         },
         "matchedAllocation": {
@@ -57,3 +59,4 @@
     }
   ]
 }
+
