@@ -18,9 +18,11 @@
         "variationKey": "empty_string",
         "variationValue": "",
         "matchedRule": {
-          "attribute": "country",
-          "operator": "MATCHES",
-          "value": "US"
+          "conditions": [
+            "attribute": "country",
+            "operator": "MATCHES",
+            "value": "US"
+          ]
         },
         "matchedAllocation": {
           "key": "allocation-empty",
