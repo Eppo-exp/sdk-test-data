@@ -12,7 +12,7 @@
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
-        "flagEvaluationDescription": "alice belongs to the range of traffic assigned to \"empty_string\" defined in allocation \"allocation-empty\".",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"allocation-empty\".",
         "banditKey": null,
         "banditAction": null,
         "variationKey": "empty_string",
@@ -20,9 +20,9 @@
         "matchedRule": {
           "conditions": [
             {
-            "attribute": "country",
-            "operator": "MATCHES",
-            "value": "US"
+              "attribute": "country",
+              "operator": "MATCHES",
+              "value": "US"
             }
           ]
         },
@@ -32,7 +32,13 @@
           "orderPosition": 1
         },
         "unmatchedAllocations": [],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "allocationEvaluationCode": "UNEVALUATED",
+            "key": "allocation-test",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -53,10 +59,15 @@
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
-        "unmatchedAllocations": [],
+        "unmatchedAllocations": [
+          {
+            "allocationEvaluationCode": "FAILING_RULE",
+            "key": "allocation-empty",
+            "orderPosition": 1
+          }
+        ],
         "unevaluatedAllocations": []
       }
     }
   ]
 }
-
