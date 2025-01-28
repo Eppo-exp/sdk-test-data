@@ -1287,7 +1287,7 @@
     },
     "1d23cbd300895799fda462f81ec4e135": {
       "key": "1d23cbd300895799fda462f81ec4e135",
-      "comment": "Testing the empty string as a variation values",
+      "comment": "Testing the empty string as a variation value",
       "enabled": true,
       "variationType": "STRING",
       "variations": {

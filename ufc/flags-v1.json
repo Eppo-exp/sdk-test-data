@@ -413,7 +413,7 @@
     "empty_string_flag": {
       "key": "empty_string_flag",
       "enabled": true,
-      "comment": "Testing the empty string as a variation values",
+      "comment": "Testing the empty string as a variation value",
       "variationType": "STRING",
       "variations": {
         "empty_string": {
