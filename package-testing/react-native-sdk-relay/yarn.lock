@@ -830,10 +830,10 @@
   dependencies:
     "@types/hammerjs" "^2.0.36"
 
-"@eppo/js-client-sdk-common@^4.7.1":
-  version "4.8.2"
-  resolved "https://registry.yarnpkg.com/@eppo/js-client-sdk-common/-/js-client-sdk-common-4.8.2.tgz#f6f6c20adb3f55f9d2074c5710c6908b20414860"
-  integrity sha512-MlnnkGdAYAGHV9ECkhZyg094Dcfq1FOkTBGYEKMDp3nrOn33lm2Q2rF2LuogepZy3Y1kqWw9umBhcytWAIcUnQ==
+"@eppo/js-client-sdk-common@4.8.4":
+  version "4.8.4"
+  resolved "https://registry.yarnpkg.com/@eppo/js-client-sdk-common/-/js-client-sdk-common-4.8.4.tgz#a1919233fa52399b86ce75b9eebed1c6d2bac16e"
+  integrity sha512-cDxOOHjGU0kJLp2zXWGXaH2xcEd/oxsAT4e78jbbhktb+e5vkU3+SCFTvijFykr1h/hQ2a3O1PPP0M8HFfdrZA==
   dependencies:
     buffer "npm:@eppo/buffer@6.2.0"
     js-base64 "^3.7.7"
@@ -842,12 +842,12 @@
     spark-md5 "^3.0.2"
     uuid "^11.0.5"
 
-"@eppo/react-native-sdk@3.3.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@eppo/react-native-sdk/-/react-native-sdk-3.3.0.tgz#1475dbec8bbfd3c98644b61342f050ff42dcf97d"
-  integrity sha512-FdGt8q2r68Q+voaZjb2xbVn4+6c23OtbD0xpWWSKhHdch/N3YR00Ct1rlWEdPEv0TQ39OGYOi1EbFZe8wUXdKA==
+"@eppo/react-native-sdk@3.5.2":
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/@eppo/react-native-sdk/-/react-native-sdk-3.5.2.tgz#e82ae7613ce1ece287a6d4f8ce5b764bb623ae88"
+  integrity sha512-57iOEycUXMwb4N9pHyvxkEE0DOug/d9tblcPqxGINbjCzz/opxdGDthiJXFEX5/rCeIBWpcPIofeW23Ce+kSsg==
   dependencies:
-    "@eppo/js-client-sdk-common" "^4.7.1"
+    "@eppo/js-client-sdk-common" "4.8.4"
     "@react-native-async-storage/async-storage" "^1.18.0"
     md5 "^2.3.0"
 
