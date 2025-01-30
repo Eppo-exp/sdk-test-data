@@ -410,6 +410,77 @@
       ],
       "totalShards": 10000
     },
+    "empty_string_flag": {
+      "key": "empty_string_flag",
+      "enabled": true,
+      "comment": "Testing the empty string as a variation value",
+      "variationType": "STRING",
+      "variations": {
+        "empty_string": {
+          "key": "empty_string",
+          "value": ""
+        },
+        "non_empty": {
+          "key": "non_empty",
+          "value": "non_empty"
+        }
+      },
+      "allocations": [
+        {
+          "key": "allocation-empty",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "country",
+                  "operator": "MATCHES",
+                  "value": "US"
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "empty_string",
+              "shards": [
+                {
+                  "salt": "allocation-empty-shards",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "allocation-test",
+          "rules": [],
+          "splits": [
+            {
+              "variationKey": "non_empty",
+              "shards": [
+                {
+                  "salt": "allocation-empty-shards",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
     "kill-switch": {
       "key": "kill-switch",
       "enabled": true,
