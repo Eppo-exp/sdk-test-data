@@ -1,0 +1,41 @@
+{
+    "flag": "banner_bandit_flag",
+    "defaultValue": "banner_bandit",
+    "subjects": [
+      {
+        "subjectKey": "erica",
+        "subjectAttributes": {
+            "numericAttributes": {"age": 28, "account_age": 30},
+            "categoricalAttributes": {"country": "USA", "gender_identity": "female"}
+        },
+        "actions": [
+            {
+                "actionKey": "nike",
+                "numericAttributes": {"brand_affinity": 1.2},
+                "categoricalAttributes": {"loyalty_tier": "platinum"}
+            },
+            {
+                "actionKey": "adidas",
+                "numericAttributes": {"brand_affinity": 1.0},
+                "categoricalAttributes": {}
+            },
+            {
+                "actionKey": "reebok",
+                "numericAttributes": {},
+                "categoricalAttributes": {}
+            },
+            {
+                "actionKey": "puma",
+                "numericAttributes": {
+                    "brand_affinity": 1.0,
+                    "discount": 0.1
+                },
+                "categoricalAttributes": {
+                    "color": "red"
+                }
+            }
+        ],
+        "assignment": {"variation": "banner_bandit", "action": null}
+      }
+    ]
+  }
