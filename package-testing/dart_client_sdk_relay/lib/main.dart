@@ -4,6 +4,7 @@ import 'package:eppo_sdk/eppo_sdk.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert'; // for JSON encoding/decoding
+import 'dart:math'; // Add this import at the top
 
 void main() {
   runApp(MyApp());
@@ -58,34 +59,55 @@ class _StringAssignmentState extends State<StringAssignmentWidget> {
   String? _assignmentValue;
 
   _StringAssignmentState() {
-    print('creating assignment widget');
-    print(MyEppoProvider.eppoClient.whenReady());
+    print('creating assignment widget 2');
+    //await MyEppoProvider.eppoClient.whenReady();
+
+    Future<http.Response> fetchAlbum() async {
+      const url = 'https://jsonplaceholder.typicode.com/albums/1';
+      print('fetching from: $url');
+      final response = await http.get(Uri.parse(url));
+
+      print('response: ${response.body}');
+      return response;
+    }
+
+    print('fetching album');
+    fetchAlbum();
 
     // Basic GET request
     Future<void> fetchExample() async {
       try {
-        final response = await http.get(
-          Uri.parse('https://fscdn.eppo.cloud/api/flag-config/v1/config?apiKey=xx3NOJU6v2l1iSpPgn6bc3B10_zlBd_KjTCYoMbEYag&sdkVersion=4.3.1&sdkName=android'),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        );
+        // Use the same simple approach as fetchAlbum
+        final encodedKey = Uri.encodeComponent(globalSdkKey);
+        final url =
+            'https://fscdn.eppo.cloud/api/flag-config/v1/config?apiKey=$encodedKey';
+
+        print('Fetching from: $url');
+
+        // Remove the headers to match your working request
+        final response = await http.get(Uri.parse(url));
+
+        print('Response status: ${response.statusCode}');
 
         if (response.statusCode == 200) {
           // Parse the JSON response
           final data = jsonDecode(response.body);
-          print(data);
+          print(
+              '${response.body.substring(0, min(100, response.body.length))}...');
         } else {
           print('Request failed with status: ${response.statusCode}');
+          print('Response body: ${response.body}');
         }
       } catch (e) {
-        print('Error: $e');
+        print('Error type: ${e.runtimeType}');
+        print('Error details: $e');
       }
     }
 
-    // fetchExample();
+    print('fetching example');
+    fetchExample();
 
-
+    print('check if eppo client is ready');
     MyEppoProvider.eppoClient.whenReady().then((_) {
       print("Eppo client is ready");
 
