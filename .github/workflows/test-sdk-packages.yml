@@ -35,7 +35,8 @@ jobs:
   test-node-sdk:
     strategy:
       fail-fast: false
-      matrix: ['linux']
+      matrix:
+        platform: ['linux']
     uses: ./.github/workflows/test-server-sdk.yml
     with:
       platform: ${{ matrix.platform }}
