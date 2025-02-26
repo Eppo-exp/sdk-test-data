@@ -9,10 +9,6 @@ if [ -e .env ]; then
 	source .env
 fi
 
-# Install dependencies
-echo "Installing dependencies..."
-dart pub get
-
 # Create vendor directory for SDK checkout
 mkdir -p vendor
 
@@ -51,6 +47,10 @@ cd ../../..
 cp vendor/eppo-multiplatform/target/release/libeppo_client.dylib lib/native/
 
 export DYLD_LIBRARY_PATH=./lib/native:$DYLD_LIBRARY_PATH
+
+# Install dependencies
+echo "Installing dependencies..."
+dart pub get
 
 echo "Listening on ${SDK_RELAY_HOST}:${SDK_RELAY_PORT}"
 
