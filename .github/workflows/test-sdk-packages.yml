@@ -8,37 +8,52 @@ on:
   workflow_dispatch:
 
 jobs:
+  test-dart-sdk:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: ["linux"]
+    uses: ./.github/workflows/test-server-sdk.yml
+    with:
+      platform: ${{ matrix.platform }}
+      sdkName: "eppo/dart-sdk"
+      sdkRelayDir: "dart-sdk-relay"
+      setupAction: "dart-lang/setup-dart@v1"
+      setupWith: '{"sdk": "stable"}'
+    secrets: inherit
+
   test-php-sdk:
     strategy:
       fail-fast: false
       matrix:
-        platform: ['linux']
+        platform: ["linux"]
     uses: ./.github/workflows/test-server-sdk.yml
     with:
       platform: ${{ matrix.platform }}
-      sdkName: 'eppo/php-sdk'
-      sdkRelayDir: 'php-sdk-relay'
+      sdkName: "eppo/php-sdk"
+      sdkRelayDir: "php-sdk-relay"
     secrets: inherit
 
   test-python-sdk:
     strategy:
       fail-fast: false
       matrix:
-        platform: ['linux']
+        platform: ["linux"]
     uses: ./.github/workflows/test-server-sdk.yml
     with:
       platform: ${{ matrix.platform }}
-      sdkName: 'eppo/python-sdk'
-      sdkRelayDir: 'python-sdk-relay'
+      sdkName: "eppo/python-sdk"
+      sdkRelayDir: "python-sdk-relay"
     secrets: inherit
 
   test-node-sdk:
     strategy:
       fail-fast: false
-      matrix: ['linux']
+      matrix:
+        platform: ["linux"]
     uses: ./.github/workflows/test-server-sdk.yml
     with:
       platform: ${{ matrix.platform }}
-      sdkName: 'eppo/node-server-sdk'
-      sdkRelayDir: 'node-sdk-relay'
+      sdkName: "eppo/node-server-sdk"
+      sdkRelayDir: "node-sdk-relay"
     secrets: inherit
