@@ -1,4 +1,6 @@
 .env
 .dart_tool/
 .packages
-pubspec.lock 
+pubspec.lock
+vendor/
+lib/native/
