@@ -8,5 +8,7 @@ SDK="https://github.com/Eppo-exp/node-server-sdk.git"
 
 # Run the poller
 yarn install
+# Build the application
+yarn build
 echo "Listening on port ${SDK_RELAY_PORT}"
 yarn start:prod
