@@ -1,0 +1,143 @@
+{
+  "flag": "special-characters",
+  "variationType": "JSON",
+  "defaultValue": {},
+  "subjects": [
+    {
+      "subjectKey": "ash",
+      "subjectAttributes": {},
+      "assignment": {
+        "a": "kümmert",
+        "b": "schön"
+      },
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "ash belongs to the range of traffic assigned to \"de\" defined in allocation \"allocation-test\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "de",
+        "variationValue": {
+          "a": "kümmert",
+          "b": "schön"
+        },
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "allocation-test",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-default",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "ben",
+      "subjectAttributes": {},
+      "assignment": {
+        "a": "піклуватися",
+        "b": "любов"
+      },
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "ben belongs to the range of traffic assigned to \"ua\" defined in allocation \"allocation-test\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "ua",
+        "variationValue": {
+          "a": "піклуватися",
+          "b": "любов"
+        },
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "allocation-test",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-default",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "cameron",
+      "subjectAttributes": {},
+      "assignment": {
+        "a": "照顾",
+        "b": "漂亮"
+      },
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "cameron belongs to the range of traffic assigned to \"zh\" defined in allocation \"allocation-test\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "zh",
+        "variationValue": {
+          "a": "照顾",
+          "b": "漂亮"
+        },
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "allocation-test",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-default",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "darryl",
+      "subjectAttributes": {},
+      "assignment": {
+        "a": "🤗",
+        "b": "🌸"
+      },
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "darryl belongs to the range of traffic assigned to \"emoji\" defined in allocation \"allocation-test\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "emoji",
+        "variationValue": {
+          "a": "🤗",
+          "b": "🌸"
+        },
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "allocation-test",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-default",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
+    }
+  ]
+}
