@@ -10,7 +10,7 @@ async function bootstrap() {
   logger = new RelayLogger();
 
   await init({
-    apiKey: 'test',
+    apiKey: process.env.EPPO_API_KEY || 'NOKEYSPECIFIED',
     assignmentLogger: logger,
     pollAfterFailedInitialization: true,
     banditLogger: logger,
