@@ -7,6 +7,12 @@
 : "${SDK_RELAY_PORT:=4000}"
 SDK="https://github.com/Eppo-exp/eppo-multiplatform.git"
 
+# Create a persistent virtual environment.
+if [ ! -d ".venv" ]; then
+    python3 -m venv .venv
+fi
+source .venv/bin/activate
+
 # checkout the specified ref of the SDK repo, build it, and then insert it into vendors here.
 rm -rf tmp
 mkdir -p tmp
@@ -14,11 +20,11 @@ mkdir -p tmp
 echo "Cloning ${SDK}@${SDK_REF}"
 git clone -b ${SDK_REF} --depth 1 --single-branch ${SDK} tmp || ( echo "Cloning repo failed"; exit 1 )
 
-# Run the poller
-python3 -m venv tmp/.venv
-source tmp/.venv/bin/activate
-pip install maturin
+# TODO: Refactor this into a `build.sh` script that resides in the SDK repo.
 
+# install dependencies
+
+pip install maturin
 pip install -r requirements.txt
 
 # Build the wheel file in tmp directory
@@ -40,6 +46,9 @@ fi
 
 pip install "${WHEEL_FILE}"
 
-echo "Listening on port ${SDK_RELAY_HOST}:${SDK_RELAY_PORT}"
+# cleanup
+rm -rf tmp
 
+# start the relay server
+echo "Listening on port ${SDK_RELAY_HOST}:${SDK_RELAY_PORT}"
 python3 src/server.py
