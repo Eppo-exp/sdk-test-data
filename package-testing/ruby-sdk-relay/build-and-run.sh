@@ -6,6 +6,19 @@
 : "${SDK_RELAY_PORT:=4000}"
 SDK="https://github.com/Eppo-exp/eppo-multiplatform.git"
 
+# Check if Ruby is installed
+if ! command -v ruby &> /dev/null; then
+    echo "Ruby is not installed. Please install Ruby before running this script."
+    echo "You can install Ruby using your package manager or a version manager like rbenv or rvm."
+    exit 1
+fi
+
+# Check if Bundler is installed, install if not
+if ! command -v bundle &> /dev/null; then
+    echo "Bundler is not installed. Installing Bundler..."
+    gem install bundler || { echo "Failed to install Bundler"; exit 1; }
+fi
+
 # Install Ruby dependencies
 echo "Installing Ruby dependencies..."
 bundle install || { echo "Failed to install Ruby dependencies"; exit 1; }
