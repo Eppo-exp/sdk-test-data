@@ -1186,6 +1186,175 @@
           ]
         }
       ]
+    },
+    "eab426e60c686e18da04981a4d53c837": {
+      "allocations": [
+        {
+          "doLog": true,
+          "key": "YWxsb2NhdGlvbi10ZXN0",
+          "splits": [
+            {
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "end": 2500,
+                      "start": 0
+                    }
+                  ],
+                  "salt": "c3BsaXQtanNvbi1mbGFn"
+                }
+              ],
+              "variationKey": "ZGU="
+            },
+            {
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "end": 5000,
+                      "start": 2500
+                    }
+                  ],
+                  "salt": "c3BsaXQtanNvbi1mbGFn"
+                }
+              ],
+              "variationKey": "dWE="
+            },
+            {
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "end": 7500,
+                      "start": 5000
+                    }
+                  ],
+                  "salt": "c3BsaXQtanNvbi1mbGFn"
+                }
+              ],
+              "variationKey": "emg="
+            },
+            {
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "end": 10000,
+                      "start": 7500
+                    }
+                  ],
+                  "salt": "c3BsaXQtanNvbi1mbGFn"
+                }
+              ],
+              "variationKey": "ZW1vamk="
+            }
+          ]
+        },
+        {
+          "doLog": false,
+          "key": "YWxsb2NhdGlvbi1kZWZhdWx0",
+          "splits": [
+            {
+              "shards": [],
+              "variationKey": "ZGU="
+            }
+          ]
+        }
+      ],
+      "enabled": true,
+      "key": "eab426e60c686e18da04981a4d53c837",
+      "totalShards": 10000,
+      "variationType": "JSON",
+      "variations": {
+        "ZGU=": {
+          "key": "ZGU=",
+          "value": "eyJhIjogImvDvG1tZXJ0IiwgImIiOiAic2Now7ZuIn0="
+        },
+        "ZW1vamk=": {
+          "key": "ZW1vamk=",
+          "value": "eyJhIjogIvCfpJciLCAiYiI6ICLwn4y4In0="
+        },
+        "dWE=": {
+          "key": "dWE=",
+          "value": "eyJhIjogItC/0ZbQutC70YPQstCw0YLQuNGB0Y8iLCAiYiI6ICLQu9GO0LHQvtCyIn0="
+        },
+        "emg=": {
+          "key": "emg=",
+          "value": "eyJhIjogIueFp+mhviIsICJiIjogIua8guS6riJ9"
+        }
+      }
+    },
+    "1d23cbd300895799fda462f81ec4e135": {
+      "key": "1d23cbd300895799fda462f81ec4e135",
+      "comment": "Testing the empty string as a variation value",
+      "enabled": true,
+      "variationType": "STRING",
+      "variations": {
+        "ZW1wdHlfc3RyaW5n": {
+          "key": "ZW1wdHlfc3RyaW5n",
+          "value": ""
+        },
+        "bm9uX2VtcHR5": {
+          "key": "bm9uX2VtcHR5",
+          "value": "bm9uX2VtcHR5"
+        }
+      },
+      "allocations": [
+        {
+          "key": "YWxsb2NhdGlvbi1lbXB0eQ==",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
+                  "operator": "05015086bdd8402218f6aad6528bef08",
+                  "value": "VVM="
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "ZW1wdHlfc3RyaW5n",
+              "shards": [
+                {
+                  "salt": "YWxsb2NhdGlvbi1lbXB0eS1zaGFyZHM=",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0",
+          "rules": [],
+          "splits": [
+            {
+              "variationKey": "bm9uX2VtcHR5",
+              "shards": [
+                {
+                  "salt": "YWxsb2NhdGlvbi1lbXB0eS1zaGFyZHM=",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
     }
   }
 }
