@@ -31,29 +31,8 @@ class TestClientScreen extends StatefulWidget {
   State<TestClientScreen> createState() => _TestClientScreenState();
 }
 
-class RelayAssignmentLogger implements AssignmentLogger {
-  final Queue<Map<String, dynamic>> _assignmentQueue =
-      Queue<Map<String, dynamic>>();
-
-  void logAssignment(Map<String, dynamic> assignment) {
-    _assignmentQueue.add(assignment);
-  }
-
-  List<Map<String, dynamic>> emptyAssignmentQueue() {
-    final assignments = List<Map<String, dynamic>>.from(_assignmentQueue);
-    _assignmentQueue.clear();
-    return assignments;
-  }
-
-  bool get hasAssignments => _assignmentQueue.isNotEmpty;
-
-  @override
-  void logBanditAction(Map<String, dynamic> event) {
-    // TODO: implement logBanditAction
-  }
-}
-
-class _TestClientScreenState extends State<TestClientScreen> {
+class _TestClientScreenState extends State<TestClientScreen>
+    implements AssignmentLogger {
   static const String sdkKey = String.fromEnvironment('EPPO_SDK_KEY');
   static const String testRunnerHost = String.fromEnvironment(
       'TEST_RUNNER_HOST',
@@ -63,12 +42,22 @@ class _TestClientScreenState extends State<TestClientScreen> {
   static const String eppoBaseUrl = String.fromEnvironment('EPPO_BASE_URL',
       defaultValue: 'http://localhost:5000/api');
 
-  static const AssignmentLogger logger = AssignmentLogger();
-
   late io.Socket socket;
   late EppoClient eppoClient;
   String status = 'Initializing...';
   String assignmentLog = '';
+
+  @override
+  void logAssignment(Map<String, dynamic> assignment) {
+    setState(() {
+      assignmentLog = '${jsonEncode(assignment)}\n$assignmentLog';
+    });
+  }
+
+  @override
+  void logBanditAction(Map<String, dynamic> event) {
+    // TODO: implement logBanditAction if needed
+  }
 
   @override
   void initState() {
@@ -108,7 +97,7 @@ class _TestClientScreenState extends State<TestClientScreen> {
     eppoClient = EppoClient(
       sdkKey: sdkKey,
       baseUrl: Uri.parse(eppoBaseUrl),
-      logger: logger,
+      logger: this,
     );
     await eppoClient.whenReady();
   }
