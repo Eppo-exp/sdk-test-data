@@ -32,7 +32,8 @@ class TestClientScreen extends StatefulWidget {
 }
 
 class RelayAssignmentLogger implements AssignmentLogger {
-  final Queue<Map<String, dynamic>> _assignmentQueue = Queue<Map<String, dynamic>>();
+  final Queue<Map<String, dynamic>> _assignmentQueue =
+      Queue<Map<String, dynamic>>();
 
   void logAssignment(Map<String, dynamic> assignment) {
     _assignmentQueue.add(assignment);
@@ -54,9 +55,13 @@ class RelayAssignmentLogger implements AssignmentLogger {
 
 class _TestClientScreenState extends State<TestClientScreen> {
   static const String sdkKey = String.fromEnvironment('EPPO_SDK_KEY');
-  static const String testRunnerHost = String.fromEnvironment('TEST_RUNNER_HOST', defaultValue: 'http://localhost');
-  static const String testRunnerPort = String.fromEnvironment('TEST_RUNNER_PORT', defaultValue: '3000');
-  static const String eppoBaseUrl = String.fromEnvironment('EPPO_BASE_URL', defaultValue: 'http://localhost:5000/api');
+  static const String testRunnerHost = String.fromEnvironment(
+      'TEST_RUNNER_HOST',
+      defaultValue: 'http://localhost');
+  static const String testRunnerPort =
+      String.fromEnvironment('TEST_RUNNER_PORT', defaultValue: '3000');
+  static const String eppoBaseUrl = String.fromEnvironment('EPPO_BASE_URL',
+      defaultValue: 'http://localhost:5000/api');
 
   static const AssignmentLogger logger = AssignmentLogger();
 
@@ -100,7 +105,6 @@ class _TestClientScreenState extends State<TestClientScreen> {
   }
 
   Future<void> initializeEppoClient() async {
-    
     eppoClient = EppoClient(
       sdkKey: sdkKey,
       baseUrl: Uri.parse(eppoBaseUrl),
@@ -116,22 +120,20 @@ class _TestClientScreenState extends State<TestClientScreen> {
       'sdkType': 'client'
     };
     socket.emitWithAck('READY', [jsonEncode(readyPacket)], ack: (data) {
-          print('ack from server $data');
-        });
+      print('ack from server $data');
+    });
   }
 
   void handleAssignment(dynamic data) async {
     if (data is! List) return;
-    
+
     final requestData = data[0];
     final ack = data.last as Function;
 
     try {
-      final request = requestData;//jsonDecode(requestData);
+      final request = requestData; //jsonDecode(requestData);
       final subject = Subject(request['subjectKey']);
 
-      print(requestData);
-      print(request['subjectAttributes']);
       request['subjectAttributes'].forEach((key, value) {
         if (value is String) {
           subject.stringAttribute(key, value);
@@ -141,8 +143,7 @@ class _TestClientScreenState extends State<TestClientScreen> {
           subject.numberAttribute(key, value as double);
         }
       });
-      
-      
+
       final result = await getAssignmentFromClient(
         flag: request['flag'],
         subject: subject,
@@ -150,13 +151,12 @@ class _TestClientScreenState extends State<TestClientScreen> {
         defaultValue: request['defaultValue'],
       );
 
-      print("result is");
-      print(result);
-
       ack(jsonEncode({'result': result}));
     } catch (e) {
       debugPrint('Error handling assignment: $e');
-      ack([{'error': e.toString()}]);
+      ack([
+        {'error': e.toString()}
+      ]);
     }
   }
 
@@ -169,19 +169,18 @@ class _TestClientScreenState extends State<TestClientScreen> {
     switch (assignmentType) {
       case 'STRING':
         return eppoClient.stringAssignment(
-          flag, subject, defaultValue as String);
+            flag, subject, defaultValue as String);
       case 'INTEGER':
-        return eppoClient.integerAssignment(
-            flag, subject, defaultValue as int);
+        return eppoClient.integerAssignment(flag, subject, defaultValue as int);
       case 'NUMERIC':
         return eppoClient.numericAssignment(
             flag, subject, defaultValue as double);
       case 'BOOLEAN':
         return eppoClient.booleanAssignment(
-          flag, subject, defaultValue as bool);
+            flag, subject, defaultValue as bool);
       case 'JSON':
         return eppoClient.jsonAssignment(
-          flag, subject, defaultValue as Map<String, dynamic>);
+            flag, subject, defaultValue as Map<String, dynamic>);
       default:
         throw Exception('Unsupported assignment type: $assignmentType');
     }
@@ -200,15 +199,18 @@ class _TestClientScreenState extends State<TestClientScreen> {
           children: [
             Row(
               children: [
-                const Text('Status: ', style: TextStyle(fontWeight: FontWeight.bold)),
-                Text(status, style: const TextStyle(fontStyle: FontStyle.italic)),
+                const Text('Status: ',
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(status,
+                    style: const TextStyle(fontStyle: FontStyle.italic)),
               ],
             ),
             const SizedBox(height: 16),
-            const Text('Assignment Log:', style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
-            )),
+            const Text('Assignment Log:',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                )),
             Expanded(
               child: SingleChildScrollView(
                 child: Text(assignmentLog),
