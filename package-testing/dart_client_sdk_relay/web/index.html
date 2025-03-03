@@ -18,10 +18,10 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="Eppo SDK Relay App">
 
   <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="dart_client_sdk_relay">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
@@ -29,10 +29,27 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>dart_client_sdk_relay</title>
+  <title>Eppo SDK Relay</title>
   <link rel="manifest" href="manifest.json">
+
+  <script>
+    // Allow cleartext traffic for development
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
+      _flutter.loader.load({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+  <script src="main.dart.js" type="application/javascript"></script>
 </body>
 </html>
