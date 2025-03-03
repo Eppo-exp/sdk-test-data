@@ -131,7 +131,7 @@ class _TestClientScreenState extends State<TestClientScreen> {
     final ack = data.last as Function;
 
     try {
-      final request = requestData; //jsonDecode(requestData);
+      final request = requestData;
       final subject = Subject(request['subjectKey']);
 
       request['subjectAttributes'].forEach((key, value) {
