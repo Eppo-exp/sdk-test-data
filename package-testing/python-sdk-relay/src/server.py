@@ -160,7 +160,8 @@ if __name__ == "__main__":
     initialize_client_and_wait()
     
     port = int(environ.get('SDK_RELAY_PORT', 7001))
-    host = environ.get('SDK_RELAY_HOST', '0.0.0.0')
+    # host = environ.get('SDK_RELAY_HOST', '0.0.0.0')
+    host = '0.0.0.0'
     print(f"Starting server on {host}:{port}")
     app.run(
         host=host,
