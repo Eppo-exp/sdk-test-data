@@ -53,7 +53,7 @@ class RelayAssignmentLogger implements AssignmentLogger {
 }
 
 class _TestClientScreenState extends State<TestClientScreen> {
-  static const String sdkKey = String.fromEnvironment('EPPO_API_KEY');
+  static const String sdkKey = String.fromEnvironment('EPPO_SDK_KEY');
   static const String testRunnerHost = String.fromEnvironment('TEST_RUNNER_HOST', defaultValue: 'http://localhost');
   static const String testRunnerPort = String.fromEnvironment('TEST_RUNNER_PORT', defaultValue: '3000');
   static const String eppoBaseUrl = String.fromEnvironment('EPPO_BASE_URL', defaultValue: 'http://localhost:5000/api');
@@ -130,6 +130,8 @@ class _TestClientScreenState extends State<TestClientScreen> {
       final request = requestData;//jsonDecode(requestData);
       final subject = Subject(request['subjectKey']);
 
+      print(requestData);
+      print(request['subjectAttributes']);
       request['subjectAttributes'].forEach((key, value) {
         if (value is String) {
           subject.stringAttribute(key, value);
@@ -148,7 +150,10 @@ class _TestClientScreenState extends State<TestClientScreen> {
         defaultValue: request['defaultValue'],
       );
 
-      ack([{'result': result}]);
+      print("result is");
+      print(result);
+
+      ack(jsonEncode({'result': result}));
     } catch (e) {
       debugPrint('Error handling assignment: $e');
       ack([{'error': e.toString()}]);

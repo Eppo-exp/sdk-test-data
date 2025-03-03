@@ -1,16 +1,8 @@
-# dart_client_sdk_relay
+# Dart Client SDK Relay App
+This application is built to verify the `eppo_sdk` package integrates and operates as expected in a Flutter Web application.
 
-A new Flutter project.
+## Running
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```shell
+flutter run -d chrome --dart-define=EPPO_SDK_KEY=your_sdk_key --dart-define=TEST_RUNNER_HOST=http://localhost --dart-define=TEST_RUNNER_PORT=3000 --dart-define=EPPO_BASE_URL=http://localhost:5000/api
+```
