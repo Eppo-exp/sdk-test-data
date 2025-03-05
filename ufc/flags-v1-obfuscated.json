@@ -1,9 +1,9 @@
 {
-  "createdAt": "2024-04-17T19:40:53.716Z",
   "format": "CLIENT",
   "environment": {
     "name": "Test"
   },
+  "createdAt": "2024-04-17T19:40:53.716Z",
   "flags": {
     "73fcc84c69e49e31fe16a29b2b1f803b": {
       "key": "73fcc84c69e49e31fe16a29b2b1f803b",
@@ -405,6 +405,76 @@
             {
               "variationKey": "NQ==",
               "shards": []
+            }
+          ]
+        }
+      ]
+    },
+    "1d23cbd300895799fda462f81ec4e135": {
+      "key": "1d23cbd300895799fda462f81ec4e135",
+      "enabled": true,
+      "variationType": "STRING",
+      "totalShards": 10000,
+      "variations": {
+        "ZW1wdHlfc3RyaW5n": {
+          "key": "ZW1wdHlfc3RyaW5n",
+          "value": ""
+        },
+        "bm9uX2VtcHR5": {
+          "key": "bm9uX2VtcHR5",
+          "value": "bm9uX2VtcHR5"
+        }
+      },
+      "allocations": [
+        {
+          "key": "YWxsb2NhdGlvbi1lbXB0eQ==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "05015086bdd8402218f6aad6528bef08",
+                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
+                  "value": "VVM="
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "ZW1wdHlfc3RyaW5n",
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ],
+                  "salt": "YWxsb2NhdGlvbi1lbXB0eS1zaGFyZHM="
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0",
+          "doLog": true,
+          "rules": [],
+          "splits": [
+            {
+              "variationKey": "bm9uX2VtcHR5",
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ],
+                  "salt": "YWxsb2NhdGlvbi1lbXB0eS1zaGFyZHM="
+                }
+              ]
             }
           ]
         }
@@ -1188,92 +1258,14 @@
       ]
     },
     "eab426e60c686e18da04981a4d53c837": {
-      "allocations": [
-        {
-          "doLog": true,
-          "key": "YWxsb2NhdGlvbi10ZXN0",
-          "splits": [
-            {
-              "shards": [
-                {
-                  "ranges": [
-                    {
-                      "end": 2500,
-                      "start": 0
-                    }
-                  ],
-                  "salt": "c3BsaXQtanNvbi1mbGFn"
-                }
-              ],
-              "variationKey": "ZGU="
-            },
-            {
-              "shards": [
-                {
-                  "ranges": [
-                    {
-                      "end": 5000,
-                      "start": 2500
-                    }
-                  ],
-                  "salt": "c3BsaXQtanNvbi1mbGFn"
-                }
-              ],
-              "variationKey": "dWE="
-            },
-            {
-              "shards": [
-                {
-                  "ranges": [
-                    {
-                      "end": 7500,
-                      "start": 5000
-                    }
-                  ],
-                  "salt": "c3BsaXQtanNvbi1mbGFn"
-                }
-              ],
-              "variationKey": "emg="
-            },
-            {
-              "shards": [
-                {
-                  "ranges": [
-                    {
-                      "end": 10000,
-                      "start": 7500
-                    }
-                  ],
-                  "salt": "c3BsaXQtanNvbi1mbGFn"
-                }
-              ],
-              "variationKey": "ZW1vamk="
-            }
-          ]
-        },
-        {
-          "doLog": false,
-          "key": "YWxsb2NhdGlvbi1kZWZhdWx0",
-          "splits": [
-            {
-              "shards": [],
-              "variationKey": "ZGU="
-            }
-          ]
-        }
-      ],
-      "enabled": true,
       "key": "eab426e60c686e18da04981a4d53c837",
-      "totalShards": 10000,
+      "enabled": true,
       "variationType": "JSON",
+      "totalShards": 10000,
       "variations": {
         "ZGU=": {
           "key": "ZGU=",
           "value": "eyJhIjogImvDvG1tZXJ0IiwgImIiOiAic2Now7ZuIn0="
-        },
-        "ZW1vamk=": {
-          "key": "ZW1vamk=",
-          "value": "eyJhIjogIvCfpJciLCAiYiI6ICLwn4y4In0="
         },
         "dWE=": {
           "key": "dWE=",
@@ -1282,79 +1274,1878 @@
         "emg=": {
           "key": "emg=",
           "value": "eyJhIjogIueFp+mhviIsICJiIjogIua8guS6riJ9"
-        }
-      }
-    },
-    "1d23cbd300895799fda462f81ec4e135": {
-      "key": "1d23cbd300895799fda462f81ec4e135",
-      "comment": "Testing the empty string as a variation value",
-      "enabled": true,
-      "variationType": "STRING",
-      "variations": {
-        "ZW1wdHlfc3RyaW5n": {
-          "key": "ZW1wdHlfc3RyaW5n",
-          "value": ""
         },
-        "bm9uX2VtcHR5": {
-          "key": "bm9uX2VtcHR5",
-          "value": "bm9uX2VtcHR5"
+        "ZW1vamk=": {
+          "key": "ZW1vamk=",
+          "value": "eyJhIjogIvCfpJciLCAiYiI6ICLwn4y4In0="
         }
       },
       "allocations": [
         {
-          "key": "YWxsb2NhdGlvbi1lbXB0eQ==",
+          "key": "YWxsb2NhdGlvbi10ZXN0",
+          "doLog": true,
+          "splits": [
+            {
+              "variationKey": "ZGU=",
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 2500
+                    }
+                  ],
+                  "salt": "c3BsaXQtanNvbi1mbGFn"
+                }
+              ]
+            },
+            {
+              "variationKey": "dWE=",
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "start": 2500,
+                      "end": 5000
+                    }
+                  ],
+                  "salt": "c3BsaXQtanNvbi1mbGFn"
+                }
+              ]
+            },
+            {
+              "variationKey": "emg=",
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "start": 5000,
+                      "end": 7500
+                    }
+                  ],
+                  "salt": "c3BsaXQtanNvbi1mbGFn"
+                }
+              ]
+            },
+            {
+              "variationKey": "ZW1vamk=",
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "start": 7500,
+                      "end": 10000
+                    }
+                  ],
+                  "salt": "c3BsaXQtanNvbi1mbGFn"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi1kZWZhdWx0",
+          "doLog": false,
+          "splits": [
+            {
+              "variationKey": "ZGU=",
+              "shards": []
+            }
+          ]
+        }
+      ]
+    },
+    "de1a3767d9f3993c1620300aebd320aa": {
+      "key": "de1a3767d9f3993c1620300aebd320aa",
+      "enabled": true,
+      "variationType": "STRING",
+      "totalShards": 10000,
+      "variations": {
+        "c3RyaW5nX3dpdGhfc3BhY2Vz": {
+          "key": "c3RyaW5nX3dpdGhfc3BhY2Vz",
+          "value": "IGEgYiBjIGQgZSBmIA=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfc3BhY2U=": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfc3BhY2U=",
+          "value": "IA=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9zcGFjZXM=": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9zcGFjZXM=",
+          "value": "ICAgICAgIA=="
+        },
+        "c3RyaW5nX3dpdGhfZG90cw==": {
+          "key": "c3RyaW5nX3dpdGhfZG90cw==",
+          "value": "LmEuYi5jLmQuZS5mLg=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfZG90": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfZG90",
+          "value": "Lg=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9kb3Rz": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9kb3Rz",
+          "value": "Li4uLi4uLg=="
+        },
+        "c3RyaW5nX3dpdGhfY29tYXM=": {
+          "key": "c3RyaW5nX3dpdGhfY29tYXM=",
+          "value": "LGEsYixjLGQsZSxmLA=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfY29tYQ==": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfY29tYQ==",
+          "value": "LA=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9jb21hcw==": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9jb21hcw==",
+          "value": "LCwsLCwsLA=="
+        },
+        "c3RyaW5nX3dpdGhfY29sb25z": {
+          "key": "c3RyaW5nX3dpdGhfY29sb25z",
+          "value": "OmE6YjpjOmQ6ZTpmOg=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfY29sb24=": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfY29sb24=",
+          "value": "Og=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9jb2xvbnM=": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9jb2xvbnM=",
+          "value": "Ojo6Ojo6Og=="
+        },
+        "c3RyaW5nX3dpdGhfc2VtaWNvbG9ucw==": {
+          "key": "c3RyaW5nX3dpdGhfc2VtaWNvbG9ucw==",
+          "value": "O2E7YjtjO2Q7ZTtmOw=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfc2VtaWNvbG9u": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfc2VtaWNvbG9u",
+          "value": "Ow=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9zZW1pY29sb25z": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9zZW1pY29sb25z",
+          "value": "Ozs7Ozs7Ow=="
+        },
+        "c3RyaW5nX3dpdGhfc2xhc2hlcw==": {
+          "key": "c3RyaW5nX3dpdGhfc2xhc2hlcw==",
+          "value": "L2EvYi9jL2QvZS9mLw=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfc2xhc2g=": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfc2xhc2g=",
+          "value": "Lw=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9zbGFzaGVz": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9zbGFzaGVz",
+          "value": "Ly8vLy8vLw=="
+        },
+        "c3RyaW5nX3dpdGhfZGFzaGVz": {
+          "key": "c3RyaW5nX3dpdGhfZGFzaGVz",
+          "value": "LWEtYi1jLWQtZS1mLQ=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfZGFzaA==": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfZGFzaA==",
+          "value": "LQ=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9kYXNoZXM=": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9kYXNoZXM=",
+          "value": "LS0tLS0tLQ=="
+        },
+        "c3RyaW5nX3dpdGhfdW5kZXJzY29yZXM=": {
+          "key": "c3RyaW5nX3dpdGhfdW5kZXJzY29yZXM=",
+          "value": "X2FfYl9jX2RfZV9mXw=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfdW5kZXJzY29yZQ==": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfdW5kZXJzY29yZQ==",
+          "value": "Xw=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV91bmRlcnNjb3Jlcw==": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV91bmRlcnNjb3Jlcw==",
+          "value": "X19fX19fXw=="
+        },
+        "c3RyaW5nX3dpdGhfcGx1c19zaWducw==": {
+          "key": "c3RyaW5nX3dpdGhfcGx1c19zaWducw==",
+          "value": "K2ErYitjK2QrZStmKw=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfcGx1c19zaWdu": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfcGx1c19zaWdu",
+          "value": "Kw=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9wbHVzX3NpZ25z": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9wbHVzX3NpZ25z",
+          "value": "KysrKysrKw=="
+        },
+        "c3RyaW5nX3dpdGhfZXF1YWxfc2lnbnM=": {
+          "key": "c3RyaW5nX3dpdGhfZXF1YWxfc2lnbnM=",
+          "value": "PWE9Yj1jPWQ9ZT1mPQ=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfZXF1YWxfc2lnbg==": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfZXF1YWxfc2lnbg==",
+          "value": "PQ=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9lcXVhbF9zaWducw==": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9lcXVhbF9zaWducw==",
+          "value": "PT09PT09PQ=="
+        },
+        "c3RyaW5nX3dpdGhfZG9sbGFyX3NpZ25z": {
+          "key": "c3RyaW5nX3dpdGhfZG9sbGFyX3NpZ25z",
+          "value": "JGEkYiRjJGQkZSRmJA=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfZG9sbGFyX3NpZ24=": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfZG9sbGFyX3NpZ24=",
+          "value": "JA=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9kb2xsYXJfc2lnbnM=": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9kb2xsYXJfc2lnbnM=",
+          "value": "JCQkJCQkJA=="
+        },
+        "c3RyaW5nX3dpdGhfYXRfc2lnbnM=": {
+          "key": "c3RyaW5nX3dpdGhfYXRfc2lnbnM=",
+          "value": "QGFAYkBjQGRAZUBmQA=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfYXRfc2lnbg==": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfYXRfc2lnbg==",
+          "value": "QA=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9hdF9zaWducw==": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9hdF9zaWducw==",
+          "value": "QEBAQEBAQA=="
+        },
+        "c3RyaW5nX3dpdGhfYW1wX3NpZ25z": {
+          "key": "c3RyaW5nX3dpdGhfYW1wX3NpZ25z",
+          "value": "JmEmYiZjJmQmZSZmJg=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfYW1wX3NpZ24=": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfYW1wX3NpZ24=",
+          "value": "Jg=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9hbXBfc2lnbnM=": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9hbXBfc2lnbnM=",
+          "value": "JiYmJiYmJg=="
+        },
+        "c3RyaW5nX3dpdGhfaGFzaF9zaWducw==": {
+          "key": "c3RyaW5nX3dpdGhfaGFzaF9zaWducw==",
+          "value": "I2EjYiNjI2QjZSNmIw=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfaGFzaF9zaWdu": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfaGFzaF9zaWdu",
+          "value": "Iw=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9oYXNoX3NpZ25z": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9oYXNoX3NpZ25z",
+          "value": "IyMjIyMjIw=="
+        },
+        "c3RyaW5nX3dpdGhfcGVyY2VudGFnZV9zaWducw==": {
+          "key": "c3RyaW5nX3dpdGhfcGVyY2VudGFnZV9zaWducw==",
+          "value": "JWElYiVjJWQlZSVmJQ=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfcGVyY2VudGFnZV9zaWdu": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfcGVyY2VudGFnZV9zaWdu",
+          "value": "JQ=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9wZXJjZW50YWdlX3NpZ25z": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9wZXJjZW50YWdlX3NpZ25z",
+          "value": "JSUlJSUlJQ=="
+        },
+        "c3RyaW5nX3dpdGhfdGlsZGVfc2lnbnM=": {
+          "key": "c3RyaW5nX3dpdGhfdGlsZGVfc2lnbnM=",
+          "value": "fmF+Yn5jfmR+ZX5mfg=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfdGlsZGVfc2lnbg==": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfdGlsZGVfc2lnbg==",
+          "value": "fg=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV90aWxkZV9zaWducw==": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV90aWxkZV9zaWducw==",
+          "value": "fn5+fn5+fg=="
+        },
+        "c3RyaW5nX3dpdGhfYXN0ZXJpeF9zaWducw==": {
+          "key": "c3RyaW5nX3dpdGhfYXN0ZXJpeF9zaWducw==",
+          "value": "KmEqYipjKmQqZSpmKg=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfYXN0ZXJpeF9zaWdu": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfYXN0ZXJpeF9zaWdu",
+          "value": "Kg=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9hc3Rlcml4X3NpZ25z": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9hc3Rlcml4X3NpZ25z",
+          "value": "KioqKioqKg=="
+        },
+        "c3RyaW5nX3dpdGhfc2luZ2xlX3F1b3Rlcw==": {
+          "key": "c3RyaW5nX3dpdGhfc2luZ2xlX3F1b3Rlcw==",
+          "value": "J2EnYidjJ2QnZSdmJw=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfc2luZ2xlX3F1b3Rl": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfc2luZ2xlX3F1b3Rl",
+          "value": "Jw=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9zaW5nbGVfcXVvdGVz": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9zaW5nbGVfcXVvdGVz",
+          "value": "JycnJycnJw=="
+        },
+        "c3RyaW5nX3dpdGhfcXVlc3Rpb25fbWFya3M=": {
+          "key": "c3RyaW5nX3dpdGhfcXVlc3Rpb25fbWFya3M=",
+          "value": "P2E/Yj9jP2Q/ZT9mPw=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfcXVlc3Rpb25fbWFyaw==": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfcXVlc3Rpb25fbWFyaw==",
+          "value": "Pw=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9xdWVzdGlvbl9tYXJrcw==": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9xdWVzdGlvbl9tYXJrcw==",
+          "value": "Pz8/Pz8/Pw=="
+        },
+        "c3RyaW5nX3dpdGhfZXhjbGFtYXRpb25fbWFya3M=": {
+          "key": "c3RyaW5nX3dpdGhfZXhjbGFtYXRpb25fbWFya3M=",
+          "value": "IWEhYiFjIWQhZSFmIQ=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfZXhjbGFtYXRpb25fbWFyaw==": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfZXhjbGFtYXRpb25fbWFyaw==",
+          "value": "IQ=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9leGNsYW1hdGlvbl9tYXJrcw==": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9leGNsYW1hdGlvbl9tYXJrcw==",
+          "value": "ISEhISEhIQ=="
+        },
+        "c3RyaW5nX3dpdGhfb3BlbmluZ19wYXJlbnRoZXNlcw==": {
+          "key": "c3RyaW5nX3dpdGhfb3BlbmluZ19wYXJlbnRoZXNlcw==",
+          "value": "KGEoYihjKGQoZShmKA=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfb3BlbmluZ19wYXJlbnRoZXNl": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfb3BlbmluZ19wYXJlbnRoZXNl",
+          "value": "KA=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9vcGVuaW5nX3BhcmVudGhlc2Vz": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9vcGVuaW5nX3BhcmVudGhlc2Vz",
+          "value": "KCgoKCgoKA=="
+        },
+        "c3RyaW5nX3dpdGhfY2xvc2luZ19wYXJlbnRoZXNlcw==": {
+          "key": "c3RyaW5nX3dpdGhfY2xvc2luZ19wYXJlbnRoZXNlcw==",
+          "value": "KWEpYiljKWQpZSlmKQ=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9vbmVfY2xvc2luZ19wYXJlbnRoZXNl": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9vbmVfY2xvc2luZ19wYXJlbnRoZXNl",
+          "value": "KQ=="
+        },
+        "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9jbG9zaW5nX3BhcmVudGhlc2Vz": {
+          "key": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9jbG9zaW5nX3BhcmVudGhlc2Vz",
+          "value": "KSkpKSkpKQ=="
+        }
+      },
+      "allocations": [
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX3NwYWNlcw==",
+          "doLog": true,
           "rules": [
             {
               "conditions": [
                 {
-                  "attribute": "e909c2d7067ea37437cf97fe11d91bd0",
-                  "operator": "05015086bdd8402218f6aad6528bef08",
-                  "value": "VVM="
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "6012b5f3fdae25d9094700420e1e34de",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
                 }
               ]
             }
           ],
           "splits": [
             {
-              "variationKey": "ZW1wdHlfc3RyaW5n",
-              "shards": [
-                {
-                  "salt": "YWxsb2NhdGlvbi1lbXB0eS1zaGFyZHM=",
-                  "ranges": [
-                    {
-                      "start": 0,
-                      "end": 10000
-                    }
-                  ]
-                }
-              ]
+              "variationKey": "c3RyaW5nX3dpdGhfc3BhY2Vz",
+              "shards": []
             }
-          ],
-          "doLog": true
+          ]
         },
         {
-          "key": "YWxsb2NhdGlvbi10ZXN0",
-          "rules": [],
-          "splits": [
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX3NwYWNl",
+          "doLog": true,
+          "rules": [
             {
-              "variationKey": "bm9uX2VtcHR5",
-              "shards": [
+              "conditions": [
                 {
-                  "salt": "YWxsb2NhdGlvbi1lbXB0eS1zaGFyZHM=",
-                  "ranges": [
-                    {
-                      "start": 0,
-                      "end": 10000
-                    }
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "7520b8214026f64f2c89b4fc8b8825b8",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
                   ]
                 }
               ]
             }
           ],
-          "doLog": true
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfc3BhY2U=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfc3BhY2Vz",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "6450cd1b1b0e0ee591f76566f4a74d01",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9zcGFjZXM=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX2RvdHM=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "b816cbbf077e32f3ae5a5deb96bc5e40",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfZG90cw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX2RvdA==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "7520be130e5977636a5e69f89f4c9987",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfZG90",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfZG90cw==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "ede683b3939bae0e683312b15918d304",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9kb3Rz",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX2NvbWFz",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "78644a7bc4d33e35f7f258ac5524ddce",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfY29tYXM=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX2NvbWE=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "8dec459597a9db2c4d1f528d038e0c3d",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfY29tYQ==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfY29tYXM=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "4d36d20499443fb3b348a2e4b4e045eb",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9jb21hcw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX2NvbG9ucw==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "7196fbee634fb38a7e8d3f5cbcea4865",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfY29sb25z",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX2NvbG9u",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "0017d628e2313bd2de53b7a76279324b",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfY29sb24=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfY29sb25z",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "add442d63f11488aead4a8e4d1825a17",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9jb2xvbnM=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX3NlbWljb2xvbnM=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "29bfcec952a509971ff2ae878af7b7c3",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfc2VtaWNvbG9ucw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX3NlbWljb2xvbg==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "67cfc136488da373cabbb56e8f243b3e",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfc2VtaWNvbG9u",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfc2VtaWNvbG9ucw==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "da6f8b154ff58cf1689493e718be02a6",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9zZW1pY29sb25z",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX3NsYXNoZXM=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "0973ffc4fe97a23ced895bd2a45736d8",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfc2xhc2hlcw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX3NsYXNo",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "b5eab4e5c4404abcf346ee6672677eb7",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfc2xhc2g=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfc2xhc2hlcw==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "789d96046c947c02b1aba5ccb35c7e18",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9zbGFzaGVz",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX2Rhc2hlcw==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "a85d3f44ef7363adc0e6330331eb37bb",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfZGFzaGVz",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX2Rhc2g=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "74df5ae6328deb9fb4a4ee35dd528eaf",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfZGFzaA==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfZGFzaGVz",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "8e58eba3f98790462cc9826a58bb724f",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9kYXNoZXM=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX3VuZGVyc2NvcmVz",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "c8a9bd32c740825bc1bab5afda604c48",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfdW5kZXJzY29yZXM=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX3VuZGVyc2NvcmU=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "71b6051d3cb22810aa4f71b4357e57ab",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfdW5kZXJzY29yZQ==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfdW5kZXJzY29yZXM=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "86cf4300f7ab1c9f2ef05a446a0fabe1",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV91bmRlcnNjb3Jlcw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX3BsdXNfc2lnbnM=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "be8579389961ccaef43ee53fd2be1b6b",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfcGx1c19zaWducw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX3BsdXNfc2lnbg==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "666a106655cf9b8e78f6940f9c23b421",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfcGx1c19zaWdu",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfcGx1c19zaWducw==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "3da52458f9adf26081d02c4974a52904",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9wbHVzX3NpZ25z",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX2VxdWFsX3NpZ25z",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "e66d9fbaa933ab574b31e58c8771a3aa",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfZXF1YWxfc2lnbnM=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX2VxdWFsX3NpZ24=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "92cba9a9395d1879734e5f876f0aba42",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfZXF1YWxfc2lnbg==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfZXF1YWxfc2lnbnM=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "77b3873d23f83bc0d8e56554d91670b2",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9lcXVhbF9zaWducw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX2RvbGxhcl9zaWducw==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "e1151a808f081ff31aaebba94db9da5e",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfZG9sbGFyX3NpZ25z",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX2RvbGxhcl9zaWdu",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "084f2b4a9a1a67cdbc8931fd4a18b3ea",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfZG9sbGFyX3NpZ24=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfZG9sbGFyX3NpZ25z",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "0da9f7cc8bfea5f95e17a4b3e56813d0",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9kb2xsYXJfc2lnbnM=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX2F0X3NpZ25z",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "9e1e061223d86d9b9919de937887e821",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfYXRfc2lnbnM=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX2F0X3NpZ24=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "c37509ab4724c132f30a446256bba243",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfYXRfc2lnbg==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfYXRfc2lnbnM=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "6589cccac4677bb443e1cac52dd3fd95",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9hdF9zaWducw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX2FtcF9zaWducw==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "9d5cb1ed1d24728c63b333ab10e4de68",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfYW1wX3NpZ25z",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX2FtcF9zaWdu",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "dc458d5013caf60dcb821a1a62cdb8b1",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfYW1wX3NpZ24=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfYW1wX3NpZ25z",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "936bda8989074c8b79fa75a9b6f82528",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9hbXBfc2lnbnM=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX2hhc2hfc2lnbnM=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "cef7eb322d282a3d5ba54b4026495d3a",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfaGFzaF9zaWducw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX2hhc2hfc2lnbg==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "2026f4d65474d51b0adb6d4b8840c8d6",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfaGFzaF9zaWdu",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfaGFzaF9zaWducw==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "eb7a011116edd4efa3423cf0f3a465b1",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9oYXNoX3NpZ25z",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX3BlcmNlbnRhZ2Vfc2lnbnM=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "206ab862f2c2fbf290b0a1bee37a2684",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfcGVyY2VudGFnZV9zaWducw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX3BlcmNlbnRhZ2Vfc2lnbg==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "d6cd9b82d32bb7fb357b18729191010e",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfcGVyY2VudGFnZV9zaWdu",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfcGVyY2VudGFnZV9zaWducw==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "27d44941a2ce55477ff057890c3fc05d",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9wZXJjZW50YWdlX3NpZ25z",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX3RpbGRlX3NpZ25z",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "5e034525d53c7bb072a73cfd8c7b53e5",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfdGlsZGVfc2lnbnM=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX3RpbGRlX3NpZ24=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "91519207f62a80c861583ac9f877466b",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfdGlsZGVfc2lnbg==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfdGlsZGVfc2lnbnM=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "fb1bdbffa1892d0a6160333498b3a782",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV90aWxkZV9zaWducw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX2FzdGVyaXhfc2lnbnM=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "4b365b0c24a2cdd9cb58a73fbb09d6f7",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfYXN0ZXJpeF9zaWducw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX2FzdGVyaXhfc2lnbg==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "b6820a87e4c0a9a1467a4f8a7da1f1e1",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfYXN0ZXJpeF9zaWdu",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfYXN0ZXJpeF9zaWducw==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "3b8e8b8f2a76a3e5d80207658a8c11c8",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9hc3Rlcml4X3NpZ25z",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX3NpbmdsZV9xdW90ZXM=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "89647fb00d7a1944ef64e554c9e87e1d",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfc2luZ2xlX3F1b3Rlcw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX3NpbmdsZV9xdW90ZQ==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "31d52f5ef86da32b02351ccb8e9c324f",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfc2luZ2xlX3F1b3Rl",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfc2luZ2xlX3F1b3Rlcw==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "fe81d7e768e6dc8defe7360d289f39d5",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9zaW5nbGVfcXVvdGVz",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX3F1ZXN0aW9uX21hcmtz",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "b0e8d750bcfeeec73385e9911a0792d5",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfcXVlc3Rpb25fbWFya3M=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX3F1ZXN0aW9uX21hcms=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "74e2f9bcf9bc048bd4acdda4ca9aaf8e",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfcXVlc3Rpb25fbWFyaw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfcXVlc3Rpb25fbWFya3M=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "8a1d456f3bdd88898e3919ba8631ae2f",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9xdWVzdGlvbl9tYXJrcw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX2V4Y2xhbWF0aW9uX21hcmtz",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "82c80b90eb021bf7d2461782039666e2",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfZXhjbGFtYXRpb25fbWFya3M=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX2V4Y2xhbWF0aW9uX21hcms=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "4608490528dc4ae9397a89edbb3237af",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfZXhjbGFtYXRpb25fbWFyaw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfZXhjbGFtYXRpb25fbWFya3M=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "dd8bb958307fc147b1f799d51888b962",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9leGNsYW1hdGlvbl9tYXJrcw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29wZW5pbmdfcGFyZW50aGVzZXM=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "069d8f4cdc0c0d6a2b3210d15f4e7b55",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb3BlbmluZ19wYXJlbnRoZXNlcw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX29wZW5pbmdfcGFyZW50aGVzZQ==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "649a4637860b4bd4ec9bb8e128ba9635",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfb3BlbmluZ19wYXJlbnRoZXNl",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfb3BlbmluZ19wYXJlbnRoZXNlcw==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "1dbb847658dec6045479499da9c0ab14",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9vcGVuaW5nX3BhcmVudGhlc2Vz",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX2Nsb3NpbmdfcGFyZW50aGVzZXM=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "663d8c5d7428b21da9a589f899d1b355",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfY2xvc2luZ19wYXJlbnRoZXNlcw==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfb25lX2Nsb3NpbmdfcGFyZW50aGVzZQ==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "b4a5a171b5babc40611979c6616ca7f0",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9vbmVfY2xvc2luZ19wYXJlbnRoZXNl",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YWxsb2NhdGlvbi10ZXN0LXN0cmluZ193aXRoX29ubHlfbXVsdGlwbGVfY2xvc2luZ19wYXJlbnRoZXNlcw==",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "9d491fc1d4db662214cc1f91a128bf39",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9jbG9zaW5nX3BhcmVudGhlc2Vz",
+              "shards": []
+            }
+          ]
         }
-      ],
-      "totalShards": 10000
+      ]
     }
   }
 }
