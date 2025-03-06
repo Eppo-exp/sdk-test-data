@@ -43,7 +43,7 @@ export class AppController {
     const currentInstance = getInstance();
     currentInstance.stopPolling();
     await init({
-      apiKey: 'test',
+      apiKey: process.env.EPPO_API_KEY || 'NOKEYSPECIFIED',
       assignmentLogger: getLogger(),
       pollAfterFailedInitialization: true,
       banditLogger: getLogger(),

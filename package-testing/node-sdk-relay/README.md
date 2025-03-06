@@ -31,5 +31,3 @@ $ yarn run start:prod
 # unit tests
 $ yarn run test
 ```
-
-
