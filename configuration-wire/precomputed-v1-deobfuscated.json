@@ -75,6 +75,38 @@
                     },
                     "doLog": true
                 }
+            },
+            "bandits": {
+                "string-flag": {
+                    "banditKey": "recommendation-model-v1",
+                    "action": "show_red_button",
+                    "actionProbability": 0.85,
+                    "optimalityGap": 0.12,
+                    "modelVersion": "v2.3.1",
+                    "actionNumericAttributes": {
+                        "expectedConversion": 0.23,
+                        "expectedRevenue": 15.75
+                    },
+                    "actionCategoricalAttributes": {
+                        "category": "promotion",
+                        "placement": "home_screen"
+                    }
+                },
+                "string-flag-with-extra-logging": {
+                    "banditKey": "content-recommendation",
+                    "action": "featured_content",
+                    "actionProbability": 0.72,
+                    "optimalityGap": 0.08,
+                    "modelVersion": "v1.5.0",
+                    "actionNumericAttributes": {
+                        "expectedEngagement": 0.45,
+                        "timeOnPage": 120.5
+                    },
+                    "actionCategoricalAttributes": {
+                        "contentType": "article",
+                        "theme": "dark"
+                    }
+                }
             }
         }
     }
