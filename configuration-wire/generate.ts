@@ -5,7 +5,7 @@ import {createHash} from "node:crypto";
 function hashAndEncode(jsonData: { precomputed: { response: any; }; }) {
     const salt = jsonData.precomputed.response.salt;
     const flags = jsonData.precomputed.response.flags;
-
+    const bandits = jsonData.precomputed.response.bandits;
     // Process each flag
     for (const [flagKey, flag] of Object.entries(flags)) {
         // Hash flag key with salt
@@ -39,6 +39,56 @@ function hashAndEncode(jsonData: { precomputed: { response: any; }; }) {
         // Replace the original flag key with hashed key
         flags[hashedKey] = flag;
         delete flags[flagKey];
+    }
+
+    // Process each bandit
+    for (const [banditKey, bandit] of Object.entries(jsonData.precomputed.response.bandits)) {
+        // Hash flag key with salt
+        const hashedKey = createHash('md5')
+            .update(salt + banditKey)
+            .digest('hex');
+
+        // Base64 encode specific fields
+        // @ts-ignore
+        bandit.banditKey = Buffer.from(bandit.banditKey).toString('base64');
+        // @ts-ignore
+        bandit.action = Buffer.from(bandit.action).toString('base64');
+        // @ts-ignore
+        bandit.modelVersion = Buffer.from(bandit.modelVersion).toString('base64');
+        
+        // Process actionNumericAttributes
+        // @ts-ignore
+        if (bandit.actionNumericAttributes && Object.keys(bandit.actionNumericAttributes).length > 0) {
+            const newNumericAttributes = {};
+            // @ts-ignore
+            for (const [key, value] of Object.entries(bandit.actionNumericAttributes)) {
+                const encodedKey = Buffer.from(key).toString('base64');
+                const encodedValue = Buffer.from(String(value)).toString('base64');
+                // @ts-ignore
+                newNumericAttributes[encodedKey] = encodedValue;
+            }
+            // @ts-ignore
+            bandit.actionNumericAttributes = newNumericAttributes;
+        }
+        
+        // Process actionCategoricalAttributes
+        // @ts-ignore
+        if (bandit.actionCategoricalAttributes && Object.keys(bandit.actionCategoricalAttributes).length > 0) {
+            const newCategoricalAttributes = {};
+            // @ts-ignore
+            for (const [key, value] of Object.entries(bandit.actionCategoricalAttributes)) {
+                const encodedKey = Buffer.from(key).toString('base64');
+                const encodedValue = Buffer.from(String(value)).toString('base64');
+                // @ts-ignore
+                newCategoricalAttributes[encodedKey] = encodedValue;
+            }
+            // @ts-ignore
+            bandit.actionCategoricalAttributes = newCategoricalAttributes;
+        }
+     
+        // Replace the original bandit key with hashed key
+        bandits[hashedKey] = bandit;
+        delete bandits[banditKey];
     }
 
     // Set obfuscated to true and stringify flags
