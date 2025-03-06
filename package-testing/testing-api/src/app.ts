@@ -16,9 +16,7 @@ class App {
     this.middlewares();
     this.routes();
   }
-  options: cors.CorsOptions = {
-    origin: ['*'],
-  };
+
   middlewares() {
     this.server.use(cors());
     this.server.use(express.json());
