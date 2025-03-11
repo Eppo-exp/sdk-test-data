@@ -74,6 +74,14 @@
                         "holdoutVariation": "all_shipped"
                     },
                     "doLog": true
+                },
+                "not-a-bandit-flag": {
+                    "allocationKey": "allocation-129",
+                    "variationKey": "variation-129",
+                    "variationType": "STRING",
+                    "variationValue": "control",
+                    "extraLogging": {},
+                    "doLog": true
                 }
             },
             "bandits": {
