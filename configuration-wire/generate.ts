@@ -44,9 +44,10 @@ function hashAndEncode(jsonData: { precomputed: { response: any } }) {
   }
 
   // Process each bandit
-  for (const [banditKey, bandit] of Object.entries(
+  for (const [banditKey, _bandit] of Object.entries(
     jsonData.precomputed.response.bandits
   )) {
+    const bandit = _bandit as any;
     // Hash flag key with salt
     const hashedKey = createHash('md5')
       .update(salt + banditKey)
