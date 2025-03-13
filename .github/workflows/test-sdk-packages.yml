@@ -40,6 +40,6 @@ jobs:
     uses: ./.github/workflows/test-server-sdk.yml
     with:
       platform: ${{ matrix.platform }}
-      sdkName: 'eppo/node-server-sdk'
+      sdkName: 'node-server-sdk'
       sdkRelayDir: 'node-sdk-relay'
     secrets: inherit
