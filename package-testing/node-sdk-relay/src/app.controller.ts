@@ -4,6 +4,7 @@ import { AssignmentDto, BanditDto, BanditTestRunnerInput } from './types';
 import { EppoClientProxy } from './eppoClientProxy';
 import { BanditActions, getInstance, init } from '@eppo/node-server-sdk';
 import getLogger from './main';
+import { sdkName, sdkVersion } from '@eppo/node-server-sdk/dist/sdk-data';
 
 @Controller()
 export class AppController {
@@ -13,6 +14,11 @@ export class AppController {
   @Get()
   getHello(): string {
     return this.appService.getHello();
+  }
+
+  @Get('sdk/details')
+  getSdkDetails() {
+    return { sdkName, sdkVersion, supportsBandits: true, supportsDynamicTyping: true };
   }
 
   @Post('flags/v1/assignment')

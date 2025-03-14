@@ -40,10 +40,8 @@ export default class App {
 
     const sdkRelay = new ClientSDKRelay();
     const sdkInfo = await sdkRelay.isReady();
-    if ('errorMessage' in sdkInfo) {
-      const error = sdkInfo as SDKConnectionFailure;
-      log(red('SDK Relay Client failed to load: '));
-      log(red(error.errorMessage));
+
+    if (!this.validateSdkInfo(sdkInfo)) {
       return false;
     }
 
@@ -58,16 +56,32 @@ export default class App {
 
     const sdkRelay = new ServerSDKRelay(this.config.sdkServer, this.config.sdkName);
     const sdkInfo = await sdkRelay.isReady();
-    if ('errorMessage' in sdkInfo && typeof sdkInfo.errorMessage === 'string') {
-      const error = sdkInfo as SDKConnectionFailure;
-      log(red('SDK Relay Server failed to load: '));
-      log(red(error.errorMessage));
+
+    if (!this.validateSdkInfo(sdkInfo)) {
       return false;
     }
 
     log(`Posting test cases to ${this.config.sdkName} relay server at ${this.config.sdkServer}`);
 
     return this.innerRun(sdkRelay);
+  }
+
+  private validateSdkInfo(sdkInfo: SDKInfo | SDKConnectionFailure): boolean {
+    if ('errorMessage' in sdkInfo) {
+      const error = sdkInfo as SDKConnectionFailure;
+      log(red('SDK Relay failed to load: '));
+      log(red(error.errorMessage));
+      return false;
+    }
+
+    if (sdkInfo && (sdkInfo as SDKInfo).sdkName !== this.config.sdkName) {
+      const actualName = (sdkInfo as SDKInfo).sdkName;
+      // Throw an error as setting the test scenarios won't work if the names don't match.
+      log(red(`SDK name ${actualName} does not match expected ${this.config.sdkName}.`));
+      return false;
+    }
+
+    return true;
   }
 
   private printHeader(): void {
@@ -283,9 +297,13 @@ export default class App {
                 message: `Value ${JSON.stringify(result.result)} did not match expected ${JSON.stringify(subject.assignment)}`,
               });
 
-              logIndent(1, red('fail') + ` ${testCaseLabel}:\n` + 
-                `  Expected: ${JSON.stringify(subject.assignment, null, 2)}\n` +
-                `  Received: ${JSON.stringify(result.result, null, 2)}`);
+              logIndent(
+                1,
+                red('fail') +
+                  ` ${testCaseLabel}:\n` +
+                  `  Expected: ${JSON.stringify(subject.assignment, null, 2)}\n` +
+                  `  Received: ${JSON.stringify(result.result, null, 2)}`,
+              );
             } else {
               testCaseResult.assertions = 1;
 
