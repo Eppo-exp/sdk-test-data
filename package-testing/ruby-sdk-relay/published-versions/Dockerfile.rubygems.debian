@@ -1,0 +1,15 @@
+FROM ruby:3.3-slim-bullseye
+
+# Create a test user
+RUN useradd -m testuser
+
+# Copy script and set permissions while still root
+COPY test-gem.sh /home/testuser/
+RUN chmod +x /home/testuser/test-gem.sh && \
+    chown testuser:testuser /home/testuser/test-gem.sh
+
+# Switch to test user
+USER testuser
+WORKDIR /home/testuser
+
+CMD ["bash", "/home/testuser/test-gem.sh"]
