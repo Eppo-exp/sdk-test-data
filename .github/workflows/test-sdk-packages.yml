@@ -43,3 +43,15 @@ jobs:
       sdkName: 'node-server-sdk'
       sdkRelayDir: 'node-sdk-relay'
     secrets: inherit
+
+  test-ruby-sdk:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: ['linux']
+    uses: ./.github/workflows/test-server-sdk.yml
+    with:
+      platform: ${{ matrix.platform }}
+      sdkName: 'eppo/ruby-sdk'
+      sdkRelayDir: 'ruby-sdk-relay'
+    secrets: inherit
