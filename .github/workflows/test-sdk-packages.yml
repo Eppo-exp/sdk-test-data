@@ -28,7 +28,7 @@ jobs:
     uses: ./.github/workflows/test-server-sdk.yml
     with:
       platform: ${{ matrix.platform }}
-      sdkName: 'eppo/python-sdk'
+      sdkName: 'python-sdk'
       sdkRelayDir: 'python-sdk-relay'
     secrets: inherit
 
