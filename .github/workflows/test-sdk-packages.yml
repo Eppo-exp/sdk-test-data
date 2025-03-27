@@ -64,6 +64,6 @@ jobs:
     uses: ./.github/workflows/test-server-sdk.yml
     with:
       platform: ${{ matrix.platform }}
-      sdkName: 'eppo/go-sdk'
+      sdkName: 'go-sdk'
       sdkRelayDir: 'go-sdk-relay'
     secrets: inherit
