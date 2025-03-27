@@ -2,16 +2,8 @@
 
 Post test case files to this server and check the results against what's expected.
 
-## Running locally with Docker
-
-Build the docker image:
+## Build and run
 
 ```shell
-docker build -t Eppo-exp/python-sdk-relay .
-```
-
-Run the docker container:
-
-```shell
-./docker-run.sh
+./build-and-run.sh
 ```

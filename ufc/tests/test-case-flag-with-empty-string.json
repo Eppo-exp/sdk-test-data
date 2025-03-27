@@ -1,0 +1,73 @@
+{
+  "flag": "empty_string_flag",
+  "variationType": "STRING",
+  "defaultValue": "default",
+  "subjects": [
+    {
+      "subjectKey": "alice",
+      "subjectAttributes": {
+        "country": "US"
+      },
+      "assignment": "",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"allocation-empty\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "empty_string",
+        "variationValue": "",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "country",
+              "operator": "MATCHES",
+              "value": "US"
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "allocation-empty",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "allocationEvaluationCode": "UNEVALUATED",
+            "key": "allocation-test",
+            "orderPosition": 2
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "bob",
+      "subjectAttributes": {},
+      "assignment": "non_empty",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "bob belongs to the range of traffic assigned to \"non_empty\" defined in allocation \"allocation-test\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "non_empty",
+        "variationValue": "non_empty",
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "allocation-test",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "allocationEvaluationCode": "FAILING_RULE",
+            "key": "allocation-empty",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    }
+  ]
+}

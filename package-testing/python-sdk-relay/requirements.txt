@@ -1,2 +1,2 @@
 flask
-eppo-server-sdk==4.1.0
+# eppo-server-sdk installed from local wheel

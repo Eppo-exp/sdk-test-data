@@ -2,6 +2,7 @@ import * as path from 'path';
 
 import express from 'express';
 import routes from './routes';
+import cors from 'cors';
 
 import * as fs from 'fs';
 import { setDataFile } from './ufc/data';
@@ -17,6 +18,7 @@ class App {
   }
 
   middlewares() {
+    this.server.use(cors());
     this.server.use(express.json());
   }
 

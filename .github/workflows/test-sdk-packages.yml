@@ -28,8 +28,20 @@ jobs:
     uses: ./.github/workflows/test-server-sdk.yml
     with:
       platform: ${{ matrix.platform }}
-      sdkName: 'eppo/python-sdk'
+      sdkName: 'python-sdk'
       sdkRelayDir: 'python-sdk-relay'
+    secrets: inherit
+
+  test-node-sdk:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: ['linux']
+    uses: ./.github/workflows/test-server-sdk.yml
+    with:
+      platform: ${{ matrix.platform }}
+      sdkName: 'node-server-sdk'
+      sdkRelayDir: 'node-sdk-relay'
     secrets: inherit
 
   test-ruby-sdk:
