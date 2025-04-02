@@ -10,10 +10,10 @@ inputs:
   platform:
     description: 'Platforms to test the SDK Relay on; linux, macos, windows'
     required: true
-  sdkName:
+  sdk_name:
     description: 'Name of the SDK'
     required: true
-  sdkRelayDir:
+  sdk_relay_dir:
     description: 'Directory of the SDK Relay server code'
     required: false
   os:
@@ -34,14 +34,14 @@ runs:
   steps:
     - name: Test information header
       shell: bash
-      run: echo "Running Test Cluster for ${{ inputs.sdkName }}"
+      run: echo "Running Test Cluster for ${{ inputs.sdk_name }}"
 
     - name: Set some variables
       shell: bash
       id: vars
       run: |
         echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-        echo "SAFE_SDK_NAME=$(echo ${{ inputs.sdkName }} | sed 's/\//_/g')" >> $GITHUB_ENV
+        echo "SAFE_SDK_NAME=$(echo ${{ inputs.sdk_name }} | sed 's/\//_/g')" >> $GITHUB_ENV
 
     - name: Setup Docker for macOS
       if: ${{ inputs.platform == 'macos' }}
@@ -74,10 +74,18 @@ runs:
         docker tag ${GAR_LOCATION}/testing-api:latest Eppo-exp/testing-api:latest
 
     - name: Run tests
+      env:
+        SDK_NAME: ${{ inputs.sdk_name }}
+        SDK_DIR: ${{ inputs.sdk_relay_dir }}
+        EPPO_API_HOST: localhost
+        SDK_RELAY_HOST: localhost
+        TEST_RUNNER_HOST: localhost
+        EPPO_SDK_PLATFORM: ${{ inputs.platform }}
+
       shell: bash
       run: |
         pushd package-testing/sdk-test-runner
-        ./test-sdk.sh server ${{ inputs.sdkName }}
+        ./test-sdk.sh server ${{ inputs.sdk_name }}
         popd
 
     - name: Upload Logs
