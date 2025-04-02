@@ -13,6 +13,12 @@ inputs:
   sdk_name:
     description: 'Name of the SDK'
     required: true
+  sdk_ref:
+    description: 'GitHub Ref (branch, tag, commit) at which to build the SDK'
+    required: false
+  sdk_version:
+    description: 'Version of the SDK to build (overrules sdk_ref if provided)'
+    required: false
   sdk_relay_dir:
     description: 'Directory of the SDK Relay server code'
     required: false
@@ -77,6 +83,8 @@ runs:
       env:
         SDK_NAME: ${{ inputs.sdk_name }}
         SDK_DIR: ${{ inputs.sdk_relay_dir }}
+        SDK_REF: ${{ inputs.sdk_ref }}
+        SDK_VERSION: ${{ inputs.sdk_version }}
         EPPO_API_HOST: localhost
         SDK_RELAY_HOST: localhost
         TEST_RUNNER_HOST: localhost
