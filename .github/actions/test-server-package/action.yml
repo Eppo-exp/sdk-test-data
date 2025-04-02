@@ -15,6 +15,7 @@ inputs:
     required: true
   sdk_ref:
     description: 'GitHub Ref (branch, tag, commit) at which to build the SDK'
+    default: 'main'
     required: false
   sdk_version:
     description: 'Version of the SDK to build (overrules sdk_ref if provided)'
