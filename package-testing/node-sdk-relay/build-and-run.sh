@@ -23,7 +23,7 @@ else
   pushd $SDK_DIR
   yarn install
   popd
-  ../local-install.sh $SDK_DIR ./
+  ../local-es-install.sh $SDK_DIR ./
 fi
 
 
