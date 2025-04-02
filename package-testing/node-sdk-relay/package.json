@@ -21,7 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@eppo/node-server-sdk": "^3.9.3",
+    "@eppo/node-server-sdk": "3.10.2",
     "@eslint/js": "^9.16.0",
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
