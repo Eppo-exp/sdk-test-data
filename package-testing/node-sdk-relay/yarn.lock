@@ -320,10 +320,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@eppo/js-client-sdk-common@4.14.1":
-  version "4.14.1"
-  resolved "https://registry.yarnpkg.com/@eppo/js-client-sdk-common/-/js-client-sdk-common-4.14.1.tgz#db908420c47a1327921493072892923e58c2039f"
-  integrity sha512-trXgxPgbS+vFkYd0w0Xb2V9NntE2SgLsThhxoDbRENw1ynb8b8b3MDdwFH+5DheVT1ji6mZ+Qrh40uNIxMptYA==
+"@eppo/js-client-sdk-common@4.14.4":
+  version "4.14.4"
+  resolved "https://registry.yarnpkg.com/@eppo/js-client-sdk-common/-/js-client-sdk-common-4.14.4.tgz#fd59daa3b9ae385756476bcc1022a53ffcfd8188"
+  integrity sha512-12JKsYLu+WICH1t9NEgWoxTYc/MyFnZAHhcBJwfcaG0tPIbPfgG9VBT8yTUgBLG8cYZBmDVk7R7SzMGc3vD2eg==
   dependencies:
     buffer "npm:@eppo/buffer@6.2.0"
     js-base64 "^3.7.7"
@@ -332,10 +332,12 @@
     spark-md5 "^3.0.2"
     uuid "^11.0.5"
 
-"@eppo/node-server-sdk@file:../../../../../../../tmp/packages/eppo-sdk-dir":
-  version "3.9.3"
+"@eppo/node-server-sdk@^3.9.3":
+  version "3.10.2"
+  resolved "https://registry.yarnpkg.com/@eppo/node-server-sdk/-/node-server-sdk-3.10.2.tgz#fbe3e4466540f8fa74efc39fc97b373888c67071"
+  integrity sha512-J0neRpChzh++IW5otPmN8GDClIAEXVN+fyoCuV9KhWLlZ2TBExzzH+as6NH+ONrrx9dFmtyCR2luvGtd4HEC+Q==
   dependencies:
-    "@eppo/js-client-sdk-common" "4.14.1"
+    "@eppo/js-client-sdk-common" "4.14.4"
 
 "@eslint-community/eslint-utils@^4.2.0", "@eslint-community/eslint-utils@^4.4.0":
   version "4.4.1"
