@@ -99,4 +99,4 @@ runs:
       if: success() || failure()
       uses: mikepenz/action-junit-report@v5
       with:
-        report_paths: 'package-testing/sdk-test-runner/logs/results.xml' 
+        report_paths: 'package-testing/sdk-test-runner/logs/results.xml'

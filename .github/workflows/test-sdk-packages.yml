@@ -7,7 +7,7 @@ on:
       - workflow-test/*
 
 jobs:
-  # Add a path filter check
+  # Filter the changed paths so these jobs can run only on changes to the ufc test data, or if the current branch matches workflow-test/*
   check-path:
     runs-on: ubuntu-latest
     outputs:
@@ -41,70 +41,70 @@ jobs:
           sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}
           sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
 
-  # test-php-sdk:
-  #   runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       platform: ['linux']
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: ./.github/actions/test-server-package
-  #       with:
-  #         platform: ${{ matrix.platform }}
-  #         sdk_name: 'eppo/php-sdk'
-  #         sdk_relay_dir: 'php-sdk-relay'
-  #         service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
-  #         sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}
-  #         sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
+  test-php-sdk:
+    runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: ['linux']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/test-server-package
+        with:
+          platform: ${{ matrix.platform }}
+          sdk_name: 'eppo/php-sdk'
+          sdk_relay_dir: 'php-sdk-relay'
+          service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}
+          sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
 
-  # test-python-sdk:
-  #   runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       platform: ['linux']
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: ./.github/actions/test-server-package
-  #       with:
-  #         platform: ${{ matrix.platform }}
-  #         sdk_name: 'python-sdk'
-  #         sdk_relay_dir: 'python-sdk-relay'
-  #         service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
-  #         sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}
-  #         sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
+  test-python-sdk:
+    runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: ['linux']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/test-server-package
+        with:
+          platform: ${{ matrix.platform }}
+          sdk_name: 'python-sdk'
+          sdk_relay_dir: 'python-sdk-relay'
+          service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}
+          sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
 
-  # test-ruby-sdk:
-  #   runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       platform: ['linux']
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: ./.github/actions/test-server-package
-  #       with:
-  #         platform: ${{ matrix.platform }}
-  #         sdk_name: 'eppo/ruby-sdk'
-  #         sdk_relay_dir: 'ruby-sdk-relay'
-  #         service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
-  #         sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}
-  #         sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
+  test-ruby-sdk:
+    runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: ['linux']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/test-server-package
+        with:
+          platform: ${{ matrix.platform }}
+          sdk_name: 'eppo/ruby-sdk'
+          sdk_relay_dir: 'ruby-sdk-relay'
+          service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}
+          sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
 
-  # test-go-sdk:
-  #   runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       platform: ['linux']
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: ./.github/actions/test-server-package
-  #       with:
-  #         platform: ${{ matrix.platform }}
-  #         sdk_name: 'go-sdk'
-  #         sdk_relay_dir: 'go-sdk-relay'
-  #         service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
-  #         sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}
-  #         sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
+  test-go-sdk:
+    runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: ['linux']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/test-server-package
+        with:
+          platform: ${{ matrix.platform }}
+          sdk_name: 'go-sdk'
+          sdk_relay_dir: 'go-sdk-relay'
+          service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}
+          sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
