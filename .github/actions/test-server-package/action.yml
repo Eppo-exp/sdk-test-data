@@ -23,9 +23,6 @@ inputs:
   sdk_relay_dir:
     description: 'Directory of the SDK Relay server code'
     required: false
-  os:
-    description: 'Specific runner OS to use'
-    required: false
   service_account_key:
     description: 'Google Cloud Service Account Key'
     required: true
