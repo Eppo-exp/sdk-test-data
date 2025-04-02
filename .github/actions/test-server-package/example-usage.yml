@@ -1,0 +1,17 @@
+name: Example SDK Test Usage
+on: [push]
+
+jobs:
+  test:
+    runs-on: ${{ inputs.os || inputs.platform == 'linux' && 'ubuntu-latest' || inputs.platform == 'macos' && 'macos-13' || inputs.platform == 'windows' && 'windows-latest' || 'NONE' }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: test-sdk
+        uses: ./.github/actions/test-server-package
+        with:
+          platform: 'linux'  # or macos, windows
+          sdkName: 'example-sdk'
+          sdkRelayDir: 'path/to/relay'
+          service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}
+          sdk_testing_region: ${{ vars.SDK_TESTING_REGION }} 

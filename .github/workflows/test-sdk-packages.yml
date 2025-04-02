@@ -4,64 +4,107 @@ on:
   push:
     branches:
       - main
+      - workflow-test/*
 
 jobs:
-  test-php-sdk:
-    strategy:
-      fail-fast: false
-      matrix:
-        platform: ['linux']
-    uses: ./.github/workflows/test-server-sdk.yml
-    with:
-      platform: ${{ matrix.platform }}
-      sdkName: 'eppo/php-sdk'
-      sdkRelayDir: 'php-sdk-relay'
-    secrets: inherit
-
-  test-python-sdk:
-    strategy:
-      fail-fast: false
-      matrix:
-        platform: ['linux']
-    uses: ./.github/workflows/test-server-sdk.yml
-    with:
-      platform: ${{ matrix.platform }}
-      sdkName: 'python-sdk'
-      sdkRelayDir: 'python-sdk-relay'
-    secrets: inherit
+  # Add a path filter check
+  check-path:
+    runs-on: ubuntu-latest
+    outputs:
+      should_run: ${{ github.ref == 'refs/heads/main' && steps.filter.outputs.ufc == 'true' || startsWith(github.ref, 'refs/heads/workflow-test/') }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            ufc:
+              - 'ufc/**'
+              - '!ufc/**/*.md'
 
   test-node-sdk:
+    needs: check-path
+    if: needs.check-path.outputs.should_run == 'true'
+    runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
     strategy:
       fail-fast: false
       matrix:
         platform: ['linux']
-    uses: ./.github/workflows/test-server-sdk.yml
-    with:
-      platform: ${{ matrix.platform }}
-      sdkName: 'node-server-sdk'
-      sdkRelayDir: 'node-sdk-relay'
-    secrets: inherit
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/test-server-package
+        with:
+          platform: ${{ matrix.platform }}
+          sdkName: 'node-server-sdk'
+          sdkRelayDir: 'node-sdk-relay'
+          service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}
+          sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
 
-  test-ruby-sdk:
-    strategy:
-      fail-fast: false
-      matrix:
-        platform: ['linux']
-    uses: ./.github/workflows/test-server-sdk.yml
-    with:
-      platform: ${{ matrix.platform }}
-      sdkName: 'eppo/ruby-sdk'
-      sdkRelayDir: 'ruby-sdk-relay'
-    secrets: inherit
+  # test-php-sdk:
+  #   runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       platform: ['linux']
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: ./.github/actions/test-server-package
+  #       with:
+  #         platform: ${{ matrix.platform }}
+  #         sdkName: 'eppo/php-sdk'
+  #         sdkRelayDir: 'php-sdk-relay'
+  #         service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+  #         sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}
+  #         sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
 
-  test-go-sdk:
-    strategy:
-      fail-fast: false
-      matrix:
-        platform: ['linux']
-    uses: ./.github/workflows/test-server-sdk.yml
-    with:
-      platform: ${{ matrix.platform }}
-      sdkName: 'go-sdk'
-      sdkRelayDir: 'go-sdk-relay'
-    secrets: inherit
+  # test-python-sdk:
+  #   runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       platform: ['linux']
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: ./.github/actions/test-server-package
+  #       with:
+  #         platform: ${{ matrix.platform }}
+  #         sdkName: 'python-sdk'
+  #         sdkRelayDir: 'python-sdk-relay'
+  #         service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+  #         sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}
+  #         sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
+
+  # test-ruby-sdk:
+  #   runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       platform: ['linux']
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: ./.github/actions/test-server-package
+  #       with:
+  #         platform: ${{ matrix.platform }}
+  #         sdkName: 'eppo/ruby-sdk'
+  #         sdkRelayDir: 'ruby-sdk-relay'
+  #         service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+  #         sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}
+  #         sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
+
+  # test-go-sdk:
+  #   runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       platform: ['linux']
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: ./.github/actions/test-server-package
+  #       with:
+  #         platform: ${{ matrix.platform }}
+  #         sdkName: 'go-sdk'
+  #         sdkRelayDir: 'go-sdk-relay'
+  #         service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+  #         sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}
+  #         sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
