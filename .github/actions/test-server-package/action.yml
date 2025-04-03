@@ -32,6 +32,10 @@ inputs:
   sdk_testing_region:
     description: 'Google Cloud Region for SDK Testing'
     required: true
+  shard_label:
+    description: 'Label for logs uploaded from test run'
+    required: false
+    default: '1'
 
 runs:
   using: "composite"
@@ -102,7 +106,7 @@ runs:
       if: success() || failure()
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ steps.vars.outputs.date }}-${{ env.SAFE_SDK_NAME }}-${{ inputs.platform }}-test-logs
+        name: ${{ steps.vars.outputs.date }}-${{ env.SAFE_SDK_NAME }}-${{ inputs.platform }}-${{ inputs.shard_label }}-test-logs
         path: package-testing/sdk-test-runner/logs/
 
     - name: Publish Test Report
