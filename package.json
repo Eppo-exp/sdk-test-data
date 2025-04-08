@@ -8,7 +8,8 @@
     "node": ">=18.x"
   },
   "scripts": {
-    "validate:tests": "jest ./test-validation"
+    "validate:tests": "jest ./test-validation",
+    "obfuscate:ufc": "jest ./obfuscation"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",

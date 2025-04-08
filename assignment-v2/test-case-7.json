@@ -1,0 +1,37 @@
+{
+  "experiment": "empty_string_variations_test",
+  "valueType": "string",
+  "subjectsWithAttributes": [
+    {
+      "subjectKey": "subject-1",
+      "subjectAttributes": {
+        "email": "test@geteppo.com"
+      }
+    },
+    {
+      "subjectKey": "subject-2",
+      "subjectAttributes": {
+        "email": "test@example.com"
+      }
+    },
+    {
+      "subjectKey": "subject-3",
+      "subjectAttributes": {
+        "device": "android",
+        "version": "1.0.0"
+      }
+    },
+    {
+      "subjectKey": "subject-4",
+      "subjectAttributes": {
+        "country": "US"
+      }
+    }
+  ],
+  "expectedAssignments": [
+    "test-value",
+    "",
+    "another-value",
+    ""
+  ]
+}

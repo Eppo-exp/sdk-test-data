@@ -40,10 +40,8 @@ export default class App {
 
     const sdkRelay = new ClientSDKRelay();
     const sdkInfo = await sdkRelay.isReady();
-    if ('errorMessage' in sdkInfo) {
-      const error = sdkInfo as SDKConnectionFailure;
-      log(red('SDK Relay Client failed to load: '));
-      log(red(error.errorMessage));
+
+    if (!this.validateSdkInfo(sdkInfo)) {
       return false;
     }
 
@@ -58,16 +56,32 @@ export default class App {
 
     const sdkRelay = new ServerSDKRelay(this.config.sdkServer, this.config.sdkName);
     const sdkInfo = await sdkRelay.isReady();
-    if ('errorMessage' in sdkInfo && typeof sdkInfo.errorMessage === 'string') {
-      const error = sdkInfo as SDKConnectionFailure;
-      log(red('SDK Relay Server failed to load: '));
-      log(red(error.errorMessage));
+
+    if (!this.validateSdkInfo(sdkInfo)) {
       return false;
     }
 
     log(`Posting test cases to ${this.config.sdkName} relay server at ${this.config.sdkServer}`);
 
     return this.innerRun(sdkRelay);
+  }
+
+  private validateSdkInfo(sdkInfo: SDKInfo | SDKConnectionFailure): boolean {
+    if ('errorMessage' in sdkInfo) {
+      const error = sdkInfo as SDKConnectionFailure;
+      log(red('SDK Relay failed to load: '));
+      log(red(error.errorMessage));
+      return false;
+    }
+
+    if (sdkInfo && (sdkInfo as SDKInfo).sdkName !== this.config.sdkName) {
+      const actualName = (sdkInfo as SDKInfo).sdkName;
+      // Throw an error as setting the test scenarios won't work if the names don't match.
+      log(red(`SDK name ${actualName} does not match expected ${this.config.sdkName}.`));
+      return false;
+    }
+
+    return true;
   }
 
   private printHeader(): void {
@@ -138,7 +152,7 @@ export default class App {
       suites: testSuites,
     };
     const junitXml = getJunitXml(testSuiteReport);
-    fs.writeFileSync(junitFile, junitXml);
+    fs.writeFileSync('./' + junitFile, junitXml);
 
     log(green(`Test results written to ${junitFile}`));
   }
@@ -201,6 +215,14 @@ export default class App {
     for (const child of testCases) {
       const filePath = path.join(testCaseDir, child);
 
+      // Skip dynamic typing files if not supported
+      if (!sdkRelay.getSDKDetails().supportsDynamicTyping && isDynamicTypingFile(filePath)) {
+        logIndent(1, yellow('skipped') + ` ${child} SDK does not support dynamic typing`);
+        const testCaseResult: TestCase = { name: child, classname: child, skipped: true };
+        testCaseResults.push(testCaseResult);
+        continue;
+      }
+
       // Skip directories.
       if (!fs.statSync(filePath).isFile()) {
         continue;
@@ -217,6 +239,14 @@ export default class App {
 
       // Flag testing!!
       const isFlagTest = testCaseObj['variationType'];
+
+      // Skip bandit tests if not supported
+      if (!isFlagTest && !sdkRelay.getSDKDetails().supportsBandits) {
+        logIndent(1, yellow('skipped') + ' SDK does not support Bandits');
+        const testCaseResult: TestCase = { name: child, classname: child, skipped: true };
+        testCaseResults.push(testCaseResult);
+        continue;
+      }
 
       if (testCaseObj['subjects'].length === 0) {
         testCaseResults.push({ name: testCase, errors: [{ message: 'No test subjects found' }] });
@@ -260,14 +290,20 @@ export default class App {
                 message: result.error,
               });
 
-              logIndent(1, red('fail') + ` ${testCaseLabel}: ${result.result} != ${subject.assignment}`);
+              logIndent(1, red('fail') + ` ${testCaseLabel}: ${result.error}`);
             } else if (!App.isResultCorrect(result, subject)) {
               testCaseResult.failures ??= [];
               testCaseResult.failures.push({
-                message: `Value ${result.result} did not match expected ${subject.assignment}`,
+                message: `Value ${JSON.stringify(result.result)} did not match expected ${JSON.stringify(subject.assignment)}`,
               });
 
-              logIndent(1, red('fail') + ` ${testCaseLabel}: ${result.result} != ${subject.assignment}`);
+              logIndent(
+                1,
+                red('fail') +
+                  ` ${testCaseLabel}:\n` +
+                  `  Expected: ${JSON.stringify(subject.assignment, null, 2)}\n` +
+                  `  Received: ${JSON.stringify(result.result, null, 2)}`,
+              );
             } else {
               testCaseResult.assertions = 1;
 
@@ -277,7 +313,7 @@ export default class App {
           .catch((error) => {
             if (error instanceof FeatureNotSupportedError) {
               // Skip this test
-              logIndent(1, yellow('skipped') + ` ${testCaseLabel}: SDK does not support this feature`);
+              logIndent(1, yellow('skipped') + ` ${testCaseLabel}: SDK does not support ${error.featureName}`);
               testCaseResult.skipped = true;
             } else {
               log(red('Error1:'), error);
@@ -298,4 +334,7 @@ export default class App {
     // Lodash's `isEqual` method is used here as a neat and tidy way to deep-compare arbitrary objects.
     return isEqual(subject['assignment'], results['result']);
   }
+}
+function isDynamicTypingFile(filePath: string) {
+  return filePath.indexOf('dynamic-typing') >= 0;
 }

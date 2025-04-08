@@ -1,0 +1,116 @@
+name: 'Test Packaged Server SDKs'
+description: 'Tests server SDKs across different platforms (Linux, macOS, Windows)'
+author: 'Eppo'
+
+branding:
+  icon: 'check-circle'  
+  color: 'green'
+
+inputs:
+  platform:
+    description: 'Platforms to test the SDK Relay on; linux, macos, windows'
+    required: true
+  sdk_name:
+    description: 'Name of the SDK'
+    required: true
+  sdk_ref:
+    description: 'GitHub Ref (branch, tag, commit) at which to build the SDK'
+    default: 'main'
+    required: false
+  sdk_version:
+    description: 'Version of the SDK to build (overrules sdk_ref if provided)'
+    required: false
+  sdk_relay_dir:
+    description: 'Directory of the SDK Relay server code'
+    required: false
+  service_account_key:
+    description: 'Google Cloud Service Account Key'
+    required: true
+  sdk_testing_project_id:
+    description: 'Google Cloud Project ID for SDK Testing'
+    required: true
+  sdk_testing_region:
+    description: 'Google Cloud Region for SDK Testing'
+    required: true
+  shard_label:
+    description: 'Label for logs uploaded from test run'
+    required: false
+    default: '1'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Test information header
+      shell: bash
+      run: echo "Running Test Cluster for ${{ inputs.sdk_name }}"
+
+    - uses: actions/checkout@v3
+      with:
+        repository: Eppo-exp/sdk-test-data
+
+    - name: Set some variables
+      shell: bash
+      id: vars
+      run: |
+        echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+        echo "SAFE_SDK_NAME=$(echo ${{ inputs.sdk_name }} | sed 's/\//_/g')" >> $GITHUB_ENV
+
+    - name: Setup Docker for macOS
+      if: ${{ inputs.platform == 'macos' }}
+      uses: douglascamata/setup-docker-macos-action@v1-alpha
+
+    - name: Auth with Google Cloud
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ inputs.service_account_key }}
+
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
+
+    - name: Docker auth
+      shell: bash
+      env:
+        REGION: ${{ inputs.sdk_testing_region }}
+      run: gcloud auth configure-docker ${REGION}-docker.pkg.dev --quiet
+
+    - name: Pull Test Runner image
+      shell: bash
+      env:
+        REGION: ${{ inputs.sdk_testing_region }}
+        PROJECT_ID: ${{ inputs.sdk_testing_project_id }}
+      run: |
+        GAR_LOCATION="${REGION}-docker.pkg.dev/${PROJECT_ID}/sdk-testing"
+        docker pull ${GAR_LOCATION}/sdk-test-runner:latest
+        docker tag ${GAR_LOCATION}/sdk-test-runner:latest Eppo-exp/sdk-test-runner:latest
+        docker pull ${GAR_LOCATION}/testing-api:latest
+        docker tag ${GAR_LOCATION}/testing-api:latest Eppo-exp/testing-api:latest
+
+    - name: Run tests
+      env:
+        SDK_NAME: ${{ inputs.sdk_name }}
+        SDK_DIR: ${{ inputs.sdk_relay_dir }}
+        SDK_REF: ${{ inputs.sdk_ref }}
+        SDK_VERSION: ${{ inputs.sdk_version }}
+        EPPO_API_HOST: localhost
+        SDK_RELAY_HOST: localhost
+        TEST_RUNNER_HOST: localhost
+        EPPO_SDK_PLATFORM: ${{ inputs.platform }}
+
+      shell: bash
+      run: |
+        pushd package-testing/sdk-test-runner
+        ./test-sdk.sh server ${{ inputs.sdk_name }}
+        popd
+
+    - name: Upload Logs
+      if: success() || failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ steps.vars.outputs.date }}-${{ env.SAFE_SDK_NAME }}-${{ inputs.platform }}-${{ inputs.shard_label }}-test-logs
+        path: package-testing/sdk-test-runner/logs/
+
+    - name: Publish Test Report
+      if: success() || failure()
+      uses: mikepenz/action-junit-report@v5
+      with:
+        report_paths: 'package-testing/sdk-test-runner/logs/results.xml'
