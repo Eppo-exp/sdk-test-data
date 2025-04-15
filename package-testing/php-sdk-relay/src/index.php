@@ -2,6 +2,8 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use Composer\InstalledVersions;
+use Eppo\Cache\DefaultCacheFactory;
 use Eppo\EppoClient;
 use Eppo\SDKTest\AssignmentHandler;
 use Eppo\SDKTest\BanditHandler;
@@ -31,7 +33,7 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 });
 
 $app->post('/sdk/reset', function (Request $request, Response $response, array $args) {
-    \Eppo\Cache\DefaultCacheFactory::clearCache();
+    DefaultCacheFactory::clearCache();
     return $response->withStatus(200);
 });
 
@@ -52,6 +54,17 @@ $app->post('/bandits/v1/action', function (Request $request, Response $response)
     $handler = new BanditHandler($eppoClient, $eppoEventLogger, $app);
     $results = $handler->getBanditAction(json_decode($request->getBody(), true));
     return $response->withJson($results);
+});
+
+$app->get('/sdk/details', function (Request $request, Response $response) {
+    $sdkVersion = InstalledVersions::getPrettyVersion('eppo/php-sdk');
+    $details = [
+        'sdkName' => 'eppo/php-sdk',
+        'sdkVersion' => $sdkVersion,
+        'supportsBandits' => true,
+        'supportsDynamicTyping' => true
+    ];
+    return $response->withJson($details);
 });
 
 $app->addErrorMiddleware(true, true, true);
