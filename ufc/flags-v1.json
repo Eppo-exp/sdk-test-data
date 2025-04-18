@@ -1199,9 +1199,46 @@
         "two": {
           "key": "two",
           "value": "{ \"integer\": 2, \"string\": \"two\", \"float\": 2.0 }"
+        },
+        "empty": {
+          "key": "empty",
+          "value": "{}"
         }
       },
       "allocations": [
+        {
+          "key": "Optionally Force Empty",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "Force Empty",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "true"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "empty",
+              "shards": [
+                {
+                  "salt": "full-range-salt",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        },
         {
           "key": "50/50 split",
           "rules": [],
