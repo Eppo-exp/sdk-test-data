@@ -30,9 +30,15 @@
         "matchedAllocation": {
           "key": "50/50 split",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 1
+          "orderPosition": 2
         },
-        "unmatchedAllocations": [],
+        "unmatchedAllocations": [
+          {
+            "key": "Optionally Force Empty",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
         "unevaluatedAllocations": []
       }
     },
@@ -63,9 +69,15 @@
         "matchedAllocation": {
           "key": "50/50 split",
           "allocationEvaluationCode": "MATCH",
-          "orderPosition": 1
+          "orderPosition": 2
         },
-        "unmatchedAllocations": [],
+        "unmatchedAllocations": [
+          {
+            "key": "Optionally Force Empty",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
         "unevaluatedAllocations": []
       }
     },
@@ -95,10 +107,56 @@
         "matchedAllocation": {
           "key": "50/50 split",
           "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "Optionally Force Empty",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "diana",
+      "subjectAttributes": {
+        "Force Empty": true
+      },
+      "assignment": {},
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"Optionally Force Empty\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "empty",
+        "variationValue": {},
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "Force Empty",
+              "operator": "ONE_OF",
+              "value": [
+                "true"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "Optionally Force Empty",
+          "allocationEvaluationCode": "MATCH",
           "orderPosition": 1
         },
         "unmatchedAllocations": [],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "50/50 split",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     }
   ]
