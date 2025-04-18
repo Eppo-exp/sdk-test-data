@@ -128,7 +128,7 @@
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
-        "flagEvaluationDescription": "diana belongs to the range of traffic assigned to \"empty\" defined in allocation \"Optionally Force Empty\".",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"Optionally Force Empty\".",
         "banditKey": null,
         "banditAction": null,
         "variationKey": "two",
