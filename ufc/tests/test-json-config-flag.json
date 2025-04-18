@@ -131,7 +131,7 @@
         "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"Optionally Force Empty\".",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "two",
+        "variationKey": "empty",
         "variationValue": {},
         "matchedRule": {
           "conditions": [
