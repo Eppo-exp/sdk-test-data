@@ -32,7 +32,13 @@
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
-        "unmatchedAllocations": [],
+        "unmatchedAllocations": [
+          {
+            "key": "Optionally Force Empty",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
         "unevaluatedAllocations": []
       }
     },
@@ -65,7 +71,13 @@
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
-        "unmatchedAllocations": [],
+        "unmatchedAllocations": [
+          {
+            "key": "Optionally Force Empty",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
         "unevaluatedAllocations": []
       }
     },
@@ -97,7 +109,13 @@
           "allocationEvaluationCode": "MATCH",
           "orderPosition": 2
         },
-        "unmatchedAllocations": [],
+        "unmatchedAllocations": [
+          {
+            "key": "Optionally Force Empty",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
         "unevaluatedAllocations": []
       }
     },
@@ -132,7 +150,13 @@
           "orderPosition": 1
         },
         "unmatchedAllocations": [],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "50/50 split",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     }
   ]
