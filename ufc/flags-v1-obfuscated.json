@@ -1199,9 +1199,46 @@
         "dHdv": {
           "key": "dHdv",
           "value": "eyAiaW50ZWdlciI6IDIsICJzdHJpbmciOiAidHdvIiwgImZsb2F0IjogMi4wIH0="
+        },
+        "ZW1wdHk=": {
+          "key": "ZW1wdHk=",
+          "value": "e30="
         }
       },
       "allocations": [
+        {
+          "doLog": true,
+          "key": "T3B0aW9uYWxseSBGb3JjZSBFbXB0eQ==",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "4e1d9d66e21dde70a7dfd7b26a9aa007",
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "shards": [
+                {
+                  "ranges": [
+                    {
+                      "end": 10000,
+                      "start": 0
+                    }
+                  ],
+                  "salt": "ZnVsbC1yYW5nZS1zYWx0"
+                }
+              ],
+              "variationKey": "ZW1wdHk="
+            }
+          ]
+        },
         {
           "key": "NTAvNTAgc3BsaXQ=",
           "doLog": true,
