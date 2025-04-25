@@ -5,6 +5,7 @@ namespace Eppo\SDKTest;
 use Eppo\EppoClient;
 use Eppo\Exception\EppoClientException;
 use Exception;
+use stdClass;
 
 class AssignmentHandler
 {
@@ -44,6 +45,9 @@ class AssignmentHandler
                 $subjectAttributes,
                 $default
             );
+            if(is_array($result) and count($result) == 0) {
+                $result = new stdClass();
+            }
             $resultResp = [
                 "subjectKey" => $subjectKey,
                 "result" => $result,
