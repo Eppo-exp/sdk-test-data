@@ -6,6 +6,16 @@ This app posts test cases to an SDK relay server and compares the results agains
 
 The easiest way to use the test runner is the wrapper script, `./test-sdk.sh`. It sets most configuration values and handles spinning up the test API server, the SDK relay server, and starting the test runner app.
 
+_onetime commands to prep test cluster artifacts_
+```shell
+# Build the testing API and test runner docker images
+docker build . -t Eppo-exp/sdk-test-runner:latest
+docker build ../testing-api -t Eppo-exp/testing-api:latest
+
+# copy the test data
+./clone-test-data.sh
+```
+_Run the test cluster_
 ```shell
 ./test-sdk.sh server <server_sdk_name> <sdk_ref> <test_data_branch>
 ```
