@@ -26,6 +26,7 @@ jobs:
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
+      base_repo: Eppo-exp/android-sdk
       
   test-node-server-sdk:
     uses: Eppo-exp/node-server-sdk/.github/workflows/lint-test-sdk.yml@main
