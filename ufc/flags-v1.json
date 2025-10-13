@@ -3185,6 +3185,97 @@
           "doLog": true
         }
       ]
+    },
+    "json-null-test": {
+      "key": "json-null-test",
+      "enabled": true,
+      "variationType": "JSON",
+      "variations": {
+        "null-value": {
+          "key": "null-value",
+          "value": "null"
+        },
+        "object-with-nulls": {
+          "key": "object-with-nulls",
+          "value": "{\"field\": null, \"array\": [1, null, 3], \"nested\": {\"inner\": null}}"
+        },
+        "array-with-nulls": {
+          "key": "array-with-nulls",
+          "value": "[null, \"string\", null, 42]"
+        }
+      },
+      "allocations": [
+        {
+          "key": "null-direct",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "result",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "null"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "null-value",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "object-nulls",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "result",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "object"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "object-with-nulls",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "array-nulls",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "result",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "array"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "array-with-nulls",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
     }
   }
 }

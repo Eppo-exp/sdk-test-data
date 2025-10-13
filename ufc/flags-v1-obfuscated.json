@@ -1207,14 +1207,14 @@
       },
       "allocations": [
         {
-          "doLog": true,
           "key": "T3B0aW9uYWxseSBGb3JjZSBFbXB0eQ==",
+          "doLog": true,
           "rules": [
             {
               "conditions": [
                 {
-                  "attribute": "4e1d9d66e21dde70a7dfd7b26a9aa007",
                   "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "4e1d9d66e21dde70a7dfd7b26a9aa007",
                   "value": [
                     "b326b5062b2f0e69046810717534cb09"
                   ]
@@ -1224,18 +1224,18 @@
           ],
           "splits": [
             {
+              "variationKey": "ZW1wdHk=",
               "shards": [
                 {
                   "ranges": [
                     {
-                      "end": 10000,
-                      "start": 0
+                      "start": 0,
+                      "end": 10000
                     }
                   ],
                   "salt": "ZnVsbC1yYW5nZS1zYWx0"
                 }
-              ],
-              "variationKey": "ZW1wdHk="
+              ]
             }
           ]
         },
@@ -3178,6 +3178,97 @@
           "splits": [
             {
               "variationKey": "c3RyaW5nX3dpdGhfb25seV9tdWx0aXBsZV9jbG9zaW5nX3BhcmVudGhlc2Vz",
+              "shards": []
+            }
+          ]
+        }
+      ]
+    },
+    "d11d6eb5e78b727c4889042dfc8b5f5e": {
+      "key": "d11d6eb5e78b727c4889042dfc8b5f5e",
+      "enabled": true,
+      "variationType": "JSON",
+      "totalShards": 10000,
+      "variations": {
+        "bnVsbC12YWx1ZQ==": {
+          "key": "bnVsbC12YWx1ZQ==",
+          "value": "bnVsbA=="
+        },
+        "b2JqZWN0LXdpdGgtbnVsbHM=": {
+          "key": "b2JqZWN0LXdpdGgtbnVsbHM=",
+          "value": "eyJmaWVsZCI6IG51bGwsICJhcnJheSI6IFsxLCBudWxsLCAzXSwgIm5lc3RlZCI6IHsiaW5uZXIiOiBudWxsfX0="
+        },
+        "YXJyYXktd2l0aC1udWxscw==": {
+          "key": "YXJyYXktd2l0aC1udWxscw==",
+          "value": "W251bGwsICJzdHJpbmciLCBudWxsLCA0Ml0="
+        }
+      },
+      "allocations": [
+        {
+          "key": "bnVsbC1kaXJlY3Q=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "b4a88417b3d0170d754c647c30b7216a",
+                  "value": [
+                    "37a6259cc0c1dae299a7866489dff0bd"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "bnVsbC12YWx1ZQ==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "b2JqZWN0LW51bGxz",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "b4a88417b3d0170d754c647c30b7216a",
+                  "value": [
+                    "a8cfde6331bd59eb2ac96f8911c4b666"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "b2JqZWN0LXdpdGgtbnVsbHM=",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "YXJyYXktbnVsbHM=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "b4a88417b3d0170d754c647c30b7216a",
+                  "value": [
+                    "f1f713c9e000f5d3f280adbd124df4f5"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "YXJyYXktd2l0aC1udWxscw==",
               "shards": []
             }
           ]
