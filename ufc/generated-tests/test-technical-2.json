@@ -4,7 +4,7 @@
   "defaultValue": 0,
   "subjects": [
     {
-      "subjectKey": "match-allocation-1-rule-0",
+      "subjectKey": "traffic-match-subject-rule-match",
       "subjectAttributes": {
         "os": "some-value",
         "userId": "no-match-value",
@@ -48,41 +48,13 @@
       }
     },
     {
-      "subjectKey": "fail-allocation-1-rule-0",
-      "subjectAttributes": {
-        "os": "fail-value",
-        "userId": "fail-value",
-        "accountType": 21
-      },
-      "assignment": 0,
-      "evaluationDetails": {
-        "environmentName": "Test",
-        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
-        "flagEvaluationDescription": "No allocations matched",
-        "banditKey": null,
-        "banditAction": null,
-        "variationKey": null,
-        "variationValue": null,
-        "matchedRule": null,
-        "matchedAllocation": null,
-        "unmatchedAllocations": [
-          {
-            "key": "allocation-1",
-            "allocationEvaluationCode": "FAILING_RULE",
-            "orderPosition": 0
-          }
-        ],
-        "unevaluatedAllocations": []
-      }
-    },
-    {
-      "subjectKey": "baseline-no-attributes",
+      "subjectKey": "baseline-subject",
       "subjectAttributes": {},
       "assignment": 0,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
-        "flagEvaluationDescription": "No allocations matched due to missing attributes",
+        "flagEvaluationDescription": "No allocations matched",
         "banditKey": null,
         "banditAction": null,
         "variationKey": null,

@@ -39,7 +39,7 @@ interface AssignmentTestCase {
   subjects: SubjectTestCase[];
 }
 
-// Import flag types (simplified versions)
+// Import flag types
 interface Condition {
   attribute: string;
   operator: string;
@@ -50,18 +50,40 @@ interface Rule {
   conditions: Condition[];
 }
 
+interface ShardRange {
+  start: number;
+  end: number;
+}
+
+interface Shard {
+  salt: string;
+  ranges: ShardRange[];
+}
+
+interface Split {
+  variationKey: string;
+  shards: Shard[];
+}
+
 interface Allocation {
   key: string;
   rules: Rule[];
-  splits: any[];
+  splits: Split[];
   doLog: boolean;
+  startAt?: string;
+  endAt?: string;
+}
+
+interface Variation {
+  key: string;
+  value: any;
 }
 
 interface Flag {
   key: string;
   enabled: boolean;
   variationType: string;
-  variations: Record<string, any>;
+  variations: Record<string, Variation>;
   allocations: Allocation[];
   totalShards: number;
 }
@@ -70,7 +92,7 @@ interface Configuration {
   flags: Record<string, Flag>;
 }
 
-class TestCaseGenerator {
+class CorrectTestCaseGenerator {
   private flags: Record<string, Flag>;
   private outputPath: string;
 
@@ -99,7 +121,266 @@ class TestCaseGenerator {
     this.outputPath = outputPath;
   }
 
-  // Generate attributes that will MATCH the given conditions
+  // MD5 hashing for shard calculation (matches iOS implementation)
+  private calculateShard(input: string, totalShards: number): number {
+    const hash = crypto.createHash('md5').update(input).digest('hex');
+    const hashValue = parseInt(hash.substring(0, 8), 16);
+    return hashValue % totalShards;
+  }
+
+  // Check if subject falls within shard ranges
+  private matchesShard(shard: Shard, subjectKey: string, totalShards: number): boolean {
+    const hashInput = `${shard.salt}-${subjectKey}`;
+    const shardValue = this.calculateShard(hashInput, totalShards);
+
+    return shard.ranges.some(range =>
+      range.start <= shardValue && shardValue < range.end
+    );
+  }
+
+  // Check if subject matches all shards in a split
+  private matchesSplit(split: Split, subjectKey: string, totalShards: number): boolean {
+    if (split.shards.length === 0) return true; // Empty shards = always match
+
+    // ALL shards must match (AND logic)
+    return split.shards.every(shard =>
+      this.matchesShard(shard, subjectKey, totalShards)
+    );
+  }
+
+  // Evaluate a single condition
+  private evaluateCondition(condition: Condition, attributeValue: any): boolean {
+    const { attribute, operator, value } = condition;
+
+    // Handle IS_NULL specially
+    if (operator === 'IS_NULL') {
+      const isNull = attributeValue === null || attributeValue === undefined;
+      return value === isNull;
+    }
+
+    // For other operators, null values fail
+    if (attributeValue === null || attributeValue === undefined) {
+      return false;
+    }
+
+    switch (operator) {
+      case 'ONE_OF':
+        return Array.isArray(value) ? value.includes(String(attributeValue)) : false;
+
+      case 'NOT_ONE_OF':
+        return Array.isArray(value) ? !value.includes(String(attributeValue)) : true;
+
+      case 'MATCHES':
+        try {
+          const regex = new RegExp(String(value));
+          return regex.test(String(attributeValue));
+        } catch {
+          return false;
+        }
+
+      case 'NOT_MATCHES':
+        try {
+          const regex = new RegExp(String(value));
+          return !regex.test(String(attributeValue));
+        } catch {
+          return true;
+        }
+
+      case 'LT':
+        return Number(attributeValue) < Number(value);
+
+      case 'LTE':
+        return Number(attributeValue) <= Number(value);
+
+      case 'GT':
+        return Number(attributeValue) > Number(value);
+
+      case 'GTE':
+        return Number(attributeValue) >= Number(value);
+
+      default:
+        return false;
+    }
+  }
+
+  // Check if a rule matches (ALL conditions must match - AND logic)
+  private matchesRule(rule: Rule, subjectAttributes: Record<string, any>, subjectKey: string): boolean {
+    return rule.conditions.every(condition => {
+      // Handle "id" attribute fallback
+      let attributeValue = subjectAttributes[condition.attribute];
+      if (attributeValue === undefined && condition.attribute === 'id') {
+        attributeValue = subjectKey;
+      }
+
+      return this.evaluateCondition(condition, attributeValue);
+    });
+  }
+
+  // Check if allocation matches (ANY rule must match - OR logic)
+  private matchesAllocation(allocation: Allocation, subjectAttributes: Record<string, any>, subjectKey: string): boolean {
+    // No rules = always match
+    if (!allocation.rules || allocation.rules.length === 0) {
+      return true;
+    }
+
+    // ANY rule must match (OR logic)
+    return allocation.rules.some(rule =>
+      this.matchesRule(rule, subjectAttributes, subjectKey)
+    );
+  }
+
+  // Get default value based on variation type
+  private getDefaultValue(flag: Flag): any {
+    switch (flag.variationType) {
+      case 'STRING': return 'default';
+      case 'INTEGER': return 0;
+      case 'BOOLEAN': return false;
+      case 'NUMERIC': return 0.0;
+      case 'JSON': return null;
+      default: return null;
+    }
+  }
+
+  // Simulate full flag evaluation (following iOS SDK logic)
+  private evaluateFlag(flag: Flag, subjectKey: string, subjectAttributes: Record<string, any>): {
+    assignment: any;
+    evaluationDetails: FlagEvaluationDetails;
+  } {
+    // Check if flag is disabled
+    if (!flag.enabled) {
+      return {
+        assignment: this.getDefaultValue(flag),
+        evaluationDetails: {
+          environmentName: 'Test',
+          flagEvaluationCode: 'FLAG_UNRECOGNIZED_OR_DISABLED',
+          flagEvaluationDescription: 'Flag is disabled',
+          banditKey: null,
+          banditAction: null,
+          variationKey: null,
+          variationValue: null,
+          matchedRule: null,
+          matchedAllocation: null,
+          unmatchedAllocations: flag.allocations.map((alloc, idx) => ({
+            key: alloc.key,
+            allocationEvaluationCode: 'FLAG_UNRECOGNIZED_OR_DISABLED',
+            orderPosition: idx
+          })),
+          unevaluatedAllocations: []
+        }
+      };
+    }
+
+    const unmatchedAllocations: AllocationEvaluation[] = [];
+    const unevaluatedAllocations: AllocationEvaluation[] = [];
+
+    // Evaluate allocations in order (first match wins)
+    for (let i = 0; i < flag.allocations.length; i++) {
+      const allocation = flag.allocations[i];
+
+      // Check time constraints
+      const now = new Date();
+      if (allocation.startAt && new Date(allocation.startAt) > now) {
+        unmatchedAllocations.push({
+          key: allocation.key,
+          allocationEvaluationCode: 'BEFORE_START_TIME',
+          orderPosition: i
+        });
+        continue;
+      }
+
+      if (allocation.endAt && new Date(allocation.endAt) < now) {
+        unmatchedAllocations.push({
+          key: allocation.key,
+          allocationEvaluationCode: 'AFTER_END_TIME',
+          orderPosition: i
+        });
+        continue;
+      }
+
+      // Check targeting rules
+      if (!this.matchesAllocation(allocation, subjectAttributes, subjectKey)) {
+        unmatchedAllocations.push({
+          key: allocation.key,
+          allocationEvaluationCode: 'FAILING_RULE',
+          orderPosition: i
+        });
+        continue;
+      }
+
+      // Check traffic splits
+      let matchingSplit: Split | null = null;
+      for (const split of allocation.splits) {
+        if (this.matchesSplit(split, subjectKey, flag.totalShards)) {
+          matchingSplit = split;
+          break;
+        }
+      }
+
+      if (!matchingSplit) {
+        unmatchedAllocations.push({
+          key: allocation.key,
+          allocationEvaluationCode: 'TRAFFIC_EXPOSURE_MISS',
+          orderPosition: i
+        });
+        continue;
+      }
+
+      // MATCH! Mark remaining allocations as unevaluated
+      for (let j = i + 1; j < flag.allocations.length; j++) {
+        unevaluatedAllocations.push({
+          key: flag.allocations[j].key,
+          allocationEvaluationCode: 'UNEVALUATED',
+          orderPosition: j
+        });
+      }
+
+      const variation = flag.variations[matchingSplit.variationKey];
+      const matchedRule = allocation.rules && allocation.rules.length > 0
+        ? allocation.rules.find(rule => this.matchesRule(rule, subjectAttributes, subjectKey)) || null
+        : null;
+
+      return {
+        assignment: variation?.value || this.getDefaultValue(flag),
+        evaluationDetails: {
+          environmentName: 'Test',
+          flagEvaluationCode: 'MATCH',
+          flagEvaluationDescription: `Matched allocation "${allocation.key}"`,
+          banditKey: null,
+          banditAction: null,
+          variationKey: matchingSplit.variationKey,
+          variationValue: variation?.value || this.getDefaultValue(flag),
+          matchedRule: matchedRule ? { conditions: matchedRule.conditions } : null,
+          matchedAllocation: {
+            key: allocation.key,
+            allocationEvaluationCode: 'MATCH',
+            orderPosition: i
+          },
+          unmatchedAllocations,
+          unevaluatedAllocations
+        }
+      };
+    }
+
+    // No allocation matched
+    return {
+      assignment: this.getDefaultValue(flag),
+      evaluationDetails: {
+        environmentName: 'Test',
+        flagEvaluationCode: 'DEFAULT_ALLOCATION_NULL',
+        flagEvaluationDescription: 'No allocations matched',
+        banditKey: null,
+        banditAction: null,
+        variationKey: null,
+        variationValue: null,
+        matchedRule: null,
+        matchedAllocation: null,
+        unmatchedAllocations,
+        unevaluatedAllocations: []
+      }
+    };
+  }
+
+  // Generate attributes that will match specific conditions
   private generateMatchingAttributes(conditions: Condition[]): Record<string, any> {
     const attributes: Record<string, any> = {};
 
@@ -108,52 +389,40 @@ class TestCaseGenerator {
 
       switch (operator) {
         case 'ONE_OF':
-          // Pick first value from the array
           if (Array.isArray(value) && value.length > 0) {
             attributes[attribute] = value[0];
           }
           break;
 
         case 'NOT_ONE_OF':
-          // Pick a value NOT in the array
           const availableValues = this.ATTRIBUTE_VALUES[attribute] || ['test-value'];
           const excludeValues = Array.isArray(value) ? value : [value];
           const validValues = availableValues.filter((v: string) => !excludeValues.includes(v));
-          if (validValues.length > 0) {
-            attributes[attribute] = validValues[0];
-          } else {
-            attributes[attribute] = 'other-value';
-          }
+          attributes[attribute] = validValues[0] || 'other-value';
           break;
 
         case 'MATCHES':
-          // Generate string that would match the regex pattern
           if (attribute === 'email') {
             if (typeof value === 'string') {
               if (value.includes('@example')) {
                 attributes[attribute] = 'user@example.com';
               } else if (value.includes('@test')) {
                 attributes[attribute] = 'user@test.com';
-              } else if (value.includes('@gmail')) {
-                attributes[attribute] = 'user@gmail.com';
-              } else {
+              } else if (value.includes('@company')) {
                 attributes[attribute] = 'user@company.com';
+              } else {
+                attributes[attribute] = 'test@match.com';
               }
             }
           } else if (attribute === 'version') {
-            attributes[attribute] = '2.1.0'; // Common version format
+            attributes[attribute] = '2.1.0';
           } else {
-            attributes[attribute] = `${attribute}-matching-value`;
+            attributes[attribute] = 'matching-pattern';
           }
           break;
 
         case 'NOT_MATCHES':
-          // Generate string that would NOT match
-          if (attribute === 'email') {
-            attributes[attribute] = 'nomatch@different.org';
-          } else {
-            attributes[attribute] = 'no-match-value';
-          }
+          attributes[attribute] = 'no-match-value';
           break;
 
         case 'LT':
@@ -181,7 +450,6 @@ class TestCaseGenerator {
           break;
 
         default:
-          // Fallback
           attributes[attribute] = 'test-value';
       }
     });
@@ -189,159 +457,94 @@ class TestCaseGenerator {
     return attributes;
   }
 
-  // Generate attributes that will FAIL the given conditions
-  private generateFailingAttributes(conditions: Condition[]): Record<string, any> {
-    const attributes: Record<string, any> = {};
-
-    conditions.forEach(condition => {
-      const { attribute, operator, value } = condition;
-
-      switch (operator) {
-        case 'ONE_OF':
-          // Pick a value NOT in the array
-          const availableValues = this.ATTRIBUTE_VALUES[attribute] || ['other-value'];
-          const excludeValues = Array.isArray(value) ? value : [value];
-          const validValues = availableValues.filter((v: string) => !excludeValues.includes(v));
-          attributes[attribute] = validValues[0] || 'fail-value';
-          break;
-
-        case 'NOT_ONE_OF':
-          // Pick first value from the excluded array
-          if (Array.isArray(value) && value.length > 0) {
-            attributes[attribute] = value[0];
-          }
-          break;
-
-        case 'LT':
-          attributes[attribute] = Number(value) + 5;
-          break;
-
-        case 'GT':
-          attributes[attribute] = Math.max(0, Number(value) - 5);
-          break;
-
-        // ... other operators (invert the logic from matching)
-
-        default:
-          attributes[attribute] = 'fail-value';
-      }
-    });
-
-    return attributes;
-  }
-
-  // Get expected variation for a matching allocation
-  private getExpectedVariation(flag: Flag, allocation: Allocation): any {
-    if (allocation.splits && allocation.splits.length > 0) {
-      const variationKey = allocation.splits[0].variationKey;
-      return flag.variations[variationKey]?.value || null;
+  // Generate a subject that will be in traffic for a specific allocation
+  private generateTrafficMatchingSubject(flag: Flag, allocation: Allocation): string {
+    if (allocation.splits.length === 0 || allocation.splits[0].shards.length === 0) {
+      return 'traffic-match-subject';
     }
-    return null;
+
+    const split = allocation.splits[0];
+    const shard = split.shards[0];
+
+    if (shard.ranges.length === 0) {
+      return 'traffic-match-subject';
+    }
+
+    const targetRange = shard.ranges[0];
+
+    // Try to find a subject key that falls in the target range
+    for (let i = 0; i < 1000; i++) {
+      const subjectKey = `subject-${i}`;
+      const hashInput = `${shard.salt}-${subjectKey}`;
+      const shardValue = this.calculateShard(hashInput, flag.totalShards);
+
+      if (targetRange.start <= shardValue && shardValue < targetRange.end) {
+        return subjectKey;
+      }
+    }
+
+    return 'traffic-fallback-subject';
   }
 
-  // Generate test subjects for a single flag
+  // Generate test subjects for a single flag using correct evaluation logic
   private generateSubjectsForFlag(flag: Flag): SubjectTestCase[] {
     const subjects: SubjectTestCase[] = [];
 
-    // 1. Generate subjects that MATCH each allocation
+    if (flag.allocations.length === 0) {
+      // Flag with no allocations
+      const result = this.evaluateFlag(flag, 'no-allocations-subject', {});
+      subjects.push({
+        subjectKey: 'no-allocations-subject',
+        subjectAttributes: {},
+        assignment: result.assignment,
+        evaluationDetails: result.evaluationDetails
+      });
+      return subjects;
+    }
+
+    // Generate subjects for each allocation
     flag.allocations.forEach((allocation, allocIndex) => {
-      if (allocation.rules && allocation.rules.length > 0) {
-        allocation.rules.forEach((rule, ruleIndex) => {
-          // Matching subject
-          const matchingAttrs = this.generateMatchingAttributes(rule.conditions);
-          const expectedValue = this.getExpectedVariation(flag, allocation);
+      if (!allocation.rules || allocation.rules.length === 0) {
+        // Allocation with no rules (always matches if in traffic)
+        const subjectKey = this.generateTrafficMatchingSubject(flag, allocation);
+        const result = this.evaluateFlag(flag, subjectKey, {});
 
-          subjects.push({
-            subjectKey: `match-${allocation.key}-rule-${ruleIndex}`,
-            subjectAttributes: matchingAttrs,
-            assignment: expectedValue,
-            evaluationDetails: {
-              environmentName: 'Test',
-              flagEvaluationCode: 'MATCH',
-              flagEvaluationDescription: `Matched allocation "${allocation.key}"`,
-              banditKey: null,
-              banditAction: null,
-              variationKey: allocation.splits[0]?.variationKey || null,
-              variationValue: expectedValue,
-              matchedRule: { conditions: rule.conditions },
-              matchedAllocation: {
-                key: allocation.key,
-                allocationEvaluationCode: 'MATCH',
-                orderPosition: allocIndex
-              },
-              unmatchedAllocations: [],
-              unevaluatedAllocations: []
-            }
-          });
+        subjects.push({
+          subjectKey: `${subjectKey}-no-rules`,
+          subjectAttributes: {},
+          assignment: result.assignment,
+          evaluationDetails: result.evaluationDetails
+        });
+      } else {
+        // Test first rule of the allocation
+        const rule = allocation.rules[0];
+        const matchingAttrs = this.generateMatchingAttributes(rule.conditions);
+        const subjectKey = this.generateTrafficMatchingSubject(flag, allocation);
 
-          // Failing subject
-          const failingAttrs = this.generateFailingAttributes(rule.conditions);
-          subjects.push({
-            subjectKey: `fail-${allocation.key}-rule-${ruleIndex}`,
-            subjectAttributes: failingAttrs,
-            assignment: this.getDefaultValue(flag),
-            evaluationDetails: {
-              environmentName: 'Test',
-              flagEvaluationCode: 'DEFAULT_ALLOCATION_NULL',
-              flagEvaluationDescription: 'No allocations matched',
-              banditKey: null,
-              banditAction: null,
-              variationKey: null,
-              variationValue: null,
-              matchedRule: null,
-              matchedAllocation: null,
-              unmatchedAllocations: [{
-                key: allocation.key,
-                allocationEvaluationCode: 'FAILING_RULE',
-                orderPosition: allocIndex
-              }],
-              unevaluatedAllocations: []
-            }
-          });
+        const result = this.evaluateFlag(flag, subjectKey, matchingAttrs);
+
+        subjects.push({
+          subjectKey: `${subjectKey}-rule-match`,
+          subjectAttributes: matchingAttrs,
+          assignment: result.assignment,
+          evaluationDetails: result.evaluationDetails
         });
       }
     });
 
-    // 2. Add a baseline subject that gets default (no attributes)
+    // Add a baseline subject that gets default (no matching attributes)
+    const baselineResult = this.evaluateFlag(flag, 'baseline-subject', {});
     subjects.push({
-      subjectKey: 'baseline-no-attributes',
+      subjectKey: 'baseline-subject',
       subjectAttributes: {},
-      assignment: this.getDefaultValue(flag),
-      evaluationDetails: {
-        environmentName: 'Test',
-        flagEvaluationCode: 'DEFAULT_ALLOCATION_NULL',
-        flagEvaluationDescription: 'No allocations matched due to missing attributes',
-        banditKey: null,
-        banditAction: null,
-        variationKey: null,
-        variationValue: null,
-        matchedRule: null,
-        matchedAllocation: null,
-        unmatchedAllocations: flag.allocations.map((alloc, idx) => ({
-          key: alloc.key,
-          allocationEvaluationCode: 'FAILING_RULE',
-          orderPosition: idx
-        })),
-        unevaluatedAllocations: []
-      }
+      assignment: baselineResult.assignment,
+      evaluationDetails: baselineResult.evaluationDetails
     });
 
     return subjects;
   }
 
-  // Get default value based on variation type
-  private getDefaultValue(flag: Flag): any {
-    switch (flag.variationType) {
-      case 'STRING': return 'default';
-      case 'INTEGER': return 0;
-      case 'BOOLEAN': return false;
-      case 'NUMERIC': return 0.0;
-      case 'JSON': return null;
-      default: return null;
-    }
-  }
-
-  // Group flags by similar characteristics for batch testing
+  // Group flags by similar characteristics
   private categorizeFlagsByRules(): Record<string, Flag[]> {
     const categories: Record<string, Flag[]> = {
       geographic: [],
@@ -349,7 +552,7 @@ class TestCaseGenerator {
       technical: [],
       email_matching: [],
       numeric_comparisons: [],
-      complex_rules: []
+      simple_rules: []
     };
 
     Object.values(this.flags).forEach(flag => {
@@ -360,14 +563,13 @@ class TestCaseGenerator {
       const hasTechnical = this.flagHasAttribute(flag, ['browser', 'os', 'device', 'platform']);
       const hasEmailMatching = this.flagHasEmailMatching(flag);
       const hasNumericComparisons = this.flagHasNumericOperators(flag);
-      const hasComplexRules = this.flagHasMultipleConditions(flag);
 
       if (hasGeographic) categories.geographic.push(flag);
       else if (hasDemographic) categories.demographic.push(flag);
       else if (hasTechnical) categories.technical.push(flag);
       else if (hasEmailMatching) categories.email_matching.push(flag);
       else if (hasNumericComparisons) categories.numeric_comparisons.push(flag);
-      else if (hasComplexRules) categories.complex_rules.push(flag);
+      else categories.simple_rules.push(flag);
     });
 
     return categories;
@@ -375,7 +577,7 @@ class TestCaseGenerator {
 
   private flagHasAttribute(flag: Flag, attributes: string[]): boolean {
     return flag.allocations.some(alloc =>
-      alloc.rules.some(rule =>
+      alloc.rules && alloc.rules.some(rule =>
         rule.conditions.some(cond =>
           attributes.includes(cond.attribute)
         )
@@ -385,7 +587,7 @@ class TestCaseGenerator {
 
   private flagHasEmailMatching(flag: Flag): boolean {
     return flag.allocations.some(alloc =>
-      alloc.rules.some(rule =>
+      alloc.rules && alloc.rules.some(rule =>
         rule.conditions.some(cond =>
           cond.attribute === 'email' && cond.operator === 'MATCHES'
         )
@@ -396,18 +598,10 @@ class TestCaseGenerator {
   private flagHasNumericOperators(flag: Flag): boolean {
     const numericOps = ['LT', 'LTE', 'GT', 'GTE'];
     return flag.allocations.some(alloc =>
-      alloc.rules.some(rule =>
+      alloc.rules && alloc.rules.some(rule =>
         rule.conditions.some(cond =>
           numericOps.includes(cond.operator)
         )
-      )
-    );
-  }
-
-  private flagHasMultipleConditions(flag: Flag): boolean {
-    return flag.allocations.some(alloc =>
-      alloc.rules.some(rule =>
-        rule.conditions.length > 2
       )
     );
   }
@@ -425,7 +619,7 @@ class TestCaseGenerator {
       if (flags.length === 0) return;
 
       // Pick the first few flags from each category for testing
-      const testFlags = flags.slice(0, Math.min(3, flags.length));
+      const testFlags = flags.slice(0, Math.min(2, flags.length));
 
       testFlags.forEach((flag, index) => {
         const subjects = this.generateSubjectsForFlag(flag);
@@ -437,7 +631,7 @@ class TestCaseGenerator {
           subjects
         };
 
-        const filename = `test-generated-${categoryName}-${index + 1}.json`;
+        const filename = `test-${categoryName}-${index + 1}.json`;
         const filepath = path.join(this.outputPath, filename);
 
         fs.writeFileSync(filepath, JSON.stringify(testCase, null, 2));
@@ -447,7 +641,6 @@ class TestCaseGenerator {
     });
 
     console.log(`🎯 Generated batch test files in ${this.outputPath}`);
-    console.log(`📊 Categories tested: ${Object.keys(categories).filter(k => categories[k].length > 0).join(', ')}`);
   }
 }
 
@@ -459,7 +652,7 @@ function main(): void {
     console.log(`
 Usage: npx ts-node generate-test-cases.ts <flags-file> [output-path]
 
-Generate test cases for flags with subjects that actually match the flag rules.
+Generate test cases based on actual iOS SDK evaluation logic.
 
 Arguments:
   flags-file     Path to the flags JSON file (e.g., ufc/flags-2000.json)
@@ -481,10 +674,10 @@ Examples:
   }
 
   try {
-    const generator = new TestCaseGenerator(flagsFile, outputPath);
+    const generator = new CorrectTestCaseGenerator(flagsFile, outputPath);
     generator.generateBatchTests();
   } catch (error) {
-    console.error('Error generating test cases:', error);
+    console.error('Error generating corrected test cases:', error);
     process.exit(1);
   }
 }
@@ -494,4 +687,4 @@ if (require.main === module) {
   main();
 }
 
-export { TestCaseGenerator };
+export { CorrectTestCaseGenerator };

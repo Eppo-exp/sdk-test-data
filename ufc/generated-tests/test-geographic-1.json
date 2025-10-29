@@ -4,50 +4,10 @@
   "defaultValue": "default",
   "subjects": [
     {
-      "subjectKey": "match-allocation-1-rule-0",
+      "subjectKey": "subject-0-rule-match",
       "subjectAttributes": {
         "country": "Canada",
-        "subscription": "subscription-matching-value"
-      },
-      "assignment": "test-flag-0001-control-value",
-      "evaluationDetails": {
-        "environmentName": "Test",
-        "flagEvaluationCode": "MATCH",
-        "flagEvaluationDescription": "Matched allocation \"allocation-1\"",
-        "banditKey": null,
-        "banditAction": null,
-        "variationKey": "control",
-        "variationValue": "test-flag-0001-control-value",
-        "matchedRule": {
-          "conditions": [
-            {
-              "attribute": "country",
-              "operator": "NOT_ONE_OF",
-              "value": [
-                "US"
-              ]
-            },
-            {
-              "attribute": "subscription",
-              "operator": "MATCHES",
-              "value": "subscription.*pattern"
-            }
-          ]
-        },
-        "matchedAllocation": {
-          "key": "allocation-1",
-          "allocationEvaluationCode": "MATCH",
-          "orderPosition": 0
-        },
-        "unmatchedAllocations": [],
-        "unevaluatedAllocations": []
-      }
-    },
-    {
-      "subjectKey": "fail-allocation-1-rule-0",
-      "subjectAttributes": {
-        "country": "US",
-        "subscription": "fail-value"
+        "subscription": "matching-pattern"
       },
       "assignment": "default",
       "evaluationDetails": {
@@ -71,13 +31,13 @@
       }
     },
     {
-      "subjectKey": "baseline-no-attributes",
+      "subjectKey": "baseline-subject",
       "subjectAttributes": {},
       "assignment": "default",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
-        "flagEvaluationDescription": "No allocations matched due to missing attributes",
+        "flagEvaluationDescription": "No allocations matched",
         "banditKey": null,
         "banditAction": null,
         "variationKey": null,

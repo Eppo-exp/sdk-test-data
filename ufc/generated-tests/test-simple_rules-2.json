@@ -1,0 +1,93 @@
+{
+  "flag": "test-flag-0029",
+  "variationType": "JSON",
+  "defaultValue": null,
+  "subjects": [
+    {
+      "subjectKey": "subject-0-no-rules",
+      "subjectAttributes": {},
+      "assignment": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Matched allocation \"allocation-1\"",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "config-a",
+        "variationValue": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "allocation-1",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 1
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "subject-1-rule-match",
+      "subjectAttributes": {
+        "companyId": "no-match-value"
+      },
+      "assignment": "{\"enabled\":true,\"value\":28,\"label\":\"Configuration 2\",\"features\":[\"feature-2\",\"feature-3\"]}",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Matched allocation \"allocation-1\"",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "config-b",
+        "variationValue": "{\"enabled\":true,\"value\":28,\"label\":\"Configuration 2\",\"features\":[\"feature-2\",\"feature-3\"]}",
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "allocation-1",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 1
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "baseline-subject",
+      "subjectAttributes": {},
+      "assignment": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Matched allocation \"allocation-1\"",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "config-a",
+        "variationValue": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+        "matchedRule": null,
+        "matchedAllocation": {
+          "key": "allocation-1",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 0
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 1
+          }
+        ]
+      }
+    }
+  ]
+}

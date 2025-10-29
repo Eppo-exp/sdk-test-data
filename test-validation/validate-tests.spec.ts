@@ -10,6 +10,7 @@ const getTestFilePaths = () => {
     testDirs.push(generatedTestDir);
   }
 
+
   const allFilePaths: string[] = [];
 
   testDirs.forEach(testDir => {
