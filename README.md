@@ -13,10 +13,127 @@ Node.JS v18, Jest v29, Typescript v4
 
 1. install dependencies by runnning CLI command `yarn install`.
 2. Update content of the [flags-v1.json](ufc/flags-v1.json).
-3. Validate tests by runnning CLI command `yarn run validate:tests`.
+3. Validate tests by runnning CLI command `yarn run validate:tests`. This validates both hand-crafted tests in `ufc/tests/` and generated tests in `ufc/generated-tests/`.
 4. Obfuscate file [flags-v1.json](ufc/flags-v1.json) by runnning CLI command `yarn run obfuscate:ufc`. It will update
    file [flags-v1-obfuscated.json](ufc/flags-v1-obfuscated.json) with obfuscated version of the
    file [flags-v1.json](ufc/flags-v1.json).
+
+## Flag Generator
+
+The `generate-flags.ts` script can generate large numbers of test flags for scalability testing and comprehensive SDK validation.
+
+### Usage
+
+```bash
+npx ts-node generate-flags.ts <number-of-flags> [output-path]
+```
+
+### Arguments
+
+- `number-of-flags` - Number of flags to generate (required, max: 10,000)
+- `output-path` - Output directory path (optional, default: "ufc")
+
+### Examples
+
+```bash
+# Generate 2000 flags in ./ufc/ directory (default)
+npx ts-node generate-flags.ts 2000
+
+# Generate 100 flags in ./test-data/ directory
+npx ts-node generate-flags.ts 100 test-data
+
+# Generate 500 flags in ../output/ directory
+npx ts-node generate-flags.ts 500 ../output
+```
+
+### Generated Flag Features
+
+Each generated flag includes:
+
+- **Multiple Variation Types**: STRING, INTEGER, BOOLEAN, NUMERIC, JSON
+- **Smart Targeting Rules**: Geographic, demographic, and technical attribute targeting
+- **Traffic Allocation**: Proper shard-based A/B testing setup
+- **Complex Operators**: ONE_OF, MATCHES, LT/GT comparisons, IS_NULL checks
+- **Realistic Test Data**: Appropriate values for each variation type and targeting scenario
+
+The generated flags are designed to produce meaningful evaluations with various outcomes (MATCH, DEFAULT_ALLOCATION_NULL, TRAFFIC_EXPOSURE_MISS, FAILING_RULE) making them perfect for comprehensive SDK testing.
+
+### Output Format
+
+The generator creates a UFC-compliant JSON configuration file with the specified number of flags, following the same format as [flags-v1.json](ufc/flags-v1.json).
+
+## Test Case Generator
+
+The `generate-test-cases.ts` script generates test cases for flags that produce **actual evaluations** rather than just default values. This is crucial for effectively leveraging large flag configurations.
+
+### Usage
+
+```bash
+npx ts-node generate-test-cases.ts <flags-file> [output-path]
+```
+
+### Arguments
+
+- `flags-file` - Path to the flags JSON file (e.g., `ufc/flags-2000.json`)
+- `output-path` - Output directory (optional, default: `ufc/generated-tests`)
+
+### Examples
+
+```bash
+# Generate test cases for 2000 flags
+npx ts-node generate-test-cases.ts ufc/flags-2000.json
+
+# Generate with custom output directory
+npx ts-node generate-test-cases.ts ufc/flags-1000.json custom-tests/
+```
+
+### Smart Subject Generation
+
+The key innovation is **rule-aware subject generation**. Instead of random subjects that mostly get default values, it analyzes each flag's rules and generates subjects that will:
+
+- **Match allocation rules** → `flagEvaluationCode: "MATCH"`
+- **Fail allocation rules** → `flagEvaluationCode: "FAILING_RULE"`
+- **Miss traffic allocation** → `flagEvaluationCode: "TRAFFIC_EXPOSURE_MISS"`
+
+### Test Organization
+
+Generated tests are organized by flag characteristics:
+
+- `test-generated-geographic-*.json` - Country/region targeting flags
+- `test-generated-demographic-*.json` - Age/plan/subscription targeting
+- `test-generated-technical-*.json` - Browser/OS/device targeting
+- `test-generated-email_matching-*.json` - Email regex pattern matching
+- `test-generated-numeric_comparisons-*.json` - LT/GT/GTE comparison operators
+- `test-generated-complex_rules-*.json` - Multi-condition AND logic
+
+### Output Format
+
+Each generated test file follows the existing `IAssignmentTestCase` format:
+
+```json
+{
+  "flag": "test-flag-0001",
+  "variationType": "STRING",
+  "defaultValue": "default",
+  "subjects": [
+    {
+      "subjectKey": "match-allocation-1-rule-0",
+      "subjectAttributes": {
+        "country": "Canada",
+        "subscription": "subscription-matching-value"
+      },
+      "assignment": "test-flag-0001-control-value",
+      "evaluationDetails": {
+        "flagEvaluationCode": "MATCH",
+        "variationValue": "test-flag-0001-control-value",
+        "matchedRule": { "conditions": [...] }
+      }
+    }
+  ]
+}
+```
+
+This ensures compatibility with existing test runners and validation frameworks.
 
 # SDK Package Testing
 

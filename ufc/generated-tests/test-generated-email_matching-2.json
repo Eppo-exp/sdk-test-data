@@ -1,0 +1,99 @@
+{
+  "flag": "test-flag-1325",
+  "variationType": "STRING",
+  "defaultValue": "default",
+  "subjects": [
+    {
+      "subjectKey": "match-allocation-2-rule-0",
+      "subjectAttributes": {
+        "email": "user@test.com"
+      },
+      "assignment": "test-flag-1325-control-value",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "control",
+        "variationValue": "test-flag-1325-control-value",
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "email",
+              "operator": "IS_NULL",
+              "value": false
+            },
+            {
+              "attribute": "email",
+              "operator": "MATCHES",
+              "value": "@test\\.com"
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "allocation-2",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "fail-allocation-2-rule-0",
+      "subjectAttributes": {
+        "email": "fail-value"
+      },
+      "assignment": "default",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "baseline-no-attributes",
+      "subjectAttributes": {},
+      "assignment": "default",
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched due to missing attributes",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "allocation-1",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    }
+  ]
+}
