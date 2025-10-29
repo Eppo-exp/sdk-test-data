@@ -1,12 +1,12 @@
 {
-  "flag": "test-flag-0307",
-  "variationType": "NUMERIC",
-  "defaultValue": 0,
+  "flag": "test-flag-0894",
+  "variationType": "BOOLEAN",
+  "defaultValue": false,
   "subjects": [
     {
       "subjectKey": "baseline",
       "subjectAttributes": {},
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -33,7 +33,7 @@
         "country": "US",
         "region": "North America"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -60,7 +60,7 @@
         "country": "Canada",
         "region": "North America"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -87,7 +87,7 @@
         "country": "UK",
         "region": "Europe"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -115,7 +115,7 @@
         "plan": "free",
         "accountType": "individual"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -143,7 +143,7 @@
         "plan": "premium",
         "accountType": "business"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -171,7 +171,7 @@
         "plan": "enterprise",
         "accountType": "business"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -200,7 +200,7 @@
         "os": "android",
         "platform": "android"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -229,7 +229,7 @@
         "os": "macos",
         "platform": "web"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -257,7 +257,7 @@
         "os": "ios",
         "platform": "ios"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -283,7 +283,7 @@
       "subjectAttributes": {
         "email": "user@company.com"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -309,7 +309,7 @@
       "subjectAttributes": {
         "email": "test@gmail.com"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -335,7 +335,7 @@
       "subjectAttributes": {
         "email": "demo@example.com"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -362,7 +362,7 @@
         "version": "1.2.3",
         "age": 18
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -389,7 +389,7 @@
         "version": "3.1.0",
         "age": 65
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -415,7 +415,7 @@
       "subjectAttributes": {
         "size": 5
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -441,7 +441,7 @@
       "subjectAttributes": {
         "size": 500
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -473,7 +473,7 @@
         "version": "2.5.1",
         "size": 100
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -500,7 +500,7 @@
         "country": null,
         "age": null
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -528,7 +528,7 @@
         "email": "",
         "browser": ""
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -554,7 +554,7 @@
       "subjectAttributes": {
         "id": "special-id-123"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",

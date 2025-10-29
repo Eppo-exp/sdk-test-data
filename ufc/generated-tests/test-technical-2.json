@@ -1,12 +1,12 @@
 {
-  "flag": "test-flag-0003",
-  "variationType": "INTEGER",
-  "defaultValue": 0,
+  "flag": "test-flag-0013",
+  "variationType": "BOOLEAN",
+  "defaultValue": false,
   "subjects": [
     {
       "subjectKey": "baseline",
       "subjectAttributes": {},
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -22,6 +22,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -33,7 +43,7 @@
         "country": "US",
         "region": "North America"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -49,6 +59,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -60,7 +80,7 @@
         "country": "Canada",
         "region": "North America"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -76,6 +96,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -87,7 +117,7 @@
         "country": "UK",
         "region": "Europe"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -103,6 +133,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -115,22 +155,39 @@
         "plan": "free",
         "accountType": "individual"
       },
-      "assignment": 0,
+      "assignment": true,
       "evaluationDetails": {
         "environmentName": "Test",
-        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
-        "flagEvaluationDescription": "No allocations matched",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Matched allocation \"allocation-3\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": null,
-        "variationValue": null,
-        "matchedRule": null,
-        "matchedAllocation": null,
+        "variationKey": "on",
+        "variationValue": true,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "accountType",
+              "operator": "NOT_MATCHES",
+              "value": "accountType.*pattern"
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "allocation-3",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
         "unmatchedAllocations": [
           {
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
           }
         ],
         "unevaluatedAllocations": []
@@ -143,22 +200,39 @@
         "plan": "premium",
         "accountType": "business"
       },
-      "assignment": 0,
+      "assignment": true,
       "evaluationDetails": {
         "environmentName": "Test",
-        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
-        "flagEvaluationDescription": "No allocations matched",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Matched allocation \"allocation-3\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": null,
-        "variationValue": null,
-        "matchedRule": null,
-        "matchedAllocation": null,
+        "variationKey": "on",
+        "variationValue": true,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "accountType",
+              "operator": "NOT_MATCHES",
+              "value": "accountType.*pattern"
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "allocation-3",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
         "unmatchedAllocations": [
           {
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
           }
         ],
         "unevaluatedAllocations": []
@@ -171,22 +245,39 @@
         "plan": "enterprise",
         "accountType": "business"
       },
-      "assignment": 0,
+      "assignment": true,
       "evaluationDetails": {
         "environmentName": "Test",
-        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
-        "flagEvaluationDescription": "No allocations matched",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Matched allocation \"allocation-3\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": null,
-        "variationValue": null,
-        "matchedRule": null,
-        "matchedAllocation": null,
+        "variationKey": "on",
+        "variationValue": true,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "accountType",
+              "operator": "NOT_MATCHES",
+              "value": "accountType.*pattern"
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "allocation-3",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
         "unmatchedAllocations": [
           {
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
           }
         ],
         "unevaluatedAllocations": []
@@ -200,7 +291,7 @@
         "os": "android",
         "platform": "android"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -216,6 +307,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -229,7 +330,7 @@
         "os": "macos",
         "platform": "web"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -245,6 +346,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -257,7 +368,7 @@
         "os": "ios",
         "platform": "ios"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -273,6 +384,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -283,7 +404,7 @@
       "subjectAttributes": {
         "email": "user@company.com"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -299,6 +420,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -309,7 +440,7 @@
       "subjectAttributes": {
         "email": "test@gmail.com"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -325,6 +456,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -335,7 +476,7 @@
       "subjectAttributes": {
         "email": "demo@example.com"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -351,6 +492,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -362,7 +513,7 @@
         "version": "1.2.3",
         "age": 18
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -378,6 +529,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -389,7 +550,7 @@
         "version": "3.1.0",
         "age": 65
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -405,6 +566,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -415,7 +586,7 @@
       "subjectAttributes": {
         "size": 5
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -431,6 +602,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -441,7 +622,7 @@
       "subjectAttributes": {
         "size": 500
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -457,6 +638,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -473,7 +664,7 @@
         "version": "2.5.1",
         "size": 100
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -489,6 +680,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -500,7 +701,7 @@
         "country": null,
         "age": null
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -516,6 +717,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -528,7 +739,7 @@
         "email": "",
         "browser": ""
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -544,6 +755,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []
@@ -554,7 +775,7 @@
       "subjectAttributes": {
         "id": "special-id-123"
       },
-      "assignment": 0,
+      "assignment": false,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
@@ -570,6 +791,16 @@
             "key": "allocation-1",
             "allocationEvaluationCode": "FAILING_RULE",
             "orderPosition": 0
+          },
+          {
+            "key": "allocation-2",
+            "allocationEvaluationCode": "BEFORE_START_TIME",
+            "orderPosition": 1
+          },
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
           }
         ],
         "unevaluatedAllocations": []

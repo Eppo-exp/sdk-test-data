@@ -1,20 +1,20 @@
 {
   "flag": "test-flag-0005",
-  "variationType": "STRING",
-  "defaultValue": "default",
+  "variationType": "NUMERIC",
+  "defaultValue": 0,
   "subjects": [
     {
       "subjectKey": "baseline",
       "subjectAttributes": {},
-      "assignment": "test-flag-0005-control-value",
+      "assignment": 75.73,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "control",
-        "variationValue": "test-flag-0005-control-value",
+        "variationKey": "small",
+        "variationValue": 75.73,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -28,7 +28,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -37,15 +43,15 @@
         "country": "US",
         "region": "North America"
       },
-      "assignment": "test-flag-0005-variant-b-value",
+      "assignment": 79.83,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "variant-b",
-        "variationValue": "test-flag-0005-variant-b-value",
+        "variationKey": "medium",
+        "variationValue": 79.83,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -59,7 +65,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -68,15 +80,15 @@
         "country": "Canada",
         "region": "North America"
       },
-      "assignment": "test-flag-0005-control-value",
+      "assignment": 75.73,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "control",
-        "variationValue": "test-flag-0005-control-value",
+        "variationKey": "small",
+        "variationValue": 75.73,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -90,7 +102,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -99,15 +117,15 @@
         "country": "UK",
         "region": "Europe"
       },
-      "assignment": "test-flag-0005-variant-b-value",
+      "assignment": 79.83,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "variant-b",
-        "variationValue": "test-flag-0005-variant-b-value",
+        "variationKey": "medium",
+        "variationValue": 79.83,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -121,7 +139,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -131,15 +155,15 @@
         "plan": "free",
         "accountType": "individual"
       },
-      "assignment": "test-flag-0005-variant-b-value",
+      "assignment": 79.83,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "variant-b",
-        "variationValue": "test-flag-0005-variant-b-value",
+        "variationKey": "medium",
+        "variationValue": 79.83,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -153,7 +177,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -163,15 +193,15 @@
         "plan": "premium",
         "accountType": "business"
       },
-      "assignment": "test-flag-0005-variant-b-value",
+      "assignment": 75.73,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "variant-b",
-        "variationValue": "test-flag-0005-variant-b-value",
+        "variationKey": "small",
+        "variationValue": 75.73,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -185,7 +215,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -195,15 +231,15 @@
         "plan": "enterprise",
         "accountType": "business"
       },
-      "assignment": "test-flag-0005-variant-a-value",
+      "assignment": 79.83,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "variant-a",
-        "variationValue": "test-flag-0005-variant-a-value",
+        "variationKey": "medium",
+        "variationValue": 79.83,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -217,7 +253,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -228,15 +270,15 @@
         "os": "android",
         "platform": "android"
       },
-      "assignment": "test-flag-0005-variant-b-value",
+      "assignment": 79.83,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "variant-b",
-        "variationValue": "test-flag-0005-variant-b-value",
+        "variationKey": "medium",
+        "variationValue": 79.83,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -250,7 +292,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -261,15 +309,15 @@
         "os": "macos",
         "platform": "web"
       },
-      "assignment": "test-flag-0005-variant-b-value",
+      "assignment": 79.83,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "variant-b",
-        "variationValue": "test-flag-0005-variant-b-value",
+        "variationKey": "medium",
+        "variationValue": 79.83,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -283,7 +331,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -293,15 +347,15 @@
         "os": "ios",
         "platform": "ios"
       },
-      "assignment": "test-flag-0005-control-value",
+      "assignment": 75.73,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "control",
-        "variationValue": "test-flag-0005-control-value",
+        "variationKey": "small",
+        "variationValue": 75.73,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -315,7 +369,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -323,15 +383,15 @@
       "subjectAttributes": {
         "email": "user@company.com"
       },
-      "assignment": "test-flag-0005-control-value",
+      "assignment": 75.73,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "control",
-        "variationValue": "test-flag-0005-control-value",
+        "variationKey": "small",
+        "variationValue": 75.73,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -345,7 +405,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -353,15 +419,15 @@
       "subjectAttributes": {
         "email": "test@gmail.com"
       },
-      "assignment": "test-flag-0005-control-value",
+      "assignment": 75.73,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "control",
-        "variationValue": "test-flag-0005-control-value",
+        "variationKey": "small",
+        "variationValue": 75.73,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -375,7 +441,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -383,15 +455,15 @@
       "subjectAttributes": {
         "email": "demo@example.com"
       },
-      "assignment": "test-flag-0005-variant-a-value",
+      "assignment": 79.83,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "variant-a",
-        "variationValue": "test-flag-0005-variant-a-value",
+        "variationKey": "medium",
+        "variationValue": 79.83,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -405,7 +477,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -414,15 +492,15 @@
         "version": "1.2.3",
         "age": 18
       },
-      "assignment": "test-flag-0005-variant-b-value",
+      "assignment": 79.83,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "variant-b",
-        "variationValue": "test-flag-0005-variant-b-value",
+        "variationKey": "medium",
+        "variationValue": 79.83,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -432,11 +510,17 @@
         "unmatchedAllocations": [
           {
             "key": "allocation-1",
-            "allocationEvaluationCode": "FAILING_RULE",
+            "allocationEvaluationCode": "TRAFFIC_EXPOSURE_MISS",
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -445,15 +529,15 @@
         "version": "3.1.0",
         "age": 65
       },
-      "assignment": "test-flag-0005-control-value",
+      "assignment": 79.83,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "control",
-        "variationValue": "test-flag-0005-control-value",
+        "variationKey": "medium",
+        "variationValue": 79.83,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -463,11 +547,17 @@
         "unmatchedAllocations": [
           {
             "key": "allocation-1",
-            "allocationEvaluationCode": "FAILING_RULE",
+            "allocationEvaluationCode": "TRAFFIC_EXPOSURE_MISS",
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -475,15 +565,15 @@
       "subjectAttributes": {
         "size": 5
       },
-      "assignment": "test-flag-0005-variant-b-value",
+      "assignment": 79.83,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "variant-b",
-        "variationValue": "test-flag-0005-variant-b-value",
+        "variationKey": "medium",
+        "variationValue": 79.83,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -497,7 +587,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -505,15 +601,15 @@
       "subjectAttributes": {
         "size": 500
       },
-      "assignment": "test-flag-0005-control-value",
+      "assignment": 79.83,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "control",
-        "variationValue": "test-flag-0005-control-value",
+        "variationKey": "medium",
+        "variationValue": 79.83,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -527,7 +623,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -541,15 +643,15 @@
         "version": "2.5.1",
         "size": 100
       },
-      "assignment": "test-flag-0005-variant-a-value",
+      "assignment": 79.83,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "variant-a",
-        "variationValue": "test-flag-0005-variant-a-value",
+        "variationKey": "medium",
+        "variationValue": 79.83,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -559,11 +661,17 @@
         "unmatchedAllocations": [
           {
             "key": "allocation-1",
-            "allocationEvaluationCode": "FAILING_RULE",
+            "allocationEvaluationCode": "TRAFFIC_EXPOSURE_MISS",
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -572,15 +680,15 @@
         "country": null,
         "age": null
       },
-      "assignment": "test-flag-0005-variant-b-value",
+      "assignment": 79.83,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "variant-b",
-        "variationValue": "test-flag-0005-variant-b-value",
+        "variationKey": "medium",
+        "variationValue": 79.83,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -594,7 +702,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -604,15 +718,15 @@
         "email": "",
         "browser": ""
       },
-      "assignment": "test-flag-0005-control-value",
+      "assignment": 79.83,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "control",
-        "variationValue": "test-flag-0005-control-value",
+        "variationKey": "medium",
+        "variationValue": 79.83,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -626,7 +740,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     },
     {
@@ -634,15 +754,15 @@
       "subjectAttributes": {
         "id": "special-id-123"
       },
-      "assignment": "test-flag-0005-control-value",
+      "assignment": 75.73,
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-2\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "control",
-        "variationValue": "test-flag-0005-control-value",
+        "variationKey": "small",
+        "variationValue": 75.73,
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-2",
@@ -656,7 +776,13 @@
             "orderPosition": 0
           }
         ],
-        "unevaluatedAllocations": []
+        "unevaluatedAllocations": [
+          {
+            "key": "allocation-3",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
       }
     }
   ]

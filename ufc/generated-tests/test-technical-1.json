@@ -1,5 +1,5 @@
 {
-  "flag": "test-flag-0002",
+  "flag": "test-flag-0003",
   "variationType": "NUMERIC",
   "defaultValue": 0,
   "subjects": [
@@ -542,7 +542,7 @@
         "unmatchedAllocations": [
           {
             "key": "allocation-1",
-            "allocationEvaluationCode": "FAILING_RULE",
+            "allocationEvaluationCode": "TRAFFIC_EXPOSURE_MISS",
             "orderPosition": 0
           }
         ],

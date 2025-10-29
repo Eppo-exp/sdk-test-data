@@ -1,12 +1,12 @@
 {
-  "flag": "test-flag-0029",
+  "flag": "test-flag-0008",
   "variationType": "JSON",
   "defaultValue": null,
   "subjects": [
     {
       "subjectKey": "baseline",
       "subjectAttributes": {},
-      "assignment": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -14,7 +14,7 @@
         "banditKey": null,
         "banditAction": null,
         "variationKey": "config-a",
-        "variationValue": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -37,7 +37,7 @@
         "country": "US",
         "region": "North America"
       },
-      "assignment": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -45,7 +45,7 @@
         "banditKey": null,
         "banditAction": null,
         "variationKey": "config-a",
-        "variationValue": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -68,7 +68,7 @@
         "country": "Canada",
         "region": "North America"
       },
-      "assignment": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -76,7 +76,7 @@
         "banditKey": null,
         "banditAction": null,
         "variationKey": "config-a",
-        "variationValue": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -99,7 +99,7 @@
         "country": "UK",
         "region": "Europe"
       },
-      "assignment": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -107,7 +107,7 @@
         "banditKey": null,
         "banditAction": null,
         "variationKey": "config-a",
-        "variationValue": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -131,7 +131,7 @@
         "plan": "free",
         "accountType": "individual"
       },
-      "assignment": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -139,7 +139,7 @@
         "banditKey": null,
         "banditAction": null,
         "variationKey": "config-a",
-        "variationValue": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -163,7 +163,7 @@
         "plan": "premium",
         "accountType": "business"
       },
-      "assignment": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -171,7 +171,7 @@
         "banditKey": null,
         "banditAction": null,
         "variationKey": "config-a",
-        "variationValue": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -195,15 +195,15 @@
         "plan": "enterprise",
         "accountType": "business"
       },
-      "assignment": "{\"enabled\":true,\"value\":28,\"label\":\"Configuration 2\",\"features\":[\"feature-2\",\"feature-3\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-1\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "config-b",
-        "variationValue": "{\"enabled\":true,\"value\":28,\"label\":\"Configuration 2\",\"features\":[\"feature-2\",\"feature-3\"]}",
+        "variationKey": "config-a",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -228,7 +228,7 @@
         "os": "android",
         "platform": "android"
       },
-      "assignment": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -236,7 +236,7 @@
         "banditKey": null,
         "banditAction": null,
         "variationKey": "config-a",
-        "variationValue": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -261,15 +261,15 @@
         "os": "macos",
         "platform": "web"
       },
-      "assignment": "{\"enabled\":true,\"value\":28,\"label\":\"Configuration 2\",\"features\":[\"feature-2\",\"feature-3\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-1\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "config-b",
-        "variationValue": "{\"enabled\":true,\"value\":28,\"label\":\"Configuration 2\",\"features\":[\"feature-2\",\"feature-3\"]}",
+        "variationKey": "config-a",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -293,15 +293,15 @@
         "os": "ios",
         "platform": "ios"
       },
-      "assignment": "{\"enabled\":true,\"value\":28,\"label\":\"Configuration 2\",\"features\":[\"feature-2\",\"feature-3\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-1\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "config-b",
-        "variationValue": "{\"enabled\":true,\"value\":28,\"label\":\"Configuration 2\",\"features\":[\"feature-2\",\"feature-3\"]}",
+        "variationKey": "config-a",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -323,7 +323,7 @@
       "subjectAttributes": {
         "email": "user@company.com"
       },
-      "assignment": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -331,7 +331,7 @@
         "banditKey": null,
         "banditAction": null,
         "variationKey": "config-a",
-        "variationValue": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -353,15 +353,15 @@
       "subjectAttributes": {
         "email": "test@gmail.com"
       },
-      "assignment": "{\"enabled\":true,\"value\":28,\"label\":\"Configuration 2\",\"features\":[\"feature-2\",\"feature-3\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-1\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "config-b",
-        "variationValue": "{\"enabled\":true,\"value\":28,\"label\":\"Configuration 2\",\"features\":[\"feature-2\",\"feature-3\"]}",
+        "variationKey": "config-a",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -383,7 +383,7 @@
       "subjectAttributes": {
         "email": "demo@example.com"
       },
-      "assignment": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -391,7 +391,7 @@
         "banditKey": null,
         "banditAction": null,
         "variationKey": "config-a",
-        "variationValue": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -414,7 +414,7 @@
         "version": "1.2.3",
         "age": 18
       },
-      "assignment": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -422,7 +422,7 @@
         "banditKey": null,
         "banditAction": null,
         "variationKey": "config-a",
-        "variationValue": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -445,15 +445,15 @@
         "version": "3.1.0",
         "age": 65
       },
-      "assignment": "{\"enabled\":true,\"value\":28,\"label\":\"Configuration 2\",\"features\":[\"feature-2\",\"feature-3\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-1\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "config-b",
-        "variationValue": "{\"enabled\":true,\"value\":28,\"label\":\"Configuration 2\",\"features\":[\"feature-2\",\"feature-3\"]}",
+        "variationKey": "config-a",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -475,7 +475,7 @@
       "subjectAttributes": {
         "size": 5
       },
-      "assignment": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -483,7 +483,7 @@
         "banditKey": null,
         "banditAction": null,
         "variationKey": "config-a",
-        "variationValue": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -505,15 +505,15 @@
       "subjectAttributes": {
         "size": 500
       },
-      "assignment": "{\"enabled\":true,\"value\":28,\"label\":\"Configuration 2\",\"features\":[\"feature-2\",\"feature-3\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-1\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "config-b",
-        "variationValue": "{\"enabled\":true,\"value\":28,\"label\":\"Configuration 2\",\"features\":[\"feature-2\",\"feature-3\"]}",
+        "variationKey": "config-a",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -541,7 +541,7 @@
         "version": "2.5.1",
         "size": 100
       },
-      "assignment": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -549,7 +549,7 @@
         "banditKey": null,
         "banditAction": null,
         "variationKey": "config-a",
-        "variationValue": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -572,15 +572,15 @@
         "country": null,
         "age": null
       },
-      "assignment": "{\"enabled\":true,\"value\":28,\"label\":\"Configuration 2\",\"features\":[\"feature-2\",\"feature-3\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
         "flagEvaluationDescription": "Matched allocation \"allocation-1\"",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "config-b",
-        "variationValue": "{\"enabled\":true,\"value\":28,\"label\":\"Configuration 2\",\"features\":[\"feature-2\",\"feature-3\"]}",
+        "variationKey": "config-a",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -604,7 +604,7 @@
         "email": "",
         "browser": ""
       },
-      "assignment": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -612,7 +612,7 @@
         "banditKey": null,
         "banditAction": null,
         "variationKey": "config-a",
-        "variationValue": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
@@ -634,7 +634,7 @@
       "subjectAttributes": {
         "id": "special-id-123"
       },
-      "assignment": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+      "assignment": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
       "evaluationDetails": {
         "environmentName": "Test",
         "flagEvaluationCode": "MATCH",
@@ -642,7 +642,7 @@
         "banditKey": null,
         "banditAction": null,
         "variationKey": "config-a",
-        "variationValue": "{\"enabled\":true,\"value\":92,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
+        "variationValue": "{\"enabled\":false,\"value\":94,\"label\":\"Configuration 1\",\"features\":[\"feature-1\",\"feature-2\"]}",
         "matchedRule": null,
         "matchedAllocation": {
           "key": "allocation-1",
