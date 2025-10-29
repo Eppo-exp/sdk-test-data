@@ -92,7 +92,7 @@ interface Configuration {
   flags: Record<string, Flag>;
 }
 
-class CorrectTestCaseGenerator {
+class PerformanceTestCaseGenerator {
   private flags: Record<string, Flag>;
   private outputPath: string;
 
@@ -486,59 +486,63 @@ class CorrectTestCaseGenerator {
     return 'traffic-fallback-subject';
   }
 
-  // Generate test subjects for a single flag using correct evaluation logic
+  // Generate diverse test subjects for performance testing
   private generateSubjectsForFlag(flag: Flag): SubjectTestCase[] {
     const subjects: SubjectTestCase[] = [];
 
-    if (flag.allocations.length === 0) {
-      // Flag with no allocations
-      const result = this.evaluateFlag(flag, 'no-allocations-subject', {});
+    // Generate a variety of subject scenarios to exercise different evaluation paths
+    const testScenarios = [
+      // Baseline: no attributes
+      { key: 'baseline', attributes: {} },
+
+      // Geographic targeting
+      { key: 'us-user', attributes: { country: 'US', region: 'North America' } },
+      { key: 'canada-user', attributes: { country: 'Canada', region: 'North America' } },
+      { key: 'uk-user', attributes: { country: 'UK', region: 'Europe' } },
+
+      // Demographic targeting
+      { key: 'young-free', attributes: { age: 22, plan: 'free', accountType: 'individual' } },
+      { key: 'mature-premium', attributes: { age: 45, plan: 'premium', accountType: 'business' } },
+      { key: 'enterprise', attributes: { age: 35, plan: 'enterprise', accountType: 'business' } },
+
+      // Technical targeting
+      { key: 'mobile-chrome', attributes: { device: 'mobile', browser: 'chrome', os: 'android', platform: 'android' } },
+      { key: 'desktop-safari', attributes: { device: 'desktop', browser: 'safari', os: 'macos', platform: 'web' } },
+      { key: 'ios-app', attributes: { device: 'mobile', os: 'ios', platform: 'ios' } },
+
+      // Email patterns
+      { key: 'company-email', attributes: { email: 'user@company.com' } },
+      { key: 'gmail-user', attributes: { email: 'test@gmail.com' } },
+      { key: 'example-email', attributes: { email: 'demo@example.com' } },
+
+      // Numeric values
+      { key: 'version-old', attributes: { version: '1.2.3', age: 18 } },
+      { key: 'version-new', attributes: { version: '3.1.0', age: 65 } },
+      { key: 'size-small', attributes: { size: 5 } },
+      { key: 'size-large', attributes: { size: 500 } },
+
+      // Mixed complex attributes
+      { key: 'complex-user', attributes: {
+        country: 'Germany', age: 28, plan: 'basic', device: 'tablet',
+        email: 'user@test.com', version: '2.5.1', size: 100
+      }},
+
+      // Edge cases
+      { key: 'null-attrs', attributes: { country: null, age: null } },
+      { key: 'empty-strings', attributes: { plan: '', email: '', browser: '' } },
+      { key: 'id-user', attributes: { id: 'special-id-123' } }
+    ];
+
+    // For each scenario, evaluate against the flag and capture actual results
+    testScenarios.forEach(scenario => {
+      const result = this.evaluateFlag(flag, scenario.key, scenario.attributes);
+
       subjects.push({
-        subjectKey: 'no-allocations-subject',
-        subjectAttributes: {},
+        subjectKey: scenario.key,
+        subjectAttributes: scenario.attributes,
         assignment: result.assignment,
         evaluationDetails: result.evaluationDetails
       });
-      return subjects;
-    }
-
-    // Generate subjects for each allocation
-    flag.allocations.forEach((allocation, allocIndex) => {
-      if (!allocation.rules || allocation.rules.length === 0) {
-        // Allocation with no rules (always matches if in traffic)
-        const subjectKey = this.generateTrafficMatchingSubject(flag, allocation);
-        const result = this.evaluateFlag(flag, subjectKey, {});
-
-        subjects.push({
-          subjectKey: `${subjectKey}-no-rules`,
-          subjectAttributes: {},
-          assignment: result.assignment,
-          evaluationDetails: result.evaluationDetails
-        });
-      } else {
-        // Test first rule of the allocation
-        const rule = allocation.rules[0];
-        const matchingAttrs = this.generateMatchingAttributes(rule.conditions);
-        const subjectKey = this.generateTrafficMatchingSubject(flag, allocation);
-
-        const result = this.evaluateFlag(flag, subjectKey, matchingAttrs);
-
-        subjects.push({
-          subjectKey: `${subjectKey}-rule-match`,
-          subjectAttributes: matchingAttrs,
-          assignment: result.assignment,
-          evaluationDetails: result.evaluationDetails
-        });
-      }
-    });
-
-    // Add a baseline subject that gets default (no matching attributes)
-    const baselineResult = this.evaluateFlag(flag, 'baseline-subject', {});
-    subjects.push({
-      subjectKey: 'baseline-subject',
-      subjectAttributes: {},
-      assignment: baselineResult.assignment,
-      evaluationDetails: baselineResult.evaluationDetails
     });
 
     return subjects;
@@ -674,10 +678,10 @@ Examples:
   }
 
   try {
-    const generator = new CorrectTestCaseGenerator(flagsFile, outputPath);
+    const generator = new PerformanceTestCaseGenerator(flagsFile, outputPath);
     generator.generateBatchTests();
   } catch (error) {
-    console.error('Error generating corrected test cases:', error);
+    console.error('Error generating test cases:', error);
     process.exit(1);
   }
 }
@@ -687,4 +691,4 @@ if (require.main === module) {
   main();
 }
 
-export { CorrectTestCaseGenerator };
+export { PerformanceTestCaseGenerator };
