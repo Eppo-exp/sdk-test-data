@@ -42,6 +42,8 @@ jobs:
           sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
 
   test-php-sdk:
+    needs: check-path
+    if: needs.check-path.outputs.should_run == 'true'
     runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
     strategy:
       fail-fast: false
@@ -59,6 +61,8 @@ jobs:
           sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
 
   test-python-sdk:
+    needs: check-path
+    if: needs.check-path.outputs.should_run == 'true'
     runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
     strategy:
       fail-fast: false
@@ -76,6 +80,8 @@ jobs:
           sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
 
   test-ruby-sdk:
+    needs: check-path
+    if: needs.check-path.outputs.should_run == 'true'
     runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
     strategy:
       fail-fast: false
@@ -93,6 +99,8 @@ jobs:
           sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
 
   test-go-sdk:
+    needs: check-path
+    if: needs.check-path.outputs.should_run == 'true'
     runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
     strategy:
       fail-fast: false
