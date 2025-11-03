@@ -7,24 +7,7 @@ on:
       - workflow-test/*
 
 jobs:
-  # Filter the changed paths so these jobs can run only on changes to the ufc test data, or if the current branch matches workflow-test/*
-  check-path:
-    runs-on: ubuntu-latest
-    outputs:
-      should_run: ${{ github.ref == 'refs/heads/main' && steps.filter.outputs.ufc == 'true' || startsWith(github.ref, 'refs/heads/workflow-test/') }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dorny/paths-filter@v2
-        id: filter
-        with:
-          filters: |
-            ufc:
-              - 'ufc/**'
-              - '!ufc/**/*.md'
-
   test-node-sdk:
-    needs: check-path
-    if: needs.check-path.outputs.should_run == 'true'
     runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
     strategy:
       fail-fast: false
@@ -42,8 +25,6 @@ jobs:
           sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
 
   test-php-sdk:
-    needs: check-path
-    if: needs.check-path.outputs.should_run == 'true'
     runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
     strategy:
       fail-fast: false
@@ -61,8 +42,6 @@ jobs:
           sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
 
   test-python-sdk:
-    needs: check-path
-    if: needs.check-path.outputs.should_run == 'true'
     runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
     strategy:
       fail-fast: false
@@ -80,8 +59,6 @@ jobs:
           sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
 
   test-ruby-sdk:
-    needs: check-path
-    if: needs.check-path.outputs.should_run == 'true'
     runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
     strategy:
       fail-fast: false
@@ -99,8 +76,6 @@ jobs:
           sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
 
   test-go-sdk:
-    needs: check-path
-    if: needs.check-path.outputs.should_run == 'true'
     runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
     strategy:
       fail-fast: false
