@@ -410,6 +410,70 @@
       ],
       "totalShards": 10000
     },
+    "boolean-false-assignment": {
+      "key": "boolean-false-assignment",
+      "enabled": true,
+      "variationType": "BOOLEAN",
+      "variations": {
+        "false-variation": {
+          "key": "false-variation",
+          "value": false
+        },
+        "true-variation": {
+          "key": "true-variation",
+          "value": true
+        }
+      },
+      "allocations": [
+        {
+          "key": "disable-feature",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "should_disable_feature",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "true"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "false-variation",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "enable-feature",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "should_disable_feature",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "false"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "true-variation",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
     "empty_string_flag": {
       "key": "empty_string_flag",
       "enabled": true,
