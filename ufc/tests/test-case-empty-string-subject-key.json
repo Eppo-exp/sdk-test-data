@@ -1,0 +1,118 @@
+{
+  "flag": "empty-string-subject-key-flag",
+  "variationType": "BOOLEAN",
+  "defaultValue": true,
+  "subjects": [
+    {
+      "subjectKey": "",
+      "subjectAttributes": {
+        "user_type": "anonymous"
+      },
+      "assignment": false,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"disable-for-anonymous\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "disabled",
+        "variationValue": false,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "user_type",
+              "operator": "ONE_OF",
+              "value": [
+                "anonymous"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "disable-for-anonymous",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "enable-for-users",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "user123",
+      "subjectAttributes": {
+        "user_type": "registered"
+      },
+      "assignment": true,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"enable-for-users\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "enabled",
+        "variationValue": true,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "user_type",
+              "operator": "ONE_OF",
+              "value": [
+                "registered"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "enable-for-users",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "disable-for-anonymous",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    },
+    {
+      "subjectKey": "guest_user",
+      "subjectAttributes": {
+        "user_type": "unknown"
+      },
+      "assignment": true,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "No allocations matched. Falling back to \"Default Allocation\", serving NULL",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "disable-for-anonymous",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "enable-for-users",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    }
+  ]
+}

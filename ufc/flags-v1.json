@@ -474,6 +474,134 @@
       ],
       "totalShards": 10000
     },
+    "empty-string-subject-key-flag": {
+      "key": "empty-string-subject-key-flag",
+      "enabled": true,
+      "variationType": "BOOLEAN",
+      "variations": {
+        "disabled": {
+          "key": "disabled",
+          "value": false
+        },
+        "enabled": {
+          "key": "enabled",
+          "value": true
+        }
+      },
+      "allocations": [
+        {
+          "key": "disable-for-anonymous",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "user_type",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "anonymous"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "disabled",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "enable-for-users",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "user_type",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "registered"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "enabled",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
+    "empty-string-variation": {
+      "key": "empty-string-variation",
+      "enabled": true,
+      "variationType": "STRING",
+      "variations": {
+        "empty-content": {
+          "key": "empty-content",
+          "value": ""
+        },
+        "detailed-content": {
+          "key": "detailed-content",
+          "value": "detailed_content"
+        }
+      },
+      "allocations": [
+        {
+          "key": "minimal-content",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "content_type",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "minimal"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "empty-content",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "full-content",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "content_type",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "full"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "detailed-content",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
     "empty_string_flag": {
       "key": "empty_string_flag",
       "enabled": true,
@@ -1143,6 +1271,70 @@
                 "allocationvalue_type": "rollout",
                 "owner": "hippo"
               }
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
+    "falsy-value-assignments": {
+      "key": "falsy-value-assignments",
+      "enabled": true,
+      "variationType": "INTEGER",
+      "variations": {
+        "zero-limit": {
+          "key": "zero-limit",
+          "value": 0
+        },
+        "premium-limit": {
+          "key": "premium-limit",
+          "value": 100
+        }
+      },
+      "allocations": [
+        {
+          "key": "free-tier-limit",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "plan_tier",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "free"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "zero-limit",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "premium-tier-limit",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "plan_tier",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "premium"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "premium-limit",
+              "shards": []
             }
           ],
           "doLog": true
