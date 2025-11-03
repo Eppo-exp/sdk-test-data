@@ -410,6 +410,134 @@
         }
       ]
     },
+    "28e888853256d7053d5f4eefd7244422": {
+      "key": "28e888853256d7053d5f4eefd7244422",
+      "enabled": true,
+      "variationType": "BOOLEAN",
+      "totalShards": 10000,
+      "variations": {
+        "ZmFsc2UtdmFyaWF0aW9u": {
+          "key": "ZmFsc2UtdmFyaWF0aW9u",
+          "value": "ZmFsc2U="
+        },
+        "dHJ1ZS12YXJpYXRpb24=": {
+          "key": "dHJ1ZS12YXJpYXRpb24=",
+          "value": "dHJ1ZQ=="
+        }
+      },
+      "allocations": [
+        {
+          "key": "ZGlzYWJsZS1mZWF0dXJl",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "72420983e92807f4888c08512daa53c8",
+                  "value": [
+                    "b326b5062b2f0e69046810717534cb09"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "ZmFsc2UtdmFyaWF0aW9u",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "ZW5hYmxlLWZlYXR1cmU=",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "72420983e92807f4888c08512daa53c8",
+                  "value": [
+                    "68934a3e9455fa72420237eb05902327"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "dHJ1ZS12YXJpYXRpb24=",
+              "shards": []
+            }
+          ]
+        }
+      ]
+    },
+    "bed4d11de0b9f4da618808db439da610": {
+      "key": "bed4d11de0b9f4da618808db439da610",
+      "enabled": true,
+      "variationType": "STRING",
+      "totalShards": 10000,
+      "variations": {
+        "ZW1wdHktY29udGVudA==": {
+          "key": "ZW1wdHktY29udGVudA==",
+          "value": ""
+        },
+        "ZGV0YWlsZWQtY29udGVudA==": {
+          "key": "ZGV0YWlsZWQtY29udGVudA==",
+          "value": "ZGV0YWlsZWRfY29udGVudA=="
+        }
+      },
+      "allocations": [
+        {
+          "key": "bWluaW1hbC1jb250ZW50",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "eae05b08fff80e185c849f1314a3dca4",
+                  "value": [
+                    "dc43e863c176e9b9f2a0b6054b24bd1a"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "ZW1wdHktY29udGVudA==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "ZnVsbC1jb250ZW50",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "eae05b08fff80e185c849f1314a3dca4",
+                  "value": [
+                    "e9dc924f238fa6cc29465942875fe8f0"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "ZGV0YWlsZWQtY29udGVudA==",
+              "shards": []
+            }
+          ]
+        }
+      ]
+    },
     "1d23cbd300895799fda462f81ec4e135": {
       "key": "1d23cbd300895799fda462f81ec4e135",
       "enabled": true,
@@ -1144,6 +1272,70 @@
                 "YWxsb2NhdGlvbnZhbHVlX3R5cGU=": "cm9sbG91dA==",
                 "b3duZXI=": "aGlwcG8="
               }
+            }
+          ]
+        }
+      ]
+    },
+    "6827aed0fbef32cd34d0702b27193f0f": {
+      "key": "6827aed0fbef32cd34d0702b27193f0f",
+      "enabled": true,
+      "variationType": "INTEGER",
+      "totalShards": 10000,
+      "variations": {
+        "emVyby1saW1pdA==": {
+          "key": "emVyby1saW1pdA==",
+          "value": "MA=="
+        },
+        "cHJlbWl1bS1saW1pdA==": {
+          "key": "cHJlbWl1bS1saW1pdA==",
+          "value": "MTAw"
+        }
+      },
+      "allocations": [
+        {
+          "key": "ZnJlZS10aWVyLWxpbWl0",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "da8d9c4af1292d682a36f737c736e1e6",
+                  "value": [
+                    "aa2d6e4f578eb0cfaba23beef76c2194"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "emVyby1saW1pdA==",
+              "shards": []
+            }
+          ]
+        },
+        {
+          "key": "cHJlbWl1bS10aWVyLWxpbWl0",
+          "doLog": true,
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "operator": "27457ce369f2a74203396a35ef537c0b",
+                  "attribute": "da8d9c4af1292d682a36f737c736e1e6",
+                  "value": [
+                    "a288195832f8717bca4671416014a464"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "cHJlbWl1bS1saW1pdA==",
+              "shards": []
             }
           ]
         }
