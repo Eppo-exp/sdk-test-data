@@ -8,39 +8,30 @@
       "subjectAttributes": {
         "user_type": "anonymous"
       },
-      "assignment": false,
+      "assignment": true,
       "evaluationDetails": {
         "environmentName": "Test",
-        "flagEvaluationCode": "MATCH",
-        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"disable-for-anonymous\".",
+        "flagEvaluationCode": "DEFAULT_ALLOCATION_NULL",
+        "flagEvaluationDescription": "Empty subject key provided. Falling back to \"Default Allocation\", serving NULL",
         "banditKey": null,
         "banditAction": null,
-        "variationKey": "disabled",
-        "variationValue": false,
-        "matchedRule": {
-          "conditions": [
-            {
-              "attribute": "user_type",
-              "operator": "ONE_OF",
-              "value": [
-                "anonymous"
-              ]
-            }
-          ]
-        },
-        "matchedAllocation": {
-          "key": "disable-for-anonymous",
-          "allocationEvaluationCode": "MATCH",
-          "orderPosition": 1
-        },
-        "unmatchedAllocations": [],
-        "unevaluatedAllocations": [
+        "variationKey": null,
+        "variationValue": null,
+        "matchedRule": null,
+        "matchedAllocation": null,
+        "unmatchedAllocations": [
+          {
+            "key": "disable-for-anonymous",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 1
+          },
           {
             "key": "enable-for-users",
             "allocationEvaluationCode": "UNEVALUATED",
             "orderPosition": 2
           }
-        ]
+        ],
+        "unevaluatedAllocations": []
       }
     },
     {
