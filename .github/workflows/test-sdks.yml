@@ -75,3 +75,10 @@ jobs:
     with:
       test_data_branch: ${{ github.head_ref || github.ref_name }}
       sdk_branch: main
+
+  test-cpp-sdk:
+    uses: Eppo-exp/cpp-sdk/.github/workflows/test.yml@main
+    with:
+      test_data_branch: ${{ github.head_ref || github.ref_name }}
+      sdk_branch: main
+    
