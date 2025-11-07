@@ -9,9 +9,15 @@
   },
   "scripts": {
     "validate:tests": "jest ./test-validation",
-    "obfuscate:ufc": "jest ./obfuscation"
+    "obfuscate:ufc": "jest ./obfuscation",
+    "convert:protobuf": "ts-node protobuf-converter/convert.ts",
+    "validate:protobuf": "ts-node protobuf-converter/validate.ts"
+  },
+  "dependencies": {
+    "google-protobuf": "^3.21.2"
   },
   "devDependencies": {
+    "@types/google-protobuf": "^3.15.12",
     "@types/jest": "^29.5.12",
     "@types/node": "18",
     "jest": "^29.7.0",
