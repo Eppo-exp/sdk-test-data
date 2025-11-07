@@ -7,8 +7,8 @@
 import * as jspb from "google-protobuf";
 
 export class UniversalFlagConfig extends jspb.Message { 
-    getCreatedAt(): string;
-    setCreatedAt(value: string): UniversalFlagConfig;
+    getCreatedAtMs(): number;
+    setCreatedAtMs(value: number): UniversalFlagConfig;
     getFormat(): UFCFormat;
     setFormat(value: UFCFormat): UniversalFlagConfig;
 
@@ -38,7 +38,7 @@ export class UniversalFlagConfig extends jspb.Message {
 
 export namespace UniversalFlagConfig {
     export type AsObject = {
-        createdAt: string,
+        createdAtMs: number,
         format: UFCFormat,
         environment?: EnvironmentDto.AsObject,
 
@@ -177,15 +177,15 @@ export class AllocationDto extends jspb.Message {
     setRulesList(value: Array<RuleDto>): AllocationDto;
     addRules(value?: RuleDto, index?: number): RuleDto;
 
-    hasStartAt(): boolean;
-    clearStartAt(): void;
-    getStartAt(): string | undefined;
-    setStartAt(value: string): AllocationDto;
+    hasStartAtMs(): boolean;
+    clearStartAtMs(): void;
+    getStartAtMs(): number | undefined;
+    setStartAtMs(value: number): AllocationDto;
 
-    hasEndAt(): boolean;
-    clearEndAt(): void;
-    getEndAt(): string | undefined;
-    setEndAt(value: string): AllocationDto;
+    hasEndAtMs(): boolean;
+    clearEndAtMs(): void;
+    getEndAtMs(): number | undefined;
+    setEndAtMs(value: number): AllocationDto;
     clearSplitsList(): void;
     getSplitsList(): Array<SplitDto>;
     setSplitsList(value: Array<SplitDto>): AllocationDto;
@@ -207,8 +207,8 @@ export namespace AllocationDto {
     export type AsObject = {
         key: string,
         rulesList: Array<RuleDto.AsObject>,
-        startAt?: string,
-        endAt?: string,
+        startAtMs?: number,
+        endAtMs?: number,
         splitsList: Array<SplitDto.AsObject>,
         doLog: boolean,
     }

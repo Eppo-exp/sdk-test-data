@@ -366,7 +366,7 @@ proto.ufc.UniversalFlagConfig.prototype.toObject = function(opt_includeInstance)
  */
 proto.ufc.UniversalFlagConfig.toObject = function(includeInstance, msg) {
   var f, obj = {
-    createdAt: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    createdAtMs: jspb.Message.getFieldWithDefault(msg, 1, 0),
     format: jspb.Message.getFieldWithDefault(msg, 2, 0),
     environment: (f = msg.getEnvironment()) && proto.ufc.EnvironmentDto.toObject(includeInstance, f),
     flagsMap: (f = msg.getFlagsMap()) ? f.toObject(includeInstance, proto.ufc.FlagDto.toObject) : [],
@@ -409,8 +409,8 @@ proto.ufc.UniversalFlagConfig.deserializeBinaryFromReader = function(msg, reader
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setCreatedAt(value);
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setCreatedAtMs(value);
       break;
     case 2:
       var value = /** @type {!proto.ufc.UFCFormat} */ (reader.readEnum());
@@ -468,9 +468,9 @@ proto.ufc.UniversalFlagConfig.prototype.serializeBinary = function() {
  */
 proto.ufc.UniversalFlagConfig.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getCreatedAt();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getCreatedAtMs();
+  if (f !== 0) {
+    writer.writeInt64(
       1,
       f
     );
@@ -506,20 +506,20 @@ proto.ufc.UniversalFlagConfig.serializeBinaryToWriter = function(message, writer
 
 
 /**
- * optional string created_at = 1;
- * @return {string}
+ * optional int64 created_at_ms = 1;
+ * @return {number}
  */
-proto.ufc.UniversalFlagConfig.prototype.getCreatedAt = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+proto.ufc.UniversalFlagConfig.prototype.getCreatedAtMs = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {number} value
  * @return {!proto.ufc.UniversalFlagConfig} returns this
  */
-proto.ufc.UniversalFlagConfig.prototype.setCreatedAt = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+proto.ufc.UniversalFlagConfig.prototype.setCreatedAtMs = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
@@ -1526,8 +1526,8 @@ proto.ufc.AllocationDto.toObject = function(includeInstance, msg) {
     key: jspb.Message.getFieldWithDefault(msg, 1, ""),
     rulesList: jspb.Message.toObjectList(msg.getRulesList(),
     proto.ufc.RuleDto.toObject, includeInstance),
-    startAt: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    endAt: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    startAtMs: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    endAtMs: jspb.Message.getFieldWithDefault(msg, 4, 0),
     splitsList: jspb.Message.toObjectList(msg.getSplitsList(),
     proto.ufc.SplitDto.toObject, includeInstance),
     doLog: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
@@ -1577,12 +1577,12 @@ proto.ufc.AllocationDto.deserializeBinaryFromReader = function(msg, reader) {
       msg.addRules(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setStartAt(value);
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setStartAtMs(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setEndAt(value);
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setEndAtMs(value);
       break;
     case 5:
       var value = new proto.ufc.SplitDto;
@@ -1637,16 +1637,16 @@ proto.ufc.AllocationDto.serializeBinaryToWriter = function(message, writer) {
       proto.ufc.RuleDto.serializeBinaryToWriter
     );
   }
-  f = /** @type {string} */ (jspb.Message.getField(message, 3));
+  f = /** @type {number} */ (jspb.Message.getField(message, 3));
   if (f != null) {
-    writer.writeString(
+    writer.writeInt64(
       3,
       f
     );
   }
-  f = /** @type {string} */ (jspb.Message.getField(message, 4));
+  f = /** @type {number} */ (jspb.Message.getField(message, 4));
   if (f != null) {
-    writer.writeString(
+    writer.writeInt64(
       4,
       f
     );
@@ -1726,19 +1726,19 @@ proto.ufc.AllocationDto.prototype.clearRulesList = function() {
 
 
 /**
- * optional string start_at = 3;
- * @return {string}
+ * optional int64 start_at_ms = 3;
+ * @return {number}
  */
-proto.ufc.AllocationDto.prototype.getStartAt = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+proto.ufc.AllocationDto.prototype.getStartAtMs = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {number} value
  * @return {!proto.ufc.AllocationDto} returns this
  */
-proto.ufc.AllocationDto.prototype.setStartAt = function(value) {
+proto.ufc.AllocationDto.prototype.setStartAtMs = function(value) {
   return jspb.Message.setField(this, 3, value);
 };
 
@@ -1747,7 +1747,7 @@ proto.ufc.AllocationDto.prototype.setStartAt = function(value) {
  * Clears the field making it undefined.
  * @return {!proto.ufc.AllocationDto} returns this
  */
-proto.ufc.AllocationDto.prototype.clearStartAt = function() {
+proto.ufc.AllocationDto.prototype.clearStartAtMs = function() {
   return jspb.Message.setField(this, 3, undefined);
 };
 
@@ -1756,25 +1756,25 @@ proto.ufc.AllocationDto.prototype.clearStartAt = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.ufc.AllocationDto.prototype.hasStartAt = function() {
+proto.ufc.AllocationDto.prototype.hasStartAtMs = function() {
   return jspb.Message.getField(this, 3) != null;
 };
 
 
 /**
- * optional string end_at = 4;
- * @return {string}
+ * optional int64 end_at_ms = 4;
+ * @return {number}
  */
-proto.ufc.AllocationDto.prototype.getEndAt = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+proto.ufc.AllocationDto.prototype.getEndAtMs = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {number} value
  * @return {!proto.ufc.AllocationDto} returns this
  */
-proto.ufc.AllocationDto.prototype.setEndAt = function(value) {
+proto.ufc.AllocationDto.prototype.setEndAtMs = function(value) {
   return jspb.Message.setField(this, 4, value);
 };
 
@@ -1783,7 +1783,7 @@ proto.ufc.AllocationDto.prototype.setEndAt = function(value) {
  * Clears the field making it undefined.
  * @return {!proto.ufc.AllocationDto} returns this
  */
-proto.ufc.AllocationDto.prototype.clearEndAt = function() {
+proto.ufc.AllocationDto.prototype.clearEndAtMs = function() {
   return jspb.Message.setField(this, 4, undefined);
 };
 
@@ -1792,7 +1792,7 @@ proto.ufc.AllocationDto.prototype.clearEndAt = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.ufc.AllocationDto.prototype.hasEndAt = function() {
+proto.ufc.AllocationDto.prototype.hasEndAtMs = function() {
   return jspb.Message.getField(this, 4) != null;
 };
 

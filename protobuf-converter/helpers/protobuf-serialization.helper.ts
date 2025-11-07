@@ -44,7 +44,9 @@ export class ProtobufSerializationHelper {
   static toProtobuf(ufc: UniversalFlagConfig): UniversalFlagConfigProto {
     const proto = new UniversalFlagConfigProto();
 
-    proto.setCreatedAt(ufc.createdAt);
+    // Convert ISO string to milliseconds since Unix epoch
+    const createdAtMs = new Date(ufc.createdAt).getTime();
+    proto.setCreatedAtMs(createdAtMs);
     proto.setFormat(this.convertUFCFormat(ufc.format));
     proto.setEnvironment(this.convertEnvironmentDto(ufc.environment));
 
@@ -187,11 +189,15 @@ export class ProtobufSerializationHelper {
     proto.setDoLog(allocation.doLog);
 
     if (allocation.startAt) {
-      proto.setStartAt(allocation.startAt);
+      // Convert ISO string to milliseconds since Unix epoch
+      const startAtMs = new Date(allocation.startAt).getTime();
+      proto.setStartAtMs(startAtMs);
     }
 
     if (allocation.endAt) {
-      proto.setEndAt(allocation.endAt);
+      // Convert ISO string to milliseconds since Unix epoch
+      const endAtMs = new Date(allocation.endAt).getTime();
+      proto.setEndAtMs(endAtMs);
     }
 
     // Convert rules list
