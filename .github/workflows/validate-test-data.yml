@@ -6,6 +6,10 @@ on:
     paths:
       - '.github/workflows/validate-test-data.yml'
       - 'ufc/tests/**'
+      - 'ufc/generated-tests/**'
+      - 'generate-test-cases.ts'
+      - 'generate-flags.ts'
+      - 'ufc/flags-*.json'
   push:
     branches:
       - main

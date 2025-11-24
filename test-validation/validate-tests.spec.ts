@@ -2,8 +2,24 @@ import * as fs from 'fs';
 import { IAssignmentTestCase } from './types';
 
 const getTestFilePaths = () => {
-  const testDir = './ufc/tests';
-  return fs.readdirSync(testDir).map((testFilename) => `${testDir}/${testFilename}`);
+  const testDirs = ['./ufc/tests'];
+
+  // Also include generated tests if directory exists
+  const generatedTestDir = './ufc/generated-tests';
+  if (fs.existsSync(generatedTestDir)) {
+    testDirs.push(generatedTestDir);
+  }
+
+
+  const allFilePaths: string[] = [];
+
+  testDirs.forEach(testDir => {
+    const filenames = fs.readdirSync(testDir).filter(filename => filename.endsWith('.json'));
+    const filePaths = filenames.map(filename => `${testDir}/${filename}`);
+    allFilePaths.push(...filePaths);
+  });
+
+  return allFilePaths;
 }
 
 const parseJSON = (testFilePath: string) => {
