@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - workflow-test/*
-  
+
   workflow_dispatch:
 
 concurrency:
