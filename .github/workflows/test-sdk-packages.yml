@@ -6,6 +6,12 @@ on:
       - main
       - workflow-test/*
 
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   # Filter the changed paths so these jobs can run only on changes to the ufc test data, or if the current branch matches workflow-test/*
   check-path:
