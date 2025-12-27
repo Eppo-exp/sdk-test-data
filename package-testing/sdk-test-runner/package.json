@@ -40,6 +40,6 @@
   },
   "resolutions": {
     "//": "CVE-2025-7783: form-data package has a vulnerability that can be exploited to execute arbitrary code",
-    "form-data": "^4.0.5"
+    "form-data": "^4.0.4"
   }
 }
