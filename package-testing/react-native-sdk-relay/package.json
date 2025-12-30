@@ -60,6 +60,10 @@
   "private": true,
   "resolutions": {
     "//": "CVE-2025-7783: form-data package has a vulnerability that can be exploited to execute arbitrary code",
-    "form-data": "^4.0.4"
+    "form-data": "4.0.5",
+    "//image-size": "GHSA-m5qc-5hw7-8vg7: image-size has a vulnerability",
+    "image-size": "1.2.1",
+    "//node-forge": "CVE-2025-66031, CVE-2025-12816: node-forge has vulnerabilities",
+    "node-forge": "1.3.2"
   }
 }

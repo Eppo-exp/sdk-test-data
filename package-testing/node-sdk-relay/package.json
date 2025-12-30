@@ -73,6 +73,10 @@
   },
   "resolutions": {
     "//": "CVE-2025-7783: form-data package has a vulnerability that can be exploited to execute arbitrary code",
-    "form-data": "^4.0.4"
+    "form-data": "4.0.5",
+    "//multer": "CVE-2025-47935, CVE-2025-47944, CVE-2025-48997, CVE-2025-7338: multer has vulnerabilities",
+    "multer": "2.0.2",
+    "//glob": "CVE-2025-64756: glob has a vulnerability",
+    "glob": "10.5.0"
   }
 }
