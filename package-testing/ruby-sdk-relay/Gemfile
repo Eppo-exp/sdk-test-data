@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'sinatra', '~> 4.1'
+gem 'sinatra', '~> 4.2'
 gem 'eppo-server-sdk', '~> 3.3'
 
 gem "rack", ">= 3.1.18"
