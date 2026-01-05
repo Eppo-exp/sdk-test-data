@@ -1,37 +1,38 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    base64 (0.2.0)
+    base64 (0.3.0)
     eppo-server-sdk (3.3.0-aarch64-linux)
     eppo-server-sdk (3.3.0-aarch64-linux-musl)
     eppo-server-sdk (3.3.0-arm-linux)
     eppo-server-sdk (3.3.0-arm64-darwin)
     eppo-server-sdk (3.3.0-x86_64-linux)
     eppo-server-sdk (3.3.0-x86_64-linux-musl)
-    logger (1.6.3)
-    mustermann (3.0.3)
+    logger (1.7.0)
+    mustermann (3.0.4)
       ruby2_keywords (~> 0.0.1)
     nio4r (2.7.4)
     puma (6.5.0)
       nio4r (~> 2.0)
     rack (3.2.4)
-    rack-protection (4.1.1)
+    rack-protection (4.2.0)
       base64 (>= 0.1.0)
       logger (>= 1.6.0)
       rack (>= 3.0.0, < 4)
-    rack-session (2.0.0)
+    rack-session (2.1.1)
+      base64 (>= 0.1.0)
       rack (>= 3.0.0)
     rackup (2.2.1)
       rack (>= 3)
     ruby2_keywords (0.0.5)
-    sinatra (4.1.1)
+    sinatra (4.2.0)
       logger (>= 1.6.0)
       mustermann (~> 3.0)
       rack (>= 3.0.0, < 4)
-      rack-protection (= 4.1.1)
+      rack-protection (= 4.2.0)
       rack-session (>= 2.0.0, < 3)
       tilt (~> 2.0)
-    tilt (2.4.0)
+    tilt (2.6.1)
 
 PLATFORMS
   aarch64-linux
@@ -46,7 +47,7 @@ DEPENDENCIES
   puma (~> 6.5)
   rack (>= 3.1.18)
   rackup (~> 2.2)
-  sinatra (~> 4.1)
+  sinatra (~> 4.2)
 
 BUNDLED WITH
    2.5.9
