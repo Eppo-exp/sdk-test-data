@@ -75,6 +75,7 @@ function obfuscateFlag(flagDto: FlagDto): FlagDto {
   obfuscatedFlagDto.enabled = flagDto.enabled;
   obfuscatedFlagDto.variationType = flagDto.variationType;
   obfuscatedFlagDto.totalShards = flagDto.totalShards;
+  obfuscatedFlagDto.entityId = flagDto.entityId;
 
   // Obfuscate variations
   obfuscatedFlagDto.variations = {};

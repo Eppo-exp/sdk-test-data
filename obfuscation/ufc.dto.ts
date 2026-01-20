@@ -47,6 +47,7 @@ export class FlagDto {
   variations!: Record<string, VariationDto>;
   allocations!: AllocationDto[];
   totalShards!: number;
+  entityId!: number | null;
 }
 
 export class VariationDto {

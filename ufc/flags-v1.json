@@ -8,6 +8,7 @@
     "empty_flag": {
       "key": "empty_flag",
       "enabled": true,
+      "entityId": null,
       "variationType": "STRING",
       "variations": {},
       "allocations": [],
@@ -16,6 +17,7 @@
     "disabled_flag": {
       "key": "disabled_flag",
       "enabled": false,
+      "entityId": null,
       "variationType": "INTEGER",
       "variations": {},
       "allocations": [],
@@ -24,6 +26,7 @@
     "no_allocations_flag": {
       "key": "no_allocations_flag",
       "enabled": true,
+      "entityId": null,
       "variationType": "JSON",
       "variations": {
         "control": {
@@ -41,6 +44,7 @@
     "numeric_flag": {
       "key": "numeric_flag",
       "enabled": true,
+      "entityId": null,
       "variationType": "NUMERIC",
       "variations": {
         "e": {
@@ -69,6 +73,7 @@
     "invalid-value-flag": {
       "key": "invalid-value-flag",
       "enabled": true,
+      "entityId": null,
       "variationType": "INTEGER",
       "variations": {
         "one": {
@@ -121,6 +126,7 @@
     "regex-flag": {
       "key": "regex-flag",
       "enabled": true,
+      "entityId": null,
       "variationType": "STRING",
       "variations": {
         "partial-example": {
@@ -181,6 +187,7 @@
     "numeric-one-of": {
       "key": "numeric-one-of",
       "enabled": true,
+      "entityId": null,
       "variationType": "INTEGER",
       "variations": {
         "1": {
@@ -272,6 +279,7 @@
     "boolean-one-of-matches": {
       "key": "boolean-one-of-matches",
       "enabled": true,
+      "entityId": null,
       "variationType": "INTEGER",
       "variations": {
         "1": {
@@ -541,6 +549,7 @@
     "empty_string_flag": {
       "key": "empty_string_flag",
       "enabled": true,
+      "entityId": null,
       "comment": "Testing the empty string as a variation value",
       "variationType": "STRING",
       "variations": {
@@ -612,6 +621,7 @@
     "kill-switch": {
       "key": "kill-switch",
       "enabled": true,
+      "entityId": null,
       "variationType": "BOOLEAN",
       "variations": {
         "on": {
@@ -707,6 +717,7 @@
     "semver-test": {
       "key": "semver-test",
       "enabled": true,
+      "entityId": null,
       "variationType": "STRING",
       "variations": {
         "old": {
@@ -797,6 +808,7 @@
     "comparator-operator-test": {
       "key": "comparator-operator-test",
       "enabled": true,
+      "entityId": null,
       "variationType": "STRING",
       "variations": {
         "small": {
@@ -887,6 +899,7 @@
     "start-and-end-date-test": {
       "key": "start-and-end-date-test",
       "enabled": true,
+      "entityId": null,
       "variationType": "STRING",
       "variations": {
         "old": {
@@ -943,6 +956,7 @@
     "null-operator-test": {
       "key": "null-operator-test",
       "enabled": true,
+      "entityId": null,
       "variationType": "STRING",
       "variations": {
         "old": {
@@ -1012,6 +1026,7 @@
     "new-user-onboarding": {
       "key": "new-user-onboarding",
       "enabled": true,
+      "entityId": null,
       "variationType": "STRING",
       "variations": {
         "control": {
@@ -1281,6 +1296,7 @@
     "integer-flag": {
       "key": "integer-flag",
       "enabled": true,
+      "entityId": null,
       "variationType": "INTEGER",
       "variations": {
         "one": {
@@ -1382,6 +1398,7 @@
     "json-config-flag": {
       "key": "json-config-flag",
       "enabled": true,
+      "entityId": 1111,
       "variationType": "JSON",
       "variations": {
         "one": {
@@ -1490,6 +1507,7 @@
     "special-characters": {
       "key": "special-characters",
       "enabled": true,
+      "entityId": 2222,
       "variationType": "JSON",
       "variations": {
         "de": {
@@ -1588,6 +1606,7 @@
     "string_flag_with_special_characters": {
       "key": "string_flag_with_special_characters",
       "enabled": true,
+      "entityId": 3333,
       "comment": "Testing the string with special characters and spaces",
       "variationType": "STRING",
       "variations": {
