@@ -57,5 +57,11 @@
     "react-test-renderer": "18.3.1",
     "typescript": "^5.3.3"
   },
-  "private": true
+  "private": true,
+  "resolutions": {
+    "//tar": "Alerts #90, #95, #99, #113: multiple path traversal and symlink vulnerabilities in tar <7",
+    "tar": "^7.5.9",
+    "//undici": "Alert #85: unbounded decompression chain in undici <6.23.0",
+    "undici": "^6.23.0"
+  }
 }

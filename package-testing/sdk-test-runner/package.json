@@ -22,10 +22,14 @@
     "dotenv": "^16.4.5",
     "http": "^0.0.1-security",
     "junit-xml": "^1.2.0",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "minimist": "^1.2.8",
     "socket.io": "^4.8.0",
     "typescript": "^4.4.4"
+  },
+  "resolutions": {
+    "//lodash": "Alerts #96, #97, #98: Prototype Pollution in _.unset and _.omit in lodash <4.17.23",
+    "lodash": "^4.17.23"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.7",
