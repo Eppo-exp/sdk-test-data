@@ -3,6 +3,6 @@ source 'https://rubygems.org'
 gem 'sinatra', '~> 4.2'
 gem 'eppo-server-sdk', '~> 3.3'
 
-gem "rack", ">= 3.1.18"
+gem "rack", ">= 3.2.5"
 gem "rackup", "~> 2.2"
 gem "puma", "~> 6.5"
