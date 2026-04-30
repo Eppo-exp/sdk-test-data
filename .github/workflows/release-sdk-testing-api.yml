@@ -9,8 +9,11 @@ on:
         default: '1.0.0'
 
   push:
+    branches:
+      - main
     paths:
-      .github/workflows/release-sdk-testing-api.yml
+      - package-testing/testing-api/**
+      - .github/workflows/release-sdk-testing-api.yml
 
 jobs:
   build-and-upload:
