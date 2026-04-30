@@ -72,6 +72,13 @@ jobs:
         platform: ['linux']
     steps:
       - uses: actions/checkout@v4
+      # Ruby SDK ships a native Rust extension via rb_sys; building the gem
+      # requires both a user-writable bundler install and a Rust toolchain,
+      # neither of which is available out of the box on ubuntu-latest.
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+      - uses: dtolnay/rust-toolchain@stable
       - uses: ./.github/actions/test-server-package
         with:
           platform: ${{ matrix.platform }}
