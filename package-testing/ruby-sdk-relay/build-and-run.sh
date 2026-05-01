@@ -59,5 +59,11 @@ fi
 rm -rf tmp
 
 # start the relay server
-echo "Listening on ${SDK_RELAY_HOST}:${SDK_RELAY_PORT}"
-SDK_RELAY_HOST=${SDK_RELAY_HOST} SDK_RELAY_PORT=${SDK_RELAY_PORT} bundle exec ruby src/server.rb
+# test-sdk.sh exports SDK_RELAY_HOST=localhost so its wait_for_url health
+# check (curl from the runner host) reaches the relay; Sinatra would
+# otherwise honour that and bind 127.0.0.1 only, blocking the test runner
+# Docker container from connecting via host.docker.internal (172.17.0.1).
+# Force the server to bind all interfaces — 0.0.0.0 still satisfies the
+# localhost health check.
+echo "Listening on 0.0.0.0:${SDK_RELAY_PORT}"
+SDK_RELAY_HOST=0.0.0.0 SDK_RELAY_PORT=${SDK_RELAY_PORT} bundle exec ruby src/server.rb
