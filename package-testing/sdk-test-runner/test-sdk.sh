@@ -30,10 +30,12 @@ function echo_yellow() {
 }
 
 # Wait for a server to be ready
-# Returns 1 when the server is available; 0 if not available within max retries of 30.
+# Returns 1 when the server is available; 0 if not available within the timeout
+# (default 60 attempts × 5s = 5 min, enough for relays that compile native
+# extensions on cold runs — e.g. the Rust extension in eppo-server-sdk).
 function wait_for_url() {
   local url="$1"
-  local max_attempts=30
+  local max_attempts="${2:-60}"
   local attempt=1
 
   while [[ $attempt -le $max_attempts ]]; do
