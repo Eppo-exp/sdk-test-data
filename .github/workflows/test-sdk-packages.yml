@@ -74,11 +74,22 @@ jobs:
       - uses: actions/checkout@v4
       # Ruby SDK ships a native Rust extension via rb_sys; building the gem
       # requires both a user-writable bundler install and a Rust toolchain,
-      # neither of which is available out of the box on ubuntu-latest.
+      # neither of which is available out of the box on ubuntu-latest. The
+      # cargo cache cuts cold-run compile time (~70s on a fresh runner) down
+      # to a few seconds for subsequent runs, keeping the total relay build
+      # comfortably inside test-sdk.sh's wait_for_url window.
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
       - uses: dtolnay/rust-toolchain@stable
+      # The build-and-run.sh script clones the SDK into ./tmp and then
+      # `rm -rf tmp` after the build, so caching `target/` is moot — but
+      # caching ~/.cargo/{registry,git} (rust-cache's default) avoids
+      # re-downloading ~200 crates on every cold run.
+      - uses: Swatinem/rust-cache@v2
+        with:
+          cache-targets: false
+          shared-key: ruby-sdk-relay-cargo
       - uses: ./.github/actions/test-server-package
         with:
           platform: ${{ matrix.platform }}
