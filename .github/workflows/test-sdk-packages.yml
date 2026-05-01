@@ -93,7 +93,7 @@ jobs:
       - uses: ./.github/actions/test-server-package
         with:
           platform: ${{ matrix.platform }}
-          sdk_name: 'eppo/ruby-sdk'
+          sdk_name: 'ruby'
           sdk_relay_dir: 'ruby-sdk-relay'
           service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
           sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}

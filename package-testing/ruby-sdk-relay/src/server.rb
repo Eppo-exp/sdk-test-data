@@ -51,9 +51,11 @@ end
 get '/sdk/details' do
   content_type :json
   {
-    # Must match the `sdk_name` input in test-sdk-packages.yml ("eppo/ruby-sdk");
-    # the test runner does an exact-string check before exercising scenarios.
-    sdkName: "eppo/ruby-sdk",
+    # Canonical SDK name from the eppo backend's `SupportedSdkNames`
+    # (supported-sdk-names.constants.ts). Must match the `sdk_name` input in
+    # test-sdk-packages.yml; the test runner does an exact-string check
+    # against this value before exercising scenarios.
+    sdkName: "ruby",
     sdkVersion: "3.3.0",
     supportsBandits: false,
     supportsDynamicTyping: false
