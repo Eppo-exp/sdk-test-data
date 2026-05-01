@@ -3,6 +3,16 @@ require 'sinatra'
 require 'json'
 require 'eppo_client'
 
+# Sinatra 4.x always wires up Rack::Protection::HostAuthorization. Its default
+# permitted_hosts in dev mode are `["localhost", ".localhost", ".test", 0.0.0.0/0,
+# ::/0]` — the IP ranges only match requests whose Host header is an IP literal,
+# so `host.docker.internal` (the hostname the CI test runner uses to reach the
+# relay from its Docker container) gets a 403 "Host not permitted". Setting
+# `permitted_hosts: []` short-circuits the middleware to allow-all (per
+# rack-protection's `return true if @all_permitted_hosts.empty?`). Appropriate
+# for a test relay accepting requests from any source.
+set :host_authorization, permitted_hosts: []
+
 class LocalAssignmentLogger < EppoClient::AssignmentLogger
   def log_assignment(assignment)
     puts "Assignment: #{assignment}"
