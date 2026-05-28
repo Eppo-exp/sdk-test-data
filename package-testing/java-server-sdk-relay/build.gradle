@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     // Eppo Server SDK (from local maven)
-    implementation 'cloud.eppo:eppo-server-sdk:5.3.4'
+    implementation 'cloud.eppo:eppo-server-sdk:5.4.0-SNAPSHOT'
 
     // Spark Java for REST API
     implementation 'com.sparkjava:spark-core:2.9.4'
