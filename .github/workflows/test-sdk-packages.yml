@@ -99,6 +99,27 @@ jobs:
           sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}
           sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
 
+  test-java-sdk:
+    runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: ['linux']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - uses: ./.github/actions/test-server-package
+        with:
+          platform: ${{ matrix.platform }}
+          sdk_name: 'java-server-sdk'
+          sdk_relay_dir: 'java-server-sdk-relay'
+          service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          sdk_testing_project_id: ${{ vars.SDK_TESTING_PROJECT_ID }}
+          sdk_testing_region: ${{ vars.SDK_TESTING_REGION }}
+
   test-go-sdk:
     runs-on: ${{ matrix.platform == 'linux' && 'ubuntu-latest' || matrix.platform == 'macos' && 'macos-13' || matrix.platform == 'windows' && 'windows-latest' }}
     strategy:
