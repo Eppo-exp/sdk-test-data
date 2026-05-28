@@ -45,7 +45,7 @@ public class RelayServer {
             res.type("application/json");
             JsonObject response = new JsonObject();
             response.addProperty("sdkName", "java-server-sdk");
-            response.addProperty("sdkVersion", "5.3.4"); // Must match build.gradle dependency version
+            response.addProperty("sdkVersion", "5.4.0-SNAPSHOT"); // Must match build.gradle dependency version
             response.addProperty("supportsBandits", true);
             response.addProperty("supportsDynamicTyping", false);
             return gson.toJson(response);
