@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'cloud.eppo'
+version = '1.0.0'
+sourceCompatibility = '11'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    // Eppo Server SDK
+    implementation 'cloud.eppo:eppo-server-sdk:5.2.0'
+
+    // Spark Java for REST API
+    implementation 'com.sparkjava:spark-core:2.9.4'
+
+    // Gson for JSON serialization
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    // SLF4J for logging
+    implementation 'org.slf4j:slf4j-simple:2.0.9'
+}
+
+application {
+    mainClass = 'cloud.eppo.relay.RelayServer'
+}
+
+tasks.register('copyDependencies', Copy) {
+    from configurations.runtimeClasspath
+    into 'build/libs/dependencies'
+}
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'cloud.eppo.relay.RelayServer',
+            'Class-Path': configurations.runtimeClasspath.collect { 'dependencies/' + it.getName() }.join(' ')
+        )
+    }
+}
