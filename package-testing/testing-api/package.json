@@ -22,15 +22,15 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^5",
-    "@types/node": "^22",
-    "eslint": "^9",
-    "eslint-config-prettier": "^9",
-    "eslint-plugin-prettier": "^5",
+    "@types/node": "^25.9.1",
+    "eslint": "^10.4.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
     "nodemon": "^3",
     "prettier": "^3",
     "ts-node": "^10",
     "ts-node-dev": "^2",
     "typescript": "^5",
-    "typescript-eslint": "^8"
+    "typescript-eslint": "^8.60.0"
   }
 }
