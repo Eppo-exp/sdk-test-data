@@ -21,53 +21,52 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@eppo/node-server-sdk": "^3",
-    "@eslint/js": "^9",
-    "@nestjs/common": "^11.1.19",
-    "@nestjs/core": "^11.1.19",
-    "@nestjs/platform-express": "^11.1.19",
-    "globals": "^15",
+    "@eppo/node-server-sdk": "^4.0.0",
+    "@eslint/js": "^10.0.1",
+    "@nestjs/common": "^11.1.24",
+    "@nestjs/core": "^11.1.24",
+    "@nestjs/platform-express": "^11.1.24",
+    "globals": "^17.6.0",
     "reflect-metadata": "^0.2",
     "rxjs": "^7",
-    "typescript-eslint": "^8"
+    "typescript-eslint": "^8.60.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^11",
     "@nestjs/schematics": "^11",
-    "@nestjs/testing": "^11.1.19",
+    "@nestjs/testing": "^11.1.24",
     "@types/express": "^5",
     "@types/jest": "^30",
-    "@types/node": "^22",
-    "@types/supertest": "^6",
-    "@typescript-eslint/eslint-plugin": "^8",
-    "@typescript-eslint/parser": "^8",
-    "eslint": "^9",
+    "@types/node": "^25.9.1",
+    "@types/supertest": "^7.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.60.0",
+    "@typescript-eslint/parser": "^8.60.0",
+    "eslint": "^10.4.0",
     "eslint-config-prettier": "^10",
-    "eslint-plugin-prettier": "^5",
-    "jest": "^30",
+    "eslint-plugin-prettier": "^5.5.6",
+    "jest": "^30.4.2",
     "prettier": "^3",
     "source-map-support": "^0.5",
     "supertest": "^7",
-    "ts-jest": "^29",
+    "ts-jest": "^29.4.11",
     "ts-node": "^10",
     "tsconfig-paths": "^4",
     "typescript": "^5"
   },
-  "resolutions": {
-    "//uuid": "GHSA-9c47-m6qq-7p4h: pulled by @eppo/js-client-sdk-common transitively. uuid 14 is ESM-only — Node 20.19+ handles `require()` of ESM via require(esm) (default-on), but ts-jest does not, so the jest config below transforms uuid alongside our sources.",
-    "uuid": "^14"
-  },
   "jest": {
-    "moduleFileExtensions": ["js", "json", "ts"],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
-    "transformIgnorePatterns": [
-      "node_modules/(?!(uuid)/)"
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
     ],
-    "collectCoverageFrom": ["**/*.(t|j)s"],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   }
