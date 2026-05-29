@@ -28,7 +28,7 @@ The server will start on `localhost:4000` by default.
 
 ## SDK
 
-This relay uses `cloud.eppo:eppo-server-sdk` version `6.0.0-SNAPSHOT` from Maven Local. The SDK version is pinned in `build.gradle`.
+This relay uses `cloud.eppo:eppo-server-sdk` version `5.2.0` from Maven Central. The SDK version is pinned in `build.gradle`.
 
 ## Endpoints
 
