@@ -9,7 +9,8 @@ import cloud.eppo.api.BanditResult;
 import cloud.eppo.api.EppoValue;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +18,7 @@ import java.util.Map;
 import static spark.Spark.*;
 
 public class RelayServer {
+    private static final Logger log = LoggerFactory.getLogger(RelayServer.class);
     private static final Gson gson = new Gson();
     private static final Gson gsonWithNulls = new com.google.gson.GsonBuilder().serializeNulls().create();
     private static EppoClient eppoClient;
@@ -45,7 +47,7 @@ public class RelayServer {
             res.type("application/json");
             JsonObject response = new JsonObject();
             response.addProperty("sdkName", "java-server-sdk");
-            response.addProperty("sdkVersion", "5.4.0-SNAPSHOT"); // Must match build.gradle dependency version
+            response.addProperty("sdkVersion", "6.0.0-SNAPSHOT"); // Must match build.gradle dependency version
             response.addProperty("supportsBandits", true);
             response.addProperty("supportsDynamicTyping", false);
             return gson.toJson(response);
@@ -65,7 +67,7 @@ public class RelayServer {
                 response.add("result", gson.toJsonTree(result));
                 return gson.toJson(response);
             } catch (Exception e) {
-                e.printStackTrace();
+                log.error("Assignment failed for request: {}", req.body(), e);
                 res.status(500);
                 JsonObject error = new JsonObject();
                 error.addProperty("error", e.getMessage());
@@ -129,7 +131,7 @@ public class RelayServer {
                 response.put("result", resultObj);
                 return gsonWithNulls.toJson(response);
             } catch (Exception e) {
-                e.printStackTrace();
+                log.error("Bandit action failed for request: {}", req.body(), e);
                 res.status(500);
                 JsonObject error = new JsonObject();
                 error.addProperty("error", e.getMessage());
@@ -144,7 +146,7 @@ public class RelayServer {
                 initializeEppoClient(apiKey, baseUrl);
                 return "{}";
             } catch (Exception e) {
-                e.printStackTrace();
+                log.error("SDK reset failed", e);
                 res.status(500);
                 JsonObject error = new JsonObject();
                 error.addProperty("error", e.getMessage());
@@ -180,8 +182,11 @@ public class RelayServer {
                 target.put(entry.getKey(), EppoValue.valueOf((Boolean) value));
             } else if (value instanceof String) {
                 target.put(entry.getKey(), EppoValue.valueOf((String) value));
+            } else if (value != null) {
+                throw new IllegalArgumentException(
+                    "Unsupported attribute type for key '" + entry.getKey() + "': " + value.getClass().getName());
             }
-            // null and other types are silently skipped
+            // null values are skipped — the SDK does not accept null EppoValues
         }
     }
 
@@ -225,20 +230,17 @@ public class RelayServer {
                     defaultNumeric
                 );
             case "JSON":
-                // Parse default value as JSONObject
-                JSONObject defaultJson;
-                if (request.defaultValue instanceof Map) {
-                    defaultJson = new JSONObject((Map<?, ?>) request.defaultValue);
-                } else if (request.defaultValue instanceof String) {
-                    defaultJson = new JSONObject((String) request.defaultValue);
+                String defaultJsonStr;
+                if (request.defaultValue instanceof String) {
+                    defaultJsonStr = (String) request.defaultValue;
                 } else {
-                    defaultJson = new JSONObject(gson.toJson(request.defaultValue));
+                    defaultJsonStr = gson.toJson(request.defaultValue);
                 }
                 String jsonString = eppoClient.getJSONStringAssignment(
                     request.flag,
                     request.subjectKey,
                     attributes,
-                    defaultJson.toString()
+                    defaultJsonStr
                 );
                 // Parse back to a map so Gson serializes it as an object, not a string
                 return gson.fromJson(jsonString, Object.class);
