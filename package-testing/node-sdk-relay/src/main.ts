@@ -24,4 +24,6 @@ export default function getLogger(): RelayLogger {
   return logger;
 }
 
-bootstrap();
+if (require.main === module) {
+  bootstrap();
+}

@@ -43,14 +43,14 @@
     "react-native-webview": "13.13.5"
   },
   "devDependencies": {
-    "@babel/core": "^7",
+    "@babel/core": "^7.29.7",
     "@types/jest": "^29",
     "@types/react": "~18.3",
     "@types/react-test-renderer": "^18",
     "eslint": "^8",
     "eslint-config-expo": "~8",
     "eslint-config-prettier": "^10",
-    "eslint-plugin-prettier": "^5",
+    "eslint-plugin-prettier": "^5.5.6",
     "jest": "^29",
     "jest-expo": "~52",
     "prettier": "^3",
@@ -59,15 +59,21 @@
   },
   "private": true,
   "resolutions": {
-    "//@tootallnate/once": "GHSA: ReDoS — pulled deeply by expo CLI's request chain",
     "@tootallnate/once": "^3.0.1",
-    "//@xmldom/xmldom": "Multiple GHSAs — patched in 0.8.13; pulled by expo prebuild tooling",
-    "@xmldom/xmldom": "^0.8.13",
-    "//postcss": "GHSA-7fh5-64p2-3v2j: line return parsing — patched in 8.5.10; pulled by react-native-web",
-    "postcss": "^8.5.10",
-    "//tar": "Alerts #90, #95, #99, #113: multiple path traversal and symlink vulnerabilities in tar <7.5.11",
-    "tar": "^7.5.11",
-    "//uuid": "GHSA-9c47-m6qq-7p4h: pin to ^14 — older versions pulled by @eppo/js-client-sdk-common transitively",
-    "uuid": "^14"
+    "@xmldom/xmldom": "^0.9.10",
+    "postcss": "^8.5.15",
+    "tar": "^7.5.15",
+    "uuid": "^14",
+    "fast-uri": "^3.1.2",
+    "ws": "^8.21.0"
+  },
+  "resolutionRationales": {
+    "@tootallnate/once": "GHSA ReDoS advisory: pulled deeply by the Expo CLI request chain.",
+    "@xmldom/xmldom": "Multiple GHSAs patched in 0.8.13; pulled by Expo prebuild tooling. Keep on the latest compatible release because this relay is test infrastructure.",
+    "postcss": "GHSA-7fh5-64p2-3v2j: line return parsing patched in 8.5.10; pulled by react-native-web. Keep on the latest 8.x patch.",
+    "tar": "Dependabot alerts #90, #95, #99, and #113: tar path traversal and symlink fixes require >=7.5.11. Keep on the latest 7.x patch.",
+    "uuid": "GHSA-9c47-m6qq-7p4h: older versions are pulled by @eppo/js-client-sdk-common transitively.",
+    "fast-uri": "GHSA-48mj-p7x2-9w2x and GHSA-r5p8-xx58-j84p: patched in 3.1.2.",
+    "ws": "Transitive ws audit remediation; keep on the latest 8.x patch."
   }
 }
