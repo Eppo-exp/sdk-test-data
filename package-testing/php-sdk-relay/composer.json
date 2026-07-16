@@ -18,7 +18,7 @@
   ],
   "require": {
     "php": "^8.1",
-    "eppo/php-sdk": "^3.2",
+    "eppo/php-sdk": "^4.0",
     "vlucas/phpdotenv": "^5.6",
     "php-http/curl-client": "^2.3",
     "nyholm/psr7": "^1.8",
