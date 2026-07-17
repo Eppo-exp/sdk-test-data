@@ -62,7 +62,7 @@
     "@tootallnate/once": "^3.0.1",
     "@xmldom/xmldom": "^0.9.10",
     "postcss": "^8.5.15",
-    "tar": "^7.5.15",
+    "tar": "^7.5.16",
     "uuid": "^14",
     "fast-uri": "^3.1.2",
     "ws": "^8.21.0"
