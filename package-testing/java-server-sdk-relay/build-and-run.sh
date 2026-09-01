@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Set default values for vars
-: "${SDK_RELAY_HOST:=localhost}"
+: "${SDK_RELAY_HOST:=0.0.0.0}"
 : "${SDK_RELAY_PORT:=4000}"
 : "${EPPO_API_KEY:=test-api-key}"
 : "${EPPO_BASE_URL:=http://localhost:5000/api}"
