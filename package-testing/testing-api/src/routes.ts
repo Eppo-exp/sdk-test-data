@@ -40,7 +40,7 @@ const serveUFC: RequestHandler = (req, res) => {
 };
 
 // Serve bandit params
-const serveBanditParams: RequestHandler =(req, res) => {
+const serveBanditParams: RequestHandler = (req, res) => {
   const sdk: string = req.query.sdkName as string;
 
   const data = getDataForRequest(sdk);
