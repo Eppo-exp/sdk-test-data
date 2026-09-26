@@ -7,14 +7,12 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
+    "types": ["jest", "node"],
   },
   "include": [
     "**/*.ts"
   ],
   "exclude": [
     "node_modules",
-  ],
-  "types": [
-    "jest"
   ]
 }
