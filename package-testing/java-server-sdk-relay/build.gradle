@@ -18,6 +18,8 @@ dependencies {
 
     // Spark Java for REST API
     implementation 'com.sparkjava:spark-core:2.9.4'
+    // spark-core 2.9.4 is the last release; raise its Jetty to the newest public 9.4.x.
+    implementation platform('org.eclipse.jetty:jetty-bom:9.4.58.v20250814')
 
     // Gson for JSON serialization
     implementation 'com.google.code.gson:gson:2.10.1'
