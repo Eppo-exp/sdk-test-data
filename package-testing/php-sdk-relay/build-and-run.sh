@@ -19,15 +19,17 @@ if [[ "$ref" =~ ^[0-9]+/(merge|head)$ ]]; then
 fi
 
 echo "Cloning ${SDK}@${ref}"
-rm -Rf tmp
-git init -q tmp
-git -C tmp fetch -q --depth 1 -- "${SDK}" "${ref}" || { echo "Cloning repo failed"; exit 1; }
-git -C tmp checkout -q FETCH_HEAD
-echo "Checked out $(git -C tmp rev-parse HEAD)"
+# Private scratch dir, so a stray tmp/ in the caller's cwd is never touched.
+tmp="$(mktemp -d)"
+trap 'rm -rf "$tmp"' EXIT
+git init -q "$tmp"
+git -C "$tmp" fetch -q --depth 1 -- "${SDK}" "${ref}" || { echo "Cloning repo failed"; exit 1; }
+git -C "$tmp" checkout -q FETCH_HEAD
+echo "Checked out $(git -C "$tmp" rev-parse HEAD)"
 
 # overwrite vendor files
-cp -Rf tmp/. ./vendor/eppo/php-sdk/
-rm -Rf tmp
+cp -Rf "$tmp"/. ./vendor/eppo/php-sdk/
+rm -rf "$tmp"
 
 # Run the poller
 php src/eppo_poller.php &
