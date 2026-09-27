@@ -68,13 +68,14 @@ function exit_with_message() {
 # Parse command-line arguments
 command="$1"
 export SDK_NAME="$2"
-export SDK_REF="${3:-${SDK_REF:-main}}"
 
 if [ -e .env ]; then
   source .env
 fi
 
 # Allow env variables to be overwritten, then export to this shell.
+# The sdkRef argument beats SDK_REF from the shell or .env.
+export SDK_REF="${3:-${SDK_REF:-main}}"
 export EPPO_API_HOST="${EPPO_API_HOST:-localhost}"
 export EPPO_API_PORT="${EPPO_API_PORT:-5000}"
 export EPPO_BASE_URL="http://${EPPO_API_HOST}:${EPPO_API_PORT}/api"
