@@ -13,7 +13,7 @@ export TOP_PID=$$
 # Arguments:
 #   <command>        Required. Specifies the command to execute (server or client).
 #   <sdkName>       Required. The name of the SDK; corresponds to subpackage name.
-#   [sdkRef]        Optional. The reference of the SDK (default: main).
+#   [sdkRef]        Optional. The reference of the SDK (default: $SDK_REF, else main).
 #
 
 # Fun colours
@@ -56,7 +56,7 @@ function exit_with_message() {
 # Parse command-line arguments
 command="$1"
 export SDK_NAME="$2"
-export SDK_REF="${3:-main}"
+export SDK_REF="${3:-${SDK_REF:-main}}"
 
 if [ -e .env ]; then
   source .env
