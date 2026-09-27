@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 composer install
 
@@ -11,7 +12,8 @@ SDK="https://github.com/Eppo-exp/php-sdk.git"
 
 
 # checkout the specified ref of the SDK repo, build it, and then insert it into vendors here.
-mkdir -p tmp
+# A tmp/ left by a failed run makes git clone fail.
+rm -Rf tmp
 
 echo "Cloning ${SDK}@${SDK_REF}"
 git clone -b ${SDK_REF} --depth 1 --single-branch ${SDK} tmp || ( echo "Cloning repo failed"; exit 1 )
