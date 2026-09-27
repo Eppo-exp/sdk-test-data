@@ -151,7 +151,7 @@ case "$command" in
 
         if [ -f build-and-run.sh ]; then
           echo "    ... Starting SDK Relay via build-and-run script"
-          ./build-and-run.sh > ${RUNNER_DIR}/logs/sdk.log 2>&1 &
+          SDK_RELAY_HOST=0.0.0.0 ./build-and-run.sh > ${RUNNER_DIR}/logs/sdk.log 2>&1 &
 
         elif [ -f docker-run.sh ]; then
           echo "    ... Starting SDK Relay via docker launch script"
