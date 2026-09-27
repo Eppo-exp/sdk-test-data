@@ -32,14 +32,26 @@ function echo_yellow() {
 # Wait for a server to be ready
 # Returns 1 when the server is available; 0 if not available within the timeout
 # (default 60 attempts × 5s = 5 min, enough for relays that compile native
-# extensions on cold runs — e.g. the Rust extension in eppo-server-sdk).
+# extensions on cold runs — e.g. the Rust extension in eppo-server-sdk);
+# 2 if the optional launcher PID exits non-zero (status in LAUNCHER_EXIT_CODE).
+# A launcher that exits 0 may leave the server running (e.g. `docker run -d`),
+# so polling continues. Call directly, not in a subshell: `wait` needs the child.
 function wait_for_url() {
   local url="$1"
   local max_attempts="${2:-60}"
+  local pid="$3"
   local attempt=1
 
   while [[ $attempt -le $max_attempts ]]; do
     curl --silent --output /dev/null --fail "$url" && { return 1; }
+    if [[ -n "$pid" ]] && ! kill -0 "$pid" 2>/dev/null; then
+      wait "$pid"
+      LAUNCHER_EXIT_CODE=$?
+      if [[ $LAUNCHER_EXIT_CODE -ne 0 ]]; then
+        return 2
+      fi
+      pid=""
+    fi
     echo "Attempt number ${attempt}; waiting for $url"
     sleep 5
     ((attempt++))
@@ -172,9 +184,16 @@ case "$command" in
 
 
         echo_yellow "    ... Waiting to verify SDK Relay server is up"
-        wait_for_url http://${SDK_RELAY_HOST}:${SDK_RELAY_PORT} 
-        if [[ $? -eq 0 ]]; then
-          exit_with_message "    ... SDK Relay server failed to start"
+        wait_for_url http://${SDK_RELAY_HOST}:${SDK_RELAY_PORT} 60 $SDK_RELAY_PID
+        RELAY_WAIT=$?
+        if [[ $RELAY_WAIT -ne 1 ]]; then
+          echo_yellow "    ... Last 50 lines of ${RUNNER_DIR}/logs/sdk.log:"
+          tail -n 50 "${RUNNER_DIR}/logs/sdk.log"
+          if [[ $RELAY_WAIT -eq 2 ]]; then
+            exit_with_message "    ... SDK Relay launch script exited with status ${LAUNCHER_EXIT_CODE}"
+          else
+            exit_with_message "    ... SDK Relay server failed to start"
+          fi
         fi
         echo_green "    ... SDK Relay server has started"
 
