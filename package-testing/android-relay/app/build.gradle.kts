@@ -80,7 +80,10 @@ val sdkVersion = System.getenv("SDK_VERSION")  ?: ""
 val sdkRef = System.getenv("SDK_REF")  ?: ""
 
 dependencies {
-    implementation(libs.socketio)
+    implementation(libs.socketio) {
+        // Android provides org.json.
+        exclude(group = "org.json", module = "json")
+    }
     implementation(libs.jackson.databind)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
