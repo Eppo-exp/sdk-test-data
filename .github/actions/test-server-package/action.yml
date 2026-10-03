@@ -44,9 +44,28 @@ runs:
       shell: bash
       run: echo "Running Test Cluster for ${{ inputs.sdk_name }}"
 
+    # Check out the sdk-test-data ref that the caller pinned (uses: ...@<ref>).
+    # github.action_* is reliable in a composite action only through env.
+    # A local (./) action has no action_ref; an empty ref keeps checkout's
+    # default (the triggering ref in sdk-test-data, else the default branch).
+    - name: Resolve sdk-test-data ref
+      id: sdk_test_data
+      shell: bash
+      env:
+        ACTION_REPOSITORY: ${{ github.action_repository }}
+        ACTION_REF: ${{ github.action_ref }}
+      run: |
+        ref=""
+        if [ "$(echo "$ACTION_REPOSITORY" | tr '[:upper:]' '[:lower:]')" = "eppo-exp/sdk-test-data" ]; then
+          ref="$ACTION_REF"
+        fi
+        echo "action_repository='${ACTION_REPOSITORY}' action_ref='${ACTION_REF}' -> sdk-test-data ref='${ref}'"
+        echo "ref=${ref}" >> "$GITHUB_OUTPUT"
+
     - uses: actions/checkout@v3
       with:
         repository: Eppo-exp/sdk-test-data
+        ref: ${{ steps.sdk_test_data.outputs.ref }}
 
     - name: Set some variables
       shell: bash

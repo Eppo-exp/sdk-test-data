@@ -86,6 +86,7 @@ The following env variable can be set when running the `test-sdk.sh` script
 | Variable Name | Type   | Default | Description                                                                  |
 | ------------- | ------ | ------- | ---------------------------------------------------------------------------- |
 | `SDK_DIR`     | string | 'main'  | Directory of the SDK relay server, if not equal to "<server_sdk_name>-relay" |
+| `SDK_REF`     | string | 'main'  | SDK ref to test when the `<sdk_ref>` argument is not given                   |
 
 ## Testing a new SDK
 

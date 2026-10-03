@@ -1,4 +1,4 @@
-FROM php:8.1
+FROM php:8.3
 
 # dependencies needed for composer (and for build-and-run.sh).
 RUN apt-get update && apt-get install -y \
