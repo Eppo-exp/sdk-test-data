@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 composer install
 
@@ -11,14 +12,24 @@ SDK="https://github.com/Eppo-exp/php-sdk.git"
 
 
 # checkout the specified ref of the SDK repo, build it, and then insert it into vendors here.
-mkdir -p tmp
+# SDK_REF: branch, tag, full commit SHA, refs/..., or <N>/merge (a pull_request ref_name).
+ref="${SDK_REF}"
+if [[ "$ref" =~ ^[0-9]+/(merge|head)$ ]]; then
+  ref="refs/pull/${ref}"
+fi
 
-echo "Cloning ${SDK}@${SDK_REF}"
-git clone -b ${SDK_REF} --depth 1 --single-branch ${SDK} tmp || ( echo "Cloning repo failed"; exit 1 )
+echo "Cloning ${SDK}@${ref}"
+# Private scratch dir, so a stray tmp/ in the caller's cwd is never touched.
+tmp="$(mktemp -d)"
+trap 'rm -rf "$tmp"' EXIT
+git init -q "$tmp"
+git -C "$tmp" fetch -q --depth 1 -- "${SDK}" "${ref}" || { echo "Cloning repo failed"; exit 1; }
+git -C "$tmp" checkout -q FETCH_HEAD
+echo "Checked out $(git -C "$tmp" rev-parse HEAD)"
 
 # overwrite vendor files
-cp -Rf tmp/. ./vendor/eppo/php-sdk/
-rm -Rf tmp
+cp -Rf "$tmp"/. ./vendor/eppo/php-sdk/
+rm -rf "$tmp"
 
 # Run the poller
 php src/eppo_poller.php &
