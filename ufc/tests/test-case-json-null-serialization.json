@@ -1,0 +1,173 @@
+{
+  "flag": "json-null-test",
+  "variationType": "JSON",
+  "defaultValue": null,
+  "subjects": [
+    {
+      "subjectKey": "user1",
+      "subjectAttributes": {
+        "result": "null"
+      },
+      "assignment": null,
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"null-direct\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "null-value",
+        "variationValue": null,
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "result",
+              "operator": "ONE_OF",
+              "value": [
+                "null"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "null-direct",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 1
+        },
+        "unmatchedAllocations": [],
+        "unevaluatedAllocations": [
+          {
+            "key": "object-nulls",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 2
+          },
+          {
+            "key": "array-nulls",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 3
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "user2",
+      "subjectAttributes": {
+        "result": "object"
+      },
+      "assignment": {
+        "field": null,
+        "array": [
+          1,
+          null,
+          3
+        ],
+        "nested": {
+          "inner": null
+        }
+      },
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"object-nulls\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "object-with-nulls",
+        "variationValue": {
+          "field": null,
+          "array": [
+            1,
+            null,
+            3
+          ],
+          "nested": {
+            "inner": null
+          }
+        },
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "result",
+              "operator": "ONE_OF",
+              "value": [
+                "object"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "object-nulls",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 2
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "null-direct",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          }
+        ],
+        "unevaluatedAllocations": [
+          {
+            "key": "array-nulls",
+            "allocationEvaluationCode": "UNEVALUATED",
+            "orderPosition": 3
+          }
+        ]
+      }
+    },
+    {
+      "subjectKey": "user3",
+      "subjectAttributes": {
+        "result": "array"
+      },
+      "assignment": [
+        null,
+        "string",
+        null,
+        42
+      ],
+      "evaluationDetails": {
+        "environmentName": "Test",
+        "flagEvaluationCode": "MATCH",
+        "flagEvaluationDescription": "Supplied attributes match rules defined in allocation \"array-nulls\".",
+        "banditKey": null,
+        "banditAction": null,
+        "variationKey": "array-with-nulls",
+        "variationValue": [
+          null,
+          "string",
+          null,
+          42
+        ],
+        "matchedRule": {
+          "conditions": [
+            {
+              "attribute": "result",
+              "operator": "ONE_OF",
+              "value": [
+                "array"
+              ]
+            }
+          ]
+        },
+        "matchedAllocation": {
+          "key": "array-nulls",
+          "allocationEvaluationCode": "MATCH",
+          "orderPosition": 3
+        },
+        "unmatchedAllocations": [
+          {
+            "key": "null-direct",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 1
+          },
+          {
+            "key": "object-nulls",
+            "allocationEvaluationCode": "FAILING_RULE",
+            "orderPosition": 2
+          }
+        ],
+        "unevaluatedAllocations": []
+      }
+    }
+  ]
+}
