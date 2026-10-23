@@ -609,6 +609,70 @@
       ],
       "totalShards": 10000
     },
+    "empty-string-subject-key-flag": {
+      "key": "empty-string-subject-key-flag",
+      "enabled": true,
+      "variationType": "BOOLEAN",
+      "variations": {
+        "disabled": {
+          "key": "disabled",
+          "value": false
+        },
+        "enabled": {
+          "key": "enabled",
+          "value": true
+        }
+      },
+      "allocations": [
+        {
+          "key": "disable-for-anonymous",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "user_type",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "anonymous"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "disabled",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        },
+        {
+          "key": "enable-for-users",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "user_type",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "registered"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "enabled",
+              "shards": []
+            }
+          ],
+          "doLog": true
+        }
+      ],
+      "totalShards": 10000
+    },
     "kill-switch": {
       "key": "kill-switch",
       "enabled": true,
