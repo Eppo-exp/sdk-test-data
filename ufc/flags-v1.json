@@ -3377,6 +3377,52 @@
           "doLog": true
         }
       ]
+    },
+    "json-null-value-flag": {
+      "key": "json-null-value-flag",
+      "enabled": true,
+      "variationType": "JSON",
+      "variations": {
+        "null-variation": {
+          "key": "null-variation",
+          "value": "null"
+        }
+      },
+      "allocations": [
+        {
+          "key": "Null Value Test",
+          "rules": [
+            {
+              "conditions": [
+                {
+                  "attribute": "test_group",
+                  "operator": "ONE_OF",
+                  "value": [
+                    "null_variant"
+                  ]
+                }
+              ]
+            }
+          ],
+          "splits": [
+            {
+              "variationKey": "null-variation",
+              "shards": [
+                {
+                  "salt": "null-test-salt",
+                  "ranges": [
+                    {
+                      "start": 0,
+                      "end": 10000
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "doLog": true
+        }
+      ]
     }
   }
 }
